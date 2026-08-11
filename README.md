@@ -51,6 +51,10 @@ npm test
 
 검사는 PC 동작 계약 20개가 실제 참고 페이지의 JavaScript·마크업 근거와 계속 연결되어 있는지 확인합니다.
 
+## 자동 업데이트
+
+GitHub Actions가 매일 한국 시간 오전 3시 15분에 원본 저장소의 최신 자료를 확인합니다. 새 자료는 PC 동작 검사를 통과한 경우에만 자동 커밋됩니다. GitHub의 `Actions` 화면에서 `Sync from S-1 Design System`을 선택하면 필요할 때 즉시 실행할 수도 있습니다.
+
 ## 원본
 
 - Source repository: https://github.com/s1designux/S1-UX-DESIGN-with-AI

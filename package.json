@@ -4,6 +4,7 @@
   "private": true,
   "description": "AI-readable visual and PC behavior guideline for the S-1 UX Design System",
   "scripts": {
+    "sync": "node scripts/sync-from-source.js",
     "test": "node scripts/component-behavior-check.js"
   }
 }
