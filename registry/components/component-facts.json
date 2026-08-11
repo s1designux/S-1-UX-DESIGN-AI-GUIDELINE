@@ -354,19 +354,19 @@
             "menu": "off",
             "user": "off"
           },
-          "target": "root",
-          "layoutMode": "HORIZONTAL",
-          "primaryAxisSizingMode": "AUTO",
-          "counterAxisSizingMode": "AUTO",
-          "counterAxisAlignItems": "CENTER",
-          "itemSpacing": "8"
+          "target": "globe",
+          "width": 32,
+          "height": 32
         }
       ],
       "anatomy": [
+        "Language=Korean",
         "account",
         "menu"
       ],
-      "tokenBindings": [],
+      "tokenBindings": [
+        "color/text/body/primary"
+      ],
       "composition": {
         "buildDependencies": [
           "Language Icon"
@@ -492,12 +492,17 @@
       ],
       "anatomy": [
         "border",
+        "language=on, menu=on, user=on",
         "leading",
         "menus"
       ],
       "tokenBindings": [
         "color/line/gray/subtle",
         "color/navigation/bg",
+        "color/navigation/indicator/selected",
+        "color/navigation/label/default-alt",
+        "color/navigation/label/selected",
+        "color/text/body/primary",
         "color/text/title/primary"
       ],
       "composition": {
@@ -667,16 +672,22 @@
       "geometry": [
         {
           "when": "all",
-          "target": "root",
-          "layoutMode": "HORIZONTAL",
-          "primaryAxisSizingMode": "AUTO",
-          "counterAxisSizingMode": "AUTO",
-          "counterAxisAlignItems": "MIN",
-          "itemSpacing": "0"
+          "target": "rectangle",
+          "width": 76,
+          "height": 2
         }
       ],
-      "anatomy": [],
-      "tokenBindings": [],
+      "anatomy": [
+        "tab-1",
+        "tab-2",
+        "tab-3"
+      ],
+      "tokenBindings": [
+        "color/navigation/indicator/default",
+        "color/navigation/indicator/selected",
+        "color/navigation/label/default",
+        "color/navigation/label/selected"
+      ],
       "composition": {
         "buildDependencies": [
           "Line Tab"
@@ -737,7 +748,9 @@
           "cornerRadius": "2"
         }
       ],
-      "anatomy": [],
+      "anatomy": [
+        "chevron"
+      ],
       "tokenBindings": [
         "color/pagination/control/bg/default",
         "color/pagination/control/bg/disabled",
@@ -783,8 +796,26 @@
           "height": 28
         }
       ],
-      "anatomy": [],
-      "tokenBindings": [],
+      "anatomy": [
+        "pg-first",
+        "pg-last",
+        "pg-next",
+        "pg-num-1",
+        "pg-num-2",
+        "pg-num-3",
+        "pg-num-4",
+        "pg-num-5",
+        "pg-num-6",
+        "pg-prev"
+      ],
+      "tokenBindings": [
+        "color/pagination/control/bg/default",
+        "color/pagination/control/bg/disabled",
+        "color/pagination/control/border/default",
+        "color/pagination/control/border/disabled",
+        "color/pagination/number/default",
+        "color/pagination/number/selected"
+      ],
       "composition": {
         "buildDependencies": [
           "Pagination Cell"
@@ -1250,18 +1281,124 @@
       },
       "geometry": [
         {
-          "when": "all",
-          "target": "root",
+          "when": {
+            "Size": "md",
+            "Selected": "Left"
+          },
+          "target": "position=first, state=selected, size=md",
+          "height": 44,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "AUTO",
-          "counterAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
           "primaryAxisAlignItems": "CENTER",
           "counterAxisAlignItems": "CENTER",
-          "itemSpacing": "0"
+          "paddingRight": "12",
+          "paddingLeft": "12",
+          "minWidth": "64",
+          "topLeftRadius": "4",
+          "topRightRadius": "0",
+          "bottomLeftRadius": "4",
+          "bottomRightRadius": "0",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Size": "md",
+            "Selected": [
+              "Center",
+              "Right"
+            ]
+          },
+          "target": "position=first, state=default, size=md",
+          "height": 44,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingRight": "12",
+          "paddingLeft": "12",
+          "minWidth": "64",
+          "topLeftRadius": "4",
+          "topRightRadius": "0",
+          "bottomLeftRadius": "4",
+          "bottomRightRadius": "0",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Size": "sm",
+            "Selected": "Left"
+          },
+          "target": "position=first, state=selected, size=sm",
+          "height": 34,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingRight": "8",
+          "paddingLeft": "8",
+          "minWidth": "56",
+          "topLeftRadius": "4",
+          "topRightRadius": "0",
+          "bottomLeftRadius": "4",
+          "bottomRightRadius": "0",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Size": "sm",
+            "Selected": [
+              "Center",
+              "Right"
+            ]
+          },
+          "target": "position=first, state=default, size=sm",
+          "height": 34,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingRight": "8",
+          "paddingLeft": "8",
+          "minWidth": "56",
+          "topLeftRadius": "4",
+          "topRightRadius": "0",
+          "bottomLeftRadius": "4",
+          "bottomRightRadius": "0",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
         }
       ],
-      "anatomy": [],
-      "tokenBindings": [],
+      "anatomy": [
+        "position=first, state=default, size=md",
+        "position=first, state=default, size=sm",
+        "position=first, state=selected, size=md",
+        "position=first, state=selected, size=sm",
+        "position=last, state=default, size=md",
+        "position=last, state=default, size=sm",
+        "position=last, state=selected, size=md",
+        "position=last, state=selected, size=sm",
+        "position=middle-left, state=default, size=md",
+        "position=middle-left, state=default, size=sm",
+        "position=middle-left, state=selected, size=md",
+        "position=middle-left, state=selected, size=sm",
+        "position=middle-right, state=default, size=md",
+        "position=middle-right, state=default, size=sm"
+      ],
+      "tokenBindings": [
+        "color/button/bg/primary--default",
+        "color/button/bg/secondary--default",
+        "color/button/border/primary--default",
+        "color/button/border/secondary--default",
+        "color/button/label/primary--default",
+        "color/button/label/secondary--default"
+      ],
       "composition": {
         "buildDependencies": [
           "Multi Toggle Element"
@@ -1407,10 +1544,17 @@
           "strokeAlign": "OUTSIDE"
         }
       ],
-      "anatomy": [],
+      "anatomy": [
+        "ddl-row"
+      ],
       "tokenBindings": [
         "color/dropdown/list/bg",
-        "color/dropdown/list/border"
+        "color/dropdown/list/border",
+        "color/dropdown/option/bg/default",
+        "color/dropdown/option/bg/hover",
+        "color/dropdown/option/label/default",
+        "color/dropdown/option/label/hover",
+        "color/dropdown/option/label/selected"
       ],
       "composition": {
         "buildDependencies": [
@@ -1920,9 +2064,17 @@
         }
       ],
       "anatomy": [
+        "dropdown",
         "trigger"
       ],
       "tokenBindings": [
+        "color/dropdown/list/bg",
+        "color/dropdown/list/border",
+        "color/dropdown/option/bg/default",
+        "color/dropdown/option/bg/hover",
+        "color/dropdown/option/label/default",
+        "color/dropdown/option/label/hover",
+        "color/dropdown/option/label/selected",
         "color/form-control/bg/default",
         "color/form-control/bg/disabled",
         "color/form-control/bg/hover",
@@ -2065,9 +2217,20 @@
         "content"
       ],
       "tokenBindings": [
+        "color/date-picker/cell/bg/selected",
+        "color/date-picker/cell/bg/today",
+        "color/date-picker/cell/border/today",
         "color/date-picker/panel/bg",
         "color/date-picker/panel/border",
-        "color/date-picker/text/primary"
+        "color/date-picker/text/disabled",
+        "color/date-picker/text/primary",
+        "color/date-picker/text/secondary",
+        "color/date-picker/text/selected",
+        "color/date-picker/text/today",
+        "color/date-picker/tile/bg/default",
+        "color/date-picker/tile/bg/disabled",
+        "color/date-picker/tile/border/default",
+        "color/date-picker/tile/border/disabled"
       ],
       "composition": {
         "buildDependencies": []
@@ -2178,9 +2341,20 @@
         }
       ],
       "anatomy": [
+        "calendar",
         "trigger"
       ],
       "tokenBindings": [
+        "color/date-picker/cell/bg/selected",
+        "color/date-picker/cell/bg/today",
+        "color/date-picker/cell/border/today",
+        "color/date-picker/panel/bg",
+        "color/date-picker/panel/border",
+        "color/date-picker/text/disabled",
+        "color/date-picker/text/primary",
+        "color/date-picker/text/secondary",
+        "color/date-picker/text/selected",
+        "color/date-picker/text/today",
         "color/form-control/bg/default",
         "color/form-control/bg/disabled",
         "color/form-control/bg/selected",
@@ -2231,8 +2405,23 @@
         "header"
       ],
       "tokenBindings": [
+        "border-width/1",
+        "color/button/bg/primary--default",
+        "color/button/border/primary--default",
+        "color/button/label/primary--default",
+        "color/date-picker/cell/bg/selected",
+        "color/date-picker/cell/bg/today",
+        "color/date-picker/cell/border/today",
+        "color/date-picker/panel/bg",
+        "color/date-picker/text/disabled",
+        "color/date-picker/text/primary",
+        "color/date-picker/text/secondary",
+        "color/date-picker/text/selected",
+        "color/date-picker/text/today",
         "color/surface/raised",
-        "color/text/title/primary"
+        "color/text/title/primary",
+        "radius/4",
+        "spacing/16"
       ],
       "composition": {
         "buildDependencies": [
@@ -2337,6 +2526,12 @@
       "tokenBindings": [
         "color/dropdown/list/bg",
         "color/dropdown/list/border",
+        "color/dropdown/option/bg/default",
+        "color/dropdown/option/bg/hover",
+        "color/dropdown/option/bg/selected",
+        "color/dropdown/option/label/default",
+        "color/dropdown/option/label/hover",
+        "color/dropdown/option/label/selected",
         "color/line/gray/subtle",
         "color/text/state/accent",
         "color/text/state/disabled"
@@ -2455,9 +2650,16 @@
         }
       ],
       "anatomy": [
+        "tpd",
         "trigger"
       ],
       "tokenBindings": [
+        "color/dropdown/list/bg",
+        "color/dropdown/list/border",
+        "color/dropdown/option/bg/default",
+        "color/dropdown/option/bg/selected",
+        "color/dropdown/option/label/default",
+        "color/dropdown/option/label/selected",
         "color/form-control/bg/default",
         "color/form-control/bg/disabled",
         "color/form-control/bg/hover",
@@ -2466,7 +2668,9 @@
         "color/form-control/border/selected",
         "color/form-control/text/default",
         "color/form-control/text/disabled",
-        "color/form-control/text/placeholder"
+        "color/form-control/text/placeholder",
+        "color/line/gray/subtle",
+        "color/text/state/disabled"
       ],
       "composition": {
         "buildDependencies": [
@@ -2509,10 +2713,20 @@
         "wheel"
       ],
       "tokenBindings": [
+        "border-width/1",
+        "color/button/bg/primary--default",
+        "color/button/border/primary--default",
+        "color/button/label/primary--default",
+        "color/navigation/indicator/default",
+        "color/navigation/indicator/selected",
+        "color/navigation/label/default",
+        "color/navigation/label/selected",
         "color/overlay/wheel-fade",
         "color/surface/raised",
         "color/text/state/accent",
-        "color/text/title/primary"
+        "color/text/title/primary",
+        "radius/4",
+        "spacing/16"
       ],
       "composition": {
         "buildDependencies": [
@@ -2609,12 +2823,26 @@
         "table-footer"
       ],
       "tokenBindings": [
+        "color/control/bg/default",
+        "color/control/bg/hover",
+        "color/control/bg/selected",
+        "color/control/border/default",
+        "color/control/border/selected",
+        "color/form-control/bg/default",
+        "color/form-control/border/default",
+        "color/form-control/text/placeholder",
+        "color/pagination/control/bg/default",
+        "color/pagination/control/border/default",
+        "color/pagination/number/default",
+        "color/pagination/number/selected",
         "color/table/border/default",
         "color/table/border/strong",
         "color/table/cell/default",
         "color/table/cell/hover",
         "color/table/cell/selected",
-        "color/table/header/bg"
+        "color/table/header/bg",
+        "color/text/body/primary",
+        "color/text/body/secondary"
       ],
       "composition": {
         "buildDependencies": [
@@ -2706,10 +2934,15 @@
       ],
       "anatomy": [
         "check",
+        "checkbox",
         "chevron",
         "list-left"
       ],
       "tokenBindings": [
+        "color/control/bg/default",
+        "color/control/bg/selected",
+        "color/control/border/default",
+        "color/control/border/selected",
         "color/icon/gray-light",
         "color/surface/raised",
         "color/text/body/primary",
@@ -2783,8 +3016,19 @@
         "footer"
       ],
       "tokenBindings": [
+        "border-width/1",
+        "color/button/bg/primary--default",
+        "color/button/bg/secondary--default",
+        "color/button/border/primary--default",
+        "color/button/border/secondary--default",
+        "color/button/label/primary--default",
+        "color/button/label/secondary--default",
         "color/surface/raised",
-        "color/text/title/primary"
+        "color/text/body/primary",
+        "color/text/state/accent",
+        "color/text/title/primary",
+        "radius/4",
+        "spacing/16"
       ],
       "composition": {
         "buildDependencies": [
@@ -2825,10 +3069,19 @@
         "footer"
       ],
       "tokenBindings": [
+        "border-width/1",
+        "color/button/bg/primary--default",
+        "color/button/bg/secondary--default",
+        "color/button/border/primary--default",
+        "color/button/border/secondary--default",
+        "color/button/label/primary--default",
+        "color/button/label/secondary--default",
         "color/modal/panel/border",
         "color/surface/raised",
         "color/text/body/primary",
-        "color/text/title/primary"
+        "color/text/title/primary",
+        "radius/4",
+        "spacing/8"
       ],
       "composition": {
         "buildDependencies": [
@@ -2919,7 +3172,8 @@
         }
       ],
       "anatomy": [
-        "chip"
+        "chip",
+        "dropdown"
       ],
       "tokenBindings": [
         "color/chip/line/bg/default",
@@ -2941,7 +3195,14 @@
         "color/chip/solid/border/selected",
         "color/chip/solid/label/default",
         "color/chip/solid/label/disabled",
-        "color/chip/solid/label/selected"
+        "color/chip/solid/label/selected",
+        "color/dropdown/list/bg",
+        "color/dropdown/list/border",
+        "color/dropdown/option/bg/default",
+        "color/dropdown/option/bg/hover",
+        "color/dropdown/option/label/default",
+        "color/dropdown/option/label/hover",
+        "color/dropdown/option/label/selected"
       ],
       "composition": {
         "buildDependencies": [
