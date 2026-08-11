@@ -1,0 +1,867 @@
+{
+  "_meta": {
+    "source": "Figma 아이콘 라이브러리 V2.2",
+    "figmaFileKey": "YcBbW9e0MTR9T3W5Sz0Ukx",
+    "figmaSectionNodeId": "7:2",
+    "sectionName": "01.보안/근태/식당",
+    "totalIcons": 61,
+    "variants": ["line", "solid", "color"],
+    "svgNote": "SVG 필드는 Figma에서 직접 Export(우클릭 → Copy as SVG) 후 붙여넣기 필요. currentColor 치환 권장."
+  },
+  "icons": [
+    {
+      "name": "ic_경비",
+      "id": "ic_경비",
+      "description": "방패, 보안, 경비, 보호, 안전, 경고, shield, security, guard, protect, safe, alert",
+      "keywords": ["방패","보안","경비","보호","안전","경고","shield","security","guard","protect","safe","alert"],
+      "figmaNodeId": "8:518",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:518",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:515", "svg": "" },
+        "solid": { "figmaNodeId": "8:516", "svg": "" },
+        "color": { "figmaNodeId": "8:517", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_경비중",
+      "id": "ic_경비중",
+      "description": "활성화, 보호, 감시, active, secured, monitoring, protected",
+      "keywords": ["활성화","보호","감시","active","secured","monitoring","protected"],
+      "figmaNodeId": "8:530",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:530",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:527", "svg": "" },
+        "solid": { "figmaNodeId": "8:528", "svg": "" },
+        "color": { "figmaNodeId": "8:529", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_경비준비",
+      "id": "ic_경비준비",
+      "description": "대기, 준비, 보호, standby, preparing, security",
+      "keywords": ["대기","준비","보호","standby","preparing","security"],
+      "figmaNodeId": "8:535",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:535",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:533", "svg": "" },
+        "solid": { "figmaNodeId": "8:532", "svg": "" },
+        "color": { "figmaNodeId": "8:534", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_경비이상",
+      "id": "ic_경비이상",
+      "description": "오류, 경고, 비정상, 이상, alert, error, abnormal, warning, issue",
+      "keywords": ["오류","경고","비정상","이상","alert","error","abnormal","warning","issue"],
+      "figmaNodeId": "8:539",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:539",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:536", "svg": "" },
+        "solid": { "figmaNodeId": "8:537", "svg": "" },
+        "color": { "figmaNodeId": "8:538", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_경비불가",
+      "id": "ic_경비불가",
+      "description": "점검필요, 제한, 비활성화, block, denied, restricted, disabled",
+      "keywords": ["점검필요","제한","비활성화","block","denied","restricted","disabled"],
+      "figmaNodeId": "8:543",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:543",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:541", "svg": "" },
+        "solid": { "figmaNodeId": "8:540", "svg": "" },
+        "color": { "figmaNodeId": "8:542", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_해제",
+      "id": "ic_해제",
+      "description": "해제, unlock, release, open, security off",
+      "keywords": ["해제","unlock","release","open","security off"],
+      "figmaNodeId": "8:547",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:547",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:545", "svg": "" },
+        "solid": { "figmaNodeId": "8:544", "svg": "" },
+        "color": { "figmaNodeId": "8:546", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_해제이상",
+      "id": "ic_해제이상",
+      "description": "해제 오류, 실패, unlock error, release fail, issue, abnormal",
+      "keywords": ["해제이상","해제오류","실패","unlock error","release fail","issue","abnormal"],
+      "figmaNodeId": "8:551",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:551",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:548", "svg": "" },
+        "solid": { "figmaNodeId": "8:549", "svg": "" },
+        "color": { "figmaNodeId": "8:550", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_출입문확인",
+      "id": "ic_출입문확인",
+      "description": "출입, 확인, door, access, check, verify",
+      "keywords": ["출입","확인","door","access","check","verify"],
+      "figmaNodeId": "8:555",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:555",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:553", "svg": "" },
+        "solid": { "figmaNodeId": "8:552", "svg": "" },
+        "color": { "figmaNodeId": "8:554", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_침입",
+      "id": "ic_침입",
+      "description": "침입자, 위협, 경보, alarm, intrusion, threat, alert, danger",
+      "keywords": ["침입","침입자","위협","경보","alarm","intrusion","threat","alert","danger"],
+      "figmaNodeId": "8:559",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:559",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:557", "svg": "" },
+        "solid": { "figmaNodeId": "8:556", "svg": "" },
+        "color": { "figmaNodeId": "8:558", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_출입허가",
+      "id": "ic_출입허가",
+      "description": "출입허용, 승인, 접근 허가, entry allowed, access granted, permitted",
+      "keywords": ["출입허가","출입허용","승인","접근허가","entry allowed","access granted","permitted"],
+      "figmaNodeId": "8:563",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:563",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:561", "svg": "" },
+        "solid": { "figmaNodeId": "8:560", "svg": "" },
+        "color": { "figmaNodeId": "8:562", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_출입불가",
+      "id": "ic_출입불가",
+      "description": "출입금지, 접근 제한, 차단, no entry, access denied, blocked",
+      "keywords": ["출입불가","출입금지","접근제한","차단","no entry","access denied","blocked"],
+      "figmaNodeId": "8:567",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:567",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:565", "svg": "" },
+        "solid": { "figmaNodeId": "8:564", "svg": "" },
+        "color": { "figmaNodeId": "8:566", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_출입이상",
+      "id": "ic_출입이상",
+      "description": "출입 오류, 이상, entry error, access issue, abnormal, warning",
+      "keywords": ["출입이상","출입오류","이상","entry error","access issue","abnormal","warning"],
+      "figmaNodeId": "8:571",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:571",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:570", "svg": "" },
+        "solid": { "figmaNodeId": "8:568", "svg": "" },
+        "color": { "figmaNodeId": "8:569", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_복귀",
+      "id": "ic_복귀",
+      "description": "외출복귀, 외근복귀, 돌아오기, 귀사, 귀사처리, 근태복귀, return, re-enter, back to office, comeback, attendance return",
+      "keywords": ["복귀","귀사","외출복귀","외근복귀","근태복귀","return","re-enter","back to office","comeback","attendance return"],
+      "figmaNodeId": "8:575",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:575",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:573", "svg": "" },
+        "solid": { "figmaNodeId": "8:572", "svg": "" },
+        "color": { "figmaNodeId": "8:574", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_외출",
+      "id": "ic_외출",
+      "description": "외출, 나감, out, leave, exit, away",
+      "keywords": ["외출","나감","out","leave","exit","away"],
+      "figmaNodeId": "8:579",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:579",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:577", "svg": "" },
+        "solid": { "figmaNodeId": "8:576", "svg": "" },
+        "color": { "figmaNodeId": "8:578", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_출입관리",
+      "id": "ic_출입관리",
+      "description": "출입 통제, 관리, entry control, access management, monitoring",
+      "keywords": ["출입관리","통제","관리","entry control","access management","monitoring"],
+      "figmaNodeId": "8:583",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:583",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:581", "svg": "" },
+        "solid": { "figmaNodeId": "8:580", "svg": "" },
+        "color": { "figmaNodeId": "8:582", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_근태",
+      "id": "ic_근태",
+      "description": "근태 관리, 출근, 퇴근, attendance, work record, check-in, check-out",
+      "keywords": ["근태","출근","퇴근","근태관리","attendance","work record","check-in","check-out"],
+      "figmaNodeId": "8:587",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:587",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:585", "svg": "" },
+        "solid": { "figmaNodeId": "8:584", "svg": "" },
+        "color": { "figmaNodeId": "8:586", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_52시간준수",
+      "id": "ic_52시간준수",
+      "description": "근로시간, 제한, overtime, work hours, compliance, 52 hours",
+      "keywords": ["52시간","근로시간","제한","overtime","work hours","compliance","52 hours"],
+      "figmaNodeId": "8:591",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:591",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:589", "svg": "" },
+        "solid": { "figmaNodeId": "8:588", "svg": "" },
+        "color": { "figmaNodeId": "8:590", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_클라우드근태",
+      "id": "ic_클라우드근태",
+      "description": "클라우드, 근태 관리, 원격근무, cloud, attendance, remote work, online",
+      "keywords": ["클라우드","근태","원격근무","cloud","attendance","remote work","online"],
+      "figmaNodeId": "8:595",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:595",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:593", "svg": "" },
+        "solid": { "figmaNodeId": "8:592", "svg": "" },
+        "color": { "figmaNodeId": "8:594", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_출근",
+      "id": "ic_출근",
+      "description": "출근, 시작, work start, check-in, begin",
+      "keywords": ["출근","시작","work start","check-in","begin"],
+      "figmaNodeId": "8:599",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:599",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:597", "svg": "" },
+        "solid": { "figmaNodeId": "8:596", "svg": "" },
+        "color": { "figmaNodeId": "8:598", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_퇴근",
+      "id": "ic_퇴근",
+      "description": "퇴근, 업무 종료, 나가기, work end, check-out, leave work",
+      "keywords": ["퇴근","업무종료","나가기","work end","check-out","leave work"],
+      "figmaNodeId": "8:603",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:603",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:601", "svg": "" },
+        "solid": { "figmaNodeId": "8:600", "svg": "" },
+        "color": { "figmaNodeId": "8:602", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_근로문화개선",
+      "id": "ic_근로문화개선",
+      "description": "근태 개선, 업무 효율화, work culture, improvement, efficiency",
+      "keywords": ["근로문화","개선","효율화","work culture","improvement","efficiency"],
+      "figmaNodeId": "8:639",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:639",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:636", "svg": "" },
+        "solid": { "figmaNodeId": "8:637", "svg": "" },
+        "color": { "figmaNodeId": "8:638", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_근무환경",
+      "id": "ic_근무환경",
+      "description": "사무실, 환경, 작업환경, workplace, environment, office",
+      "keywords": ["근무환경","사무실","환경","작업환경","workplace","environment","office"],
+      "figmaNodeId": "8:643",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:643",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:641", "svg": "" },
+        "solid": { "figmaNodeId": "8:640", "svg": "" },
+        "color": { "figmaNodeId": "8:642", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_재택근무",
+      "id": "ic_재택근무",
+      "description": "재택근무, 재택, 원격근무, 홈오피스, 원격, 재택출근, 재택근무처리, work from home, remote work, telecommuting, WFH, home office",
+      "keywords": ["재택","재택근무","원격근무","홈오피스","work from home","remote work","telecommuting","WFH","home office"],
+      "figmaNodeId": "8:647",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:647",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:645", "svg": "" },
+        "solid": { "figmaNodeId": "8:644", "svg": "" },
+        "color": { "figmaNodeId": "8:646", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_1초이내빠른인증",
+      "id": "ic_1초이내빠른인증",
+      "description": "빠른 인증, 즉시, 빠름, quick authentication, fast, instant",
+      "keywords": ["빠른인증","1초","즉시","quick authentication","fast","instant"],
+      "figmaNodeId": "8:651",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:651",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:649", "svg": "" },
+        "solid": { "figmaNodeId": "8:648", "svg": "" },
+        "color": { "figmaNodeId": "8:650", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_빠르고정확한얼굴인식",
+      "id": "ic_빠르고정확한얼굴인식",
+      "description": "얼굴 인식, 정확도, speed, accuracy, face recognition",
+      "keywords": ["얼굴인식","빠른","정확","speed","accuracy","face recognition"],
+      "figmaNodeId": "8:655",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:655",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:653", "svg": "" },
+        "solid": { "figmaNodeId": "8:652", "svg": "" },
+        "color": { "figmaNodeId": "8:654", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_식당/식사",
+      "id": "ic_식당_식사",
+      "description": "식사, 레스토랑, 급식, dining, cafeteria, meal",
+      "keywords": ["식당","식사","밥","급식","dining","cafeteria","meal","food"],
+      "figmaNodeId": "8:659",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:659",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:657", "svg": "" },
+        "solid": { "figmaNodeId": "8:656", "svg": "" },
+        "color": { "figmaNodeId": "8:658", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_식당이용불가",
+      "id": "ic_식당이용불가",
+      "description": "식사 금지, 접근불가, no dining, restaurant closed, unavailable",
+      "keywords": ["식당이용불가","이용불가","식사금지","no dining","restaurant closed","unavailable"],
+      "figmaNodeId": "8:663",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:663",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:661", "svg": "" },
+        "solid": { "figmaNodeId": "8:660", "svg": "" },
+        "color": { "figmaNodeId": "8:662", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_보안스티커",
+      "id": "ic_보안스티커",
+      "description": "스티커, 보안마크, security sticker, label, tag",
+      "keywords": ["보안스티커","스티커","보안마크","security sticker","label","tag"],
+      "figmaNodeId": "8:667",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:667",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:665", "svg": "" },
+        "solid": { "figmaNodeId": "8:664", "svg": "" },
+        "color": { "figmaNodeId": "8:666", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_신분증,사원증",
+      "id": "ic_신분증_사원증",
+      "description": "ID카드, 사원증, badge, identity card, ID",
+      "keywords": ["신분증","사원증","ID카드","badge","identity card","ID"],
+      "figmaNodeId": "8:675",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:675",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:673", "svg": "" },
+        "solid": { "figmaNodeId": "8:672", "svg": "" },
+        "color": { "figmaNodeId": "8:674", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_출입카드신청/발급",
+      "id": "ic_출입카드신청_발급",
+      "description": "출입카드, 발급, 신청, access card, issue, apply",
+      "keywords": ["출입카드","신청","발급","access card","issue","apply"],
+      "figmaNodeId": "8:679",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:679",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:677", "svg": "" },
+        "solid": { "figmaNodeId": "8:676", "svg": "" },
+        "color": { "figmaNodeId": "8:678", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_카드",
+      "id": "ic_카드",
+      "description": "출입카드, 근태카드, 사원증, 인증카드, 카드리더기, 카드접근, access card, ID card, employee badge, swipe card, card reader, proximity card",
+      "keywords": ["카드","출입카드","근태카드","사원증","인증카드","카드리더기","access card","ID card","employee badge","swipe card","card reader","proximity card"],
+      "figmaNodeId": "8:683",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:683",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:680", "svg": "" },
+        "solid": { "figmaNodeId": "8:681", "svg": "" },
+        "color": { "figmaNodeId": "8:682", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_카드등록",
+      "id": "ic_카드등록",
+      "description": "카드, 등록, 추가, card registration, add card",
+      "keywords": ["카드등록","등록","추가","card registration","add card"],
+      "figmaNodeId": "8:687",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:687",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:685", "svg": "" },
+        "solid": { "figmaNodeId": "8:684", "svg": "" },
+        "color": { "figmaNodeId": "8:686", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_카드인식실패",
+      "id": "ic_카드인식실패",
+      "description": "카드 오류, 인식 실패, card error, recognition fail",
+      "keywords": ["카드인식실패","카드오류","인식실패","card error","recognition fail"],
+      "figmaNodeId": "8:691",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:691",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:688", "svg": "" },
+        "solid": { "figmaNodeId": "8:689", "svg": "" },
+        "color": { "figmaNodeId": "8:690", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_카드삭제",
+      "id": "ic_카드삭제",
+      "description": "카드제거, 출입카드삭제, 근태카드삭제, 카드비활성화, card delete, remove card, deactivate card, delete access card",
+      "keywords": ["카드삭제","카드제거","출입카드삭제","비활성화","card delete","remove card","deactivate card"],
+      "figmaNodeId": "8:695",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:695",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:693", "svg": "" },
+        "solid": { "figmaNodeId": "8:692", "svg": "" },
+        "color": { "figmaNodeId": "8:694", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_세콤카드",
+      "id": "ic_세콤카드",
+      "description": "세콤, secom, card",
+      "keywords": ["세콤카드","세콤","SECOM","secom","card"],
+      "figmaNodeId": "8:699",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:699",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:696", "svg": "" },
+        "solid": { "figmaNodeId": "8:697", "svg": "" },
+        "color": { "figmaNodeId": "8:698", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_카드교환",
+      "id": "ic_카드교환",
+      "description": "카드 변경, 교체, card exchange, swap",
+      "keywords": ["카드교환","교환","변경","card exchange","swap"],
+      "figmaNodeId": "8:703",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:703",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:701", "svg": "" },
+        "solid": { "figmaNodeId": "8:700", "svg": "" },
+        "color": { "figmaNodeId": "8:702", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_배송기사카드",
+      "id": "ic_배송기사카드",
+      "description": "배송, 기사, 카드, delivery driver, courier card",
+      "keywords": ["배송기사","배송","기사","카드","delivery","driver card","courier card"],
+      "figmaNodeId": "9:12",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=9:12",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "9:9",  "svg": "" },
+        "solid": { "figmaNodeId": "9:10", "svg": "" },
+        "color": { "figmaNodeId": "9:11", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_모바일카드앱접속",
+      "id": "ic_모바일카드앱접속",
+      "description": "모바일, 카드, 앱, 접속, mobile card, app, access",
+      "keywords": ["모바일카드","앱","접속","mobile card","app","access"],
+      "figmaNodeId": "8:707",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:707",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:705", "svg": "" },
+        "solid": { "figmaNodeId": "8:704", "svg": "" },
+        "color": { "figmaNodeId": "8:706", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_모바일카드발급/확인",
+      "id": "ic_모바일카드발급_확인",
+      "description": "카드 발급, 확인, mobile card, issue, check",
+      "keywords": ["모바일카드","발급","확인","mobile card","issue","check"],
+      "figmaNodeId": "8:715",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:715",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:713", "svg": "" },
+        "solid": { "figmaNodeId": "8:712", "svg": "" },
+        "color": { "figmaNodeId": "8:714", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_모바일카드공백최소화",
+      "id": "ic_모바일카드공백최소화",
+      "description": "카드, 공백, 최소화, minimize gap, mobile card, check",
+      "keywords": ["모바일카드","공백최소화","minimize gap","mobile card","check"],
+      "figmaNodeId": "8:719",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:719",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:717", "svg": "" },
+        "solid": { "figmaNodeId": "8:716", "svg": "" },
+        "color": { "figmaNodeId": "8:718", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_모바일카드홈페이지접속",
+      "id": "ic_모바일카드홈페이지접속",
+      "description": "홈페이지, 접속, 모바일카드, mobile card, website access",
+      "keywords": ["모바일카드","홈페이지","접속","mobile card","homepage","website access"],
+      "figmaNodeId": "8:723",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:723",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:721", "svg": "" },
+        "solid": { "figmaNodeId": "8:720", "svg": "" },
+        "color": { "figmaNodeId": "8:722", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_경비조작이력SMS알림",
+      "id": "ic_경비조작이력SMS알림",
+      "description": "경비, 조작이력, SMS알림, 경비알림, 보안알림, 이력알림, security log, operation history, SMS alert, security notification",
+      "keywords": ["경비조작","SMS알림","이력알림","보안알림","security log","operation history","SMS alert","security notification"],
+      "figmaNodeId": "8:727",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:727",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:725", "svg": "" },
+        "solid": { "figmaNodeId": "8:724", "svg": "" },
+        "color": { "figmaNodeId": "8:726", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_홍채인증",
+      "id": "ic_홍채인증",
+      "description": "홍채, 인증, iris authentication, scan",
+      "keywords": ["홍채","인증","iris","iris authentication","biometric","eye scan","scan"],
+      "figmaNodeId": "8:731",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:731",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:729", "svg": "" },
+        "solid": { "figmaNodeId": "8:728", "svg": "" },
+        "color": { "figmaNodeId": "8:730", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_얼굴인증",
+      "id": "ic_얼굴인증",
+      "description": "얼굴, 인증, 확인, face authentication, verify",
+      "keywords": ["얼굴인증","얼굴","face","authentication","face authentication","verify","face ID"],
+      "figmaNodeId": "8:735",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:735",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:732", "svg": "" },
+        "solid": { "figmaNodeId": "8:733", "svg": "" },
+        "color": { "figmaNodeId": "8:734", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_QR인증",
+      "id": "ic_QR인증",
+      "description": "QR코드, 코드인증, 출입인증, QR체크인, QR스캔, QR확인, QR code authentication, QR check-in, code scan, access verification",
+      "keywords": ["QR","QR인증","코드인증","출입인증","QR체크인","QR code authentication","QR check-in","code scan","access verification"],
+      "figmaNodeId": "8:739",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:739",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:737", "svg": "" },
+        "solid": { "figmaNodeId": "8:738", "svg": "" },
+        "color": { "figmaNodeId": "8:736", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_지문인식",
+      "id": "ic_지문인식",
+      "description": "지문, 스캔, fingerprint recognition, scan",
+      "keywords": ["지문","지문인식","스캔","fingerprint","fingerprint recognition","biometric","scan"],
+      "figmaNodeId": "8:743",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:743",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:741", "svg": "" },
+        "solid": { "figmaNodeId": "8:740", "svg": "" },
+        "color": { "figmaNodeId": "8:742", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_지문인식확인",
+      "id": "ic_지문인식확인",
+      "description": "지문, 인증, 확인, fingerprint verification",
+      "keywords": ["지문인식확인","지문","인증","확인","fingerprint","fingerprint verification","verify"],
+      "figmaNodeId": "8:747",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:747",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:745", "svg": "" },
+        "solid": { "figmaNodeId": "8:744", "svg": "" },
+        "color": { "figmaNodeId": "8:746", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_잠김",
+      "id": "ic_잠김",
+      "description": "문, 잠김, 자물쇠, lock, secured",
+      "keywords": ["잠김","잠금","자물쇠","lock","locked","secured","secure"],
+      "figmaNodeId": "8:751",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:751",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:749", "svg": "" },
+        "solid": { "figmaNodeId": "8:748", "svg": "" },
+        "color": { "figmaNodeId": "8:750", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_열림",
+      "id": "ic_열림",
+      "description": "문 열림, 자물쇠, unlock, open, access",
+      "keywords": ["열림","열기","자물쇠","unlock","open","unlocked","access"],
+      "figmaNodeId": "8:755",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:755",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:753", "svg": "" },
+        "solid": { "figmaNodeId": "8:752", "svg": "" },
+        "color": { "figmaNodeId": "8:754", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_S/W형EXIT버튼",
+      "id": "ic_SW형EXIT버튼",
+      "description": "S/W형, 소프트웨어버튼, EXIT버튼, 종료버튼, 가상버튼, 소프트웨어출구, software button, exit button, virtual button, software exit",
+      "keywords": ["EXIT","S/W형","소프트웨어버튼","종료버튼","가상버튼","software button","exit button","virtual button","software exit"],
+      "figmaNodeId": "8:759",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:759",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:756", "svg": "" },
+        "solid": { "figmaNodeId": "8:758", "svg": "" },
+        "color": { "figmaNodeId": "8:757", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_비상",
+      "id": "ic_비상",
+      "description": "긴급, 위급, 경고, 긴급상황, emergency, urgent, alert, critical, warning",
+      "keywords": ["비상","긴급","위급","경고","긴급상황","emergency","urgent","alert","critical","warning"],
+      "figmaNodeId": "8:763",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:763",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:761", "svg": "" },
+        "solid": { "figmaNodeId": "8:760", "svg": "" },
+        "color": { "figmaNodeId": "8:762", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_이상탐지",
+      "id": "ic_이상탐지",
+      "description": "이상, 탐지, 감지, abnormal detection, anomaly",
+      "keywords": ["이상탐지","탐지","감지","이상","abnormal detection","anomaly","detection","alert"],
+      "figmaNodeId": "8:767",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:767",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:764", "svg": "" },
+        "solid": { "figmaNodeId": "8:765", "svg": "" },
+        "color": { "figmaNodeId": "8:766", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_비상위치정보",
+      "id": "ic_비상위치정보",
+      "description": "비상 위치, 위치정보, emergency location, GPS, tracking",
+      "keywords": ["비상위치","위치정보","emergency location","GPS","tracking"],
+      "figmaNodeId": "8:771",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:771",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:769", "svg": "" },
+        "solid": { "figmaNodeId": "8:768", "svg": "" },
+        "color": { "figmaNodeId": "8:770", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_고객알림",
+      "id": "ic_고객알림",
+      "description": "공지사항, 사용자알림, 고객안내, 알림메시지, customer notification, user alert, client notice, information message",
+      "keywords": ["고객알림","알림","공지사항","고객안내","customer notification","user alert","client notice","information message"],
+      "figmaNodeId": "8:775",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:775",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:773", "svg": "" },
+        "solid": { "figmaNodeId": "8:772", "svg": "" },
+        "color": { "figmaNodeId": "8:774", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_열쇠",
+      "id": "ic_열쇠",
+      "description": "키, 출입키, 보안키, 락해제, key, security key, access key, unlock, passkey",
+      "keywords": ["열쇠","키","출입키","보안키","key","security key","access key","unlock","passkey"],
+      "figmaNodeId": "8:779",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:779",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:777", "svg": "" },
+        "solid": { "figmaNodeId": "8:776", "svg": "" },
+        "color": { "figmaNodeId": "8:778", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_비상버튼",
+      "id": "ic_비상버튼",
+      "description": "비상, 알람, emergency button, alarm",
+      "keywords": ["비상버튼","비상","알람","emergency button","alarm","panic button"],
+      "figmaNodeId": "8:783",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:783",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:781", "svg": "" },
+        "solid": { "figmaNodeId": "8:780", "svg": "" },
+        "color": { "figmaNodeId": "8:782", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_도난",
+      "id": "ic_도난",
+      "description": "도난, 절도, 경보, theft, stolen, alert",
+      "keywords": ["도난","절도","경보","theft","stolen","alert","robbery"],
+      "figmaNodeId": "8:787",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:787",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:785", "svg": "" },
+        "solid": { "figmaNodeId": "8:784", "svg": "" },
+        "color": { "figmaNodeId": "8:786", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_출동차(앞)",
+      "id": "ic_출동차_앞",
+      "description": "차량, 출동, 지원, 보안, 자동차, car, dispatch, security, patrol, front view",
+      "keywords": ["출동차","차량","자동차","출동","보안","patrol car","car","dispatch","security","patrol","front view"],
+      "figmaNodeId": "8:791",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:791",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:789", "svg": "" },
+        "solid": { "figmaNodeId": "8:788", "svg": "" },
+        "color": { "figmaNodeId": "8:790", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_출동차(옆)",
+      "id": "ic_출동차_옆",
+      "description": "차량, 출동, 지원, 보안, 자동차, car, dispatch, security, patrol, side view",
+      "keywords": ["출동차","차량","자동차","출동","보안","patrol car","car","dispatch","security","patrol","side view"],
+      "figmaNodeId": "8:795",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:795",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:793", "svg": "" },
+        "solid": { "figmaNodeId": "8:792", "svg": "" },
+        "color": { "figmaNodeId": "8:794", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_현장지원",
+      "id": "ic_현장지원",
+      "description": "현장, 지원, 응급, 파견, 보안, field support, on-site, emergency, dispatch, help",
+      "keywords": ["현장지원","지원","응급","파견","보안","field support","on-site","emergency","dispatch","help"],
+      "figmaNodeId": "8:799",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:799",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:798", "svg": "" },
+        "solid": { "figmaNodeId": "8:796", "svg": "" },
+        "color": { "figmaNodeId": "8:797", "svg": "" }
+      }
+    },
+    {
+      "name": "ic_출동용오토바이",
+      "id": "ic_출동용오토바이",
+      "description": "오토바이, 출동, 지원, 보안, motorcycle, dispatch, security, patrol, fast response",
+      "keywords": ["오토바이","출동","지원","보안","motorcycle","dispatch","security","patrol","fast response"],
+      "figmaNodeId": "8:803",
+      "figmaUrl": "https://www.figma.com/design/YcBbW9e0MTR9T3W5Sz0Ukx/?node-id=8:803",
+      "properties": { "type": ["line","solid","color"] },
+      "variants": {
+        "line":  { "figmaNodeId": "8:802", "svg": "" },
+        "solid": { "figmaNodeId": "8:801", "svg": "" },
+        "color": { "figmaNodeId": "8:800", "svg": "" }
+      }
+    }
+  ]
+}

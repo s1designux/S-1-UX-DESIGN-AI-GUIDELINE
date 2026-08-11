@@ -1,0 +1,9 @@
+{
+  "name": "s-1-ux-design-ai-guideline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI-readable visual and PC behavior guideline for the S-1 UX Design System",
+  "scripts": {
+    "test": "node scripts/component-behavior-check.js"
+  }
+}
