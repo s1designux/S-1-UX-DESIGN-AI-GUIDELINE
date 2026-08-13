@@ -534,7 +534,7 @@
       cursor: pointer; user-select: none;
     }
     .s1-toggle-track {
-      width: 40px; height: 20px; border-radius: 999px;
+      width: 40px; height: 20px; border-radius: var(--radius-10); /* 정본 cornerRadius 10 (Gate 39, 2026-08-13) */
       background: var(--color-control-indicator-unselected); position: relative;
       transition: background 0.2s; flex-shrink: 0;
     }
@@ -631,7 +631,7 @@
     .ds-filter-chip {
       display: inline-flex; align-items: center; height: var(--sizing-34);
       padding: 0 8px 0 16px; gap: 4px;
-      border-radius: 999px; border: 1px solid var(--color-chip-line-border-default);
+      border-radius: var(--radius-full); border: 1px solid var(--color-chip-line-border-default);
       background: var(--color-chip-line-bg-default); cursor: pointer;
       transition: all 0.15s; font-family: inherit;
     }
@@ -972,7 +972,7 @@
     .s1-date-picker__day > .day-inner {
       display: flex; align-items: center; justify-content: center;
       width: 30px; height: 30px;
-      border-radius: 999px; /* Figma: radius-full */
+      border-radius: var(--radius-full); /* Figma: radius/full — 정본이 토큰 바인딩(2026-08-13) */
       border: 1px solid transparent;
       font-size: inherit; font-weight: inherit; color: inherit;
       background: transparent; box-sizing: border-box;

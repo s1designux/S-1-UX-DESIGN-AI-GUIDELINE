@@ -3,7 +3,7 @@
     "generated": true,
     "source": "plugins/figma-vars-installer/src/build-components.ts",
     "method": "mock-execution",
-    "sourceHash": "00bca477db5c",
+    "sourceHash": "b56fc459e65e",
     "unknownValuePolicy": [
       "unknown",
       "not-defined",
@@ -1598,7 +1598,10 @@
           "counterAxisAlignItems": "CENTER",
           "paddingRight": "16",
           "paddingLeft": "16",
-          "cornerRadius": "999",
+          "topLeftRadius": "radius/full",
+          "topRightRadius": "radius/full",
+          "bottomLeftRadius": "radius/full",
+          "bottomRightRadius": "radius/full",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
         },
@@ -1616,7 +1619,10 @@
           "counterAxisAlignItems": "CENTER",
           "paddingRight": "12",
           "paddingLeft": "12",
-          "cornerRadius": "999",
+          "topLeftRadius": "radius/full",
+          "topRightRadius": "radius/full",
+          "bottomLeftRadius": "radius/full",
+          "bottomRightRadius": "radius/full",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
         },
@@ -1634,7 +1640,10 @@
           "counterAxisAlignItems": "CENTER",
           "paddingRight": "16",
           "paddingLeft": "16",
-          "cornerRadius": "999",
+          "topLeftRadius": "radius/full",
+          "topRightRadius": "radius/full",
+          "bottomLeftRadius": "radius/full",
+          "bottomRightRadius": "radius/full",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
         }
@@ -1660,7 +1669,8 @@
         "color/chip/solid/border/selected",
         "color/chip/solid/label/default",
         "color/chip/solid/label/disabled",
-        "color/chip/solid/label/selected"
+        "color/chip/solid/label/selected",
+        "radius/full"
       ],
       "composition": {
         "buildDependencies": []
@@ -2134,7 +2144,8 @@
         "color/date-picker/text/disabled",
         "color/date-picker/text/secondary",
         "color/date-picker/text/selected",
-        "color/date-picker/text/today"
+        "color/date-picker/text/today",
+        "radius/full"
       ],
       "composition": {
         "buildDependencies": []
@@ -2230,7 +2241,8 @@
         "color/date-picker/tile/bg/default",
         "color/date-picker/tile/bg/disabled",
         "color/date-picker/tile/border/default",
-        "color/date-picker/tile/border/disabled"
+        "color/date-picker/tile/border/disabled",
+        "radius/full"
       ],
       "composition": {
         "buildDependencies": []
@@ -2364,7 +2376,8 @@
         "color/form-control/text/default",
         "color/form-control/text/disabled",
         "color/form-control/text/placeholder",
-        "color/form-control/text/selected"
+        "color/form-control/text/selected",
+        "radius/full"
       ],
       "composition": {
         "buildDependencies": [
@@ -2421,6 +2434,7 @@
         "color/surface/raised",
         "color/text/title/primary",
         "radius/4",
+        "radius/full",
         "spacing/16"
       ],
       "composition": {
@@ -3130,7 +3144,10 @@
           "itemSpacing": "4",
           "paddingRight": "6",
           "paddingLeft": "12",
-          "cornerRadius": "999",
+          "topLeftRadius": "radius/full",
+          "topRightRadius": "radius/full",
+          "bottomLeftRadius": "radius/full",
+          "bottomRightRadius": "radius/full",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
         },
@@ -3148,7 +3165,10 @@
           "itemSpacing": "4",
           "paddingRight": "8",
           "paddingLeft": "16",
-          "cornerRadius": "999",
+          "topLeftRadius": "radius/full",
+          "topRightRadius": "radius/full",
+          "bottomLeftRadius": "radius/full",
+          "bottomRightRadius": "radius/full",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
         },
@@ -3166,7 +3186,10 @@
           "itemSpacing": "4",
           "paddingRight": "6",
           "paddingLeft": "12",
-          "cornerRadius": "999",
+          "topLeftRadius": "radius/full",
+          "topRightRadius": "radius/full",
+          "bottomLeftRadius": "radius/full",
+          "bottomRightRadius": "radius/full",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
         }
@@ -3202,7 +3225,8 @@
         "color/dropdown/option/bg/hover",
         "color/dropdown/option/label/default",
         "color/dropdown/option/label/hover",
-        "color/dropdown/option/label/selected"
+        "color/dropdown/option/label/selected",
+        "radius/full"
       ],
       "composition": {
         "buildDependencies": [
