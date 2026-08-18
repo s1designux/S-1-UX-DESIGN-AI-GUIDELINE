@@ -1096,23 +1096,26 @@ _Don't_
 
 ### Dropdown
 
-Select Box와 Filter Chip이 재사용하는 옵션 패널 컴포넌트. 정본은 Size별 Default 패널 3종이며 트리거 상태는 Select Box가 담당한다.
+Select Box와 Filter Chip이 재사용하는 옵션 패널 컴포넌트. 옵션 줄은 글자만(단일 선택)과 체크박스(다중 선택) 두 유형이며, 체크박스 유형은 「전체 선택」 줄을 기본 포함한다. 트리거 상태는 Select Box가 담당한다.
 
 **언제 쓰나**
-- 트리거를 눌러 옵션 목록에서 하나를 고를 때.
+- 트리거를 눌러 옵션 목록에서 하나를 고를 때(글자 유형).
+- 한 목록에서 여러 항목을 동시에 고를 때(체크박스 유형) — 필터·대상 선택 등.
 - Select 의 기반 컴포넌트.
 
 **쓰지 말아야 할 때**
 - 즉시 실행 액션 그룹은 Button.
 - 적은 수의 상호배타 선택은 Radio.
+- 항목이 3~4개 이하로 적고 항상 보여도 되는 다중 선택은 목록을 접지 말고 Checkbox 를 펼쳐 쓴다.
 
 **구성 (Anatomy)**
 
 | 요소 | 역할 |
 | --- | --- |
-| 트리거 | 현재 값·placeholder 표시. default·hover·open·disabled. |
-| 옵션 목록 | surface-raised 위에 떠 있는 패널. |
-| 옵션 | hover·selected 상태 항목. |
+| 트리거 | 현재 값·placeholder 표시. default·hover·open·disabled. 다중 선택은 고른 이름을 쉼표로 나열하고 넘치면 말줄임. |
+| 옵션 목록 | surface-raised 위에 떠 있는 패널. 글자 유형·체크박스 유형 두 벌. |
+| 옵션 | hover·selected 상태 항목. 체크박스 유형은 코어 Checkbox 를 왼쪽에 배치(간격 8px). |
+| 전체 선택 줄 | 체크박스 유형 최상단. 아래에 1px 구분선으로 목록과 분리. 필요 없는 화면에서는 이 줄만 뺀다. |
 
 | variant | default | hover | pressed | disabled |
 | --- | --- | --- | --- | --- |
@@ -1128,6 +1131,9 @@ agent:
       - "XXSM"
       - "XSM"
       - "MD"
+    Type:
+      - "Text"
+      - "Checkbox"
     State:
       - "Default"
   states:
@@ -1186,6 +1192,11 @@ agent:
   constraints: "unknown"
   tokens:
     figmaSemanticBindings:
+      - "color/control/bg/default"
+      - "color/control/bg/hover"
+      - "color/control/bg/selected"
+      - "color/control/border/default"
+      - "color/control/border/selected"
       - "color/dropdown/list/bg"
       - "color/dropdown/list/border"
       - "color/dropdown/option/bg/default"
@@ -1257,14 +1268,21 @@ agent:
 _Do_
 - 목록 배경은 surface-raised(떠 있는 표면)를 쓴다.
 - 트리거 테두리는 form-control 토큰을 참조한다.
+- 체크박스 유형의 체크박스는 코어 Checkbox 컴포넌트를 그대로 배치한다(Figma=인스턴스, 코드=.s1-checkbox).
+- 다중 선택은 고르는 즉시 적용하고 목록을 열어 둔다.
 
 _Don't_
 - 목록 배경에 surface-default 를 쓰지 않는다(D002 결정: raised).
 - 옵션 hover/selected 색을 raw 로 칠하지 않는다.
+- 드롭다운 전용 체크박스를 새로 만들지 않는다(코어 재사용 규칙).
+- 체크박스 유형에서 선택된 줄의 글자를 강조하지 않는다 — 체크 표시가 이미 선택을 표현한다(2026-08-14 결정).
+- 다중 선택에서 옵션을 고를 때 목록을 닫지 않는다.
 
 **접근성 (a11y)**
 - 트리거는 aria-expanded 로 열림 상태를 노출한다.
-- 선택 옵션에 aria-selected, 목록은 role=listbox 패턴을 따른다.
+- 단일 선택은 선택 옵션에 aria-selected, 목록은 role=listbox 패턴을 따른다.
+- 다중 선택 옵션은 role=checkbox + aria-checked 로 켜짐/꺼짐을 노출한다.
+- 「전체 선택」은 일부만 켜진 상태를 aria-checked=mixed 로 노출하는 것이 바람직하다(현재 미구현 — needs-decision).
 
 ### Filter Chip
 
@@ -3911,4 +3929,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: 4f91622fef41 · 손편집 금지 -->
+<!-- generated-stamp: ca477b632085 · 손편집 금지 -->

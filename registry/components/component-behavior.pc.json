@@ -260,6 +260,22 @@
       "keyboard": "not-applicable",
       "focus": "not-applicable",
       "accessibility": "not-defined"
+    },
+    "Dropdown (Checkbox)": {
+      "source": { "sectionId": "dropdown", "sourceEvidence": ["function wireDropdownMultiPanel(el)", "setChecked(opt, !opt.classList.contains('is-selected'))", "items.forEach(function(o) { setChecked(o, on); })"] },
+      "status": "verified",
+      "initialState": "zero or more options checked, panel stays open",
+      "events": [
+        { "on": "click", "target": "option", "result": "toggle only the clicked option on/off and leave every sibling as is" },
+        { "on": "click", "target": "select-all row", "result": "check every option when it was off, uncheck every option when it was on" },
+        { "on": "check", "target": "every option", "result": "the select-all row turns on by itself" }
+      ],
+      "selection": "multiple",
+      "applyTiming": "immediate — there is no confirm button",
+      "openClose": "owned by the composing trigger component; picking an option does NOT close the panel",
+      "keyboard": "not-defined",
+      "focus": "not-defined",
+      "accessibility": "role=checkbox + aria-checked on each option row; select-all mixed state not implemented"
     }
   }
 }

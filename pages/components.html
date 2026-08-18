@@ -38,7 +38,7 @@
       /* GNB — navigation/* */
       /* Input readonly — form-control */
       /* Dropdown 누락분 */
-      --dropdown-option-selected-bg: transparent;  /* 2026-07-08: Select 선택 옵션 배경=default와 동일(강조는 텍스트/굵기만). --color-dropdown-option-bg-selected(하늘색)는 Time Picker 셀 선택에만 계속 사용 */
+      --dropdown-option-selected-bg: transparent;  /* 2026-07-08: Select 선택 옵션 배경=default와 동일(강조는 텍스트색만 — 굵기 강조는 2026-08-14 정본 정렬로 제거). --color-dropdown-option-bg-selected(하늘색)는 Time Picker 셀 선택에만 계속 사용 */
     }
 
     /* =====================================================
@@ -715,7 +715,7 @@
     .ds-filter-chip--solid.is-disabled .ds-filter-chip-label,
     .ds-filter-chip--solid.is-disabled .ds-filter-chip-title { color: var(--color-chip-solid-label-disabled); }
     .ds-filter-chip--solid.is-disabled .ds-filter-chip-arrow { color: var(--color-chip-solid-label-disabled); }
-    /* Filter Chip 드롭다운(.s1-select-list 재사용) — 선택 옵션 배경은 강조 없이 default 유지(모바일 시트 .ds-fc-sheet-option과 동일 원칙: 강조=텍스트색/굵기만).
+    /* Filter Chip 드롭다운(.s1-select-list 재사용) — 선택 옵션 배경은 강조 없이 default 유지(모바일 시트 .ds-fc-sheet-option과 동일 원칙: 강조=텍스트색만).
        2026-07-08: 기본 Select도 동일 규칙으로 통일돼 이 override는 더 이상 필요 없으나(값 동일), 스코프 명시용으로 유지 */
     .ds-filter-chip-wrap .s1-select-option.is-selected:not(:hover):not(.is-hover) {
       background: var(--color-dropdown-option-bg-default);
@@ -739,13 +739,22 @@
       color: var(--color-text-secondary); cursor: pointer;
     }
     .ds-fc-sheet-list { display: flex; flex-direction: column; }
+    /* 2026-08-18 정본 정렬(H6) — 이 행은 정본 Bottom Sheet Option(buildBottomSheetOption)의 표출이다
+       (component-page-coverage.json: "Bottom Sheet … 모바일 사용은 Filter Chip 섹션의 바텀시트로 표출").
+       정본 실측: h48 · 좌우 padding 20 · 라벨 body/16M(16px·Medium·행간130%·자간-2%) ·
+       기본 color/text/body/primary · 선택 color/text/state/accent + 우측 체크 24px color/icon/blue.
+       종전 웹 값(15px·400/600·좌우16·자간-0.028em·체크20px·site-base 토큰)은 전부 파생 드리프트였다. */
     .ds-fc-sheet-option {
       display: flex; align-items: center; justify-content: space-between;
-      height: 48px; padding: 0 16px; cursor: pointer;
-      font-size: 15px; color: var(--color-text-primary); letter-spacing: -0.028em;
+      height: 48px; padding: 0 20px; cursor: pointer;
+      font-size: 16px; font-weight: var(--font-weight-medium);
+      line-height: var(--line-height-130); letter-spacing: var(--letter-spacing-tight);
+      color: var(--color-text-body-primary);
     }
-    .ds-fc-sheet-option .ds-fc-sheet-check { display: none; color: var(--color-text-state-accent); }
-    .ds-fc-sheet-option.is-selected { color: var(--color-text-state-accent); font-weight: 600; }
+    /* 체크는 아이콘이므로 글자 토큰이 아니라 아이콘 토큰을 쓴다(Gate 27 역할 규칙) — 값은 정본과 동일 계열 */
+    .ds-fc-sheet-option .ds-fc-sheet-check { display: none; color: var(--color-icon-blue); }
+    /* 선택 강조 = 글자색 + 우측 체크. 굵기는 바꾸지 않는다(정본은 전 상태 Medium) */
+    .ds-fc-sheet-option.is-selected { color: var(--color-text-state-accent); }
     .ds-fc-sheet-option.is-selected .ds-fc-sheet-check { display: block; }
 
     /* Input */
@@ -784,11 +793,25 @@
     .s1-input-wrap.is-readonly textarea { color: var(--color-form-control-text-read-only); cursor: default; resize: none; }
     .s1-input-wrap.is-readonly input { color: var(--color-form-control-text-read-only); cursor: default; }
     /* Editing — 입력 중(포커스 + 캐럿). 정적 데모용 1px 세로 캐럿 */
-    .s1-input-wrap.is-editing .s1-input-field { border-color: var(--color-form-control-border-selected); }
+    /* 정본(build-components.ts buildInput, State=Editing) = bg/selected · border/selected · text/selected */
+    .s1-input-wrap.is-editing .s1-input-field {
+      border-color: var(--color-form-control-border-selected);
+      background: var(--color-form-control-bg-selected);
+    }
+    .s1-input-wrap.is-editing .s1-input-field input { color: var(--color-form-control-text-selected); }
     .s1-input-field .input-caret {
       display: inline-block; width: 1px; height: 16px; margin-left: 1px;
       background: var(--color-form-control-text-cursor); vertical-align: text-bottom;
     }
+    /* lead — 정본의 lead 프레임([텍스트+캐럿] HUG, itemSpacing 4px). 남은 공간을 채워 트레일링(×)을 우측 고정.
+       input 을 width:100% 로 두면 캐럿이 필드 오른쪽 끝까지 밀린다(정본 어긋남 정정 2026-08-14). */
+    .s1-input-field .input-lead {
+      display: flex; align-items: center; gap: 4px;
+      flex: 1 1 auto; min-width: 0; overflow: hidden;
+    }
+    .s1-input-field .input-lead input,
+    .s1-input-field .input-lead textarea { width: auto; field-sizing: content; min-width: 0; max-width: 100%; }
+    .s1-input-field .input-lead .input-caret { margin-left: 0; align-self: center; }
     /* Textarea variant */
     .s1-input-wrap--textarea { height: auto; }
     .s1-input-wrap--textarea .s1-input-field {
@@ -800,10 +823,12 @@
       letter-spacing: -0.028em; line-height: 1.6; resize: vertical;
     }
     .s1-input-wrap--textarea textarea::placeholder { color: var(--color-form-control-text-placeholder); }
-    /* Textarea Focus — 입력 커서(caret) 정적 데모. textarea 를 hug 시키고 caret 을 텍스트 우측에 배치 */
-    .s1-input-wrap--textarea.is-focus .s1-input-field { align-items: center; }
-    .s1-input-wrap--textarea.is-focus textarea { width: auto; min-height: 16px; resize: none; line-height: 1.3; }
-    .s1-input-field .textarea-caret { align-self: center; }
+    /* Textarea Focus — 입력 커서(caret) 정적 데모. [텍스트+커서]를 lead 로 묶어 글자 바로 뒤에 캐럿을 둔다.
+       정본 buildTextarea 는 counterAxisAlignItems=MIN(상단 정렬) — 세로 가운데 정렬로 두던 종전 처리 정정(2026-08-14). */
+    .s1-input-wrap--textarea.is-focus textarea { resize: none; }
+    .s1-input-wrap--textarea .input-lead { align-items: flex-start; }
+    .s1-input-wrap--textarea .input-lead textarea { min-height: 72px; }
+    .s1-input-wrap--textarea .input-lead .textarea-caret { align-self: flex-start; margin-top: 3px; }
     /* Textarea — Disabled (form-control disabled 토큰, input is-disabled 와 동일 계열) */
     .s1-input-wrap--textarea.is-disabled .s1-input-field {
       background: var(--color-form-control-bg-disabled);
@@ -830,6 +855,9 @@
     }
     .input-clear-btn:hover { background: var(--color-form-control-bg-hover); }
     .s1-input-remove { display: flex; cursor: default; }
+    /* 아이콘 박스 크기 = 정본 fcIconPx(필드높이): 28 이하 → 20px, 그 외 → 24px */
+    .s1-input-field.input-size-xxsm .input-clear-btn,
+    .s1-input-field.input-size-xxsm .s1-input-remove { width: 20px; height: 20px; }
     .input-interactive .input-clear-btn { display: none; }
     .input-interactive.has-value .input-clear-btn { display: flex; }
 
@@ -1155,8 +1183,10 @@
     }
     .s1-select-option:hover { background: var(--dropdown-option-hover-bg); }
     .s1-select-option.is-selected {
+      /* 2026-08-14 정본 정렬(H6): 굵기 강조 제거. 정본 buildDropdownList 의 Text·Selected 는
+         Regular(body/14R)이고 강조는 글자색만이다 — 웹에만 있던 Medium(500)은 파생 드리프트였다. */
       background: var(--dropdown-option-selected-bg);
-      color: var(--color-dropdown-option-label-selected); font-weight: 500;
+      color: var(--color-dropdown-option-label-selected);
     }
     .s1-select-option.is-hover { background: var(--dropdown-option-hover-bg); }
     /* 선택된 옵션도 hover 시 배경 변경 — 중립 hover색 재사용 (특이도로 is-selected 우선) */
@@ -1233,16 +1263,29 @@
       color: var(--color-dropdown-option-label-hover);
     }
     .s1-dropdown-option.is-selected {
-      /* 2026-07-08: 선택 배경=default와 동일 foundation 토큰(강조는 텍스트색/굵기만). Time Picker 셀 선택은 --color-dropdown-option-bg-selected(하늘색) 그대로 유지 */
+      /* 2026-07-08: 선택 배경=default와 동일 foundation 토큰. Time Picker 셀 선택은 --color-dropdown-option-bg-selected(하늘색) 그대로 유지 */
+      /* 2026-08-14 정본 정렬(H6): 강조는 **글자색만**이다. 정본 buildDropdownList 의 Text·Selected 는
+         Regular(body/14R) 인데 웹에만 Medium(500)이 붙어 있었다 — 파생 드리프트라 제거(사용자 결정). */
       background: var(--color-dropdown-option-bg-default);
       color: var(--color-dropdown-option-label-selected);
-      font-weight: 500;
     }
-    /* 2026-07-08: 선택 + 호버 — Select(.s1-select-option.is-selected.is-hover)와 정합. 새 토큰 없이 호버 배경만 깔고 선택 글자색·굵기는 유지 */
+    /* 2026-07-08: 선택 + 호버 — Select(.s1-select-option.is-selected.is-hover)와 정합. 새 토큰 없이 호버 배경만 깔고 선택 글자색은 유지 */
     .s1-dropdown-option.is-selected.is-hover,
     .s1-dropdown-option.is-selected:hover {
       background: var(--color-dropdown-option-bg-hover);
     }
+    /* ── 체크박스 유형(다중 선택) — 정본 buildDropdownList Type=Checkbox (2026-08-14) ──
+         체크박스는 코어 컴포넌트 .s1-checkbox 를 그대로 배치한다(재사용 규칙). 드롭다운 전용 체크박스 class 금지.
+         간격 8px = 정본 CHK_GAP(spacing/8). */
+    .s1-dropdown-option--checkbox { gap: 8px; }
+    /* 체크 유형은 선택돼도 글자를 강조하지 않는다(체크 표시가 선택을 표현) — 사용자 결정 2026-08-14.
+       배경 규칙(호버)은 글자 유형과 동일하게 유지. */
+    .s1-dropdown-option--checkbox.is-selected {
+      color: var(--color-dropdown-option-label-default);
+      font-weight: 400;
+    }
+    /* 전체 선택 줄 — 목록과 구분선으로 분리. 새 토큰 없이 패널 테두리색 재사용(정본 color/dropdown/list/border). */
+    .s1-dropdown-option--all { border-bottom: 1px solid var(--color-dropdown-list-border); }
     /* 사이즈 — XXSM(h28·font12) / XSM(h34·font14) / MD(h44·font14, 기본) */
     .s1-dropdown-list--xxsm .s1-dropdown-option { height: var(--sizing-28); font-size: 12px; }
     .s1-dropdown-list--xsm  .s1-dropdown-option { height: var(--sizing-34); font-size: 14px; }
@@ -1599,7 +1642,9 @@
       /* 정본: Time Picker Cell Selected = Basic Dropdown option 재사용 (blue-50 bg + blue-400 label, 테두리 없음).
          셀 테두리(stroke)는 build-components.ts 7781bfe 에서 제거됨 — dropdown/option/border 3종 삭제. */
       background: var(--color-dropdown-option-bg-selected);
-      color: var(--color-dropdown-option-label-selected); font-weight: 500;
+      /* 2026-08-14 정본 정렬(H6): 굵기 강조 제거. 정본 buildTimePickerCell 은 Regular 이고
+         주석에 "선택 강조는 bg/selected(blue-50)로 충분"이라고 못박혀 있다. */
+      color: var(--color-dropdown-option-label-selected);
     }
     .s1-tp-footer-sep {
       width: calc(100% - 16px); height: 1px;
@@ -1633,7 +1678,9 @@
       letter-spacing: -0.02em;
     }
     .s1-tp-select-dropdown-item:hover { background: var(--dropdown-option-hover-bg); }
-    .s1-tp-select-dropdown-item.is-selected { color: var(--color-dropdown-option-label-selected); font-weight: 600; }  /* dark 정정: blue-dark/350 */
+    /* 2026-08-14 정본 정렬(H6): 굵기 강조 제거 — 바로 위 주석대로 Basic Dropdown option 토큰을 재사용하는데,
+       그 정본(buildDropdownList Text·Selected)은 Regular 이다. 웹에만 있던 600 은 파생 드리프트. */
+    .s1-tp-select-dropdown-item.is-selected { color: var(--color-dropdown-option-label-selected); }  /* dark 정정: blue-dark/350 */
     /* token-detail-table (공통) */
     .token-detail-table { width: 100%; border-collapse: collapse; font-size: 12px; }
     .token-detail-table th {
@@ -2832,7 +2879,12 @@ checkboxes.forEach(function(chk) {
                 <div class="comp-state-cell">
                   <div class="s1-input-wrap is-editing is-preview" style="width:160px;">
                     <span class="s1-input-label">Label</span>
-                    <div class="s1-input-field"><input type="text" value="입력 중"><span class="input-caret" aria-hidden="true"></span></div>
+                    <div class="s1-input-field">
+                      <span class="input-lead"><input type="text" value="입력 중"><span class="input-caret" aria-hidden="true"></span></span>
+                      <span class="s1-input-remove">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M5.3 5.3l5.4 5.4M10.7 5.3l-5.4 5.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                      </span>
+                    </div>
                     <span class="ds-helper-text">안내 메시지</span>
                   </div>
                 </div>
@@ -2912,7 +2964,12 @@ checkboxes.forEach(function(chk) {
                 <div class="comp-state-cell">
                   <div class="s1-input-wrap is-editing is-preview" style="width:160px;">
                     <span class="s1-input-label">Label</span>
-                    <div class="s1-input-field input-size-mobile"><input type="text" value="입력 중"><span class="input-caret" aria-hidden="true"></span></div>
+                    <div class="s1-input-field input-size-mobile">
+                      <span class="input-lead"><input type="text" value="입력 중"><span class="input-caret" aria-hidden="true"></span></span>
+                      <span class="s1-input-remove">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M5.3 5.3l5.4 5.4M10.7 5.3l-5.4 5.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                      </span>
+                    </div>
                     <span class="ds-helper-text">안내 메시지</span>
                   </div>
                 </div>
@@ -3136,7 +3193,7 @@ if (pwClear) {
                 <div class="comp-state-cell">
                   <div class="s1-input-wrap is-focus is-preview" style="width:160px;">
                     <div class="s1-input-field">
-                      <input type="text" value="검색어" tabindex="-1"><span class="input-caret" aria-hidden="true"></span>
+                      <span class="input-lead"><input type="text" value="검색어" tabindex="-1"><span class="input-caret" aria-hidden="true"></span></span>
                       <span class="s1-suffix-action-group">
                         <button class="s1-input-action-btn" tabindex="-1" style="pointer-events:none;" aria-label="지우기">
                           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M5.3 5.3l5.4 5.4M10.7 5.3l-5.4 5.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
@@ -4019,7 +4076,7 @@ clearBtn.<span class="c-fn">addEventListener</span>(<span class="c-str">'click'<
                       <span class="ds-fc-sheet-close" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
                     </div>
                     <div class="ds-fc-sheet-list">
-                      <div class="ds-fc-sheet-option is-selected"><span>최신순</span><svg class="ds-fc-sheet-check" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="ds-fc-sheet-option is-selected"><span>최신순</span><svg class="ds-fc-sheet-check" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                       <div class="ds-fc-sheet-option"><span>과거순</span></div>
                       <div class="ds-fc-sheet-option"><span>인기순</span></div>
                     </div>
@@ -4046,9 +4103,9 @@ clearBtn.<span class="c-fn">addEventListener</span>(<span class="c-str">'click'<
                       <button id="fc-mobile-close" type="button" class="ds-fc-sheet-close" aria-label="닫기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
                     </div>
                     <div class="ds-fc-sheet-list" id="fc-mobile-list">
-                      <div class="ds-fc-sheet-option is-selected" data-value="최신순"><span>최신순</span><svg class="ds-fc-sheet-check" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                      <div class="ds-fc-sheet-option" data-value="과거순"><span>과거순</span><svg class="ds-fc-sheet-check" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                      <div class="ds-fc-sheet-option" data-value="인기순"><span>인기순</span><svg class="ds-fc-sheet-check" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="ds-fc-sheet-option is-selected" data-value="최신순"><span>최신순</span><svg class="ds-fc-sheet-check" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="ds-fc-sheet-option" data-value="과거순"><span>과거순</span><svg class="ds-fc-sheet-check" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div class="ds-fc-sheet-option" data-value="인기순"><span>인기순</span><svg class="ds-fc-sheet-check" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12.5L10 17.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                     </div>
                   </div>
                 </div>
@@ -4435,7 +4492,7 @@ clearBtn.<span class="c-fn">addEventListener</span>(<span class="c-str">'click'<
               <div class="comp-state-cell" style="align-items: flex-start; padding-top: 12px;">
                 <div class="s1-input-wrap s1-input-wrap--textarea is-focus is-preview" style="width:160px;">
                   <div class="s1-input-field">
-                    <textarea rows="3" readonly tabindex="-1">입력 중</textarea><span class="input-caret textarea-caret" aria-hidden="true"></span>
+                    <span class="input-lead"><textarea rows="3" readonly tabindex="-1">입력 중</textarea><span class="input-caret textarea-caret" aria-hidden="true"></span></span>
                   </div>
                 </div>
               </div>
@@ -5397,16 +5454,18 @@ document.addEventListener('click', function(e) {
 
 
       <!-- ═══ DROPDOWN ═══ -->
-      <section class="comp-section" id="dropdown" data-cov-states="default,hover,selected" data-cov-sizes="xxsm,xsm,md">
+      <section class="comp-section" id="dropdown" data-cov-states="default,hover,selected" data-cov-sizes="xxsm,xsm,md" data-cov-type="text,checkbox,checkbox+all">
         <div class="comp-section-header">
           <h2 class="comp-section-title">Dropdown</h2>
           <span class="comp-badge comp-badge-blue">Core</span>
           <span class="comp-badge">3 states</span>
           <span class="comp-badge">3 sizes (XXSM · XSM · MD)</span>
+          <span class="comp-badge">2 types (글자 · 체크박스)</span>
           <span class="comp-badge comp-badge-blue">정본 buildDropdownList · color/dropdown/*</span>
         </div>
         <p style="font-size:12px;color:var(--color-text-secondary);margin:-8px 0 16px;line-height:1.6;">
           Select·TimePicker·DatePicker 의 열린 옵션 패널을 구성하는 재사용 단위. 옵션 = 배경 + 라벨(테두리 없음). 패널 외곽선은 <code>--color-dropdown-list-border</code>.
+          <br>옵션 줄은 <strong>글자만(단일 선택)</strong> 과 <strong>체크박스(다중 선택)</strong> 두 유형이 있고, 체크박스 유형에는 「전체 선택」 줄이 함께 딸린다.
         </p>
 
         <!-- ── Action (인터랙티브) — 세트(패널)별로 사이즈대로 표출 + 액션 ── -->
@@ -5473,6 +5532,77 @@ document.addEventListener('click', function(e) {
           </div>
         </div>
 
+        <!-- ── Type · 체크박스(다중 선택) — 정본 buildDropdownList Type=Checkbox / Checkbox+All (2026-08-14) ── -->
+        <div class="variant-block">
+          <div class="variant-label">Type · 체크박스 (다중 선택) — 「전체 선택」 줄 기본 포함</div>
+          <p style="font-size:12px;color:var(--color-text-secondary);margin:-4px 0 12px;line-height:1.6;">
+            여러 항목을 한 번에 고르는 유형. 체크박스는 <strong>코어 컴포넌트(<code>.s1-checkbox</code>)를 그대로 배치</strong>한다 — 드롭다운 전용 체크박스를 따로 만들지 않는다(Figma 도 동일하게 Checkbox 인스턴스를 부착).
+            <br><strong>단일 선택과 다른 동작 3가지</strong> — ① 옵션을 눌러도 목록이 <strong>닫히지 않는다</strong> ② 여러 개가 동시에 켜진다 ③ 고르는 즉시 적용된다(확인 버튼 없음).
+            <br>체크 표시가 이미 선택을 말하므로 <strong>선택된 줄의 글자는 강조하지 않는다</strong>(단일 선택은 파란 글자로만 강조 — 굵기는 바꾸지 않는다).
+            「전체 선택」 줄은 기본 포함이며, 필요 없는 화면에서는 그 줄만 빼고 쓴다.
+          </p>
+          <div class="matrix-col-header-action" style="text-align:left;padding-right:0;margin-bottom:10px;">Action · 옵션을 클릭하면 개별 토글, 「전체 선택」을 클릭하면 전체가 켜지고 꺼집니다 (사이즈대로)</div>
+          <div class="preview-area">
+            <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;">
+              <div>
+                <div style="font-size:11px;color:var(--color-text-secondary);font-weight:500;margin-bottom:6px;">MD (h44)</div>
+                <div class="s1-dropdown-list s1-dropdown-list--md" id="ddl-multi-md" data-comp-action="dropdown-multi" style="min-width:200px;">
+                  <div class="s1-dropdown-option s1-dropdown-option--checkbox s1-dropdown-option--all" role="checkbox" aria-checked="false"><label class="s1-checkbox" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>전체 선택</div>
+                  <div class="s1-dropdown-option s1-dropdown-option--checkbox is-selected" role="checkbox" aria-checked="true"><label class="s1-checkbox is-checked" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션1</div>
+                  <div class="s1-dropdown-option s1-dropdown-option--checkbox" role="checkbox" aria-checked="false"><label class="s1-checkbox" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션2</div>
+                  <div class="s1-dropdown-option s1-dropdown-option--checkbox" role="checkbox" aria-checked="false"><label class="s1-checkbox" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션3</div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;color:var(--color-text-secondary);font-weight:500;margin-bottom:6px;">XSM (h34)</div>
+                <div class="s1-dropdown-list s1-dropdown-list--xsm" id="ddl-multi-xsm" data-comp-action="dropdown-multi" style="min-width:180px;">
+                  <div class="s1-dropdown-option s1-dropdown-option--checkbox s1-dropdown-option--all" role="checkbox" aria-checked="false"><label class="s1-checkbox" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>전체 선택</div>
+                  <div class="s1-dropdown-option s1-dropdown-option--checkbox is-selected" role="checkbox" aria-checked="true"><label class="s1-checkbox is-checked" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션1</div>
+                  <div class="s1-dropdown-option s1-dropdown-option--checkbox" role="checkbox" aria-checked="false"><label class="s1-checkbox" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션2</div>
+                  <div class="s1-dropdown-option s1-dropdown-option--checkbox" role="checkbox" aria-checked="false"><label class="s1-checkbox" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션3</div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11px;color:var(--color-text-secondary);font-weight:500;margin-bottom:6px;">XXSM (h28)</div>
+                <div class="s1-dropdown-list s1-dropdown-list--xxsm" id="ddl-multi-xxsm" data-comp-action="dropdown-multi" style="min-width:160px;">
+                  <div class="s1-dropdown-option s1-dropdown-option--checkbox s1-dropdown-option--all" role="checkbox" aria-checked="false"><label class="s1-checkbox" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>전체 선택</div>
+                  <div class="s1-dropdown-option s1-dropdown-option--checkbox is-selected" role="checkbox" aria-checked="true"><label class="s1-checkbox is-checked" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션1</div>
+                  <div class="s1-dropdown-option s1-dropdown-option--checkbox" role="checkbox" aria-checked="false"><label class="s1-checkbox" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션2</div>
+                  <div class="s1-dropdown-option s1-dropdown-option--checkbox" role="checkbox" aria-checked="false"><label class="s1-checkbox" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션3</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 체크박스 옵션 상태 × Size (3상태 × 3사이즈) ── -->
+        <div class="variant-block">
+          <div class="variant-label">Checkbox Option States · Default · Hover · Selected (사이즈별)</div>
+          <div class="preview-area">
+            <div class="comp-state-matrix" style="grid-template-columns: 120px repeat(3, minmax(140px, 1fr));">
+              <div class="matrix-col-header-action">Size</div>
+              <div class="matrix-col-header">Default</div>
+              <div class="matrix-col-header">Hover</div>
+              <div class="matrix-col-header">Selected</div>
+              <!-- MD -->
+              <div class="comp-action-cell" style="font-size:12px;color:var(--color-text-secondary);">MD (h44)</div>
+              <div class="comp-state-cell"><div class="s1-dropdown-list s1-dropdown-list--md"><div class="s1-dropdown-option s1-dropdown-option--checkbox"><label class="s1-checkbox" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션</div></div></div>
+              <div class="comp-state-cell"><div class="s1-dropdown-list s1-dropdown-list--md"><div class="s1-dropdown-option s1-dropdown-option--checkbox is-hover"><label class="s1-checkbox is-hover" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션</div></div></div>
+              <div class="comp-state-cell"><div class="s1-dropdown-list s1-dropdown-list--md"><div class="s1-dropdown-option s1-dropdown-option--checkbox is-selected"><label class="s1-checkbox is-checked" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션</div></div></div>
+              <!-- XSM -->
+              <div class="comp-action-cell" style="font-size:12px;color:var(--color-text-secondary);">XSM (h34)</div>
+              <div class="comp-state-cell"><div class="s1-dropdown-list s1-dropdown-list--xsm"><div class="s1-dropdown-option s1-dropdown-option--checkbox"><label class="s1-checkbox" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션</div></div></div>
+              <div class="comp-state-cell"><div class="s1-dropdown-list s1-dropdown-list--xsm"><div class="s1-dropdown-option s1-dropdown-option--checkbox is-hover"><label class="s1-checkbox is-hover" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션</div></div></div>
+              <div class="comp-state-cell"><div class="s1-dropdown-list s1-dropdown-list--xsm"><div class="s1-dropdown-option s1-dropdown-option--checkbox is-selected"><label class="s1-checkbox is-checked" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션</div></div></div>
+              <!-- XXSM -->
+              <div class="comp-action-cell" style="font-size:12px;color:var(--color-text-secondary);">XXSM (h28)</div>
+              <div class="comp-state-cell"><div class="s1-dropdown-list s1-dropdown-list--xxsm"><div class="s1-dropdown-option s1-dropdown-option--checkbox"><label class="s1-checkbox" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션</div></div></div>
+              <div class="comp-state-cell"><div class="s1-dropdown-list s1-dropdown-list--xxsm"><div class="s1-dropdown-option s1-dropdown-option--checkbox is-hover"><label class="s1-checkbox is-hover" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션</div></div></div>
+              <div class="comp-state-cell"><div class="s1-dropdown-list s1-dropdown-list--xxsm"><div class="s1-dropdown-option s1-dropdown-option--checkbox is-selected"><label class="s1-checkbox is-checked" aria-hidden="true"><div class="s1-checkbox-box"><svg class="ds-chk-icon" width="16" height="16"><use href="#ds-icon-checkbox-check"></use></svg></div></label>옵션</div></div></div>
+            </div>
+          </div>
+        </div>
+
         <!-- ── Code tabs ── -->
         <div class="code-block">
           <div class="code-tabs">
@@ -5491,7 +5621,18 @@ document.addEventListener('click', function(e) {
 
 <span class="c-cmt">&lt;!-- XSM (h34) / XXSM (h28) — 패널에 사이즈 클래스 --&gt;</span>
 <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"s1-dropdown-list s1-dropdown-list--xsm"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
-<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"s1-dropdown-list s1-dropdown-list--xxsm"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span></pre>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"s1-dropdown-list s1-dropdown-list--xxsm"</span><span class="c-tag">&gt;</span>...<span class="c-tag">&lt;/div&gt;</span>
+
+<span class="c-cmt">&lt;!-- 체크박스 유형(다중 선택) — 전체 선택 줄 + 옵션. 체크박스는 코어 .s1-checkbox 를 그대로 배치 --&gt;</span>
+<span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"s1-dropdown-list s1-dropdown-list--md"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"s1-dropdown-option s1-dropdown-option--checkbox s1-dropdown-option--all"</span> <span class="c-attr">role</span>=<span class="c-str">"checkbox"</span> <span class="c-attr">aria-checked</span>=<span class="c-str">"false"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;label</span> <span class="c-attr">class</span>=<span class="c-str">"s1-checkbox"</span><span class="c-tag">&gt;&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"s1-checkbox-box"</span><span class="c-tag">&gt;</span>…<span class="c-tag">&lt;/div&gt;&lt;/label&gt;</span>전체 선택
+  <span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-cmt">&lt;!-- 체크됨: 줄에 is-selected, 체크박스에 is-checked --&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"s1-dropdown-option s1-dropdown-option--checkbox is-selected"</span> <span class="c-attr">role</span>=<span class="c-str">"checkbox"</span> <span class="c-attr">aria-checked</span>=<span class="c-str">"true"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;label</span> <span class="c-attr">class</span>=<span class="c-str">"s1-checkbox is-checked"</span><span class="c-tag">&gt;&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"s1-checkbox-box"</span><span class="c-tag">&gt;</span>…<span class="c-tag">&lt;/div&gt;&lt;/label&gt;</span>옵션1
+  <span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></pre>
           </div>
           <div class="code-pane" id="ddl-css">
             <pre id="ddl-css-pre"><span class="c-cmt">/* Dropdown — 정본 buildDropdownList · color/dropdown/* */</span>
@@ -5508,8 +5649,14 @@ document.addEventListener('click', function(e) {
 }
 <span class="c-sel">.s1-dropdown-option.is-hover</span> { background: <span class="c-val">var(--color-dropdown-option-bg-hover)</span>; color: <span class="c-val">var(--color-dropdown-option-label-hover)</span>; }
 <span class="c-sel">.s1-dropdown-option.is-selected</span> { background: <span class="c-val">var(--color-dropdown-option-bg-default)</span>; color: <span class="c-val">var(--color-dropdown-option-label-selected)</span>; }
-<span class="c-cmt">/* 선택 + 호버 — 호버 배경만 깔고 선택 글자색·굵기 유지 */</span>
+<span class="c-cmt">/* 선택 + 호버 — 호버 배경만 깔고 선택 글자색 유지 */</span>
 <span class="c-sel">.s1-dropdown-option.is-selected.is-hover</span> { background: <span class="c-val">var(--color-dropdown-option-bg-hover)</span>; }
+<span class="c-cmt">/* 체크박스 유형(다중 선택) — 정본 Type=Checkbox / Checkbox+All */</span>
+<span class="c-sel">.s1-dropdown-option--checkbox</span> { gap: <span class="c-val">8px</span>; <span class="c-cmt">/* 체크박스↔글자 = spacing/8 */</span> }
+<span class="c-cmt">/* 체크 표시가 선택을 표현하므로 글자 강조 없음 (단일 선택과 다른 점) */</span>
+<span class="c-sel">.s1-dropdown-option--checkbox.is-selected</span> { color: <span class="c-val">var(--color-dropdown-option-label-default)</span>; font-weight: <span class="c-val">400</span>; }
+<span class="c-cmt">/* 전체 선택 줄 — 패널 테두리색 재사용(새 토큰 없음) */</span>
+<span class="c-sel">.s1-dropdown-option--all</span> { border-bottom: <span class="c-val">1px solid var(--color-dropdown-list-border)</span>; }
 <span class="c-cmt">/* 사이즈 — XXSM(h28·font12) / XSM(h34·font14) / MD(h44·font14) */</span>
 <span class="c-sel">.s1-dropdown-list--xxsm .s1-dropdown-option</span> { height: <span class="c-val">var(--sizing-28)</span>; font-size: <span class="c-val">12px</span>; }
 <span class="c-sel">.s1-dropdown-list--xsm .s1-dropdown-option</span> { height: <span class="c-val">var(--sizing-34)</span>; font-size: <span class="c-val">14px</span>; }
@@ -9029,6 +9176,49 @@ document.addEventListener('click', function(e) {
     }
     var ddlTargets = ['ddl-action-md','ddl-action-xsm','ddl-action-xxsm'].map(function(id){ return document.getElementById(id); }).filter(Boolean);
     ddlTargets.forEach(wireDropdownPanel);
+
+    // ── Dropdown 체크박스 유형(다중 선택): 개별 토글 + 「전체 선택」 연동 (2026-08-14) ──
+    //    단일 선택과 결정적으로 다른 동작: ①골라도 목록이 닫히지 않는다 ②여러 개가 동시에 켜진다
+    //    ③고르는 즉시 적용(확인 버튼 없음) — 사용자 결정 2026-08-14.
+    function wireDropdownMultiPanel(el) {
+      if (!el) return;
+      var allRow = el.querySelector('.s1-dropdown-option--all');
+      // 수식자 클래스 뒤에 :not() 을 바로 붙이지 않는다 — Gate 25(별칭 유령참조)가
+      // "이중하이픈 이름 + 콜론 + 값 + 세미콜론" 을 컴포넌트 별칭 정의로 읽어 오탐한다.
+      // 클래스로 뽑고 JS 로 걸러 같은 결과를 낸다.
+      var items = Array.prototype.slice.call(el.querySelectorAll('.s1-dropdown-option--checkbox'))
+        .filter(function(o) { return !o.classList.contains('s1-dropdown-option--all'); });
+      function setChecked(opt, on) {
+        if (!opt) return;
+        opt.classList.toggle('is-selected', on);
+        var box = opt.querySelector('.s1-checkbox');
+        if (box) box.classList.toggle('is-checked', on);
+        opt.setAttribute('aria-checked', on ? 'true' : 'false');
+      }
+      function syncAllRow() {
+        if (!allRow) return;
+        var on = items.length > 0 && items.every(function(o) { return o.classList.contains('is-selected'); });
+        setChecked(allRow, on);
+      }
+      items.forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          setChecked(opt, !opt.classList.contains('is-selected'));
+          syncAllRow();
+        });
+      });
+      if (allRow) {
+        allRow.addEventListener('click', function() {
+          var on = !allRow.classList.contains('is-selected');
+          setChecked(allRow, on);
+          items.forEach(function(o) { setChecked(o, on); });
+        });
+      }
+      syncAllRow();
+    }
+    ['ddl-multi-md','ddl-multi-xsm','ddl-multi-xxsm']
+      .map(function(id) { return document.getElementById(id); })
+      .filter(Boolean)
+      .forEach(wireDropdownMultiPanel);
   }
   setupCompActionTests();
 
