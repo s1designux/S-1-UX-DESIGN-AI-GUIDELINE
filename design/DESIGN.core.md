@@ -2061,7 +2061,7 @@ _Don't_
 
 ### Modal
 
-확인 계열 모달 그릇 2종(Footer Single|Dual). 딤(overlay) 위 공통 팝업 셸 — 헤더(제목+닫기)+본문(텍스트)+푸터(버튼)의 3층 껍데기. 그릇(제목·본문·푸터 3층)만 정본이며, 실제 문구는 예시(UX라이팅 플러그인 영역·컴포넌트 아님). Single=알림/설명체 1버튼, Dual=확인/질문체 2버튼. 제목 항상 존재. 코어 Button·V2.2 라이브러리 아이콘 재사용(신규 보여주기 컴포넌트 아님).
+확인 계열 모달 그릇 4종(Break PC|Mobile × Footer Single|Dual). 딤(overlay) 위 공통 팝업 셸 — 제목+본문+푸터의 3층 껍데기. PC는 제목 옆 닫기 버튼과 컴팩트 푸터를 사용하고, Mobile은 닫기 없이 300px 패널과 LG 버튼을 사용한다. 실제 문구는 예시(UX라이팅 영역·컴포넌트 아님).
 
 **언제 쓰나**
 - 확인·알림 등 흐름을 멈추고 결정을 받을 때.
@@ -2090,6 +2090,9 @@ _Don't_
 agent:
   component: "Modal"
   variantAxes:
+    Break:
+      - "PC"
+      - "Mobile"
     Footer:
       - "Single"
       - "Dual"
@@ -2102,23 +2105,34 @@ agent:
   geometry:
     common:
       target: "root"
-      width: 360
       height: 100
       layoutMode: "VERTICAL"
       primaryAxisSizingMode: "AUTO"
       counterAxisSizingMode: "FIXED"
       counterAxisAlignItems: "CENTER"
-      itemSpacing: "32"
       paddingTop: "20"
-      paddingRight: "0"
       paddingBottom: "20"
-      paddingLeft: "0"
-      cornerRadius: "8"
+      topLeftRadius: "radius/8"
+      topRightRadius: "radius/8"
+      bottomLeftRadius: "radius/8"
+      bottomRightRadius: "radius/8"
       strokeWeight: "1"
       strokeAlign: "INSIDE"
     variants:
       -
-        when: "all"
+        when:
+          Break: "PC"
+        width: 360
+        itemSpacing: "32"
+        paddingRight: "0"
+        paddingLeft: "0"
+      -
+        when:
+          Break: "Mobile"
+        width: 300
+        itemSpacing: "30"
+        paddingRight: "20"
+        paddingLeft: "20"
   composition:
     mustReuse:
       - "Button"
@@ -2142,6 +2156,8 @@ agent:
       - "color/text/body/primary"
       - "color/text/title/primary"
       - "radius/4"
+      - "radius/8"
+      - "spacing/16"
       - "spacing/8"
     aliasChains: "not-defined"
   figma:
@@ -2149,10 +2165,13 @@ agent:
     identifiers:
       componentSetKey: "(미발행 — 라이브러리 publish 시 기록)"
       fileKey: "cysG5U1udpQqVagYY1hWHW"
-      figmaNodeId: "1278:30800"
-      sectionNodeId: "1278:30834"
+      figmaNodeId: "1546:17971"
+      sectionNodeId: "1546:18005"
       pageNodeId: "5:5706"
     variants:
+      break:
+        - "pc"
+        - "mobile"
       footer:
         - "single"
         - "dual"
@@ -2163,7 +2182,7 @@ agent:
 ```
 
 _Do_
-- 제목은 항상 둔다.
+- 제목은 항상 둔다. PC는 닫기 버튼을 포함하고 Mobile은 포함하지 않는다.
 - 푸터 버튼은 코어 Button, 아이콘은 V2.2 라이브러리 인스턴스를 재사용한다.
 
 _Don't_
@@ -3929,4 +3948,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: ca477b632085 · 손편집 금지 -->
+<!-- generated-stamp: df5677a9bce5 · 손편집 금지 -->

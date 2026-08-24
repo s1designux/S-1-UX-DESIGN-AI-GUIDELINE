@@ -3,7 +3,7 @@
     "generated": true,
     "source": "plugins/figma-vars-installer/src/build-components.ts",
     "method": "mock-execution",
-    "sourceHash": "a459dc6e8397",
+    "sourceHash": "e23d3b889151",
     "unknownValuePolicy": [
       "unknown",
       "not-defined",
@@ -86,7 +86,9 @@
       "variantAxes": {
         "Platform": [
           "App",
-          "Web"
+          "Web",
+          "App + Keyboard",
+          "Web + Keyboard"
         ]
       },
       "geometry": [
@@ -118,16 +120,45 @@
           "primaryAxisSizingMode": "AUTO",
           "counterAxisSizingMode": "FIXED",
           "itemSpacing": "0"
+        },
+        {
+          "when": {
+            "Platform": "App + Keyboard"
+          },
+          "target": "root",
+          "width": 360,
+          "height": 341,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "itemSpacing": "0"
+        },
+        {
+          "when": {
+            "Platform": "Web + Keyboard"
+          },
+          "target": "root",
+          "width": 360,
+          "height": 391,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "itemSpacing": "0"
         }
       ],
       "anatomy": [
         "android-nav",
         "browser-toolbar",
-        "icon"
+        "icon",
+        "keyboard"
       ],
       "tokenBindings": [
         "color/bg/level-0",
-        "color/icon/gray"
+        "color/bg/level-1",
+        "color/bg/level-2",
+        "color/icon/gray",
+        "color/text/body/primary",
+        "radius/4"
       ],
       "composition": {
         "buildDependencies": []
@@ -151,8 +182,8 @@
             "Brand": "에스원"
           },
           "target": "root",
-          "width": 42,
-          "height": 16
+          "width": 78.75,
+          "height": 30
         },
         {
           "when": {
@@ -3190,6 +3221,10 @@
     },
     "Modal": {
       "variantAxes": {
+        "Break": [
+          "PC",
+          "Mobile"
+        ],
         "Footer": [
           "Single",
           "Dual"
@@ -3197,7 +3232,9 @@
       },
       "geometry": [
         {
-          "when": "all",
+          "when": {
+            "Break": "PC"
+          },
           "target": "root",
           "width": 360,
           "height": 100,
@@ -3210,7 +3247,33 @@
           "paddingRight": "0",
           "paddingBottom": "20",
           "paddingLeft": "0",
-          "cornerRadius": "8",
+          "topLeftRadius": "radius/8",
+          "topRightRadius": "radius/8",
+          "bottomLeftRadius": "radius/8",
+          "bottomRightRadius": "radius/8",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Break": "Mobile"
+          },
+          "target": "root",
+          "width": 300,
+          "height": 100,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "30",
+          "paddingTop": "20",
+          "paddingRight": "20",
+          "paddingBottom": "20",
+          "paddingLeft": "20",
+          "topLeftRadius": "radius/8",
+          "topRightRadius": "radius/8",
+          "bottomLeftRadius": "radius/8",
+          "bottomRightRadius": "radius/8",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
         }
@@ -3232,6 +3295,8 @@
         "color/text/body/primary",
         "color/text/title/primary",
         "radius/4",
+        "radius/8",
+        "spacing/16",
         "spacing/8"
       ],
       "composition": {

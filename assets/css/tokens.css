@@ -606,8 +606,8 @@
   --color-status-card-text-tertiary--sub     : var(--color-gray-300);
 
   /* ── text ── */
-  --color-text-body-primary        : var(--color-gray-900);
-  --color-text-body-secondary      : var(--color-gray-800);
+  --color-text-body-primary        : var(--color-gray-800);
+  --color-text-body-secondary      : var(--color-gray-600);
   --color-text-body-tertiary       : var(--color-gray-500);
   --color-text-state-accent        : var(--color-blue-400);
   --color-text-state-accent-inverse: var(--color-base-white);
@@ -616,7 +616,7 @@
   --color-text-state-correct       : var(--color-blue-400);
   --color-text-state-disabled      : var(--color-gray-300);
   --color-text-state-helper        : var(--color-gray-400);
-  --color-text-title-primary       : var(--color-gray-900);
+  --color-text-title-primary       : var(--color-base-black);
   --color-text-title-secondary     : var(--color-gray-800);
 
   /* ── scroll ── */
