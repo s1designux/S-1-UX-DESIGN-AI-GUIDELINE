@@ -168,6 +168,10 @@ agentContractDefaults:
       - "globe"
       - "home"
       - "menu"
+      - "mobileHeaderArrowDown"
+      - "mobileHeaderBack"
+      - "mobileHeaderClose"
+      - "mobileHeaderNotification"
       - "remove"
       - "search"
   unknownMarkers:
@@ -194,7 +198,6 @@ Core interactive button component. Primary / Secondary / Blue-line variants with
 | 요소 | 역할 |
 | --- | --- |
 | 라벨 | 버튼 텍스트. 굵기·색은 variant 토큰. |
-| 아이콘(선택) | 라벨 앞/뒤 보조 아이콘. 라이브러리 인스턴스. |
 | 컨테이너 | 배경·테두리·반경. variant×state 토큰. |
 
 | variant | default | hover | pressed | disabled |
@@ -278,6 +281,7 @@ agent:
         when:
           Size: "MD"
           Break: "PC"
+        width: 80
         height: 44
         paddingRight: "spacing/16"
         paddingLeft: "spacing/16"
@@ -286,6 +290,7 @@ agent:
         when:
           Size: "XSM"
           Break: "PC"
+        width: 64
         height: 34
         paddingRight: "spacing/8"
         paddingLeft: "spacing/8"
@@ -294,14 +299,16 @@ agent:
         when:
           Size: "XXSM"
           Break: "PC"
+        width: 56
         height: 28
         paddingRight: "spacing/8"
         paddingLeft: "spacing/8"
-        minWidth: "64"
+        minWidth: "56"
       -
         when:
           Size: "LG"
           Break: "Mobile"
+        width: 80
         height: 48
         paddingRight: "spacing/16"
         paddingLeft: "spacing/16"
@@ -309,11 +316,13 @@ agent:
   composition:
     mustReuse: "not-defined"
     mustNotCreate: "not-defined"
-    declaredParts: "not-defined"
+    declaredParts:
+      - "button-focus-ring"
   constraints: "unknown"
   tokens:
     figmaSemanticBindings:
       - "border-width/1"
+      - "border-width/2"
       - "color/button/bg/blue-line--default"
       - "color/button/bg/blue-line--hover"
       - "color/button/bg/disabled"
@@ -324,6 +333,7 @@ agent:
       - "color/button/border/blue-line--default"
       - "color/button/border/blue-line--hover"
       - "color/button/border/disabled"
+      - "color/button/border/focus"
       - "color/button/border/primary--default"
       - "color/button/border/primary--hover"
       - "color/button/border/secondary--default"
@@ -336,6 +346,7 @@ agent:
       - "color/button/label/secondary--default"
       - "color/button/label/secondary--hover"
       - "radius/4"
+      - "radius/8"
       - "spacing/16"
       - "spacing/8"
     aliasChains:
@@ -429,6 +440,8 @@ agent:
       variant: "Variant"
       size: "Size"
       state: "State"
+      break: "Break"
+      focusVisible: "Focus Visible"
   icons:
     allowed: "figma-unconfirmed"
     slots: "unknown"
@@ -447,6 +460,7 @@ _Don't_
 **접근성 (a11y)**
 - 아이콘만 있는 버튼은 aria-label 로 용도를 준다.
 - disabled 는 실제 비활성 처리하고 클릭을 막는다.
+- 키보드 포커스는 :focus-visible에서 2px outline과 2px 바깥 간격으로 표시한다. 마우스 클릭만으로는 강제 표시하지 않는다.
 
 ### Checkbox
 
@@ -1730,9 +1744,9 @@ Base text input field. Pure input element without label/helper wrapper. Label/He
 | suffix 액션 그룹(선택) | 오른쪽 액션 버튼 그룹. 검색=지우기+검색 아이콘, 비밀번호=표시전환+지우기. |
 | helper 텍스트(선택) | 필드 아래 도움말·오류·성공 메시지. color-text-state 사용. |
 
-| variant | default | focus | filled | error | correct | disabled |
-| --- | --- | --- | --- | --- | --- | --- |
-| default | --color-form-control-bg-default → color-surface-default<br>--color-form-control-border-default → color-border-default<br>--color-form-control-text-default → color-text-secondary | — | — | --color-form-control-border-error → color-status-error<br>--color-text-state-error → color-status-error | --color-form-control-border-correct → color-border-focus<br>--color-text-state-correct | --color-form-control-bg-disabled → color-bg-subtle<br>--color-form-control-border-disabled → color-border-subtle<br>--color-form-control-text-disabled → color-text-disabled |
+| variant | default | focus | filled | error | correct | read-only | disabled |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| default | --color-form-control-bg-default → color-surface-default<br>--color-form-control-border-default → color-border-default<br>--color-form-control-text-default → color-text-secondary | — | — | --color-form-control-border-error → color-status-error<br>--color-text-state-error → color-status-error | --color-form-control-border-correct<br>--color-text-state-correct | — | --color-form-control-bg-disabled → color-bg-subtle<br>--color-form-control-border-disabled → color-border-subtle<br>--color-form-control-text-disabled → color-text-disabled |
 
 #### Agent-readable contract
 
@@ -1752,9 +1766,6 @@ agent:
       - "Correct"
       - "Read-Only"
       - "Disabled"
-    Label:
-      - "Off"
-      - "On"
     Message:
       - "Off"
       - "On"
@@ -1776,6 +1787,7 @@ agent:
       - "filled"
       - "error"
       - "correct"
+      - "read-only"
       - "disabled"
   behavior:
     platform: "PC"
@@ -1860,16 +1872,17 @@ agent:
   constraints: "unknown"
   tokens:
     figmaSemanticBindings:
+      - "border-width/2"
+      - "color/form-control/action/border/focus"
       - "color/form-control/bg/default"
       - "color/form-control/bg/disabled"
+      - "color/form-control/bg/hover"
       - "color/form-control/bg/selected"
       - "color/form-control/border/correct"
       - "color/form-control/border/default"
       - "color/form-control/border/disabled"
       - "color/form-control/border/error"
       - "color/form-control/border/selected"
-      - "color/form-control/label/default"
-      - "color/form-control/label/disabled"
       - "color/form-control/text-cursor"
       - "color/form-control/text/default"
       - "color/form-control/text/disabled"
@@ -1880,6 +1893,7 @@ agent:
       - "color/text/state/caution"
       - "color/text/state/correct"
       - "color/text/state/disabled"
+      - "radius/4"
     aliasChains:
       -
         chain: "--color-form-control-bg-default → --color-base-white → #FFFFFF"
@@ -1939,14 +1953,16 @@ _Do_
 - 라벨은 form-control 밖 제목 텍스트 토큰(--color-text-title-secondary)을 쓴다.
 
 _Don't_
-- hover 상태를 새로 만들지 않는다 — Figma 에 정의돼 있지 않아 제거됨(HD-2).
+- Input field 전체에 hover 상태를 만들지 않는다 — HD-2에서 제거됨. suffix action의 독립 Hover 배경은 예외다.
 - filled·error·focus 에 별도 배경색을 넣지 않는다 — 배경은 default 와 동일, 구분은 텍스트·테두리 색으로만.
 - correct(성공) 테두리를 초록으로 칠하지 않는다 — 원본은 파란색(border-selected).
 
 **접근성 (a11y)**
 - suffix 액션(지우기·검색·비밀번호 표시전환)에는 각각 aria-label 을 단다(예: 검색어 지우기, 비밀번호 보기/숨기기).
 - 비밀번호 표시전환 토글은 aria-pressed 로 표시·숨김 상태를 노출한다.
-- 지우기(clear) 버튼은 값이 있을 때만 노출한다(hidden 속성 제어).
+- Editing 상태의 지우기(clear) 버튼은 값이 있고 Input 또는 지우기 버튼에 초점이 있을 때만 노출한다(hidden 속성 제어).
+- suffix 액션의 실제 누르는 영역은 PC 28×28px, Mobile 48×48px이며 액션마다 독립된 button 영역을 가진다.
+- suffix 액션의 키보드 포커스는 각 hit area 안쪽 2px outline으로 표시한다.
 
 ### Mobile Bottom Nav
 
@@ -2059,6 +2075,114 @@ _Don't_
 - 아이콘만으로 의미를 전달하지 않는다 — 라벨을 항상 함께 보여준다.
 - 터치 타깃은 60×60 으로 최소 권장치를 만족한다.
 
+### Mobile Header
+
+모바일 화면 상단의 StatusBar와 AppBar를 하나로 묶은 360×99 코어 컴포넌트. 홈형 2종·표준형 4종을 Type 축으로 제공한다.
+
+**언제 쓰나**
+- 모바일 앱 또는 모바일 웹 화면에서 상단 전역 크롬과 화면 이동 동작을 제공할 때.
+- 회원가입처럼 앱바 안 제목을 비우고 본문 큰 제목을 사용하는 화면에는 Standard / No Title을 쓴다.
+
+**쓰지 말아야 할 때**
+- PC 화면의 전역 내비게이션에는 GNB를 쓴다.
+- 브라우저 주소창까지 포함해야 하는 모바일 웹 크롬에는 StatusBar의 Platform=Web 조합을 별도 패턴에서 사용한다.
+
+**구성 (Anatomy)**
+
+| 요소 | 역할 |
+| --- | --- |
+| StatusBar | Platform=App 정본 인스턴스. 360×27. 배경은 투명이며 헤더 프레임 배경을 상속한다. Appearance 모드도 부모를 따른다. |
+| AppBar | 360×56. StatusBar 아래 16px 간격으로 배치한다. |
+| Title area | 표준형은 중앙 정렬(title/18M), 홈형은 좌측 정렬(title/18B). No Title 계열에는 텍스트 노드가 없다. |
+| Action slots | 32×32 이전·닫기·알림 슬롯 또는 같은 폭 spacer. |
+
+| variant |
+| --- |
+| Type |
+
+#### Agent-readable contract
+
+```yaml
+agent:
+  component: "Mobile Header"
+  variantAxes:
+    Type:
+      - "Home / Title"
+      - "Home / Title + Subtitle + 1 Icon"
+      - "Standard / Title"
+      - "Standard / Title + Close"
+      - "Standard / No Title"
+      - "Standard / No Title + Close"
+  states:
+    builder: "not-defined"
+    metadata:
+      []
+  behavior:
+    platform: "PC"
+    status: "not-defined"
+  geometry:
+    common:
+      target: "root"
+      width: 360
+      height: 99
+      layoutMode: "VERTICAL"
+      primaryAxisSizingMode: "FIXED"
+      counterAxisSizingMode: "FIXED"
+      itemSpacing: "16"
+    variants:
+      -
+        when: "all"
+  composition:
+    mustReuse:
+      - "StatusBar"
+    mustNotCreate: "not-defined"
+    declaredParts:
+      - "AppBar"
+      - "StatusBar / Platform=App"
+  constraints: "unknown"
+  tokens:
+    figmaSemanticBindings:
+      - "color/bg/home"
+      - "color/bg/level-0"
+      - "color/icon/gray-dark"
+      - "color/text/body/secondary"
+      - "color/text/body/tertiary"
+      - "color/text/title/primary"
+    aliasChains: "not-defined"
+  figma:
+    status: "available"
+    identifiers:
+      componentSetKey: "9fd8509a9e73c1279d9efb2088bb591658ce29f5"
+      fileKey: "cysG5U1udpQqVagYY1hWHW"
+      figmaNodeId: "1760:7247"
+    variants:
+      Type:
+        - "Home / Title"
+        - "Home / Title + Subtitle + 1 Icon"
+        - "Standard / Title"
+        - "Standard / Title + Close"
+        - "Standard / No Title"
+        - "Standard / No Title + Close"
+  icons:
+    allowed: "figma-unconfirmed"
+    slots: "unknown"
+```
+
+_Do_
+- 앱바 안 제목과 본문 큰 제목이 중복되면 Standard / No Title을 쓴다.
+- 아이콘은 등록된 원본 라이브러리 인스턴스를 사용한다.
+- 배경·텍스트·아이콘 색은 역할에 맞는 Semantic 변수로 바인딩한다.
+
+_Don't_
+- 제목을 흰색으로 숨겨 제목 없음처럼 만들지 않는다.
+- StatusBar를 벡터나 텍스트로 다시 그리지 않는다.
+- raw hex 색이나 Noto 계열 글꼴을 넣지 않는다.
+
+**접근성 (a11y)**
+- 이전·닫기·알림 버튼은 화면 맥락에 맞는 접근성 이름을 제공한다.
+- 제목 없는 유형에서는 본문의 큰 제목이 화면의 주 제목 역할을 하도록 heading 구조를 유지한다.
+- 아이콘 버튼의 실제 터치 영역은 화면 구현에서 최소 44×44를 확보한다.
+
 ### Modal
 
 확인 계열 모달 그릇 4종(Break PC|Mobile × Footer Single|Dual). 딤(overlay) 위 공통 팝업 셸 — 제목+본문+푸터의 3층 껍데기. PC는 제목 옆 닫기 버튼과 컴팩트 푸터를 사용하고, Mobile은 닫기 없이 300px 패널과 LG 버튼을 사용한다. 실제 문구는 예시(UX라이팅 영역·컴포넌트 아님).
@@ -2145,8 +2269,10 @@ agent:
   tokens:
     figmaSemanticBindings:
       - "border-width/1"
+      - "border-width/2"
       - "color/button/bg/primary--default"
       - "color/button/bg/secondary--default"
+      - "color/button/border/focus"
       - "color/button/border/primary--default"
       - "color/button/border/secondary--default"
       - "color/button/label/primary--default"
@@ -3948,4 +4074,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: df5677a9bce5 · 손편집 금지 -->
+<!-- generated-stamp: 9495644eb9a2 · 손편집 금지 -->

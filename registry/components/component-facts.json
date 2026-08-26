@@ -3,7 +3,7 @@
     "generated": true,
     "source": "plugins/figma-vars-installer/src/build-components.ts",
     "method": "mock-execution",
-    "sourceHash": "e23d3b889151",
+    "sourceHash": "cb50972e0107",
     "unknownValuePolicy": [
       "unknown",
       "not-defined",
@@ -23,6 +23,10 @@
       "globe",
       "home",
       "menu",
+      "mobileHeaderArrowDown",
+      "mobileHeaderBack",
+      "mobileHeaderClose",
+      "mobileHeaderNotification",
       "remove",
       "search"
     ]
@@ -574,6 +578,47 @@
         "buildDependencies": []
       }
     },
+    "Mobile Header": {
+      "variantAxes": {
+        "Type": [
+          "Home / Title",
+          "Home / Title + Subtitle + 1 Icon",
+          "Standard / Title",
+          "Standard / Title + Close",
+          "Standard / No Title",
+          "Standard / No Title + Close"
+        ]
+      },
+      "geometry": [
+        {
+          "when": "all",
+          "target": "root",
+          "width": 360,
+          "height": 99,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "itemSpacing": "16"
+        }
+      ],
+      "anatomy": [
+        "AppBar",
+        "StatusBar / Platform=App"
+      ],
+      "tokenBindings": [
+        "color/bg/home",
+        "color/bg/level-0",
+        "color/icon/gray-dark",
+        "color/text/body/secondary",
+        "color/text/body/tertiary",
+        "color/text/title/primary"
+      ],
+      "composition": {
+        "buildDependencies": [
+          "StatusBar"
+        ]
+      }
+    },
     "Line Tab": {
       "variantAxes": {
         "Size": [
@@ -884,6 +929,7 @@
             "Break": "PC"
           },
           "target": "root",
+          "width": 80,
           "height": 44,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "AUTO",
@@ -908,6 +954,7 @@
             "Break": "PC"
           },
           "target": "root",
+          "width": 64,
           "height": 34,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "AUTO",
@@ -932,6 +979,7 @@
             "Break": "PC"
           },
           "target": "root",
+          "width": 56,
           "height": 28,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "AUTO",
@@ -942,7 +990,7 @@
           "paddingRight": "spacing/8",
           "paddingBottom": "0",
           "paddingLeft": "spacing/8",
-          "minWidth": "64",
+          "minWidth": "56",
           "topLeftRadius": "radius/4",
           "topRightRadius": "radius/4",
           "bottomLeftRadius": "radius/4",
@@ -956,6 +1004,7 @@
             "Break": "Mobile"
           },
           "target": "root",
+          "width": 80,
           "height": 48,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "AUTO",
@@ -975,9 +1024,12 @@
           "strokeAlign": "INSIDE"
         }
       ],
-      "anatomy": [],
+      "anatomy": [
+        "button-focus-ring"
+      ],
       "tokenBindings": [
         "border-width/1",
+        "border-width/2",
         "color/button/bg/blue-line--default",
         "color/button/bg/blue-line--hover",
         "color/button/bg/disabled",
@@ -988,6 +1040,7 @@
         "color/button/border/blue-line--default",
         "color/button/border/blue-line--hover",
         "color/button/border/disabled",
+        "color/button/border/focus",
         "color/button/border/primary--default",
         "color/button/border/primary--hover",
         "color/button/border/secondary--default",
@@ -1000,6 +1053,7 @@
         "color/button/label/secondary--default",
         "color/button/label/secondary--hover",
         "radius/4",
+        "radius/8",
         "spacing/16",
         "spacing/8"
       ],
@@ -1860,10 +1914,6 @@
           "Read-Only",
           "Disabled"
         ],
-        "Label": [
-          "Off",
-          "On"
-        ],
         "Message": [
           "Off",
           "On"
@@ -1963,16 +2013,17 @@
         "field"
       ],
       "tokenBindings": [
+        "border-width/2",
+        "color/form-control/action/border/focus",
         "color/form-control/bg/default",
         "color/form-control/bg/disabled",
+        "color/form-control/bg/hover",
         "color/form-control/bg/selected",
         "color/form-control/border/correct",
         "color/form-control/border/default",
         "color/form-control/border/disabled",
         "color/form-control/border/error",
         "color/form-control/border/selected",
-        "color/form-control/label/default",
-        "color/form-control/label/disabled",
         "color/form-control/text-cursor",
         "color/form-control/text/default",
         "color/form-control/text/disabled",
@@ -1982,7 +2033,8 @@
         "color/text/state/caption",
         "color/text/state/caution",
         "color/text/state/correct",
-        "color/text/state/disabled"
+        "color/text/state/disabled",
+        "radius/4"
       ],
       "composition": {
         "buildDependencies": []
@@ -2587,7 +2639,9 @@
       ],
       "tokenBindings": [
         "border-width/1",
+        "border-width/2",
         "color/button/bg/primary--default",
+        "color/button/border/focus",
         "color/button/border/primary--default",
         "color/button/label/primary--default",
         "color/date-picker/cell/bg/selected",
@@ -2602,6 +2656,7 @@
         "color/surface/raised",
         "color/text/title/primary",
         "radius/4",
+        "radius/8",
         "radius/full",
         "spacing/16"
       ],
@@ -2896,7 +2951,9 @@
       ],
       "tokenBindings": [
         "border-width/1",
+        "border-width/2",
         "color/button/bg/primary--default",
+        "color/button/border/focus",
         "color/button/border/primary--default",
         "color/button/label/primary--default",
         "color/navigation/indicator/default",
@@ -2908,6 +2965,7 @@
         "color/text/state/accent",
         "color/text/title/primary",
         "radius/4",
+        "radius/8",
         "spacing/16"
       ],
       "composition": {
@@ -3199,8 +3257,10 @@
       ],
       "tokenBindings": [
         "border-width/1",
+        "border-width/2",
         "color/button/bg/primary--default",
         "color/button/bg/secondary--default",
+        "color/button/border/focus",
         "color/button/border/primary--default",
         "color/button/border/secondary--default",
         "color/button/label/primary--default",
@@ -3210,6 +3270,7 @@
         "color/text/state/accent",
         "color/text/title/primary",
         "radius/4",
+        "radius/8",
         "spacing/16"
       ],
       "composition": {
@@ -3284,8 +3345,10 @@
       ],
       "tokenBindings": [
         "border-width/1",
+        "border-width/2",
         "color/button/bg/primary--default",
         "color/button/bg/secondary--default",
+        "color/button/border/focus",
         "color/button/border/primary--default",
         "color/button/border/secondary--default",
         "color/button/label/primary--default",

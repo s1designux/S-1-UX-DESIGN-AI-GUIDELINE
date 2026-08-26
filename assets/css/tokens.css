@@ -3,12 +3,13 @@
    0. FOUNDATION — Base & Brand
    ══════════════════════════════════════════════════ */
 :root {
-  --color-base-white: #FFFFFF;
-  --color-base-black: #000000;
-  --color-brand-blue: #0072CE;
-  --color-brand-red : #FF312C;
-  --color-brand-gray: #DFDEDE;
-  --color-brand-ci  : #004097; /* CI·로고 전용. UI 직접 사용 금지 */
+  --color-base-white  : #FFFFFF;
+  --color-base-black  : #000000;
+  --color-base-home-bg: #F5F6FB;
+  --color-brand-blue  : #0072CE;
+  --color-brand-red   : #FF312C;
+  --color-brand-gray  : #DFDEDE;
+  --color-brand-ci    : #004097; /* CI·로고 전용. UI 직접 사용 금지 */
 }
 
 
@@ -415,16 +416,8 @@
    SEMANTIC TOKENS — Light (Variables 기준 자동 생성)
    ══════════════════════════════════════════════════ */
 :root {
-  /* ── bg ── */
-  --color-bg-level-0: var(--color-base-white);
-  --color-bg-level-1: var(--color-gray-0);
-  --color-bg-level-2: var(--color-gray-50);
-  --color-bg-level-3: var(--color-gray-100);
-
-  /* ── surface ── */
-  --color-surface-raised: var(--color-base-white);
-
   /* ── button ── */
+  --color-button-border-focus             : var(--color-blue-400);
   --color-button-bg-blue-line--default    : var(--color-base-white);
   --color-button-bg-blue-line--hover      : var(--color-blue-50);
   --color-button-bg-disabled              : var(--color-gray-50);
@@ -446,6 +439,16 @@
   --color-button-label-primary--hover     : var(--color-base-white);
   --color-button-label-secondary--default : var(--color-gray-800);
   --color-button-label-secondary--hover   : var(--color-gray-800);
+
+  /* ── bg ── */
+  --color-bg-level-0: var(--color-base-white);
+  --color-bg-level-1: var(--color-gray-0);
+  --color-bg-level-2: var(--color-gray-50);
+  --color-bg-level-3: var(--color-gray-100);
+  --color-bg-home   : var(--color-base-home-bg);
+
+  /* ── surface ── */
+  --color-surface-raised: var(--color-base-white);
 
   /* ── chip ── */
   --color-chip-line-bg-default        : var(--color-base-white);
@@ -504,25 +507,26 @@
   --color-dropdown-option-label-selected: var(--color-blue-400);
 
   /* ── form-control ── */
-  --color-form-control-bg-default      : var(--color-base-white);
-  --color-form-control-bg-disabled     : var(--color-gray-50);
-  --color-form-control-bg-hover        : var(--color-gray-0);
-  --color-form-control-bg-selected     : var(--color-base-white);
-  --color-form-control-border-correct  : var(--color-blue-400);
-  --color-form-control-border-default  : var(--color-gray-200);
-  --color-form-control-border-disabled : var(--color-gray-100);
-  --color-form-control-border-error    : var(--color-red-300);
-  --color-form-control-border-selected : var(--color-blue-400);
-  --color-form-control-label-default   : var(--color-gray-800);
-  --color-form-control-label-disabled  : var(--color-gray-300);
-  --color-form-control-text-default    : var(--color-gray-800);
-  --color-form-control-text-disabled   : var(--color-gray-300);
-  --color-form-control-text-placeholder: var(--color-gray-500);
-  --color-form-control-text-selected   : var(--color-gray-900);
-  --color-form-control-icon-default    : var(--color-gray-800);
-  --color-form-control-icon-disabled   : var(--color-gray-300);
-  --color-form-control-text-cursor     : var(--color-blue-400);
-  --color-form-control-text-read-only  : var(--color-gray-500);
+  --color-form-control-bg-default         : var(--color-base-white);
+  --color-form-control-bg-disabled        : var(--color-gray-50);
+  --color-form-control-bg-hover           : var(--color-gray-0);
+  --color-form-control-bg-selected        : var(--color-base-white);
+  --color-form-control-border-correct     : var(--color-blue-400);
+  --color-form-control-border-default     : var(--color-gray-200);
+  --color-form-control-border-disabled    : var(--color-gray-100);
+  --color-form-control-border-error       : var(--color-red-300);
+  --color-form-control-border-selected    : var(--color-blue-400);
+  --color-form-control-action-border-focus: var(--color-blue-400);
+  --color-form-control-label-default      : var(--color-gray-800);
+  --color-form-control-label-disabled     : var(--color-gray-300);
+  --color-form-control-text-default       : var(--color-gray-800);
+  --color-form-control-text-disabled      : var(--color-gray-300);
+  --color-form-control-text-placeholder   : var(--color-gray-500);
+  --color-form-control-text-selected      : var(--color-gray-900);
+  --color-form-control-icon-default       : var(--color-gray-800);
+  --color-form-control-icon-disabled      : var(--color-gray-300);
+  --color-form-control-text-cursor        : var(--color-blue-400);
+  --color-form-control-text-read-only     : var(--color-gray-500);
 
   /* ── icon ── */
   --color-icon-blue      : var(--color-blue-400);
@@ -632,18 +636,10 @@
    SEMANTIC TOKENS — Dark (Variables 기준 자동 생성)
    ══════════════════════════════════════════════════ */
 [data-theme="dark"] {
-  /* ── bg ── */
-  --color-bg-level-0: var(--color-gray-dark-0);
-  --color-bg-level-1: var(--color-gray-dark-50);
-  --color-bg-level-2: var(--color-gray-dark-100);
-  --color-bg-level-3: var(--color-gray-dark-200);
-
-  /* ── surface ── */
-  --color-surface-raised: var(--color-gray-dark-100);
-
   /* ── button ── */
+  --color-button-border-focus             : var(--color-blue-dark-300);
   --color-button-bg-blue-line--default    : var(--color-gray-dark-100);
-  --color-button-bg-blue-line--hover      : var(--color-gray-dark-200);
+  --color-button-bg-blue-line--hover      : var(--color-blue-dark-50);
   --color-button-bg-disabled              : var(--color-gray-dark-300);
   --color-button-bg-primary--default      : var(--color-blue-dark-300);
   --color-button-bg-primary--hover        : var(--color-blue-dark-250);
@@ -663,6 +659,16 @@
   --color-button-label-primary--hover     : var(--color-base-white);
   --color-button-label-secondary--default : var(--color-gray-dark-800);
   --color-button-label-secondary--hover   : var(--color-gray-dark-800);
+
+  /* ── bg ── */
+  --color-bg-level-0: var(--color-gray-dark-0);
+  --color-bg-level-1: var(--color-gray-dark-50);
+  --color-bg-level-2: var(--color-gray-dark-100);
+  --color-bg-level-3: var(--color-gray-dark-200);
+  --color-bg-home   : var(--color-blue-dark-50);
+
+  /* ── surface ── */
+  --color-surface-raised: var(--color-gray-dark-100);
 
   /* ── chip ── */
   --color-chip-line-bg-default        : var(--color-gray-dark-100);
@@ -721,25 +727,26 @@
   --color-dropdown-option-label-selected: var(--color-blue-dark-350);
 
   /* ── form-control ── */
-  --color-form-control-bg-default      : var(--color-gray-dark-100);
-  --color-form-control-bg-disabled     : var(--color-gray-dark-200);
-  --color-form-control-bg-hover        : var(--color-gray-dark-200);
-  --color-form-control-bg-selected     : var(--color-gray-dark-200);
-  --color-form-control-border-correct  : var(--color-blue-dark-350);
-  --color-form-control-border-default  : var(--color-gray-dark-500);
-  --color-form-control-border-disabled : var(--color-gray-dark-200);
-  --color-form-control-border-error    : var(--color-red-dark-350);
-  --color-form-control-border-selected : var(--color-blue-dark-350);
-  --color-form-control-label-default   : var(--color-gray-dark-800);
-  --color-form-control-label-disabled  : var(--color-gray-dark-600);
-  --color-form-control-text-default    : var(--color-gray-dark-800);
-  --color-form-control-text-disabled   : var(--color-gray-dark-600);
-  --color-form-control-text-placeholder: var(--color-gray-dark-600);
-  --color-form-control-text-selected   : var(--color-gray-dark-800);
-  --color-form-control-icon-default    : var(--color-gray-dark-700);
-  --color-form-control-icon-disabled   : var(--color-gray-dark-500);
-  --color-form-control-text-cursor     : var(--color-blue-dark-350);
-  --color-form-control-text-read-only  : var(--color-gray-dark-700);
+  --color-form-control-bg-default         : var(--color-gray-dark-100);
+  --color-form-control-bg-disabled        : var(--color-gray-dark-200);
+  --color-form-control-bg-hover           : var(--color-gray-dark-200);
+  --color-form-control-bg-selected        : var(--color-gray-dark-200);
+  --color-form-control-border-correct     : var(--color-blue-dark-350);
+  --color-form-control-border-default     : var(--color-gray-dark-500);
+  --color-form-control-border-disabled    : var(--color-gray-dark-200);
+  --color-form-control-border-error       : var(--color-red-dark-350);
+  --color-form-control-border-selected    : var(--color-blue-dark-350);
+  --color-form-control-action-border-focus: var(--color-blue-dark-350);
+  --color-form-control-label-default      : var(--color-gray-dark-800);
+  --color-form-control-label-disabled     : var(--color-gray-dark-600);
+  --color-form-control-text-default       : var(--color-gray-dark-800);
+  --color-form-control-text-disabled      : var(--color-gray-dark-600);
+  --color-form-control-text-placeholder   : var(--color-gray-dark-600);
+  --color-form-control-text-selected      : var(--color-gray-dark-800);
+  --color-form-control-icon-default       : var(--color-gray-dark-700);
+  --color-form-control-icon-disabled      : var(--color-gray-dark-500);
+  --color-form-control-text-cursor        : var(--color-blue-dark-350);
+  --color-form-control-text-read-only     : var(--color-gray-dark-700);
 
   /* ── icon ── */
   --color-icon-blue      : var(--color-blue-dark-300);
