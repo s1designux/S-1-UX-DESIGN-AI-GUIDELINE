@@ -22,6 +22,8 @@ S-1 디자인 시스템을 AI 에이전트와 개발자가 시각적으로 정�
 | `assets/css/typography.css` | 타이포그래피 토큰 |
 | `data/icons.json` | 아이콘 목록과 메타데이터 |
 | `pages/components.html` | PC 컴포넌트의 실제 시각·JavaScript 참고 화면 |
+| `ui-library/src/components/*.js` | 동작 계약이 근거로 지목한 실제 컴포넌트 JavaScript |
+| `CHANGELOG.md` | 언제 무엇이 갱신됐는지 남기는 업데이트 이력 |
 
 ## 사용 원칙
 
@@ -55,9 +57,11 @@ npm test
 
 GitHub Actions가 매일 한국 시간 오전 3시 15분에 원본 저장소의 최신 자료를 확인합니다. 새 자료는 PC 동작 검사를 통과한 경우에만 자동 커밋됩니다. GitHub의 `Actions` 화면에서 `Sync from S-1 Design System`을 선택하면 필요할 때 즉시 실행할 수도 있습니다.
 
+갱신 시각과 바뀐 파일 목록은 [`CHANGELOG.md`](CHANGELOG.md)에 한국 시간으로 쌓입니다. 지금 내려받은 자료가 원본의 어느 시점인지는 [`SOURCE.json`](SOURCE.json)의 `syncedAt`·`sourceCommitDate`에서 확인할 수 있습니다. 바뀐 내용이 없는 날에는 이력도 커밋도 남기지 않습니다.
+
 ## 원본
 
 - Source repository: https://github.com/s1designux/S1-UX-DESIGN-with-AI
-- Source commit: `adb436db04982be41810493620ec4ce028bdba96`
+- Source commit: `SOURCE.json` 의 `commit` 값이 항상 최신 기준입니다.
 
 이 저장소를 공개해서 볼 수 있다는 사실만으로 별도의 상업적 사용 권한이나 재배포 권한이 부여되지는 않습니다.

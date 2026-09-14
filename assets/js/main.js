@@ -19,6 +19,10 @@ const SITE_NAV = [
      다시 켜려면 아래 한 줄의 주석을 해제하면 됩니다.)
   { type: 'item', id: 'layer-policy', href: 'layer-policy.html', rootHref: 'pages/layer-policy.html', icon: '🗂', text: 'Layer Policy', status: 'ready' }, */
   { type: 'item', id: 'components-pc', href: 'components.html?platform=pc', rootHref: 'pages/components.html?platform=pc', icon: '🖥', text: 'PC Components', status: 'ready' },
+  /* PC Components (archive) (2026-09-01 메뉴에서 숨김 — components.html 업데이트 중 백업용이라 일반 사용자에게 노출할 필요 없음.
+     파일/route(pages/components-archive.html)는 그대로 보존 → 직접 URL 접근 가능.
+     다시 켜려면 아래 한 줄의 주석을 해제하면 됩니다.)
+  { type: 'item', id: 'components-pc-archive', href: 'components-archive.html?platform=pc', rootHref: 'pages/components-archive.html?platform=pc', icon: '📦', text: 'PC Components (archive)', status: 'ready' }, */
   { type: 'item', id: 'components-mobile', href: 'components.html?platform=mobile', rootHref: 'pages/components.html?platform=mobile', icon: '📱', text: 'Mobile Components', status: 'ready' },
   { type: 'item', id: 'icons', href: 'icons.html', rootHref: 'pages/icons.html', icon: '✦', text: 'Icons', status: 'ready' },
   { type: 'item', id: 'patterns', href: 'patterns.html', rootHref: 'pages/patterns.html', icon: '📐', text: 'Patterns', status: 'ready' },

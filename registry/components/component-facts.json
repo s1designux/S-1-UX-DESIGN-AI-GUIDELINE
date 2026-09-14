@@ -3,7 +3,7 @@
     "generated": true,
     "source": "plugins/figma-vars-installer/src/build-components.ts",
     "method": "mock-execution",
-    "sourceHash": "cb50972e0107",
+    "sourceHash": "a2e5dc255926",
     "unknownValuePolicy": [
       "unknown",
       "not-defined",
@@ -20,6 +20,7 @@
       "clock",
       "close",
       "eye",
+      "eye_show",
       "globe",
       "home",
       "menu",
@@ -27,6 +28,9 @@
       "mobileHeaderBack",
       "mobileHeaderClose",
       "mobileHeaderNotification",
+      "navNotification",
+      "navSearch",
+      "navSettings",
       "remove",
       "search"
     ]
@@ -269,6 +273,7 @@
       "tokenBindings": [
         "color/bg/level-0",
         "color/bg/level-3",
+        "color/icon/blue",
         "color/line/gray/subtle",
         "color/scroll/bg",
         "color/text/body/secondary"
@@ -526,10 +531,10 @@
         }
       ],
       "anatomy": [
+        "Menus",
         "border",
         "language=on, menu=on, user=on",
-        "leading",
-        "menus"
+        "leading"
       ],
       "tokenBindings": [
         "color/line/gray/subtle",
@@ -544,10 +549,128 @@
         "buildDependencies": [
           "GNB Utility Icon"
         ]
+      },
+      "slots": [
+        "Menus"
+      ]
+    },
+    "GNB Sub Menu Item": {
+      "variantAxes": {
+        "Depth": [
+          "1depth",
+          "2depth"
+        ],
+        "State": [
+          "Default",
+          "Hover",
+          "Selected"
+        ]
+      },
+      "geometry": [
+        {
+          "when": "all",
+          "target": "root",
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "counterAxisAlignItems": "CENTER"
+        }
+      ],
+      "anatomy": [],
+      "tokenBindings": [
+        "color/navigation/label/default",
+        "color/navigation/label/selected",
+        "color/navigation/submenu/label/default"
+      ],
+      "composition": {
+        "buildDependencies": []
       }
+    },
+    "GNB Sub Menu": {
+      "variantAxes": {
+        "Type": [
+          "regular",
+          "compact-1",
+          "compact-2"
+        ]
+      },
+      "geometry": [
+        {
+          "when": {
+            "Type": "regular"
+          },
+          "target": "root",
+          "width": 1920,
+          "height": 100,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "AUTO",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "MIN",
+          "itemSpacing": "0",
+          "paddingTop": "spacing/32",
+          "paddingRight": "spacing/24",
+          "paddingBottom": "spacing/64",
+          "paddingLeft": "spacing/24",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Type": [
+              "compact-1",
+              "compact-2"
+            ]
+          },
+          "target": "root",
+          "width": 1920,
+          "height": 100,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "AUTO",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "MIN",
+          "itemSpacing": "0",
+          "paddingTop": "spacing/24",
+          "paddingRight": "spacing/24",
+          "paddingBottom": "spacing/24",
+          "paddingLeft": "spacing/24",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        }
+      ],
+      "anatomy": [
+        "Columns"
+      ],
+      "tokenBindings": [
+        "color/line/gray/subtle",
+        "color/navigation/bg",
+        "color/navigation/label/default",
+        "color/navigation/label/selected",
+        "color/navigation/submenu/label/default",
+        "spacing/20",
+        "spacing/24",
+        "spacing/32",
+        "spacing/64",
+        "spacing/80"
+      ],
+      "composition": {
+        "buildDependencies": [
+          "GNB Sub Menu Item"
+        ]
+      },
+      "slots": [
+        "Columns"
+      ]
     },
     "Mobile Bottom Nav": {
       "variantAxes": {
+        "icon": [
+          "home",
+          "search",
+          "notification",
+          "settings"
+        ],
         "state": [
           "unselected",
           "selected"
@@ -568,7 +691,10 @@
         }
       ],
       "anatomy": [
-        "home"
+        "home",
+        "navNotification",
+        "navSearch",
+        "navSettings"
       ],
       "tokenBindings": [
         "color/navigation/label/default",
@@ -582,19 +708,38 @@
       "variantAxes": {
         "Type": [
           "Home / Title",
+          "Home / Title + 1 Icon",
           "Home / Title + Subtitle + 1 Icon",
           "Standard / Title",
           "Standard / Title + Close",
           "Standard / No Title",
           "Standard / No Title + Close"
+        ],
+        "Platform": [
+          "App",
+          "Web"
         ]
       },
       "geometry": [
         {
-          "when": "all",
+          "when": {
+            "Platform": "App"
+          },
           "target": "root",
           "width": 360,
           "height": 99,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "itemSpacing": "16"
+        },
+        {
+          "when": {
+            "Platform": "Web"
+          },
+          "target": "root",
+          "width": 360,
+          "height": 149,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -603,11 +748,12 @@
       ],
       "anatomy": [
         "AppBar",
-        "StatusBar / Platform=App"
+        "StatusBar"
       ],
       "tokenBindings": [
         "color/bg/home",
         "color/bg/level-0",
+        "color/bg/level-2",
         "color/icon/gray-dark",
         "color/text/body/secondary",
         "color/text/body/tertiary",
@@ -754,9 +900,7 @@
         }
       ],
       "anatomy": [
-        "tab-1",
-        "tab-2",
-        "tab-3"
+        "Tabs"
       ],
       "tokenBindings": [
         "color/navigation/indicator/default",
@@ -768,7 +912,10 @@
         "buildDependencies": [
           "Line Tab"
         ]
-      }
+      },
+      "slots": [
+        "Tabs"
+      ]
     },
     "Pagination Cell": {
       "variantAxes": {
@@ -1024,12 +1171,9 @@
           "strokeAlign": "INSIDE"
         }
       ],
-      "anatomy": [
-        "button-focus-ring"
-      ],
+      "anatomy": [],
       "tokenBindings": [
         "border-width/1",
-        "border-width/2",
         "color/button/bg/blue-line--default",
         "color/button/bg/blue-line--hover",
         "color/button/bg/disabled",
@@ -1040,7 +1184,6 @@
         "color/button/border/blue-line--default",
         "color/button/border/blue-line--hover",
         "color/button/border/disabled",
-        "color/button/border/focus",
         "color/button/border/primary--default",
         "color/button/border/primary--hover",
         "color/button/border/secondary--default",
@@ -1053,9 +1196,93 @@
         "color/button/label/secondary--default",
         "color/button/label/secondary--hover",
         "radius/4",
-        "radius/8",
         "spacing/16",
         "spacing/8"
+      ],
+      "composition": {
+        "buildDependencies": []
+      }
+    },
+    "Assist Button": {
+      "variantAxes": {
+        "State": [
+          "Default",
+          "Hover",
+          "Pressed",
+          "Disabled"
+        ]
+      },
+      "geometry": [
+        {
+          "when": "all",
+          "target": "root",
+          "width": 60,
+          "height": 32,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": "0",
+          "paddingRight": "spacing/12",
+          "paddingBottom": "0",
+          "paddingLeft": "spacing/12",
+          "minWidth": "60",
+          "topLeftRadius": "radius/4",
+          "topRightRadius": "radius/4",
+          "bottomLeftRadius": "radius/4",
+          "bottomRightRadius": "radius/4",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        }
+      ],
+      "anatomy": [],
+      "tokenBindings": [
+        "color/button/bg/disabled",
+        "color/button/bg/secondary--default",
+        "color/button/bg/secondary--hover",
+        "color/button/border/assist--hover",
+        "color/button/border/disabled",
+        "color/button/border/secondary--default",
+        "color/button/label/assist--default",
+        "color/button/label/assist--hover",
+        "color/button/label/disabled",
+        "radius/4",
+        "spacing/12"
+      ],
+      "composition": {
+        "buildDependencies": []
+      }
+    },
+    "Text Button": {
+      "variantAxes": {
+        "Variant": [
+          "Primary",
+          "Secondary"
+        ],
+        "State": [
+          "Default",
+          "Hover",
+          "Pressed",
+          "Disabled"
+        ]
+      },
+      "geometry": [
+        {
+          "when": "all",
+          "target": "root",
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER"
+        }
+      ],
+      "anatomy": [],
+      "tokenBindings": [
+        "color/text/body/tertiary",
+        "color/text/state/accent",
+        "color/text/state/disabled"
       ],
       "composition": {
         "buildDependencies": []
@@ -1461,20 +1688,7 @@
         }
       ],
       "anatomy": [
-        "position=first, state=default, size=md",
-        "position=first, state=default, size=sm",
-        "position=first, state=selected, size=md",
-        "position=first, state=selected, size=sm",
-        "position=last, state=default, size=md",
-        "position=last, state=default, size=sm",
-        "position=last, state=selected, size=md",
-        "position=last, state=selected, size=sm",
-        "position=middle-left, state=default, size=md",
-        "position=middle-left, state=default, size=sm",
-        "position=middle-left, state=selected, size=md",
-        "position=middle-left, state=selected, size=sm",
-        "position=middle-right, state=default, size=md",
-        "position=middle-right, state=default, size=sm"
+        "Items"
       ],
       "tokenBindings": [
         "color/button/bg/primary--default",
@@ -1488,7 +1702,10 @@
         "buildDependencies": [
           "Multi Toggle Element"
         ]
-      }
+      },
+      "slots": [
+        "Items"
+      ]
     },
     "Dropdown List": {
       "variantAxes": {
@@ -1515,7 +1732,7 @@
             "Type": "Text"
           },
           "target": "root",
-          "width": 140,
+          "width": 100,
           "height": 28,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -1533,7 +1750,7 @@
             "Type": "Checkbox"
           },
           "target": "root",
-          "width": 140,
+          "width": 100,
           "height": 28,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -1551,7 +1768,7 @@
             "Type": "Checkbox+All"
           },
           "target": "root",
-          "width": 140,
+          "width": 100,
           "height": 28,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
@@ -1568,7 +1785,7 @@
             "Type": "Text"
           },
           "target": "root",
-          "width": 140,
+          "width": 100,
           "height": 34,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -1586,7 +1803,7 @@
             "Type": "Checkbox"
           },
           "target": "root",
-          "width": 140,
+          "width": 100,
           "height": 34,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -1604,7 +1821,7 @@
             "Type": "Checkbox+All"
           },
           "target": "root",
-          "width": 140,
+          "width": 100,
           "height": 34,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
@@ -1621,7 +1838,7 @@
             "Type": "Text"
           },
           "target": "root",
-          "width": 140,
+          "width": 100,
           "height": 44,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -1639,7 +1856,7 @@
             "Type": "Checkbox"
           },
           "target": "root",
-          "width": 140,
+          "width": 100,
           "height": 44,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -1657,7 +1874,7 @@
             "Type": "Checkbox+All"
           },
           "target": "root",
-          "width": 140,
+          "width": 100,
           "height": 44,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "FIXED",
@@ -1714,7 +1931,7 @@
             "Size": "XXSM"
           },
           "target": "root",
-          "width": 140,
+          "width": 100,
           "height": 120,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "AUTO",
@@ -1731,7 +1948,7 @@
             "Size": "XSM"
           },
           "target": "root",
-          "width": 140,
+          "width": 100,
           "height": 144,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "AUTO",
@@ -1748,7 +1965,7 @@
             "Size": "MD"
           },
           "target": "root",
-          "width": 140,
+          "width": 100,
           "height": 184,
           "layoutMode": "VERTICAL",
           "primaryAxisSizingMode": "AUTO",
@@ -1762,7 +1979,7 @@
         }
       ],
       "anatomy": [
-        "ddl-row"
+        "Options"
       ],
       "tokenBindings": [
         "color/control/bg/default",
@@ -1782,7 +1999,10 @@
         "buildDependencies": [
           "Dropdown List"
         ]
-      }
+      },
+      "slots": [
+        "Options"
+      ]
     },
     "Chip": {
       "variantAxes": {
@@ -1908,7 +2128,7 @@
         "State": [
           "Default",
           "Filled",
-          "Editing",
+          "Focus",
           "Error",
           "Correct",
           "Read-Only",
@@ -2001,7 +2221,7 @@
           "primaryAxisAlignItems": "MIN",
           "counterAxisAlignItems": "CENTER",
           "paddingTop": "0",
-          "paddingRight": "12",
+          "paddingRight": "0",
           "paddingBottom": "0",
           "paddingLeft": "16",
           "cornerRadius": "4",
@@ -2013,8 +2233,6 @@
         "field"
       ],
       "tokenBindings": [
-        "border-width/2",
-        "color/form-control/action/border/focus",
         "color/form-control/bg/default",
         "color/form-control/bg/disabled",
         "color/form-control/bg/hover",
@@ -2042,25 +2260,29 @@
     },
     "Search Input": {
       "variantAxes": {
-        "State": [
-          "Default",
-          "Focus",
-          "Filled",
-          "Disabled"
-        ],
         "Size": [
           "XXSM",
           "XSM",
           "MD"
+        ],
+        "State": [
+          "Default",
+          "Filled",
+          "Disabled"
+        ],
+        "Break": [
+          "PC",
+          "Mobile"
         ]
       },
       "geometry": [
         {
           "when": {
-            "Size": "XXSM"
+            "Size": "XXSM",
+            "Break": "PC"
           },
           "target": "root",
-          "width": 160,
+          "width": 200,
           "height": 28,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -2071,16 +2293,18 @@
           "paddingRight": "8",
           "paddingBottom": "0",
           "paddingLeft": "12",
+          "minWidth": "200",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
         },
         {
           "when": {
-            "Size": "XSM"
+            "Size": "XSM",
+            "Break": "PC"
           },
           "target": "root",
-          "width": 160,
+          "width": 200,
           "height": 34,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -2091,16 +2315,18 @@
           "paddingRight": "8",
           "paddingBottom": "0",
           "paddingLeft": "12",
+          "minWidth": "200",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
         },
         {
           "when": {
-            "Size": "MD"
+            "Size": "MD",
+            "Break": "PC"
           },
           "target": "root",
-          "width": 160,
+          "width": 200,
           "height": 44,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -2111,28 +2337,48 @@
           "paddingRight": "12",
           "paddingBottom": "0",
           "paddingLeft": "16",
+          "minWidth": "200",
+          "cornerRadius": "4",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Size": "MD",
+            "Break": "Mobile"
+          },
+          "target": "root",
+          "width": 200,
+          "height": 48,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "SPACE_BETWEEN",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": "0",
+          "paddingRight": "0",
+          "paddingBottom": "0",
+          "paddingLeft": "16",
+          "minWidth": "200",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
         }
       ],
       "anatomy": [
-        "lead",
-        "search",
+        "search-action",
         "trail"
       ],
       "tokenBindings": [
         "color/form-control/bg/default",
         "color/form-control/bg/disabled",
-        "color/form-control/bg/selected",
+        "color/form-control/bg/hover",
         "color/form-control/border/default",
         "color/form-control/border/disabled",
-        "color/form-control/border/selected",
-        "color/form-control/text-cursor",
         "color/form-control/text/default",
         "color/form-control/text/disabled",
         "color/form-control/text/placeholder",
-        "color/form-control/text/selected"
+        "radius/4"
       ],
       "composition": {
         "buildDependencies": []
@@ -2320,10 +2566,17 @@
         "buildDependencies": [
           "Dropdown"
         ]
-      }
+      },
+      "slots": [
+        "Options"
+      ]
     },
     "Calendar Cell": {
       "variantAxes": {
+        "Size": [
+          "MD",
+          "SM"
+        ],
         "Type": [
           "Standard",
           "Range"
@@ -2333,6 +2586,7 @@
           "Hover",
           "Today",
           "Selected",
+          "Selected Hover",
           "Disabled",
           "Start",
           "End"
@@ -2340,10 +2594,25 @@
       },
       "geometry": [
         {
-          "when": "all",
+          "when": {
+            "Size": "MD"
+          },
           "target": "root",
           "width": 44,
           "height": 44,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER"
+        },
+        {
+          "when": {
+            "Size": "SM"
+          },
+          "target": "root",
+          "width": 33,
+          "height": 33,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -2359,6 +2628,7 @@
         "color/date-picker/cell/bg/hover",
         "color/date-picker/cell/bg/range",
         "color/date-picker/cell/bg/selected",
+        "color/date-picker/cell/bg/selected-hover",
         "color/date-picker/cell/bg/today",
         "color/date-picker/cell/border/today",
         "color/date-picker/text/disabled",
@@ -2373,6 +2643,10 @@
     },
     "Calendar Tile": {
       "variantAxes": {
+        "Size": [
+          "MD",
+          "SM"
+        ],
         "State": [
           "Default",
           "Hover",
@@ -2382,10 +2656,28 @@
       },
       "geometry": [
         {
-          "when": "all",
+          "when": {
+            "Size": "MD"
+          },
           "target": "root",
           "width": 88,
           "height": 56,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "cornerRadius": "4",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Size": "SM"
+          },
+          "target": "root",
+          "width": 68,
+          "height": 40,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
@@ -2417,6 +2709,10 @@
     },
     "Calendar": {
       "variantAxes": {
+        "Size": [
+          "MD",
+          "SM"
+        ],
         "State": [
           "Date",
           "Year",
@@ -2425,7 +2721,9 @@
       },
       "geometry": [
         {
-          "when": "all",
+          "when": {
+            "Size": "MD"
+          },
           "target": "root",
           "width": 356,
           "height": 352,
@@ -2439,6 +2737,53 @@
           "paddingRight": "24",
           "paddingBottom": "20",
           "paddingLeft": "24",
+          "cornerRadius": "4",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Size": "SM",
+            "State": "Date"
+          },
+          "target": "root",
+          "width": 267,
+          "height": 266,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "0",
+          "paddingTop": "16",
+          "paddingRight": "18",
+          "paddingBottom": "16",
+          "paddingLeft": "18",
+          "cornerRadius": "4",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Size": "SM",
+            "State": [
+              "Year",
+              "Month"
+            ]
+          },
+          "target": "root",
+          "width": 267,
+          "height": 276,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "0",
+          "paddingTop": "16",
+          "paddingRight": "18",
+          "paddingBottom": "20",
+          "paddingLeft": "18",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
@@ -2639,9 +2984,7 @@
       ],
       "tokenBindings": [
         "border-width/1",
-        "border-width/2",
         "color/button/bg/primary--default",
-        "color/button/border/focus",
         "color/button/border/primary--default",
         "color/button/label/primary--default",
         "color/date-picker/cell/bg/selected",
@@ -2656,7 +2999,6 @@
         "color/surface/raised",
         "color/text/title/primary",
         "radius/4",
-        "radius/8",
         "radius/full",
         "spacing/16"
       ],
@@ -2794,6 +3136,10 @@
         "Break": [
           "PC",
           "Mobile"
+        ],
+        "Type": [
+          "24h",
+          "12h"
         ]
       },
       "geometry": [
@@ -2951,9 +3297,7 @@
       ],
       "tokenBindings": [
         "border-width/1",
-        "border-width/2",
         "color/button/bg/primary--default",
-        "color/button/border/focus",
         "color/button/border/primary--default",
         "color/button/label/primary--default",
         "color/navigation/indicator/default",
@@ -2965,7 +3309,6 @@
         "color/text/state/accent",
         "color/text/title/primary",
         "radius/4",
-        "radius/8",
         "spacing/16"
       ],
       "composition": {
@@ -2978,6 +3321,7 @@
     "Table Cell": {
       "variantAxes": {
         "Size": [
+          "XSM",
           "SM",
           "MD"
         ],
@@ -2989,9 +3333,21 @@
           "Default",
           "Hover",
           "Selected"
+        ],
+        "Align": [
+          "Left",
+          "Center"
         ]
       },
       "geometry": [
+        {
+          "when": {
+            "Size": "XSM"
+          },
+          "target": "root",
+          "width": 130,
+          "height": 34
+        },
         {
           "when": {
             "Size": "SM"
@@ -3027,7 +3383,8 @@
       "variantAxes": {
         "Size": [
           "MD",
-          "SM"
+          "SM",
+          "XSM"
         ]
       },
       "geometry": [
@@ -3046,6 +3403,14 @@
           "target": "root",
           "width": 828,
           "height": 386
+        },
+        {
+          "when": {
+            "Size": "XSM"
+          },
+          "target": "root",
+          "width": 828,
+          "height": 350
         }
       ],
       "anatomy": [
@@ -3112,10 +3477,6 @@
               "Text",
               "Checkbox",
               "Radio"
-            ],
-            "State": [
-              "Default",
-              "Selected"
             ]
           },
           "target": "root",
@@ -3187,7 +3548,8 @@
         "color/surface/raised",
         "color/text/body/primary",
         "color/text/body/secondary",
-        "color/text/state/accent"
+        "color/text/state/accent",
+        "color/text/state/disabled"
       ],
       "composition": {
         "buildDependencies": [
@@ -3257,10 +3619,8 @@
       ],
       "tokenBindings": [
         "border-width/1",
-        "border-width/2",
         "color/button/bg/primary--default",
         "color/button/bg/secondary--default",
-        "color/button/border/focus",
         "color/button/border/primary--default",
         "color/button/border/secondary--default",
         "color/button/label/primary--default",
@@ -3270,7 +3630,6 @@
         "color/text/state/accent",
         "color/text/title/primary",
         "radius/4",
-        "radius/8",
         "spacing/16"
       ],
       "composition": {
@@ -3278,7 +3637,10 @@
           "Bottom Sheet Option",
           "Button"
         ]
-      }
+      },
+      "slots": [
+        "Content"
+      ]
     },
     "Modal": {
       "variantAxes": {
@@ -3345,10 +3707,8 @@
       ],
       "tokenBindings": [
         "border-width/1",
-        "border-width/2",
         "color/button/bg/primary--default",
         "color/button/bg/secondary--default",
-        "color/button/border/focus",
         "color/button/border/primary--default",
         "color/button/border/secondary--default",
         "color/button/label/primary--default",
@@ -3360,6 +3720,118 @@
         "radius/4",
         "radius/8",
         "spacing/16",
+        "spacing/8"
+      ],
+      "composition": {
+        "buildDependencies": [
+          "Button"
+        ]
+      },
+      "slots": [
+        "Content"
+      ]
+    },
+    "Modal Content": {
+      "variantAxes": {
+        "Size": [
+          "MD",
+          "LG",
+          "XL"
+        ],
+        "Footer": [
+          "Single",
+          "Dual"
+        ]
+      },
+      "geometry": [
+        {
+          "when": {
+            "Size": "MD"
+          },
+          "target": "root",
+          "width": 520,
+          "height": 336,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "32",
+          "paddingTop": "spacing/20",
+          "paddingBottom": "spacing/20",
+          "topLeftRadius": "radius/8",
+          "topRightRadius": "radius/8",
+          "bottomLeftRadius": "radius/8",
+          "bottomRightRadius": "radius/8",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Size": "LG"
+          },
+          "target": "root",
+          "width": 1000,
+          "height": 587,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "32",
+          "paddingTop": "spacing/20",
+          "paddingBottom": "spacing/20",
+          "topLeftRadius": "radius/8",
+          "topRightRadius": "radius/8",
+          "bottomLeftRadius": "radius/8",
+          "bottomRightRadius": "radius/8",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Size": "XL"
+          },
+          "target": "root",
+          "width": 1200,
+          "height": 587,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "32",
+          "paddingTop": "spacing/20",
+          "paddingBottom": "spacing/20",
+          "topLeftRadius": "radius/8",
+          "topRightRadius": "radius/8",
+          "bottomLeftRadius": "radius/8",
+          "bottomRightRadius": "radius/8",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        }
+      ],
+      "anatomy": [
+        "content",
+        "content-area",
+        "footer",
+        "header"
+      ],
+      "tokenBindings": [
+        "border-width/1",
+        "color/bg/level-3",
+        "color/button/bg/primary--default",
+        "color/button/bg/secondary--default",
+        "color/button/border/primary--default",
+        "color/button/border/secondary--default",
+        "color/button/label/primary--default",
+        "color/button/label/secondary--default",
+        "color/modal/panel/border",
+        "color/surface/raised",
+        "color/text/body/tertiary",
+        "color/text/title/primary",
+        "radius/4",
+        "radius/8",
+        "spacing/20",
+        "spacing/24",
+        "spacing/32",
         "spacing/8"
       ],
       "composition": {
@@ -3497,7 +3969,10 @@
         "buildDependencies": [
           "Dropdown"
         ]
-      }
+      },
+      "slots": [
+        "Options"
+      ]
     }
   }
 }

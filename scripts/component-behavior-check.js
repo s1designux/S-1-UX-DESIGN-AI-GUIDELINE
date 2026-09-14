@@ -20,8 +20,21 @@ for (const [name, contract] of Object.entries(doc.components || {})) {
   }
   const evidence = Array.isArray(source.sourceEvidence) ? source.sourceEvidence : [];
   if (!evidence.length) failures.push(`${name}: JavaScript/마크업 근거 없음`);
+  // 근거 파일: 기본은 PC 페이지, ui-library 배포본으로 이관된 컴포넌트는 source.sourceFile 이 실제 원본(ui-library/src)을 가리킨다.
+  // 검사 강도는 동일하다 — 근거 문자열은 여전히 실제 코드에 존재해야 한다.
+  const evidenceRel = source.sourceFile || PAGE_REL;
+  let evidenceText = page;
+  if (evidenceRel !== PAGE_REL) {
+    const evidencePath = path.join(ROOT, evidenceRel);
+    if (!fs.existsSync(evidencePath)) {
+      failures.push(`${name}: 근거 파일 없음 — ${evidenceRel}`);
+      evidenceText = '';
+    } else {
+      evidenceText = fs.readFileSync(evidencePath, 'utf8');
+    }
+  }
   for (const snippet of evidence) {
-    if (!page.includes(snippet)) failures.push(`${name}: 근거가 코드에서 사라짐 — ${snippet}`);
+    if (!evidenceText.includes(snippet)) failures.push(`${name}: 근거가 코드에서 사라짐 — ${snippet} (${evidenceRel})`);
   }
   if (!['verified', 'static'].includes(contract.status)) failures.push(`${name}: status는 verified/static만 허용`);
 }

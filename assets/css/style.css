@@ -20,6 +20,12 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+/* 다크에서 컨텐츠 영역 바탕이 라이트로 남아 그 위의 글자가 안 읽히던 것 교정.
+   사이드바·상단 헤더는 라이트 전용 색이 많아 손대지 않는다(건드리면 흰 면에 흰 글자가 남는다). */
+[data-theme="dark"] .page-content {
+  background: var(--color-bg-level-1);
+  color: var(--color-text-body-primary);
+}
 a { text-decoration: none; color: inherit; }
 button { cursor: pointer; font-family: inherit; }
 ul { list-style: none; }

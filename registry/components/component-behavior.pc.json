@@ -3,221 +3,620 @@
     "name": "S1 PC Component Behavior Contracts",
     "platform": "PC",
     "source": "pages/components.html?platform=pc",
-    "sourceOfTruth": "runtime JavaScript in pages/components.html",
+    "sourceOfTruth": "the code named by each component's source.sourceFile — pages/components.html runtime JavaScript by default, and ui-library/src/components/{id}/{id}.js for components migrated to the ui-library distribution.",
     "description": "PC UI 라이브러리의 실제 JavaScript를 AI가 소비할 수 있는 행동 계약으로 번역한 장부. sourceEvidence가 사라지면 component-behavior-check가 실패한다.",
     "unknownPolicy": "코드에 없는 keyboard/focus/a11y 동작은 not-defined로 유지한다."
   },
   "components": {
     "Button": {
-      "source": { "sectionId": "button", "sourceEvidence": ["function setupButtonActionTests()", "if (btn.disabled) return;", "count += 1;"] },
+      "source": {
+        "sectionId": "button",
+        "sourceEvidence": [
+          "function setupButtonActionTests()",
+          "if (btn.disabled) return;",
+          "count += 1;"
+        ]
+      },
       "status": "verified",
       "initialState": "enabled",
       "events": [
-        { "on": "click", "target": "button", "guard": "disabled=false", "result": "invoke the assigned action once" },
-        { "on": "click", "target": "button", "guard": "disabled=true", "result": "ignore the action" }
+        {
+          "on": "click",
+          "target": "button",
+          "guard": "disabled=false",
+          "result": "invoke the assigned action once"
+        },
+        {
+          "on": "click",
+          "target": "button",
+          "guard": "disabled=true",
+          "result": "ignore the action"
+        }
       ],
       "keyboard": "native-button",
       "focus": "native-button",
-      "accessibility": { "disabled": "use the native disabled attribute" }
+      "accessibility": {
+        "disabled": "use the native disabled attribute"
+      }
     },
     "Checkbox": {
-      "source": { "sectionId": "checkbox", "sourceEvidence": ["chkTarget.classList.toggle('is-checked')", "chkTarget.classList.contains('is-disabled')"] },
+      "source": {
+        "sectionId": "checkbox",
+        "sourceEvidence": [
+          "chkTarget.classList.toggle('is-checked')",
+          "chkTarget.classList.contains('is-disabled')"
+        ]
+      },
       "status": "verified",
       "initialState": "unchecked",
       "events": [
-        { "on": "click", "target": "checkbox", "guard": "disabled=false", "result": "toggle unchecked ↔ checked" },
-        { "on": "click", "target": "checkbox", "guard": "disabled=true", "result": "keep the current value" }
+        {
+          "on": "click",
+          "target": "checkbox",
+          "guard": "disabled=false",
+          "result": "toggle unchecked ↔ checked"
+        },
+        {
+          "on": "click",
+          "target": "checkbox",
+          "guard": "disabled=true",
+          "result": "keep the current value"
+        }
       ],
       "keyboard": "not-defined",
       "focus": "not-defined",
       "accessibility": "not-defined"
     },
     "Radio": {
-      "source": { "sectionId": "radio", "sourceEvidence": ["radioTarget.classList.toggle('is-selected')", "radioTarget.classList.contains('is-disabled')"] },
+      "source": {
+        "sectionId": "radio",
+        "sourceEvidence": [
+          "radioTarget.classList.toggle('is-selected')",
+          "radioTarget.classList.contains('is-disabled')"
+        ]
+      },
       "status": "verified",
       "initialState": "unselected",
       "events": [
-        { "on": "click", "target": "radio", "guard": "disabled=false", "result": "toggle unselected ↔ selected" },
-        { "on": "click", "target": "radio", "guard": "disabled=true", "result": "keep the current value" }
+        {
+          "on": "click",
+          "target": "radio",
+          "guard": "disabled=false",
+          "result": "toggle unselected ↔ selected"
+        },
+        {
+          "on": "click",
+          "target": "radio",
+          "guard": "disabled=true",
+          "result": "keep the current value"
+        }
       ],
       "keyboard": "not-defined",
       "focus": "not-defined",
       "accessibility": "not-defined"
     },
     "Toggle": {
-      "source": { "sectionId": "toggle", "sourceEvidence": ["togTarget.classList.toggle('is-on')", "togTarget.classList.contains('is-disabled')"] },
+      "source": {
+        "sectionId": "toggle",
+        "sourceEvidence": [
+          "togTarget.classList.toggle('is-on')",
+          "togTarget.classList.contains('is-disabled')"
+        ]
+      },
       "status": "verified",
       "initialState": "off",
       "events": [
-        { "on": "click", "target": "toggle", "guard": "disabled=false", "result": "toggle off ↔ on" },
-        { "on": "click", "target": "toggle", "guard": "disabled=true", "result": "keep the current value" }
+        {
+          "on": "click",
+          "target": "toggle",
+          "guard": "disabled=false",
+          "result": "toggle off ↔ on"
+        },
+        {
+          "on": "click",
+          "target": "toggle",
+          "guard": "disabled=true",
+          "result": "keep the current value"
+        }
       ],
       "keyboard": "not-defined",
       "focus": "not-defined",
       "accessibility": "not-defined"
     },
     "Multi Toggle": {
-      "source": { "sectionId": "multi-toggle", "sourceEvidence": ["function wireMultiToggle(el)", "cell.classList.add('is-selected')", "el.classList.contains('is-disabled')"] },
+      "source": {
+        "sectionId": "multi-toggle",
+        "sourceFile": "ui-library/src/components/multi-toggle/multi-toggle.js",
+        "sourceEvidence": [
+          "export function init(root)",
+          "cell.setAttribute(\"aria-checked\", String(checked));",
+          "cell.getAttribute(\"aria-disabled\") !== \"true\""
+        ]
+      },
       "status": "verified",
       "initialState": "one segment selected",
       "events": [
-        { "on": "click", "target": "segment", "guard": "disabled=false", "result": "select the clicked segment and unselect every sibling" },
-        { "on": "click", "target": "segment", "guard": "disabled=true", "result": "keep the current selection" }
+        {
+          "on": "click",
+          "target": "segment",
+          "guard": "disabled=false",
+          "result": "select the clicked segment and unselect every sibling"
+        },
+        {
+          "on": "click",
+          "target": "segment",
+          "guard": "disabled=true",
+          "result": "keep the current selection"
+        }
       ],
       "selection": "single",
-      "keyboard": "not-defined",
-      "focus": "not-defined",
-      "accessibility": "not-defined"
+      "keyboard": "ArrowLeft/ArrowRight·ArrowUp/ArrowDown move and select among enabled cells; Home/End jump; Enter/Space selects the focused cell",
+      "focus": "roving tabindex — only the selected cell is in the tab order; disabled cells are skipped",
+      "accessibility": {
+        "group": "role=radiogroup on the root, role=radio on each cell",
+        "selectedCell": "aria-checked=true on the selected cell and false on siblings",
+        "disabledCell": "aria-disabled=true is not selectable and is skipped by arrow keys"
+      }
     },
     "Chip": {
-      "source": { "sectionId": "chip", "sourceEvidence": ["function setupChipActionGroup(disabledAttr)", "c.classList.toggle('is-selected')", "c.classList.contains('is-disabled')"] },
+      "source": {
+        "sectionId": "chip",
+        "sourceEvidence": [
+          "function setupChipActionGroup(disabledAttr)",
+          "c.classList.toggle('is-selected')",
+          "c.classList.contains('is-disabled')"
+        ]
+      },
       "status": "verified",
       "initialState": "unselected",
       "events": [
-        { "on": "click", "target": "chip", "guard": "disabled=false", "result": "toggle unselected ↔ selected" },
-        { "on": "click", "target": "chip", "guard": "disabled=true", "result": "keep the current value" }
+        {
+          "on": "click",
+          "target": "chip",
+          "guard": "disabled=false",
+          "result": "toggle unselected ↔ selected"
+        },
+        {
+          "on": "click",
+          "target": "chip",
+          "guard": "disabled=true",
+          "result": "keep the current value"
+        }
       ],
       "keyboard": "not-defined",
       "focus": "not-defined",
       "accessibility": "not-defined"
     },
     "Filter Chip": {
-      "source": { "sectionId": "filter-chip", "sourceEvidence": ["function setupFilterChipGroup(disabledAttr)", "wrap.classList.toggle('is-open')", "wrap.querySelector('.ds-filter-chip-label').textContent = opt.textContent", "if (!wrap.contains(e.target)) wrap.classList.remove('is-open')"] },
+      "source": {
+        "sectionId": "filter-chip",
+        "sourceFile": "ui-library/src/components/filter-chip/filter-chip.js",
+        "sourceEvidence": [
+          "trigger.setAttribute(\"aria-expanded\", \"true\");",
+          "trigger.dataset.complete = \"true\";",
+          "if (event.key === \"Escape\"",
+          "syncAccessibleName(trigger, title, value);",
+          "export function destroy(root)"
+        ]
+      },
       "status": "verified",
       "initialState": "closed",
       "events": [
-        { "on": "click", "target": "trigger", "guard": "disabled=false", "result": "toggle closed ↔ open" },
-        { "on": "click", "target": "option", "result": "select one option, update the trigger label, and close" },
-        { "on": "click", "target": "outside", "result": "close" },
-        { "on": "disable", "target": "filter chip", "result": "close and block trigger clicks" }
+        {
+          "on": "click",
+          "target": "trigger",
+          "guard": "disabled=false",
+          "result": "toggle closed ↔ open and keep aria-expanded in sync"
+        },
+        {
+          "on": "click",
+          "target": "option",
+          "result": "select one option, update the trigger label, mark complete, and close"
+        },
+        {
+          "on": "keydown",
+          "target": "filter chip",
+          "result": "close on Escape and return focus to the trigger"
+        },
+        {
+          "on": "click",
+          "target": "outside",
+          "result": "close"
+        },
+        {
+          "on": "disable",
+          "target": "filter chip",
+          "result": "close and block trigger clicks"
+        }
       ],
       "selection": "single",
-      "keyboard": "not-defined",
-      "focus": "not-defined",
-      "accessibility": "not-defined"
+      "keyboard": "native button on the trigger (Enter/Space); Escape closes; option movement is owned by the Dropdown contract",
+      "focus": "move focus into the panel on open and return it to the trigger on close",
+      "accessibility": "aria-haspopup=listbox and aria-expanded on the trigger; the accessible name joins the title and the value (e.g. '정렬, 최신순'); complete is exposed as data-complete=true because no ARIA state matches"
     },
     "Input": {
-      "source": { "sectionId": "input", "sourceEvidence": ["function setupSearchInputField(root)", "function setupPasswordFieldInput(root)", "input.value = '';", "toggleBtn.setAttribute('aria-pressed'", "input.focus();"] },
+      "source": {
+        "sectionId": "input",
+        "sourceFile": "ui-library/src/components/input/input.js",
+        "sourceEvidence": [
+          "control.type = control.type === \"password\" ? \"text\" : \"password\"",
+          "passwordAction.setAttribute(\"aria-pressed\"",
+          "root.dispatchEvent(new CustomEvent(\"s1:input:search\"",
+          "event.key === \"Enter\" && !event.isComposing",
+          "control.value = \"\";"
+        ]
+      },
       "status": "verified",
       "initialState": "empty and unfocused",
       "events": [
-        { "on": "focus", "target": "input", "result": "enter editing/focus state" },
-        { "on": "blur", "target": "input", "result": "leave editing/focus state unless focus moves to a suffix action" },
-        { "on": "input", "target": "search or password input", "result": "show clear action only when a value exists" },
-        { "on": "click", "target": "clear action", "result": "clear the value, hide the clear action, and return focus to the input" },
-        { "on": "click", "target": "password visibility action", "result": "toggle password ↔ text and return focus to the input" }
+        {
+          "on": "focus",
+          "target": "input",
+          "result": "enter editing/focus state"
+        },
+        {
+          "on": "blur",
+          "target": "input",
+          "result": "leave editing/focus state unless focus moves to a suffix action"
+        },
+        {
+          "on": "input",
+          "target": "control",
+          "result": "refresh clear-action visibility (Base·Password: focus-within && value; Search: value only)"
+        },
+        {
+          "on": "click",
+          "target": "clear action",
+          "result": "clear the value, hide the clear action, and return focus to the input"
+        },
+        {
+          "on": "click",
+          "target": "password visibility action",
+          "result": "toggle password ↔ text, sync aria-pressed/aria-label, and return focus to the input"
+        },
+        {
+          "on": "click",
+          "target": "search action",
+          "result": "dispatch s1:input:search with the current value"
+        },
+        {
+          "on": "keydown Enter (control, data-mode=search only)",
+          "target": "search control",
+          "result": "dispatch s1:input:search unless the Enter is part of IME composition (isComposing)"
+        },
+        {
+          "on": "focusin",
+          "target": "input",
+          "result": "paint Selected border; move caret to the end only when focus did not come from a pointer"
+        }
       ],
       "keyboard": "native-input",
-      "focus": { "clear": "return to input", "passwordVisibility": "return to input" },
-      "accessibility": { "passwordVisibility": "synchronize aria-label and aria-pressed" }
+      "focus": {
+        "field": "keyboard focus paints the field border with the canonical Selected color (error·correct·read-only included)",
+        "caret": "keyboard (Tab) focus places the caret at the end of the value; pointer focus keeps the clicked position. A focus arriving within 500ms of the last pointerdown/pointerup on the component counts as pointer focus — do not change that window without re-verifying mobile tap, where focus arrives after the finger lifts.",
+        "disabled": "native disabled inputs are not focusable and are skipped in tab order",
+        "clear": "return to input",
+        "passwordVisibility": "return to input",
+        "search": "no focus change on search execute"
+      },
+      "accessibility": {
+        "passwordVisibility": "synchronize aria-label and aria-pressed",
+        "search": "search action is always visible; clear action visibility follows value presence only (not focus)"
+      }
     },
     "Text Area": {
-      "source": { "sectionId": "textarea", "sourceEvidence": ["textareaInput.addEventListener('focus'", "textareaInput.addEventListener('blur'", "textareaInput.setAttribute('readonly', '')"] },
+      "source": {
+        "sectionId": "textarea",
+        "sourceFile": "ui-library/src/components/textarea/textarea.js",
+        "sourceEvidence": [
+          "export const componentId = \"textarea\";",
+          "export const jsRequired = false;",
+          "export const runtime = null;"
+        ]
+      },
       "status": "verified",
       "initialState": "editable and unfocused",
       "events": [
-        { "on": "focus", "target": "textarea", "result": "enter focus state" },
-        { "on": "blur", "target": "textarea", "result": "leave focus state" },
-        { "on": "readonly", "target": "textarea", "result": "prevent value editing while preserving readable content" }
+        {
+          "on": "focus",
+          "target": "control",
+          "result": "native :focus-within styling; no runtime involved"
+        },
+        {
+          "on": "input",
+          "target": "control",
+          "result": "native value change; no runtime involved"
+        }
       ],
-      "keyboard": "native-textarea",
-      "focus": "native-textarea",
-      "accessibility": { "readonly": "use the native readonly attribute" }
+      "keyboard": "native textarea",
+      "focus": "native textarea",
+      "accessibility": {
+        "name": "a label element or aria-label on the control",
+        "readOnly": "the readonly attribute",
+        "disabled": "the disabled attribute"
+      },
+      "runtimeNote": "런타임 없음(jsRequired=false). 상태는 전부 네이티브 속성과 CSS 로 성립한다 — 2026-09-02 배포본 이관 후 사이트 인라인 JS 가 사라져 근거를 배포본 원본으로 옮겼다."
     },
     "Select Box": {
-      "source": { "sectionId": "select", "sourceEvidence": ["function wireActionSelect(selectEl)", "selectEl.classList.toggle('is-open')", "selectEl.classList.add('has-value')", "if (!selectEl.contains(e.target)) selectEl.classList.remove('is-open')"] },
+      "source": {
+        "sectionId": "select",
+        "sourceFile": "ui-library/src/components/select/select.js",
+        "sourceEvidence": [
+          "trigger.setAttribute(\"aria-expanded\", \"true\");",
+          "trigger.dataset.filled = \"true\";",
+          "if (event.key === \"Escape\"",
+          "if (!root.contains(event.target)) close({ returnFocus: false });",
+          "export function destroy(root)"
+        ]
+      },
       "status": "verified",
       "initialState": "closed without value",
       "events": [
-        { "on": "click", "target": "trigger", "guard": "disabled=false", "result": "toggle closed ↔ open" },
-        { "on": "click", "target": "option", "result": "select one option, update the trigger text, mark filled, and close" },
-        { "on": "click", "target": "outside", "result": "close" },
-        { "on": "disable", "target": "select", "result": "close and block trigger clicks" }
+        {
+          "on": "click",
+          "target": "trigger",
+          "guard": "disabled=false",
+          "result": "toggle closed ↔ open and keep aria-expanded in sync"
+        },
+        {
+          "on": "click",
+          "target": "option",
+          "result": "select one option, update the trigger text, mark filled, and close"
+        },
+        {
+          "on": "keydown",
+          "target": "select",
+          "result": "close on Escape and return focus to the trigger"
+        },
+        {
+          "on": "click",
+          "target": "outside",
+          "result": "close"
+        },
+        {
+          "on": "disable",
+          "target": "select",
+          "result": "close and block trigger clicks"
+        }
       ],
       "selection": "single",
-      "keyboard": "not-defined",
-      "focus": "not-defined",
-      "accessibility": "not-defined"
+      "keyboard": "native button on the trigger (Enter/Space); option movement is owned by the Dropdown contract; Escape closes",
+      "focus": "move focus into the panel on open and return it to the trigger on close",
+      "accessibility": "aria-haspopup=listbox and aria-expanded on the trigger; aria-selected on the chosen option; filled is exposed as data-filled=true because no ARIA state matches"
     },
     "Dropdown": {
-      "source": { "sectionId": "dropdown", "sourceEvidence": ["function wireDropdownPanel(el)", "opt.classList.add('is-selected')"] },
+      "source": {
+        "sectionId": "dropdown",
+        "sourceFile": "ui-library/src/components/dropdown/dropdown.js",
+        "sourceEvidence": [
+          "for (const opt of currentOptions) opt.setAttribute(\"aria-selected\", String(opt === option));",
+          "if (event.key === \"ArrowDown\")",
+          "export function destroy(root)"
+        ]
+      },
       "status": "verified",
       "initialState": "one or zero options selected",
       "events": [
-        { "on": "click", "target": "option", "result": "select the clicked option and unselect every sibling" }
+        {
+          "on": "click",
+          "target": "option",
+          "result": "select the clicked option and unselect every sibling"
+        },
+        {
+          "on": "keydown",
+          "target": "option",
+          "result": "ArrowUp/ArrowDown move, Home/End jump, Enter/Space select"
+        }
       ],
       "selection": "single",
       "openClose": "owned by the composing trigger component",
-      "keyboard": "not-defined",
-      "focus": "not-defined",
-      "accessibility": "not-defined"
+      "keyboard": "ArrowUp · ArrowDown · Home · End · Enter/Space (role=listbox pattern)",
+      "focus": "roving tabindex — only the active option is in the tab order",
+      "accessibility": "role=listbox on the list, role=option with aria-selected on each row"
     },
     "Line Tab": {
-      "source": { "sectionId": "tab", "sourceEvidence": ["function setupTabStrip(el)", "btn.setAttribute('aria-selected', 'true')", "placeIndicator(btn)"] },
+      "source": {
+        "sectionId": "tab",
+        "sourceEvidence": [
+          "function setupTabStrip(el)",
+          "btn.setAttribute('aria-selected', 'true')",
+          "placeIndicator(btn)"
+        ]
+      },
       "status": "verified",
       "initialState": "one tab selected",
       "events": [
-        { "on": "click", "target": "tab", "result": "select the clicked tab, unselect siblings, and move the indicator" }
+        {
+          "on": "click",
+          "target": "tab",
+          "result": "select the clicked tab, unselect siblings, and move the indicator"
+        }
       ],
       "selection": "single",
-      "keyboard": "native-button-click-only",
-      "focus": "native-button",
-      "accessibility": { "selectedTab": "set aria-selected=true and remove aria-selected from siblings" }
+      "keyboard": "ArrowLeft/ArrowRight move and select; Home/End jump; Enter/Space native-button activation",
+      "focus": "roving tabindex — only the selected tab is in the tab order",
+      "accessibility": {
+        "selectedTab": "set aria-selected=true and remove aria-selected from siblings"
+      }
     },
     "GNB": {
-      "source": { "sectionId": "gnb", "sourceEvidence": ["function setupGnb(el)", "btn.classList.add('is-selected')"] },
+      "source": {
+        "sectionId": "gnb",
+        "sourceFile": "ui-library/src/components/gnb/gnb.js",
+        "sourceEvidence": [
+          "export const componentId = \"gnb\";",
+          "export const jsRequired = true;",
+          "export const runtime = Object.freeze({ init, destroy });"
+        ]
+      },
       "status": "verified",
-      "initialState": "one menu selected",
+      "initialState": "no menu current (aria-current unset) unless the host page renders one as current",
       "events": [
-        { "on": "click", "target": "menu", "result": "select the clicked menu and unselect every sibling" }
+        "s1:gnb:open",
+        "s1:gnb:close"
       ],
-      "selection": "single",
-      "keyboard": "native-button-click-only",
-      "focus": "native-button",
-      "accessibility": "not-defined"
+      "keyboard": "Tab order: logo → menus (left to right) → language → account → menu-toggle; native button/link Enter/Space activation. A menu with aria-controls opens its gnb-sub-menu panel on focusin (Tab entry) and closes on Escape, returning focus to the menu — focus is never trapped inside the panel.",
+      "focus": "Browser default focus indication; on Escape-close, focus programmatically returns to the trigger menu (no other custom focus movement).",
+      "accessibility": {
+        "role": "nav (root) with aria-label; menu list is ul/li of a[href]; language/account/menu-toggle are button[type=button]",
+        "name": "nav aria-label (e.g. \"주 메뉴\"); account/menu-toggle carry aria-label; language button's accessible name is its visible label text",
+        "current": "aria-current=\"page\" reflects the host page's current route; no local click-to-select toggle logic (unchanged).",
+        "expanded": "For a menu with aria-controls, aria-expanded (\"true\"/\"false\") and the target gnb-sub-menu panel's hidden attribute are managed by gnb.js — open on hover (pointer with hover:hover) or focusin, close 150ms after mouseleave/pointer-outside or immediately on Escape/opening a different menu."
+      },
+      "runtimeNote": "런타임 있음(jsRequired=true, gnb.js) — river 결정(2026-09-09, D4·D5)에 따라 하위메뉴(gnb-sub-menu) 여닫는 동작을 gnb 가 갖는다. aria-controls 를 가진 메뉴가 없으면(하위메뉴 없이 상단바만 쓰는 화면) init() 은 아무 것도 하지 않고 조용히 끝난다 — 강제 의존이 아니다. 상호작용: hover-capable 기기는 마우스를 올리면 즉시 열고 바·패널을 벗어나면 150ms 유예 뒤 닫는다(둘 사이 틈을 지날 때 깜빡임 방지). hover 가 안 되는 기기(matchMedia로 매 이벤트마다 재확인)는 클릭으로 열고 닫는다. Tab 으로 들어가면 열리고 Esc 로 닫히며 초점이 그 메뉴로 되돌아온다 — 패널 안에 초점을 가두지 않는다. 한 번에 하나만 열리고, 바깥 포인터다운에도 닫힌다(select·date-picker 와 같은 안전망). 현재 메뉴 표시(aria-current)는 여전히 host 화면이 정적으로 설정한다(mobile-bottom-nav 와 같은 방식) — 이 런타임이 건드리지 않는다. 이 status 는 \"문서 근거가 실제 코드와 일치\"만 확인한 것이다 — ui-library/src/components/gnb/manifest.json 의 배포 상태는 candidate 이며 component-verifier 원본대조·river UX 승인 전이다."
     },
     "Pagination": {
-      "source": { "sectionId": "pagination", "sourceEvidence": ["function setupPagination()", "currentPage = page; update();", "block.blockIndex === 0 || single", "block.end >= tp || single"] },
+      "source": {
+        "sectionId": "pagination",
+        "sourceEvidence": [
+          "function setupPagination()",
+          "currentPage = page; update();",
+          "block.blockIndex === 0 || single",
+          "block.end >= tp || single"
+        ]
+      },
       "status": "verified",
       "initialState": "page 1",
       "events": [
-        { "on": "click", "target": "page number", "result": "set the current page and rerender the current number block" },
-        { "on": "click", "target": "first", "result": "move to page 1" },
-        { "on": "click", "target": "previous block", "result": "move to the first page of the previous block" },
-        { "on": "click", "target": "next block", "result": "move to the first page of the next block" },
-        { "on": "click", "target": "last", "result": "move to the final page" }
+        {
+          "on": "click",
+          "target": "page number",
+          "result": "set the current page and rerender the current number block"
+        },
+        {
+          "on": "click",
+          "target": "first",
+          "result": "move to page 1"
+        },
+        {
+          "on": "click",
+          "target": "previous block",
+          "result": "move to the first page of the previous block"
+        },
+        {
+          "on": "click",
+          "target": "next block",
+          "result": "move to the first page of the next block"
+        },
+        {
+          "on": "click",
+          "target": "last",
+          "result": "move to the final page"
+        }
       ],
-      "constraints": ["show at most 6 page numbers per block", "disable unavailable edge/block actions", "single-page mode disables all navigation actions"],
+      "constraints": [
+        "show at most 6 page numbers per block",
+        "disable unavailable edge/block actions",
+        "single-page mode disables all navigation actions"
+      ],
       "keyboard": "native-button",
       "focus": "native-button",
-      "accessibility": { "pageNumber": "aria-label includes the page number and marks the current page in its accessible name" }
+      "accessibility": {
+        "pageNumber": "aria-label includes the page number and marks the current page in its accessible name"
+      }
     },
     "Date Picker": {
-      "source": { "sectionId": "date-picker", "sourceEvidence": ["function setupDatePicker(root)", "input.setAttribute('aria-expanded', 'true')", "panel.addEventListener('keydown'", "if (e.key === 'Escape')", "data-disabled-dates"] },
+      "source": {
+        "sectionId": "date-picker",
+        "sourceEvidence": [
+          "function setupDatePicker(root)",
+          "input.setAttribute('aria-expanded', 'true')",
+          "panel.addEventListener('keydown'",
+          "if (e.key === 'Escape')",
+          "data-disabled-dates"
+        ]
+      },
       "status": "verified",
       "initialState": "closed in calendar view",
       "events": [
-        { "on": "click", "target": "input or calendar action", "result": "toggle the panel" },
-        { "on": "click", "target": "day", "guard": "date is enabled", "result": "write YY.MM.DD, select the day, and close" },
-        { "on": "click", "target": "month label", "result": "cycle calendar → month → year → calendar" },
-        { "on": "click", "target": "previous or next", "result": "move one month, one year, or one 12-year block according to the current view" },
-        { "on": "click", "target": "outside", "result": "close" }
+        {
+          "on": "click",
+          "target": "input or calendar action",
+          "result": "toggle the panel"
+        },
+        {
+          "on": "click",
+          "target": "day",
+          "guard": "date is enabled",
+          "result": "write YY.MM.DD, select the day, and close"
+        },
+        {
+          "on": "click",
+          "target": "month label",
+          "result": "cycle calendar → month → year → calendar"
+        },
+        {
+          "on": "click",
+          "target": "previous or next",
+          "result": "move one month, one year, or one 12-year block according to the current view"
+        },
+        {
+          "on": "click",
+          "target": "outside",
+          "result": "close"
+        }
       ],
-      "keyboard": { "Escape": "close and return focus to input", "ArrowLeft": "previous enabled day", "ArrowRight": "next enabled day", "ArrowUp": "previous week", "ArrowDown": "next week", "EnterOrSpace": "select focused day" },
-      "focus": { "onOpen": "focus the first enabled day", "onEscape": "return to input" },
-      "accessibility": { "expanded": "synchronize aria-expanded on input and calendar action", "disabledDate": "native disabled plus aria-disabled=true", "day": "aria-label uses YY.MM.DD" },
-      "constraints": ["week starts on Sunday", "disabled dates come from data-disabled-dates", "adjacent-month days remain selectable when enabled"]
+      "keyboard": {
+        "Escape": "close and return focus to input",
+        "ArrowLeft": "previous enabled day",
+        "ArrowRight": "next enabled day",
+        "ArrowUp": "previous week",
+        "ArrowDown": "next week",
+        "EnterOrSpace": "select focused day"
+      },
+      "focus": {
+        "onOpen": "focus the first enabled day",
+        "onEscape": "return to input"
+      },
+      "accessibility": {
+        "expanded": "synchronize aria-expanded on input and calendar action",
+        "disabledDate": "native disabled plus aria-disabled=true",
+        "day": "aria-label uses YY.MM.DD"
+      },
+      "constraints": [
+        "week starts on Sunday",
+        "disabled dates come from data-disabled-dates",
+        "adjacent-month days remain selectable when enabled"
+      ]
     },
     "Time Picker": {
-      "source": { "sectionId": "time-picker", "sourceEvidence": ["function setupTimePicker(root)", "dropdown.classList.add('is-open')", "selHour >= 0 && selMin >= 0", "if (!trigger.contains(e.target) && !dropdown.contains(e.target)) closePanel()"] },
+      "source": {
+        "sectionId": "time-picker",
+        "sourceEvidence": [
+          "function setupTimePicker(root)",
+          "dropdown.classList.add('is-open')",
+          "selHour >= 0 && selMin >= 0",
+          "if (!trigger.contains(e.target) && !dropdown.contains(e.target)) closePanel()"
+        ]
+      },
       "status": "verified",
       "initialState": "closed without a committed time",
       "events": [
-        { "on": "click", "target": "input trigger", "result": "toggle the hour/minute panel" },
-        { "on": "click", "target": "hour or minute", "result": "select one value in that column; show HH:MM after both values exist" },
-        { "on": "click", "target": "confirm", "result": "close the panel" },
-        { "on": "click", "target": "outside", "result": "close the panel" },
-        { "on": "click", "target": "select-style hour or minute field", "result": "open only that field list; selecting a value updates it and closes" }
+        {
+          "on": "click",
+          "target": "input trigger",
+          "result": "toggle the hour/minute panel"
+        },
+        {
+          "on": "click",
+          "target": "hour or minute",
+          "result": "select one value in that column; show HH:MM after both values exist"
+        },
+        {
+          "on": "click",
+          "target": "confirm",
+          "result": "close the panel"
+        },
+        {
+          "on": "click",
+          "target": "outside",
+          "result": "close the panel"
+        },
+        {
+          "on": "click",
+          "target": "select-style hour or minute field",
+          "result": "open only that field list; selecting a value updates it and closes"
+        }
       ],
       "selection": "one hour and one minute",
       "keyboard": "not-defined",
@@ -225,12 +624,27 @@
       "accessibility": "not-defined"
     },
     "Table": {
-      "source": { "sectionId": "table", "sourceEvidence": ["function setupTableSelection(root)", "rows[i].classList.toggle('is-selected', checked)", "var allChecked = rowChks.every"] },
+      "source": {
+        "sectionId": "table",
+        "sourceEvidence": [
+          "function setupTableSelection(root)",
+          "rows[i].classList.toggle('is-selected', checked)",
+          "var allChecked = rowChks.every"
+        ]
+      },
       "status": "verified",
       "initialState": "zero or more rows selected",
       "events": [
-        { "on": "click", "target": "row checkbox", "result": "toggle that row selection and recompute the header checkbox" },
-        { "on": "click", "target": "header checkbox", "result": "select all rows when any row is unchecked; otherwise clear all rows" }
+        {
+          "on": "click",
+          "target": "row checkbox",
+          "result": "toggle that row selection and recompute the header checkbox"
+        },
+        {
+          "on": "click",
+          "target": "header checkbox",
+          "result": "select all rows when any row is unchecked; otherwise clear all rows"
+        }
       ],
       "selection": "multiple",
       "keyboard": "not-defined",
@@ -238,7 +652,12 @@
       "accessibility": "not-defined"
     },
     "CI": {
-      "source": { "sectionId": "ci", "sourceEvidence": ["<section class=\"comp-section\" id=\"ci\""] },
+      "source": {
+        "sectionId": "ci",
+        "sourceEvidence": [
+          "<section class=\"comp-section\" id=\"ci\""
+        ]
+      },
       "status": "static",
       "events": "none",
       "keyboard": "not-applicable",
@@ -246,7 +665,12 @@
       "accessibility": "provide meaningful alternative text when the logo conveys identity"
     },
     "Footer": {
-      "source": { "sectionId": "footer", "sourceEvidence": ["<section class=\"comp-section\" id=\"footer\""] },
+      "source": {
+        "sectionId": "footer",
+        "sourceEvidence": [
+          "<section class=\"comp-section\" id=\"footer\""
+        ]
+      },
       "status": "static",
       "events": "none",
       "keyboard": "not-applicable",
@@ -254,7 +678,12 @@
       "accessibility": "not-defined"
     },
     "LoginGNB": {
-      "source": { "sectionId": "login-gnb", "sourceEvidence": ["<section class=\"comp-section\" id=\"login-gnb\""] },
+      "source": {
+        "sectionId": "login-gnb",
+        "sourceEvidence": [
+          "<section class=\"comp-section\" id=\"login-gnb\""
+        ]
+      },
       "status": "static",
       "events": "none",
       "keyboard": "not-applicable",
@@ -262,20 +691,134 @@
       "accessibility": "not-defined"
     },
     "Dropdown (Checkbox)": {
-      "source": { "sectionId": "dropdown", "sourceEvidence": ["function wireDropdownMultiPanel(el)", "setChecked(opt, !opt.classList.contains('is-selected'))", "items.forEach(function(o) { setChecked(o, on); })"] },
+      "source": {
+        "sectionId": "dropdown",
+        "sourceFile": "ui-library/src/components/dropdown/dropdown.js",
+        "sourceEvidence": [
+          "const affected = currentOptions.filter((opt) => opt !== option);",
+          "for (const opt of affected) setChecked(opt, next);",
+          "syncSelectAll(currentOptions);",
+          "export function destroy(root)"
+        ]
+      },
       "status": "verified",
       "initialState": "zero or more options checked, panel stays open",
       "events": [
-        { "on": "click", "target": "option", "result": "toggle only the clicked option on/off and leave every sibling as is" },
-        { "on": "click", "target": "select-all row", "result": "check every option when it was off, uncheck every option when it was on" },
-        { "on": "check", "target": "every option", "result": "the select-all row turns on by itself" }
+        {
+          "on": "click",
+          "target": "option",
+          "result": "toggle only the clicked option on/off and leave every sibling as is"
+        },
+        {
+          "on": "click",
+          "target": "select-all row",
+          "result": "check every option when it was off, uncheck every option when it was on"
+        },
+        {
+          "on": "check",
+          "target": "every option",
+          "result": "the select-all row turns on by itself"
+        }
       ],
       "selection": "multiple",
       "applyTiming": "immediate — there is no confirm button",
       "openClose": "owned by the composing trigger component; picking an option does NOT close the panel",
-      "keyboard": "not-defined",
-      "focus": "not-defined",
-      "accessibility": "role=checkbox + aria-checked on each option row; select-all mixed state not implemented"
+      "keyboard": "ArrowUp · ArrowDown · Home · End · Enter/Space toggles the focused row",
+      "focus": "roving tabindex — only the active option is in the tab order",
+      "accessibility": "role=checkbox + aria-checked on each option row; the select-all row uses true/false only — the mixed state is not implemented because the canonical component has no such visual (river decision 2026-08-31)"
+    },
+    "Modal": {
+      "source": {
+        "sectionId": "modal",
+        "sourceFile": "ui-library/src/components/modal/modal.js",
+        "sourceEvidence": [
+          "export function init(root)",
+          "function open(detail = {})",
+          "function close(detail = {})",
+          "const trapFocus = (event) =>"
+        ]
+      },
+      "status": "verified",
+      "initialState": "closed — root[hidden]",
+      "events": [
+        {
+          "on": "open()",
+          "target": "modal",
+          "result": "remove root[hidden], lock background scroll, move focus into the panel, and emit s1:modal:open"
+        },
+        {
+          "on": "close()",
+          "target": "modal",
+          "result": "set root[hidden], unlock background scroll, restore focus to the element focused before opening, and emit s1:modal:close"
+        },
+        {
+          "on": "click",
+          "target": "close button",
+          "guard": "PC only — Mobile has no close button in canon",
+          "result": "close with detail.reason=\"close-button\""
+        },
+        {
+          "on": "keydown Escape",
+          "target": "document while open",
+          "result": "close with detail.reason=\"escape\""
+        },
+        {
+          "on": "keydown Tab",
+          "target": "document while open",
+          "result": "cycle focus inside the panel only (focus trap)"
+        }
+      ],
+      "selection": "not-applicable",
+      "keyboard": "Escape closes; Tab/Shift+Tab cycle inside the panel and never leave it",
+      "focus": "focus moves to the first focusable element in the panel on open and returns to the previously focused element on close; focus escaping the panel is pulled back",
+      "accessibility": {
+        "dialog": "panel carries role=dialog and aria-modal=true",
+        "name": "aria-labelledby points at [data-s1-part=title]; aria-describedby points at [data-s1-part=message]",
+        "background": "body scroll is locked while any modal is open and restored when the last one closes"
+      }
+    },
+    "Mobile Bottom Nav": {
+      "source": {
+        "sectionId": "mobile-bottom-nav",
+        "sourceFile": "ui-library/src/components/mobile-bottom-nav/mobile-bottom-nav.js",
+        "sourceEvidence": [
+          "export const componentId = \"mobile-bottom-nav\";",
+          "export const jsRequired = false;",
+          "export const runtime = null;"
+        ]
+      },
+      "status": "verified",
+      "initialState": "unselected (aria-selected=false) unless the host page renders it selected",
+      "events": [],
+      "keyboard": "native button Enter/Space activation",
+      "focus": "native button focus with a 2px visible outline",
+      "accessibility": {
+        "role": "tab (root); a surrounding role=tablist container is owned by the host screen",
+        "name": "the visible label text",
+        "selected": "aria-selected reflects the host page's current route; no local toggle logic"
+      },
+      "runtimeNote": "런타임 없음(jsRequired=false). 선택 상태는 호스트 화면이 정적으로 설정한 aria-selected 를 CSS 가 그대로 반영한다(HD-1 선택지 A — 화살표 키 이동·로컬 클릭 토글은 범위 밖)."
+    },
+    "Mobile Header": {
+      "source": {
+        "sectionId": "mobile-header",
+        "sourceFile": "ui-library/src/components/mobile-header/mobile-header.js",
+        "sourceEvidence": [
+          "export const componentId = \"mobile-header\";",
+          "export const jsRequired = false;",
+          "export const runtime = null;"
+        ]
+      },
+      "status": "verified",
+      "initialState": "static chrome; no open/closed local state",
+      "events": [],
+      "keyboard": "native button Enter/Space activation for back/close/notification",
+      "focus": "native button focus with a 2px visible outline on back/close/notification",
+      "accessibility": {
+        "name": "back/close/notification carry a context-appropriate aria-label; title-bearing variants render an h1",
+        "headingRole": "variants without title text render an empty non-heading span; the page body's own h1 acts as the primary heading"
+      },
+      "runtimeNote": "런타임 없음(jsRequired=false). StatusBar·Platform 축은 river 결정(D5)으로 배포본에서 뺐다 — AppBar 56px·Type 6종만 배포한다."
     }
   }
 }

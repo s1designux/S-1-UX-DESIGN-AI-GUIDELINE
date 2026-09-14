@@ -22,12 +22,14 @@ jobs:
         run: npm test
       - name: Commit verified updates
         run: |
-          if git diff --quiet; then
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # 새로 생긴 파일도 변경으로 센다 — git diff 만으로는 새 파일을 못 본다.
+          git add -A
+          if git diff --cached --quiet; then
             echo "No changes"
             exit 0
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "chore: sync verified design guideline"
+          SYNCED_AT=$(node -p "require('./SOURCE.json').syncedAt")
+          git commit -m "chore: 디자인 가이드 갱신 — ${SYNCED_AT}" -m "무엇이 바뀌었는지는 CHANGELOG.md 맨 위 항목 참조."
           git push
