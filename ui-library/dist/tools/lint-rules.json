@@ -1,0 +1,21 @@
+{
+  "_meta": {
+    "note": "자동 생성물 — 손으로 고치지 마세요.",
+    "source": "registry/governance/audit-rules.json",
+    "sourceVersion": "0.2.0",
+    "rule": "검사기는 여기 있는 규칙만 집행한다. 새 판정 기준을 검사기가 만들지 않는다."
+  },
+  "hex": {
+    "id": "R02",
+    "name": "no-raw-hex-in-component",
+    "severity": "error",
+    "description": "Component Token 값에 HEX를 직접 사용하지 않는다. 예외: foundation.colors.json만 허용."
+  },
+  "rgba": {
+    "id": "R07",
+    "name": "rgba-allowed-exceptions-only",
+    "severity": "error",
+    "description": "rgba()는 token-exceptions.json의 EX03(overlay)에만 허용한다. 그 외 사용은 금지. (EX02 dark border 예외는 ND-2로 폐지, 2026-06-06)"
+  },
+  "exception": "EX03 — color-overlay 만 rgba 를 허용한다."
+}

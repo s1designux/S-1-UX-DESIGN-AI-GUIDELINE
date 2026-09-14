@@ -1,0 +1,36 @@
+/* GNB Sub Menu Item — 정본 buildGNBSubMenuItem(build-components.ts:3822) 기준.
+   Depth(1depth=카테고리 제목 · 2depth=항목) 축이며 상태는 2depth 만 갖는다(Default·Hover·Selected) — 4변형.
+   들여쓰기 없음(A 기준 원본은 8px 들여쓰기가 없다, 정본 주석 3673·3689) · 배경 없음 · 아이콘 없음 · 크기는 hug.
+   단독으로 쓰지 않고 GNB Sub Menu 컬럼 안 <li> 에 넣어 쓴다. */
+[data-s1-component="gnb-sub-menu-item"] {
+  color: var(--color-navigation-label-default);
+  display: inline-flex;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* 1depth = 카테고리 제목. Bold 16(title/16B) · color/navigation/submenu/label/default.
+   2depth 와 letter-spacing 이 다른 것은 각각의 정본 텍스트 스타일(title/16B·title/16M)이 다르기 때문이다. */
+[data-s1-component="gnb-sub-menu-item"][data-depth="1depth"] {
+  color: var(--color-navigation-submenu-label-default);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* Hover 와 Selected 는 정본에서 색이 같다 — GNB 메뉴와 같은 구조다.
+   원본에 hover 표본이 없어 selected 와 같은 색으로 사전 등록한 개선이다(정본 주석 3688).
+   data-force-state="hover" 는 안내 화면이 마우스 없이 Hover 칸을 미리보기로 흉내내는 용도다
+   (선례: gnb.css, tab.css). Selected 는 <a href> 의 aria-current="page" 가 시각까지 겸한다. */
+/* ⚠️ 상태는 2depth(항목)만 갖는다 — 1depth(카테고리 제목)는 누를 수 없는 제목 글자라
+   마우스를 올려도 기본 색 그대로다. 정본에도 1depth 는 Default 하나뿐이라
+   이 컴포넌트의 변형은 4개다(river 지시 2026-09-10 "정본에서도 없애줘",
+   build-components.ts gnbSubMenuItemHasState). */
+[data-s1-component="gnb-sub-menu-item"][data-depth="2depth"]:hover,
+[data-s1-component="gnb-sub-menu-item"][data-depth="2depth"][data-force-state="hover"],
+[data-s1-component="gnb-sub-menu-item"][data-depth="2depth"][aria-current="page"] {
+  color: var(--color-navigation-label-selected);
+}

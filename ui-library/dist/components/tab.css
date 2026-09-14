@@ -1,0 +1,61 @@
+/* Line Tab — buildLineTab / buildLineTabSet 기준. 탭 자체에는 여백을 넣지 않아
+   인디케이터가 묶음 전체에서 끊기지 않고 이어진다. */
+[data-s1-component="tab"] {
+  align-items: stretch;
+  background: var(--color-navigation-bg);
+  display: inline-flex;
+  position: relative;
+}
+
+/* 기본선과 선택선 모두 탭 묶음의 같은 바닥선에서 시작한다.
+   버튼 안쪽 shadow를 기준선으로 쓰면 투명 2px 공간 위에 그려져 선택선보다 올라가 보인다. */
+[data-s1-component="tab"]::before {
+  background: var(--color-navigation-indicator-default);
+  bottom: 0;
+  content: "";
+  height: var(--border-width-1);
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+[data-s1-component="tab"] [data-s1-part="tab"] {
+  align-items: center;
+  appearance: none;
+  background: transparent;
+  /* 선택선 공간은 padding으로 미리 확보한다. pseudo-element는 레이아웃을 바꾸지 않는다. */
+  border: 0;
+  box-sizing: border-box;
+  color: var(--color-navigation-label-default);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 0;
+  font-family: "Pretendard", sans-serif;
+  font-weight: var(--font-weight-medium);
+  justify-content: center;
+  margin: 0;
+  min-width: 76px;
+  padding: 0 var(--spacing-16) var(--border-width-2);
+  position: relative;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+[data-s1-component="tab"][data-size="md"][data-break="pc"] [data-s1-part="tab"] { height: var(--sizing-44); font-size: var(--font-size-18); }
+[data-s1-component="tab"][data-size="sm"][data-break="pc"] [data-s1-part="tab"] { height: 42px; font-size: var(--font-size-16); }
+[data-s1-component="tab"][data-size="xsm"][data-break="pc"] [data-s1-part="tab"] { height: var(--sizing-40); font-size: var(--font-size-14); }
+[data-s1-component="tab"][data-size="sm"][data-break="mobile"] [data-s1-part="tab"] { height: var(--sizing-32); font-size: var(--font-size-16); }
+
+@media (hover: hover) {
+  [data-s1-component="tab"] [data-s1-part="tab"]:hover:not([aria-selected="true"]),
+  [data-s1-component="tab"] [data-s1-part="tab"][data-force-state="hover"]:not([aria-selected="true"]) { color: var(--color-navigation-label-hover); }
+}
+
+[data-s1-component="tab"] [data-s1-part="tab"]:hover:not([aria-selected="true"])::after,
+[data-s1-component="tab"] [data-s1-part="tab"][data-force-state="hover"]:not([aria-selected="true"])::after,
+[data-s1-component="tab"] [data-s1-part="tab"][aria-selected="true"]::after { bottom: 0; content: ""; height: var(--border-width-2); left: 0; position: absolute; right: 0; }
+[data-s1-component="tab"] [data-s1-part="tab"]:hover:not([aria-selected="true"])::after,
+[data-s1-component="tab"] [data-s1-part="tab"][data-force-state="hover"]:not([aria-selected="true"])::after { background: var(--color-navigation-indicator-hover); }
+[data-s1-component="tab"] [data-s1-part="tab"][aria-selected="true"] { color: var(--color-navigation-label-selected); }
+[data-s1-component="tab"] [data-s1-part="tab"][aria-selected="true"]::after { background: var(--color-navigation-indicator-selected); }
+[data-s1-component="tab"] [role="tabpanel"][hidden] { display: none; }

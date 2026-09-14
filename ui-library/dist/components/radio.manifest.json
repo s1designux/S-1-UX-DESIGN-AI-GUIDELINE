@@ -1,0 +1,139 @@
+{
+  "id": "radio",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "470bc5344f32f0102ba85d3d8643c86fc7aeb28ce8d35af2a98f6c63b03f7c87",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/radio.json"
+  ],
+  "rootSelector": "[data-s1-component=\"radio\"]",
+  "variants": [
+    "base"
+  ],
+  "sizes": [],
+  "geometry": {
+    "circle": {
+      "width": "--sizing-18",
+      "height": "--sizing-18",
+      "radius": "--radius-full",
+      "border": "--border-width-1"
+    },
+    "indicator": {
+      "width": "--sizing-10",
+      "height": "--sizing-10",
+      "placement": "18px 원의 중앙(정본 dot x=4,y=4)"
+    },
+    "labelGap": "--spacing-8",
+    "source": "build-components.ts buildRadio"
+  },
+  "states": {
+    "default": "native; unchecked and enabled",
+    "hover": "@media (hover: hover) control:hover:not(:disabled):not(:checked)",
+    "selected": "control:checked",
+    "disabled": "control:disabled",
+    "disabledSelected": "control:disabled:checked"
+  },
+  "canonicalStateMap": {
+    "Default": "default",
+    "Hover": "hover",
+    "Selected": "selected",
+    "Disabled": "disabled",
+    "Dis+Selected": "disabledSelected"
+  },
+  "canonicalLabelAxis": {
+    "Off": "label part를 넣지 않은 기본형",
+    "On": "label part를 넣은 형태"
+  },
+  "notInCanon": {
+    "focusVisible": "정본에 focus 변형이 없다. 2026-09-02 river 결정으로 웹에서도 만들지 않으며, 키보드 초점은 브라우저 기본 표시에 맡긴다."
+  },
+  "parts": [
+    "control",
+    "label"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=radio]",
+    "requiredAttributes": [],
+    "requiredParts": [
+      "control"
+    ],
+    "optionalParts": [
+      "label"
+    ],
+    "control": "input[type=radio][data-s1-part=control]",
+    "relations": [
+      "label[for] ↔ control[id]",
+      "라벨이 없으면 control 에 aria-label",
+      "같은 그룹은 control[name] 이 같아야 한다"
+    ],
+    "grouping": "그룹은 fieldset·legend 로 감싸고 control[name] 을 공유한다. 화살표 이동은 브라우저가 제공한다.",
+    "source": "components/radio/radio.example.html",
+    "distribution": "examples/radio.html"
+  },
+  "cssContract": {
+    "entry": "components/radio.css",
+    "rootScope": "[data-s1-component=radio]",
+    "nativeStates": [
+      ":checked",
+      ":disabled",
+      ":hover"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "contentSlots": {
+    "label": "optional; 정본 Label=Off 가 기본이고 On 이면 보기 텍스트가 붙는다"
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "input[type=radio] grouped by name"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "associated label or aria-label"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "native arrow-key movement inside the name group and Tab into the group"
+    },
+    "focus": {
+      "status": "required",
+      "value": "브라우저 기본 포커스 표시를 그대로 쓴다 — 정본에 focus 표현이 없어 웹에서 만들지 않는다(2026-09-02 river 결정)."
+    },
+    "ariaStateSync": {
+      "status": "not-applicable",
+      "reason": "native checked 가 상태를 전달하므로 별도 ARIA 동기화가 없다."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "Radio does not own field errors."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "The canonical component defines no motion."
+    }
+  },
+  "jsRequired": false,
+  "javascript": {
+    "runtime": "none",
+    "reason": "Native radio semantics provide the complete approved behavior."
+  },
+  "sourceFingerprint": "4a33f7bb69f780c0507f3df8d90d6dc57fcb5007aea0b90e14c59440f6708865"
+}

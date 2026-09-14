@@ -1,0 +1,161 @@
+{
+  "id": "multi-toggle",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "d61c7a1484506c1e1d7e162d157d5ebcfc56d4f36c4220accc013b026cef4785",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/multi-toggle.json"
+  ],
+  "rootSelector": "[data-s1-component=\"multi-toggle\"]",
+  "variants": [
+    "base"
+  ],
+  "sizes": [
+    "md",
+    "sm"
+  ],
+  "cellCount": {
+    "canonical": 3,
+    "supported": "2-4 (registry usage 권장 범위). CSS 는 위치 규칙(:first-child/:last-child + 선택 칸 인접 규칙)으로 동작해 구조상 N칸도 그려지지만, 안내 페이지·예시·상태 검증은 정본과 같은 3칸만 문서화한다(river 결정 D3, workflow-state.json decisions)."
+  },
+  "geometry": {
+    "md": {
+      "height": "--sizing-44",
+      "paddingInline": "--spacing-12",
+      "minWidth": "--sizing-64",
+      "fontSize": "--font-size-14"
+    },
+    "sm": {
+      "height": "--sizing-34",
+      "paddingInline": "--spacing-8",
+      "minWidth": "--sizing-56",
+      "fontSize": "--font-size-14"
+    },
+    "cornerRadius": "--radius-control-sm (첫·마지막 칸만)",
+    "border": "--border-width-1",
+    "source": "build-components.ts buildMultiToggleElement(:5376) · buildMultiToggle(:5513)"
+  },
+  "states": {
+    "default": "native; unchecked and enabled",
+    "hover": "@media (hover: hover) cell:hover:not([aria-checked=true]):not([aria-disabled=true])",
+    "selected": "cell[aria-checked=true]",
+    "disabled": "cell[aria-disabled=true]"
+  },
+  "canonicalStateMap": {
+    "Default": "default",
+    "Hover": "hover",
+    "Selected": "selected",
+    "Disabled": "disabled"
+  },
+  "notInCanon": {
+    "focus": "정본에 focus 변형이 없다. 2026-09-02 river 결정으로 웹에서도 만들지 않으며, 키보드 초점은 브라우저 기본 표시에 맡긴다.",
+    "mobileSize": "정본은 md/sm 뿐이다. PC 전용 컴포넌트로 유지한다.",
+    "ownColorToken": "묶음·셀 모두 자체 색 토큰이 없다. color/button/* 을 그대로 쓰며 --color-control-* 은 쓰지 않는다."
+  },
+  "parts": [
+    "cell"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=multi-toggle][role=radiogroup]",
+    "requiredAttributes": [
+      "data-size"
+    ],
+    "requiredParts": [
+      "cell"
+    ],
+    "optionalParts": [],
+    "cell": "button[data-s1-part=cell][role=radio][aria-checked]",
+    "relations": [
+      "root 에 aria-label 또는 aria-labelledby",
+      "셀 2개 이상, 정본 문서화 대표 구성은 3개"
+    ],
+    "source": "components/multi-toggle/multi-toggle.example.html",
+    "distribution": "examples/multi-toggle.html"
+  },
+  "cssContract": {
+    "entry": "components/multi-toggle.css",
+    "rootScope": "[data-s1-component=multi-toggle]",
+    "variantAttributes": [
+      "data-size=md|sm"
+    ],
+    "ariaStates": [
+      "[aria-checked=true]",
+      "[aria-disabled=true]"
+    ],
+    "customization": "정본 color/button/* Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "contentSlots": {},
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "role=radiogroup with role=radio cells and aria-checked"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "root aria-label or aria-labelledby"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "ArrowLeft/ArrowRight and ArrowUp/ArrowDown move and select; Home/End jump; Space/Enter select"
+    },
+    "focus": {
+      "status": "required",
+      "value": "roving tabindex; 초점 표시는 브라우저 기본을 그대로 쓴다 — 정본에 focus 표현이 없다(2026-09-02 river 결정)."
+    },
+    "ariaStateSync": {
+      "status": "required",
+      "value": "runtime synchronizes aria-checked and roving tabindex across cells"
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "Multi Toggle does not own field errors."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "정본 Multi Toggle 은 모션을 정의하지 않는다."
+    }
+  },
+  "jsRequired": true,
+  "javascript": {
+    "options": {},
+    "events": [
+      "s1:multi-toggle:change"
+    ],
+    "eventDetail": {
+      "s1:multi-toggle:change": {
+        "index": "number; 선택된 칸의 위치",
+        "value": "string; data-value 또는 텍스트",
+        "cell": "Element; 선택된 셀"
+      }
+    },
+    "methods": [
+      "init(root)",
+      "destroy(root)",
+      "instance.select(cell)"
+    ],
+    "lifecycle": [
+      "init is idempotent",
+      "destroy removes listeners"
+    ],
+    "controlMode": "uncontrolled",
+    "behavior": "좌우(위아래) 화살표로 이동, Space·Enter·클릭으로 선택. disabled 칸은 이동·포커스 대상에서 제외."
+  },
+  "sourceFingerprint": "492413530b99a56dbb1e31e141a9eb7e03540969473657591e56562b3d64ccae"
+}

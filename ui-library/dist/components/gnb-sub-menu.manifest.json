@@ -1,0 +1,118 @@
+{
+  "id": "gnb-sub-menu",
+  "version": "0.1.0",
+  "status": "verified",
+  "canonicalFingerprint": "b20754d8bb059413b5a0c5056b7019db2c01c1848e67c5987118e6c053e852aa",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/gnb-sub-menu.json"
+  ],
+  "rootSelector": "[data-s1-component=\"gnb-sub-menu\"]",
+  "variants": [],
+  "sizes": [],
+  "states": {},
+  "canonicalStateMap": {
+    "Type=regular": "regular",
+    "Type=compact-1": "compact-1",
+    "Type=compact-2": "compact-2"
+  },
+  "notInCanon": {
+    "openClose": "정본에 패널을 여는 트리거도 여닫는 동작도 없다(2-canon-readiness §A) — 이 컴포넌트 자신은 여전히 펼쳐진 패널의 모양만 준다(jsRequired=false). aria-expanded·aria-controls·hidden·Esc 닫기·포커스 되돌리기는 river 결정(2026-09-09, D4·D5)에 따라 패널을 여는 gnb(jsRequired=true)가 갖는다 — gnb.example.html 이 실제 배선 예시다.",
+    "columnCount": "묶음(컬럼) 수는 유형마다 정본 실측 기본값이 다르다(regular=4 · compact-1=6 · compact-2=5). 정본 슬롯 구조라 host 가 <ul data-s1-part=column> 을 늘리고 줄여 묶음 수·항목 수를 조정한다(GNB 의 메뉴 슬롯과 같은 방식)."
+  },
+  "parts": [
+    "columns",
+    "column"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=gnb-sub-menu][data-type]",
+    "requiredParts": [
+      "columns",
+      "column"
+    ],
+    "relations": [
+      "[data-s1-part=columns] 는 정본 Figma 슬롯 'Columns' 다 — hug 로 두고 늘리지 않는다. 부모(root)가 justify-content:center 로 컬럼 묶음 전체를 가운데 정렬한다. 늘리면 가운데 정렬할 여백이 사라져 왼쪽에 붙는다(정본 주석 3814).",
+      "[data-s1-part=column] 은 <ul> 이고, GNB Sub Menu Item 인스턴스를 담는 <li> 들을 세로로 쌓는다. 묶음 안 간격은 regular 가 24(spacing/24) · compact-2 가 20(spacing/20)이다 — 원본 실측이라 유형마다 다르다. compact-1 은 묶음마다 항목이 1개뿐이라 묶음 안 간격이 없다(정본 0). 컬럼은 목록을 담는 그릇이며 그 자체가 목록이 아니다.",
+      "regular 컬럼 구성 = 제목(1depth) <li> 1개 + 항목(2depth) <li> N개(묶음별 5·3·4·5). compact-1 컬럼 구성 = 항목(2depth) <li> 1개씩(묶음 6개, 제목 없음). compact-2 컬럼 구성 = 항목(2depth) <li> 2개씩(마지막 묶음만 1개, 묶음 5개, 제목 없음).",
+      "Selected 항목 위치는 유형마다 다르다 — regular 는 4번째 묶음의 4번째 항목, compact-1·compact-2 는 마지막 묶음의 (유일한) 마지막 항목. host 가 aria-current=\"page\" 를 정적으로 설정한다.",
+      "패널을 여는 GNB 메뉴가 aria-expanded 와 aria-controls 로 이 패널의 id 를 가리킨다. 열고 닫는 동작·Esc·포커스 복귀는 이 패널을 여는 gnb 가 소유한다(river 결정 2026-09-09, D4·D5 — gnb.js, jsRequired=true) — 이 컴포넌트 자신은 여전히 펼쳐진 모양만 낸다(jsRequired=false)."
+    ],
+    "grouping": "코어는 패널(배경·하단선·그림자·컬럼 배치)만 소유한다. 트리거·여닫는 동작·묶음 개수 조정은 host(gnb 또는 그 화면)가 소유한다.",
+    "source": "components/gnb-sub-menu/gnb-sub-menu.example.html",
+    "distribution": "examples/gnb-sub-menu.html"
+  },
+  "cssContract": {
+    "entry": "components/gnb-sub-menu.css",
+    "rootScope": "[data-s1-component=gnb-sub-menu]",
+    "nativeStates": [],
+    "ariaStates": [],
+    "documentedDataStates": [
+      "[data-type]",
+      "[hidden]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다. [hidden] 규칙은 display:none 을 강제하는 방어용이다(같은 루트 selector 의 display:flex 가 UA 기본 [hidden] 규칙을 덮어쓰는 함정 — select.css·date-picker.css 선례)."
+  },
+  "contentSlots": {
+    "column": "required, repeatable; 유형별 기본 묶음 수(regular=4 · compact-1=6 · compact-2=5, registry sizing). host 가 컬럼 <ul> 을 늘리고 줄인다."
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css",
+      "components/gnb-sub-menu-item.css"
+    ],
+    "coreComponents": [
+      "gnb-sub-menu-item"
+    ],
+    "coreComponentsNote": "컬럼 안 각 <li> 의 내용은 GNB Sub Menu Item 코어 그대로다(build-components.ts:3866 itemComp). gnb-sub-menu 를 개별 설치할 때 gnb-sub-menu-item 의 CSS 도 함께 로드해야 한다."
+  },
+  "icons": [],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "패널 안 목록은 <ul data-s1-part=column>/<li> 로 낸다. 컬럼은 목록을 담는 그릇이다."
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "패널을 여는 GNB 메뉴의 aria-controls 로 연결된다. 패널 자체에는 aria-label 을 host 가 필요에 따라 추가로 붙일 수 있다."
+    },
+    "keyboard": {
+      "status": "not-applicable",
+      "reason": "Esc 로 닫는 동작은 패널을 여닫는 gnb 가 갖는다(이 컴포넌트는 jsRequired=false 그대로). 이 컴포넌트는 로컬 키보드 처리를 갖지 않는다."
+    },
+    "focus": {
+      "status": "not-applicable",
+      "reason": "정본에 포커스 가둠이 없고, 팝업이 아니라 펼침 영역이다 — 포커스를 패널 안에 가두지 않는다."
+    },
+    "ariaStateSync": {
+      "status": "required",
+      "value": "패널을 여는 GNB 메뉴에 aria-expanded 를 gnb.js 가 동적으로 설정한다. 이 컴포넌트는 그 상태를 스스로 만들지 않는다."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 오류 표시가 없다."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "정본이 모션을 정의하지 않는다."
+    },
+    "touchTarget": {
+      "status": "not-applicable",
+      "reason": "PC 전용이다(registry doNotUse)."
+    }
+  },
+  "jsRequired": false,
+  "javascript": {
+    "runtime": "none",
+    "reason": "정본에 여닫는 동작이 없다 — 배포본은 펼쳐진 패널의 모양만 낸다. 패널을 열고 닫는 동작(aria-expanded 토글·hidden 전환·Esc·포커스 복귀)은 river 결정(2026-09-09, D4·D5)에 따라 이 패널을 여는 gnb(jsRequired=true)가 소유한다 — 이 컴포넌트는 그대로 수동형이다."
+  },
+  "sourceFingerprint": "02789b355c7b9f64803099346cda4fa6eefbbe434d7dd0cc6b0fdd45b61430ba"
+}

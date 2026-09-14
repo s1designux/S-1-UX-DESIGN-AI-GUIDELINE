@@ -1,0 +1,83 @@
+{
+  "_meta": {
+    "id": "radio",
+    "name": "Radio",
+    "category": "Core",
+    "updatedAt": "2026-08-31",
+    "version": "0.2.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "stable",
+    "figmaStatus": "existing",
+    "harnessStatus": "implemented",
+    "description": "라디오 버튼 컨트롤. 정본 상태는 default·hover·selected·disabled·disabled+selected 다섯이고, 라벨은 정본 Label 축의 선택 부품이다."
+  },
+  "usage": {
+    "whenToUse": [
+      "여러 보기 중 하나만 고를 때(상호배타)."
+    ],
+    "whenNotToUse": [
+      "여러 개 동시 선택은 Checkbox.",
+      "단일 on/off 는 Toggle."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "원(circle)",
+      "role": "선택 영역. 테두리는 control 토큰."
+    },
+    {
+      "part": "점(dot)",
+      "role": "selected 인디케이터."
+    },
+    {
+      "part": "라벨(선택)",
+      "role": "선택 부품. 정본 Label=Off 가 기본이고 On 이면 보기 텍스트가 붙는다(본문 14 Medium, 간격 8)."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "같은 그룹의 라디오는 name 으로 묶어 하나만 선택되게 한다(감싸는 fieldset 에 그룹 이름을 준다).",
+      "원/점 색은 control 토큰을 쓴다."
+    ],
+    "dont": [
+      "독립 on/off 에 라디오를 쓰지 않는다.",
+      "라벨 없이 aria-label 을 빠뜨리지 않는다."
+    ]
+  },
+  "a11y": [
+    "native input[type=radio] 를 같은 name 으로 묶어 역할·선택 상태·화살표 이동을 브라우저가 제공하게 한다.",
+    "그룹은 fieldset·legend 로 묶어 그룹 이름을 읽히게 한다.",
+    "라벨이 없으면 aria-label 필수.",
+    "키보드 초점은 선택 테두리 토큰의 2px 외곽선으로 보이게 한다."
+  ],
+  "states": ["default", "hover", "selected", "disabled"],
+  "tokens": [
+    { "cssVar": "--radio-default-bg",      "value": "var(--color-control-bg-default)",          "semanticRef": "color-control-bg-default",          "state": "default",  "property": "background" },
+    { "cssVar": "--radio-hover-bg",        "value": "var(--color-control-bg-hover)",            "semanticRef": "color-control-bg-hover",            "state": "hover",    "property": "background" },
+    { "cssVar": "--radio-disabled-bg",     "value": "var(--color-control-bg-disabled)",         "semanticRef": "color-control-bg-disabled",         "state": "disabled", "property": "background" },
+    { "cssVar": "--radio-default-border",  "value": "var(--color-control-border-default)",      "semanticRef": "color-control-border-default",      "state": "default",  "property": "border" },
+    { "cssVar": "--radio-hover-border",    "value": "var(--color-control-border-default)",      "semanticRef": "color-control-border-default",      "state": "hover",    "property": "border" },
+    { "cssVar": "--radio-selected-border", "value": "var(--color-control-border-selected)",     "semanticRef": "color-control-border-selected",     "state": "selected", "property": "border" },
+    { "cssVar": "--radio-disabled-border", "value": "var(--color-control-border-disabled)",     "semanticRef": "color-control-border-disabled",     "state": "disabled", "property": "border" },
+    { "cssVar": "--radio-selected-dot",    "value": "var(--color-control-indicator-selected-alt)", "semanticRef": "color-control-indicator-selected-alt", "state": "selected", "property": "dot-icon" },
+    { "cssVar": "--radio-disabled-dot",    "value": "var(--color-control-indicator-disabled)",  "semanticRef": "color-control-indicator-disabled",  "state": "disabled", "property": "dot-icon" }
+  ],
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "",
+    "propertyMap": {}
+  },
+  "guide": {
+    "sampleLabels": ["옵션 1", "옵션 2", "옵션 3"],
+    "webTag": "input",
+    "interactionPattern": "radio-group",
+    "accessibility": { "role": "radiogroup", "itemRole": "radio", "keyboard": ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"], "attributes": ["aria-checked"] }
+  },
+  "governance": {
+    "owner": "Design System Team",
+    "deprecated": false,
+    "replacement": null
+  }
+}

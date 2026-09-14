@@ -1,0 +1,175 @@
+{
+  "id": "chip",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "27dffda0af0b55ae0980faf2370e47fce49b7dca98efe5649e4b82401be3aef4",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/chip.json"
+  ],
+  "rootSelector": "[data-s1-component=\"chip\"]",
+  "variants": [
+    "line",
+    "solid"
+  ],
+  "sizes": [
+    "sm",
+    "md"
+  ],
+  "breaks": {
+    "pc": [
+      "sm",
+      "md"
+    ],
+    "mobile": [
+      "sm"
+    ]
+  },
+  "geometry": {
+    "sm-pc": {
+      "height": "--sizing-28",
+      "fontSize": "--font-size-12",
+      "paddingInline": "--spacing-16"
+    },
+    "sm-mobile": {
+      "height": "--sizing-30",
+      "fontSize": "--font-size-14",
+      "paddingInline": "--spacing-12"
+    },
+    "md-pc": {
+      "height": "--sizing-34",
+      "fontSize": "--font-size-14",
+      "paddingInline": "--spacing-16"
+    },
+    "radius": "--radius-full",
+    "border": "--border-width-1",
+    "source": "build-components.ts buildChip"
+  },
+  "states": {
+    "default": "aria-pressed=false",
+    "hover": "@media (hover: hover) :hover:not(:disabled):not([aria-pressed=\"true\"])",
+    "selected": "[aria-pressed=\"true\"]:not(:disabled)",
+    "disabled": "disabled"
+  },
+  "canonicalStateMap": {
+    "Default": "default",
+    "Hover": "hover",
+    "Selected": "selected",
+    "Disabled": "disabled"
+  },
+  "notInCanon": {
+    "complete": "정본 buildChip 에 Complete 상태가 없다. registry stateNotes 도 Filter Chip 전용이라고 선언한다. 이번 배포에서 만들지 않았다.",
+    "icon": "정본 buildChip 은 라벨만 그린다. registry anatomy 의 아이콘·닫기(X)는 이 배포 범위 밖이며 임의 SVG 로 확정하지 않았다.",
+    "selectedHover": "정본에 Selected+Hover 셀이 없다. tokens.css 의 --color-chip-solid-bg-selected-hover 는 정본 빌더가 쓰지 않아 웹에서도 쓰지 않았다.",
+    "md-mobile": "정본에 Mobile MD 조합이 없다. CSS 는 정본 3조합만 정의한다.",
+    "focusVisible": "정본에 focus 변형이 없다. 2026-09-02 river 결정으로 웹에서도 만들지 않으며, 키보드 초점은 브라우저 기본 표시에 맡긴다."
+  },
+  "parts": [
+    "label"
+  ],
+  "htmlContract": {
+    "root": "button[data-s1-component=chip]",
+    "requiredAttributes": [
+      "type",
+      "data-variant",
+      "data-size",
+      "data-break",
+      "aria-pressed"
+    ],
+    "requiredParts": [
+      "label"
+    ],
+    "variants": [
+      "line",
+      "solid"
+    ],
+    "sizes": [
+      "sm",
+      "md"
+    ],
+    "breaks": [
+      "pc",
+      "mobile"
+    ],
+    "grouping": "여러 개를 묶을 때는 그룹 이름을 가진 컨테이너로 감싼다. 코어는 개별 칩만 소유한다.",
+    "source": "components/chip/chip.example.html",
+    "distribution": "examples/chip.html",
+    "breakExamples": {
+      "pc": {
+        "source": "components/chip/chip.example.html",
+        "distribution": "examples/chip.html"
+      },
+      "mobile": {
+        "source": "components/chip/chip.mobile.example.html",
+        "distribution": "examples/chip.mobile.html"
+      }
+    }
+  },
+  "cssContract": {
+    "entry": "components/chip.css",
+    "rootScope": "[data-s1-component=chip]",
+    "nativeStates": [
+      ":hover",
+      ":disabled"
+    ],
+    "ariaStates": [
+      "[aria-pressed=\"true\"]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "contentSlots": {
+    "label": "required; 칩 텍스트"
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "button with aria-pressed"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "visible label or aria-label"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "native Enter and Space activation with Tab order"
+    },
+    "focus": {
+      "status": "required",
+      "value": "브라우저 기본 포커스 표시를 그대로 쓴다 — 정본에 focus 표현이 없어 웹에서 만들지 않는다(2026-09-02 river 결정)."
+    },
+    "ariaStateSync": {
+      "status": "required",
+      "value": "runtime keeps aria-pressed in sync with the selected state and emits s1:chip:change"
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "Chip does not own field errors."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "The canonical component defines no motion."
+    }
+  },
+  "jsRequired": true,
+  "javascript": {
+    "runtime": "components/chip.js",
+    "reason": "registry 가 선언한 aria-pressed 선택 상태 전환을 런타임이 담당한다."
+  },
+  "sourceFingerprint": "8a7ff550f152342289f8a0b75bd5cbf13881a6b6a5c5a619fe433c58b54f4cd1"
+}

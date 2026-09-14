@@ -1,0 +1,209 @@
+{
+  "_meta": {
+    "id": "mobile-header",
+    "name": "Mobile Header",
+    "category": "navigation",
+    "updatedAt": "2026-08-31",
+    "version": "0.5.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "implemented",
+    "figmaStatus": "confirmed",
+    "harnessStatus": "implemented",
+    "description": "모바일 화면 상단의 StatusBar와 AppBar를 하나로 묶은 코어 컴포넌트. 홈형 2종·표준형 4종을 Type 축으로, 앱(360×99)·모바일 웹(360×149)을 Platform 축으로 제공한다.",
+    "notes": [
+      "V2.4 mobile_header(540:6112)의 5종을 원본으로 삼는다.",
+      "2026-08-25 river: 원본 'Home title_icon 2'(홈 + 알림 2개)는 실제로 쓰지 않는 기준이라 삭제했다.",
+      "2026-08-25 river: 원본 'Home titel + alt titel'은 구조가 아니라 문구만 다른 것이었고 'alt'는 네이밍 체계상 쓰지 않기로 해 'Home / Title'로 개명했다. 배경도 홈 배경으로 통일했다(원본의 흰 배경은 레거시 불일치로 판단).",
+      "2026-08-25 river: 회원가입 화면용으로 'Standard / No Title'(제목 없음)과 'Standard / No Title + Close'(약관 상세 = 제목 없음 + 닫기)를 신설했다. 레거시가 제목을 흰 글자로 숨기던 처리를 정식 유형으로 대체한다.",
+      "2026-08-25 river: Back·Close 아이콘 색은 원본 실측값 color/icon/gray-dark(#353535)다. v1이 gray-light로 잘못 연결했던 것을 교정했다.",
+      "2026-08-25 river: 홈 배경 #F5F6FB를 color/bg/home으로 정본화했다(Foundation base/home-bg alias). 그 전까지 쓰던 color/bg/level-2(#F5F5F5)는 푸른기가 없어 원본과 다른 색이었다.",
+      "2026-08-26 river: color/bg/home의 다크값은 blue-dark/50으로 확정했다. Standard 4종 배경은 color/bg/level-0을 사용한다.",
+      "2026-08-31 river: Type 6종마다 Platform=App/Web을 제공하는 12개 완전 조합으로 확장했다. 앱은 360×99, 모바일 웹은 브라우저 주소창을 포함해 360×149다.",
+      "2026-08-31 river: 스펙은 Platform별 Home 2종·Standard 4종 행으로 배치하고, 폭이 길어져 Dark 스펙은 Light 스펙 아래에 둔다.",
+      "2026-08-25 river: StatusBar 인스턴스의 Light 모드 핀을 해제해 다크를 상속하게 했고, 배경을 투명으로 두어 헤더 전체가 한 색으로 이어지게 했다(원본 구조). StatusBar 정본 세트는 변경하지 않았다.",
+      "StatusBar는 선택한 Platform과 같은 정본 인스턴스를 재사용하며, 색은 Semantic 변수·텍스트는 Pretendard 정본 스타일에만 바인딩한다.",
+      "원본 아래화살표 legacy key는 V3 import가 불가능해 river 승인(2026-08-25)에 따라 아이콘 라이브러리 V2.2 419:68의 오른쪽 화살표를 -90° 회전해 사용한다."
+    ]
+  },
+  "usage": {
+    "whenToUse": [
+      "모바일 앱 또는 모바일 웹 화면에서 상단 전역 크롬과 화면 이동 동작을 제공할 때.",
+      "회원가입처럼 앱바 안 제목을 비우고 본문 큰 제목을 사용하는 화면에는 Standard / No Title을 쓴다."
+    ],
+    "whenNotToUse": [
+      "PC 화면의 전역 내비게이션에는 GNB를 쓴다.",
+      "모바일 화면이 아닌 PC 전용 헤더에는 사용하지 않는다."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "StatusBar",
+      "role": "선택한 Platform의 StatusBar 정본 인스턴스. App은 360×27, Web은 주소창을 포함한 360×77이다. 배경은 투명이며 헤더 프레임 배경과 Appearance 모드를 상속한다."
+    },
+    {
+      "part": "AppBar",
+      "role": "360×56. StatusBar 아래 16px 간격으로 배치한다."
+    },
+    {
+      "part": "Title area",
+      "role": "표준형은 중앙 정렬(title/18M), 홈형은 좌측 정렬(title/18B). No Title 계열에는 텍스트 노드가 없다."
+    },
+    {
+      "part": "Action slots",
+      "role": "32×32 이전·닫기·알림 슬롯 또는 같은 폭 spacer."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "앱바 안 제목과 본문 큰 제목이 중복되면 Standard / No Title을 쓴다.",
+      "아이콘은 등록된 원본 라이브러리 인스턴스를 사용한다.",
+      "배경·텍스트·아이콘 색은 역할에 맞는 Semantic 변수로 바인딩한다."
+    ],
+    "dont": [
+      "제목을 흰색으로 숨겨 제목 없음처럼 만들지 않는다.",
+      "StatusBar를 벡터나 텍스트로 다시 그리지 않는다.",
+      "raw hex 색이나 Noto 계열 글꼴을 넣지 않는다."
+    ]
+  },
+  "a11y": [
+    "이전·닫기·알림 버튼은 화면 맥락에 맞는 접근성 이름을 제공한다.",
+    "제목 없는 유형에서는 본문의 큰 제목이 화면의 주 제목 역할을 하도록 heading 구조를 유지한다.",
+    "아이콘 버튼의 실제 터치 영역은 화면 구현에서 최소 44×44를 확보한다."
+  ],
+  "states": [],
+  "variants": {
+    "Type": [
+      "Home / Title",
+      "Home / Title + Subtitle + 1 Icon",
+      "Standard / Title",
+      "Standard / Title + Close",
+      "Standard / No Title",
+      "Standard / No Title + Close"
+    ],
+    "Platform": [
+      "App",
+      "Web"
+    ]
+  },
+  "sizing": {
+    "root": {
+      "App": { "width": 360, "height": 99 },
+      "Web": { "width": 360, "height": 149 }
+    },
+    "statusBar": {
+      "App": { "width": 360, "height": 27 },
+      "Web": { "width": 360, "height": 77 }
+    },
+    "statusToAppBarGap": 16,
+    "appBar": {
+      "width": 360,
+      "height": 56
+    },
+    "actionSlot": {
+      "width": 32,
+      "height": 32
+    }
+  },
+  "tokens": [
+    {
+      "semanticRef": "color/bg/level-0",
+      "property": "standard-background"
+    },
+    {
+      "semanticRef": "color/bg/home",
+      "property": "home-background",
+      "note": "원본 #F5F6FB. 2026-08-25 정본화(Foundation base/home-bg alias). 그 전 근접 대체값 color/bg/level-2 는 폐기."
+    },
+    {
+      "semanticRef": "color/text/title/primary",
+      "property": "title-color"
+    },
+    {
+      "semanticRef": "color/text/body/tertiary",
+      "property": "subtitle-color"
+    },
+    {
+      "semanticRef": "color/icon/gray-dark",
+      "property": "back-close-color"
+    },
+    {
+      "semanticRef": "color/icon/gray-dark",
+      "property": "notification-color"
+    },
+    {
+      "semanticRef": "color/icon/red",
+      "property": "notification-accent-color"
+    },
+    {
+      "semanticRef": "color/icon/gray-dark",
+      "property": "subtitle-arrow-color",
+      "note": "서브타이틀 유형의 아래화살표. 원본 실측값 #353535에 맞춘다."
+    }
+  ],
+  "figma": {
+    "componentSetKey": "9fd8509a9e73c1279d9efb2088bb591658ce29f5",
+    "figmaNodeId": "1760:7247",
+    "fileKey": "cysG5U1udpQqVagYY1hWHW",
+    "variantNodes": {
+      "Type=Home / Title, Platform=App": "1759:7204",
+      "Type=Home / Title + Subtitle + 1 Icon, Platform=App": "1759:7167",
+      "Type=Standard / Title, Platform=App": "1757:7099",
+      "Type=Standard / Title + Close, Platform=App": "1757:7129",
+      "Type=Standard / No Title, Platform=App": "1760:7217",
+      "Type=Standard / No Title + Close, Platform=App": "1781:7359",
+      "Type=Home / Title, Platform=Web": "1898:12036",
+      "Type=Home / Title + Subtitle + 1 Icon, Platform=Web": "1898:12094",
+      "Type=Standard / Title, Platform=Web": "1898:12162",
+      "Type=Standard / Title + Close, Platform=Web": "1898:12224",
+      "Type=Standard / No Title, Platform=Web": "1898:12288",
+      "Type=Standard / No Title + Close, Platform=Web": "1898:12349"
+    },
+    "usageExample": "1760:7247",
+    "propertyMap": {
+      "Type": [
+        "Home / Title",
+        "Home / Title + Subtitle + 1 Icon",
+        "Standard / Title",
+        "Standard / Title + Close",
+        "Standard / No Title",
+        "Standard / No Title + Close"
+      ],
+      "Platform": [
+        "App",
+        "Web"
+      ]
+    },
+    "_note": "node id·component key 는 reports/figma-library-build/mobile-header/node-map.json (buildRevision v3.5) 의 실측값이다. 세트 key 는 v1 이후 변하지 않았다.",
+    "specSheets": {
+      "light": "1760:7247",
+      "dark": "1791:7535"
+    }
+  },
+  "origin": {
+    "classification": "B",
+    "note": "원본 틀 필요 — V2.4 5종을 재측정하고 회원가입용 No Title 1종을 승인받아 추가했다.",
+    "legacySource": {
+      "file": "yE5UCFEbmXJBlYJWB24Lz2",
+      "canonicalSet": "540:6112",
+      "name": "mobile_header"
+    }
+  },
+  "guide": {
+    "sampleLabels": [
+      "스탠다드형 타이틀",
+      "홈 타이틀",
+      "홈 서브타이틀",
+      "홈-alt 타이틀"
+    ],
+    "interactionPattern": "mobile-appbar",
+    "webTag": "header",
+    "boundaryNote": "2026-09-02 ui-library-code 워크플로우로 웹 배포본을 만들었다 — components.html 섹션은 손관리가 아니라 ui-library-guide.js 가 dist 로 렌더한다(managedBy: ui-library-guide). StatusBar·Platform 축은 river 결정(D5)으로 배포본에서 뺐다 — AppBar 56px·Type 6종만 배포한다."
+  },
+  "governance": {
+    "owner": "design-system",
+    "deprecated": false,
+    "replacement": null
+  }
+}

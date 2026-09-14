@@ -1,0 +1,35 @@
+<div data-s1-component="time-picker" data-size="md" data-break="pc" data-type="24h" data-minute-step="1">
+  <button type="button" data-s1-part="trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="시간">
+    <span data-s1-part="value">시간 선택</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="panel" hidden>
+    <div data-s1-part="columns">
+      <div data-s1-part="column" data-column="hour" role="listbox" aria-label="시"></div>
+      <div data-s1-part="divider"></div>
+      <div data-s1-part="column" data-column="minute" role="listbox" aria-label="분"></div>
+    </div>
+    <div data-s1-part="footer">
+      <button type="button" data-s1-part="confirm" disabled>확인</button>
+    </div>
+  </div>
+</div>
+
+<div data-s1-component="time-picker" data-size="md" data-break="pc" data-type="12h" data-minute-step="5">
+  <button type="button" data-s1-part="trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="시간">
+    <span data-s1-part="value">시간 선택</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="panel" hidden>
+    <div data-s1-part="columns">
+      <div data-s1-part="column" data-column="ampm" role="listbox" aria-label="오전오후"></div>
+      <div data-s1-part="divider"></div>
+      <div data-s1-part="column" data-column="hour" role="listbox" aria-label="시"></div>
+      <div data-s1-part="divider"></div>
+      <div data-s1-part="column" data-column="minute" role="listbox" aria-label="분"></div>
+    </div>
+    <div data-s1-part="footer">
+      <button type="button" data-s1-part="confirm" disabled>확인</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+{
+  "name": "@s1/ui-vue",
+  "version": "0.5.0",
+  "description": "S1 디자인 시스템 — 승인된 배포본 마크업을 그대로 옮긴 Vue 컴포넌트",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./*": "./*"
+  },
+  "sideEffects": false,
+  "peerDependencies": {
+    "vue": ">=3"
+  },
+  "files": [
+    "*.vue",
+    "index.js",
+    "version.js"
+  ]
+}

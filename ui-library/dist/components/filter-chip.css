@@ -1,0 +1,162 @@
+/* Filter Chip — 정본 buildFilterChip(2195-2330) 기준.
+   Selected(=열림) 은 Dropdown(dropdown 모듈) 인스턴스를 자식으로 붙인다.
+   패널 사이즈 매핑은 Select 와 다르다: SM→xsm · MD→xsm (build-components.ts:2602-2626, river 결정 2026-09-01). */
+
+[data-s1-component="filter-chip"] {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+}
+
+[data-s1-component="filter-chip"] [data-s1-part="trigger"] {
+  align-items: center;
+  appearance: none;
+  border-radius: var(--radius-full);
+  border-style: solid;
+  border-width: var(--border-width-1);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Pretendard", sans-serif;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  gap: var(--spacing-4);
+}
+
+/* Size×Break — build-components.ts:2546-2550 */
+/* 화살표는 칩의 오른쪽 끝에 둔다 — river 지시 2026-09-07("칩의 라벨과 화살표아이콘이 좌우로 벌어지지 않는다").
+   칩은 정본대로 내용 크기(hug)라 평소에는 남는 공간이 없어 **보이는 결과가 바뀌지 않는다**(폭·간격 실측 동일 확인).
+   칩에 폭이 주어지는 경우(권장 사용은 아니다 — D24 에서 미지원으로 정리)에만 화살표가 끝으로 밀린다.
+   justify-content:space-between 을 쓰지 않는 이유 — 제목 있음 칩은 아이템이 3개(제목·값·화살표)라
+   제목과 값 사이까지 벌어진다. 그래서 화살표에만 margin-left:auto 를 준다(라벨끼리는 gap 4px 유지). */
+[data-s1-component="filter-chip"] [data-s1-part="trigger"] [data-s1-part="icon"] {
+  margin-left: auto;
+}
+
+[data-s1-component="filter-chip"][data-size="sm"][data-break="pc"] [data-s1-part="trigger"] {
+  height: var(--sizing-28);
+  padding-left: var(--spacing-12);
+  padding-right: var(--spacing-6);
+}
+[data-s1-component="filter-chip"][data-size="md"][data-break="pc"] [data-s1-part="trigger"] {
+  height: var(--sizing-34);
+  padding-left: var(--spacing-16);
+  padding-right: var(--spacing-8);
+}
+[data-s1-component="filter-chip"][data-size="md"][data-break="mobile"] [data-s1-part="trigger"] {
+  height: var(--sizing-30);
+  padding-left: var(--spacing-12);
+  padding-right: var(--spacing-6);
+}
+
+[data-s1-component="filter-chip"] [data-s1-part="value"] {
+  color: inherit;
+}
+[data-s1-component="filter-chip"] [data-s1-part="title"] {
+  color: inherit;
+}
+
+/* 아이콘 — chevron 20px 고정(리터럴, fcIconPx 미사용, build-components.ts:2614).
+   색은 화살표 전용 icon 토큰(2026-09-10 신설, river 지시). 종전에는 currentColor 로 라벨색을 빌려 썼다 —
+   값은 그대로 옮겨 왔으므로 보이는 색은 변하지 않는다. variant/state 별 지정은 아래 각 블록에 있다. */
+[data-s1-component="filter-chip"] [data-s1-part="icon"] {
+  background-color: var(--color-chip-line-icon-default);
+  flex: 0 0 auto;
+  height: var(--sizing-20);
+  mask: url("../assets/icons/chevron.svg") center / contain no-repeat;
+  /* 라이브러리 chevron 원본은 오른쪽(›) 기준이다(아이콘 라이브러리 V2.2 419:67). 닫힘=시계 90°(아래 ∨) · 열림=반시계 90°(위 ∧) — build-components.ts 의 up?90:270(반시계) 과 같은 결과. */
+  transform: rotate(90deg);
+  width: var(--sizing-20);
+}
+[data-s1-component="filter-chip"] [data-s1-part="trigger"][aria-expanded="true"] [data-s1-part="icon"] {
+  transform: rotate(-90deg);
+}
+
+/* Line variant — chipSlot(v="line") */
+[data-s1-component="filter-chip"][data-variant="line"] [data-s1-part="trigger"] {
+  background: var(--color-chip-line-bg-default);
+  border-color: var(--color-chip-line-border-default);
+  color: var(--color-chip-line-label-default);
+}
+[data-s1-component="filter-chip"][data-variant="line"] [data-s1-part="icon"] {
+  background-color: var(--color-chip-line-icon-default);
+}
+@media (hover: hover) {
+  [data-s1-component="filter-chip"][data-variant="line"] [data-s1-part="trigger"]:hover:not(:disabled):not([aria-expanded="true"]) {
+    background: var(--color-chip-line-bg-hover);
+  }
+}
+[data-s1-component="filter-chip"][data-variant="line"] [data-s1-part="trigger"][aria-expanded="true"] {
+  background: var(--color-chip-line-bg-selected);
+  border-color: var(--color-chip-line-border-selected);
+}
+[data-s1-component="filter-chip"][data-variant="line"] [data-s1-part="trigger"]:disabled {
+  background: var(--color-chip-line-bg-disabled);
+  border-color: var(--color-chip-line-border-disabled);
+  color: var(--color-chip-line-label-disabled);
+}
+[data-s1-component="filter-chip"][data-variant="line"] [data-s1-part="trigger"]:disabled [data-s1-part="icon"] {
+  background-color: var(--color-chip-line-icon-disabled);
+}
+
+/* Solid variant — chipSlot(v="solid"). Hover 의 보더는 fill 과 같은 색(bdGroup="bg") — 보더가 안 보이는 효과. */
+[data-s1-component="filter-chip"][data-variant="solid"] [data-s1-part="trigger"] {
+  background: var(--color-chip-solid-bg-default);
+  border-color: var(--color-chip-solid-border-default);
+  color: var(--color-chip-solid-label-default);
+}
+[data-s1-component="filter-chip"][data-variant="solid"] [data-s1-part="icon"] {
+  background-color: var(--color-chip-solid-icon-default);
+}
+@media (hover: hover) {
+  [data-s1-component="filter-chip"][data-variant="solid"] [data-s1-part="trigger"]:hover:not(:disabled):not([aria-expanded="true"]) {
+    background: var(--color-chip-solid-bg-hover);
+    border-color: var(--color-chip-solid-bg-hover);
+  }
+}
+[data-s1-component="filter-chip"][data-variant="solid"] [data-s1-part="trigger"][aria-expanded="true"] {
+  background: var(--color-chip-solid-bg-selected);
+  border-color: var(--color-chip-solid-border-selected);
+  color: var(--color-chip-solid-label-selected);
+}
+[data-s1-component="filter-chip"][data-variant="solid"] [data-s1-part="trigger"][aria-expanded="true"] [data-s1-part="icon"] {
+  background-color: var(--color-chip-solid-icon-selected);
+}
+[data-s1-component="filter-chip"][data-variant="solid"] [data-s1-part="trigger"]:disabled {
+  background: var(--color-chip-solid-bg-disabled);
+  border-color: var(--color-chip-solid-border-disabled);
+  color: var(--color-chip-solid-label-disabled);
+}
+[data-s1-component="filter-chip"][data-variant="solid"] [data-s1-part="trigger"]:disabled [data-s1-part="icon"] {
+  background-color: var(--color-chip-solid-icon-disabled);
+}
+
+/* Title(있음) + Line 조합만 값 라벨을 항상 강조색으로 — disabled 는 제외(build-components.ts:2588, valLbSlot). */
+[data-s1-component="filter-chip"][data-variant="line"][data-title="on"] [data-s1-part="value"] {
+  color: var(--color-chip-line-label-selected);
+}
+[data-s1-component="filter-chip"][data-variant="line"][data-title="on"] [data-s1-part="trigger"]:disabled [data-s1-part="value"] {
+  color: var(--color-chip-line-label-disabled);
+}
+
+/* 패널 배치 — dropdown(자식 코어)의 형태·상태는 dropdown.css 가 소유하고, filter-chip 은 배치·간격만 담당한다. */
+[data-s1-component="filter-chip"] [data-s1-part="panel"] {
+  left: 0;
+  margin-top: var(--spacing-8);
+  position: absolute;
+  top: 100%;
+  width: 100%; /* 칩(트리거) 폭 = 목록 폭의 기준선이 된다 */
+  z-index: 10;
+}
+/* **river 최종 확정 2026-09-07**: 칩 폭이 100px 이상이면 목록 폭 = 칩 폭, 칩이 100px 보다 좁으면 목록은 100px.
+   여기서는 「칩 폭을 넘긴다」(width:100%)만 담당하고, 하한 100px 은 dropdown.css 가 소유한다 —
+   min-width:100px 가 width:100% 를 이겨서 두 규칙이 이 조합 하나로 자동 성립한다.
+   실측(PC) — 제목 없는 칩 74px → 목록 100px(하한) · 제목 있는 칩 103px → 목록 103px(칩과 동일).
+   경위: 하한을 140 으로 뒀을 때는 실제 칩이 전부 140 미만이라 모든 칩에서 목록이 칩보다 넓어졌고(river 제보),
+   하한을 아예 없앴을 때는 아주 좁은 칩에서 목록까지 좁아졌다. 100 은 river 가 그 사이로 정한 값이다. */
+[data-s1-component="filter-chip"] [data-s1-part="panel"] [data-s1-component="dropdown"] {
+  width: 100%;
+}
+[data-s1-component="filter-chip"] [data-s1-part="panel"][hidden] {
+  display: none;
+}

@@ -1,0 +1,211 @@
+{
+  "id": "mobile-header",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "987139e9776f4246c2c6ee5035109549081e3c82ef07669f1d3e5b07b1b08472",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/mobile-header.json"
+  ],
+  "rootSelector": "[data-s1-component=\"mobile-header\"]",
+  "variants": [
+    "home-title",
+    "home-title-subtitle",
+    "standard-title",
+    "standard-title-close",
+    "standard-no-title",
+    "standard-no-title-close"
+  ],
+  "canonicalVariantMap": {
+    "home-title": "Type=Home / Title",
+    "home-title-subtitle": "Type=Home / Title + Subtitle + 1 Icon",
+    "standard-title": "Type=Standard / Title",
+    "standard-title-close": "Type=Standard / Title + Close",
+    "standard-no-title": "Type=Standard / No Title",
+    "standard-no-title-close": "Type=Standard / No Title + Close"
+  },
+  "sizes": [],
+  "states": {},
+  "notInCanon": {
+    "statusBar": "정본은 StatusBar(App 27 / Web 77)를 헤더 위에 붙여 전체 99/149 높이로 만든다. river 결정(D5, 2026-09-02)으로 웹 배포본은 AppBar 56px 만 배포한다 — 실제 서비스에서 상태바·주소창은 OS·브라우저가 그리는 영역이라 우리가 그리면 가짜 크롬이 된다. 안내 화면에서는 360×780 모바일 목업 위 그림으로만 보여준다(D6).",
+    "platform": "StatusBar 제외로 App/Web 차이(상태바 높이만 다름)가 사라져 Platform 축도 함께 뺀다 — Type 6종 1축만 배포한다.",
+    "homeTitle2Icons": "원본에 있던 'Home / Title + 2 Icons'는 river 가 실사용하지 않는 기준이라 삭제했다(정본 주석 :3001-3002). 만들지 않는다."
+  },
+  "parts": [
+    "title",
+    "title-row",
+    "arrow-icon",
+    "stack",
+    "subtitle",
+    "back",
+    "back-icon",
+    "close",
+    "close-icon",
+    "spacer",
+    "notification",
+    "notification-icon"
+  ],
+  "htmlContract": {
+    "root": "header[data-s1-component=mobile-header][data-variant]",
+    "perVariantParts": {
+      "home-title": [
+        "title"
+      ],
+      "home-title-subtitle": [
+        "stack",
+        "title-row",
+        "title",
+        "arrow-icon",
+        "subtitle",
+        "notification",
+        "notification-icon"
+      ],
+      "standard-title": [
+        "back",
+        "back-icon",
+        "title",
+        "spacer"
+      ],
+      "standard-title-close": [
+        "back",
+        "back-icon",
+        "title",
+        "close",
+        "close-icon"
+      ],
+      "standard-no-title": [
+        "back",
+        "back-icon",
+        "title",
+        "spacer"
+      ],
+      "standard-no-title-close": [
+        "back",
+        "back-icon",
+        "title",
+        "close",
+        "close-icon"
+      ]
+    },
+    "relations": [
+      "home-title 는 back·close·spacer 슬롯이 아예 없다 — title 하나가 전체 폭을 채운다(정본 :3151-3153, appBar 가 title 한 자식만 갖는다).",
+      "standard-no-title·standard-no-title-close 는 [data-s1-part=title] 이 비어 있는 <span> 이다(heading 아님) — 실제 페이지 제목은 본문의 h1 이 맡고, 이 자리는 back/close 대칭을 위한 레이아웃 자리표시자일 뿐이다.",
+      "title 텍스트가 있는 변형(home-title·home-title-subtitle·standard-title·standard-title-close)은 [data-s1-part=title] 이 h1 이다 — 헤더가 화면의 주 제목 역할을 한다.",
+      "back·close·notification 버튼의 aria-label 은 화면 맥락에 맞게 교체한다(예시는 기본값 '이전'·'닫기'·'알림')."
+    ],
+    "grouping": "코어는 AppBar 56px 한 줄만 소유한다. StatusBar·모바일 목업 크롬은 화면(안내 페이지)이 소유한다.",
+    "source": "components/mobile-header/mobile-header.example.html",
+    "distribution": "examples/mobile-header.html"
+  },
+  "cssContract": {
+    "entry": "components/mobile-header.css",
+    "rootScope": "[data-s1-component=mobile-header]",
+    "nativeStates": [],
+    "ariaStates": [],
+    "documentedDataStates": [
+      "[data-variant]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "contentSlots": {
+    "title": "conditional; home-title·home-title-subtitle·standard-title·standard-title-close 는 필수. standard-no-title·standard-no-title-close 는 텍스트 없이 자리만 차지한다.",
+    "subtitle": "home-title-subtitle 전용; required"
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [
+    {
+      "id": "mobileHeaderBack",
+      "sourceKey": "7190e284d345ae19a679a16ed7bceafbd54073ca",
+      "asset": "assets/icons/mobile-header-back.svg",
+      "use": "좌측 이전 버튼(24px, 32×32 슬롯)",
+      "accessibleNamePolicy": "decorative; 버튼이 aria-label(기본값 \"이전\")로 이름을 갖는다",
+      "note": "Figma V2.2 아이콘 라이브러리 ic_이전(97:88 · Property 1=Solid) 실물 벡터 — 원본 대조 PASS(오차 0.00114)."
+    },
+    {
+      "id": "mobileHeaderClose",
+      "sourceKey": "54469d54f16ed38de2d7b420b0e2195e4cf7c118",
+      "asset": "assets/icons/mobile-header-close.svg",
+      "use": "우측 닫기 버튼(24px, 32×32 슬롯) — Title + Close·No Title + Close 유형",
+      "accessibleNamePolicy": "decorative; 버튼이 aria-label(기본값 \"닫기\")로 이름을 갖는다",
+      "note": "Figma V2.2 아이콘 라이브러리 ic_닫기(97:76 · Property 1=Solid) 실물 벡터 — 원본 대조 PASS(오차 0.00349). 모달의 close(97:79 Line)와 다른 자산이며 덮어쓰지 않는다."
+    },
+    {
+      "id": "mobileHeaderNotification",
+      "sourceKey": "13cf1b580ec982fda488f9318c6821930ddfb26e",
+      "asset": "assets/icons/mobile-header-notification.svg",
+      "use": "홈 서브타이틀 유형 우측 알림 버튼(24px, 32×32 슬롯) — 본체 레이어(gray-dark)",
+      "accessibleNamePolicy": "decorative; 버튼이 aria-label(기본값 \"알림\")로 이름을 갖는다",
+      "note": "Figma V2.2 아이콘 라이브러리 ic_알림(신규)(97:258 · Property 1=Line) 실물 벡터 — 원본 대조는 본체+점 결합 형상 전체로 수행해 PASS(오차 0.00308). 점(신규 표시)은 같은 원본의 부분 도형인 mobile-header-notification-accent.svg 를 별색(icon/red) 레이어로 CSS ::after 에 겹쳐 2색을 표현한다 — 마스크 1겹은 2색을 표현할 수 없어(river 결정 2026-09-02) 결합형 1건으로 원본 대조를 마치고 점 레이어는 대조 대상에서 제외하되(같은 원본의 부분 형상이라 독립 대조 시 극소 영역 때문에 오차율이 왜곡된다) 배포를 위해 icon manifest 에 mobileHeaderNotificationAccent 로 등록한다 — 등록이 곧 dist 복사 통로라 미등록 시 마스크가 404 로 실패해 점이 회색으로 나간다(2026-09-02 F-3). 대조 제외 경계는 icon manifest 의 derivedFrom·derivationRule 로 기계가독 선언한다 — 검사기가 부모 원본에서 규칙대로 재현해 바이트 일치를 매번 증명한다."
+    },
+    {
+      "id": "mobileHeaderNotificationAccent",
+      "sourceKey": "13cf1b580ec982fda488f9318c6821930ddfb26e",
+      "asset": "assets/icons/mobile-header-notification-accent.svg",
+      "use": "홈 서브타이틀 유형 알림 버튼의 \"신규 표시\" 빨간 점 레이어 — 본체 위 ::after 에 별색(icon/red) 마스크로 겹친다",
+      "accessibleNamePolicy": "decorative; 버튼의 aria-label 이 이름을 갖는다",
+      "note": "새로 그린 자산이 아니라 등록된 원본 mobileHeaderNotification(97:258)에서 떼어낸 색 레이어다(derivedFrom · derivationRule path-subset #1, river 지시 2026-09-02). 원본 모양 대조는 부모 1건으로 하고, 이 항목은 \"정말 부모의 일부인가\"를 검사기가 매번 기계로 증명한다."
+    },
+    {
+      "id": "mobileHeaderArrowDown",
+      "sourceKey": "6babc3f493e48be1e7191a7b8a68945833039fe8",
+      "asset": "assets/icons/mobile-header-arrow-down.svg",
+      "use": "홈 서브타이틀 유형 제목 옆 아래화살표(24px) — CSS transform: rotate(90deg) 로 아래를 향하게 한다(정본 Figma rotation -90 과 부호가 반대다)",
+      "accessibleNamePolicy": "decorative; 제목 텍스트에 종속된 장식 아이콘",
+      "note": "Figma V2.2 아이콘 라이브러리 ic_화살표,더보기,다음장(419:68 · Property 1=Solid) 실물 벡터. 보이는 것은 Stroke 2 획뿐(Fill 1 은 hidden, 정본 주석 build-components.ts:3550-3525) — 원본 대조 PASS. 획(stroke) 기반이라 glyph 뷰포트는 24 프레임 전체다 — 경로 경계로 잡으면 획 바깥 절반이 잘린다(2026-09-02 F-1)."
+    }
+  ],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "header[data-s1-component=mobile-header]. title 이 있는 변형은 h1, 없는 변형은 빈 span(비-heading) — river 표준안 승인 2026-09-02"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "back·close·notification 버튼은 화면 맥락에 맞는 aria-label 을 갖는다. title 이 없는 유형은 본문 h1 이 화면의 주 제목 역할을 한다."
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "native button Enter·Space 활성화."
+    },
+    "focus": {
+      "status": "required",
+      "value": "브라우저 기본 포커스 표시를 그대로 쓴다 — 정본에 focus 표현이 없어 웹에서 만들지 않는다(2026-09-02 river 결정)."
+    },
+    "ariaStateSync": {
+      "status": "not-applicable",
+      "reason": "헤더에 토글되는 ARIA 상태가 없다(정적 크롬)."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 Error 상태가 없다."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "정본이 모션을 정의하지 않는다."
+    },
+    "touchTarget": {
+      "status": "required",
+      "value": "back·close·notification 은 시각 32×32(정본 그대로, D4)이되 실제 터치 영역은 CSS ::before 로 44×44 까지 넓힌다."
+    }
+  },
+  "jsRequired": false,
+  "javascript": {
+    "runtime": "none",
+    "reason": "정적 크롬이다 — 열림/닫힘 등 로컬 상태가 없어 native 시맨틱만으로 충분하다."
+  },
+  "sourceFingerprint": "188e7e19bcfc01f21f595935673a8e46b586724125c30f03fd4a42a35d2903cb"
+}

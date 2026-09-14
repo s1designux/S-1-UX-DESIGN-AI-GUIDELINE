@@ -18,6 +18,8 @@ jobs:
           node-version: 22
       - name: Pull the latest AI guideline files
         run: node scripts/sync-from-source.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Verify PC behavior contracts
         run: npm test
       - name: Commit verified updates

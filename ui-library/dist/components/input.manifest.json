@@ -1,0 +1,268 @@
+{
+  "id": "input",
+  "version": "0.2.0",
+  "status": "approved",
+  "statusNote": "Base Input 은 2026-09-04 river 승인. 이번에 얹은 Password·Search 옵션은 2026-09-07 river 직접 검수 후 승인(결정 D1~D16). 정본 buildSearch 구조 변경은 🤖 component-verifier 가 검증하고 Gate 13 에 기록했다.",
+  "modes": [
+    "search"
+  ],
+  "canonicalFingerprint": "44b479e97df3af4fa4ce7c82e63444a330f62c951bd1e7472b9e4b31c2f68424",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/input.json"
+  ],
+  "rootSelector": "[data-s1-component=\"input\"]",
+  "variants": [
+    "base"
+  ],
+  "sizes": [
+    "xxsm",
+    "xsm",
+    "md"
+  ],
+  "breaks": {
+    "pc": [
+      "xxsm",
+      "xsm",
+      "md"
+    ],
+    "mobile": [
+      "md"
+    ]
+  },
+  "states": {
+    "default": "native",
+    "filled": "native value presence; no forced visual state",
+    "focus": ":focus-within",
+    "error": "control[aria-invalid=true]",
+    "correct": "root[data-state=correct]",
+    "readOnly": "control[readonly]",
+    "disabled": "control[disabled]"
+  },
+  "canonicalStateMap": {
+    "Default": "default",
+    "Filled": "filled",
+    "Focus": "focus",
+    "Error": "error",
+    "Correct": "correct",
+    "Read-Only": "readOnly",
+    "Disabled": "disabled"
+  },
+  "actionStates": {
+    "hover": "@media (hover: hover)에서 action:hover:not(:disabled); color/form-control/bg/hover 배경을 해당 hit area에만 표시"
+  },
+  "actions": {
+    "clear": {
+      "public": true,
+      "visibility": "Base·Password: editable && focus-within && value 있음. Search: editable && value 있음(초점 무관, river D4).",
+      "order": "Password 안에서는 [password][clear] 순서, Search 안에서는 [clear][search] 순서."
+    },
+    "password": {
+      "public": true,
+      "opt-in": "control[type=password] + action[data-action=password] 마크업이 있을 때만 동작. 기본은 없음(Input 옵션).",
+      "toggle": "click → control.type 을 password↔text 로 전환하고 Input 으로 focus 복귀",
+      "ariaSync": "aria-pressed(표시 중=true) · aria-label(숨김 중=\"비밀번호 보기\", 표시 중=\"비밀번호 숨기기\")",
+      "icon": "숨김 중=eye_hide, 표시 중=eye_show",
+      "trailOrder": "[password][clear], 간격 2px"
+    },
+    "search": {
+      "public": true,
+      "opt-in": "root[data-mode=search] + action[data-action=search] 마크업이 있을 때만 동작(Input 옵션).",
+      "execute": "click 또는 control 의 Enter keydown(IME 조합 중 제외) → s1:input:search 발화. 자동완성 없음(정본에 없음).",
+      "visibility": "항상 표시 — 값 유무와 무관(river D4)",
+      "trailOrder": "[clear][search], 간격 4px, 돋보기가 가장 오른쪽"
+    }
+  },
+  "parts": [
+    "label",
+    "field",
+    "control",
+    "action",
+    "action-icon",
+    "message"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=input]",
+    "requiredAttributes": [
+      "data-size",
+      "data-break"
+    ],
+    "requiredParts": [
+      "field",
+      "control"
+    ],
+    "optionalParts": [
+      "label",
+      "action",
+      "action-icon",
+      "message"
+    ],
+    "relations": [
+      "label[for] ↔ control[id]",
+      "message[id] ↔ control[aria-describedby]",
+      "action[data-action=clear] 안 action-icon",
+      "action[data-action=password] ↔ control[type=password|text] · aria-pressed",
+      "action[data-action=search] ↔ root[data-mode=search]"
+    ],
+    "source": "components/input/input.example.html",
+    "distribution": "examples/input.html",
+    "breakExamples": {
+      "pc": {
+        "source": "components/input/input.example.html",
+        "distribution": "examples/input.html"
+      },
+      "mobile": {
+        "source": "components/input/input.mobile.example.html",
+        "distribution": "examples/input.mobile.html"
+      },
+      "password": {
+        "source": "components/input/input.password.example.html",
+        "distribution": "examples/input.password.html"
+      },
+      "password-mobile": {
+        "source": "components/input/input.password-mobile.example.html",
+        "distribution": "examples/input.password-mobile.html"
+      },
+      "search": {
+        "source": "components/input/input.search.example.html",
+        "distribution": "examples/input.search.html"
+      },
+      "search-mobile": {
+        "source": "components/input/input.search-mobile.example.html",
+        "distribution": "examples/input.search-mobile.html"
+      }
+    }
+  },
+  "cssContract": {
+    "entry": "components/input.css",
+    "rootScope": "[data-s1-component=input]",
+    "variantAttributes": [
+      "data-size=xxsm|xsm|md",
+      "data-break=pc|mobile",
+      "data-state=correct"
+    ],
+    "nativeStates": [
+      ":focus-within",
+      "[aria-invalid=true]",
+      "[readonly]",
+      "[disabled]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "contentSlots": {
+    "label": "optional when an accessible name is supplied another way",
+    "message": "optional; omit the element and aria-describedby together when no guidance or state message is needed"
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": [],
+    "followUpModules": []
+  },
+  "icons": [
+    {
+      "id": "remove",
+      "sourceKey": "24b2df622d341e0af21cd4b23b4a7d23b97a5ea7",
+      "asset": "assets/icons/remove.svg",
+      "use": "Focus clear action",
+      "accessibleNamePolicy": "decorative icon inside a button named 입력 내용 지우기"
+    },
+    {
+      "id": "eye_hide",
+      "sourceKey": "d4e9eb5b7e193ee291aa2a7e04396c8de2d2dae7",
+      "asset": "assets/icons/eye_hide.svg",
+      "use": "Password visibility action — hidden state (aria-pressed=false)",
+      "accessibleNamePolicy": "decorative icon inside a button named 비밀번호 보기"
+    },
+    {
+      "id": "eye_show",
+      "sourceKey": "b130623bad9bf035e273501b404bf7a245af1460",
+      "asset": "assets/icons/eye_show.svg",
+      "use": "Password visibility action — visible state (aria-pressed=true)",
+      "accessibleNamePolicy": "decorative icon inside a button named 비밀번호 숨기기"
+    },
+    {
+      "id": "search",
+      "sourceKey": "6b764af642b8883e892754281950da0e971224d7",
+      "asset": "assets/icons/search.svg",
+      "use": "Search execute action — always visible in data-mode=search",
+      "accessibleNamePolicy": "decorative icon inside a button named 검색"
+    }
+  ],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "input"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "associated label or aria-label"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "native text editing"
+    },
+    "focus": {
+      "status": "required",
+      "value": "Keyboard focus turns the field border to the canonical Selected color and places the caret at the end of the value; pointer focus keeps the caret where the user clicked. Disabled inputs are skipped by native tab order."
+    },
+    "ariaStateSync": {
+      "status": "required",
+      "value": "Service sets aria-invalid when error state is active; runtime keeps clear visibility in sync with value and focus."
+    },
+    "errorRelation": {
+      "status": "required",
+      "value": "When a message exists, service gives it an id and references it with aria-describedby. Both may be omitted together."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "The canonical Base Input defines no motion."
+    },
+    "passwordVisibility": {
+      "status": "required",
+      "value": "toggle button synchronizes aria-pressed and aria-label with control.type on every toggle; focus returns to the control."
+    },
+    "searchExecute": {
+      "status": "required",
+      "value": "search action and Enter keydown (excluding IME composition) both dispatch the same s1:input:search event; no separate keyboard shortcut is added."
+    }
+  },
+  "jsRequired": true,
+  "javascript": {
+    "options": {},
+    "events": [
+      "s1:input:clear",
+      "s1:input:search"
+    ],
+    "eventDetail": {
+      "s1:input:clear": {
+        "value": "string; always empty after clear"
+      },
+      "s1:input:search": {
+        "value": "string; current control.value at the moment Enter or the search action fired"
+      }
+    },
+    "methods": [
+      "init(root)",
+      "destroy(root)",
+      "instance.update()"
+    ],
+    "lifecycle": [
+      "init is idempotent",
+      "destroy removes listeners and hides clear action"
+    ],
+    "controlMode": "uncontrolled",
+    "behavior": "Focus에서 값이 있을 때 remove action을 보이고, 실행하면 값 삭제·input event 발생·Input focus 복귀. Password 옵션(type=password + action[data-action=password])이 있으면 누를 때마다 type 을 password↔text 로 바꾸고 aria-pressed·aria-label 을 맞춘 뒤 focus 를 되돌린다. Search 옵션(root[data-mode=search] + action[data-action=search])이 있으면 클릭 또는 Enter(IME 조합 제외)에서 s1:input:search 를 발화하고, clear 표시 조건은 focus 와 무관하게 값 유무만 본다."
+  },
+  "sourceFingerprint": "31a0a85e9a8732ee22cb032bd9e00c7274696fd7dc60667f177b00c272f4aba8"
+}

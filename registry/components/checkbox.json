@@ -1,0 +1,86 @@
+{
+  "_meta": {
+    "id": "checkbox",
+    "name": "Checkbox",
+    "category": "Core",
+    "updatedAt": "2026-08-31",
+    "version": "0.2.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "stable",
+    "figmaStatus": "existing",
+    "harnessStatus": "implemented",
+    "description": "체크박스 컨트롤. 정본 상태는 default·hover·checked·disabled·disabled+checked 다섯이며 부분선택(indeterminate)은 아직 정본에 없다."
+  },
+  "usage": {
+    "whenToUse": [
+      "여러 항목을 독립적으로 켜고 끌 때(다중 선택).",
+      "약관 동의처럼 항목마다 따로 켜고 끌 때."
+    ],
+    "whenNotToUse": [
+      "여러 보기 중 하나만 고를 때는 Radio.",
+      "단일 on/off 설정은 Toggle."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "박스",
+      "role": "체크 영역. 배경·테두리는 control 토큰."
+    },
+    {
+      "part": "체크 표시",
+      "role": "checked 인디케이터 아이콘(정본 ic_확인 16px). 색은 control indicator 토큰."
+    },
+    {
+      "part": "라벨(선택)",
+      "role": "선택 부품. 없는 것이 기본이고, 붙이면 라벨 클릭도 선택 영역이 된다(본문 14 Medium, 간격 8)."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "라벨을 붙일 때는 label[for] 로 control 과 연결해 라벨 클릭도 선택되게 한다.",
+      "박스는 코어 체크박스를 재사용한다(모듈 전용 체크박스 금지)."
+    ],
+    "dont": [
+      "Table·Filter 등 모듈에서 체크박스를 새로 만들지 않는다.",
+      "라벨 없이 쓸 때 aria-label 을 빠뜨리지 않는다."
+    ]
+  },
+  "a11y": [
+    "native input[type=checkbox] 를 사용해 역할·선택 상태·Space 키 동작을 브라우저가 제공하게 한다.",
+    "라벨이 없으면 aria-label 필수.",
+    "비활성은 disabled 속성으로 표현하고 시각 처리만으로 대체하지 않는다.",
+    "키보드 초점은 선택 테두리 토큰의 2px 외곽선으로 보이게 한다."
+  ],
+  "states": ["default", "hover", "checked", "disabled"],
+  "tokens": [
+    { "cssVar": "--checkbox-default-bg",         "value": "var(--color-control-bg-default)",       "semanticRef": "color-control-bg-default",       "state": "default",  "property": "background" },
+    { "cssVar": "--checkbox-hover-bg",            "value": "var(--color-control-bg-hover)",         "semanticRef": "color-control-bg-hover",         "state": "hover",    "property": "background" },
+    { "cssVar": "--checkbox-checked-bg",          "value": "var(--color-control-bg-selected)",      "semanticRef": "color-control-bg-selected",      "state": "checked",  "property": "background" },
+    { "cssVar": "--checkbox-disabled-bg",         "value": "var(--color-control-bg-disabled)",      "semanticRef": "color-control-bg-disabled",      "state": "disabled", "property": "background" },
+    { "cssVar": "--checkbox-default-border",      "value": "var(--color-control-border-default)",   "semanticRef": "color-control-border-default",   "state": "default",      "property": "border" },
+    { "cssVar": "--checkbox-hover-border",        "value": "var(--color-control-border-default)",   "semanticRef": "color-control-border-default",   "state": "hover",        "property": "border" },
+    { "cssVar": "--checkbox-checked-border",      "value": "var(--color-control-border-selected)",  "semanticRef": "color-control-border-selected",  "state": "checked",      "property": "border" },
+    { "cssVar": "--checkbox-disabled-border",     "value": "var(--color-control-border-disabled)",  "semanticRef": "color-control-border-disabled",  "state": "disabled",     "property": "border" },
+    { "cssVar": "--checkbox-check-icon",          "value": "var(--color-control-indicator-selected)", "semanticRef": "color-control-indicator-selected", "state": "checked",   "property": "icon" },
+    { "cssVar": "--checkbox-disabled-check-icon", "value": "var(--color-control-indicator-disabled)", "semanticRef": "color-control-indicator-disabled", "state": "disabled",  "property": "icon" }
+  ],
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "1459:16409",
+    "fileKey": "Tnihi6lixRR47N4RSAwUbF",
+    "propertyMap": {}
+  },
+  "guide": {
+    "sampleLabels": ["선택 항목"],
+    "webTag": "input",
+    "interactionPattern": "checkbox-toggle",
+    "accessibility": { "role": "checkbox", "keyboard": ["Space"], "attributes": ["aria-checked", "aria-label"] }
+  },
+  "governance": {
+    "owner": "Design System Team",
+    "deprecated": false,
+    "replacement": null
+  }
+}

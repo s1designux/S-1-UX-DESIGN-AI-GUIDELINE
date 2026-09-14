@@ -1,0 +1,10 @@
+<!-- 목록 안에서 쓰는 부품이다. 꾸미기 없는 <ul> 껍데기와 함께 낸다(mobile-bottom-nav 선례).
+     1depth(카테고리 제목)는 링크가 아니라 목록의 제목 글자다(registry a11y) — <a>/<button> 으로 만들지 않는다.
+     2depth(항목)는 <a href> 다. 현재 위치인 항목에만 aria-current="page" 를 준다.
+     1depth 는 상태가 없다 — 마우스를 올려도 선택돼도 늘 기본 색이다(river 지시 2026-09-10).
+     상태(Hover·Selected)는 2depth 항목만 갖는다. -->
+<ul>
+  <li><span data-s1-component="gnb-sub-menu-item" data-depth="1depth">카테고리 제목</span></li>
+  <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#" aria-current="page">하위 메뉴</a></li>
+  <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+</ul>

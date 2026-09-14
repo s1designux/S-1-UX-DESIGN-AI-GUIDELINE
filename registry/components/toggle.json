@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "id": "toggle",
+    "name": "Toggle",
+    "category": "Core",
+    "updatedAt": "2026-08-31",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "stable",
+    "figmaStatus": "existing",
+    "harnessStatus": "implemented",
+    "description": "토글 스위치 컨트롤. on·off·disabled 상태.",
+    "notes": [
+      "--toggle-off-bg: tokens.css 기준 var(--color-text-placeholder). component-tokens-extracted.md도 동일값으로 정합 완료(2026-05-18)."
+    ]
+  },
+  "usage": {
+    "whenToUse": [
+      "단일 설정을 즉시 켜고 끌 때(즉시 반영)."
+    ],
+    "whenNotToUse": [
+      "여러 항목 다중 선택은 Checkbox.",
+      "상호배타 다중 보기는 Radio."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "트랙",
+      "role": "on/off 배경. control 토큰."
+    },
+    {
+      "part": "노브(knob)",
+      "role": "좌우로 이동하는 인디케이터."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "즉시 반영되는 설정에 쓴다(확인 없이 상태 전환).",
+      "off 배경은 미선택 인디케이터 색(--color-control-indicator-unselected)을 따른다."
+    ],
+    "dont": [
+      "제출이 필요한 폼 선택에 토글을 쓰지 않는다.",
+      "노브/트랙 색을 raw 로 칠하지 않는다."
+    ]
+  },
+  "a11y": [
+    "role=switch·aria-checked 로 상태를 노출한다.",
+    "라벨을 연결하거나 aria-label 을 준다."
+  ],
+  "states": ["on", "off", "disabled"],
+  "tokens": [
+    { "cssVar": "--toggle-on-bg",       "value": "var(--color-control-bg-selected)",          "semanticRef": "color-control-bg-selected",          "state": "on",       "property": "background" },
+    { "cssVar": "--toggle-off-bg",      "value": "var(--color-control-indicator-unselected)", "semanticRef": "color-control-indicator-unselected", "state": "off",      "property": "background" },
+    { "cssVar": "--toggle-disabled-bg", "value": "var(--color-control-bg-disabled)",          "semanticRef": "color-control-bg-disabled",          "state": "disabled", "property": "background" },
+    { "cssVar": "--toggle-knob",        "value": "var(--color-control-indicator-selected)",   "semanticRef": "color-control-indicator-selected",   "state": "all",      "property": "knob-color" }
+  ],
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "",
+    "propertyMap": {}
+  },
+  "guide": {
+    "sampleLabels": ["설정"],
+    "webTag": "button",
+    "interactionPattern": "switch-toggle",
+    "accessibility": { "role": "switch", "keyboard": ["Space"], "attributes": ["aria-checked", "aria-label"] }
+  },
+  "governance": {
+    "owner": "Design System Team",
+    "deprecated": false,
+    "replacement": null
+  }
+}

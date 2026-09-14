@@ -1,0 +1,118 @@
+/* Select Box — 정본 buildSelect(트리거 5states × 4 size/break) 기준.
+   Open 은 Dropdown(dropdown 모듈) 인스턴스를 자식으로 붙인다(패널 자체는 select 가 소유하지 않는다). */
+
+[data-s1-component="select"] {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+}
+
+[data-s1-component="select"] [data-s1-part="trigger"] {
+  align-items: center;
+  appearance: none;
+  background: var(--color-form-control-bg-default);
+  border: var(--border-width-1) solid var(--color-form-control-border-default);
+  border-radius: var(--radius-4);
+  box-sizing: border-box;
+  color: var(--color-form-control-text-placeholder);
+  cursor: pointer;
+  display: flex;
+  font-family: "Pretendard", sans-serif;
+  font-weight: var(--font-weight-regular);
+  justify-content: space-between;
+  min-width: 140px; /* 정본 trigger.resize(140, sc.h) — river 2차 지시(2026-09-01): 셀렉트박스 본체(트리거)에도 최소 폭. Filter Chip 트리거는 정본이 primaryAxisSizingMode=AUTO(내용에 맞춰 줄어듦)라 여기 적용 안 함(filter-chip.css는 손대지 않음). */
+  padding-left: var(--spacing-16);
+  padding-right: var(--spacing-8);
+  width: 100%;
+}
+
+/* Size×Break — build-components.ts:1703-1708 */
+[data-s1-component="select"][data-size="xxsm"] [data-s1-part="trigger"] { font-size: var(--font-size-12); height: var(--sizing-28); }
+[data-s1-component="select"][data-size="xsm"] [data-s1-part="trigger"] { font-size: var(--font-size-14); height: var(--sizing-34); }
+[data-s1-component="select"][data-size="md"] [data-s1-part="trigger"] { font-size: var(--font-size-14); height: var(--sizing-44); }
+[data-s1-component="select"][data-size="md"][data-break="mobile"] [data-s1-part="trigger"] { height: var(--sizing-48); }
+
+[data-s1-component="select"] [data-s1-part="value"] {
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 아이콘 — chevron. 크기: XXSM=20px, 그 외=24px(fcIconPx, build-components.ts:1506·1481).
+   방향은 회전으로 표현(닫힘 아래·열림 위) — 정본과 동일 철학. */
+[data-s1-component="select"] [data-s1-part="icon"] {
+  background-color: var(--color-form-control-icon-default);
+  flex: 0 0 auto;
+  mask: url("../assets/icons/chevron.svg") center / contain no-repeat;
+  /* 라이브러리 chevron 원본은 오른쪽(›) 기준이다(아이콘 라이브러리 V2.2 419:67). 닫힘=시계 90°(아래 ∨) · 열림=반시계 90°(위 ∧) — build-components.ts 의 up?90:270(반시계) 과 같은 결과. */
+  transform: rotate(90deg);
+}
+[data-s1-component="select"][data-size="xxsm"] [data-s1-part="icon"] { width: var(--sizing-20); height: var(--sizing-20); }
+[data-s1-component="select"][data-size="xsm"] [data-s1-part="icon"],
+[data-s1-component="select"][data-size="md"] [data-s1-part="icon"] { width: var(--sizing-24); height: var(--sizing-24); }
+
+@media (hover: hover) {
+  [data-s1-component="select"] [data-s1-part="trigger"]:hover:not(:disabled):not([aria-expanded="true"]):not([data-filled="true"]) {
+    background: var(--color-form-control-bg-hover);
+    color: var(--color-form-control-text-placeholder);
+  }
+  /* 아이콘도 상태를 따라간다 — 정본 buildSelect 상태표 Hover=icon/hover(2026-09-10 신설). */
+  [data-s1-component="select"] [data-s1-part="trigger"]:hover:not(:disabled):not([aria-expanded="true"]):not([data-filled="true"]) [data-s1-part="icon"] {
+    background-color: var(--color-form-control-icon-hover);
+  }
+}
+
+/* Filled — 값이 선택된 뒤(닫힘). 정본: bg/default·border/default·text/selected. */
+[data-s1-component="select"] [data-s1-part="trigger"][data-filled="true"] {
+  background: var(--color-form-control-bg-default);
+  border-color: var(--color-form-control-border-default);
+  color: var(--color-form-control-text-selected);
+}
+
+/* Open — 정본: bg/selected·border/selected·text/placeholder(Filled 여부와 무관, 정본에 Open+Filled 교차 셀이 없다). */
+[data-s1-component="select"] [data-s1-part="trigger"][aria-expanded="true"] {
+  background: var(--color-form-control-bg-selected);
+  border-color: var(--color-form-control-border-selected);
+  color: var(--color-form-control-text-placeholder);
+}
+[data-s1-component="select"] [data-s1-part="trigger"][aria-expanded="true"] [data-s1-part="icon"] {
+  /* 정본 Open=icon/selected. :disabled 규칙이 뒤에 와서 이기므로 비활성 색은 그대로 유지된다. */
+  background-color: var(--color-form-control-icon-selected);
+  transform: rotate(-90deg);
+}
+
+[data-s1-component="select"] [data-s1-part="trigger"]:disabled {
+  background: var(--color-form-control-bg-disabled);
+  border-color: var(--color-form-control-border-disabled);
+  color: var(--color-form-control-text-disabled);
+  cursor: not-allowed;
+}
+[data-s1-component="select"] [data-s1-part="trigger"]:disabled [data-s1-part="icon"] {
+  background-color: var(--color-form-control-icon-disabled);
+}
+
+/* 패널 배치 — dropdown(자식 코어)의 형태·상태는 dropdown.css 가 소유하고, select 는 배치·간격만 담당한다.
+   정본 itemSpacing 8px(build-components.ts:1732 comp.itemSpacing) 유지, 웹에서는 겹쳐 뜨는 오버레이로 배치한다. */
+[data-s1-component="select"] [data-s1-part="panel"] {
+  left: 0;
+  margin-top: var(--spacing-8);
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 10;
+}
+[data-s1-component="select"] [data-s1-part="panel"][hidden] {
+  display: none;
+}
+
+/* 자식 dropdown 코어의 기본값은 트리거가 없을 때를 위한 width:max-content 이므로, 트리거가 있는 select 는
+   이를 100% 로 덮어 「목록 폭 = 트리거 폭」을 만든다 — **river 결정 2026-09-07(번복 확정)**:
+   "드롭다운은 상단 트리거의 크기에 따라서 동일하게 반영되되 트리거 자체가 너무 좁은 경우에는 전에 내가
+   잡았던 기준으로 너무 작아지지 않게끔 제공". select 트리거는 min-width:140px(정본 resize(140,…)) 라 하한(100)에 걸릴 일이 없다.
+   하한 100 은 dropdown.css 가 소유한다 — select.css 는 배치(폭 100%)만 담당.
+   ※ 종전 주석에 있던 "river 2차 지시에서 '트리거보다 목록이 좁아 보이면 안 된다'고 명시" 라는 서술은
+     2026-09-07 세션 기록 대조 결과 **사람 발화에서 확인되지 않아** 삭제했다(⭐ 자기 진술이었다). */
+[data-s1-component="select"] [data-s1-part="panel"] [data-s1-component="dropdown"] {
+  width: 100%;
+}

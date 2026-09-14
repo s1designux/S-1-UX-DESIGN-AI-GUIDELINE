@@ -1,0 +1,75 @@
+<!-- 세 유형(regular · compact-1 · compact-2, 2026-09-09 개편). 이 패널만 떼어 놓은 예시라
+     여닫는 코드가 없다. 여닫는 동작은 상단바(GNB)가 갖는다 — GNB 메뉴가 aria-expanded·aria-controls
+     로 이 패널의 id 를 가리키면 마우스를 올리거나 Tab 으로 들어갈 때 펼쳐진다. 상단바와 붙인 조립
+     예시는 gnb 쪽 example 에 있다(registry a11y). -->
+
+<!-- regular — 제목(Bold) + 항목 목록. 4묶음, 묶음별 항목 5·3·4·5개. 위 32/아래 64.
+     Selected 는 4번째 묶음의 4번째 항목("단말기정보" 자리). -->
+<div data-s1-component="gnb-sub-menu" data-type="regular" aria-label="하위 메뉴 · regular">
+  <div data-s1-part="columns">
+    <ul data-s1-part="column">
+      <li><span data-s1-component="gnb-sub-menu-item" data-depth="1depth">카테고리 제목</span></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+    </ul>
+    <ul data-s1-part="column">
+      <li><span data-s1-component="gnb-sub-menu-item" data-depth="1depth">카테고리 제목</span></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+    </ul>
+    <ul data-s1-part="column">
+      <li><span data-s1-component="gnb-sub-menu-item" data-depth="1depth">카테고리 제목</span></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+    </ul>
+    <ul data-s1-part="column">
+      <li><span data-s1-component="gnb-sub-menu-item" data-depth="1depth">카테고리 제목</span></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#" aria-current="page">단말기정보</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- compact-1 — 제목 없음. 항목 6개가 각각 독립된 묶음(한 줄로 가로 나열). 상하 24.
+     Selected 는 마지막(6번째) 항목. -->
+<div data-s1-component="gnb-sub-menu" data-type="compact-1" aria-label="하위 메뉴 · compact-1">
+  <div data-s1-part="columns">
+    <ul data-s1-part="column"><li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li></ul>
+    <ul data-s1-part="column"><li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li></ul>
+    <ul data-s1-part="column"><li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li></ul>
+    <ul data-s1-part="column"><li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li></ul>
+    <ul data-s1-part="column"><li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li></ul>
+    <ul data-s1-part="column"><li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#" aria-current="page">하위 메뉴</a></li></ul>
+  </div>
+</div>
+
+<!-- compact-2 — 제목 없음. 5묶음, 묶음당 항목 2개(마지막 묶음만 1개). 상하 24 · 묶음 안 간격 20.
+     Selected 는 마지막 묶음의 1개 항목. -->
+<div data-s1-component="gnb-sub-menu" data-type="compact-2" aria-label="하위 메뉴 · compact-2">
+  <div data-s1-part="columns">
+    <ul data-s1-part="column">
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+    </ul>
+    <ul data-s1-part="column">
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+    </ul>
+    <ul data-s1-part="column">
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+    </ul>
+    <ul data-s1-part="column">
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">하위 메뉴</a></li>
+    </ul>
+    <ul data-s1-part="column">
+      <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#" aria-current="page">하위 메뉴</a></li>
+    </ul>
+  </div>
+</div>

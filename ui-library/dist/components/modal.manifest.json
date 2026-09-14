@@ -1,0 +1,230 @@
+{
+  "id": "modal",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "d7128033a54f5f9c03decef8b93eb8b4bdf526fd3c82a1724a33c5612dffedb2",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/modal.json"
+  ],
+  "rootSelector": "[data-s1-component=\"modal\"]",
+  "variants": [
+    "single",
+    "dual"
+  ],
+  "sizes": [],
+  "breaks": {
+    "pc": [],
+    "mobile": []
+  },
+  "geometry": {
+    "pc": {
+      "panelWidth": "360px",
+      "panelGap": "--spacing-32",
+      "contentGap": "--spacing-32",
+      "blockPaddingInline": "--spacing-24",
+      "titleFontSize": "--font-size-16",
+      "messageFontSize": "--font-size-14",
+      "footerAlign": "flex-end",
+      "buttonSize": "xxsm"
+    },
+    "mobile": {
+      "panelWidth": "300px",
+      "panelGap": "30px",
+      "contentGap": "--spacing-24",
+      "panelPaddingInline": "--spacing-20",
+      "titleFontSize": "--font-size-18",
+      "messageFontSize": "--font-size-16",
+      "footerFill": "버튼이 내부폭 260 을 동일 비율로 채운다",
+      "buttonSize": "lg"
+    },
+    "shared": {
+      "panelPaddingBlock": "--spacing-20",
+      "radius": "--radius-8",
+      "border": "--border-width-1",
+      "shadow": "--shadow-raised",
+      "bodyGap": "--spacing-8",
+      "footerGap": "--spacing-8",
+      "closeIcon": "--sizing-24"
+    },
+    "source": "build-components.ts buildModalShell 4438-4590"
+  },
+  "states": {
+    "closed": "root[hidden] (기본값)",
+    "open": "root:not([hidden]) — 런타임 open() 이 전환한다"
+  },
+  "canonicalStateMap": {
+    "Default": "open"
+  },
+  "notInCanon": {
+    "stateAxis": "정본에 hover·disabled 같은 상태 축이 없다. 열림·닫힘만 있다.",
+    "sizeAxis": "정본에 크기 축이 없다 — Break(PC·Mobile)가 패널 폭과 밀도를 결정한다.",
+    "overlay": "딤은 정본 빌더에 없고 registry modal.json anatomy·tokens.overlay 가 소유한다(의미의 정본). 새 토큰을 만들지 않고 color/overlay 를 그대로 쓴다.",
+    "closeOnMobile": "정본 Mobile 변형에는 닫기(X)가 없다. 웹도 만들지 않는다.",
+    "overlayClickToClose": "딤 클릭 닫기는 정본·등록부 어디에도 없다. river 가 표준 범위(A)를 택했으므로 이번 배포에 넣지 않는다.",
+    "motion": "정본이 여닫기 모션을 정의하지 않는다.",
+    "contentFamily": "긴 본문·스크롤이 필요한 콘텐츠 계열 Modal 은 별개 컴포넌트다(reports/modal-content-family-backlog.md).",
+    "closedState": "웹 상태 closed 는 정본에 대응이 없다 — 피그마는 정지 화면이라 '닫힌 모달'을 그릴 수 없기 때문이며, 웹이 임의로 만든 상태가 아니라 플랫폼 표준 표출 상태다(HTML dialog[open] · [hidden]). river 결정 2026-09-08(④A): 「화면에서만 있는 표출 상태」로 표시하고 정본에는 상태 축을 만들지 않는다. canonicalStateMap 의 Default→open 은 정본의 유일한 그림이 열린 모달이라는 뜻이다.",
+    "closeHover": "정본에 닫기(X) hover 표시가 없다. river 지시 2026-09-08 — PC 에서 닫기 버튼(24×24, 누르는 영역=아이콘 영역) hover 시 color/control/bg/hover 배경을 표시한다(§두 갈래 분류 (b) 사전 등록된 개선, 새 토큰 0건). modal-content 와 같은 close 부품이라 동일 규칙을 적용했다. Mobile 은 정본에 close 자체가 없어(closeOnMobile 참고) hover 도 없다."
+  },
+  "parts": [
+    "overlay",
+    "panel",
+    "content",
+    "header",
+    "title",
+    "body",
+    "message",
+    "footer",
+    "close"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=modal][hidden]",
+    "requiredAttributes": [
+      "data-break",
+      "data-footer"
+    ],
+    "requiredParts": [
+      "overlay",
+      "panel",
+      "content",
+      "header",
+      "title",
+      "body",
+      "message",
+      "footer"
+    ],
+    "optionalParts": [
+      "close"
+    ],
+    "panel": "div[data-s1-part=panel][role=dialog][aria-modal=true][tabindex=-1] 이며 aria-labelledby 는 title, aria-describedby 는 message 를 가리킨다.",
+    "close": "button[type=button][data-s1-part=close][aria-label] — PC 에만 둔다(정본 Mobile 변형에는 닫기가 없다).",
+    "footer": "코어 Button 인스턴스만 넣는다. PC=data-size xxsm · Mobile=data-size lg. Single 은 primary 1개, Dual 은 secondary→primary 순서.",
+    "relations": [
+      "root[hidden] 이 닫힘, 없으면 열림이다",
+      "aria-labelledby 는 반드시 [data-s1-part=title] 의 id 를 가리킨다",
+      "한 페이지에 여러 모달을 둘 때 title·message id 는 자리마다 새로 만든다",
+      "root 는 <body> 바로 아래에 둔다 — 조상에 쌓임 맥락(transform·filter·z-index 를 가진 상자)이 있으면 그 안에 갇혀 화면 일부가 모달 위에 남는다"
+    ],
+    "grouping": "코어는 그릇(딤+패널+제목+본문+푸터)만 소유한다. 실제 문구와 버튼 동작은 화면이 정한다.",
+    "source": "components/modal/modal.example.html",
+    "distribution": "examples/modal.html",
+    "breakExamples": {
+      "pc": {
+        "source": "components/modal/modal.example.html",
+        "distribution": "examples/modal.html"
+      },
+      "mobile": {
+        "source": "components/modal/modal.mobile.example.html",
+        "distribution": "examples/modal.mobile.html"
+      }
+    },
+    "placement": "body 직계 자식. 화면 안쪽 컨테이너에 두지 않는다."
+  },
+  "cssContract": {
+    "entry": "components/modal.css",
+    "rootScope": "[data-s1-component=modal]",
+    "nativeStates": [],
+    "ariaStates": [],
+    "documentedDataStates": [
+      "[hidden]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다. 푸터에 들어가는 button 코어의 내부 CSS를 override하지 않는다.",
+    "previewNote": "안내·검수 화면에서 모달을 지면 안에 눕혀 보여주는 CSS는 그 페이지가 소유한다. dist 에 검수 전용 CSS를 넣지 않는다."
+  },
+  "contentSlots": {
+    "title": "required; 팝업 제목(항상 존재 — registry variantAxis.titleAlways)",
+    "message": "required; 본문 문구. 줄바꿈은 white-space: pre-line 으로 그대로 표시된다",
+    "footer": "required; 코어 Button 1개(Single) 또는 2개(Dual)"
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css",
+      "components/button.css"
+    ],
+    "coreComponents": [
+      "button"
+    ],
+    "coreComponentsNote": "푸터 버튼은 코어 Button 배포본을 그대로 조립한다(PC XXSM · Mobile LG). 시각 override 금지 — registry modal.json reuses. modal 을 개별 설치할 때 button 의 CSS 도 함께 로드해야 한다."
+  },
+  "icons": [
+    {
+      "id": "close",
+      "sourceKey": "2a1abbd3597b536e34fd9523fb61eade3afe9934",
+      "asset": "assets/icons/close.svg",
+      "use": "PC 헤더의 닫기 버튼",
+      "accessibleNamePolicy": "decorative; 버튼이 aria-label=\"닫기\" 로 이름을 갖는다",
+      "note": "Figma V2.2 아이콘 라이브러리 ic_닫기(97:79 · Property 1=Line 97:77) 실물 벡터. 24 프레임 안 (4,4) 16×16 채움 도형 — 원본 대조 PASS(오차 0.00349)."
+    }
+  ],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "div[data-s1-part=panel][role=dialog][aria-modal=true] (registry modal.json a11y · river 표준안 승인 2026-09-02)"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "aria-labelledby 가 [data-s1-part=title] 을 가리킨다. 본문은 aria-describedby 로 연결한다"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "Escape 로 닫는다. Tab·Shift+Tab 은 패널 안에서만 순환한다(초점 가둠)"
+    },
+    "focus": {
+      "status": "required",
+      "value": "열릴 때 패널 안 첫 초점 요소로 이동하고, 닫힐 때 열기 전 초점 자리로 복귀한다"
+    },
+    "ariaStateSync": {
+      "status": "required",
+      "value": "런타임이 root[hidden] 을 전환하고 s1:modal:open·close 를 낸다"
+    },
+    "backgroundInert": {
+      "status": "required",
+      "value": "열려 있는 동안 배경 스크롤을 잠그고, 초점이 패널 밖으로 나가면 되돌린다"
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 Error 상태가 없다."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "정본이 모션을 정의하지 않는다."
+    }
+  },
+  "jsRequired": true,
+  "javascript": {
+    "runtime": "components/modal.js",
+    "reason": "여닫기·초점 가둠·Escape·초점 복귀·배경 스크롤 잠금을 런타임이 담당한다(river 결정 2026-09-02 — 동작 포함).",
+    "options": {},
+    "events": [
+      "s1:modal:open",
+      "s1:modal:close"
+    ],
+    "eventDetail": {
+      "open": "{ ...호출자가 넘긴 detail }",
+      "close": "{ reason?: \"escape\" | \"close-button\", ...호출자가 넘긴 detail }"
+    },
+    "methods": [
+      "open(detail)",
+      "close(detail)",
+      "isOpen"
+    ],
+    "lifecycle": [
+      "init(root)",
+      "destroy(root)"
+    ],
+    "controlMode": "uncontrolled",
+    "scrollLockNote": "배경 스크롤 잠금은 열린 모달 수를 세어 마지막 하나가 닫힐 때만 원래 값으로 되돌린다 — 모달이 여럿 있는 화면에서 스크롤이 잠긴 채 남는 사고를 막는다.",
+    "prewiredOpenNote": "이미 열린 채로 들어온 마크업(검수 화면·정적 예시)도 init 시점에 Escape·초점 가둠·스크롤 잠금을 배선한다."
+  },
+  "sourceFingerprint": "1dac6c10c9d9749e127ba7311eb91cb9188888152c25eae145a0bad724036ec7"
+}

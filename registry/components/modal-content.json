@@ -1,0 +1,226 @@
+{
+  "_meta": {
+    "id": "modal-content",
+    "name": "Modal Content",
+    "category": "overlay",
+    "updatedAt": "2026-09-08",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "stable",
+    "figmaStatus": "existing",
+    "harnessStatus": "implemented",
+    "description": "콘텐츠 계열 모달 그릇 6종(Size MD|LG|XL × Footer Single|Dual). 입력창·표·이미지가 들어가는 큰 팝업. 확인 계열 Modal 과 별개 컴포넌트다(river 결정 2026-07-15 계열 분리). 제목·닫기·푸터 버튼은 확인 계열과 같은 규칙(16B·XXSM h28·close), 크기와 본문 내용물만 다르다.",
+    "codeStatusNote": "웹 배포본은 정본 336/587 을 고정값이 아니라 최소 높이로 구현한다 — grow→85vh 상한→content-area 내부 스크롤(reports/modal-content-family-backlog.md 「높이 규칙」)."
+  },
+  "usage": {
+    "whenToUse": [
+      "입력창·표·이미지처럼 확인 계열(짧은 텍스트)보다 큰 본문이 필요할 때.",
+      "Single=알림/설명체 1버튼, Dual=확인/질문체 2버튼(확인 계열과 같은 규칙)."
+    ],
+    "whenNotToUse": [
+      "짧은 확인 문구 하나면 확인 계열 Modal 을 쓴다.",
+      "페이지 전체를 차지하는 다단계 폼은 별도 페이지를 고려한다."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "딤(overlay)",
+      "role": "뒤 배경을 덮는 color-overlay 딤. 확인 계열과 같은 토큰."
+    },
+    {
+      "part": "헤더",
+      "role": "제목(16B) + 닫기(X). 확인 계열과 같은 규칙 — 제목 항상 존재."
+    },
+    {
+      "part": "본문(content-area)",
+      "role": "입력창·표·이미지 등 콘텐츠가 들어가는 자리. 유일하게 스크롤되는 영역."
+    },
+    {
+      "part": "본문 자리표시(content)",
+      "role": "회색 박스 + '컨텐츠 영역' 안내문구. 실제 화면에서는 이 자리를 실제 콘텐츠로 교체한다."
+    },
+    {
+      "part": "푸터",
+      "role": "코어 Button 1개(Single) 또는 2개(Dual), XXSM h28. 확인 계열과 같은 규칙."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "크기는 MD(520)·LG(1000)·XL(1200) 중에서 고른다 — SM(360)은 확인 계열 폭이라 채택하지 않는다.",
+      "닫기 아이콘은 확인 계열 Modal 과 같은 close 부품을 재사용한다.",
+      "본문이 정본 최소 높이를 넘으면 패널이 자라다가 화면 85% 에서 멈추고 그 다음은 본문 안에서만 스크롤한다."
+    ],
+    "dont": [
+      "본문에 샘플 문장을 넣지 않는다 — 회색 자리표시 박스 + '컨텐츠 영역' 문구만 둔다(river 지시 2026-09-08).",
+      "확인 계열 Modal 과 그릇을 공유하지 않는다 — 별개 컴포넌트다.",
+      "패널 폭(520/1000/1200)을 임의로 바꾸지 않는다. 좁은 화면 대응은 max-width 상한만 쓴다."
+    ]
+  },
+  "a11y": [
+    "패널을 role=dialog · aria-modal=true 로 표시하고, aria-labelledby 로 제목을 연결한다.",
+    "열릴 때 패널 안 첫 초점 요소로 초점을 옮기고, 닫힐 때 열기 전 초점 자리로 되돌린다.",
+    "열려 있는 동안 Tab·Shift+Tab 은 패널 안에서만 순환한다(초점 가둠).",
+    "Esc 로 닫을 수 있게 한다. 헤더의 닫기(X) 버튼에 '닫기' 이름을 준다.",
+    "열려 있는 동안 배경 스크롤을 잠근다.",
+    "본문(content-area)은 넘치면 스크롤되며, 키보드로도 스크롤 가능해야 한다(브라우저 기본 스크롤 동작을 막지 않는다)."
+  ],
+  "origin": {
+    "classification": "A",
+    "note": "레거시 pc_modal(yE5UCFEbmXJBlYJWB24Lz2 / 540:5815) — 🤖 figma-inspector 2026-09-07 실측. 확인 계열(buildModalShell, 6706:4218)과 별개.",
+    "legacySource": {
+      "pc": {
+        "file": "yE5UCFEbmXJBlYJWB24Lz2",
+        "canonicalSet": "540:5815",
+        "name": "pc_modal"
+      }
+    }
+  },
+  "family": {
+    "id": "content-modal",
+    "label": "콘텐츠 계열",
+    "canonicalNode": "540:5815",
+    "spec": "PC 전용: MD 520×336 · LG 1000×587 · XL 1200×587(최소 높이) · 제목16B · 본문14M(자리표시) · Button XXSM h28 · 닫기 있음.",
+    "note": "확인 계열(Modal, 6706:4218 — 폭360 단일·제목16B·본문14R 실제 텍스트)과 구분된 별개 계열. 상세: reports/modal-content-family-backlog.md"
+  },
+  "variantAxis": {
+    "property": [
+      "Size",
+      "Footer"
+    ],
+    "values": {
+      "Size": [
+        "MD",
+        "LG",
+        "XL"
+      ],
+      "Footer": [
+        "Single",
+        "Dual"
+      ]
+    },
+    "titleAlways": true,
+    "sizeAxis": "Size 가 패널 폭·최소 높이를 결정: MD 520×336 · LG 1000×587 · XL 1200×587.",
+    "note": "확인 계열에는 없는 크기 축이다. 6변형(Size 3 × Footer 2)."
+  },
+  "guardrail": {
+    "rule": "확인 계열(Modal) 패널 height/width 비율이 임계 초과 시 이 콘텐츠 계열로 전환한다.",
+    "threshold": "TBD",
+    "reason": "확인 계열은 짧은 텍스트 확인용 compact. 긴/큰 본문은 콘텐츠 계열(3크기·85vh 스크롤)이 담당."
+  },
+  "scope": "light+dark",
+  "templates": [
+    {
+      "id": "md-single",
+      "size": "MD",
+      "footer": "single",
+      "built": true,
+      "verify": "none",
+      "note": "회색 자리표시 박스 + '컨텐츠 영역' 안내문구, 확인 버튼 1개."
+    },
+    {
+      "id": "md-dual",
+      "size": "MD",
+      "footer": "dual",
+      "built": true,
+      "verify": "none",
+      "note": "취소→확인 2버튼."
+    },
+    {
+      "id": "lg-single",
+      "size": "LG",
+      "footer": "single",
+      "built": true,
+      "verify": "none"
+    },
+    {
+      "id": "lg-dual",
+      "size": "LG",
+      "footer": "dual",
+      "built": true,
+      "verify": "none"
+    },
+    {
+      "id": "xl-single",
+      "size": "XL",
+      "footer": "single",
+      "built": true,
+      "verify": "none"
+    },
+    {
+      "id": "xl-dual",
+      "size": "XL",
+      "footer": "dual",
+      "built": true,
+      "verify": "none"
+    }
+  ],
+  "anatomySpec": {
+    "panel": "VERTICAL · 폭 MD520/LG1000/XL1200 · 최소높이 MD336/LG587/XL587 · py20 · gap32. 공통 radius/8 · border 1px INSIDE color/modal/panel/border · shadow/raised",
+    "header": "HORIZONTAL space-between · items-center · px24 · [title 16B + close]",
+    "content-area": "px24 · flex-grow · min-height:0 · overflow-y:auto(유일한 스크롤 영역)",
+    "content": "회색 bg/level-3 박스 · radius/4 · 중앙 정렬 '컨텐츠 영역' body/14M",
+    "footer": "우측정렬 · px24 · gap8 · Button XXSM h28"
+  },
+  "heightRule": {
+    "min": "정본 336(MD)/587(LG)/587(XL)을 패널의 최소 높이로 쓴다.",
+    "grow": "본문(content-area)이 최소 높이를 넘으면 패널이 함께 자란다.",
+    "cap": "패널 전체 높이가 딤 화면 높이의 85%(85vh)에 도달하면 더 자라지 않는다.",
+    "scroll": "85vh 도달 이후에는 content-area 안에서만 스크롤한다. 헤더·푸터는 고정이며 스크롤되지 않는다.",
+    "reason": "Figma 컴포넌트 마스터는 높이를 하나만 가질 수 있어 정본이 실측 고정값을 쓸 뿐이다. 이 동작은 정본의 오류가 아니라 웹이 구현할 몫이다.",
+    "source": "reports/modal-content-family-backlog.md 「높이 규칙」"
+  },
+  "tokens": {
+    "_note": "색은 예외 없이 Semantic 경유. 신규 토큰 0건 — 확인 계열과 완전히 같은 토큰을 재사용한다.",
+    "panel-bg": "color/surface/raised",
+    "panel-border": "color/modal/panel/border",
+    "title-text": "color/text/title/primary",
+    "close-icon": "color/icon/gray-dark",
+    "panel-radius": "radius/8",
+    "overlay": "color/overlay",
+    "shadow": "shadow/raised",
+    "content-bg": "color/bg/level-3",
+    "close-hover-bg": "color/control/bg/hover",
+    "content-radius": "radius/4",
+    "content-label-text": "color/text/body/tertiary"
+  },
+  "reuses": {
+    "coreComponents": [
+      "button"
+    ],
+    "libraryIcons": [
+      "close (확인 계열 Modal 과 동일 자산 재사용 — 신규 등록 없음)"
+    ],
+    "note": "푸터 버튼 = 코어 Button(XXSM h28, 확인 계열과 동일). 닫기 아이콘도 확인 계열과 같은 부품을 그대로 쓴다. 시각 override 금지."
+  },
+  "figma": {
+    "componentSetKey": "(미발행)",
+    "fileKey": "cysG5U1udpQqVagYY1hWHW",
+    "builder": "plugins/figma-vars-installer/src/build-components.ts · buildModalContent",
+    "propertyMap": {
+      "size": [
+        "MD",
+        "LG",
+        "XL"
+      ],
+      "footer": [
+        "single",
+        "dual"
+      ]
+    },
+    "note": "2026-09-08 신설. 세트명 Modal Content, Size 3 × Footer 2 = 6변형. 노드 ID는 설치기 리빌드 시 바뀔 수 있다."
+  },
+  "governance": {
+    "verify": "new",
+    "verifyNote": "설치기 정본 buildModalContent 신설(2026-09-08, river 승인) — component-verifier 독립 검증 대기. 높이 규칙(grow→85vh→스크롤)은 웹 전용 동작이라 Figma 대조 대상이 아니다.",
+    "coreReuseRule": "button 은 dependencies.coreComponents 명시. 상태·variant 부족 시 needs-core-update 기록(임의 구현 금지)."
+  },
+  "webDistribution": {
+    "status": "approved",
+    "manifest": "ui-library/src/components/modal-content/manifest.json",
+    "runtime": "components/modal-content.js",
+    "note": "웹 배포본은 딤+패널 그릇과 여닫기 런타임을 제공한다. 높이 grow→85vh→내부 스크롤은 CSS로 처리된다. 푸터 버튼은 코어 Button 배포본을 조립한다.",
+    "approvedAt": "2026-09-08"
+  }
+}

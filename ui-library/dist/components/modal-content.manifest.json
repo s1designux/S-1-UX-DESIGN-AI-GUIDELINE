@@ -1,0 +1,222 @@
+{
+  "id": "modal-content",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "91db2f577707f94489c5d919282c8c9d58eaf2f7a6eb6ffe0ec7fe2402220568",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/modal-content.json"
+  ],
+  "rootSelector": "[data-s1-component=\"modal-content\"]",
+  "variants": [
+    "single",
+    "dual"
+  ],
+  "sizes": [
+    "md",
+    "lg",
+    "xl"
+  ],
+  "breaks": {
+    "pc": [
+      "md",
+      "lg",
+      "xl"
+    ],
+    "mobile": []
+  },
+  "geometry": {
+    "md": {
+      "width": "520px",
+      "minHeight": "336px"
+    },
+    "lg": {
+      "width": "1000px",
+      "minHeight": "587px"
+    },
+    "xl": {
+      "width": "1200px",
+      "minHeight": "587px"
+    },
+    "shared": {
+      "panelPaddingBlock": "--spacing-20",
+      "panelGap": "--spacing-32",
+      "blockPaddingInline": "--spacing-24",
+      "footerGap": "--spacing-8",
+      "radius": "--radius-8",
+      "border": "--border-width-1",
+      "shadow": "--shadow-raised",
+      "closeIcon": "--sizing-24",
+      "titleFontSize": "--font-size-16",
+      "buttonSize": "xxsm"
+    },
+    "source": "build-components.ts buildModalContent 5439-5560"
+  },
+  "states": {
+    "closed": "root[hidden] (기본값, 확인 계열 Modal 과 같은 처리)",
+    "open": "root:not([hidden]) — 런타임 open() 이 전환한다"
+  },
+  "canonicalStateMap": {
+    "Default": "open"
+  },
+  "notInCanon": {
+    "heightRule": "정본의 336/587 은 고정값이 아니라 최소 높이다. 콘텐츠가 늘면 패널이 커지고 딤 화면 높이의 85%(85vh)에서 멈춘 뒤 content-area 안에서 스크롤한다. Figma 마스터는 높이를 하나만 가질 수 있어 실측 고정값이 들어갔을 뿐이며, 이 grow→cap→scroll 동작은 웹이 구현한다(reports/modal-content-family-backlog.md 「높이 규칙」).",
+    "widthCap": "폭(520/1000/1200)은 고정 폭이되 좁은 화면에서 뷰포트를 넘지 않도록 max-width 상한만 둔다. 폭 값 자체는 바꾸지 않는다.",
+    "sizeAxis": "확인 계열 Modal 에는 없는 크기 축이다. 콘텐츠 계열에만 있다(river 지시 2026-09-08 'MD 이상부터').",
+    "smNotAdopted": "레거시 sm 360 은 확인 계열 폭이라 콘텐츠 계열로 채택하지 않는다.",
+    "pcOnly": "정본 legacySource가 pc_modal(540:5815) 뿐이라 PC 전용이다. Mobile 변형을 만들지 않는다.",
+    "closedState": "웹 상태 closed 는 정본에 대응이 없다 — 확인 계열 Modal 과 같은 플랫폼 표준 표출 상태(HTML [hidden])다.",
+    "closeHover": "정본에 닫기(X) hover 표시가 없다. river 지시 2026-09-08 — 닫기 버튼(24×24, 누르는 영역=아이콘 영역) hover 시 color/control/bg/hover 배경을 표시한다(§두 갈래 분류 (b) 사전 등록된 개선, 새 토큰 0건). 확인 계열 Modal 과 같은 close 부품이라 동일 규칙을 적용했다. 이 컴포넌트는 PC 전용이라 Mobile 제외가 필요 없다."
+  },
+  "parts": [
+    "overlay",
+    "panel",
+    "header",
+    "title",
+    "close",
+    "content-area",
+    "content",
+    "content-label",
+    "footer"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=modal-content][hidden]",
+    "requiredAttributes": [
+      "data-size",
+      "data-footer"
+    ],
+    "requiredParts": [
+      "overlay",
+      "panel",
+      "header",
+      "title",
+      "close",
+      "content-area",
+      "content",
+      "content-label",
+      "footer"
+    ],
+    "optionalParts": [],
+    "panel": "div[data-s1-part=panel][role=dialog][aria-modal=true][tabindex=-1] 이며 aria-labelledby 는 title 을 가리킨다.",
+    "close": "button[type=button][data-s1-part=close][aria-label] — 확인 계열 Modal 과 같은 close 부품을 재사용한다(river 결정 2026-09-08).",
+    "footer": "코어 Button 인스턴스만 넣는다(data-size xxsm). Single 은 primary 1개, Dual 은 secondary→primary 순서.",
+    "content": "content-area 안 회색 자리표시 박스 + '컨텐츠 영역' 안내문구(river 지시 2026-09-08). 실제 화면에서는 이 자리를 입력창·표·이미지로 바꿔 넣는다 — content-area 가 스크롤 컨테이너다.",
+    "relations": [
+      "root[hidden] 이 닫힘, 없으면 열림이다",
+      "aria-labelledby 는 반드시 [data-s1-part=title] 의 id 를 가리킨다",
+      "한 페이지에 여러 개를 둘 때 title id 는 자리마다 새로 만든다",
+      "root 는 <body> 바로 아래에 둔다 — 조상에 쌓임 맥락(transform·filter·z-index 를 가진 상자)이 있으면 그 안에 갇힌다"
+    ],
+    "grouping": "코어는 그릇(딤+패널+헤더+content-area+푸터)만 소유한다. content 안의 실제 내용(입력창·표·이미지)은 화면이 채운다.",
+    "source": "components/modal-content/modal-content.example.html",
+    "distribution": "examples/modal-content.html",
+    "placement": "body 직계 자식. 화면 안쪽 컨테이너에 두지 않는다."
+  },
+  "cssContract": {
+    "entry": "components/modal-content.css",
+    "rootScope": "[data-s1-component=modal-content]",
+    "nativeStates": [],
+    "ariaStates": [],
+    "documentedDataStates": [
+      "[hidden]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다. 푸터에 들어가는 button 코어의 내부 CSS를 override하지 않는다.",
+    "previewNote": "안내·검수 화면에서 모달을 지면 안에 눕혀 보여주는 CSS는 그 페이지가 소유한다. dist 에 검수 전용 CSS를 넣지 않는다."
+  },
+  "contentSlots": {
+    "title": "required; 팝업 제목(항상 존재)",
+    "content": "required; 회색 자리표시 박스 + 안내문구. 실제 화면에서 입력창·표·이미지로 교체한다",
+    "footer": "required; 코어 Button 1개(Single) 또는 2개(Dual)"
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css",
+      "components/button.css"
+    ],
+    "coreComponents": [
+      "button"
+    ],
+    "coreComponentsNote": "푸터 버튼은 코어 Button 배포본을 그대로 조립한다(PC XXSM). 시각 override 금지 — registry modal-content.json reuses. modal-content 를 개별 설치할 때 button 의 CSS 도 함께 로드해야 한다."
+  },
+  "icons": [
+    {
+      "id": "close",
+      "sourceKey": "2a1abbd3597b536e34fd9523fb61eade3afe9934",
+      "asset": "assets/icons/close.svg",
+      "use": "헤더의 닫기 버튼 — 확인 계열 Modal 과 같은 등록 자산을 재사용한다(신규 등록 없음).",
+      "accessibleNamePolicy": "decorative; 버튼이 aria-label=\"닫기\" 로 이름을 갖는다",
+      "note": "modal.json 과 같은 아이콘(assets/icons/close.svg) — 중복 등록하지 않고 재사용."
+    }
+  ],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "div[data-s1-part=panel][role=dialog][aria-modal=true] — 확인 계열 Modal 과 같은 계약."
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "aria-labelledby 가 [data-s1-part=title] 을 가리킨다."
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "Escape 로 닫는다. Tab·Shift+Tab 은 패널 안에서만 순환한다(초점 가둠). content-area 는 스크롤 가능하며 키보드 스크롤(Tab 으로 도달한 포커스 요소의 자연스러운 스크롤·PageUp/Down 등 브라우저 기본 동작)을 막지 않는다."
+    },
+    "focus": {
+      "status": "required",
+      "value": "열릴 때 패널 안 첫 초점 요소로 이동하고, 닫힐 때 열기 전 초점 자리로 복귀한다"
+    },
+    "ariaStateSync": {
+      "status": "required",
+      "value": "런타임이 root[hidden] 을 전환하고 s1:modal-content:open·close 를 낸다"
+    },
+    "backgroundInert": {
+      "status": "required",
+      "value": "열려 있는 동안 배경 스크롤을 잠그고, 초점이 패널 밖으로 나가면 되돌린다"
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 Error 상태가 없다."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "정본이 모션을 정의하지 않는다."
+    }
+  },
+  "jsRequired": true,
+  "javascript": {
+    "runtime": "components/modal-content.js",
+    "reason": "여닫기·초점 가둠·Escape·초점 복귀·배경 스크롤 잠금을 런타임이 담당한다(확인 계열 Modal 과 같은 동작 계약).",
+    "options": {},
+    "events": [
+      "s1:modal-content:open",
+      "s1:modal-content:close"
+    ],
+    "eventDetail": {
+      "open": "{ ...호출자가 넘긴 detail }",
+      "close": "{ reason?: \"escape\" | \"close-button\", ...호출자가 넘긴 detail }"
+    },
+    "methods": [
+      "open(detail)",
+      "close(detail)",
+      "isOpen"
+    ],
+    "lifecycle": [
+      "init(root)",
+      "destroy(root)"
+    ],
+    "controlMode": "uncontrolled",
+    "scrollLockNote": "배경 스크롤 잠금은 열린 모달 수를 세어 마지막 하나가 닫힐 때만 원래 값으로 되돌린다.",
+    "prewiredOpenNote": "이미 열린 채로 들어온 마크업(검수 화면·정적 예시)도 init 시점에 Escape·초점 가둠·스크롤 잠금을 배선한다.",
+    "heightBehaviorNote": "높이 grow→85vh→내부 스크롤은 순수 CSS(flex + overflow-y:auto)로 처리되며 JS 는 관여하지 않는다."
+  },
+  "sourceFingerprint": "221255ee88eea9374d6ea4c0d8531b6d28889cd0989266fd4c0074d5b4b15bee"
+}

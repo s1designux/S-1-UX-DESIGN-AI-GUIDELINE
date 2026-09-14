@@ -1,0 +1,73 @@
+/* Base Radio — 정본 buildRadio(원 18×18, inside border 1, dot 10×10 중앙, 라벨 간격 8) 기준.
+   정본 Label 축의 Off 가 기본이고 On(라벨 있음)은 선택 부품이다. */
+[data-s1-component="radio"] {
+  align-items: center;
+  box-sizing: border-box;
+  display: inline-flex;
+  gap: var(--spacing-8);
+}
+
+[data-s1-component="radio"] [data-s1-part="control"] {
+  align-items: center;
+  appearance: none;
+  background: var(--color-control-bg-default);
+  border: var(--border-width-1) solid var(--color-control-border-default);
+  border-radius: var(--radius-full);
+  box-sizing: border-box;
+  color: var(--color-control-indicator-selected-alt);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: var(--sizing-18);
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: var(--sizing-18);
+}
+
+/* 선택 점은 :checked 에서만 그린다. 정본 Selected 는 배경을 바꾸지 않고 테두리와 점만 바뀐다. */
+[data-s1-component="radio"] [data-s1-part="control"]:checked::before {
+  background-color: currentColor;
+  border-radius: var(--radius-full);
+  content: "";
+  display: block;
+  height: var(--sizing-10);
+  width: var(--sizing-10);
+}
+
+@media (hover: hover) {
+  [data-s1-component="radio"] [data-s1-part="control"]:hover:not(:disabled):not(:checked) {
+    background: var(--color-control-bg-hover);
+  }
+}
+
+[data-s1-component="radio"] [data-s1-part="control"]:checked {
+  background: var(--color-control-bg-default);
+  border-color: var(--color-control-border-selected);
+  color: var(--color-control-indicator-selected-alt);
+}
+
+[data-s1-component="radio"] [data-s1-part="control"]:disabled {
+  background: var(--color-control-bg-disabled);
+  border-color: var(--color-control-border-disabled);
+  cursor: not-allowed;
+}
+
+[data-s1-component="radio"] [data-s1-part="control"]:disabled:checked {
+  color: var(--color-control-indicator-disabled);
+}
+
+[data-s1-component="radio"] [data-s1-part="label"] {
+  color: var(--color-control-label-default);
+  cursor: pointer;
+  font-family: "Pretendard", sans-serif;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+}
+
+[data-s1-component="radio"]:has([data-s1-part="control"]:disabled) [data-s1-part="label"] {
+  color: var(--color-control-label-disabled);
+  cursor: not-allowed;
+}

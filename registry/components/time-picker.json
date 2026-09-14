@@ -1,0 +1,225 @@
+{
+  "_meta": {
+    "id": "time-picker",
+    "name": "TimePicker",
+    "category": "Core",
+    "updatedAt": "2026-09-03",
+    "version": "0.3.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "stable",
+    "figmaStatus": "confirmed",
+    "harnessStatus": "implemented",
+    "description": "시간 입력 트리거를 눌러 드롭다운 목록에서 시간을 고르는 Time Picker Input 컴포넌트.",
+    "notes": [
+      "색상 토큰 100% -- color-form-control-* semantic 재사용. 전용 색상 토큰 없음.",
+      "HD-Time-1: 확정 — ic_시계 아이콘 통일. disabled color 처리로 시각 구분.",
+      "HD-Time-2: token-aliases.json에 editing→focus alias 추가 완료 (2026-05-20).",
+      "HD-Time-4: Mobile 인터랙션 미정의 — timepicker_input mobile variant 있으나 bottom sheet 여부 미확정.",
+      "HD-Time-5: 드롭다운 패널 전용 토큰(shadow, column divider) — dropdown semantic 재사용으로 처리.",
+      "pc-xxsm (h28) size만 font-size 12px. 나머지는 모두 14px.",
+      "HD-TPS-1 확정: --color-form-control-border-disabled를 border-subtle(#E9E9E9)→control-border-default(#D9D9D9)로 변경. Figma form-control/border/disabled 기준 통일. Input·Select·DatePicker 공유 영향.",
+      "Time Picker Input 정본 20종만 이 가이드의 상위 구성으로 표출한다."
+    ],
+    "uiLibraryStatus": "approved"
+  },
+  "usage": {
+    "whenToUse": [
+      "시간(시/분)을 드롭다운 목록에서 고를 때."
+    ],
+    "whenNotToUse": [
+      "날짜는 DatePicker.",
+      "자유 텍스트만 필요하면 Input."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "트리거/필드",
+      "role": "시간 표시 + ic_시계 아이콘."
+    },
+    {
+      "part": "드롭다운 패널",
+      "role": "시간 선택 목록."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "색은 --color-form-control-* semantic 을 100% 재사용한다(전용 색 토큰 없음).",
+      "아이콘은 ic_시계로 통일하고 disabled 는 색으로 구분한다."
+    ],
+    "dont": [
+      "전용 색상 토큰을 새로 만들지 않는다.",
+      "드롭다운 패널에 전용 shadow 토큰을 가정하지 않는다(dropdown semantic 재사용)."
+    ]
+  },
+  "a11y": [
+    "트리거는 button 이며 aria-haspopup=listbox·aria-expanded 를 가지고, 접근 가능한 이름(aria-label 또는 연결된 label)을 반드시 제공한다.",
+    "드롭다운의 각 열은 role=listbox 와 접근 이름(시·분·오전오후)을 가지고, 각 칸은 role=option 과 aria-selected 를 가진다.",
+    "키보드: 트리거에서 Enter·Space·아래화살표로 열고, Esc 로 닫으며 포커스는 트리거로 돌아온다. 위아래 화살표는 같은 열 이동, 좌우 화살표는 열 이동, Enter 는 선택, Tab 으로 확인 버튼에 도달한다.",
+    "열릴 때 포커스는 현재 선택값(없으면 첫 칸)으로 이동한다.",
+    "disabled 트리거는 열리지 않는다."
+  ],
+  "variants": {
+    "input": {
+      "platform": [
+        "pc-md",
+        "pc-xsm",
+        "pc-xxsm",
+        "mobile"
+      ],
+      "state": [
+        "default",
+        "focus",
+        "filled",
+        "disabled"
+      ],
+      "type": [
+        "24h",
+        "12h"
+      ]
+    },
+    "dropdown_panel": {
+      "dependency": "Time Picker Dropdown"
+    }
+  },
+  "sizing": {
+    "mobile": "48px (var(--sizing-48))",
+    "pc-md": "44px (var(--sizing-44))",
+    "pc-xsm": "34px (var(--sizing-34))",
+    "pc-xxsm": "28px (var(--sizing-28))",
+    "minWidth": "150px (정본 build-components.ts:2726 trigger.resize(150, sc.h) — 크기 루프 안이라 XXSM·XSM·MD(PC)·MD(Mobile) 4조합 전부 150)",
+    "dropdownOptionHeight": "32px",
+    "radius": "var(--radius-control-xs) — 4px",
+    "font": "Pretendard Regular 14px (xxsm: 12px)",
+    "_minWidthNote": "2026-09-03 정정: 이전 값 78px 은 정본 어디에도 없었고 pages/components.html 의 레거시 손관리 CSS 에서 온 숫자였다. 웹 배포본 1회차가 이 필드를 근거로 78 을 써서 river 가 '입력칸이 좁다·Filled 에서 줄어든다'를 지적했다(독립 검증 3회차 ❌). H6① — 정본과 파생이 다르면 파생을 고친다."
+  },
+  "states": [
+    "default",
+    "focus",
+    "filled",
+    "disabled"
+  ],
+  "tokens": [
+    {
+      "name": "--color-form-control-bg-default",
+      "type": "semantic-shared",
+      "value": "var(--color-surface-default)",
+      "resolvedLight": "#FFFFFF",
+      "figmaVariable": "color/form-control/bg/default",
+      "status": "stable",
+      "description": "기본 배경 — Input과 공유"
+    },
+    {
+      "name": "--color-form-control-bg-disabled",
+      "type": "semantic-shared",
+      "value": "var(--color-bg-subtle)",
+      "resolvedLight": "#F5F5F5",
+      "figmaVariable": "color/form-control/bg/disabled",
+      "status": "stable",
+      "description": "disabled 배경 — Input과 공유"
+    },
+    {
+      "name": "--color-form-control-border-default",
+      "type": "semantic-shared",
+      "value": "var(--color-control-border-default)",
+      "resolvedLight": "#D9D9D9",
+      "figmaVariable": "color/form-control/border/default",
+      "status": "stable",
+      "description": "기본 테두리"
+    },
+    {
+      "name": "--color-form-control-border-selected",
+      "type": "semantic-shared",
+      "value": "var(--color-border-focus)",
+      "resolvedLight": "#1D6CEB",
+      "figmaVariable": "color/form-control/border/selected",
+      "status": "stable",
+      "description": "focus 상태 테두리 (Figma: selected = focus)"
+    },
+    {
+      "name": "--color-form-control-border-disabled",
+      "type": "semantic-shared",
+      "value": "var(--color-border-subtle)",
+      "resolvedLight": "#E9E9E9",
+      "figmaVariable": "color/form-control/border/disabled",
+      "status": "stable",
+      "description": "disabled 테두리"
+    },
+    {
+      "name": "--color-form-control-text-placeholder",
+      "type": "semantic-shared",
+      "value": "var(--color-text-placeholder)",
+      "resolvedLight": "#757575",
+      "figmaVariable": "color/form-control/text/placeholder",
+      "status": "stable",
+      "description": "placeholder 텍스트 — '시간을 선택하세요'"
+    },
+    {
+      "name": "--color-form-control-text-default",
+      "type": "semantic-shared",
+      "value": "var(--color-text-secondary)",
+      "resolvedLight": "#353535",
+      "figmaVariable": "color/form-control/text/default",
+      "status": "stable",
+      "description": "입력값 텍스트 ('00:00')"
+    },
+    {
+      "name": "--color-form-control-text-disabled",
+      "type": "semantic-shared",
+      "value": "var(--color-text-disabled)",
+      "resolvedLight": "#C4C4C4",
+      "figmaVariable": "color/form-control/text/disabled",
+      "status": "stable",
+      "description": "disabled 텍스트"
+    }
+  ],
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "958:26994",
+    "nodes": {
+      "timepicker_input": "958:26994",
+      "pc_timepicker_input_dropdown": "958:26319",
+      "timepicker_cell": "958:25998",
+      "timepicker_mobile_bottom_sheet": "958:27433",
+      "timepicker_mobile_time_only": "958:27362",
+      "timepicker_mobile_datetime": "958:27393"
+    },
+    "propertyMap": {
+      "platform": "platform",
+      "state": "state",
+      "type": "type",
+      "size": "size"
+    },
+    "stateAliases": {
+      "selected": "focus",
+      "completed": "filled",
+      "editing": "focus"
+    }
+  },
+  "humanDecisions": {
+    "HD-Time-1": "확정 — ic_시계 아이콘 통일. disabled 상태도 동일 아이콘, color: var(--color-form-control-text-disabled)로 시각 처리",
+    "HD-Time-4": "결정 — Mobile bottom sheet 채택 (DatePicker HD-4와 동일 기준). harness 구현 완료 (2026-05-26)",
+    "HD-Time-5": "결정 — 드롭다운 패널 shadow rgba(0,0,0,0.15) 예외 허용 (DatePicker panel shadow 예외와 동일 정책)",
+    "HD-Time-6": "확정(2026-09-02) — 접근성 계약을 이미 승인된 Select 의 목록상자 방식과 같은 규격으로 확정. a11yStatus pending→stable."
+  },
+  "guide": {
+    "sampleLabel": "시간",
+    "samplePlaceholder": "시간을 선택하세요",
+    "sampleValue": "09:30",
+    "sampleOptions": [
+      "09:00",
+      "09:30",
+      "10:00",
+      "10:30"
+    ],
+    "webTag": "button",
+    "interactionPattern": "single-select-listbox"
+  },
+  "governance": {
+    "owner": "Design System Team",
+    "deprecated": false,
+    "replacement": null
+  },
+  "updatedAt": "2026-09-03"
+}

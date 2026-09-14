@@ -1,0 +1,122 @@
+{
+  "_meta": {
+    "id": "tab",
+    "name": "Line Tab",
+    "category": "navigation",
+    "updatedAt": "2026-08-11",
+    "version": "0.2.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "candidate",
+    "a11yStatus": "implemented",
+    "figmaStatus": "confirmed",
+    "harnessStatus": "implemented",
+    "description": "라인탭 컴포넌트. 탭 하단 인디케이터로 선택 상태를 표시한다. 크기·상태·시각 수치는 component-guide-model.json에서 자동으로 가져온다."
+  },
+  "usage": {
+    "whenToUse": [
+      "같은 화면에서 콘텐츠 영역을 전환할 때.",
+      "정본에 등록된 플랫폼과 크기 중 사용 맥락에 맞는 항목을 고른다."
+    ],
+    "whenNotToUse": [
+      "페이지 이동은 Navigation.",
+      "상호배타 폼 선택은 Radio."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "탭 라벨",
+      "role": "unselected·selected 텍스트."
+    },
+    {
+      "part": "인디케이터(밑줄)",
+      "role": "선택 탭 하단 강조 막대."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "선택 탭은 라벨 색 + 하단 인디케이터로 표시한다.",
+      "navigation 역할 토큰(label/indicator selected)을 쓴다."
+    ],
+    "dont": [
+      "선택 표시를 색만으로 하지 않는다(인디케이터 병행).",
+      "탭으로 페이지 이동을 대체하지 않는다."
+    ]
+  },
+  "a11y": [
+    "role=tablist/tab/tabpanel 패턴, 선택에 aria-selected 를 준다.",
+    "키보드 화살표로 탭을 이동할 수 있게 한다."
+  ],
+  "guide": {
+    "sampleLabels": ["메뉴1", "메뉴2", "메뉴3"],
+    "interactionPattern": "selection-follows-focus",
+    "accessibility": {
+      "label": "콘텐츠 보기 선택",
+      "roles": ["tablist", "tab", "tabpanel"],
+      "keyboard": ["ArrowLeft", "ArrowRight", "Home", "End"]
+    }
+  },
+  "tokens": [
+    {
+      "name": "--tab-bg",
+      "value": "var(--color-navigation-bg)",
+      "resolvedLight": "#FFFFFF",
+      "figmaVariable": "color/navigation/bg",
+      "status": "stable",
+      "description": "탭 배경"
+    },
+    {
+      "name": "--tab-label-default",
+      "value": "var(--color-navigation-label-default)",
+      "resolvedLight": "#555555",
+      "figmaVariable": "color/navigation/label/default",
+      "status": "stable",
+      "description": "미선택 탭 라벨 색상"
+    },
+    {
+      "name": "--tab-label-selected",
+      "value": "var(--color-navigation-label-selected)",
+      "resolvedLight": "#1D6CEB",
+      "figmaVariable": "color/navigation/label/selected",
+      "status": "stable",
+      "description": "선택·hover 탭 라벨 색상"
+    },
+    {
+      "name": "--tab-indicator-default",
+      "value": "var(--color-navigation-indicator-default)",
+      "resolvedLight": "#D9D9D9",
+      "figmaVariable": "color/navigation/indicator/default",
+      "status": "stable",
+      "description": "미선택 탭 하단 구분선"
+    },
+    {
+      "name": "--tab-indicator-selected",
+      "value": "var(--color-navigation-indicator-selected)",
+      "resolvedLight": "#1D6CEB",
+      "figmaVariable": "color/navigation/indicator/selected",
+      "status": "stable",
+      "description": "선택 탭 하단 인디케이터"
+    }
+  ],
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "540:6032",
+    "nodes": {
+      "pcMdUnselected": "540:6039",
+      "pcMdSelected":   "540:6051",
+      "pcSmUnselected": "582:3464",
+      "pcSmSelected":   "582:3470",
+      "mobileUnselected": "540:6033",
+      "mobileSelected":   "540:6057"
+    },
+    "propertyMap": {
+      "size": "variant",
+      "state": "state"
+    }
+  },
+  "governance": {
+    "owner": "Design System Team",
+    "deprecated": false,
+    "replacement": null
+  }
+}

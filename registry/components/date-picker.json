@@ -1,0 +1,301 @@
+{
+  "_meta": {
+    "id": "date-picker",
+    "name": "DatePicker",
+    "label": "Date Picker / Day Picker",
+    "category": "core-candidate",
+    "status": "in-progress",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "complete",
+    "harnessStatus": "implemented",
+    "figmaNodeId": "540:3794",
+    "figmaNote": "2026-05-20 MVP-F1 플러그인 스캔으로 COMPONENT_SET nodeId 540:3794 확인. Section 노드 6456:4033은 figma.figmaSectionNodeId에 보존. mobile bottomsheet 540:3836 확인.",
+    "description": "Date selection component. Uses Base Input as trigger field. PC popover calendar panel (figma-unconfirmed) or Mobile bottom sheet (Figma confirmed)."
+  },
+  "usage": {
+    "whenToUse": [
+      "날짜(단일/기간)를 고를 때. 트리거는 Base Input 필드.",
+      "PC 는 팝오버 캘린더, Mobile 은 바텀시트로 표출."
+    ],
+    "whenNotToUse": [
+      "시간만 고를 때는 TimePicker.",
+      "자유 텍스트 날짜 입력만 필요하면 Input."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "트리거 필드",
+      "role": "Base Input 재사용. 선택 날짜 표시."
+    },
+    {
+      "part": "캘린더 패널",
+      "role": "월 네비 + 날짜 셀 그리드."
+    },
+    {
+      "part": "날짜 셀",
+      "role": "default·hover·today·selected·other-month·disabled 상태."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "트리거는 Base Input 을 재사용한다(별도 필드 만들지 않음).",
+      "오늘·선택·타월(other-month)·비활성 날짜를 상태 토큰으로 구분한다."
+    ],
+    "dont": [
+      "날짜 셀 색을 raw 로 칠하지 않는다 — bg-subtle 등 Semantic 경유.",
+      "PC 캘린더 레이아웃을 Figma 미확인 상태로 단정하지 않는다."
+    ]
+  },
+  "a11y": [
+    "날짜 셀은 키보드 이동이 가능해야 하고 선택 셀에 aria-selected 를 준다.",
+    "비활성 날짜는 aria-disabled 로 표시한다."
+  ],
+  "baseComponent": "Input",
+  "composition": [
+    "Input trigger (s1-input-wrap + s1-input-field)",
+    "suffixIcon: ic_날짜/근태,달력 (Figma node 221:3835, 24×24px, s1-input-action-btn)",
+    "calendarPanel (absolute positioned, hidden by default)",
+    "calendarHeader: prevMonth | YYYY.MM | nextMonth",
+    "weekdayRow: 일~토 (PC weekStart figma-unconfirmed, HD-9)",
+    "dayGrid: 7-col grid, 44×44px cells with 30×30px inner circle"
+  ],
+  "states": {
+    "trigger": [
+      "default",
+      "selected(=open)",
+      "completed(=filled)",
+      "disabled",
+      "error(figma-unconfirmed)"
+    ],
+    "dayCell": [
+      "default",
+      "hover",
+      "today(selected-alt)",
+      "selected(filled)",
+      "other-month(disabled-text)",
+      "disabled-date"
+    ]
+  },
+  "platformSupport": {
+    "pc": {
+      "sizes": [
+        "pc-md(h44)",
+        "pc-xsm(h34)",
+        "pc-xxsm(h28)"
+      ],
+      "panel": "popover — 달력 크기 2벌: MD 356×352(md 트리거) · SM 267×266(xsm·xxsm 트리거). 달력 크기는 트리거 크기를 따라간다(river 결정 2026-09-04 \"입력창이 작으면 달력도 자동으로 작게\"). 종전 '캘린더 패널은 사이즈 불변(356 단일)'(2026-06-25)을 대체. 정본 = build-components.ts CAL_GEO.",
+      "calendarSizes": [
+        "md(356×352)",
+        "sm(267×266 · 연/월 화면은 267×276)"
+      ]
+    },
+    "mobile": {
+      "sizes": [
+        "mobile(h48)"
+      ],
+      "panel": "bottom-sheet (540:3836 확인)"
+    }
+  },
+  "dateFormat": {
+    "figmaConfirmed": "YY.MM.DD (2자리 연도, 예: 25.12.30)",
+    "note": "uvis amobe_datepicker.js: format 'yy.mm.dd'. Figma 동일.",
+    "humanDecision": "HD-10: 서비스 URL/DB에서 YYYY.MM.DD 형식 사용 시 변환 로직 필요"
+  },
+  "tokens": {
+    "trigger": {
+      "note": "Base Input tokens 재사용 (Figma --color/form-control/* 확인)",
+      "reuses": [
+        "--input-default-bg",
+        "--input-default-border",
+        "--input-focus-border",
+        "--input-disabled-bg",
+        "--input-disabled-border",
+        "--input-error-border",
+        "--input-placeholder-text",
+        "--input-disabled-text"
+      ],
+      "figmaVariables": {
+        "--color/form-control/bg/default": "white (--input-default-bg)",
+        "--color/form-control/border/default": "#d9d9d9 (--input-default-border)",
+        "--color/form-control/border/selected": "#1d6ceb (--input-focus-border)",
+        "--color/form-control/bg/disabled": "#f5f5f5 (--input-disabled-bg)",
+        "--color/form-control/border/disabled": "#d9d9d9 (--input-disabled-border)",
+        "--color/form-control/text/placeholder": "#757575 (--input-placeholder-text)",
+        "--color/form-control/text/default": "#353535 (completed state text)",
+        "--color/form-control/text/disabled": "#c4c4c4 (--input-disabled-text)"
+      }
+    },
+    "panel": {
+      "note": "PC popover panel — figma-unconfirmed. mobile bottomsheet 구조 참고.",
+      "--date-picker-panel-bg": "candidate: var(--color-surface-default)",
+      "panel-border": "stable: color/date-picker/panel/border (--color-date-picker-panel-border) — light gray/200 · dark gray-dark/500. 2026-07-29 라이트를 gray/300 → gray/200 으로 변경(사용자 결정): Modal·Dropdown·Time Picker Dropdown·Date Picker 4개 패널 보더 값 통일. 다크 불변. 종전 candidate 표기 `var(--color-border-default)` 는 폐지된 generic 토큰을 가리켜 실현되지 않았으므로 폐기함(웹 CSS 는 이미 --color-date-picker-panel-border 참조라 값이 자동 반영)",
+      "panel-shadow": "stable: var(--shadow-dropdown) — 공용 그림자 토큰(tokens/semantic.md §9-A). 2026-07-29 교체: 종전 candidate `--date-picker-panel-shadow: 0 4px 16px rgba(0,0,0,0.10)` 은 어느 CSS 에도 정의된 적이 없고 실제 구현값(0 4px 8px rgba(0,0,0,0.15))과도 달라 실현하지 않고 폐기함"
+    },
+    "cell": {
+      "note": "Figma mobile bottomsheet (540:3836) 확인값",
+      "--date-picker-cell-text": "candidate: var(--color-text-secondary) (Figma: --color/text/body/tertiary #757575)",
+      "--date-picker-cell-other-month-text": "stable: var(--color-text-disabled) (Figma: --color/text/state/disabled #c4c4c4 확인)",
+      "--date-picker-cell-hover-bg": "candidate: var(--color-bg-subtle)",
+      "--date-picker-cell-selected-bg": "stable: var(--color-action-primary-default) (Figma: --color/control/bg/selected #1d6ceb 확인)",
+      "--date-picker-cell-selected-text": "stable: var(--color-base-white) (Figma: --color/text/state/accent-inverse white 확인)",
+      "--date-picker-cell-today-border": "stable: var(--color-action-primary-default) (Figma: --color/control/border/selected #1d6ceb 확인)",
+      "--date-picker-cell-today-text": "stable: var(--color-action-primary-default) (Figma: --color/text/state/accent #1d6ceb 확인)",
+      "--date-picker-cell-today-bg": "stable: var(--color-surface-default) (Figma: white 확인)",
+      "--date-picker-cell-disabled-text": "candidate: var(--color-text-disabled)"
+    },
+    "header": {
+      "--date-picker-header-text": "candidate: var(--color-text-primary) (Figma: --color/text/title/primary black 확인)",
+      "--date-picker-nav-hover-bg": "candidate: var(--color-bg-subtle)"
+    },
+    "icon": {
+      "figmaNode": "ic_날짜/근태,달력 (node 221:3835)",
+      "size": "24×24px (Figma 확인)",
+      "--date-picker-icon-color": "candidate: var(--color-icon-default)"
+    },
+    "weekday": {
+      "note": "Figma mobile: 월화수목금토일 순서. weekday text color Figma: --color/text/body/primary(#353535)",
+      "--date-picker-weekday-text": "candidate: var(--color-text-primary) (Figma: --color/text/body/primary #353535 확인)",
+      "--date-picker-sunday-text": "candidate: var(--color-status-error) (HD-8 미결)",
+      "--date-picker-saturday-text": "candidate: var(--color-action-primary-default) (HD-8 미결)"
+    }
+  },
+  "cellGeometry": {
+    "figmaSource": "540:3836 mobile bottomsheet",
+    "outerCell": "44×44px",
+    "innerCircle": "30×30px, border-radius: radius-full (50%)",
+    "padding": "5px",
+    "note": "PC popover cell geometry figma-unconfirmed — mobile 동일 구조 적용 추정",
+    "outerCellSm": "33×33 (231÷7) — Figma 원본 3381:15306 실측 2026-09-04",
+    "innerCircleSm": "22.5×22.5 radius-full, 테두리 1 INSIDE — 원본 3381:15316",
+    "tileSm": "68×40 radius-4 — 원본 6434:270661 · 가로 간격 7(세로 12 은 md 와 공통)",
+    "textStyleSm": "요일·날짜 숫자·타일 라벨 = body/12M(자간 0). md 는 title/16M(자간 -2) — 자간까지 다르다",
+    "rangeBandSm": "h22.5 y5.25 · 중간 x0 w33 · 시작 x16.5 w16.5 · 끝 x0 w16.5 — 원본 6434:272680·272679·272682"
+  },
+  "figma": {
+    "componentSetKey": "",
+    "componentName": "datepicker_input",
+    "figmaNodeId": "540:3794",
+    "figmaSectionNodeId": "6456:4033",
+    "figmaMobileBottomsheetNodeId": "540:3836",
+    "figmaCalendarNodeId": "540:4216",
+    "figmaFileKey": "yE5UCFEbmXJBlYJWB24Lz2",
+    "propertyMap": {
+      "platform": [
+        "mobile",
+        "pc-md",
+        "pc-xsm",
+        "pc-xxsm"
+      ],
+      "state": [
+        "default",
+        "selected",
+        "completed",
+        "disabled"
+      ]
+    },
+    "stateMapping": {
+      "selected": "trigger open / focused 상태 (Figma 확인)",
+      "completed": "날짜 선택 완료(filled) 상태 (Figma 확인)",
+      "default": "기본 상태",
+      "disabled": "비활성 상태"
+    },
+    "valueMap": {
+      "heightByPlatform": {
+        "pc-md": "44px (--sizing/form-control/height/md)",
+        "pc-xsm": "34px (--sizing/form-control/height/xs)",
+        "pc-xxsm": "28px (--sizing/form-control/height/xxs)",
+        "mobile": "48px (--sizing/form-control/height/lg)"
+      },
+      "paddingInline": {
+        "pc-md": "16px left (--spacing/padding/inline/sm)",
+        "pc-xsm": "12px left (--spacing/padding/inline/xs)",
+        "pc-xxsm": "12px left",
+        "mobile": "16px left"
+      },
+      "borderRadius": {
+        "pc-md": "4px (--radius/control/sm)",
+        "pc-xsm": "4px (--radius/control/sm)",
+        "pc-xxsm": "4px (--radius/control/sm)",
+        "mobile": "4px (--radius/4)"
+      }
+    },
+    "status": "partial",
+    "note": "Section 2 (6456:4033) 성공. datepicker_input frame (540:3794), mobile bottomsheet (540:3836) 확인. PC calendar popup panel 별도 노드 조회 미완료 (figma-unconfirmed). 2026-05-12. → RESOLVED 2026-07-09: PC calendar = 540:4216 pc_datepicker_calendar (V2.4 파일 positive resolve 확인, 5 states: default_button/default/year select/month select/year range select). time-picker registry에서 이관 — Figma 원본 이름이 datepicker(오염 정리). V3.0 promotion pending (date-picker 전체 V2.4→V3.0 이행 시 함께).",
+    "figmaCalendarSizeSourceNote": "SM 크기 실측 출처 = 파일 P8YvnCdGkQLDNVQhW74ZZW(UI사양서 GUI_관계사용 UVIS시스템 리뉴얼 관리자용) 세트 1980:49662 pc_timepicker_calendar. river 가 링크로 직접 지정한 파일이며, 우리 워크플로 기준 파일(cysG5U… V3.0 TEST)·DS 2.4(yE5U…)와는 다른 제3의 파일이다. 같은 세트가 V3.0 TEST 에도 있는지는 미확인."
+  },
+  "cssClass": {
+    "wrapper": "s1-date-picker",
+    "panel": "s1-date-picker__panel",
+    "header": "s1-date-picker__header",
+    "navBtn": "s1-date-picker__nav-btn",
+    "monthLabel": "s1-date-picker__month-label",
+    "weekdays": "s1-date-picker__weekdays",
+    "weekday": "s1-date-picker__weekday",
+    "grid": "s1-date-picker__grid",
+    "day": "s1-date-picker__day",
+    "dayInner": "day-inner",
+    "modifiers": {
+      "otherMonth": "is-other-month",
+      "today": "is-today",
+      "selected": "is-selected",
+      "sunday": "is-sunday",
+      "saturday": "is-saturday"
+    }
+  },
+  "publishingReference": {
+    "source": "s1_uvis_admin_publish-main-pc",
+    "datepickerLib": "bootstrap-datepicker (jQuery-based)",
+    "customModule": "pc/dist/assets/js/amobe_datepicker.js",
+    "cssFile": "pc/dist/resources/css/datepicker.css (bootstrap-datepicker CSS — 교체 대상)",
+    "reusable": [
+      "날짜 형식 yy.mm.dd (YY.MM.DD) — Figma와 일치 확인",
+      "normalizeDateInputValue: 4자리/2자리 연도 정규화 로직 참고",
+      "weekStart: 0 (일요일 시작) — PC figma-unconfirmed 동안 유지",
+      "todayHighlight: true (today 강조) — 구현 반영",
+      "autoclose: true — 선택 후 자동 닫기 구현 반영"
+    ],
+    "replaced": [
+      "bootstrap-datepicker CSS → s1-date-picker__* 시스템으로 교체",
+      "raw HEX 색상 (#0088cc, #006dcc 등) → CSS token으로 교체",
+      "jQuery 의존성 → Vanilla JS setupDatePicker 함수로 교체",
+      "table 기반 grid → CSS grid 44×44px 구조로 교체",
+      "20×20px cell → 44×44px 컨테이너 + 30×30px inner circle으로 교체",
+      "linear-gradient today → 단색 border+text accent으로 교체 (Figma 기준)"
+    ]
+  },
+  "notBaseInputState": true,
+  "notRelatedComposedField": true,
+  "separateComponentCandidate": true,
+  "humanDecisions": {
+    "HD-2": "확정 — 공식 컴포넌트명: DatePicker",
+    "HD-5": "확정 — 전용 토큰 candidate → stable 전환. panel/cell/header/weekday 토큰 stable.",
+    "HD-9": "확정 — weekStart=0 (일요일 시작). PC popover 동일.",
+    "HD-10": "확정 — 표시 YY.MM.DD 형식, Figma 일치. DB 연동 시 서비스 레벨 변환 처리(값 입출력은 ISO YYYY-MM-DD). river 결정 2026-09-08(메커니즘 승인 화면 M-8): 4자리 YYYY.MM.DD 로 바꿨다가 같은 날 원복 — 2자리 유지가 최종이다.",
+    "HD-8": "결정 — 별도 전용 토큰 불생성. 서비스별 override로 처리.",
+    "HD-4": "결정 — Mobile bottom sheet 구조 채택 (Figma 540:3836 확인). 별도 구현 단계 필요.",
+    "HD-1": "보류 — 현재 불필요. figmaNodeId(540:3794)로 충분. 향후 Figma 라이브러리 publish 단계에서 재검토",
+    "HD-3": "확정 — ic_날짜/근태,달력 SVG assets/icons/ic_calendar.svg 등록 완료 (2026-05-26). figmaDatePickerNodeId: 540:3800.",
+    "HD-6": "확정 — Core는 인터페이스만 제공. data-disabled-dates=\"YYYY-MM-DD,...\" 속성으로 날짜 주입. 비활성 기준은 서비스 레벨 결정.",
+    "HD-7": "확정 — 이전달/다음달 날짜 항상 클릭 허용. 클릭 시 해당 월로 이동 후 날짜 선택."
+  },
+  "updatedAt": "2026-05-26",
+  "guide": {
+    "sampleLabel": "날짜",
+    "samplePlaceholder": "YY.MM.DD",
+    "sampleValue": "26.08.11",
+    "sampleDates": [
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15"
+    ],
+    "webTag": "button",
+    "interactionPattern": "calendar-grid",
+    "mobileDependency": "Date Picker Mobile Bottom Sheet"
+  }
+}

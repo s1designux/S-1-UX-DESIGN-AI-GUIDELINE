@@ -1,0 +1,127 @@
+{
+  "_meta": {
+    "id": "gnb-sub-menu-item",
+    "name": "GNB Sub Menu Item",
+    "category": "navigation",
+    "updatedAt": "2026-09-10",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "stable",
+    "figmaStatus": "existing",
+    "harnessStatus": "implemented",
+    "description": "GNB 하위메뉴 패널 안의 글자 한 줄. Depth(1depth=카테고리 제목 Bold 16 · 2depth=항목 Medium 16) 축이며, 상태(Default·Hover·Selected)는 2depth 만 갖는다 — 1depth 는 누를 수 없는 제목이라 늘 기본 색이다(river 지시 2026-09-10). 그래서 4변형이다. 아이콘·배경·들여쓰기가 없다. 단독으로 쓰지 않고 GNB Sub Menu 안에서 쓴다.",
+    "codeStatusNote": "웹 배포본 상태는 webDistribution 과 ui-library-migration.json 이 따로 가진다."
+  },
+  "usage": {
+    "whenToUse": [
+      "GNB 하위메뉴 패널의 카테고리 제목 또는 항목을 놓을 때."
+    ],
+    "whenNotToUse": [
+      "상단바의 주 메뉴는 GNB 의 메뉴 슬롯을 쓴다.",
+      "패널 없이 이 부품만 화면에 두지 않는다."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "라벨",
+      "role": "글자 한 줄. Depth 에 따라 굵기·색이 갈린다. 아이콘·배경·들여쓰기 없음."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "1depth 는 카테고리 제목이므로 Bold 16, 2depth 는 항목이므로 Medium 16 을 쓴다.",
+      "현재 위치인 항목에만 Selected 를 준다."
+    ],
+    "dont": [
+      "2depth 를 들여쓰지 않는다 — 기준 원본(A)에 들여쓰기가 없다.",
+      "Hover 와 Selected 의 색을 다르게 만들지 않는다 — 정본에서 같다."
+    ]
+  },
+  "a11y": [
+    "패널의 목록 안에서 <li> 하나에 <a href> 하나로 낸다. 링크가 아닌 동작이면 <button type=\"button\"> 을 쓴다.",
+    "1depth(카테고리 제목)가 링크가 아니면 <a>·<button> 으로 만들지 않는다 — 목록의 제목 글자로 둔다.",
+    "현재 위치인 2depth 항목(<a href>)에 aria-current=\"page\" 를 준다. Selected 는 시각 표현이고 현재 위치를 알리는 것은 aria-current 다.",
+    "1depth(카테고리 제목)는 링크가 아니라 '현재 페이지' 개념이 없으므로 aria-current 를 쓰지 않는다. 정본에도 1depth 의 Hover·Selected 변형이 없어 어떤 상태 표시도 붙이지 않는다(river 지시 2026-09-10).",
+    "Hover 는 시각만이며 ARIA 로 알리지 않는다 — 정본에서 Selected 와 색이 같다.",
+    "포커스 표시는 브라우저 기본값을 그대로 쓴다(정본에 별도 focus 표현이 없다).",
+    "키보드는 Tab 이동 + Enter 활성화의 네이티브 동작만 쓴다. 방향키 이동은 정본에 없으므로 만들지 않는다(not-applicable).",
+    "오류 관계·모션 감소는 해당 없음(not-applicable) — 정본에 오류 표시도 애니메이션도 없다."
+  ],
+  "variants": [
+    {
+      "axis": "Depth",
+      "values": [
+        "1depth",
+        "2depth"
+      ],
+      "note": "1depth = 카테고리 제목(Bold 16 · title/16B), 2depth = 항목(Medium 16 · title/16M)"
+    },
+    {
+      "axis": "State",
+      "values": [
+        "Default",
+        "Hover",
+        "Selected"
+      ],
+      "note": "2depth(항목)만 갖는다. Hover 와 Selected 는 정본에서 같은 색이다. 1depth(카테고리 제목)는 상태가 없다 — Default 하나뿐(river 지시 2026-09-10)."
+    }
+  ],
+  "typography": [
+    {
+      "depth": "1depth",
+      "style": "title/16B",
+      "size": 16,
+      "weight": "Bold"
+    },
+    {
+      "depth": "2depth",
+      "style": "title/16M",
+      "size": 16,
+      "weight": "Medium"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "color/navigation/submenu/label/default",
+      "state": "Default",
+      "depth": "1depth",
+      "property": "color"
+    },
+    {
+      "name": "color/navigation/label/default",
+      "state": "Default",
+      "depth": "2depth",
+      "property": "color"
+    },
+    {
+      "name": "color/navigation/label/selected",
+      "state": "Hover · Selected",
+      "depth": "1depth · 2depth",
+      "property": "color"
+    }
+  ],
+  "newSemanticTokens": [],
+  "icons": [],
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "",
+    "propertyMap": {},
+    "note": "2026-09-08 정본 보강으로 신설. 기준 원본 = 레거시 A `gnb list` yE5UCFEbmXJBlYJWB24Lz2 / 540:6398(변형 regular 540:6423) — river 결정 2026-09-08 \"A로 가\". Figma 캔버스 실물 설치는 아직 확인 전이다."
+  },
+  "governance": {
+    "owner": "Design System Team",
+    "deprecated": false,
+    "replacement": null
+  },
+  "webDistribution": {
+    "status": "verified",
+    "manifest": "ui-library/src/components/gnb-sub-menu-item/manifest.json",
+    "runtime": "none",
+    "note": "JavaScript 불필요. 여닫는 동작은 배포본에 없다 — 정본에 여닫는 규칙이 없어 쓰는 화면이 갖는다.",
+    "verifiedAt": "2026-09-09",
+    "verifiedBy": "component-verifier (2회차 델타 재검증 PASS)",
+    "pendingRiverUxApproval": true
+  }
+}

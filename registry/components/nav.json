@@ -1,0 +1,84 @@
+{
+  "_meta": {
+    "id": "nav",
+    "name": "Navigation",
+    "category": "Core",
+    "updatedAt": "2026-05-20",
+    "version": "0.3.0",
+    "tokenStatus": "stable",
+    "codeStatus": "not-started",
+    "darkModeStatus": "pending",
+    "a11yStatus": "pending",
+    "figmaStatus": "existing",
+    "harnessStatus": "skeleton",
+    "description": "사이드바/상단 네비게이션 컴포넌트. 항목 hover·active 상태, 구분선, 활성 인디케이터 포함.",
+    "notes": [
+      "HD-L4.5-A: DatePicker nav 버튼과는 다른 개념. 이 컴포넌트는 사이트 네비게이션(사이드바) 전용.",
+      "--nav-item-indicator-default 신설(2026-05-20): Figma color/navigation/indicator/default 대응. 비선택 항목 indicator.",
+      "alt 변형(label/default-alt, indicator/default-alt)은 CSS Cascade Override로 대응. 별도 canonical token 미신설."
+    ]
+  },
+  "usage": {
+    "whenToUse": [
+      "사이드바/상단 사이트 내비게이션 항목을 나열할 때.",
+      "현재 위치(active) 표시가 필요할 때."
+    ],
+    "whenNotToUse": [
+      "PC 글로벌 상단 바는 GNB.",
+      "날짜 캘린더의 이동 버튼(nav)과 혼동하지 않는다(다른 개념)."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "항목",
+      "role": "아이콘 + 라벨. default·hover·active."
+    },
+    {
+      "part": "활성 인디케이터",
+      "role": "현재 항목 강조 막대."
+    },
+    {
+      "part": "구분선",
+      "role": "그룹 구분 divider."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "active 항목은 인디케이터 + 액션색으로 표시한다.",
+      "비선택 인디케이터는 --nav-item-indicator-default 를 쓴다."
+    ],
+    "dont": [
+      "DatePicker 의 nav 버튼 토큰과 섞지 않는다.",
+      "항목 색을 raw 로 칠하지 않는다."
+    ]
+  },
+  "a11y": [
+    "현재 항목에 aria-current=\"page\" 를 준다.",
+    "아이콘만 있는 항목엔 라벨/aria-label 을 준다."
+  ],
+  "states": ["default", "hover", "active", "disabled"],
+  "tokens": [
+    { "name": "--nav-bg",                    "value": "var(--color-surface-default)",         "state": "all",     "property": "bg",        "figmaVariable": "color/navigation/bg" },
+    { "name": "--nav-item-hover-bg",         "value": "var(--color-bg-subtle)",               "state": "hover",   "property": "bg" },
+    { "name": "--nav-item-active-bg",        "value": "var(--color-action-primary-subtle)",   "state": "active",  "property": "bg" },
+    { "name": "--nav-item-default-text",     "value": "var(--color-text-tertiary)",           "state": "default", "property": "color",     "figmaVariable": "color/navigation/label/default" },
+    { "name": "--nav-item-active-text",      "value": "var(--color-action-primary-default)",  "state": "active",  "property": "color",     "figmaVariable": "color/navigation/label/selected" },
+    { "name": "--nav-item-default-icon",     "value": "var(--color-icon-default)",            "state": "default", "property": "icon" },
+    { "name": "--nav-item-active-icon",      "value": "var(--color-action-primary-default)",  "state": "active",  "property": "icon" },
+    { "name": "--nav-item-indicator",        "value": "var(--color-action-primary-default)",  "state": "active",  "property": "indicator",  "figmaVariable": "color/navigation/indicator/selected" },
+    { "name": "--nav-item-indicator-default","value": "var(--color-border-subtle)",           "state": "default", "property": "indicator",  "figmaVariable": "color/navigation/indicator/default" },
+    { "name": "--nav-divider",               "value": "var(--color-border-subtle)",           "state": "all",     "property": "border" }
+  ],
+  "plannedTokens": [],
+  "altVariantNote": "color/navigation/label/default-alt 및 indicator/default-alt는 별도 canonical token 미신설. 특수 surface 배치 시 부모 컴포넌트 CSS 스코프에서 override 방식 권장.",
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "",
+    "propertyMap": {}
+  },
+  "governance": {
+    "owner": "Design System Team",
+    "deprecated": false,
+    "replacement": null
+  }
+}

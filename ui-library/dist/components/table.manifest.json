@@ -1,0 +1,176 @@
+{
+  "id": "table",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "5743374f79e5024ee78661cbf9efc713367240e0a32f0b1a63ed17e2012dc755",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/table.json"
+  ],
+  "rootSelector": "[data-s1-component=\"table\"]",
+  "variants": [
+    "base"
+  ],
+  "sizes": [
+    "md",
+    "sm",
+    "xsm"
+  ],
+  "breaks": {
+    "pc": [
+      "md",
+      "sm",
+      "xsm"
+    ]
+  },
+  "geometry": {
+    "md": {
+      "rowHeight": "--sizing-44",
+      "fontSize": "--font-size-14"
+    },
+    "sm": {
+      "rowHeight": "--sizing-38",
+      "fontSize": "--font-size-14"
+    },
+    "cellPaddingInline": "--spacing-16",
+    "selectionCell": {
+      "width": "--sizing-48",
+      "paddingInline": "--spacing-8"
+    },
+    "cellBorderBottom": "--border-width-1 color/table/border/default",
+    "edgeTop": "--border-width-2 color/table/border/strong",
+    "edgeBottom": "--border-width-1 color/table/border/strong",
+    "source": "build-components.ts buildTableCell 1960-2027 · buildTable 2032-2205",
+    "xsm": {
+      "rowHeight": "--sizing-34",
+      "fontSize": "--font-size-12"
+    }
+  },
+  "states": {
+    "default": "[data-s1-part=\"cell\"] 기본",
+    "hover": "@media (hover: hover) [data-s1-part=\"row\"]:hover > [data-s1-part=\"cell\"] · 문서용 [data-state=\"hover\"]",
+    "selected": "[data-s1-part=\"row\"][data-selected=\"true\"] > [data-s1-part=\"cell\"] · 셀 단위 [data-state=\"selected\"]"
+  },
+  "canonicalStateMap": {
+    "Default": "default",
+    "Hover": "hover",
+    "Selected": "selected"
+  },
+  "canonicalAlignMap": {
+    "Left": "기본 — 글자 좌측, data-align 속성 없음",
+    "Center": "data-align=\"center\" — 좌우 여백 16 유지, 글자만 가운데"
+  },
+  "notInCanon": {
+    "sortIcon": "정본에 정렬 아이콘이 없다. river 결정(2026-09-02, HD-1 A)으로 이번 배포에서 만들지 않는다.",
+    "footer": "정본 Table 은 페이지네이션·보기 셀렉트를 포함하지만, 이 모듈은 표만 소유한다. 안내 페이지의 시연 영역에서 승인된 pagination·select 배포본을 조립한다(river 결정 2026-09-02, HD-2).",
+    "indeterminate": "정본 체크박스에 부분선택 변형이 없어 헤더 체크박스도 사용하지 않는다.",
+    "mobile": "정본·Registry 모두 모바일 표 표출 규칙이 없다. 이번 배포는 PC 만 선언한다."
+  },
+  "parts": [
+    "table",
+    "header-cell",
+    "row",
+    "cell"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=table]",
+    "requiredAttributes": [
+      "data-size"
+    ],
+    "requiredParts": [
+      "table",
+      "header-cell",
+      "row",
+      "cell"
+    ],
+    "optionalAttributes": [
+      "data-align",
+      "data-selection",
+      "data-selected"
+    ],
+    "relations": [
+      "th[data-s1-part=header-cell][scope=col] ↔ 열 제목",
+      "선택 셀의 체크박스는 코어 [data-s1-component=checkbox] 를 그대로 넣는다"
+    ],
+    "grouping": "표 밖의 페이지네이션·보기 셀렉트는 화면에서 조립한다. 이 모듈은 표만 소유한다.",
+    "source": "components/table/table.example.html",
+    "distribution": "examples/table.html"
+  },
+  "cssContract": {
+    "entry": "components/table.css",
+    "rootScope": "[data-s1-component=table]",
+    "nativeStates": [
+      ":hover"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "contentSlots": {
+    "cell": "표 내용은 소비자가 채운다. 컴포넌트 예시 문구를 서비스 문구 정본으로 쓰지 않는다."
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": [
+      "checkbox"
+    ]
+  },
+  "icons": [],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "table·thead·tbody·tr·th[scope=col]·td"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "전체선택 체크박스와 각 행 체크박스에 aria-label 을 준다"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "native Tab 이동과 Space 선택. 방향키 격자 이동은 채택하지 않는다(river 결정 2026-09-02, HD-4 A)"
+    },
+    "focus": {
+      "status": "inherited",
+      "value": "선택 체크박스의 초점 표시는 코어 checkbox 계약을 따른다"
+    },
+    "ariaStateSync": {
+      "status": "not-applicable",
+      "reason": "행 선택은 native checked 가 전달하고 data-selected 는 시각 표현 전용이다."
+    },
+    "ariaSort": {
+      "status": "out-of-scope",
+      "reason": "정렬 기능이 이번 배포 범위 밖이다(river 결정 2026-09-02, HD-1 A)."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "Table does not own field errors."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "The canonical component defines no motion."
+    }
+  },
+  "jsRequired": true,
+  "javascript": {
+    "runtime": "components/table/table.js",
+    "api": [
+      "init",
+      "destroy",
+      "runtime"
+    ],
+    "events": [
+      "s1:table:selectionchange"
+    ],
+    "behaviorLedger": "registry/components/component-behavior.pc.json > Table"
+  },
+  "sourceFingerprint": "3ceaeea85a4bdb2b6d8f2df804922bf252f630578404aac2c04a63ee09007836"
+}

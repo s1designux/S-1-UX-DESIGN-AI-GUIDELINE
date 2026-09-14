@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "policy": "semantic-direct",
+  "dependencies": ["assets/css/tokens.css", "assets/css/typography.css"],
+  "componentAliasTokens": [],
+  "components": {
+    "button": ["color/button", "border-width", "radius/button", "sizing", "spacing", "font", "line-height", "letter-spacing"],
+    "input": ["color/form-control", "color/text/state", "border-width", "radius/control", "sizing", "spacing", "font", "line-height", "letter-spacing"]
+  }
+}

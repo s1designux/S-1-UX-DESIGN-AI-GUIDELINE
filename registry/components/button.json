@@ -1,0 +1,243 @@
+{
+  "_meta": {
+    "id": "button",
+    "name": "Button",
+    "category": "Core",
+    "updatedAt": "2026-08-26",
+    "version": "0.5.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "stable",
+    "figmaStatus": "existing",
+    "harnessStatus": "implemented",
+    "description": "Core interactive button component. Primary / Secondary / Blue-line variants with PC 3 sizes and Mobile 1 size.",
+    "notes": [
+      "MVP3 Button HTML harness created in pages/button-harness.html.",
+      "Button uses official V2.4 component tokens (registry/tokens/component.tokens.json).",
+      "Dark mode secondary: fill=gray-dark-400(bg-elevated), stroke=gray-dark-500(border-strong), hover=gray-dark-300(bg-muted) — 2026-05-27 확정.",
+      "Danger variant is not implemented — no official component tokens exist for danger.",
+      "blue-line variant: Figma design confirmed via MCP 2026-05-12. Tokens aligned to Figma.",
+      "MVP3.4 Figma MCP comparison complete: 6 token mismatches corrected (see reports/mvp3-4-button-figma-mcp-comparison.md).",
+      "ghost variant tokens exist in tokens.css but harness uses blue-line instead.",
+      "secondary hover border removed: Figma confirms hover border = same as default (no change).",
+      "primary disabled-border added: Figma confirms all disabled borders = color-border-default."
+    ]
+  },
+  "usage": {
+    "whenToUse": [
+      "사용자가 실행할 액션을 트리거할 때 — 저장·확인·취소·다음 등.",
+      "화면에서 가장 중요한 단일 액션은 primary, 보조 액션은 secondary, 약한 강조는 blue-line."
+    ],
+    "whenNotToUse": [
+      "페이지 이동만 하는 것은 링크를 고려한다.",
+      "on/off 상태 전환은 Toggle, 다중 선택은 Checkbox·Chip 을 쓴다."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "라벨",
+      "role": "버튼 텍스트. 굵기·색은 variant 토큰."
+    },
+    {
+      "part": "컨테이너",
+      "role": "배경·테두리·반경. variant×state 토큰."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "variant 는 primary·secondary·blue-line 만 쓴다.",
+      "크기는 PC md(44)/xsm(34)/xxsm(28), Mobile lg(48) 중에서 고른다.",
+      "색은 Semantic 경유 component 토큰(--button-*)으로만 참조한다."
+    ],
+    "dont": [
+      "Danger·ghost variant 를 재도입하지 않는다(폐지 확정).",
+      "한 화면에 primary 를 여러 개 두어 강조를 분산시키지 않는다.",
+      "raw HEX·Foundation 직접 참조 금지."
+    ]
+  },
+  "a11y": [
+    "아이콘만 있는 버튼은 aria-label 로 용도를 준다.",
+    "disabled 는 실제 비활성 처리하고 클릭을 막는다."
+  ],
+  "guide": {
+    "sampleLabels": ["버튼"],
+    "webTag": "button",
+    "interactionPattern": "invoke-count",
+    "accessibility": { "keyboard": "native-button", "disabled": "native-disabled" },
+    "classInterface": {
+      "base": "s1-btn",
+      "variantPrefix": "s1-btn-",
+      "sizePrefix": "s1-btn-",
+      "sizeAliases": { "XSM": "", "MD": "md", "XXSM": "xxsm", "LG": "lg" },
+      "paneAliases": { "Primary": "pri", "Secondary": "sec", "Blue-Line": "bl" }
+    }
+  },
+  "summary": {
+    "badge": "Core",
+    "variantCount": 3,
+    "pcSizeCount": 3,
+    "mobileSizeCount": 1
+  },
+  "platformSupport": {
+    "all": true,
+    "pc": true,
+    "mobile": true
+  },
+  "themeSupport": {
+    "light": true,
+    "dark": true
+  },
+  "variants": {
+    "list": ["primary", "secondary", "blue-line"],
+    "pcSize": ["md", "xsm", "xxsm"],
+    "mobileSize": ["lg"],
+    "state": ["default", "hover", "pressed", "disabled"],
+    "primary": {
+      "tokenStatus": "stable",
+      "codeStatus": "implemented",
+      "darkModeStatus": "stable",
+      "tokens": [
+        "--button-primary-default-bg",
+        "--button-primary-hover-bg",
+        "--button-primary-pressed-bg",
+        "--button-primary-disabled-bg",
+        "--button-primary-disabled-border",
+        "--button-primary-default-text",
+        "--button-primary-disabled-text",
+        "--button-primary-default-icon"
+      ]
+    },
+    "secondary": {
+      "tokenStatus": "stable",
+      "codeStatus": "implemented",
+      "darkModeStatus": "stable",
+      "tokens": [
+        "--button-secondary-default-bg",
+        "--button-secondary-hover-bg",
+        "--button-secondary-pressed-bg",
+        "--button-secondary-disabled-bg",
+        "--button-secondary-default-border",
+        "--button-secondary-disabled-border",
+        "--button-secondary-default-text",
+        "--button-secondary-disabled-text",
+        "--button-secondary-default-icon",
+        "--button-secondary-disabled-icon"
+      ]
+    },
+    "blue-line": {
+      "tokenStatus": "stable",
+      "codeStatus": "implemented",
+      "darkModeStatus": "stable",
+      "tokens": [
+        "--button-blue-line-default-bg",
+        "--button-blue-line-hover-bg",
+        "--button-blue-line-pressed-bg",
+        "--button-blue-line-disabled-bg",
+        "--button-blue-line-default-border",
+        "--button-blue-line-hover-border",
+        "--button-blue-line-disabled-border",
+        "--button-blue-line-default-text",
+        "--button-blue-line-disabled-text"
+      ]
+    }
+  },
+  "tokens": {
+    "background": [
+      "--button-primary-default-bg",
+      "--button-primary-hover-bg",
+      "--button-primary-pressed-bg",
+      "--button-primary-disabled-bg",
+      "--button-secondary-default-bg",
+      "--button-secondary-hover-bg",
+      "--button-secondary-pressed-bg",
+      "--button-secondary-disabled-bg",
+      "--button-blue-line-default-bg",
+      "--button-blue-line-hover-bg",
+      "--button-blue-line-pressed-bg",
+      "--button-blue-line-disabled-bg"
+    ],
+    "text": [
+      "--button-primary-default-text",
+      "--button-primary-disabled-text",
+      "--button-secondary-default-text",
+      "--button-secondary-disabled-text",
+      "--button-blue-line-default-text",
+      "--button-blue-line-disabled-text"
+    ],
+    "border": [
+      "--button-primary-disabled-border",
+      "--button-secondary-default-border",
+      "--button-secondary-disabled-border",
+      "--button-blue-line-default-border",
+      "--button-blue-line-hover-border",
+      "--button-blue-line-disabled-border"
+    ],
+    "icon": [
+      "--button-primary-default-icon",
+      "--button-secondary-default-icon",
+      "--button-secondary-disabled-icon"
+    ]
+  },
+  "sizing": {
+    "pc": [
+      { "id": "md",       "label": "md",       "height": "h44", "cssClass": "s1-btn-md",     "token": "--sizing-44", "minWidth": 80, "minWidthToken": "--sizing-80" },
+      { "id": "xsm",      "label": "xsm",      "height": "h34", "cssClass": "",              "token": "--sizing-34", "minWidth": 64, "minWidthToken": "--sizing-64", "note": "기본 사이즈 — 크기 수식어 없음" },
+      { "id": "xxsm",     "label": "xxsm",     "height": "h28", "cssClass": "s1-btn-xxsm",  "token": "--sizing-28", "minWidth": 56, "minWidthToken": "--sizing-56", "note": "river 승인으로 최소 너비 56px 적용 — 2026-08-26" }
+    ],
+    "mobile": [
+      { "id": "lg",       "label": "lg",       "height": "h48", "cssClass": "s1-btn-lg", "token": "--sizing-48", "minWidth": 80, "minWidthToken": "--sizing-80", "labelAlign": "center" }
+    ],
+    "minWidthRule": "Button 최소 너비: MD·LG=80px, XSM=64px, XXSM=56px. XXSM은 2026-08-26 river 승인으로 기존 Figma V3.0 참고값 64px을 대체한다. 라벨이 길면 좌우 padding을 보존하며 늘어난다.",
+    "radius": "--radius-button-md"
+  },
+  "harness": {
+    "columns": ["action", "default", "hover", "pressed", "disabled"],
+    "interactiveColumn": "action",
+    "staticPreviewColumns": ["default", "hover", "pressed", "disabled"],
+    "pcColumns": ["action", "default", "hover", "pressed", "disabled"],
+    "mobileColumns": ["action", "default", "pressed", "disabled"],
+    "note": "ACTION = real interactive test (click / disabled toggle). DEFAULT/HOVER/PRESSED/DISABLED = static preview (is-preview class). ACTION is not a Figma state."
+  },
+  "pendingVariants": [
+    {
+      "name": "danger",
+      "reason": "Official V2.4 button danger component tokens are not defined. Danger variant deleted (confirmed 2026-04-29). Do not re-add until official tokens are established.",
+      "status": "deprecated"
+    },
+    {
+      "name": "ghost",
+      "reason": "ghost tokens exist in tokens.css but the official harness uses blue-line instead. Tokens are preserved for backwards compatibility but not actively shown in the harness.",
+      "status": "legacy"
+    }
+  ],
+  "figma": {
+    "componentSetKey": "",
+    "componentName": "Button",
+    "propertyMap": {
+      "variant": "Variant",
+      "size": "Size",
+      "state": "State",
+      "break": "Break"
+    },
+    "valueMap": {
+      "primary": "Primary",
+      "secondary": "Secondary",
+      "blue-line": "Blue-Line",
+      "md": "MD",
+      "xsm": "XSM",
+      "xxsm": "XXSM",
+      "lg": "LG",
+      "default": "Default",
+      "hover": "Hover",
+      "pressed": "Pressed",
+      "disabled": "Disabled"
+    }
+  },
+  "governance": {
+    "owner": "Design System Team",
+    "deprecated": false,
+    "replacement": null,
+    "breakingChange": false
+  }
+}

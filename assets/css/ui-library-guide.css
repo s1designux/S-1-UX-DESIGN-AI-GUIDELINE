@@ -1,0 +1,870 @@
+/* Approved UI library component guide layout.
+   Component visuals are owned exclusively by ui-library/dist/s1-ui.css. */
+.main-content,
+.page-content,
+.comp-sticky-bar,
+.comp-section {
+  min-width: 0;
+}
+
+.page-content { width: 100%; }
+
+.uilg {
+  color: var(--color-text-body-primary);
+  display: grid;
+  gap: var(--spacing-24);
+  min-width: 0;
+}
+
+.uilg * { box-sizing: border-box; }
+
+.uilg > section,
+.uilg-demo-block,
+.uilg-title-group,
+.uilg-code-panel {
+  min-width: 0;
+}
+
+.uilg-header {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-12);
+  justify-content: space-between;
+  padding-bottom: var(--spacing-16);
+}
+
+.uilg-title-group,
+.uilg-demo-group,
+.uilg-code-panel {
+  display: grid;
+  gap: var(--spacing-12);
+}
+
+.uilg-title {
+  color: var(--color-text-title-primary);
+  font-size: var(--font-size-24);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-130);
+  margin: 0;
+}
+
+.uilg-description,
+.uilg-demo-note,
+.uilg-status-text {
+  color: var(--color-text-body-secondary);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-140);
+  margin: 0;
+}
+
+.uilg-badges {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-6);
+}
+
+.uilg-badge {
+  background: var(--color-bg-level-2);
+  border: 1px solid var(--color-line-gray-subtle);
+  border-radius: var(--radius-full);
+  color: var(--color-text-body-secondary);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-130);
+  padding: var(--spacing-6) var(--spacing-10);
+}
+
+.uilg-badge-approved {
+  background: var(--color-bg-level-2);
+  border-color: var(--color-line-blue);
+  color: var(--color-text-state-accent);
+}
+
+.uilg-demo {
+  background: var(--color-bg-level-0);
+  border: 1px solid var(--color-line-gray-subtle);
+  border-radius: var(--radius-12);
+  display: grid;
+  gap: var(--spacing-24);
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  padding: var(--spacing-20);
+  width: 100%;
+}
+
+.uilg-demo-head {
+  align-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-12);
+  justify-content: space-between;
+}
+
+.uilg-card-title,
+.uilg-section-title,
+.uilg-demo-title {
+  color: var(--color-text-title-primary);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-130);
+  margin: 0;
+}
+
+.uilg-section-title { font-size: var(--font-size-20); }
+.uilg-demo-title { font-size: var(--font-size-16); }
+
+/* 구분선은 언제나 위아래 24px 을 갖는다 — 「앞에 무엇이 오는가」로 여백을 주면
+   새로운 앞 요소가 나올 때마다 조용히 0px 로 새어나간다. 실제로 그렇게 새어
+   Password/Search 제목(2026-09-07 A1)과 Date Picker 「달력 크기」 제목(river 지적 2026-09-07)이
+   각각 앞 블록에 붙었다. 예외가 필요한 자리는 인라인 style 로 덮는다(우선순위가 높다). */
+.uilg-separator {
+  border: 0;
+  border-top: 1px solid var(--color-line-gray-subtle);
+  margin: var(--spacing-24) 0;
+  width: 100%;
+}
+
+/* ── State matrix — variant block ── */
+
+.uilg-variant-block {
+  display: grid;
+  gap: var(--spacing-16);
+}
+
+/* 가로선이 없는 자리(Mobile — 크기가 한 가지라 §A-5 로 가로선 금지)에서도 블록은 같은 24px 로 떨어진다.
+   구분선과 마찬가지로 「앞에 무엇이 오는가」를 열거하지 않는다 — 열거하면 새로운 앞 요소가 나올 때마다
+   조용히 0px 로 새어나간다. 실제로 그렇게 새어 Password/Search 제목(A1)·Date Picker 「달력 크기」·
+   Mobile Time Picker 「목록 칸 상태」가 차례로 앞 표에 붙었다(🤖 component-verifier 2026-09-07 C-2).
+   블록 사이 24px 은 river 지적(2026-08-31)으로 고정된 값이다 — 8px 은 눈에 띄게 좁아 보였다.
+   구분선이 앞에 오는 경우에도 두 여백은 맞닿아 큰 값 하나로 합쳐지므로 48px 이 되지 않는다. */
+.uilg-variant-block:not(:first-child) { margin-block-start: var(--spacing-24); }
+
+/* ── Input state matrix — constrained width ── */
+
+.uilg-input-constrained {
+  overflow-x: auto;
+}
+
+.uilg-input-constrained [data-s1-component="input"] {
+  width: 100%;
+}
+
+/* Action 영역의 인풋은 폭을 고정한다. 부모(.comp-action-top)가 align-items:flex-start 라
+   폭이 내용에 맞춰 줄어들어, 값을 입력해 지우기 아이콘(Mobile 48px)이 나타나는 순간
+   필드가 168px → 216px 로 넓어졌다(river 제보 2026-09-07 · 실측 delta 48px).
+   실제 서비스에서 인풋은 부모 폭을 따르지 글자 수를 따르지 않는다. */
+.uilg-input-action {
+  display: grid;
+  gap: var(--spacing-8);
+  min-height: 60px;
+  width: 240px;
+}
+
+.uilg-option-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-6);
+}
+
+.uilg-option-chip {
+  border: 1px solid var(--color-line-gray-subtle);
+  border-radius: var(--radius-full);
+  color: var(--color-text-body-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-130);
+  padding: var(--spacing-4) var(--spacing-10);
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+}
+
+.uilg-option-chip:hover {
+  border-color: var(--color-line-gray-default);
+}
+
+.uilg-option-chip.is-on {
+  background: var(--color-bg-level-2);
+  border-color: var(--color-line-blue);
+  color: var(--color-text-state-accent);
+}
+
+/* Forced editing (focus) state for static preview */
+[data-s1-component="input"][data-force-state="focus"] [data-s1-part="field"] {
+  background: var(--color-form-control-bg-selected);
+  border-color: var(--color-form-control-border-selected);
+}
+[data-s1-component="input"][data-force-state="focus"] [data-s1-part="control"] {
+  color: var(--color-form-control-text-selected);
+}
+
+.uilg-size-dim {
+  color: var(--color-text-body-secondary);
+  display: block;
+  font-size: var(--font-size-11, 11px);
+  font-weight: var(--font-weight-regular);
+}
+
+.uilg-live-label {
+  color: var(--color-text-state-accent);
+}
+
+.uilg-live-label::before {
+  content: "● ";
+  font-size: 8px;
+  vertical-align: middle;
+}
+
+/* ── Checkbox · Radio 가이드 배치 (배치 전용 — 코어 시각은 dist 가 소유) ── */
+
+.uilg-control-action {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+}
+
+.uilg-control-group {
+  border: 0;
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  margin: 0;
+  padding: 0;
+}
+
+/* fieldset 의 legend 는 grid 항목이 아니라 gap 이 적용되지 않는다 — 간격을 직접 준다. */
+.uilg-control-group > .matrix-row-label {
+  margin-bottom: var(--spacing-12);
+  padding: 0;
+}
+
+/* ── Checkbox · Radio forced state CSS (preview only) ── */
+
+[data-s1-component="checkbox"][data-force-state="hover"] [data-s1-part="control"],
+[data-s1-component="radio"][data-force-state="hover"] [data-s1-part="control"] {
+  background: var(--color-control-bg-hover);
+}
+
+/* ── Toggle · Chip 가이드 배치 (배치 전용 — 코어 시각은 dist 가 소유) ── */
+
+.uilg-toggle-row {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-12);
+}
+
+.uilg-toggle-row-label {
+  color: var(--color-text-body-primary);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-130);
+}
+
+/* ── Chip forced state CSS (preview only) — 정본 Hover 슬롯과 같은 토큰만 쓴다 ── */
+
+[data-s1-component="chip"][data-variant="line"][data-force-state="hover"] {
+  background: var(--color-chip-line-bg-hover);
+}
+
+[data-s1-component="chip"][data-variant="solid"][data-force-state="hover"] {
+  background: var(--color-chip-solid-bg-hover);
+  border-color: var(--color-chip-solid-bg-hover);
+}
+
+/* ── Select · Dropdown · Filter Chip 가이드 배치 + forced state (preview only) ──
+   forced state 는 dist 의 Hover 규칙과 같은 토큰만 쓴다(새 값 신설 없음).
+   미리보기 칸은 마우스를 받지 않아(.is-preview) native :hover 가 걸리지 않으므로 검수용으로만 쓴다. */
+
+/* 목록이 펼쳐진 칸(Open · Selected)이 아랫줄을 덮지 않도록 자리를 준다 — 패널은 오버레이다. */
+.uilg-open-cell { min-height: 200px; }
+
+/* Time Picker 패널은 목록 192 + 위여백 12 + 확인줄 ≈ 248px 라 Select 목록보다 높다.
+   같은 200px 를 쓰면 아래 블록(유형·목록 칸)을 덮는다. */
+[data-guide-component="time-picker"] .uilg-open-cell { min-height: 300px; }
+
+/* Date Picker 달력은 트리거(MD 44) + 간격 8 + 패널 352 ≈ 404px 로 이 화면에서 가장 높다.
+   200·300px 를 쓰면 달력이 아랫줄과 다음 블록을 덮어 글자와 겹친다(river 제보 2026-09-04).
+   승인된 검수 화면(pages/ui-review.html)이 같은 자리에 쓰는 420px 와 같은 값을 쓴다.
+   작은 달력(입력창 xxsm·xsm → 28+8+266 = 302)도 이 안에 들어온다. */
+[data-guide-component="date-picker"] .uilg-open-cell { min-height: 420px; }
+
+/* 달력은 트리거의 왼쪽 끝에 붙어 아래로 펼쳐진다. 칸이 가운데 정렬(.comp-state-cell)이면
+   트리거가 칸 한가운데 놓여 달력 오른쪽 끝이 칸 밖으로 (칸너비-180)/2 만큼 더 나가고,
+   MD(356) 열에서는 카드 밖까지 삐져나간다. Date Picker 만 칸을 왼쪽 정렬해 달력이 칸 안에서 시작하게 한다. */
+[data-guide-component="date-picker"] .comp-state-cell { justify-content: flex-start; }
+
+/* 칸을 왼쪽 정렬했으면 그 칸의 열 제목도 왼쪽에서 시작해야 한다 — 제목만 가운데(.matrix-col-header)에
+   남아 「단일 선택 / 기간 선택」이 아래 컴포넌트보다 오른쪽으로 밀려 보였다(river 제보 2026-09-07). */
+[data-guide-component="date-picker"] .matrix-col-header { text-align: left; }
+
+[data-s1-component="select"] [data-s1-part="trigger"][data-force-state="hover"] {
+  background: var(--color-form-control-bg-hover);
+  color: var(--color-form-control-text-placeholder);
+}
+
+[data-s1-component="time-picker"] [data-s1-part="trigger"][data-force-state="hover"] {
+  background: var(--color-form-control-bg-hover);
+}
+
+[data-s1-component="time-picker"] [data-s1-part="cell"][data-force-state="hover"] {
+  background: var(--color-dropdown-option-bg-hover);
+  color: var(--color-dropdown-option-label-hover);
+}
+
+[data-s1-component="dropdown"] [data-s1-part="option"][data-force-state="hover"] {
+  background: var(--color-dropdown-option-bg-hover);
+  color: var(--color-dropdown-option-label-hover);
+}
+
+[data-s1-component="filter-chip"][data-variant="line"] [data-s1-part="trigger"][data-force-state="hover"] {
+  background: var(--color-chip-line-bg-hover);
+}
+
+[data-s1-component="filter-chip"][data-variant="solid"] [data-s1-part="trigger"][data-force-state="hover"] {
+  background: var(--color-chip-solid-bg-hover);
+  border-color: var(--color-chip-solid-bg-hover);
+}
+
+/* ── Button forced state CSS (preview only) ── */
+
+[data-s1-component="button"][data-force-state="default"] {
+  /* default = as-is */
+}
+
+[data-s1-component="button"][data-variant="primary"][data-force-state="hover"] {
+  background: var(--color-button-bg-primary--hover);
+  border-color: var(--color-button-border-primary--hover);
+  color: var(--color-button-label-primary--hover);
+}
+
+[data-s1-component="button"][data-variant="primary"][data-force-state="pressed"] {
+  background: var(--color-button-bg-primary--hover);
+  border-color: var(--color-button-border-primary--hover);
+  color: var(--color-button-label-primary--hover);
+}
+
+[data-s1-component="button"][data-variant="secondary"][data-force-state="hover"] {
+  background: var(--color-button-bg-secondary--hover);
+  border-color: var(--color-button-border-secondary--hover);
+  color: var(--color-button-label-secondary--hover);
+}
+
+[data-s1-component="button"][data-variant="secondary"][data-force-state="pressed"] {
+  background: var(--color-button-bg-secondary--hover);
+  border-color: var(--color-button-border-secondary--hover);
+  color: var(--color-button-label-secondary--hover);
+}
+
+[data-s1-component="button"][data-variant="blue-line"][data-force-state="hover"] {
+  background: var(--color-button-bg-blue-line--hover);
+  border-color: var(--color-button-border-blue-line--hover);
+  color: var(--color-button-label-blue-line--hover);
+}
+
+[data-s1-component="button"][data-variant="blue-line"][data-force-state="pressed"] {
+  background: var(--color-button-bg-blue-line--hover);
+  border-color: var(--color-button-border-blue-line--hover);
+  color: var(--color-button-label-blue-line--hover);
+}
+
+/* ── Assist Button forced state CSS (preview only) — dist :hover/:active 와 같은 토큰만 쓴다 ── */
+
+[data-s1-component="assist-button"][data-force-state="hover"],
+[data-s1-component="assist-button"][data-force-state="pressed"] {
+  background: var(--color-button-bg-secondary--hover);
+  border-color: var(--color-button-border-assist--hover);
+  color: var(--color-button-label-assist--hover);
+}
+
+/* ── Text Button forced state CSS (preview only) — Hover·Pressed 는 밑줄만(색 불변, dist 규칙 그대로) ── */
+
+[data-s1-component="text-button"][data-force-state="hover"],
+[data-s1-component="text-button"][data-force-state="pressed"] {
+  text-decoration: underline;
+}
+
+/* ── Modal Content 안내 화면 전용 ──
+   Modal 과 같은 이유·같은 방식(위 §Modal 안내 화면 전용 참고) — position:fixed 인 배포본을
+   상태 칸 안에 눕혀 보여준다. 이 CSS 는 dist 에 넣지 않는다(cssContract.previewNote). */
+.uilg [data-s1-component="modal-content"].is-preview {
+  inset: auto;
+  padding: var(--spacing-24);
+  position: relative;
+}
+
+.uilg-modal-content-action { display: flex; }
+
+/* ── Modal Content 크기 비교표 축소 표시 (river 2026-09-08 지적 — 실제 폭 그대로면 한 화면에
+   Single 열 하나만 보이고 세로 3239px 로 늘어져 MD·LG·XL 비교가 안 됐다) ──
+   실제 폭 값은 JS(ui-library-guide.js modalContentStateMatrix)가 그대로 유지하고, 이 CSS 는
+   "표시 배율"만 담당한다 — outer 는 축소된 자리를 예약(레이아웃 크기), inner 는 실제 크기로 그려진 뒤
+   transform:scale 로 시각만 줄어든다(레이아웃 크기는 그대로라 outer 로 자리를 다시 잡아야 한다).
+   dist 에 넣지 않는다(안내 화면 전용 표시 방식, cssContract.previewNote 와 같은 원칙). */
+.uilg-modal-content-scale {
+  overflow: hidden;
+}
+.uilg-modal-content-scale-inner {
+  transform-origin: top left;
+}
+/* 칸 안에서 왼쪽 정렬 — 크기 차이를 왼쪽 기준으로 비교(가운데 정렬이면 큰 칸일수록 시작점이 안쪽으로 밀려
+   비교가 어렵다). 행 레이블의 실제 치수(예: 520×336)도 이 섹션에서만 켠다 — 축소 표시라 글자 크기가
+   시각적 크기의 근거가 안 되므로 숫자로 사실을 남긴다. */
+#modal-content .comp-state-cell { justify-content: flex-start; }
+#modal-content .matrix-row-label span { display: block; }
+
+/* ── Code viewer ── */
+
+/* 제목 바로 아래 코드 박스가 붙지 않게 한다(설명문 제거 후 간격이 사라졌다). */
+.uilg-title-group + .uilg-code {
+  margin-top: var(--spacing-16);
+}
+
+.uilg-code {
+  background: var(--color-bg-level-0);
+  border: 1px solid var(--color-line-gray-subtle);
+  border-radius: var(--radius-12);
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
+}
+
+.uilg-code-toolbar {
+  align-items: center;
+  background: var(--color-bg-level-1);
+  border-bottom: 1px solid var(--color-line-gray-subtle);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  justify-content: space-between;
+  padding-right: var(--spacing-8);
+}
+
+.uilg-code-tabs { display: flex; flex-wrap: wrap; }
+
+.uilg-code-tab,
+.uilg-copy {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: var(--color-text-body-secondary);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-medium);
+  min-height: 40px;
+  padding: 0 var(--spacing-16);
+}
+
+.uilg-code-tab[aria-selected="true"] {
+  background: var(--color-bg-level-0);
+  box-shadow: inset 0 -2px var(--color-line-blue);
+  color: var(--color-text-state-accent);
+}
+
+.uilg-copy {
+  border: 1px solid var(--color-line-gray-subtle);
+  border-radius: var(--radius-4);
+  min-height: 30px;
+  padding: 0 var(--spacing-10);
+}
+
+.uilg-code-panel { display: none; }
+.uilg-code-panel.is-active { display: block; }
+
+.uilg-code pre {
+  color: var(--color-text-body-primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.65;
+  margin: 0;
+  max-height: 520px;
+  overflow: auto;
+  padding: var(--spacing-20);
+  tab-size: 2;
+  user-select: text;
+  white-space: pre;
+}
+
+/* ── Implementation rules ── */
+
+.uilg-rules {
+  background: var(--color-bg-level-0);
+  border: 1px solid var(--color-line-gray-subtle);
+  border-radius: var(--radius-12);
+  display: grid;
+  gap: var(--spacing-16);
+  padding: var(--spacing-20);
+}
+
+.uilg-rules-body {
+  display: grid;
+  gap: var(--spacing-20);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.uilg-rule-group {
+  display: grid;
+  gap: var(--spacing-8);
+}
+
+.uilg-rule-heading {
+  color: var(--color-text-title-primary);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-130);
+  margin: 0;
+}
+
+.uilg-rule-list {
+  color: var(--color-text-body-secondary);
+  display: grid;
+  font-size: var(--font-size-13);
+  gap: var(--spacing-4);
+  line-height: var(--line-height-140);
+  margin: 0;
+  padding-left: var(--spacing-20);
+}
+
+/* ── Usage guide (collapsible) ── */
+
+.uilg-usage-details {
+  background: var(--color-bg-level-0);
+  border: 1px solid var(--color-line-gray-subtle);
+  border-radius: var(--radius-12);
+  padding: 0;
+}
+
+.uilg-usage-summary {
+  color: var(--color-text-title-primary);
+  cursor: pointer;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-130);
+  list-style: none;
+  padding: var(--spacing-16) var(--spacing-20);
+  user-select: none;
+}
+
+.uilg-usage-summary::-webkit-details-marker { display: none; }
+
+.uilg-usage-summary::before {
+  content: "▶ ";
+  display: inline-block;
+  font-size: 10px;
+  transition: transform 0.15s;
+  vertical-align: middle;
+}
+
+.uilg-usage-details[open] > .uilg-usage-summary::before {
+  transform: rotate(90deg);
+}
+
+.uilg-usage-body {
+  border-top: 1px solid var(--color-line-gray-subtle);
+  display: grid;
+  gap: var(--spacing-16);
+  padding: var(--spacing-20);
+}
+
+.uilg-usage-body ul {
+  color: var(--color-text-body-secondary);
+  display: grid;
+  font-size: var(--font-size-14);
+  gap: var(--spacing-6);
+  line-height: var(--line-height-140);
+  margin: 0;
+  padding-left: var(--spacing-20);
+}
+
+/* ── Textarea · Multi Toggle 가이드 배치 + forced state (preview only) ──
+   forced state 는 dist 의 Focus·Hover 규칙과 같은 토큰만 쓴다(새 값 신설 없음).
+   미리보기 칸은 초점·마우스를 받지 않아(.is-preview) native :focus-within/:hover 가 걸리지 않는다. */
+
+.uilg-textarea-action { max-width: 480px; }
+
+[data-s1-component="textarea"][data-force-state="focus"] [data-s1-part="control"] {
+  background: var(--color-form-control-bg-selected);
+  border-color: var(--color-form-control-border-selected);
+  color: var(--color-form-control-text-selected);
+}
+
+[data-s1-component="multi-toggle"] [data-s1-part="cell"][data-force-state="hover"] {
+  background: var(--color-button-bg-secondary--hover);
+  border-color: var(--color-button-border-secondary--hover);
+  color: var(--color-button-label-secondary--hover);
+}
+
+/* GNB 메뉴 — 미리보기 칸에는 마우스가 없어 :hover 를 흉내낸다. 실제 색·밑줄 규칙은 gnb.css 그대로다. */
+[data-s1-component="gnb"] [data-s1-part="menu"][data-force-state="hover"] {
+  color: var(--color-navigation-label-selected);
+}
+[data-s1-component="gnb"] [data-s1-part="menu"][data-force-state="hover"]::after {
+  background: var(--color-navigation-indicator-selected);
+}
+
+/* ── Error state ── */
+
+.uilg-load-error {
+  background: var(--color-bg-level-0);
+  border: 1px solid var(--color-status-error);
+  border-radius: var(--radius-8);
+  color: var(--color-text-state-caution);
+  font-size: var(--font-size-14);
+  padding: var(--spacing-16);
+}
+
+/* ── Modal 안내 화면 전용 ──
+   배포본의 모달은 화면 전체를 덮는 팝업이다(position: fixed). 안내·검수 화면에서는
+   상태 칸 안에 눕혀 보여줘야 해서 이 페이지가 자리만 바꾼다. 이 CSS 는 dist 에 넣지 않는다
+   (배포본 계약 cssContract.previewNote). 색·크기·간격은 그대로 dist 가 그린다. */
+.uilg [data-s1-component="modal"].is-preview {
+  inset: auto;
+  padding: var(--spacing-24);
+  position: relative;
+}
+
+/* ── Date Picker 모바일 바텀시트 안내 화면 전용 ── (V-2, 위 Modal 과 같은 이유·같은 방식)
+   배포본 sheet 는 position:fixed;inset:0 이라 정적 "Open" 상태 표본을 그대로 두면 화면 전체를
+   덮는다. root 의 .is-preview 를 그대로 선택자로 써서 sheet 만 눕힌다 — 새 클래스를 만들지 않는다. */
+.uilg [data-s1-component="date-picker"].is-preview [data-s1-part="sheet"] {
+  inset: auto;
+  position: relative;
+}
+
+.uilg-modal-action { display: flex; }
+
+/* ── Mobile Bottom Nav · Mobile Header 안내 화면 전용 모바일 목업(D6) ──
+   휴대폰 테두리·상태바 그림·화면 내용 스켈레톤은 안내 화면 전용 크롬이다. dist 부품이 아니며
+   data-s1-component 을 갖지 않는다(부품 표본 격리 — data-guide-sample="part"/"set" 는 실제
+   dist 부품에만 붙인다). 이 CSS 는 dist 에 넣지 않는다. */
+.uilg-mobile-action { display: flex; justify-content: center; padding-block: var(--spacing-8); width: 100%; }
+
+.uilg-phone {
+  background: var(--color-bg-level-0);
+  border: 10px solid var(--color-gray-800);
+  border-radius: 40px;
+  box-shadow: 0 12px 32px rgba(17, 24, 39, 0.16);
+  display: flex;
+  flex-direction: column;
+  height: 780px;
+  overflow: hidden;
+  width: 360px;
+}
+
+[data-theme="dark"] .uilg-phone { border-color: var(--color-gray-dark-100); }
+
+/* ── 상태바 — 정본 StatusBar(App) 를 옮긴 그림. 수치는 build-components.ts populateStatusRow(:4738-4767) 그대로.
+   배경은 정본과 같은 기제로 헤더 배경을 물려받는다(정본 :3117-3119 는 상태바 인스턴스 fills 를 비운다). ── */
+.uilg-phone-status {
+  align-items: center;
+  background: var(--color-bg-level-0);
+  color: var(--color-text-body-secondary);
+  display: flex;
+  flex: none;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-medium);
+  height: 27px;
+  justify-content: space-between;
+  padding-left: var(--spacing-20);
+  padding-right: var(--spacing-16);
+}
+
+/* 상태바와 헤더 사이 16 간격 — 정본 comp.itemSpacing = 16 (build-components.ts:3487). */
+.uilg-phone-chrome-gap { background: var(--color-bg-level-0); flex: none; height: var(--spacing-16); }
+
+/* Home 유형은 헤더 배경이 bg/home 이라 위쪽 크롬도 같은 색이 된다(정본 :3107·3132 isHome 분기).
+   본문 영역까지 같은 색으로 잇는다 — 홈 화면은 상단부터 본문까지 한 배경이다(river 지시 2026-09-02).
+   Standard 유형의 본문은 그대로 사이트 목업 회색을 쓴다(정본에 화면 본문 규정이 없다). */
+.uilg-phone[data-header-bg="home"] .uilg-phone-status,
+.uilg-phone[data-header-bg="home"] .uilg-phone-chrome-gap,
+.uilg-phone[data-header-bg="home"] .uilg-phone-content { background: var(--color-bg-home); }
+
+.uilg-phone-status-right { align-items: center; display: flex; gap: 6px; }
+
+.uilg-phone-signal { display: block; height: 12px; position: relative; width: 17px; }
+.uilg-phone-signal i { background: var(--color-icon-gray-dark); border-radius: 0.5px; position: absolute; }
+
+.uilg-phone-wifi { align-items: center; color: var(--color-icon-gray-dark); display: flex; height: 12px; width: 16px; }
+
+.uilg-phone-battery { display: block; height: 12px; position: relative; width: 24px; }
+.uilg-phone-battery i { position: absolute; }
+.uilg-phone-battery-shell {
+  border: 1px solid var(--color-icon-gray-dark);
+  border-radius: 2.5px;
+  height: 11px;
+  left: 0;
+  top: 0.5px;
+  width: 20px;
+}
+.uilg-phone-battery-tip {
+  background: var(--color-icon-gray-dark);
+  border-radius: 1px;
+  height: 4px;
+  left: 20.4px;
+  top: 4px;
+  width: 1.6px;
+}
+.uilg-phone-battery-fill {
+  background: var(--color-icon-gray-dark);
+  border-radius: 1px;
+  height: 7px;
+  left: 2px;
+  top: 2.5px;
+  width: 14.5px;
+}
+
+.uilg-phone-screen { display: flex; flex: 1 1 auto; flex-direction: column; min-height: 0; }
+
+.uilg-phone-header-slot { flex: none; }
+.uilg-phone-header-slot [data-s1-component="mobile-header"] { width: 100%; }
+
+.uilg-phone-content {
+  background: var(--color-bg-subtle);
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  min-height: 0;
+  padding: var(--spacing-20) var(--spacing-16);
+}
+
+.uilg-phone-skeleton { background: var(--color-gray-200); border-radius: var(--radius-6); }
+.uilg-phone-skeleton--title { height: 20px; width: 55%; }
+.uilg-phone-skeleton--line { height: 12px; width: 100%; }
+[data-theme="dark"] .uilg-phone-skeleton { background: var(--color-gray-dark-200); }
+
+.uilg-phone-card {
+  background: var(--color-surface-default);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-12);
+  height: 76px;
+}
+
+/* 유형 선택칩을 목업 왼쪽에 세로로 세운 Action 배치 — 목업이 길어 아래에 두면 화면에서 잘린다(river 지시 2026-09-02).
+   좁은 화면에서는 다시 위아래로 접힌다. */
+.uilg-mobile-action--with-picker {
+  align-items: flex-start;
+  gap: var(--spacing-24);
+  justify-content: center;
+}
+
+.uilg-option-chips--stacked {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: none;
+  gap: var(--spacing-8);
+  padding-top: var(--spacing-8);
+}
+
+.uilg-option-chips--stacked .uilg-option-chip {
+  justify-content: flex-start;
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .uilg-mobile-action--with-picker { flex-direction: column; align-items: center; }
+  .uilg-option-chips--stacked { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+}
+
+.uilg-mobile-header-row { display: flex; justify-content: center; width: 100%; }
+.uilg-mobile-header-row [data-s1-component="mobile-header"] { max-width: 360px; width: 100%; }
+.uilg-mobile-header-list { display: flex; flex-direction: column; gap: var(--spacing-16); }
+
+/* GNB — PC 전용·full-width 컴포넌트라 카드 폭에 맞춰 그대로 늘어나는 세로 목록으로 보여준다. */
+.uilg-gnb-list { display: flex; flex-direction: column; gap: var(--spacing-16); width: 100%; }
+.uilg-gnb-row { display: flex; flex-direction: column; gap: var(--spacing-8); width: 100%; }
+.uilg-gnb-row-label { color: var(--color-text-body-secondary); font-size: var(--font-size-11, 11px); font-weight: 600; letter-spacing: 0.04em; margin: 0; text-transform: uppercase; }
+.uilg-gnb-row-bar { overflow-x: auto; width: 100%; }
+.uilg-gnb-menu-cell { display: inline-flex; width: auto; }
+/* 조립 예시(상단바+패널) — 배치 전용. 세로로 쌓이는 실제 배포 구조(바 아래 패널)를 그대로
+   보여줄 뿐 시각을 보정하지 않는다 — 색·크기·간격은 전부 dist CSS(s1-ui.css) 가 그린다. */
+.uilg-gnb-assembled-wrap { display: flex; flex-direction: column; gap: var(--spacing-40); overflow-x: auto; width: 100%; }
+/* 조립 액션 3벌(river 지시 2026-09-09) — 벌 사이 여백만 host 가 준다. 벌 안 레이블은 GNB 바 변형
+   목록과 같은 .uilg-gnb-row-label 을 재사용한다(새 시각 규칙 0건). */
+.uilg-gnb-assembled-item { display: flex; flex-direction: column; gap: var(--spacing-8); min-width: 640px; }
+.uilg-gnb-assembled { display: flex; flex-direction: column; }
+
+/* 패널이 펼쳐질 자리를 미리 비워 둔다(river 지시 2026-09-10) — 두 패널(서비스·통계)을 같은 칸에 겹쳐 두면
+   슬롯 높이는 둘 중 높은 쪽이 정한다. 높이를 host 가 숫자로 지어내지 않으므로 유형별 실제 높이를 그대로 쓴다.
+   닫힌 패널은 자리만 지키고 보이지 않는다 — visibility:hidden 은 [hidden] 과 똑같이 접근성 트리·초점에서도 빠진다. */
+.uilg-gnb-panel-slot { display: grid; }
+.uilg-gnb-panel-slot > [data-s1-component="gnb-sub-menu"] { grid-area: 1 / 1; }
+.uilg-gnb-panel-slot > [data-s1-component="gnb-sub-menu"][hidden] { display: flex; visibility: hidden; }
+
+/* 조립 액션 칸만 옅은 회색 — 패널 배경이 흰색이라 흰 카드 위에서는 경계가 안 보인다(river 지시 2026-09-10). */
+.preview-area.uilg-gnb-action-area { background: var(--color-bg-level-2); }
+[data-theme="dark"] .preview-area.uilg-gnb-action-area { background: var(--color-bg-level-3); }
+
+/* GNB Sub Menu Item 미리보기 칸 — 부품 자체는 목록을 소유하지 않으므로(gnb-sub-menu 가 소유)
+   상태 매트릭스·Action 칸에서 <li> 하나만 보일 때 감쌀 꾸미기 없는 <ul> 껍데기(mobile-bottom-nav 선례와 같은 원리). */
+.uilg-gnb-submenu-item-cell { display: flex; flex-direction: column; gap: var(--spacing-8); list-style: none; margin: 0; padding: 0; }
+.uilg-gnb-submenu-item-cell > li { margin: 0; }
+/* 상태가 없는 칸 — 1depth(카테고리 제목)의 Hover·Selected 자리(river 지시 2026-09-10). */
+.uilg-na { color: var(--color-text-body-secondary); font-size: var(--font-size-12, 12px); }
+
+/* ── Responsive ── */
+
+@media (max-width: 1080px) {
+  .uilg-rules-body { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .uilg-demo,
+  .uilg-rules { padding: var(--spacing-16); }
+  .uilg-code-toolbar { align-items: stretch; padding-right: 0; }
+  .uilg-copy { margin: var(--spacing-6) var(--spacing-8); }
+}
+
+/* ── 한 화면 안의 여러 상자(기본 인풋·패스워드·서치) ──
+   상자마다 「실제 동작과 상태」 + 「개발 코드」가 한 벌이다(river 결정 HD-A, 2026-09-07).
+   상자가 경계를 그으므로 블록 사이 가로선은 두지 않는다. */
+.uilg-demo-block + .uilg-demo-block { margin-block-start: var(--spacing-32, 32px); }
+
+/* ── 바텀시트를 휴대폰 목업 안에 가둔다(river 지시 2026-09-07) ──
+   배포본에서 시트는 position:fixed 다 — 실제 서비스에서 화면 전체를 덮는 것이 맞는 동작이라
+   그대로 둔다. 안내 화면에서만 목업 화면을 기준 상자로 삼아 absolute 로 바꿔,
+   시트가 브라우저 전체가 아니라 휴대폰 안에서 올라오게 한다. */
+.uilg-phone-screen { position: relative; }
+
+/* 시트의 기준 상자는 휴대폰 「화면」이어야 한다. 배포본은 트리거 아래 팝오버(PC)를 위해
+   컴포넌트 뿌리에 position:relative 를 두는데, 그대로 두면 absolute 시트가 트리거 크기(308×48)에
+   갇힌다(실측 2026-09-07). 목업 안에서는 팝오버를 쓰지 않으므로 뿌리를 기준에서 뺀다.
+   ⚠️ 시트를 가진 두 부품만 지목한다. 처음에 `[data-s1-component]` 로 넓게 걸었더니 시트 안에 조립된
+   Line Tab 의 뿌리까지 static 이 되어, 탭 밑줄(::before, absolute bottom:0)이 기준을 잃고
+   시트 바닥으로 404px 날아갔다(🤖 component-verifier 2026-09-07 A-1 실측). */
+.uilg-phone [data-s1-component="time-picker"],
+.uilg-phone [data-s1-component="date-picker"] { position: static; }
+
+.uilg-phone [data-s1-part="sheet"] { position: absolute; z-index: 2; }
+
+/* 목업 화면 위에 트리거를 얹는 자리 — 실제 화면처럼 위쪽에서 시작한다. */
+.uilg-phone-stage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  height: 100%;
+  padding: var(--spacing-16);
+}
+
+.uilg-phone-row { display: flex; flex-wrap: wrap; gap: var(--spacing-24); }
+.uilg-phone-item { display: grid; gap: var(--spacing-8); justify-items: start; max-width: 360px; }
+.uilg-phone-item .matrix-col-header { text-align: left; }
+
+/* ── 달력 칸·타일의 hover 표본 ──
+   hover 는 손이 닿아야 보이는 상태라 표에 세우려면 표식이 필요하다. 값은 배포본의 hover 규칙을
+   그대로 가리킨다(date-picker.css:334·377) — 새 색을 만들지 않는다. 안내 화면 전용이다. */
+.uilg [data-s1-part="cell"][data-force-state="hover"] [data-s1-part="cell-inner"] {
+  background: var(--color-date-picker-cell-bg-hover);
+}
+/* 선택된 칸의 hover — 배포본 date-picker.css 의 [data-state="selected"]:hover 규칙과 같은 값.
+   채움·테두리 둘 다 selected-hover 를 쓴다(정본 State="Selected Hover", 2026-09-09). */
+.uilg [data-s1-part="cell"][data-state="selected"][data-force-state="hover"] [data-s1-part="cell-inner"] {
+  background: var(--color-date-picker-cell-bg-selected-hover);
+  border-color: var(--color-date-picker-cell-bg-selected-hover);
+}
+.uilg [data-s1-part="tile"][data-force-state="hover"]:not([aria-selected="true"]) {
+  background: var(--color-date-picker-tile-bg-hover);
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run ui:build` 를 실행하세요. -->
+<resources>
+    <style name="Theme.S1Sample" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

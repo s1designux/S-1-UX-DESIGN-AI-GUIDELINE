@@ -1,0 +1,76 @@
+/* Mobile Bottom Nav — 정본 buildMobileBottomNav(build-components.ts) 기준.
+   축은 두 개다: icon(home·search·notification·settings) × state(unselected·selected).
+   정본은 "탭 1칸"만 만들고 4칸 바는 컴포넌트가 아니다 — 화면이 아이템 인스턴스를
+   role=tablist 컨테이너 안에 가로로 배열해 조립하고, 바 배경은 화면이 --color-navigation-bg 로 칠한다(D1).
+   2026-09-14 river 승인: 칸마다 아이콘이 달라야 바를 조립할 수 있어 icon 축을 신설했다. */
+[data-s1-component="mobile-bottom-nav"] {
+  align-items: center;
+  appearance: none;
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font: inherit;
+  gap: var(--spacing-4);
+  height: var(--sizing-60);
+  justify-content: center;
+  padding: 0;
+  width: var(--sizing-60);
+}
+
+/* 아이콘 32×32 — 정본이 아이콘 인스턴스를 32 로 리사이즈한다.
+   색은 선택 여부가 고르고, 모양은 두 갈래로 정해진다:
+     ① data-icon 이 고르는 **예시 아이콘** 4종(home·search·notification·settings)
+     ② 화면이 --s1-mobile-nav-icon 에 제 아이콘을 넣으면 그것이 이긴다
+   ②가 있는 이유 — 실제 서비스의 하단 내비는 칸 구성이 서비스마다 다르다(river 2026-09-14).
+   여기 4종은 "이렇게 쓴다"는 예시일 뿐이고, 개발자는 아이콘 라이브러리에서 받은 SVG 로 갈아 끼운다 —
+   칸의 style 에 --s1-mobile-nav-icon 을 받은 파일 경로로 지정하면 된다(쓰는 법은 배포본 README).
+   **받는 것은 Solid 변형이어야 한다**(river 지시 2026-09-14) — 하단 내비는 채운 도형이 기준이고,
+   한 바 안에서 Line 과 섞이면 칸마다 무게가 달라 보인다. 예시 4종도 전부 Solid 다.
+   받은 파일이 단색 도형이면 색은 이 컴포넌트가 계속 토큰으로 칠한다(마스크 방식). */
+[data-s1-component="mobile-bottom-nav"] [data-s1-part="icon"] {
+  background-color: var(--color-icon-gray);
+  display: block;
+  flex: none;
+  height: var(--sizing-32);
+  -webkit-mask: var(--s1-mobile-nav-icon, url("../assets/icons/mobile-nav-home.svg")) center / contain no-repeat;
+  mask: var(--s1-mobile-nav-icon, url("../assets/icons/mobile-nav-home.svg")) center / contain no-repeat;
+  width: var(--sizing-32);
+}
+
+[data-s1-component="mobile-bottom-nav"][data-icon="search"] [data-s1-part="icon"] {
+  -webkit-mask-image: var(--s1-mobile-nav-icon, url("../assets/icons/nav-search.svg"));
+  mask-image: var(--s1-mobile-nav-icon, url("../assets/icons/nav-search.svg"));
+}
+
+[data-s1-component="mobile-bottom-nav"][data-icon="notification"] [data-s1-part="icon"] {
+  -webkit-mask-image: var(--s1-mobile-nav-icon, url("../assets/icons/nav-notification.svg"));
+  mask-image: var(--s1-mobile-nav-icon, url("../assets/icons/nav-notification.svg"));
+}
+
+[data-s1-component="mobile-bottom-nav"][data-icon="settings"] [data-s1-part="icon"] {
+  -webkit-mask-image: var(--s1-mobile-nav-icon, url("../assets/icons/nav-settings.svg"));
+  mask-image: var(--s1-mobile-nav-icon, url("../assets/icons/nav-settings.svg"));
+}
+
+/* 라벨 12/Medium (body/12M) — 아이콘과 간격 4(정본 itemSpacing). */
+[data-s1-component="mobile-bottom-nav"] [data-s1-part="label"] {
+  color: var(--color-navigation-label-default);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+  margin: 0;
+}
+
+/* selected — aria-selected 는 네이티브 ARIA 상태다. 호스트(화면)가 현재 경로에 맞춰
+   설정하며 이 컴포넌트는 런타임 없이 그 값을 CSS 로만 반영한다(jsRequired=false). */
+[data-s1-component="mobile-bottom-nav"][aria-selected="true"] [data-s1-part="icon"] {
+  background-color: var(--color-icon-blue);
+}
+
+[data-s1-component="mobile-bottom-nav"][aria-selected="true"] [data-s1-part="label"] {
+  color: var(--color-navigation-label-selected);
+}

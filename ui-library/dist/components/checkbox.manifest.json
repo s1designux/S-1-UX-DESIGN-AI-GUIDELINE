@@ -1,0 +1,143 @@
+{
+  "id": "checkbox",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "612dd07b14cc04e5a98b9ad225e1cb3ebe07893e802069db2b9917d02f1ff634",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/checkbox.json"
+  ],
+  "rootSelector": "[data-s1-component=\"checkbox\"]",
+  "variants": [
+    "base"
+  ],
+  "sizes": [],
+  "geometry": {
+    "box": {
+      "width": "--sizing-18",
+      "height": "--sizing-18",
+      "radius": "--radius-control-xs",
+      "border": "--border-width-1"
+    },
+    "indicator": {
+      "width": "--sizing-16",
+      "height": "--sizing-16",
+      "placement": "정본 18px 상자의 content box(테두리 안쪽 1,1)를 그대로 채운다."
+    },
+    "labelGap": "--spacing-8",
+    "source": "build-components.ts buildCheckbox"
+  },
+  "states": {
+    "default": "native; unchecked and enabled",
+    "hover": "@media (hover: hover) control:hover:not(:disabled):not(:checked)",
+    "checked": "control:checked",
+    "disabled": "control:disabled",
+    "disabledChecked": "control:disabled:checked"
+  },
+  "canonicalStateMap": {
+    "Default": "default",
+    "Hover": "hover",
+    "Checked": "checked",
+    "Disabled": "disabled",
+    "Dis+Checked": "disabledChecked"
+  },
+  "notInCanon": {
+    "indeterminate": "정본에 부분선택 변형이 없다. 2026-08-31 river 결정으로 이번 배포에서 만들지 않는다.",
+    "focusVisible": "정본에 focus 변형이 없다. 2026-09-02 river 결정으로 웹에서도 만들지 않으며, 키보드 초점은 브라우저 기본 표시에 맡긴다."
+  },
+  "parts": [
+    "control",
+    "label"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=checkbox]",
+    "requiredAttributes": [],
+    "requiredParts": [
+      "control"
+    ],
+    "optionalParts": [
+      "label"
+    ],
+    "control": "input[type=checkbox][data-s1-part=control]",
+    "relations": [
+      "label[for] ↔ control[id]",
+      "라벨이 없으면 control 에 aria-label"
+    ],
+    "grouping": "여러 개를 묶을 때는 fieldset·legend 로 감싼다. 코어는 개별 컨트롤만 소유한다.",
+    "source": "components/checkbox/checkbox.example.html",
+    "distribution": "examples/checkbox.html"
+  },
+  "cssContract": {
+    "entry": "components/checkbox.css",
+    "rootScope": "[data-s1-component=checkbox]",
+    "nativeStates": [
+      ":checked",
+      ":disabled",
+      ":hover"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "contentSlots": {
+    "label": "optional; 없는 것이 기본이고 붙이면 라벨 클릭도 선택 영역이 된다"
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [
+    {
+      "id": "check",
+      "sourceKey": "5ab251e0d90adb555ee2fa316f84e86041f19916",
+      "asset": "assets/icons/check.svg",
+      "use": "Checked indicator",
+      "accessibleNamePolicy": "decorative; 선택 상태는 native checked 가 전달한다"
+    }
+  ],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "input[type=checkbox]"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "associated label or aria-label"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "native Space toggle and Tab order"
+    },
+    "focus": {
+      "status": "required",
+      "value": "브라우저 기본 포커스 표시를 그대로 쓴다 — 정본에 focus 표현이 없어 웹에서 만들지 않는다(2026-09-02 river 결정)."
+    },
+    "ariaStateSync": {
+      "status": "not-applicable",
+      "reason": "native checked 가 상태를 전달하므로 별도 ARIA 동기화가 없다."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "Checkbox does not own field errors."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "The canonical component defines no motion."
+    }
+  },
+  "jsRequired": false,
+  "javascript": {
+    "runtime": "none",
+    "reason": "Native checkbox semantics provide the complete approved behavior."
+  },
+  "sourceFingerprint": "6e2670d1c8e7ae8d90f20dfb3fcb84dd8ec6e83916b79dd1b9e08efd0011500d"
+}

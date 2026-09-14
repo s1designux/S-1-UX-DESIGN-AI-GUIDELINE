@@ -1,0 +1,126 @@
+{
+  "id": "pagination",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "d5c36b875358643ea6721838b15b210ed73c088aad22e1fee358dc061d7cfbd8",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/pagination.json",
+    "registry/components/component-behavior.pc.json"
+  ],
+  "rootSelector": "[data-s1-component=\"pagination\"]",
+  "variants": [
+    "bar"
+  ],
+  "sizes": [
+    "28"
+  ],
+  "states": {
+    "single": "all arrows disabled",
+    "first": "first/previous disabled",
+    "last": "next/last disabled",
+    "middle": "all arrows enabled",
+    "selected": "aria-current=page"
+  },
+  "canonicalStateMap": {
+    "Single": "single",
+    "First": "first",
+    "Last": "last",
+    "Middle": "middle",
+    "Pagination Cell · Selected": "selected"
+  },
+  "parts": [
+    "arrow-group",
+    "pages",
+    "page",
+    "icon"
+  ],
+  "htmlContract": {
+    "root": "nav[data-s1-component=pagination]",
+    "requiredAttributes": [
+      "data-total-pages",
+      "data-page",
+      "aria-label"
+    ],
+    "requiredParts": [
+      "arrow-group",
+      "pages",
+      "page"
+    ],
+    "source": "components/pagination/pagination.example.html",
+    "distribution": "examples/pagination.html"
+  },
+  "cssContract": {
+    "entry": "components/pagination.css",
+    "rootScope": "[data-s1-component=pagination]",
+    "nativeStates": [
+      ":hover",
+      ":disabled"
+    ],
+    "ariaStates": [
+      "[aria-current=page]"
+    ],
+    "customization": "정본 pagination semantic token만 사용한다."
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [
+    {
+      "id": "chevron",
+      "usage": "previous and next"
+    },
+    {
+      "id": "edge_set",
+      "usage": "first and last"
+    }
+  ],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "nav landmark with native buttons"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "pagination nav and four arrows have Korean labels; pages include their number"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "native Tab, Enter, and Space activation"
+    },
+    "focus": {
+      "status": "required",
+      "value": "브라우저 기본 포커스 표시를 그대로 쓴다 — 정본에 focus 표현이 없어 웹에서 만들지 않는다(2026-09-02 river 결정)."
+    },
+    "ariaStateSync": {
+      "status": "required",
+      "value": "runtime keeps aria-current=page, arrow disabled states, and current page label in sync"
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "Pagination does not own field errors."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "The canonical component declares no motion."
+    }
+  },
+  "jsRequired": true,
+  "javascript": {
+    "runtime": "components/pagination/pagination.js",
+    "reason": "현재 페이지와 양 끝 비활성 상태를 동기화한다."
+  },
+  "sourceFingerprint": "79315cc2aa027185625c65382db8a3478d435ec3431f2269f98a0d77d11228f2"
+}

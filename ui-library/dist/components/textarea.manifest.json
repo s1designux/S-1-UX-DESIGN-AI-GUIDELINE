@@ -1,0 +1,145 @@
+{
+  "id": "textarea",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "ce33d33d3b4499106d82a9f26b4cc6a3e51b4749c86a0273e1a6ad4c762f64e7",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/textarea.json"
+  ],
+  "rootSelector": "[data-s1-component=\"textarea\"]",
+  "variants": [
+    "base"
+  ],
+  "sizes": [],
+  "geometry": {
+    "control": {
+      "minHeight": "--sizing-80",
+      "paddingTop": "--spacing-12",
+      "paddingRight": "--spacing-12",
+      "paddingBottom": "--spacing-10",
+      "paddingLeft": "--spacing-10",
+      "radius": "--radius-control-sm",
+      "border": "--border-width-1",
+      "fontSize": "--font-size-14"
+    },
+    "source": "build-components.ts buildTextarea(:1388)"
+  },
+  "states": {
+    "default": "native; empty and enabled",
+    "focus": ":focus-within",
+    "filled": "native value presence; no forced visual state",
+    "disabled": "control:disabled",
+    "readonly": "control[readonly]"
+  },
+  "canonicalStateMap": {
+    "Default": "default",
+    "Focus": "focus",
+    "Filled": "filled",
+    "Disabled": "disabled",
+    "Readonly": "readonly"
+  },
+  "notInCanon": {
+    "label": "정본 buildTextarea 가 라벨을 그리지 않는다. 접근 이름은 서비스가 외부 label 또는 aria-label 로 연결한다.",
+    "helper": "정본 주석 '1차는 필드 상태만'(:1396). river 결정 D1(2026-09-02) — 정본에 먼저 추가 후 다음 차례에 웹으로 내린다.",
+    "counter": "정본에 글자수 카운터가 없다.",
+    "sizeAxis": "정본은 State 축만 있고 sm/md/lg 같은 크기 축이 없다.",
+    "hover": "registry stateNotes 가 '삭제(HD-2)·Figma 미정의'로 선언한다."
+  },
+  "mediaDifference": {
+    "width": "정본은 240 고정(Figma 프레임 폭). 웹은 컨테이너 폭 100% — 최소폭에 대응하는 --sizing 토큰이 없어 min-width 는 넣지 않았다(needs-decision, 3-build.md 기록).",
+    "height": "정본은 80 고정. 웹은 최소 80 + 세로 확장 허용(river 결정 D2, resize: vertical)."
+  },
+  "parts": [
+    "control"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=textarea]",
+    "requiredAttributes": [
+      "data-break"
+    ],
+    "requiredParts": [
+      "control"
+    ],
+    "optionalParts": [],
+    "control": "textarea[data-s1-part=control]",
+    "relations": [
+      "외부 label[for] ↔ control[id] 또는 control[aria-label]"
+    ],
+    "source": "components/textarea/textarea.example.html",
+    "distribution": "examples/textarea.html",
+    "breakExamples": {
+      "pc": {
+        "source": "components/textarea/textarea.example.html",
+        "distribution": "examples/textarea.html"
+      },
+      "mobile": {
+        "source": "components/textarea/textarea.mobile.example.html",
+        "distribution": "examples/textarea.mobile.html"
+      }
+    }
+  },
+  "cssContract": {
+    "entry": "components/textarea.css",
+    "rootScope": "[data-s1-component=textarea]",
+    "nativeStates": [
+      ":focus-within",
+      "[readonly]",
+      ":disabled"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "contentSlots": {},
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "textarea"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "associated label or aria-label"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "native multiline text editing"
+    },
+    "focus": {
+      "status": "required",
+      "value": "native focus mapped to canonical Focus state (:focus-within)"
+    },
+    "ariaStateSync": {
+      "status": "not-applicable",
+      "reason": "이번 배포는 필드 상태만 다루며 오류·성공 ARIA 연동이 정본에 없다."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 helper·오류 메시지 부품이 없다(river 결정 D1, 이번 범위 밖)."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "정본 Text Area 는 모션을 정의하지 않는다."
+    }
+  },
+  "jsRequired": false,
+  "javascript": {
+    "runtime": null,
+    "reason": "네이티브 textarea 상태(default·focus·filled·disabled·readonly)만으로 정본 계약이 완결된다."
+  },
+  "sourceFingerprint": "ef591a2bcd90e33a9f725a4019474969199fdd823901eb0d5b117f7ca8675f55"
+}

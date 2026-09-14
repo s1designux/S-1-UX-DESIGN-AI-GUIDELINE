@@ -1,0 +1,186 @@
+/* Mobile Header — 정본 buildMobileHeaderVariant(build-components.ts:3474)·buildMobileHeader(:3160) 기준.
+   river 결정(D5): 상태바(StatusBar)를 웹 배포본에서 제외하고 AppBar 56px 만 배포한다.
+   Platform(App/Web) 축도 상태바 유무 차이일 뿐이라 함께 제외 — Type 6종 1축만 남는다. */
+[data-s1-component="mobile-header"] {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: var(--sizing-56);
+  justify-content: center;
+  padding-block: var(--spacing-12);
+  padding-inline-end: var(--spacing-16);
+  width: 100%;
+}
+
+/* Home 계열 — 배경 color/bg/home, 좌측 여백 20 */
+[data-s1-component="mobile-header"][data-variant^="home-"] {
+  background: var(--color-bg-home);
+  padding-inline-start: var(--spacing-20);
+}
+
+/* Standard 계열 — 배경 color/bg/level-0, 좌측 여백 16, itemSpacing 8 */
+[data-s1-component="mobile-header"][data-variant^="standard-"] {
+  background: var(--color-bg-level-0);
+  gap: var(--spacing-8);
+  padding-inline-start: var(--spacing-16);
+}
+
+/* Home / Title + Subtitle + 1 Icon 만 상하 여백 6 (2줄 스택 44 + 6 + 6 = 56, 정본 주석 :3131-3134) */
+[data-s1-component="mobile-header"][data-variant="home-title-subtitle"] {
+  padding-block: var(--spacing-6);
+}
+
+/* ── 제목 ── */
+[data-s1-component="mobile-header"] [data-s1-part="title"] {
+  color: var(--color-text-title-primary);
+  flex: 1 1 auto;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Standard — 중앙 정렬 18/Medium(title/18M) */
+[data-s1-component="mobile-header"][data-variant^="standard-"] [data-s1-part="title"] {
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+  text-align: center;
+}
+
+/* No Title — 텍스트 없는 빈 grow 영역(레이아웃 대칭용). heading 이 아니다(빈 heading 금지). */
+[data-s1-component="mobile-header"][data-variant="standard-no-title"] [data-s1-part="title"],
+[data-s1-component="mobile-header"][data-variant="standard-no-title-close"] [data-s1-part="title"] {
+  height: var(--sizing-24);
+}
+
+/* Home — 좌측 정렬 18/Bold(title/18B) */
+[data-s1-component="mobile-header"][data-variant="home-title"] [data-s1-part="title"],
+[data-s1-component="mobile-header"][data-variant="home-title-subtitle"] [data-s1-part="title"] {
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+  text-align: left;
+}
+
+/* ── Home / Title + Subtitle + 1 Icon 전용 ── */
+[data-s1-component="mobile-header"] [data-s1-part="stack"] {
+  align-items: flex-start;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  min-width: 0;
+}
+
+[data-s1-component="mobile-header"] [data-s1-part="title-row"] {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-4);
+  max-width: 100%;
+}
+
+[data-s1-component="mobile-header"] [data-s1-part="title-row"] [data-s1-part="title"] {
+  flex: 0 1 auto;
+}
+
+[data-s1-component="mobile-header"] [data-s1-part="subtitle"] {
+  color: var(--color-text-body-tertiary);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 서브타이틀 옆 아래화살표 — 원본은 아래 방향으로 쓴다(정본 :3166, Figma rotation=-90).
+   ⚠ Figma rotation 은 반시계 양수, CSS rotate 는 시계 양수라 부호가 반대다 — 같은 "아래"가 CSS 에서는 +90deg 다. */
+[data-s1-component="mobile-header"] [data-s1-part="arrow-icon"] {
+  background-color: var(--color-icon-gray-dark);
+  display: block;
+  flex: none;
+  height: var(--sizing-24);
+  -webkit-mask: url("../assets/icons/mobile-header-arrow-down.svg") center / contain no-repeat;
+  mask: url("../assets/icons/mobile-header-arrow-down.svg") center / contain no-repeat;
+  transform: rotate(90deg);
+  width: var(--sizing-24);
+}
+
+/* ── 액션 슬롯 — 뒤로/닫기/알림. 시각 32×32 는 정본 그대로(D4),
+   실제 터치 영역만 :before 로 44×44 까지 넓힌다(hit area 는 Registry·CSS 소유). ── */
+[data-s1-component="mobile-header"] [data-s1-part="back"],
+[data-s1-component="mobile-header"] [data-s1-part="close"],
+[data-s1-component="mobile-header"] [data-s1-part="notification"] {
+  align-items: center;
+  appearance: none;
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  flex: none;
+  height: var(--sizing-32);
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  width: var(--sizing-32);
+}
+
+[data-s1-component="mobile-header"] [data-s1-part="back"]::before,
+[data-s1-component="mobile-header"] [data-s1-part="close"]::before,
+[data-s1-component="mobile-header"] [data-s1-part="notification"]::before {
+  content: "";
+  inset: calc(var(--spacing-6) * -1);
+  position: absolute;
+}
+
+[data-s1-component="mobile-header"] [data-s1-part="spacer"] {
+  flex: none;
+  height: var(--sizing-32);
+  width: var(--sizing-32);
+}
+
+[data-s1-component="mobile-header"] [data-s1-part="back-icon"] {
+  background-color: var(--color-icon-gray-dark);
+  display: block;
+  height: var(--sizing-24);
+  -webkit-mask: url("../assets/icons/mobile-header-back.svg") center / contain no-repeat;
+  mask: url("../assets/icons/mobile-header-back.svg") center / contain no-repeat;
+  width: var(--sizing-24);
+}
+
+[data-s1-component="mobile-header"] [data-s1-part="close-icon"] {
+  background-color: var(--color-icon-gray-dark);
+  display: block;
+  height: var(--sizing-24);
+  -webkit-mask: url("../assets/icons/mobile-header-close.svg") center / contain no-repeat;
+  mask: url("../assets/icons/mobile-header-close.svg") center / contain no-repeat;
+  width: var(--sizing-24);
+}
+
+/* 알림 — 2색. 본체는 마스크+currentColor(icon/gray-dark), 신규 점은 별색(icon/red) 2번째 마스크 레이어를
+   ::after 로 겹친다(마스크 1겹으로 2색을 표현할 수 없다 — river 결정 2026-09-02). */
+[data-s1-component="mobile-header"] [data-s1-part="notification-icon"] {
+  background-color: var(--color-icon-gray-dark);
+  display: block;
+  height: var(--sizing-24);
+  position: relative;
+  -webkit-mask: url("../assets/icons/mobile-header-notification.svg") center / contain no-repeat;
+  mask: url("../assets/icons/mobile-header-notification.svg") center / contain no-repeat;
+  width: var(--sizing-24);
+}
+
+[data-s1-component="mobile-header"] [data-s1-part="notification-icon"]::after {
+  background-color: var(--color-icon-red);
+  content: "";
+  inset: 0;
+  -webkit-mask: url("../assets/icons/mobile-header-notification-accent.svg") center / contain no-repeat;
+  mask: url("../assets/icons/mobile-header-notification-accent.svg") center / contain no-repeat;
+  position: absolute;
+}

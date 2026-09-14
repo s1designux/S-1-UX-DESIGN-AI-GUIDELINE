@@ -1,0 +1,152 @@
+{
+  "_meta": {
+    "id": "pagination",
+    "name": "Pagination",
+    "category": "navigation",
+    "updatedAt": "2026-09-02",
+    "version": "0.2.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "pending",
+    "a11yStatus": "implemented",
+    "figmaStatus": "confirmed",
+    "harnessStatus": "implemented",
+    "description": "페이지네이션 컨트롤. 화살표(first/prev/next/last) + 페이지 번호. 선택 페이지는 텍스트 색으로만 구분.",
+    "notes": [
+      "Figma 확인: 선택 페이지 = bg 변화 없음, 텍스트 색만 변경 (#9D9D9D → #353535).",
+      "Disabled 화살표 = 전용 토큰 사용(bg gray/50 · border gray/100 · icon gray/300). V3.0 재실측(2026-07-08, node 956:19066)으로 확정 — 종전 '옵션 없이 opacity:0.9만 적용' 서술은 폐기(2026-08-01 교정).",
+      "hover 는 전용 토큰이 V3.0 원본에 정의됨(color/pagination/control/bg·border·icon/hover) — 종전 'Figma 미정의 · assumed' 상태 해소(2026-07-08 재실측).",
+      "dark mode: 미확인 — candidate 상태.",
+      "2026-09-02: 웹 배포 계약에 native button·현재 페이지 aria-current·화살표 한국어 이름을 확정했다. focus-visible 은 승인 없는 신설이어서 같은 날 철회했다 — 키보드 초점은 브라우저 기본 표시에 맡긴다.",
+      "2026-08-01: 위 2건은 tokens/component-tokens-extracted.md 에만 있던 V3.0 재실측 기록을 registry 정본으로 옮긴 것이다(그 문서는 아카이브됨). 정본 토큰 실재는 vars-data 로 확인함."
+    ]
+  },
+  "usage": {
+    "whenToUse": [
+      "긴 목록·표를 페이지로 나눠 이동할 때."
+    ],
+    "whenNotToUse": [
+      "무한 스크롤 UX 에는 쓰지 않는다.",
+      "적은 항목은 페이지네이션 없이 한 번에 보여준다."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "화살표",
+      "role": "first/prev/next/last 이동."
+    },
+    {
+      "part": "페이지 번호",
+      "role": "현재 페이지는 텍스트 색으로만 구분."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "선택 페이지는 배경 변화 없이 텍스트 색으로만 구분한다(Figma 기준).",
+      "비활성 화살표는 전용 disabled 토큰(bg·border·icon)으로 표현한다 — opacity 로 처리하지 않는다."
+    ],
+    "dont": [
+      "선택 페이지에 배경색을 넣지 않는다.",
+      "hover 배경을 임의 값으로 넣지 않는다(현재 gray-50 가정값 — 미확정)."
+    ]
+  },
+  "a11y": [
+    "현재 페이지에 aria-current 를 준다.",
+    "화살표 버튼에 이전·다음 등 aria-label 을 단다."
+  ],
+  "variants": {
+    "arrow": {
+      "direction": [
+        "<<",
+        "<",
+        ">",
+        ">>"
+      ],
+      "state": [
+        "default",
+        "disabled"
+      ]
+    },
+    "number": {
+      "state": [
+        "default",
+        "selected"
+      ]
+    }
+  },
+  "sizing": {
+    "controlSize": "28px (var(--spacing-28))",
+    "radius": "var(--radius-control-xs)",
+    "font": "Pretendard Medium 14px",
+    "gap": "4px (화살표 그룹 내) / 8px (그룹 간)"
+  },
+  "states": [
+    "default",
+    "hover",
+    "selected",
+    "disabled"
+  ],
+  "tokens": [
+    {
+      "name": "--pagination-control-bg",
+      "value": "var(--color-surface-default)",
+      "resolvedLight": "#FFFFFF",
+      "figmaVariable": "color/pagination/control/bg/default",
+      "status": "stable",
+      "description": "화살표·페이지 번호 공통 배경"
+    },
+    {
+      "name": "--pagination-control-border",
+      "value": "var(--color-pagination-control-border-default)",
+      "resolvedLight": "#D9D9D9",
+      "figmaVariable": "color/pagination/control/border/default",
+      "status": "stable",
+      "description": "화살표 버튼 테두리 (페이지 번호에는 테두리 없음)"
+    },
+    {
+      "name": "--pagination-control-hover-bg",
+      "value": "var(--color-bg-subtle)",
+      "resolvedLight": "#F5F5F5",
+      "figmaVariable": "",
+      "status": "candidate",
+      "description": "화살표·번호 hover 배경 — Figma 미정의, assumed"
+    },
+    {
+      "name": "--pagination-number-text",
+      "value": "var(--color-gray-400)",
+      "resolvedLight": "#9D9D9D",
+      "figmaVariable": "color/gray/400",
+      "status": "stable",
+      "description": "비선택 페이지 번호 텍스트"
+    },
+    {
+      "name": "--pagination-number-text-selected",
+      "value": "var(--color-text-secondary)",
+      "resolvedLight": "#353535",
+      "figmaVariable": "color/text/body/primary",
+      "status": "stable",
+      "description": "선택된 페이지 번호 텍스트"
+    }
+  ],
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "956:19066",
+    "nodes": {
+      "pcPagination": "956:19066",
+      "paginationArrow": "57:6244",
+      "paginationNumber": "956:18769"
+    },
+    "propertyMap": {
+      "direction": "direction",
+      "property1": "property1",
+      "selected": "selected",
+      "hover": "hover"
+    }
+  },
+  "guide": { "samplePages": ["1", "2", "3", "4", "5"], "interactionPattern": "paged-navigation", "webTag": "nav", "labels": { "first": "첫 페이지", "previous": "이전 페이지", "next": "다음 페이지", "last": "마지막 페이지" } },
+  "governance": {
+    "owner": "Design System Team",
+    "deprecated": false,
+    "replacement": null
+  }
+}

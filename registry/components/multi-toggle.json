@@ -1,0 +1,136 @@
+{
+  "_meta": {
+    "id": "multi-toggle",
+    "name": "Multi Toggle",
+    "category": "selection",
+    "updatedAt": "2026-08-01",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "stable",
+    "figmaStatus": "confirmed",
+    "harnessStatus": "implemented",
+    "figmaNodeId": "587:8029",
+    "description": "여러 선택지 중 하나를 고르는 분절 컨트롤(segmented control). 정본은 두 세트다 — 셀 정의 'Multi Toggle Element'(position×state×size, 32 variants)와 그 셀 인스턴스 3개를 묶은 조합형 'Multi Toggle'(Size×Selected, 6 variants).",
+    "notes": [
+      "색은 자체 토큰 없이 button/* 을 그대로 쓴다(선택=primary, 비선택=secondary, 비활성=disabled).",
+      "조합형 세트는 scv 호출이 0건 — 색은 전부 자식 셀 인스턴스가 갖는다(build-components.ts:6545~6647).",
+      "position 은 '선택된 파란 셀 기준 상대 위치'다. 인접면 보더를 0 으로 두어 이중선을 막고, 경계는 파란 셀이 책임진다(reports/figma-library-build/multi-toggle/4-verification.md:44-48).",
+      "웹 가이드의 Element States 블록은 position=first 만 상태별로 보여준다(middle/last 는 미노출).",
+      "관측된 표면 드리프트(2026-08-01): components.html 의 Token Details 탭이 --color-control-* 3개를 적고 있으나, 같은 섹션의 CSS 탭·실 렌더 CSS·설치기는 모두 --color-button-* 을 쓴다. 이 문서는 정본 2곳(설치기·렌더 CSS)이 일치하는 button/* 을 기준으로 한다. Token Details 탭 교정은 별건."
+    ]
+  },
+  "usage": {
+    "whenToUse": [
+      "선택지가 2~4개로 적고 서로 배타적일 때(정렬 기준·기간 범위 등).",
+      "선택 결과가 즉시 화면에 반영돼야 할 때."
+    ],
+    "whenNotToUse": [
+      "선택지가 5개 이상이거나 길이가 들쭉날쭉할 때 — Select Box 를 쓴다.",
+      "여러 개를 동시에 고를 수 있어야 할 때 — Checkbox·Filter Chip 을 쓴다.",
+      "on/off 하나만 있을 때 — Toggle 을 쓴다."
+    ]
+  },
+  "anatomy": [
+    { "part": "셀(Multi Toggle Element)", "role": "한 칸. position(first·middle-left·middle-right·last) × state(default·hover·selected·disabled) × size(md·sm)." },
+    { "part": "라벨", "role": "셀 안 가운데 정렬 텍스트(Medium 14). 셀 폭을 채운다(layoutGrow=1)." },
+    { "part": "묶음(Multi Toggle)", "role": "셀 인스턴스 3개를 간격 0 으로 가로 배열. 자체 배경 없음(투명)." }
+  ],
+  "doDont": {
+    "do": [
+      "셀 색은 button/* 토큰을 그대로 쓴다(선택=primary·비선택=secondary).",
+      "묶음은 셀 컴포넌트의 인스턴스로 만든다 — 셀 모양을 새로 그리지 않는다.",
+      "모서리 반경은 양 끝 칸에만 준다(가운데 칸은 0)."
+    ],
+    "dont": [
+      "칸 사이에 간격을 주지 않는다(itemSpacing 0 — 붙어 있어야 한 덩어리로 읽힌다).",
+      "선택 칸과 인접한 면에 보더를 중복해서 그리지 않는다(이중선).",
+      "control/* 계열 토큰으로 색을 재정의하지 않는다."
+    ]
+  },
+  "a11y": [
+    "묶음은 role=radiogroup, 각 칸은 role=radio 로 표시하고 선택 칸에 aria-checked 를 준다.",
+    "좌우 화살표 키로 칸 간 이동이 가능해야 한다.",
+    "disabled 칸은 포커스를 받지 않게 한다."
+  ],
+  "states": ["default", "hover", "selected", "disabled"],
+  "sizing": {
+    "md": { "height": 44, "paddingInline": 12, "fontSize": 14, "minWidth": 64 },
+    "sm": { "height": 34, "paddingInline": 8, "fontSize": 14, "minWidth": 56 }
+  },
+  "variants": {
+    "element": {
+      "description": "셀 정의 세트. position × state × size = 32 variants.",
+      "axes": {
+        "position": ["first", "middle-left", "middle-right", "last"],
+        "state": ["default", "hover", "selected", "disabled"],
+        "size": ["md", "sm"]
+      },
+      "cornerRadius": {
+        "first": { "topLeft": 4, "topRight": 0, "bottomLeft": 4, "bottomRight": 0 },
+        "middle-left": { "topLeft": 0, "topRight": 0, "bottomLeft": 0, "bottomRight": 0 },
+        "middle-right": { "topLeft": 0, "topRight": 0, "bottomLeft": 0, "bottomRight": 0 },
+        "last": { "topLeft": 0, "topRight": 4, "bottomLeft": 0, "bottomRight": 4 }
+      },
+      "borderSides": {
+        "_rule": "선택된 파란 셀에 닿는 면을 0 으로 둬 이중선을 막는다. state 와 무관하게 position 만으로 결정.",
+        "first": { "top": 1, "right": 0, "bottom": 1, "left": 1 },
+        "middle-left": { "top": 1, "right": 0, "bottom": 1, "left": 1 },
+        "middle-right": { "top": 1, "right": 1, "bottom": 1, "left": 0 },
+        "last": { "top": 1, "right": 1, "bottom": 1, "left": 0 }
+      }
+    },
+    "composed": {
+      "description": "셀 3개 묶음. Size × Selected = 6 variants. 자체 색 토큰 없음.",
+      "axes": { "Size": ["md", "sm"], "Selected": ["Left", "Center", "Right"] },
+      "cellSpec": {
+        "Left": ["first/selected", "middle-right/default", "last/default"],
+        "Center": ["first/default", "middle-left/selected", "last/default"],
+        "Right": ["first/default", "middle-left/default", "last/selected"]
+      }
+    }
+  },
+  "tokens": [
+    { "cssVar": "--color-button-bg-secondary--default", "semanticRef": "color/button/bg/secondary--default", "state": "default", "property": "background" },
+    { "cssVar": "--color-button-border-secondary--default", "semanticRef": "color/button/border/secondary--default", "state": "default", "property": "border-color" },
+    { "cssVar": "--color-button-label-secondary--default", "semanticRef": "color/button/label/secondary--default", "state": "default", "property": "text-color" },
+    { "cssVar": "--color-button-bg-secondary--hover", "semanticRef": "color/button/bg/secondary--hover", "state": "hover", "property": "background" },
+    { "cssVar": "--color-button-border-secondary--hover", "semanticRef": "color/button/border/secondary--hover", "state": "hover", "property": "border-color" },
+    { "cssVar": "--color-button-label-secondary--hover", "semanticRef": "color/button/label/secondary--hover", "state": "hover", "property": "text-color" },
+    { "cssVar": "--color-button-bg-primary--default", "semanticRef": "color/button/bg/primary--default", "state": "selected", "property": "background" },
+    { "cssVar": "--color-button-border-primary--default", "semanticRef": "color/button/border/primary--default", "state": "selected", "property": "border-color" },
+    { "cssVar": "--color-button-label-primary--default", "semanticRef": "color/button/label/primary--default", "state": "selected", "property": "text-color" },
+    { "cssVar": "--color-button-bg-disabled", "semanticRef": "color/button/bg/disabled", "state": "disabled", "property": "background" },
+    { "cssVar": "--color-button-border-disabled", "semanticRef": "color/button/border/disabled", "state": "disabled", "property": "border-color" },
+    { "cssVar": "--color-button-label-disabled", "semanticRef": "color/button/label/disabled", "state": "disabled", "property": "text-color" }
+  ],
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "587:8029",
+    "fileKey": "cysG5U1udpQqVagYY1hWHW",
+    "elementSet": "587:8029",
+    "assemblyExamples": ["596:6397", "596:6404", "596:6411", "596:8900", "596:8907", "596:8914"],
+    "propertyMap": {
+      "position": ["first", "middle-left", "middle-right", "last"],
+      "state": ["default", "hover", "selected", "disabled"],
+      "size": ["md", "sm"]
+    },
+    "_note": "componentSetKey 는 Figma Plugin 연동 전까지 보류. nodeId 는 reports/figma-library-build/multi-toggle/node-map.json 실측. 'Multi Toggle v2'(603:20, 8 variants)는 position 축 없는 비교용 실험본이며 정본 아님."
+  },
+  "origin": {
+    "classification": "tbd",
+    "note": "분절 컨트롤. 설치기·HTML 섹션 반영(2026-06-30), Figma 라이브러리 빌드=figma-library-builder(2026-06-25)·검증=component-verifier(2026-06-25, variant 32 전수 PASS). 레거시 원본 대조 필요 여부(Ⓐ/Ⓑ)는 river 결정 대기 — update-management.json 과 동일 상태.",
+    "legacySource": {
+      "canonicalSet": "540:4733",
+      "_note": "reports/figma-library-build/multi-toggle/4-verification.md:9 기재. 같은 줄의 fileKey 표기가 V2.4 정본 키와 글자 수가 달라(오타 의심) 여기 옮기지 않았다 — 확인 후 보완."
+    }
+  },
+  "guide": {
+    "sampleLabels": ["왼쪽", "가운데", "오른쪽"],
+    "webTag": "button",
+    "interactionPattern": "segmented-radio",
+    "accessibility": { "role": "radiogroup", "itemRole": "radio", "keyboard": ["ArrowLeft", "ArrowRight", "Home", "End"], "attributes": ["aria-checked"] }
+  },
+  "governance": { "owner": "design-system", "deprecated": false, "replacement": null }
+}

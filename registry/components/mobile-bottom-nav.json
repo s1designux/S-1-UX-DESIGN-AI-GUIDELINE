@@ -1,0 +1,168 @@
+{
+  "_meta": {
+    "id": "mobile-bottom-nav",
+    "name": "Mobile Bottom Nav",
+    "category": "navigation",
+    "updatedAt": "2026-08-01",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "implemented",
+    "figmaStatus": "confirmed",
+    "harnessStatus": "implemented",
+    "figmaNodeId": "723:6",
+    "description": "모바일 하단 내비게이션의 탭 아이템(Tab Item) 컴포넌트. 정본은 '탭 1칸'이며 4탭 바 자체는 컴포넌트가 아니라 이 아이템의 인스턴스 조합이다. 아이콘 32 + 라벨 12 세로 배치, 60×60 고정, 배경 투명(바 배경은 화면이 갖는다).",
+    "notes": [
+      "설치기는 바를 만들지 않는다 — Tab Item 세트만 생성한다(build-components.ts:3357 주석).",
+      "웹 가이드 표시명은 'Bottom Nav'(components.html:6279)로 설치기명과 다르다.",
+      "V2.4 원본(540:6025)은 selected 아이콘에 color/control/indicator/selected 를 잘못 참조했다. V3.0 편입 시 color/icon/blue 로 재바인딩(정정 (a) 1건) — reports/figma-library-build/mobile-bottom-nav/node-map.json.",
+      "V2.4 구본 세트는 2026-07-02 삭제 완료(0 survivors 확인).",
+      "아이콘은 V2.2 아이콘 라이브러리 인스턴스(ic_홈 Solid) — 벡터 직삽입 아님(Gate 12)."
+    ]
+  },
+  "usage": {
+    "whenToUse": [
+      "모바일 화면에서 최상위 영역 간 이동을 항상 보이게 둘 때.",
+      "탭 수가 3~5개로 고정된 주요 메뉴 구조일 때."
+    ],
+    "whenNotToUse": [
+      "PC 화면 — PC 전역 이동은 GNB 를 쓴다.",
+      "항목이 자주 바뀌거나 6개 이상인 경우(더보기/드로어를 고려한다)."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "아이콘",
+      "role": "32×32 라이브러리 아이콘 인스턴스(**Solid 변형**). 상태에 따라 색만 바뀐다."
+    },
+    {
+      "part": "라벨",
+      "role": "Pretendard Medium 12(body/12M). 아이콘 아래 4px 간격."
+    },
+    {
+      "part": "아이템 컨테이너",
+      "role": "60×60 고정, 세로 가운데 정렬, 배경 투명."
+    },
+    {
+      "part": "바(bar)",
+      "role": "컴포넌트가 아님 — 아이템 인스턴스를 가로로 배열해 화면에서 구성한다. 배경색은 화면이 --color-navigation-bg 로 칠한다."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "아이템 자체는 배경을 갖지 않게 두고, 바 배경은 상위 컨테이너에서 칠한다.",
+      "아이콘은 **Solid 변형만** 쓴다 — 하단 내비는 한눈에 읽히는 면(채운 도형)이 기준이다(river 지시 2026-09-14). 받은 아이콘도 Solid 를 받아 끼운다.",
+      "아이콘은 라이브러리 인스턴스를 쓴다(벡터를 직접 그리지 않는다).",
+      "선택 상태는 아이콘·라벨 두 요소의 색을 함께 바꾼다."
+    ],
+    "dont": [
+      "Line 변형 아이콘을 섞지 않는다 — 한 바 안에서 채운 것과 선만 있는 것이 섞이면 선택 상태가 아닌 칸이 꺼져 보인다.",
+      "아이템 안에 배지·점 등 임의 요소를 추가하지 않는다(정본에 없음).",
+      "60×60 고정 크기를 임의로 바꾸지 않는다.",
+      "selected 아이콘에 control/indicator 계열 토큰을 쓰지 않는다(V2.4 오참조를 재유입시키지 말 것)."
+    ]
+  },
+  "a11y": [
+    "탭 목록은 role=tablist·각 항목 role=tab 으로 표시하고 현재 탭에 aria-selected 를 준다.",
+    "아이콘만으로 의미를 전달하지 않는다 — 라벨을 항상 함께 보여준다.",
+    "터치 타깃은 60×60 으로 최소 권장치를 만족한다."
+  ],
+  "states": [
+    "unselected",
+    "selected"
+  ],
+  "sizing": {
+    "item": {
+      "width": 60,
+      "height": 60,
+      "gap": 4,
+      "iconSize": 32,
+      "labelSize": 12,
+      "labelWeight": "Medium"
+    }
+  },
+  "tokens": [
+    {
+      "cssVar": "--color-icon-gray",
+      "semanticRef": "color/icon/gray",
+      "state": "unselected",
+      "property": "icon-color"
+    },
+    {
+      "cssVar": "--color-navigation-label-default",
+      "semanticRef": "color/navigation/label/default",
+      "state": "unselected",
+      "property": "label-color"
+    },
+    {
+      "cssVar": "--color-icon-blue",
+      "semanticRef": "color/icon/blue",
+      "state": "selected",
+      "property": "icon-color"
+    },
+    {
+      "cssVar": "--color-navigation-label-selected",
+      "semanticRef": "color/navigation/label/selected",
+      "state": "selected",
+      "property": "label-color"
+    },
+    {
+      "cssVar": "--color-navigation-bg",
+      "semanticRef": "color/navigation/bg",
+      "state": "all",
+      "property": "bar-background",
+      "note": "아이템이 아니라 바(화면 레이어)가 쓰는 토큰. 설치기 Tab Item 세트는 이 토큰을 바인딩하지 않는다."
+    }
+  ],
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "723:6",
+    "fileKey": "cysG5U1udpQqVagYY1hWHW",
+    "variantNodes": {
+      "icon=home, state=unselected": "722:12",
+      "icon=home, state=selected": "722:17"
+    },
+    "usageExample": "723:8",
+    "darkSpec": "735:3",
+    "propertyMap": {
+      "icon": [
+        "home",
+        "search",
+        "notification",
+        "settings"
+      ],
+      "state": [
+        "unselected",
+        "selected"
+      ]
+    },
+    "_note": "componentSetKey 는 Figma Plugin 연동 전까지 보류(figma-map.json _meta.note 정책과 동일). nodeId 는 reports/figma-library-build/mobile-bottom-nav/node-map-v3.json 실측. 2026-09-14: icon 축 신설로 변형이 8개가 됐다. 여기 적힌 노드 id 는 icon=home 두 칸(축 신설 전 노드)뿐이며, 나머지 6칸은 설치기를 다시 돌려 Figma 에 심은 뒤 채운다 — 모르는 것을 지어내지 않는다."
+  },
+  "origin": {
+    "classification": "B",
+    "note": "원본 틀 필요 — V2.4 레거시에서 V3.0 으로 편입. 빌드=figma-library-builder(2026-07-02), 검증=component-verifier(2026-07-02, 3회 재검증) ❌(a) 0건.",
+    "legacySource": {
+      "file": "yE5UCFEbmXJBlYJWB24Lz2",
+      "canonicalSet": "540:6025",
+      "name": "mobile_bottom-nav",
+      "retired": "2026-07-02 삭제 완료(0 survivors)"
+    }
+  },
+  "guide": {
+    "sampleLabels": [
+      "홈",
+      "검색",
+      "알림",
+      "설정"
+    ],
+    "interactionPattern": "tab-item-composition",
+    "webTag": "button",
+    "boundaryNote": "정본은 Tab Item 1칸이며 Action 예시는 아이템 인스턴스를 최소 조합한 탭 목록이다."
+  },
+  "governance": {
+    "owner": "design-system",
+    "deprecated": false,
+    "replacement": null
+  }
+}

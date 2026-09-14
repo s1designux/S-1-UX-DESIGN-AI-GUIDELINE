@@ -1,0 +1,327 @@
+{
+  "id": "time-picker",
+  "version": "0.2.0",
+  "status": "approved",
+  "canonicalFingerprint": "91bc48bcce188a0530b3d38573dbdac1ab39abd9e2607333c0093fbc2477c474",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/time-picker.json"
+  ],
+  "rootSelector": "[data-s1-component=\"time-picker\"]",
+  "variants": [
+    "base"
+  ],
+  "sizes": [
+    "xxsm",
+    "xsm",
+    "md"
+  ],
+  "types": [
+    "24h",
+    "12h"
+  ],
+  "breaks": {
+    "pc": [
+      "xxsm",
+      "xsm",
+      "md"
+    ],
+    "mobile": [
+      "md"
+    ]
+  },
+  "geometry": {
+    "xxsm-pc": {
+      "height": "--sizing-28",
+      "fontSize": "--font-size-12",
+      "icon": "--sizing-20",
+      "paddingLeft": "--spacing-10",
+      "paddingRight": "--spacing-6"
+    },
+    "xsm-pc": {
+      "height": "--sizing-34",
+      "fontSize": "--font-size-14",
+      "icon": "--sizing-24",
+      "paddingLeft": "--spacing-12",
+      "paddingRight": "--spacing-8"
+    },
+    "md-pc": {
+      "height": "--sizing-44",
+      "fontSize": "--font-size-14",
+      "icon": "--sizing-24",
+      "paddingLeft": "--spacing-16",
+      "paddingRight": "--spacing-8"
+    },
+    "md-mobile": {
+      "height": "--sizing-48",
+      "fontSize": "--font-size-14",
+      "icon": "--sizing-24",
+      "paddingLeft": "--spacing-16",
+      "paddingRight": "--spacing-8"
+    },
+    "radius": "--radius-4",
+    "border": "--border-width-1",
+    "panel": {
+      "widthByType": {
+        "24h": "121px (정본 TPD_PANEL_W) · 단 min-width:100% 로 트리거 폭까지 넓어진다(기본 150)",
+        "12h": "194px (정본 TPD_PANEL_W) — 트리거보다 넓어 그대로 유지된다"
+      },
+      "columnsHeight": "192px (literal — TPD_COLS_H · paddingTop 12 은 이 높이 바깥, panel 몫)",
+      "paddingTop": "--spacing-12",
+      "columnsPaddingInline": "--spacing-8",
+      "columnGap": "--spacing-8",
+      "shadow": "--shadow-dropdown",
+      "ownership": "테두리(inset 1px)·모서리·그림자·위여백 12 는 panel 이 소유한다. columns 는 목록 높이 192 만, footer 는 확인 줄만 갖는다 — 정본 fillPanel 과 같은 소유 구조(2026-09-03 독립 검증 F-2 로 정정).",
+      "columnWidth": "정본은 24h 44 · 12h 48(패널 고정폭 기준). 웹은 패널이 트리거보다 좁아지지 않으므로 24h 열이 기본 트리거 폭 150 에서 58.5 로 넓어진다(river 지시 2026-09-03 의 결과). 12h 는 패널 194 유지라 48 그대로. 정본 stroke 가 INSIDE 라 테두리를 inset 그림자로 옮겨 폭 계산에서 제외한다.",
+      "footerDivider": "--border-width-1 solid --color-line-gray-subtle · 좌우 --spacing-8 안쪽(정본 panelW-16)",
+      "triggerToPanelGap": "--spacing-4 (정본 Time Picker itemSpacing=4, build-components.ts:2730)",
+      "columnSeparator": "--border-width-1 solid --color-line-gray-subtle (열 사이)"
+    },
+    "cell": {
+      "height": "32px (literal — TPC_H)",
+      "paddingInline": "--spacing-12",
+      "radius": "--radius-4"
+    },
+    "footer": {
+      "paddingInline": "--spacing-16",
+      "paddingBlock": "--spacing-12",
+      "dividerTop": "--border-width-1 solid --color-line-gray-subtle"
+    },
+    "source": "build-components.ts buildTimePicker 2357-2422 · buildTimePickerDropdown 2477-2624 · buildTimePickerCell 2437-2476",
+    "minWidth": "150px (정본 trigger.resize(150) — 상태가 바뀌어도 폭이 변하지 않게 하는 값)"
+  },
+  "states": {
+    "default": "native; unopened, placeholder \"시간 선택\"",
+    "hover": "@media (hover: hover) [data-s1-part=\"trigger\"]:hover:not(:disabled):not([aria-expanded=\"true\"]):not([data-filled=\"true\"])",
+    "focus": "[data-s1-part=\"trigger\"][aria-expanded=\"true\"] (정본 Focus = 드롭다운 열림 상태)",
+    "filled": "[data-s1-part=\"trigger\"][data-filled=\"true\"] (documented data-state; no ARIA equivalent)",
+    "disabled": "[data-s1-part=\"trigger\"]:disabled"
+  },
+  "canonicalStateMap": {
+    "Default": "default",
+    "Hover": "hover",
+    "Focus": "focus",
+    "Filled": "filled",
+    "Disabled": "disabled"
+  },
+  "notInCanon": {
+    "focusVisibleAxis": "정본에 focus 변형이 없다. 2026-09-02 river 결정으로 웹에서도 만들지 않으며, 키보드 초점은 브라우저 기본 표시에 맡긴다.",
+    "widthFixed": "정본은 트리거 폭 150px 고정. 웹은 width:100% 로 소비자가 더 넓게 쓸 수 있게 열어두되 최소 폭을 정본과 같은 150px 로 둔다 — 2026-09-03 river 지시(기본 폭이 좁고 Filled 에서 칸이 줄어드는 문제). Select 가 정본 140 을 같은 방식으로 쓰는 선례와 동일.",
+    "listRangeAndStep": "정본 빌더의 시·분 샘플은 데모용 7칸뿐이라 실제 목록 범위·간격에 대한 정본 규정이 없다(1-inventory §E) — river 결정(D2, workflow-state.json decisions): 분은 기본 1분 단위(00~59), data-minute-step 으로 소비자가 조절 가능.",
+    "columnScroll": "정본은 스펙시트라 목록이 clip 될 뿐 스크롤 동작 규정이 없다 — 웹은 표준 세로 스크롤로 구현(1-inventory §E). river 승인 2026-09-08(메커니즘 승인 화면 M-3, 선택 A=지금대로).",
+    "mobileBottomSheet": "해소됨(2026-09-03) 후 2026-09-07 river 결정으로 모바일 기본이 바뀌었다 — 모바일 트리거를 누르면 목록 드롭다운이 아니라 휠 바텀시트가 열린다. 근거: ⭐ 가 올린 선택지 '(A) 모바일 기본을 바텀시트(휠)로 교체 / (B) 목록 드롭다운 유지' 에 river 가 'HD-B -> A' 로 답했고, 이어서 '트리거 클릭시 단순 바텀시트가 딤배경위에 표출되는데, 그렇게 하지말고 모바일 목업에 해당 트리거와 다음 동작을 모두 얹어서 모바일에서 실제 보는듯하게 구성해야함' 이라고 지시했다(원문). 선택지 본문은 대화에만 있으므로 reports/ui-library/input-tp-dp-fixes/PLAN.md 에 함께 기록했다. 그래서 모바일 예제(examples/time-picker.mobile.html)는 data-mobile-ui=\"wheel\" 형태만 담고, 목록 드롭다운은 PC 형태로 남는다(examples/time-picker.html). 런타임은 마크업에 있는 쪽(panel 또는 sheet)으로 분기하므로 JavaScript 는 바뀌지 않았다.",
+    "panelWidthFollowsTrigger": "정본은 패널을 고정폭으로 둔다(TPD_PANEL_W — 24h=121 · 12h=194)고, 정본 트리거는 150 이라 24h 는 목록이 입력칸보다 29px 좁고 12h 는 44px 넓다. 웹은 목록이 입력칸보다 좁아 보이지 않게 패널에 min-width:100% 를 둔다 — 24h 는 트리거 폭(기본 150)까지 넓어지고, 12h 는 194 를 유지한다. river 지시 2026-09-03: \"24시간만 인풋에 맞춰줘 12시간제는 현재 유지\". 12h 를 150 으로 줄이지 않은 이유는 실측이다 — '오전' 글자 24.2px + 칸 좌우 여백 24 = 48.2px 가 한 칸에 필요한데 정본 칸이 정확히 48px 라 이미 한계치이고, 150 이면 칸이 33.33px 로 줄어 좌우 여백이 정본 12px → 4.56px 로 무너진다(글자 자체는 열 안에 남는다 — 2026-09-03 4회차 통제 실험 실측). 같은 규칙을 Select 이 먼저 쓴다(river 2차 지시 2026-09-01 \"트리거보다 목록이 좁아 보이거나 어긋나 보이면 안 된다\").",
+    "wheelScrollMechanism": "⚠️ 수치 출처 정정(2026-09-07): 행 높이 42 · 휠 창 높이 270 · 열 폭(오전오후 56·시 40·콜론 8·분 40) · 열 간격 36/32/32 는 **정본에서 내려온 값이다** — 행 높이·휠 높이는 Figma 원본 실측(node 2386:57682), 열 폭은 정본 build-components.ts 의 WHEEL_COL_W(river 승인 2026-09-07). 웹이 정하는 값이 아니다. 종전에 여기 적혀 있던 44/272 는 정본에 대응 수치가 없던 시절 웹이 지어낸 값이며 이제 쓰지 않는다. 스크롤 여백 114 = (창 270 − 항목 42) / 2 로 정본 수치에서 계산된다. 정본은 정적 스펙 샘플(3~4행)일 뿐 실제 **스크롤·중앙정렬 판정 메커니즘**이 없다 — 웹 전용으로 남는 것은 그 메커니즘뿐이다: CSS scroll-snap 으로 실제 휠처럼 굴리고, JS 는 스크롤 컨테이너 중앙에 가장 가까운 칸의 getBoundingClientRect() 로 그 열의 값을 판정한다. 정본이 전 셀 동일 accent 색이라(3864) 강조색 전환은 만들지 않았다 — 위계는 fade-top/fade-bottom 마스크만으로 준다(정본 그대로). 키보드·클릭 이동은 instant(즉시) 로 고정한다 — 실제 렌더 검증(2026-09-03)에서 smooth 스크롤이 동작하지 않는 렌더 환경이 확인됐고, 정본에도 모션 규정이 없어(registry a11y reducedMotion: not-applicable) 기능 신뢰성을 우선했다. 사용자가 손가락으로 직접 스크롤할 때는 브라우저 기본 관성 스크롤이 그대로 적용된다.",
+    "wheelApplyAlwaysEnabled": "목록 모드의 confirm 은 필수 열을 다 골라야 풀리지만(정본 없음, 기존 결정 유지), 휠 모드의 apply 는 상시 활성이다 — 휠은 초기 렌더부터 각 열 중앙에 항상 유효한 값(첫 항목)이 있어 목록 모드의 \"미완료\" 상태 자체가 성립하지 않는다(오케스트레이터 판단). river 승인 2026-09-08(메커니즘 승인 화면 M-2, 선택 A=지금대로). river 인용: \"드롭다운방식은 선택된 시간이 없기때문에 시간을 선택한 후에 확인이 활성화 되어야함.\" — 목록 모드는 지금처럼 선택 후 활성, 휠 모드는 상시 활성으로 확정.",
+    "fadeGradientImplementation": "정본은 alpha 그라데이션 마스크 RECT + 솔리드 RECT 2겹(3891-3924)이다. 웹은 같은 4-stop alpha 곡선을 color-mix(in srgb, var(--color-overlay-wheel-fade) N%, transparent) 로 직접 그려 값은 동일하되 레이어 1겹으로 구현했다 — HEX 없이 semantic 토큰만 경유한다는 원칙은 그대로 지킨다.",
+    "dateTimeDatePanel": "DateTime 변형의 \"날짜\" 탭 콘텐츠(정본 4004-4020 은 탭 조립까지만 규정, 날짜 화면 자체는 없음)는 coordinator 지시대로 date-picker 를 끌어들이지 않고 탭 전환만 구현했다 — date-panel 은 안내 문구만 있는 자리표시자다. 실제 날짜 그리드가 필요하면 date-picker 코어를 조립하는 상위 패턴이 별도로 필요하다(needs-decision 후보)."
+  },
+  "parts": [
+    "trigger",
+    "value",
+    "icon",
+    "panel",
+    "column",
+    "cell",
+    "divider",
+    "footer",
+    "confirm",
+    "sheet",
+    "sheet-backdrop",
+    "sheet-panel",
+    "sheet-header",
+    "sheet-title",
+    "sheet-close",
+    "tabs",
+    "date-panel",
+    "wheel",
+    "wheel-col",
+    "wheel-cell",
+    "fade-top",
+    "fade-bottom",
+    "sheet-footer",
+    "apply"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=time-picker]",
+    "requiredAttributes": [
+      "data-size",
+      "data-break",
+      "data-type"
+    ],
+    "optionalAttributes": [
+      "data-minute-step (기본 1, 1~59)",
+      "data-mobile-ui (list 기본 | wheel — wheel 이면 트리거가 panel 대신 sheet 를 연다)",
+      "data-mobile-content (time-only 기본 | date-time — data-mobile-ui=wheel 일 때만 의미가 있다)"
+    ],
+    "requiredParts": [
+      "trigger",
+      "value",
+      "icon",
+      "panel",
+      "column",
+      "divider",
+      "footer",
+      "confirm"
+    ],
+    "trigger": "button[type=button][data-s1-part=trigger]",
+    "panel": "div[data-s1-part=\"panel\"] 안에 div[data-s1-part=\"columns\"](24h: hour·minute 2열 / 12h: ampm·hour·minute 3열, 열 사이 divider)과 div[data-s1-part=\"footer\"] > button[data-s1-part=\"confirm\"]을 조립한다. cell 은 런타임이 채운다. 정적 마크업으로 미리 채울 때는 각 cell 에 data-value 를 준다 — 없으면 런타임이 보이는 글자로 채우지만, 값과 표시가 다른 경우(12h 오전/오후 등)에는 명시해야 한다.",
+    "relations": [
+      "trigger aria-haspopup=listbox",
+      "trigger aria-expanded 는 panel 표시와 동기화",
+      "각 column 은 role=listbox + aria-label(시/분/오전오후), cell 은 role=option + aria-selected",
+      "Esc 키로 패널을 닫고 트리거로 포커스 복귀(Select 와 동일 표준 패턴)",
+      "confirm 은 필수 column(24h: hour·minute / 12h: ampm·hour·minute) 이 모두 선택돼야 disabled 가 풀린다",
+      "cell 은 data-value 를 가진다 — 확인 버튼이 이 값으로 트리거 문구와 s1:time-picker:change 를 만든다",
+      "wheel 모드: trigger aria-haspopup=dialog, sheet-panel role=dialog[aria-modal=true]",
+      "wheel-col 은 role=listbox + aria-label(시/분/오전오후), colon 열은 장식(aria-hidden)이라 role 없음",
+      "wheel 모드는 스크롤 중앙에 가장 가까운 wheel-cell 이 그 열의 값이다 — 위/아래 화살표 키로 한 칸씩 이동, 클릭한 칸이 중앙으로 스크롤된다",
+      "apply 버튼은 목록 모드 confirm 과 달리 상시 활성 — 휠은 항상 중앙에 값이 있는 상태(초기값=각 열 첫 항목)라 완결 조건이 없다",
+      "DateTime 변형: tabs 의 s1:tab:change 이벤트로 wheel↔date-panel 을 토글한다(탭 전환만, 날짜 렌더링은 범위 밖)"
+    ],
+    "grouping": "코어는 트리거 하나와 패널 하나만 소유한다. 폼 필드 라벨·도움말은 패턴이 담당한다.",
+    "source": "components/time-picker/time-picker.example.html",
+    "distribution": "examples/time-picker.html",
+    "breakExamples": {
+      "pc": {
+        "source": "components/time-picker/time-picker.example.html",
+        "distribution": "examples/time-picker.html"
+      },
+      "mobile": {
+        "source": "components/time-picker/time-picker.mobile.example.html",
+        "distribution": "examples/time-picker.mobile.html"
+      }
+    },
+    "optionalParts": [
+      "sheet",
+      "sheet-backdrop",
+      "sheet-panel",
+      "sheet-header",
+      "sheet-title",
+      "sheet-close",
+      "tabs",
+      "date-panel",
+      "wheel",
+      "wheel-col",
+      "wheel-cell",
+      "fade-top",
+      "fade-bottom",
+      "sheet-footer",
+      "apply"
+    ],
+    "sheet": "data-mobile-ui=\"wheel\" 일 때만 조립한다(build-components.ts buildTimePickerMobileBottomSheet 3862-4060). div[data-s1-part=sheet] > sheet-backdrop + div[data-s1-part=sheet-panel][role=dialog][aria-modal=true] 안에 sheet-header(제목+닫기) · [DateTime 변형만] div[data-s1-part=tabs][data-s1-component=tab][data-size=sm][data-break=mobile] (승인된 tab 코어 Line Tab Mobile/SM 인스턴스, data-value=date/time) + div[data-s1-part=date-panel](날짜 탭 자리 — 이 컴포넌트는 탭 전환만 제공하고 날짜 화면 자체는 범위 밖, river 지시) · div[data-s1-part=wheel] 안에 2~4개의 div[data-s1-part=wheel-col][data-column=ampm|hour|colon|minute] + fade-top/fade-bottom · sheet-footer > button[data-s1-part=apply][data-s1-component=button][data-variant=primary][data-size=lg](승인된 button 코어 인스턴스, 라벨 \"적용\")를 조립한다. wheel-cell 은 런타임이 채운다(colon 열 제외 전부 role=option + data-value)."
+  },
+  "cssContract": {
+    "entry": "components/time-picker.css",
+    "rootScope": "[data-s1-component=time-picker]",
+    "nativeStates": [
+      ":hover",
+      ":disabled"
+    ],
+    "ariaStates": [
+      "[aria-expanded=\"true\"]",
+      "[aria-selected=\"true\"]"
+    ],
+    "documentedDataStates": [
+      "[data-filled=\"true\"]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다. dropdown(형제 코어)의 CSS를 override하지 않는다 — 이 컴포넌트는 dropdown 을 자식으로 조립하지 않고 semantic token 만 재사용한다."
+  },
+  "contentSlots": {
+    "value": "required; 현재 값 또는 placeholder 문구(\"시간 선택\")"
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css",
+      "components/button.css",
+      "components/tab.css"
+    ],
+    "coreComponents": [
+      "button",
+      "tab"
+    ],
+    "coreComponentsNote": "목록 모드(패널·칸)는 기존과 동일하게 dropdown semantic token 만 재사용하고 컴포넌트 의존이 없다. 모바일 휠 바텀시트(data-mobile-ui=wheel)의 하단 \"적용\" 버튼은 승인된 button 코어(Variant=Primary, Size=LG) 인스턴스를, DateTime 변형의 날짜/시간 탭은 승인된 tab 코어(Line Tab, Size=SM, Break=Mobile) 인스턴스를 그대로 조립한다(build-components.ts buildDatePickerBottomSheet 3805-3824 패턴과 동일 · buildTimePickerMobileBottomSheet 4004-4020). time-picker 를 개별 설치할 때 wheel 모드를 쓰려면 button·tab 의 CSS(둘 다 jsRequired 는 tab=true·button=false)도 함께 로드해야 한다."
+  },
+  "icons": [
+    {
+      "id": "clock",
+      "sourceKey": "ca1d043ac09be07f827e939be3d8c3c7af8a8dd9",
+      "asset": "assets/icons/clock.svg",
+      "use": "trigger 시계 아이콘",
+      "accessibleNamePolicy": "decorative; 트리거의 접근 가능한 이름(aria-label 또는 연결된 label)이 이미 이름을 제공한다"
+    },
+    {
+      "id": "close",
+      "sourceKey": "2a1abbd3597b536e34fd9523fb61eade3afe9934",
+      "asset": "assets/icons/close.svg",
+      "use": "모바일 휠 바텀시트 닫기 버튼",
+      "accessibleNamePolicy": "decorative; 닫기 버튼의 aria-label이 이미 이름을 제공한다"
+    }
+  ],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "button[aria-haspopup=listbox][aria-expanded] driving role=listbox column들 (registry time-picker.json a11y 확정, HD-Time-6)"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "visible label associated with the trigger or aria-label; 각 column 은 aria-label(시/분/오전오후); wheel 모드(data-mobile-ui=wheel): sheet-panel 은 aria-labelledby 로 sheet-title 을 가리킨다(date-picker 모바일 시트와 동일 패턴)"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "trigger: Enter/Space(native click)·ArrowDown 로 열기; root: Escape 로 닫고 트리거로 포커스 복귀; column 안: ArrowUp/Down 같은 열 이동, ArrowLeft/Right 열 이동, Enter/Space 선택; confirm 은 Tab 으로 도달; wheel 모드(data-mobile-ui=wheel): wheel-col 안 ArrowUp/Down 로 한 칸씩 이동(스크롤 중앙으로), Esc 로 시트 닫고 트리거 복귀, apply 는 Tab 으로 도달"
+    },
+    "focus": {
+      "status": "required",
+      "value": "열릴 때 첫 column 의 현재 선택값(없으면 첫 칸)으로 포커스 이동, 닫힐 때 트리거로 복귀. wheel 시트가 열리면 시트 안(첫 포커스 가능 요소인 sheet-close)으로 포커스 이동, 닫히면 트리거로 복귀(포커스 가둠은 Esc·배경·닫기로만 나가는 단순 계약, date-picker 모바일 시트와 동일 패턴 — 휠 열을 먼저 보내야 한다는 정본 규정은 없다)"
+    },
+    "ariaStateSync": {
+      "status": "required",
+      "value": "런타임이 aria-expanded·aria-selected·data-filled·confirm 의 disabled 를 갱신하고 s1:time-picker:open·close·change 를 낸다"
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 Error 상태가 없다."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "정본이 모션을 정의하지 않는다."
+    }
+  },
+  "jsRequired": true,
+  "javascript": {
+    "runtime": "components/time-picker.js",
+    "reason": "열림/닫힘·aria-expanded 전환, 열 목록 생성(data-minute-step 반영)·선택·확인 활성화, 포커스 이동/복귀를 런타임이 담당한다.",
+    "options": {},
+    "events": [
+      "s1:time-picker:open",
+      "s1:time-picker:close",
+      "s1:time-picker:change"
+    ],
+    "eventDetail": {
+      "open": "{}",
+      "close": "{}",
+      "change": "{ value, hour, minute, ampm, type }"
+    },
+    "methods": [
+      "openPanel()",
+      "closePanel()"
+    ],
+    "lifecycle": [
+      "init(root)",
+      "destroy(root)"
+    ],
+    "controlMode": "uncontrolled",
+    "progressiveEnhancementNote": "JavaScript 없이는 목록 칸이 생성되지 않아 선택할 수 없다 — 복합 Picker(정본 계약)라 native fallback이 없다. 트리거는 native button 이라 포커스·이름은 유지된다(계약 progressiveEnhancement 조항에 따른 명시적 unsupported 상태)."
+  },
+  "sourceFingerprint": "5de78855e7a8f06279bb77603bb1098704c3ba995906bb950a008e9a6de47934"
+}

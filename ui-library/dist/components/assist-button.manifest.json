@@ -1,0 +1,112 @@
+{
+  "id": "assist-button",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "2b8eadb190b86167ccd8c8a3b3aa1a384413b141e0d52015d7aa9df6f935b1d0",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/assist-button.json"
+  ],
+  "rootSelector": "[data-s1-component=\"assist-button\"]",
+  "variants": [],
+  "sizes": [],
+  "breaks": {
+    "pc": [],
+    "mobile": []
+  },
+  "states": {
+    "default": "native",
+    "hover": ":hover",
+    "pressed": ":active",
+    "disabled": "disabled"
+  },
+  "canonicalStateMap": {
+    "Default": "default",
+    "Hover": "hover",
+    "Pressed": "pressed",
+    "Disabled": "disabled"
+  },
+  "notInCanon": {
+    "sizeAxis": "정본에 크기 축이 없다 — 원본 실측 그대로 h32 하나뿐이다(river 지시 2026-09-08).",
+    "variantAxis": "정본에 variant 축이 없다 — 한 가지 모양뿐이다.",
+    "pressedState": "Pressed 는 원본에 없어 코어 Button 의 정본 규칙(pressed = hover)을 그대로 따른다."
+  },
+  "parts": [
+    "label"
+  ],
+  "htmlContract": {
+    "root": "button[data-s1-component=assist-button]",
+    "requiredAttributes": [
+      "type"
+    ],
+    "requiredParts": [
+      "label"
+    ],
+    "variants": [],
+    "sizes": [],
+    "source": "components/assist-button/assist-button.example.html",
+    "distribution": "examples/assist-button.html"
+  },
+  "cssContract": {
+    "entry": "components/assist-button.css",
+    "rootScope": "[data-s1-component=assist-button]",
+    "nativeStates": [
+      ":hover",
+      ":active",
+      ":disabled"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "button"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "visible label or aria-label"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "native Enter and Space activation"
+    },
+    "focus": {
+      "status": "required",
+      "value": "브라우저 기본 포커스 표시를 그대로 쓴다 — 정본에 focus 표현이 없어 웹에서 만들지 않는다(코어 Button 과 같은 방침)."
+    },
+    "ariaStateSync": {
+      "status": "not-applicable",
+      "reason": "This text-only native button exposes no ARIA state."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "Assist Button does not own field errors."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "The canonical component defines no motion."
+    }
+  },
+  "jsRequired": false,
+  "javascript": {
+    "runtime": "none",
+    "reason": "Native button semantics provide the complete approved behavior."
+  },
+  "sourceFingerprint": "3573cdc66e46f6ad95c4d6c870c8b079efd181187d41eb3ade727f82cb5801eb"
+}

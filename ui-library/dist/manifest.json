@@ -1,0 +1,1004 @@
+{
+  "id": "s1-ui",
+  "version": "0.5.0",
+  "releasedAt": "2026-09-14",
+  "status": "approved",
+  "canonicalFingerprint": "5a96654ece28dec43ed8454b0fe138008e64cf190c2909b2c71a355114d4bb26",
+  "tokenMapFingerprint": "796fb798dd329910ba6c42a29fb4af9e0fd217446b3fa847e140bc70a0a8f4c7",
+  "commonCssDependencies": [
+    "assets/css/tokens.css",
+    "assets/css/typography.css"
+  ],
+  "fontDependencies": [
+    {
+      "family": "Pretendard",
+      "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    }
+  ],
+  "commonCssFingerprints": {
+    "assets/css/tokens.css": "10327c7771de927124705cb2fd8fc61326669caf0fe4c6e21106801ced1b0cf7",
+    "assets/css/typography.css": "d5961f792bec6b8d339c0f4362ae4da15bac829e0bfec5ecb7d4dc732ce232da"
+  },
+  "jsRequired": true,
+  "icons": [
+    {
+      "id": "clock",
+      "sourceKey": "ca1d043ac09be07f827e939be3d8c3c7af8a8dd9",
+      "sourceBuilderSymbol": "ICON_KEYS.clock (build-components.ts:1365, Figma 97:271) — buildTimePicker 의 로컬 CLOCK 상수는 import 실패용 폴백이라 원본으로 쓰지 않았다. 원본은 저장소 내보내기 assets/icons/ic_시간시계_line.png 를 픽셀 측정해 벡터화했다(원 중심 24-frame 기준 (12,12) 반경 8.25 · 바늘 M9 4V9L6.5 11.5, 18x18 glyph 로컬좌표).",
+      "file": "clock.svg",
+      "webAssetFingerprint": "8727a44073d1db71ab926c4bb9f2db170bddc3c1a44b29d76c306c05ab7cc648",
+      "symbolId": "s1-icon-clock",
+      "individualFile": "assets/icons/clock.svg",
+      "accessibleNamePolicy": "decorative; 트리거의 접근 가능한 이름(aria-label 또는 연결된 label)이 이미 이름을 제공한다",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 24
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "원본 assets/icons/ic_시간시계_line.png(48px = 24프레임 2배 내보내기)의 알파채널을 서브픽셀로 측정해 재구성했다. 측정법과 값: ①원: 바늘 영역(중심 반경 15px 이내)을 제외한 링의 질량중심 = (24.000, 23.999) → 24기준 중심 (12,12). 반경 질량중심 = 16.968px → 24기준 8.484 ≈ 8.5. ②바늘: 링을 제외한 뒤 행별 x 질량중심을 냈다. 수직부는 y=14~23 에서 x=24.086 로 일정(24기준 x=12). 상단 끝은 y=13 의 질량이 정확히 절반(1.059 / 2.122)이라 도색 상단 경계 = y=13.5 → round cap 반경 1px 을 되돌리면 중심선 끝 = 24기준 y=7.25. 대각부는 y=26~29 에서 x 중심이 행당 정확히 -1 씩 이동(기울기 dx/dy=-1). 직선을 되돌려 수직부와의 교점을 구하면 꺾이는 지점 = 24기준 (12, 12.2). 끝점은 y=30 에서 중심 x=18.996 → 24기준 (9.5, 15). → 최종: circle cx=12 cy=12 r=8.5 · path M12 7.25V12.2L9.5 15 · stroke-width 1 · linecap round. 대조 오차 0.00988 (허용 0.015). 미결 기록: 링 잉크량 225.58px² 를 중심선 길이로 나눠 역산한 두께는 24기준 1.058 이고 바늘은 1.10 으로, 선언한 1 보다 6~10% 두껍게 측정된다. 실험 결과 stroke-width 를 1.06 으로 올리면 오차가 0.00726 까지 내려가지만 채택하지 않았다 — 정본 buildTimePicker 와 나머지 아이콘 전부가 두께 1 을 쓰고, 원본 래스터의 렌더링 특성에 맞춘 소수점 두께를 자산에 박아두면 근거를 알 수 없는 값이 남기 때문이다(⭐ 판단, river 재정의 가능). 잔여 오차 0.00988 은 벡터 재구성의 바닥값으로 본다 — Figma 에서 직접 내보낸 아이콘들(chevron 0.00089 등)보다 높은 이유다. 설치기 build-components.ts 의 로컬 CLOCK 폴백 상수는 대각선 방향을 반대로 가정하고 있어 원본으로 쓰지 않았다.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_시간시계_line.png"
+    },
+    {
+      "id": "remove",
+      "sourceKey": "24b2df622d341e0af21cd4b23b4a7d23b97a5ea7",
+      "sourceBuilderSymbol": "REMOVE_ICON_SVG",
+      "file": "remove.svg",
+      "webAssetFingerprint": "4790cbd2a87a20ae684cdd765d2cf27798c321616faceb8271ff5c8e449aec22",
+      "symbolId": "s1-icon-remove",
+      "individualFile": "assets/icons/remove.svg",
+      "accessibleNamePolicy": "decorative inside a named action button",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 4,
+          "y": 4,
+          "width": 16,
+          "height": 16
+        },
+        "scaling": "proportional"
+      },
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_remove_line.png"
+    },
+    {
+      "id": "check",
+      "sourceKey": "5ab251e0d90adb555ee2fa316f84e86041f19916",
+      "sourceBuilderSymbol": "makeCheckIcon inline SVG",
+      "file": "check.svg",
+      "webAssetFingerprint": "98949e132de3ad7f47ca118a2496cfc1e443e6b86a643c16663251a833d3bc1b",
+      "symbolId": "s1-icon-check",
+      "individualFile": "assets/icons/check.svg",
+      "accessibleNamePolicy": "decorative inside a native checkbox",
+      "geometry": {
+        "frame": {
+          "width": 16,
+          "height": 16
+        },
+        "glyph": {
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 16
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "정본은 이 아이콘을 16px 로 리사이즈해 18px 상자 (1,1) 에 놓는다(build-components.ts makeCheckIcon·buildCheckbox). 내보낸 원본 assets/icons/ic_확인_line.png(48px=24 기준 2배) 의 잉크 경계는 18×12(24 기준)이고, 정본 인라인 SVG(16 기준)의 잉크 경계는 11.6×8.25 로 같은 비율이다 — 즉 glyph 가 frame 을 그대로 채운다.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_확인_line.png",
+      "originComparable": false,
+      "originComparableNote": "웹 자산 프레임 16 ↔ 원본 내보내기 프레임 24. 정본이 이 아이콘을 18 상자 안 16px 로 놓는데(build-components.ts buildCheckbox) 원본 24 프레임 안 위치 대응이 선언돼 있지 않아 픽셀 대조 불가."
+    },
+    {
+      "id": "chevron",
+      "sourceKey": "e1ac97aa82f4e52f257ac1c0ea77fd09d0e5f581",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 419:67 (Property 1=Line) 실물 내보내기 — 이전 대체용 인라인 SVG 폐기(river 지적 2026-09-01)",
+      "file": "chevron.svg",
+      "webAssetFingerprint": "818bd5f7ee1a6ab7cd5c5ef293267197f66136e48b31ca0a7e314a4df1833dc6",
+      "symbolId": "s1-icon-chevron",
+      "individualFile": "assets/icons/chevron.svg",
+      "accessibleNamePolicy": "decorative; the accessible name comes from aria-haspopup/aria-expanded on the trigger, not from the arrow glyph",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 24
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "정본 chevDown 인라인 SVG(build-components.ts:1694)는 16x16 viewBox 에 화살표가 꽉 차게 그려진다(glyph=frame). 웹 아이콘은 정본과 동일하게 아래(닫힘) 방향 하나만 자산으로 두고, 열림(위) 방향은 정본과 같은 철학(회전)으로 CSS transform: rotate(180deg) 로 표현한다 — chevUp(build-components.ts:1695)은 chevDown 을 180° 돌린 모양과 같다. 렌더 크기(Select XXSM 20px·그 외 24px, Filter Chip 20px 고정)는 컴포넌트 CSS 가 mask-size:contain 으로 이 16px 원본을 비율 유지 확대해 만든다(fcIconPx, build-components.ts:1506·1481, 2252).",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_화살표더보기_line.png"
+    },
+    {
+      "id": "edge_set",
+      "sourceKey": "606d0de897175059f133427bf62bb3635d18a860",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 edge_set (ic_마지막장) — build-components.ts CHEV_EDGE 정본 폴백 경로를 그대로 사용",
+      "file": "pagination-edge.svg",
+      "webAssetFingerprint": "da84b989a1acc26de0e386334a72ab525bc2feff786a37226cfd1c561c85a1fb",
+      "individualFile": "assets/icons/pagination-edge.svg",
+      "accessibleNamePolicy": "decorative inside a named pagination action button",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 5,
+          "y": 5,
+          "width": 14,
+          "height": 14
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "Figma edge_set을 설치기에 불러올 수 없을 때 정본 설치기가 쓰는 CHEV_EDGE 경로를 글자·좌표·선속성까지 그대로 사용한다. 첫 페이지는 기본 |<, 마지막 페이지는 180도 회전한 >|이다.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_화살표더보기_line.png",
+      "originComparable": false,
+      "originComparableNote": "페이지네이션 처음/마지막은 쉐브론 2개를 겹친 componentSet(edge_set)이라 단일 line 내보내기와 1:1 대응하지 않는다. 대응 원본 파일을 확정해야 한다."
+    },
+    {
+      "id": "close",
+      "sourceKey": "2a1abbd3597b536e34fd9523fb61eade3afe9934",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_닫기 97:79 (Property 1=Line, 97:77) 실물 벡터 내보내기 — 이전에 쓰던 설치기 폴백 CLOSE_ICON_SVG 는 근사치라 폐기(river 지적 2026-09-02, chevron 과 같은 사례).",
+      "file": "close.svg",
+      "webAssetFingerprint": "deed51641826b50d21ec8a4bc8dfe57ad6681e462f9857821081d455c6c5ac97",
+      "symbolId": "s1-icon-close",
+      "individualFile": "assets/icons/close.svg",
+      "accessibleNamePolicy": "decorative inside a named close button (버튼이 '닫기' 이름을 가진다)",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 4,
+          "y": 4,
+          "width": 16,
+          "height": 16
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "원본은 24 프레임 안 (4,4) 에 놓인 16×16 채움(fill) 도형이다(Figma 내보내기 실측). 저장소 내보내기 assets/icons/ic_닫기_line.png 의 잉크 경계 4~20 과 일치한다. 폐기한 폴백은 6~18 스트로크 도형이라 더 짧고 굵었다.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_닫기_line.png"
+    },
+    {
+      "id": "home",
+      "sourceKey": "6bf422c937034ce15f6814e5c430d8f85953ed4e",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_홈 97:292 (Property 1=Solid) 실물 벡터 — Mobile Bottom Nav 홈 아이콘.",
+      "file": "mobile-nav-home.svg",
+      "webAssetFingerprint": "168a936a6b7c4f4543437aec357979710de8a7f189abb5d739633a2b903fdf60",
+      "symbolId": "s1-icon-mobile-nav-home",
+      "individualFile": "assets/icons/mobile-nav-home.svg",
+      "accessibleNamePolicy": "decorative; 접근성 이름은 탭 버튼의 라벨 텍스트가 이미 제공한다",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 3,
+          "y": 3.9983,
+          "width": 18,
+          "height": 16.0034
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "정본은 이 아이콘을 32×32 로 확대해 쓴다(build-components.ts buildMobileBottomNav:2973 makeIconInstance(\"home\", …, 32, …)). 저장소 내보내기 assets/icons/ic_홈_solid.png(24 프레임 실측)와 웹 자산은 같은 24 프레임 좌표계를 쓰고, 컴포넌트 CSS 가 32px 로 비율 확대한다.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_홈_solid.png"
+    },
+    {
+      "id": "mobileHeaderBack",
+      "sourceKey": "7190e284d345ae19a679a16ed7bceafbd54073ca",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_이전 97:88 (Property 1=Solid) 실물 벡터 — Mobile Header 좌측 이전 버튼. 정본은 makeRequiredIconInstance 라 폴백이 없다(build-components.ts:1458).",
+      "file": "mobile-header-back.svg",
+      "webAssetFingerprint": "47df1aca6acf41bbc7d168d57ce1d745ad8d8e7972447dc7edaaeabd3255512a",
+      "symbolId": "s1-icon-mobile-header-back",
+      "individualFile": "assets/icons/mobile-header-back.svg",
+      "accessibleNamePolicy": "decorative; 버튼이 화면 맥락에 맞는 aria-label(예: \"이전\")로 이름을 갖는다",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 3,
+          "y": 4.2137,
+          "width": 18,
+          "height": 15.5726
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "정본은 32×32 슬롯 안에 24px 아이콘을 놓는다(makeMobileHeaderIconSlot). 저장소 내보내기 assets/icons/ic_이전_solid.png(24 프레임)와 동일 좌표계.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_이전_solid.png"
+    },
+    {
+      "id": "mobileHeaderClose",
+      "sourceKey": "54469d54f16ed38de2d7b420b0e2195e4cf7c118",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_닫기 97:76 (Property 1=Solid) 실물 벡터 — Mobile Header 우측 닫기 버튼. 모달의 close(97:79 Line)와 다른 자산이다(별도 파일로 보관, 덮어쓰지 않음).",
+      "file": "mobile-header-close.svg",
+      "webAssetFingerprint": "deed51641826b50d21ec8a4bc8dfe57ad6681e462f9857821081d455c6c5ac97",
+      "symbolId": "s1-icon-mobile-header-close",
+      "individualFile": "assets/icons/mobile-header-close.svg",
+      "accessibleNamePolicy": "decorative; 버튼이 화면 맥락에 맞는 aria-label(예: \"닫기\")로 이름을 갖는다",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 4,
+          "y": 4,
+          "width": 16,
+          "height": 16
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "저장소 내보내기 assets/icons/ic_닫기_solid.png(24 프레임)와 동일 좌표계. Solid 변형의 실측 잉크 경계가 모달 close(Line, 97:79)와 같은 (4,4) 16×16 이라 도형이 우연히 같지만 sourceKey·Figma 노드는 다르다(97:76 ≠ 97:79).",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_닫기_solid.png"
+    },
+    {
+      "id": "mobileHeaderNotification",
+      "sourceKey": "13cf1b580ec982fda488f9318c6821930ddfb26e",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_알림(신규) 97:258 (Property 1=Line) 실물 벡터 — Mobile Header 알림 아이콘. 2색(본체+빨간 신규 점)이라 이 자산은 결합형(본체+점) 전체 형상을 담아 원본 대조에 쓴다.",
+      "file": "mobile-header-notification.svg",
+      "webAssetFingerprint": "bda6a5059a4e37a9557743763bc78f2761ac080438f7c77fbbbc14e0dc0b2d33",
+      "symbolId": "s1-icon-mobile-header-notification",
+      "individualFile": "assets/icons/mobile-header-notification.svg",
+      "accessibleNamePolicy": "decorative; 버튼이 화면 맥락에 맞는 aria-label(예: \"알림\")로 이름을 갖는다",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 3,
+          "y": 3.0024,
+          "width": 18,
+          "height": 17.9953
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "저장소 내보내기 assets/icons/ic_알림신규_line.png(24 프레임)와 동일 좌표계, 본체+점 결합 형상 전체가 일치한다. 실제 렌더는 컴포넌트 CSS 가 이 결합 형상을 본체색(gray-dark) 마스크로 깔고, 점 부분만 mobile-header-notification-accent.svg(같은 원본의 점 부분 도형, 별도 등록 자산 mobileHeaderNotificationAccent)를 빨간색(icon/red) 마스크로 그 위에 덮어 2색을 표현한다 — 마스크 1겹은 2색을 표현할 수 없어 river 결정대로 currentColor+별색 변수 2겹 구조를 쓴다.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_알림신규_line.png"
+    },
+    {
+      "id": "mobileHeaderNotificationAccent",
+      "sourceKey": "13cf1b580ec982fda488f9318c6821930ddfb26e",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_알림(신규) 97:259 세트의 Line 변형(97:258) — river 지시 2026-09-02: \"종모양에 빨간점이 있는 아이콘 원본이 있으니 그걸 사용하면 됨\". 별도로 그린 자산이 아니라 등록된 그 원본에서 기계적으로 떼어낸 색 레이어다.",
+      "file": "mobile-header-notification-accent.svg",
+      "webAssetFingerprint": "43aa4d5db2d89362b222b584ec7beda7af2503a5439fb778f1e7789f28c697ea",
+      "symbolId": "s1-icon-mobile-header-notification-accent",
+      "individualFile": "assets/icons/mobile-header-notification-accent.svg",
+      "accessibleNamePolicy": "decorative; 알림 버튼의 aria-label 이 이름을 제공한다. 이 자산은 색 레이어일 뿐 독립된 아이콘이 아니다.",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 3,
+          "y": 3.0024,
+          "width": 18,
+          "height": 17.9953
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "mobileHeaderNotification 과 같은 원본·같은 좌표계(24 프레임 안 (3,3.0024) 18×17.9953)를 쓰는 부분 도형이라 frame·glyph 선언이 본체와 동일하다. 겹쳐 그렸을 때 점이 본체의 제 위치에 오려면 좌표계가 같아야 한다.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_알림신규_line.png",
+      "derivedFrom": "mobileHeaderNotification",
+      "derivationRule": {
+        "type": "path-subset",
+        "pathIndex": 1,
+        "rule": "부모 자산의 glyph SVG 안 path 목록에서 pathIndex 번째 경로 하나만 남기고 frame·glyph·viewBox 는 그대로 유지한다.",
+        "why": "정본은 알림을 아이콘 1개 인스턴스로 쓰면서 본체(color/icon/gray-dark)와 신규 점(color/icon/red) 2색을 입힌다(build-components.ts:3554). 웹은 CSS 마스크 1겹으로 2색을 낼 수 없어 같은 원본을 본체 마스크와 점 마스크로 두 번 쓴다. 점 조각은 새로 그린 것이 아니라 원본의 일부이므로 독립 원본 대조 대상이 아니고, 대신 \"정말 그 원본의 일부인가\"를 검사기가 매번 기계로 증명한다(scripts/ui-library-icon-origin-check.js)."
+      },
+      "accentColorToken": "--color-icon-red"
+    },
+    {
+      "id": "mobileHeaderArrowDown",
+      "sourceKey": "6babc3f493e48be1e7191a7b8a68945833039fe8",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_화살표,더보기,다음장 419:68 (Property 1=Solid) 실물 벡터 — Mobile Header 서브타이틀 아래화살표. 원본은 Fill 1(12×12)이 hidden 이고 보이는 것은 Stroke 2 획뿐이다(정본 주석 build-components.ts:3550-3525).",
+      "file": "mobile-header-arrow-down.svg",
+      "webAssetFingerprint": "818bd5f7ee1a6ab7cd5c5ef293267197f66136e48b31ca0a7e314a4df1833dc6",
+      "symbolId": "s1-icon-mobile-header-arrow-down",
+      "individualFile": "assets/icons/mobile-header-arrow-down.svg",
+      "accessibleNamePolicy": "decorative; 서브타이틀 텍스트에 종속된 장식 화살표(별도 접근성 이름 없음)",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 24
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "정본이 24px 그대로 -90° 회전해 쓴다(build-components.ts:3547 makeRequiredIconInstance(\"mobileHeaderArrowDown\", iconDark, 24, undefined, -90)). 이 아이콘은 채움(fill)이 아니라 중심정렬 획(stroke)으로 그려지므로 glyph 를 경로(path) 경계로 잡으면 획의 바깥 절반이 중첩 SVG 뷰포트에 잘린다 — 2026-09-02 4-verification F-1 이 실측으로 적발했다(잉크량 원본 50.4 → 웹 43.8, 글리프 영역 기준 오차 0.02484 > 임계 0.015). 따라서 chevron.svg 와 동일하게 24 프레임 전체를 glyph 뷰포트로 두고 경로를 24 좌표계에 직접 그린다(경로 좌표는 같은 형상: M10.375 7.75L14.625 12L10.375 16.25). 획 기반 글리프에는 경로 경계 선언이 성립하지 않는다 — 같은 아이콘 패밀리의 chevron(419:67)이 같은 규칙을 쓴다. 원본 대조 기준은 저장소 내보내기 assets/icons/ic_화살표더보기_solid.png(24 프레임) 그대로다.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_화살표더보기_solid.png"
+    },
+    {
+      "id": "calendar",
+      "sourceKey": "ea0ffc118c38048f2cdfb5620be31c120426bb7a",
+      "sourceBuilderSymbol": "CAL_ICON (build-components.ts:4480, buildDatePicker)",
+      "file": "calendar.svg",
+      "webAssetFingerprint": "71c7c065292c532754bc0ecb19b0b1b061cec8a3247bbcd12aafb89532c06581",
+      "symbolId": "s1-icon-calendar",
+      "individualFile": "assets/icons/calendar.svg",
+      "accessibleNamePolicy": "decorative; 트리거의 접근 가능한 이름(연결된 값 텍스트)이 이미 이름을 제공한다",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 3.87095,
+          "y": 3.6,
+          "width": 16.2581,
+          "height": 16.8
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "정본 build-components.ts CAL_ICON 상수(3672줄)의 path·viewBox(16.2581×16.8)를 그대로 옮겼다 — 재구성·재측정 없음. frame=24 관례(close·remove와 동일)에 원본 비율 그대로 중앙 배치, 재단·리사이즈 없음.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_날짜근태달력_line.png"
+    },
+    {
+      "id": "eye_show",
+      "sourceKey": "b130623bad9bf035e273501b404bf7a245af1460",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_비밀번호표시 97:275 (Property 1=Line, 97:274) 실물 벡터 내보내기 — figma-local 로컬 연결로 2026-09-04 확보. 설치기 폴백 도형은 쓰지 않았다(close·chevron 과 같은 절차). 잉크색은 선례(close·remove·clock)와 같이 black 으로 정규화 — 웹은 CSS 마스크(알파)만 쓰므로 색은 무의미하고, 원본 대조기가 웹 래스터를 RGB 로 읽어 어두운 정도를 알파로 환산하기 때문.",
+      "file": "eye_show.svg",
+      "webAssetFingerprint": "1e5a0b9e4a24181c298e691f34fb6cbfe4d496e3ed1d351a0e46e23d6f659dc4",
+      "symbolId": "s1-icon-eye-show",
+      "individualFile": "assets/icons/eye_show.svg",
+      "accessibleNamePolicy": "decorative inside a named password-visibility button (버튼이 '비밀번호 숨기기' 이름을 가진다 — 표시 중일 때)",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 3,
+          "y": 6.636,
+          "width": 18,
+          "height": 10.727
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "Figma 노드 97:274 실측 — 24 프레임 안 (3, 6.636) 에 18×10.727 도형. 저장소 내보내기 assets/icons/ic_비밀번호표시_line.png 와 픽셀 대조.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_비밀번호표시_line.png"
+    },
+    {
+      "id": "eye_hide",
+      "sourceKey": "d4e9eb5b7e193ee291aa2a7e04396c8de2d2dae7",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_비밀번호미표시 97:299 (Property 1=Line, 97:298) 실물 벡터 내보내기 — figma-local 로컬 연결로 2026-09-04 확보. 설치기 폴백 도형은 쓰지 않았다(close·chevron 과 같은 절차). 잉크색은 선례(close·remove·clock)와 같이 black 으로 정규화 — 웹은 CSS 마스크(알파)만 쓰므로 색은 무의미하고, 원본 대조기가 웹 래스터를 RGB 로 읽어 어두운 정도를 알파로 환산하기 때문.",
+      "file": "eye_hide.svg",
+      "webAssetFingerprint": "350683493c3ed070e65d0fcb1802da4a8ec1f5eb92da8b3efda6bcfe122ab005",
+      "symbolId": "s1-icon-eye-hide",
+      "individualFile": "assets/icons/eye_hide.svg",
+      "accessibleNamePolicy": "decorative inside a named password-visibility button (버튼이 '비밀번호 보기' 이름을 가진다 — 숨김 중일 때)",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 3,
+          "y": 4.651,
+          "width": 18,
+          "height": 14.698
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "Figma 노드 97:298 실측 — 24 프레임 안 (3, 4.651) 에 18×14.698 도형. 저장소 내보내기 assets/icons/ic_비밀번호미표시_line.png 와 픽셀 대조.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_비밀번호미표시_line.png"
+    },
+    {
+      "id": "search",
+      "sourceKey": "6b764af642b8883e892754281950da0e971224d7",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_찾기/조회 97:127 (Property 1=Line, 97:125) 실물 벡터 내보내기 — figma-local 로컬 연결로 2026-09-04 확보. 설치기 폴백 도형은 쓰지 않았다(close·chevron 과 같은 절차). 잉크색은 선례(close·remove·clock)와 같이 black 으로 정규화 — 웹은 CSS 마스크(알파)만 쓰므로 색은 무의미하고, 원본 대조기가 웹 래스터를 RGB 로 읽어 어두운 정도를 알파로 환산하기 때문.",
+      "file": "search.svg",
+      "webAssetFingerprint": "db00f0a05aeffad9a042194369b38f95a493eb3de8471444f0462266504f63ee",
+      "symbolId": "s1-icon-search",
+      "individualFile": "assets/icons/search.svg",
+      "accessibleNamePolicy": "decorative inside a named search button (버튼이 '검색' 이름을 가진다)",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 24
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "Figma 노드 97:125 실측 — 24 프레임 안 (0, 0) 에 24×24 도형. 저장소 내보내기 assets/icons/ic_찾기조회_line.png 와 픽셀 대조.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_찾기조회_line.png"
+    },
+    {
+      "id": "globe",
+      "sourceKey": "dee16df7e4ccddbd5dd7aa1d2fbf93f841f5dee2",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_인터넷 35:3317 (Property 1=Line, 35:3314) 실물 벡터 — OAuth 연결 get_design_context 로 2026-09-09 확보(figma-local 데스크톱 세션이 이 세션에 없어 OAuth 경로로 대체, 결과는 같은 라이브러리 파일·같은 노드). 설치기 GNB_UTIL_SVGS.lang(build-components.ts:3176)은 같은 도형을 24-frame·18x18 viewBox 로 옮겨 쓴 값이라 좌표가 1.333배 스케일된 사본임을 대조로 확인했다(0 0 18 18 원본 × 4/3 = 0 0 24 24, path 좌표 비율 일치) — 그래도 폴백 표시(비고)가 있어 웹 자산은 이번에 받은 원본에서 새로 만들었다. 잉크색은 선례(close·remove·clock·search)와 같이 black 으로 정규화 — 웹은 CSS 마스크(알파)만 쓰므로 색은 무의미하고, 원본 대조기가 웹 래스터를 RGB 로 읽어 어두운 정도를 알파로 환산하기 때문.",
+      "file": "globe.svg",
+      "webAssetFingerprint": "8f147cc0e628fe5784b50c1341a39d0ab4ab503a611b6602bf88af6a7a95cba0",
+      "symbolId": "s1-icon-globe",
+      "individualFile": "assets/icons/globe.svg",
+      "accessibleNamePolicy": "decorative; GNB 언어 항목은 지구본 아이콘 옆 보이는 글자 라벨(English/한국어)이 접근 가능한 이름이다",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 3,
+          "y": 3,
+          "width": 18,
+          "height": 18
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "Figma 노드 35:3314 get_design_context 인셋 12.5%(전체) 실측 — 24 프레임 안 (3, 3) 에 18×18 도형. 저장소 내보내기 assets/icons/ic_인터넷_line.png 와 픽셀 대조.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_인터넷_line.png"
+    },
+    {
+      "id": "account",
+      "sourceKey": "a423e2e05cfff2f93062d6a83d6f3bdf79ca9647",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_계정/사용자/ID 86:58 (Property 1=Line, 86:56) 실물 벡터 — OAuth 연결 get_design_context 로 2026-09-09 확보(사유는 globe 항목과 동일). 설치기 GNB_UTIL_SVGS.account(build-components.ts:3177)는 같은 도형을 24-frame·18x16.1862 viewBox 를 4/3 배로 옮겨 쓴 값(0 0 24 21.5816)이라 좌표 비교로 동일 도형임을 확인했다. 잉크색은 선례와 같이 black 으로 정규화.",
+      "file": "account.svg",
+      "webAssetFingerprint": "073f6c09e0a04fb164768e1036a9c578a50a2f272e7446a138432a14c6f83f4d",
+      "symbolId": "s1-icon-account",
+      "individualFile": "assets/icons/account.svg",
+      "accessibleNamePolicy": "decorative inside a named account button (버튼이 '계정' 이름을 가진다)",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 3,
+          "y": 3.9069,
+          "width": 18,
+          "height": 16.1862
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "Figma 노드 86:56 get_design_context 인셋 16.28%(상하)·12.5%(좌우) 실측 — 24 프레임 안 (3, 3.9069) 에 18×16.1862 도형. 저장소 내보내기 assets/icons/ic_계정사용자ID_line.png 와 픽셀 대조.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_계정사용자ID_line.png"
+    },
+    {
+      "id": "menu",
+      "sourceKey": "5157e9edc76358e2e6bc1a5ebc1539ccf5f2e787",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_메뉴 97:227 (Property 1=Line, 97:226) 실물 벡터 — OAuth 연결 get_design_context 로 2026-09-09 확보(사유는 globe 항목과 동일). 설치기 GNB_UTIL_SVGS.menu(build-components.ts:3178)는 같은 도형을 24-frame·18x12.6955 viewBox 를 4/3 배로 옮겨 쓴 값(0 0 24 16.9274)이라 좌표 비교로 동일 도형임을 확인했다. 잉크색은 선례와 같이 black 으로 정규화.",
+      "file": "menu.svg",
+      "webAssetFingerprint": "7852046c3b341d01b35eab7f38722bd774d70787e2e823e22b383a889b76c421",
+      "symbolId": "s1-icon-menu",
+      "individualFile": "assets/icons/menu.svg",
+      "accessibleNamePolicy": "decorative inside a named menu button (버튼이 '전체 메뉴' 이름을 가진다)",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 3,
+          "y": 5.65225,
+          "width": 18,
+          "height": 12.6955
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "Figma 노드 97:226 get_design_context 인셋 23.55%(상하)·12.5%(좌우) 실측 — 24 프레임 안 (3, 5.65225) 에 18×12.6955 도형. 저장소 내보내기 assets/icons/ic_메뉴_line.png 와 픽셀 대조.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_메뉴_line.png"
+    },
+    {
+      "id": "navSearch",
+      "sourceKey": "e86d0bce3a9de2bf1ed37b29ee56278bf4927cb9",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_찾기/조회 97:124 (Property 1=Solid) 실물 벡터 — Mobile Bottom Nav 검색 아이콘. 입력칸이 쓰는 search.svg(Line)와 다른 자산이다 — 하단 내비는 홈이 Solid 라 같은 결로 맞춘다.",
+      "file": "nav-search.svg",
+      "webAssetFingerprint": "0514860c3eb688f57bdc649722de9edb9792aad93e6d7b332a14a95ba0678c2d",
+      "symbolId": "s1-icon-nav-search",
+      "individualFile": "assets/icons/nav-search.svg",
+      "accessibleNamePolicy": "decorative; 접근성 이름은 탭 버튼의 라벨 텍스트가 이미 제공한다",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 24
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "정본은 하단 내비 아이콘을 32×32 로 확대해 쓴다(build-components.ts buildMobileBottomNav). 저장소 내보내기 ic_찾기조회_solid.png(24 프레임 실측)와 같은 24 프레임 좌표계이며, 이 아이콘은 프레임을 가득 채운다(여백 0).",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_찾기조회_solid.png"
+    },
+    {
+      "id": "navNotification",
+      "sourceKey": "0994ea9c97ad4c65a9d461a0f0b7381675946973",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_알림 97:260 (Property 1=Solid) 실물 벡터 — Mobile Bottom Nav 알림 아이콘. 헤더의 ic_알림(신규)(빨간 점 포함)와 다른 자산이며 서로 덮어쓰지 않는다.",
+      "file": "nav-notification.svg",
+      "webAssetFingerprint": "7a9d45ebf81560c57e3efa7701bb95db6207b209d6f524174447bae4b2c1c91e",
+      "symbolId": "s1-icon-nav-notification",
+      "individualFile": "assets/icons/nav-notification.svg",
+      "accessibleNamePolicy": "decorative; 접근성 이름은 탭 버튼의 라벨 텍스트가 이미 제공한다",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 3.0024,
+          "y": 3,
+          "width": 17.994,
+          "height": 18
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "Figma 가 보고한 프레임 내 여백(inset 세로 12.5% · 가로 12.51%)을 그대로 옮겼다. 저장소 내보내기 ic_알림_solid.png(24 프레임)와 같은 좌표계다.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_알림_solid.png"
+    },
+    {
+      "id": "navSettings",
+      "sourceKey": "175fb8933701ad7db5485a44dd07e26d34dfeef2",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_사용환경설정 97:312 (Property 1=Solid) 실물 벡터 — Mobile Bottom Nav 설정 아이콘. river 선택 2026-09-14(톱니바퀴 — ic_기기설정(스패너) 아님).",
+      "file": "nav-settings.svg",
+      "webAssetFingerprint": "2c0f091c5e3aabb47bc034bfece590201769439ebfff9e84f3ea9a15d27c806d",
+      "symbolId": "s1-icon-nav-settings",
+      "individualFile": "assets/icons/nav-settings.svg",
+      "accessibleNamePolicy": "decorative; 접근성 이름은 탭 버튼의 라벨 텍스트가 이미 제공한다",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 3,
+          "y": 3.3604,
+          "width": 18,
+          "height": 17.2792
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "Figma 가 보고한 프레임 내 여백(inset 세로 14% · 가로 12.5%)을 그대로 옮겼다. 저장소 내보내기 ic_사용환경설정_solid.png(24 프레임)와 같은 좌표계다.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_사용환경설정_solid.png"
+    }
+  ],
+  "components": [
+    {
+      "id": "input",
+      "version": "0.2.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "44b479e97df3af4fa4ce7c82e63444a330f62c951bd1e7472b9e4b31c2f68424",
+      "sourceFingerprint": "31a0a85e9a8732ee22cb032bd9e00c7274696fd7dc60667f177b00c272f4aba8",
+      "css": "components/input.css",
+      "js": "components/input.js",
+      "example": "examples/input.html",
+      "examples": {
+        "pc": "examples/input.html",
+        "mobile": "examples/input.mobile.html",
+        "password": "examples/input.password.html",
+        "password-mobile": "examples/input.password-mobile.html",
+        "search": "examples/input.search.html",
+        "search-mobile": "examples/input.search-mobile.html"
+      }
+    },
+    {
+      "id": "button",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": false,
+      "canonicalFingerprint": "a7209dc2ca12849f3594647e2fe0e38e4730438b2421b5dc896253a04def3358",
+      "sourceFingerprint": "47e79d7ba4bf21554847941e31533d1b977b752d99b3b6947e61dd8daf761984",
+      "css": "components/button.css",
+      "js": "components/button.js",
+      "example": "examples/button.html",
+      "examples": {
+        "pc": "examples/button.html",
+        "mobile": "examples/button.mobile.html"
+      }
+    },
+    {
+      "id": "checkbox",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": false,
+      "canonicalFingerprint": "612dd07b14cc04e5a98b9ad225e1cb3ebe07893e802069db2b9917d02f1ff634",
+      "sourceFingerprint": "6e2670d1c8e7ae8d90f20dfb3fcb84dd8ec6e83916b79dd1b9e08efd0011500d",
+      "css": "components/checkbox.css",
+      "js": "components/checkbox.js",
+      "example": "examples/checkbox.html",
+      "examples": {
+        "pc": "examples/checkbox.html"
+      }
+    },
+    {
+      "id": "radio",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": false,
+      "canonicalFingerprint": "470bc5344f32f0102ba85d3d8643c86fc7aeb28ce8d35af2a98f6c63b03f7c87",
+      "sourceFingerprint": "4a33f7bb69f780c0507f3df8d90d6dc57fcb5007aea0b90e14c59440f6708865",
+      "css": "components/radio.css",
+      "js": "components/radio.js",
+      "example": "examples/radio.html",
+      "examples": {
+        "pc": "examples/radio.html"
+      }
+    },
+    {
+      "id": "toggle",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "08f36c6a0f14c491a47172f9ad2c542c8a36fb919b21074a54a8bd231089e014",
+      "sourceFingerprint": "24a7f292e65b6f8942b7836ecebf4070b5539ca293df75b601f3cec9f07c5dd8",
+      "css": "components/toggle.css",
+      "js": "components/toggle.js",
+      "example": "examples/toggle.html",
+      "examples": {
+        "pc": "examples/toggle.html"
+      }
+    },
+    {
+      "id": "chip",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "27dffda0af0b55ae0980faf2370e47fce49b7dca98efe5649e4b82401be3aef4",
+      "sourceFingerprint": "8a7ff550f152342289f8a0b75bd5cbf13881a6b6a5c5a619fe433c58b54f4cd1",
+      "css": "components/chip.css",
+      "js": "components/chip.js",
+      "example": "examples/chip.html",
+      "examples": {
+        "pc": "examples/chip.html",
+        "mobile": "examples/chip.mobile.html"
+      }
+    },
+    {
+      "id": "dropdown",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "aa7d64251cf6a5520074ea41af73a275f7263625744ed5b74956ae1c7f9237a8",
+      "sourceFingerprint": "190a0ca83f7dcc217062238b0fecba02be5036b504c77a060016de1931eff4bd",
+      "css": "components/dropdown.css",
+      "js": "components/dropdown.js",
+      "example": "examples/dropdown.html",
+      "examples": {
+        "pc": "examples/dropdown.html"
+      }
+    },
+    {
+      "id": "select",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "be8c9955d68d704597223c6dd7d0d28b840587faec43f9eb17ad5a714a02b23d",
+      "sourceFingerprint": "a5516756561e150e5f7e582a6f80de9c966211e3752278f4672eeb07dabcfa13",
+      "css": "components/select.css",
+      "js": "components/select.js",
+      "example": "examples/select.html",
+      "examples": {
+        "pc": "examples/select.html",
+        "mobile": "examples/select.mobile.html"
+      }
+    },
+    {
+      "id": "filter-chip",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "78347b26d8750c76b79608249d6b04f33a5d57761908d126063dac26ac6f03b2",
+      "sourceFingerprint": "277cc7ab7e3ce28f1214482181bcf94f79e5a043f0475f08f6982a6b9759751f",
+      "css": "components/filter-chip.css",
+      "js": "components/filter-chip.js",
+      "example": "examples/filter-chip.html",
+      "examples": {
+        "pc": "examples/filter-chip.html",
+        "mobile": "examples/filter-chip.mobile.html"
+      }
+    },
+    {
+      "id": "tab",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "70d77ee493d74e247efe059d1ec618c0ee2ed08c4729e58f71599f196f0b0506",
+      "sourceFingerprint": "b4dc5aca8ef6507797942619263dbfa6dde348e4b12b88b61bc93c9e8429eeab",
+      "css": "components/tab.css",
+      "js": "components/tab.js",
+      "example": "examples/tab.html",
+      "examples": {
+        "pc": "examples/tab.html",
+        "mobile": "examples/tab.mobile.html"
+      }
+    },
+    {
+      "id": "pagination",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "d5c36b875358643ea6721838b15b210ed73c088aad22e1fee358dc061d7cfbd8",
+      "sourceFingerprint": "79315cc2aa027185625c65382db8a3478d435ec3431f2269f98a0d77d11228f2",
+      "css": "components/pagination.css",
+      "js": "components/pagination.js",
+      "example": "examples/pagination.html",
+      "examples": {
+        "pc": "examples/pagination.html"
+      }
+    },
+    {
+      "id": "textarea",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": false,
+      "canonicalFingerprint": "ce33d33d3b4499106d82a9f26b4cc6a3e51b4749c86a0273e1a6ad4c762f64e7",
+      "sourceFingerprint": "ef591a2bcd90e33a9f725a4019474969199fdd823901eb0d5b117f7ca8675f55",
+      "css": "components/textarea.css",
+      "js": "components/textarea.js",
+      "example": "examples/textarea.html",
+      "examples": {
+        "pc": "examples/textarea.html",
+        "mobile": "examples/textarea.mobile.html"
+      }
+    },
+    {
+      "id": "multi-toggle",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "d61c7a1484506c1e1d7e162d157d5ebcfc56d4f36c4220accc013b026cef4785",
+      "sourceFingerprint": "492413530b99a56dbb1e31e141a9eb7e03540969473657591e56562b3d64ccae",
+      "css": "components/multi-toggle.css",
+      "js": "components/multi-toggle.js",
+      "example": "examples/multi-toggle.html",
+      "examples": {
+        "pc": "examples/multi-toggle.html"
+      }
+    },
+    {
+      "id": "modal",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "d7128033a54f5f9c03decef8b93eb8b4bdf526fd3c82a1724a33c5612dffedb2",
+      "sourceFingerprint": "1dac6c10c9d9749e127ba7311eb91cb9188888152c25eae145a0bad724036ec7",
+      "css": "components/modal.css",
+      "js": "components/modal.js",
+      "example": "examples/modal.html",
+      "examples": {
+        "pc": "examples/modal.html",
+        "mobile": "examples/modal.mobile.html"
+      }
+    },
+    {
+      "id": "table",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "5743374f79e5024ee78661cbf9efc713367240e0a32f0b1a63ed17e2012dc755",
+      "sourceFingerprint": "3ceaeea85a4bdb2b6d8f2df804922bf252f630578404aac2c04a63ee09007836",
+      "css": "components/table.css",
+      "js": "components/table.js",
+      "example": "examples/table.html",
+      "examples": {
+        "pc": "examples/table.html"
+      }
+    },
+    {
+      "id": "mobile-bottom-nav",
+      "version": "0.2.0",
+      "status": "approved",
+      "jsRequired": false,
+      "canonicalFingerprint": "e465f4d254005ec1bb9d209946b2f936129e284f77ee466a07f6b88fba2198a4",
+      "sourceFingerprint": "600435c4e3e4f76b5435dfe0168920d23208ddf465c5321149c2f1c7231f617d",
+      "css": "components/mobile-bottom-nav.css",
+      "js": "components/mobile-bottom-nav.js",
+      "example": "examples/mobile-bottom-nav.html",
+      "examples": {
+        "pc": "examples/mobile-bottom-nav.html"
+      }
+    },
+    {
+      "id": "mobile-header",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": false,
+      "canonicalFingerprint": "987139e9776f4246c2c6ee5035109549081e3c82ef07669f1d3e5b07b1b08472",
+      "sourceFingerprint": "188e7e19bcfc01f21f595935673a8e46b586724125c30f03fd4a42a35d2903cb",
+      "css": "components/mobile-header.css",
+      "js": "components/mobile-header.js",
+      "example": "examples/mobile-header.html",
+      "examples": {
+        "pc": "examples/mobile-header.html"
+      }
+    },
+    {
+      "id": "time-picker",
+      "version": "0.2.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "91bc48bcce188a0530b3d38573dbdac1ab39abd9e2607333c0093fbc2477c474",
+      "sourceFingerprint": "5de78855e7a8f06279bb77603bb1098704c3ba995906bb950a008e9a6de47934",
+      "css": "components/time-picker.css",
+      "js": "components/time-picker.js",
+      "example": "examples/time-picker.html",
+      "examples": {
+        "pc": "examples/time-picker.html",
+        "mobile": "examples/time-picker.mobile.html"
+      }
+    },
+    {
+      "id": "date-picker",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "93a1d5e5e6016d75f21082f6778c0ac72465afda0db611aacc3231327198fd92",
+      "sourceFingerprint": "4613ba7f5e5798e43782def0b688c877b8b23f0e9bb31ee287f7bd07f715e368",
+      "css": "components/date-picker.css",
+      "js": "components/date-picker.js",
+      "example": "examples/date-picker.html",
+      "examples": {
+        "pc": "examples/date-picker.html",
+        "mobile": "examples/date-picker.mobile.html"
+      }
+    },
+    {
+      "id": "gnb",
+      "version": "0.1.0",
+      "status": "verified",
+      "jsRequired": true,
+      "canonicalFingerprint": "45fe2f5bc0406a4c23a3589169db90b0e1155c5874ba9d43d43ffcb3a7ff0f62",
+      "sourceFingerprint": "c4c532d631af7c752757c99be1c5e7bf95a63afa70097b797aeafbfb2160881a",
+      "css": "components/gnb.css",
+      "js": "components/gnb.js",
+      "example": "examples/gnb.html",
+      "examples": {
+        "pc": "examples/gnb.html"
+      }
+    },
+    {
+      "id": "gnb-sub-menu-item",
+      "version": "0.1.0",
+      "status": "verified",
+      "jsRequired": false,
+      "canonicalFingerprint": "49ce9441858a534e81f0c86b3943ac3ed4acbf24d78636a39fa819c9b74f6275",
+      "sourceFingerprint": "112b6f8386b31977a7589cf22e5c2a90cee6d41c32e20229a2f00d2a734d10fb",
+      "css": "components/gnb-sub-menu-item.css",
+      "js": "components/gnb-sub-menu-item.js",
+      "example": "examples/gnb-sub-menu-item.html",
+      "examples": {
+        "pc": "examples/gnb-sub-menu-item.html"
+      }
+    },
+    {
+      "id": "gnb-sub-menu",
+      "version": "0.1.0",
+      "status": "verified",
+      "jsRequired": false,
+      "canonicalFingerprint": "b20754d8bb059413b5a0c5056b7019db2c01c1848e67c5987118e6c053e852aa",
+      "sourceFingerprint": "02789b355c7b9f64803099346cda4fa6eefbbe434d7dd0cc6b0fdd45b61430ba",
+      "css": "components/gnb-sub-menu.css",
+      "js": "components/gnb-sub-menu.js",
+      "example": "examples/gnb-sub-menu.html",
+      "examples": {
+        "pc": "examples/gnb-sub-menu.html"
+      }
+    },
+    {
+      "id": "assist-button",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": false,
+      "canonicalFingerprint": "2b8eadb190b86167ccd8c8a3b3aa1a384413b141e0d52015d7aa9df6f935b1d0",
+      "sourceFingerprint": "3573cdc66e46f6ad95c4d6c870c8b079efd181187d41eb3ade727f82cb5801eb",
+      "css": "components/assist-button.css",
+      "js": "components/assist-button.js",
+      "example": "examples/assist-button.html",
+      "examples": {
+        "pc": "examples/assist-button.html"
+      }
+    },
+    {
+      "id": "text-button",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": false,
+      "canonicalFingerprint": "650ef2f80c4a12b771b84496f381ae336c91c2f3724fd77864dc3f74d6bd73b3",
+      "sourceFingerprint": "ba610f28db117708d76465a5ab1e2dd2193802cfbe9c4958b0156558a986f966",
+      "css": "components/text-button.css",
+      "js": "components/text-button.js",
+      "example": "examples/text-button.html",
+      "examples": {
+        "pc": "examples/text-button.html"
+      }
+    },
+    {
+      "id": "modal-content",
+      "version": "0.1.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "91db2f577707f94489c5d919282c8c9d58eaf2f7a6eb6ffe0ec7fe2402220568",
+      "sourceFingerprint": "221255ee88eea9374d6ea4c0d8531b6d28889cd0989266fd4c0074d5b4b15bee",
+      "css": "components/modal-content.css",
+      "js": "components/modal-content.js",
+      "example": "examples/modal-content.html",
+      "examples": {
+        "pc": "examples/modal-content.html"
+      }
+    }
+  ],
+  "bundleParity": {
+    "cssOrder": [
+      "input",
+      "button",
+      "checkbox",
+      "radio",
+      "toggle",
+      "chip",
+      "dropdown",
+      "select",
+      "filter-chip",
+      "tab",
+      "pagination",
+      "textarea",
+      "multi-toggle",
+      "modal",
+      "table",
+      "mobile-bottom-nav",
+      "mobile-header",
+      "time-picker",
+      "date-picker",
+      "gnb",
+      "gnb-sub-menu-item",
+      "gnb-sub-menu",
+      "assist-button",
+      "text-button",
+      "modal-content"
+    ],
+    "source": "ui-library/src/components/*",
+    "rule": "Full and individual outputs are generated in this build invocation from identical source strings."
+  }
+}

@@ -1,0 +1,64 @@
+<div data-s1-component="time-picker" data-size="md" data-break="mobile" data-type="12h" data-minute-step="1" data-mobile-ui="wheel" data-mobile-content="time-only">
+  <button type="button" data-s1-part="trigger" aria-haspopup="dialog" aria-expanded="false" aria-label="시간">
+    <span data-s1-part="value">시간 선택</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="sheet" hidden>
+    <div data-s1-part="sheet-backdrop"></div>
+    <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="time-picker-wheel-title-time-only" tabindex="-1">
+      <div data-s1-part="sheet-header">
+        <span data-s1-part="sheet-title" id="time-picker-wheel-title-time-only">시간 선택</span>
+        <button type="button" data-s1-part="sheet-close" aria-label="닫기"></button>
+      </div>
+      <div data-s1-part="wheel">
+        <div data-s1-part="wheel-col" data-column="ampm" role="listbox" aria-label="오전오후"></div>
+        <div data-s1-part="wheel-col" data-column="hour" role="listbox" aria-label="시"></div>
+        <div data-s1-part="wheel-col" data-column="colon" aria-hidden="true"></div>
+        <div data-s1-part="wheel-col" data-column="minute" role="listbox" aria-label="분"></div>
+        <div data-s1-part="fade-top" aria-hidden="true"></div>
+        <div data-s1-part="fade-bottom" aria-hidden="true"></div>
+      </div>
+      <div data-s1-part="sheet-footer">
+        <button type="button" data-s1-part="apply" data-s1-component="button" data-variant="primary" data-size="lg">
+          <span data-s1-part="label">적용</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div data-s1-component="time-picker" data-size="md" data-break="mobile" data-type="12h" data-minute-step="1" data-mobile-ui="wheel" data-mobile-content="date-time">
+  <button type="button" data-s1-part="trigger" aria-haspopup="dialog" aria-expanded="false" aria-label="시작 일시">
+    <span data-s1-part="value">시작 일시 선택</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="sheet" hidden>
+    <div data-s1-part="sheet-backdrop"></div>
+    <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="time-picker-wheel-title-date-time" tabindex="-1">
+      <div data-s1-part="sheet-header">
+        <span data-s1-part="sheet-title" id="time-picker-wheel-title-date-time">시작 일시</span>
+        <button type="button" data-s1-part="sheet-close" aria-label="닫기"></button>
+      </div>
+      <div data-s1-part="tabs" data-s1-component="tab" data-size="sm" data-break="mobile" role="tablist" aria-label="날짜·시간 선택">
+        <button type="button" data-s1-part="tab" role="tab" aria-selected="false" data-value="date">날짜</button>
+        <button type="button" data-s1-part="tab" role="tab" aria-selected="true" data-value="time">시간</button>
+      </div>
+      <div data-s1-part="date-panel" hidden>
+        <p data-s1-part="date-panel-note">날짜 선택 화면은 Date Picker 코어가 별도로 제공합니다(이 컴포넌트 범위 밖 — river 지시 "date-picker 를 끌어들이지 말고 탭 전환만 구현").</p>
+      </div>
+      <div data-s1-part="wheel">
+        <div data-s1-part="wheel-col" data-column="ampm" role="listbox" aria-label="오전오후"></div>
+        <div data-s1-part="wheel-col" data-column="hour" role="listbox" aria-label="시"></div>
+        <div data-s1-part="wheel-col" data-column="colon" aria-hidden="true"></div>
+        <div data-s1-part="wheel-col" data-column="minute" role="listbox" aria-label="분"></div>
+        <div data-s1-part="fade-top" aria-hidden="true"></div>
+        <div data-s1-part="fade-bottom" aria-hidden="true"></div>
+      </div>
+      <div data-s1-part="sheet-footer">
+        <button type="button" data-s1-part="apply" data-s1-component="button" data-variant="primary" data-size="lg">
+          <span data-s1-part="label">적용</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

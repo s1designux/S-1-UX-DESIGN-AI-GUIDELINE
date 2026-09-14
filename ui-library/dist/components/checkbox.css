@@ -1,0 +1,74 @@
+/* Base Checkbox — 정본 buildCheckbox(18×18 box, radius 2, inside border 1, check 16×16 at 1,1) 기준.
+   라벨은 선택 부품이며 없을 때는 상자만 남는다. */
+[data-s1-component="checkbox"] {
+  align-items: center;
+  box-sizing: border-box;
+  display: inline-flex;
+  gap: var(--spacing-8);
+}
+
+[data-s1-component="checkbox"] [data-s1-part="control"] {
+  align-items: center;
+  appearance: none;
+  background: var(--color-control-bg-default);
+  border: var(--border-width-1) solid var(--color-control-border-default);
+  border-radius: var(--radius-control-xs);
+  box-sizing: border-box;
+  color: var(--color-control-indicator-selected);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: var(--sizing-18);
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: var(--sizing-18);
+}
+
+/* 체크 표시는 :checked 에서만 그린다. 색은 currentColor 를 통해 상태별 indicator 토큰을 따라간다. */
+[data-s1-component="checkbox"] [data-s1-part="control"]:checked::before {
+  background-color: currentColor;
+  content: "";
+  display: block;
+  height: var(--sizing-16);
+  mask: url("../assets/icons/check.svg") center / contain no-repeat;
+  width: var(--sizing-16);
+}
+
+/* 정본 Hover 는 선택 안 된 상자의 배경만 바뀐다. Checked 에는 Hover 변형이 없다. */
+@media (hover: hover) {
+  [data-s1-component="checkbox"] [data-s1-part="control"]:hover:not(:disabled):not(:checked) {
+    background: var(--color-control-bg-hover);
+  }
+}
+
+[data-s1-component="checkbox"] [data-s1-part="control"]:checked {
+  background: var(--color-control-bg-selected);
+  border-color: var(--color-control-border-selected);
+  color: var(--color-control-indicator-selected);
+}
+
+[data-s1-component="checkbox"] [data-s1-part="control"]:disabled {
+  background: var(--color-control-bg-disabled);
+  border-color: var(--color-control-border-disabled);
+  cursor: not-allowed;
+}
+
+[data-s1-component="checkbox"] [data-s1-part="control"]:disabled:checked {
+  color: var(--color-control-indicator-disabled);
+}
+
+[data-s1-component="checkbox"] [data-s1-part="label"] {
+  color: var(--color-control-label-default);
+  cursor: pointer;
+  font-family: "Pretendard", sans-serif;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+}
+
+[data-s1-component="checkbox"]:has([data-s1-part="control"]:disabled) [data-s1-part="label"] {
+  color: var(--color-control-label-disabled);
+  cursor: not-allowed;
+}

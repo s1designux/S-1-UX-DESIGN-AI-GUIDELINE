@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<!-- 자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run ui:build` 를 실행하세요. -->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S1 UI 컴포넌트 미리보기 — 22종</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/typography.css">
+  <link rel="stylesheet" href="s1-ui.css">
+  <style>
+    body { margin:0; background:#f6f7f9; color:#111827;
+           font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    .page { max-width:1080px; margin:0 auto; padding:40px 24px 80px; }
+    .page-head h1 { font-size:24px; margin:0 0 6px; }
+    .page-head p { margin:0; color:#6b7280; font-size:13px; line-height:1.7; }
+    .fingerprint { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11px; color:#9ca3af; word-break:break-all; }
+    .index { display:flex; flex-wrap:wrap; gap:7px; margin:22px 0 32px; }
+    .index a { padding:5px 11px; border-radius:999px; background:#fff; border:1px solid #e5e7eb;
+               color:#374151; font-size:12px; font-weight:600; text-decoration:none; }
+    .index a:hover { border-color:#1d6ceb; color:#1d6ceb; }
+    .component { background:#fff; border:1px solid #e5e7eb; border-radius:14px; margin-bottom:18px; overflow:hidden; scroll-margin-top:16px; }
+    .component-head { display:flex; gap:16px; justify-content:space-between; flex-wrap:wrap;
+                      padding:16px 20px; background:#fafafa; border-bottom:1px solid #e5e7eb; }
+    .component-head h2 { margin:0; font-size:16px; }
+    .component-id { margin:3px 0 0; font-size:11.5px; color:#9ca3af; }
+    .component-axes { display:grid; grid-template-columns:auto 1fr; gap:2px 10px; margin:0; font-size:11.5px; color:#4b5563; }
+    .component-axes dt { font-weight:700; color:#9ca3af; }
+    .component-axes dd { margin:0; }
+    .component-body { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:0; }
+    @media (max-width:860px) { .component-body { grid-template-columns:minmax(0,1fr); } }
+    .samples { padding:20px; display:flex; flex-direction:column; gap:18px; min-width:0; }
+    .sample-label { font-size:10.5px; font-weight:700; color:#9ca3af; text-transform:uppercase; margin-bottom:8px; }
+    .sample-stage { display:flex; flex-wrap:wrap; align-items:flex-start; gap:14px; }
+    .sample-stage[data-break="mobile"], .sample-stage[data-break="password-mobile"], .sample-stage[data-break="search-mobile"] { max-width:380px; }
+    .component-usage { padding:20px; background:#fcfcfd; border-left:1px solid #f0f1f3; font-size:12px; color:#4b5563; }
+    @media (max-width:860px) { .component-usage { border-left:none; border-top:1px solid #f0f1f3; } }
+    .usage-block + .usage-block { margin-top:14px; }
+    .usage-title { font-size:11px; font-weight:700; color:#111827; margin-bottom:5px; }
+    .usage-block-avoid .usage-title { color:#c2410c; }
+    .component-usage ul { margin:0; padding-left:16px; line-height:1.7; }
+    code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11px;
+           background:#f3f4f6; padding:1px 5px; border-radius:4px; color:#1d6ceb; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="page-head">
+      <h1>S1 UI 컴포넌트 미리보기 — 22종</h1>
+      <p>이 페이지는 배포본에 들어 있는 마크업을 그대로 얹어 그린 것입니다. 여기 보이는 모습이 실제 모습입니다.<br>
+         React·Vue 는 제목의 이름을 그대로 부르면 됩니다. 크기·변형은 각 이름 옆에 적힌 값만 쓸 수 있습니다.</p>
+      <p class="fingerprint">버전 0.5.0 · 정본 지문 5a96654ece28dec43ed8454b0fe138008e64cf190c2909b2c71a355114d4bb26</p>
+    </div>
+    <nav class="index">
+        <a href="#input">S1Input</a>
+        <a href="#button">S1Button</a>
+        <a href="#checkbox">S1Checkbox</a>
+        <a href="#radio">S1Radio</a>
+        <a href="#toggle">S1Toggle</a>
+        <a href="#chip">S1Chip</a>
+        <a href="#dropdown">S1Dropdown</a>
+        <a href="#select">S1Select</a>
+        <a href="#filter-chip">S1FilterChip</a>
+        <a href="#tab">S1Tab</a>
+        <a href="#pagination">S1Pagination</a>
+        <a href="#textarea">S1Textarea</a>
+        <a href="#multi-toggle">S1MultiToggle</a>
+        <a href="#modal">S1Modal</a>
+        <a href="#table">S1Table</a>
+        <a href="#mobile-bottom-nav">S1MobileBottomNav</a>
+        <a href="#mobile-header">S1MobileHeader</a>
+        <a href="#time-picker">S1TimePicker</a>
+        <a href="#date-picker">S1DatePicker</a>
+        <a href="#assist-button">S1AssistButton</a>
+        <a href="#text-button">S1TextButton</a>
+        <a href="#modal-content">S1ModalContent</a>
+    </nav>
+      <section class="component" id="input">
+        <header class="component-head">
+          <div>
+            <h2>S1Input</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="input"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>PC <code>xxsm</code> <code>xsm</code> <code>md</code> · 모바일 <code>md</code></dd>
+            <dt>변형</dt><dd>변형 없음</dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="input" data-size="md" data-break="pc">
+  <div data-s1-part="field">
+    <input id="profile-name" data-s1-part="control" aria-label="이름" placeholder="내용을 입력하세요">
+    <button type="button" data-s1-part="action" data-action="clear" aria-label="입력 내용 지우기" hidden>
+      <span data-s1-part="action-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</div></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">mobile</div>
+            <div class="sample-stage" data-break="mobile"><div data-s1-component="input" data-size="md" data-break="mobile">
+  <div data-s1-part="field">
+    <input id="profile-name" data-s1-part="control" aria-label="이름" placeholder="내용을 입력하세요">
+    <button type="button" data-s1-part="action" data-action="clear" aria-label="입력 내용 지우기" hidden>
+      <span data-s1-part="action-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</div></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">password</div>
+            <div class="sample-stage" data-break="password"><div data-s1-component="input" data-size="md" data-break="pc">
+  <div data-s1-part="field">
+    <input id="profile-password" data-s1-part="control" type="password" aria-label="비밀번호" placeholder="비밀번호를 입력하세요">
+    <button type="button" data-s1-part="action" data-action="password" aria-pressed="false" aria-label="비밀번호 보기">
+      <span data-s1-part="action-icon" aria-hidden="true"></span>
+    </button>
+    <button type="button" data-s1-part="action" data-action="clear" aria-label="비밀번호 지우기" hidden>
+      <span data-s1-part="action-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</div></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">password-mobile</div>
+            <div class="sample-stage" data-break="password-mobile"><div data-s1-component="input" data-size="md" data-break="mobile">
+  <div data-s1-part="field">
+    <input id="profile-password-mobile" data-s1-part="control" type="password" aria-label="비밀번호" placeholder="비밀번호를 입력하세요">
+    <button type="button" data-s1-part="action" data-action="password" aria-pressed="false" aria-label="비밀번호 보기">
+      <span data-s1-part="action-icon" aria-hidden="true"></span>
+    </button>
+    <button type="button" data-s1-part="action" data-action="clear" aria-label="비밀번호 지우기" hidden>
+      <span data-s1-part="action-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</div></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">search</div>
+            <div class="sample-stage" data-break="search"><div data-s1-component="input" data-size="md" data-break="pc" data-mode="search">
+  <div data-s1-part="field">
+    <input id="profile-search" data-s1-part="control" aria-label="검색" placeholder="검색어를 입력하세요">
+    <button type="button" data-s1-part="action" data-action="clear" aria-label="검색어 지우기" hidden>
+      <span data-s1-part="action-icon" aria-hidden="true"></span>
+    </button>
+    <button type="button" data-s1-part="action" data-action="search" aria-label="검색">
+      <span data-s1-part="action-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</div></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">search-mobile</div>
+            <div class="sample-stage" data-break="search-mobile"><div data-s1-component="input" data-size="md" data-break="mobile" data-mode="search">
+  <div data-s1-part="field">
+    <input id="profile-search-mobile" data-s1-part="control" aria-label="검색" placeholder="검색어를 입력하세요">
+    <button type="button" data-s1-part="action" data-action="clear" aria-label="검색어 지우기" hidden>
+      <span data-s1-part="action-icon" aria-hidden="true"></span>
+    </button>
+    <button type="button" data-s1-part="action" data-action="search" aria-label="검색">
+      <span data-s1-part="action-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>한 줄 텍스트·숫자를 입력받을 때 — 로그인·검색·필터·설정 폼 등.</li><li>라벨·도움말과 함께 쓰려면 Input Slots(라벨/헬퍼 조합) 패턴으로 감싼다.</li><li>안내메시지(helper)는 필요한 화면에서만 켠다 — 계정 관련 화면(로그인·비밀번호 변경·회원가입)처럼 입력 규칙을 미리 알려야 하는 곳이 대표적이다. 일반 입력·검색에는 넣지 않는다(river 결정 2026-09-07).</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>여러 줄 입력은 Textarea 를 쓴다.</li><li>선택지 중 하나를 고르는 입력은 Select·Dropdown, 날짜·시간은 DatePicker·TimePicker 를 쓴다.</li><li>안내메시지가 필요하다는 이유로 '계정용 인풋' 같은 별도 컴포넌트를 만들지 않는다 — 안내메시지는 켜고 끄는 선택 슬롯이다. 업계 관행도 검색만 별도 컴포넌트로 가르고, 쓰이는 화면으로는 가르지 않는다(river 결정 2026-09-07).</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="button">
+        <header class="component-head">
+          <div>
+            <h2>S1Button</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="button"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>PC <code>md</code> <code>xsm</code> <code>xxsm</code> · 모바일 <code>lg</code></dd>
+            <dt>변형</dt><dd><code>primary</code> <code>secondary</code> <code>blue-line</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><button type="button" data-s1-component="button" data-variant="primary" data-size="md">
+  <span data-s1-part="label">확인</span>
+</button></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">mobile</div>
+            <div class="sample-stage" data-break="mobile"><button type="button" data-s1-component="button" data-variant="primary" data-size="lg">
+  <span data-s1-part="label">확인</span>
+</button></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>사용자가 실행할 액션을 트리거할 때 — 저장·확인·취소·다음 등.</li><li>화면에서 가장 중요한 단일 액션은 primary, 보조 액션은 secondary, 약한 강조는 blue-line.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>페이지 이동만 하는 것은 링크를 고려한다.</li><li>on/off 상태 전환은 Toggle, 다중 선택은 Checkbox·Chip 을 쓴다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="checkbox">
+        <header class="component-head">
+          <div>
+            <h2>S1Checkbox</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="checkbox"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd>변형 없음</dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="checkbox">
+  <input type="checkbox" id="s1-checkbox-example" data-s1-part="control">
+  <label data-s1-part="label" for="s1-checkbox-example">선택 항목</label>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>여러 항목을 독립적으로 켜고 끌 때(다중 선택).</li><li>약관 동의처럼 항목마다 따로 켜고 끌 때.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>여러 보기 중 하나만 고를 때는 Radio.</li><li>단일 on/off 설정은 Toggle.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="radio">
+        <header class="component-head">
+          <div>
+            <h2>S1Radio</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="radio"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd>변형 없음</dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="radio">
+  <input type="radio" id="s1-radio-example" name="s1-radio-example-group" data-s1-part="control">
+  <label data-s1-part="label" for="s1-radio-example">옵션 1</label>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>여러 보기 중 하나만 고를 때(상호배타).</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>여러 개 동시 선택은 Checkbox.</li><li>단일 on/off 는 Toggle.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="toggle">
+        <header class="component-head">
+          <div>
+            <h2>S1Toggle</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="toggle"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd>변형 없음</dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><button type="button" data-s1-component="toggle" role="switch" aria-checked="false" aria-label="알림 받기">
+  <span data-s1-part="knob" aria-hidden="true"></span>
+</button></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>단일 설정을 즉시 켜고 끌 때(즉시 반영).</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>여러 항목 다중 선택은 Checkbox.</li><li>상호배타 다중 보기는 Radio.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="chip">
+        <header class="component-head">
+          <div>
+            <h2>S1Chip</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="chip"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>PC <code>sm</code> <code>md</code> · 모바일 <code>sm</code></dd>
+            <dt>변형</dt><dd><code>line</code> <code>solid</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><button type="button" data-s1-component="chip" data-variant="line" data-size="md" data-break="pc" aria-pressed="false">
+  <span data-s1-part="label">라벨</span>
+</button></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">mobile</div>
+            <div class="sample-stage" data-break="mobile"><button type="button" data-s1-component="chip" data-variant="line" data-size="sm" data-break="mobile" aria-pressed="false">
+  <span data-s1-part="label">라벨</span>
+</button></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>선택 가능한 태그·필터를 나열할 때.</li><li>filter 는 드롭다운으로 값을 고르고 적용 완료(complete)를 표시할 때.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>단일 액션 실행은 Button.</li><li>긴 목록의 단일 선택은 Select·Dropdown.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="dropdown">
+        <header class="component-head">
+          <div>
+            <h2>S1Dropdown</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="dropdown"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd><code>xxsm</code> <code>xsm</code> <code>md</code></dd>
+            <dt>변형</dt><dd><code>text</code> <code>checkbox</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="dropdown" data-type="text" data-size="md" role="listbox" aria-label="정렬">
+  <div data-s1-part="option" role="option" aria-selected="true" tabindex="0" data-value="latest"><span data-s1-part="option-label">최신순</span></div>
+  <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="popular"><span data-s1-part="option-label">인기순</span></div>
+  <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="past"><span data-s1-part="option-label">과거순</span></div>
+</div>
+<div data-s1-component="dropdown" data-type="checkbox" data-size="md" aria-label="지역">
+  <div data-s1-part="option" role="checkbox" aria-checked="false" tabindex="0" data-value="all" data-select-all="true">
+    <div data-s1-component="checkbox" aria-hidden="true"><input type="checkbox" data-s1-part="control" tabindex="-1"></div>
+    <span data-s1-part="option-label">전체</span>
+  </div>
+  <div data-s1-part="divider"></div>
+  <div data-s1-part="option" role="checkbox" aria-checked="true" tabindex="-1" data-value="seoul">
+    <div data-s1-component="checkbox" aria-hidden="true"><input type="checkbox" data-s1-part="control" tabindex="-1" checked></div>
+    <span data-s1-part="option-label">서울</span>
+  </div>
+  <div data-s1-part="option" role="checkbox" aria-checked="false" tabindex="-1" data-value="busan">
+    <div data-s1-component="checkbox" aria-hidden="true"><input type="checkbox" data-s1-part="control" tabindex="-1"></div>
+    <span data-s1-part="option-label">부산</span>
+  </div>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>트리거를 눌러 옵션 목록에서 하나를 고를 때(글자 유형).</li><li>한 목록에서 여러 항목을 동시에 고를 때(체크박스 유형) — 필터·대상 선택 등.</li><li>Select 의 기반 컴포넌트.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>즉시 실행 액션 그룹은 Button.</li><li>적은 수의 상호배타 선택은 Radio.</li><li>항목이 3~4개 이하로 적고 항상 보여도 되는 다중 선택은 목록을 접지 말고 Checkbox 를 펼쳐 쓴다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="select">
+        <header class="component-head">
+          <div>
+            <h2>S1Select</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="select"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>PC <code>xxsm</code> <code>xsm</code> <code>md</code> · 모바일 <code>md</code></dd>
+            <dt>변형</dt><dd>변형 없음</dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="select" data-size="md" data-break="pc">
+  <button type="button" data-s1-part="trigger" aria-haspopup="listbox" aria-expanded="false">
+    <span data-s1-part="value">선택</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="panel" hidden>
+    <div data-s1-component="dropdown" data-type="text" data-size="md" role="listbox" aria-label="선택">
+      <div data-s1-part="option" role="option" aria-selected="false" tabindex="0" data-value="seoul"><span data-s1-part="option-label">서울</span></div>
+      <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="busan"><span data-s1-part="option-label">부산</span></div>
+      <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="jeju"><span data-s1-part="option-label">제주</span></div>
+    </div>
+  </div>
+</div></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">mobile</div>
+            <div class="sample-stage" data-break="mobile"><div data-s1-component="select" data-size="md" data-break="mobile">
+  <button type="button" data-s1-part="trigger" aria-haspopup="listbox" aria-expanded="false">
+    <span data-s1-part="value">선택</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="panel" hidden>
+    <div data-s1-component="dropdown" data-type="text" data-size="md" role="listbox" aria-label="선택">
+      <div data-s1-part="option" role="option" aria-selected="false" tabindex="0" data-value="seoul"><span data-s1-part="option-label">서울</span></div>
+      <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="busan"><span data-s1-part="option-label">부산</span></div>
+      <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="jeju"><span data-s1-part="option-label">제주</span></div>
+    </div>
+  </div>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>단일 값을 목록에서 고르는 폼 필드일 때.</li><li>Dropdown 토큰(--dropdown-*)을 재사용한다.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>다중 선택은 Checkbox·Chip.</li><li>즉시 실행 메뉴는 Dropdown/Button.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="filter-chip">
+        <header class="component-head">
+          <div>
+            <h2>S1FilterChip</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="filter-chip"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>PC <code>sm</code> <code>md</code> · 모바일 <code>md</code></dd>
+            <dt>변형</dt><dd><code>line</code> <code>solid</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="filter-chip" data-variant="line" data-size="sm" data-break="pc" data-title="on">
+  <button type="button" data-s1-part="trigger" aria-haspopup="listbox" aria-expanded="false">
+    <span data-s1-part="title">정렬</span>
+    <span data-s1-part="value">최신순</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="panel" hidden>
+    <div data-s1-component="dropdown" data-type="text" data-size="xsm" role="listbox" aria-label="정렬">
+      <div data-s1-part="option" role="option" aria-selected="true" tabindex="0" data-value="latest"><span data-s1-part="option-label">최신순</span></div>
+      <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="popular"><span data-s1-part="option-label">인기순</span></div>
+      <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="past"><span data-s1-part="option-label">과거순</span></div>
+    </div>
+  </div>
+</div></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">mobile</div>
+            <div class="sample-stage" data-break="mobile"><div data-s1-component="filter-chip" data-variant="line" data-size="md" data-break="mobile" data-title="on">
+  <button type="button" data-s1-part="trigger" aria-haspopup="listbox" aria-expanded="false">
+    <span data-s1-part="title">정렬</span>
+    <span data-s1-part="value">최신순</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="panel" hidden>
+    <div data-s1-component="dropdown" data-type="text" data-size="xsm" role="listbox" aria-label="정렬">
+      <div data-s1-part="option" role="option" aria-selected="true" tabindex="0" data-value="latest"><span data-s1-part="option-label">최신순</span></div>
+      <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="popular"><span data-s1-part="option-label">인기순</span></div>
+      <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="past"><span data-s1-part="option-label">과거순</span></div>
+    </div>
+  </div>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>목록·표의 정렬/기간/범주 같은 조건을 바꿀 때.</li><li>선택한 값을 칩 자체에 계속 보여줘야 할 때(무엇이 걸려 있는지 한눈에).</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>단순 태그·상태 표시 — Chip 을 쓴다(누를 수 없는 표시용).</li><li>선택지가 배타적이고 개수가 적어 항상 펼쳐 두는 편이 나을 때 — Multi Toggle 을 쓴다.</li><li>폼 안의 값 입력 — Select Box 를 쓴다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="tab">
+        <header class="component-head">
+          <div>
+            <h2>S1Tab</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="tab"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>PC <code>md</code> <code>sm</code> <code>xsm</code> · 모바일 <code>sm</code></dd>
+            <dt>변형</dt><dd>변형 없음</dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="tab" data-size="md" data-break="pc" role="tablist" aria-label="콘텐츠 보기 선택">
+  <button type="button" data-s1-part="tab" role="tab" aria-selected="true" aria-controls="tab-panel-one" data-value="one">탭 메뉴 1</button>
+  <button type="button" data-s1-part="tab" role="tab" aria-selected="false" aria-controls="tab-panel-two" data-value="two">탭 메뉴 2</button>
+  <button type="button" data-s1-part="tab" role="tab" aria-selected="false" aria-controls="tab-panel-three" data-value="three">탭 메뉴 3</button>
+  <div id="tab-panel-one" role="tabpanel">첫 번째 내용</div>
+  <div id="tab-panel-two" role="tabpanel" hidden>두 번째 내용</div>
+  <div id="tab-panel-three" role="tabpanel" hidden>세 번째 내용</div>
+</div></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">mobile</div>
+            <div class="sample-stage" data-break="mobile"><div data-s1-component="tab" data-size="sm" data-break="mobile" role="tablist" aria-label="콘텐츠 보기 선택">
+  <button type="button" data-s1-part="tab" role="tab" aria-selected="true" data-value="one">탭 메뉴 1</button>
+  <button type="button" data-s1-part="tab" role="tab" aria-selected="false" data-value="two">탭 메뉴 2</button>
+  <button type="button" data-s1-part="tab" role="tab" aria-selected="false" data-value="three">탭 메뉴 3</button>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>같은 화면에서 콘텐츠 영역을 전환할 때.</li><li>정본에 등록된 플랫폼과 크기 중 사용 맥락에 맞는 항목을 고른다.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>페이지 이동은 Navigation.</li><li>상호배타 폼 선택은 Radio.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="pagination">
+        <header class="component-head">
+          <div>
+            <h2>S1Pagination</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="pagination"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd><code>28</code></dd>
+            <dt>변형</dt><dd>변형 없음</dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><nav data-s1-component="pagination" data-total-pages="6" data-page="1" aria-label="페이지 탐색">
+  <span data-s1-part="arrow-group"><button type="button" data-s1-action="first" aria-label="첫 페이지"><span data-s1-part="icon" data-icon="edge" aria-hidden="true"></span></button><button type="button" data-s1-action="previous" aria-label="이전 페이지"><span data-s1-part="icon" data-icon="chevron" aria-hidden="true"></span></button></span>
+  <span data-s1-part="pages"><button type="button" data-s1-part="page" data-page="1" aria-current="page">1</button><button type="button" data-s1-part="page" data-page="2">2</button><button type="button" data-s1-part="page" data-page="3">3</button><button type="button" data-s1-part="page" data-page="4">4</button><button type="button" data-s1-part="page" data-page="5">5</button><button type="button" data-s1-part="page" data-page="6">6</button></span>
+  <span data-s1-part="arrow-group"><button type="button" data-s1-action="next" aria-label="다음 페이지"><span data-s1-part="icon" data-icon="chevron" aria-hidden="true"></span></button><button type="button" data-s1-action="last" aria-label="마지막 페이지"><span data-s1-part="icon" data-icon="edge" aria-hidden="true"></span></button></span>
+</nav></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>긴 목록·표를 페이지로 나눠 이동할 때.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>무한 스크롤 UX 에는 쓰지 않는다.</li><li>적은 항목은 페이지네이션 없이 한 번에 보여준다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="textarea">
+        <header class="component-head">
+          <div>
+            <h2>S1Textarea</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="textarea"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd>변형 없음</dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="textarea" data-break="pc">
+  <textarea id="profile-memo" data-s1-part="control" aria-label="설명" placeholder="여러 줄 내용을 입력하세요"></textarea>
+</div></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">mobile</div>
+            <div class="sample-stage" data-break="mobile"><div data-s1-component="textarea" data-break="mobile">
+  <textarea id="profile-memo-mobile" data-s1-part="control" aria-label="설명" placeholder="여러 줄 내용을 입력하세요"></textarea>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>여러 줄 텍스트를 입력받을 때(메모·설명 등).</li><li>Input 과 시각 동일 — --input-* 토큰을 공유한다.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>한 줄 입력은 Input.</li><li>선택형 입력은 Select·Dropdown.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="multi-toggle">
+        <header class="component-head">
+          <div>
+            <h2>S1MultiToggle</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="multi-toggle"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd><code>md</code> <code>sm</code></dd>
+            <dt>변형</dt><dd>변형 없음</dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="multi-toggle" data-size="md" role="radiogroup" aria-label="정렬 기준">
+  <button type="button" data-s1-part="cell" role="radio" aria-checked="true" data-value="left">왼쪽</button>
+  <button type="button" data-s1-part="cell" role="radio" aria-checked="false" data-value="center">가운데</button>
+  <button type="button" data-s1-part="cell" role="radio" aria-checked="false" data-value="right">오른쪽</button>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>선택지가 2~4개로 적고 서로 배타적일 때(정렬 기준·기간 범위 등).</li><li>선택 결과가 즉시 화면에 반영돼야 할 때.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>선택지가 5개 이상이거나 길이가 들쭉날쭉할 때 — Select Box 를 쓴다.</li><li>여러 개를 동시에 고를 수 있어야 할 때 — Checkbox·Filter Chip 을 쓴다.</li><li>on/off 하나만 있을 때 — Toggle 을 쓴다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="modal">
+        <header class="component-head">
+          <div>
+            <h2>S1Modal</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="modal"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd><code>single</code> <code>dual</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="modal" data-break="pc" data-footer="dual" hidden>
+  <div data-s1-part="overlay"></div>
+  <div data-s1-part="panel" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title" aria-describedby="confirm-modal-message" tabindex="-1">
+    <div data-s1-part="content">
+      <div data-s1-part="header">
+        <h2 data-s1-part="title" id="confirm-modal-title">제목 영역</h2>
+        <button type="button" data-s1-part="close" aria-label="닫기"></button>
+      </div>
+      <div data-s1-part="body">
+        <p data-s1-part="message" id="confirm-modal-message">변경한 내용이 저장되지 않고 사라집니다.
+정말 이 작업을 진행하시겠어요?</p>
+      </div>
+    </div>
+    <div data-s1-part="footer">
+      <button type="button" data-s1-component="button" data-variant="secondary" data-size="xxsm"><span data-s1-part="label">취소</span></button>
+      <button type="button" data-s1-component="button" data-variant="primary" data-size="xxsm"><span data-s1-part="label">확인</span></button>
+    </div>
+  </div>
+</div></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">mobile</div>
+            <div class="sample-stage" data-break="mobile"><div data-s1-component="modal" data-break="mobile" data-footer="dual" hidden>
+  <div data-s1-part="overlay"></div>
+  <div data-s1-part="panel" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title" aria-describedby="confirm-modal-message" tabindex="-1">
+    <div data-s1-part="content">
+      <div data-s1-part="header">
+        <h2 data-s1-part="title" id="confirm-modal-title">자동 로그인 설정</h2>
+      </div>
+      <div data-s1-part="body">
+        <p data-s1-part="message" id="confirm-modal-message">로그인되었어요.
+다음부터 자동으로 로그인할까요?</p>
+      </div>
+    </div>
+    <div data-s1-part="footer">
+      <button type="button" data-s1-component="button" data-variant="secondary" data-size="lg"><span data-s1-part="label">아니오</span></button>
+      <button type="button" data-s1-component="button" data-variant="primary" data-size="lg"><span data-s1-part="label">네</span></button>
+    </div>
+  </div>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>확인·알림 등 흐름을 멈추고 결정을 받을 때.</li><li>Single=알림/설명체 1버튼, Dual=확인/질문체 2버튼.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>비차단 알림은 토스트/인라인 메시지.</li><li>복잡한 폼·다단계는 별도 페이지·패널을 고려한다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="table">
+        <header class="component-head">
+          <div>
+            <h2>S1Table</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="table"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>PC <code>md</code> <code>sm</code> <code>xsm</code></dd>
+            <dt>변형</dt><dd>변형 없음</dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="table" data-size="md">
+  <table data-s1-part="table">
+    <thead>
+      <tr>
+        <th data-s1-part="header-cell" data-selection scope="col">
+          <div data-s1-component="checkbox">
+            <input type="checkbox" data-s1-part="control" aria-label="전체 선택">
+          </div>
+        </th>
+        <th data-s1-part="header-cell" scope="col">항목명</th>
+        <th data-s1-part="header-cell" scope="col">카테고리</th>
+        <th data-s1-part="header-cell" data-align="center" scope="col">수량</th>
+        <th data-s1-part="header-cell" data-align="center" scope="col">상태</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-s1-part="row">
+        <td data-s1-part="cell" data-selection>
+          <div data-s1-component="checkbox">
+            <input type="checkbox" data-s1-part="control" aria-label="항목 1 선택">
+          </div>
+        </td>
+        <td data-s1-part="cell">항목 1</td>
+        <td data-s1-part="cell">카테고리 A</td>
+        <td data-s1-part="cell" data-align="center">10</td>
+        <td data-s1-part="cell" data-align="center">활성</td>
+      </tr>
+      <tr data-s1-part="row">
+        <td data-s1-part="cell" data-selection>
+          <div data-s1-component="checkbox">
+            <input type="checkbox" data-s1-part="control" aria-label="항목 2 선택">
+          </div>
+        </td>
+        <td data-s1-part="cell">항목 2</td>
+        <td data-s1-part="cell">카테고리 B</td>
+        <td data-s1-part="cell" data-align="center">20</td>
+        <td data-s1-part="cell" data-align="center">검토중</td>
+      </tr>
+      <tr data-s1-part="row">
+        <td data-s1-part="cell" data-selection>
+          <div data-s1-component="checkbox">
+            <input type="checkbox" data-s1-part="control" aria-label="항목 3 선택">
+          </div>
+        </td>
+        <td data-s1-part="cell">항목 3</td>
+        <td data-s1-part="cell">카테고리 C</td>
+        <td data-s1-part="cell" data-align="center">30</td>
+        <td data-s1-part="cell" data-align="center">완료</td>
+      </tr>
+    </tbody>
+  </table>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>행·열의 정형 데이터를 보여줄 때.</li><li>정렬·선택(체크박스)·행 hover/selected 가 필요할 때.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>카드형 비정형 목록에는 쓰지 않는다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="mobile-bottom-nav">
+        <header class="component-head">
+          <div>
+            <h2>S1MobileBottomNav</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="mobile-bottom-nav"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd><code>home</code> <code>search</code> <code>notification</code> <code>settings</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><button type="button" data-s1-component="mobile-bottom-nav" data-icon="home" role="tab" aria-selected="true">
+    <span data-s1-part="icon" aria-hidden="true"></span>
+    <span data-s1-part="label">홈</span>
+  </button>
+<button type="button" data-s1-component="mobile-bottom-nav" data-icon="search" role="tab" aria-selected="false">
+    <span data-s1-part="icon" aria-hidden="true"></span>
+    <span data-s1-part="label">검색</span>
+  </button>
+<button type="button" data-s1-component="mobile-bottom-nav" data-icon="notification" role="tab" aria-selected="false">
+    <span data-s1-part="icon" aria-hidden="true"></span>
+    <span data-s1-part="label">알림</span>
+  </button>
+<button type="button" data-s1-component="mobile-bottom-nav" data-icon="settings" role="tab" aria-selected="false">
+    <span data-s1-part="icon" aria-hidden="true"></span>
+    <span data-s1-part="label">설정</span>
+  </button></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>모바일 화면에서 최상위 영역 간 이동을 항상 보이게 둘 때.</li><li>탭 수가 3~5개로 고정된 주요 메뉴 구조일 때.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>PC 화면 — PC 전역 이동은 GNB 를 쓴다.</li><li>항목이 자주 바뀌거나 6개 이상인 경우(더보기/드로어를 고려한다).</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="mobile-header">
+        <header class="component-head">
+          <div>
+            <h2>S1MobileHeader</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="mobile-header"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd><code>home-title</code> <code>home-title-subtitle</code> <code>standard-title</code> <code>standard-title-close</code> <code>standard-no-title</code> <code>standard-no-title-close</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><header data-s1-component="mobile-header" data-variant="standard-title">
+  <button type="button" data-s1-part="back" aria-label="이전">
+    <span data-s1-part="back-icon" aria-hidden="true"></span>
+  </button>
+  <h1 data-s1-part="title">스탠다드형 타이틀</h1>
+  <span data-s1-part="spacer" aria-hidden="true"></span>
+</header></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>모바일 앱 또는 모바일 웹 화면에서 상단 전역 크롬과 화면 이동 동작을 제공할 때.</li><li>회원가입처럼 앱바 안 제목을 비우고 본문 큰 제목을 사용하는 화면에는 Standard / No Title을 쓴다.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>PC 화면의 전역 내비게이션에는 GNB를 쓴다.</li><li>모바일 화면이 아닌 PC 전용 헤더에는 사용하지 않는다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="time-picker">
+        <header class="component-head">
+          <div>
+            <h2>S1TimePicker</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="time-picker"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>PC <code>xxsm</code> <code>xsm</code> <code>md</code> · 모바일 <code>md</code></dd>
+            <dt>변형</dt><dd>변형 없음</dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="time-picker" data-size="md" data-break="pc" data-type="24h" data-minute-step="1">
+  <button type="button" data-s1-part="trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="시간">
+    <span data-s1-part="value">시간 선택</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="panel" hidden>
+    <div data-s1-part="columns">
+      <div data-s1-part="column" data-column="hour" role="listbox" aria-label="시"></div>
+      <div data-s1-part="divider"></div>
+      <div data-s1-part="column" data-column="minute" role="listbox" aria-label="분"></div>
+    </div>
+    <div data-s1-part="footer">
+      <button type="button" data-s1-part="confirm" disabled>확인</button>
+    </div>
+  </div>
+</div>
+<div data-s1-component="time-picker" data-size="md" data-break="pc" data-type="12h" data-minute-step="5">
+  <button type="button" data-s1-part="trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="시간">
+    <span data-s1-part="value">시간 선택</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="panel" hidden>
+    <div data-s1-part="columns">
+      <div data-s1-part="column" data-column="ampm" role="listbox" aria-label="오전오후"></div>
+      <div data-s1-part="divider"></div>
+      <div data-s1-part="column" data-column="hour" role="listbox" aria-label="시"></div>
+      <div data-s1-part="divider"></div>
+      <div data-s1-part="column" data-column="minute" role="listbox" aria-label="분"></div>
+    </div>
+    <div data-s1-part="footer">
+      <button type="button" data-s1-part="confirm" disabled>확인</button>
+    </div>
+  </div>
+</div></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">mobile</div>
+            <div class="sample-stage" data-break="mobile"><div data-s1-component="time-picker" data-size="md" data-break="mobile" data-type="12h" data-minute-step="1" data-mobile-ui="wheel" data-mobile-content="time-only">
+  <button type="button" data-s1-part="trigger" aria-haspopup="dialog" aria-expanded="false" aria-label="시간">
+    <span data-s1-part="value">시간 선택</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="sheet" hidden>
+    <div data-s1-part="sheet-backdrop"></div>
+    <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="time-picker-wheel-title-time-only" tabindex="-1">
+      <div data-s1-part="sheet-header">
+        <span data-s1-part="sheet-title" id="time-picker-wheel-title-time-only">시간 선택</span>
+        <button type="button" data-s1-part="sheet-close" aria-label="닫기"></button>
+      </div>
+      <div data-s1-part="wheel">
+        <div data-s1-part="wheel-col" data-column="ampm" role="listbox" aria-label="오전오후"></div>
+        <div data-s1-part="wheel-col" data-column="hour" role="listbox" aria-label="시"></div>
+        <div data-s1-part="wheel-col" data-column="colon" aria-hidden="true"></div>
+        <div data-s1-part="wheel-col" data-column="minute" role="listbox" aria-label="분"></div>
+        <div data-s1-part="fade-top" aria-hidden="true"></div>
+        <div data-s1-part="fade-bottom" aria-hidden="true"></div>
+      </div>
+      <div data-s1-part="sheet-footer">
+        <button type="button" data-s1-part="apply" data-s1-component="button" data-variant="primary" data-size="lg">
+          <span data-s1-part="label">적용</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div data-s1-component="time-picker" data-size="md" data-break="mobile" data-type="12h" data-minute-step="1" data-mobile-ui="wheel" data-mobile-content="date-time">
+  <button type="button" data-s1-part="trigger" aria-haspopup="dialog" aria-expanded="false" aria-label="시작 일시">
+    <span data-s1-part="value">시작 일시 선택</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="sheet" hidden>
+    <div data-s1-part="sheet-backdrop"></div>
+    <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="time-picker-wheel-title-date-time" tabindex="-1">
+      <div data-s1-part="sheet-header">
+        <span data-s1-part="sheet-title" id="time-picker-wheel-title-date-time">시작 일시</span>
+        <button type="button" data-s1-part="sheet-close" aria-label="닫기"></button>
+      </div>
+      <div data-s1-part="tabs" data-s1-component="tab" data-size="sm" data-break="mobile" role="tablist" aria-label="날짜·시간 선택">
+        <button type="button" data-s1-part="tab" role="tab" aria-selected="false" data-value="date">날짜</button>
+        <button type="button" data-s1-part="tab" role="tab" aria-selected="true" data-value="time">시간</button>
+      </div>
+      <div data-s1-part="date-panel" hidden>
+        <p data-s1-part="date-panel-note">날짜 선택 화면은 Date Picker 코어가 별도로 제공합니다(이 컴포넌트 범위 밖 — river 지시 "date-picker 를 끌어들이지 말고 탭 전환만 구현").</p>
+      </div>
+      <div data-s1-part="wheel">
+        <div data-s1-part="wheel-col" data-column="ampm" role="listbox" aria-label="오전오후"></div>
+        <div data-s1-part="wheel-col" data-column="hour" role="listbox" aria-label="시"></div>
+        <div data-s1-part="wheel-col" data-column="colon" aria-hidden="true"></div>
+        <div data-s1-part="wheel-col" data-column="minute" role="listbox" aria-label="분"></div>
+        <div data-s1-part="fade-top" aria-hidden="true"></div>
+        <div data-s1-part="fade-bottom" aria-hidden="true"></div>
+      </div>
+      <div data-s1-part="sheet-footer">
+        <button type="button" data-s1-part="apply" data-s1-component="button" data-variant="primary" data-size="lg">
+          <span data-s1-part="label">적용</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>시간(시/분)을 드롭다운 목록에서 고를 때.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>날짜는 DatePicker.</li><li>자유 텍스트만 필요하면 Input.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="date-picker">
+        <header class="component-head">
+          <div>
+            <h2>S1DatePicker</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="date-picker"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>PC <code>xxsm</code> <code>xsm</code> <code>md</code> · 모바일 <code>md</code></dd>
+            <dt>변형</dt><dd><code>single</code> <code>range</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="date-picker" data-size="md" data-break="pc" data-mode="single">
+  <button type="button" data-s1-part="trigger" aria-haspopup="dialog" aria-expanded="false">
+    <span data-s1-part="value">YY.MM.DD</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="panel" role="dialog" hidden>
+    <div data-s1-part="calendar"></div>
+  </div>
+</div>
+<div data-s1-component="date-picker" data-size="md" data-break="pc" data-mode="range">
+  <button type="button" data-s1-part="trigger" aria-haspopup="dialog" aria-expanded="false">
+    <span data-s1-part="value">YY.MM.DD</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="panel" role="dialog" hidden>
+    <div data-s1-part="calendar"></div>
+  </div>
+</div>
+<div data-s1-component="date-picker" data-size="xsm" data-break="pc" data-mode="single">
+  <button type="button" data-s1-part="trigger" aria-haspopup="dialog" aria-expanded="false">
+    <span data-s1-part="value">YY.MM.DD</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="panel" role="dialog" hidden>
+    <div data-s1-part="calendar"></div>
+  </div>
+</div></div>
+          </div>
+          <div class="sample">
+            <div class="sample-label">mobile</div>
+            <div class="sample-stage" data-break="mobile"><div data-s1-component="date-picker" data-size="md" data-break="mobile" data-mode="single">
+  <button type="button" data-s1-part="trigger" aria-haspopup="dialog" aria-expanded="false">
+    <span data-s1-part="value">YY.MM.DD</span>
+    <span data-s1-part="icon" aria-hidden="true"></span>
+  </button>
+  <div data-s1-part="sheet" hidden>
+    <div data-s1-part="sheet-backdrop"></div>
+    <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="date-picker-mobile-sheet-title" tabindex="-1">
+      <div data-s1-part="sheet-header">
+        <span data-s1-part="sheet-title" id="date-picker-mobile-sheet-title">날짜 선택</span>
+        <button type="button" data-s1-part="sheet-close" aria-label="닫기"></button>
+      </div>
+      <div data-s1-part="calendar-wrap">
+        <div data-s1-part="calendar"></div>
+      </div>
+      <div data-s1-part="sheet-footer">
+        <button type="button" data-s1-part="apply" data-s1-component="button" data-variant="primary" data-size="lg">
+          <span data-s1-part="label">적용</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>날짜(단일/기간)를 고를 때. 트리거는 Base Input 필드.</li><li>PC 는 팝오버 캘린더, Mobile 은 바텀시트로 표출.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>시간만 고를 때는 TimePicker.</li><li>자유 텍스트 날짜 입력만 필요하면 Input.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="assist-button">
+        <header class="component-head">
+          <div>
+            <h2>S1AssistButton</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="assist-button"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd>변형 없음</dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><button type="button" data-s1-component="assist-button">
+  <span data-s1-part="label">보조버튼</span>
+</button></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>본문 옆이나 목록 행 안처럼 좁은 자리에서, 눈에 덜 띄는 보조 동작 하나를 둘 때.</li><li>코어 Button 의 4크기(MD·XSM·XXSM·LG) 어디에도 맞지 않는, 원본에 정의된 고정 32px 자리.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>화면의 주 액션(저장·확인 등)에는 코어 Button 을 쓴다.</li><li>배경·테두리가 없는 링크형 액션은 Text Button 을 쓴다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="text-button">
+        <header class="component-head">
+          <div>
+            <h2>S1TextButton</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="text-button"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd><code>primary</code> <code>secondary</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><button type="button" data-s1-component="text-button" data-variant="primary">
+  <span data-s1-part="label">텍스트버튼</span>
+</button></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>링크에 가까운 가벼운 보조 동작(더보기·자세히 등)을 텍스트만으로 표시할 때.</li><li>Primary 는 강조가 필요한 텍스트 액션, Secondary 는 덜 중요한 텍스트 액션.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>배경·테두리가 있는 버튼이 필요하면 코어 Button 또는 Assist Button 을 쓴다.</li><li>페이지 이동 전용 링크는 &lt;a&gt; 를 우선 고려한다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="modal-content">
+        <header class="component-head">
+          <div>
+            <h2>S1ModalContent</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="modal-content"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>PC <code>md</code> <code>lg</code> <code>xl</code></dd>
+            <dt>변형</dt><dd><code>single</code> <code>dual</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="modal-content" data-size="md" data-footer="dual" hidden>
+  <div data-s1-part="overlay"></div>
+  <div data-s1-part="panel" role="dialog" aria-modal="true" aria-labelledby="content-modal-title" tabindex="-1">
+    <div data-s1-part="header">
+      <h2 data-s1-part="title" id="content-modal-title">제목 영역</h2>
+      <button type="button" data-s1-part="close" aria-label="닫기"></button>
+    </div>
+    <div data-s1-part="content-area">
+      <div data-s1-part="content">
+        <span data-s1-part="content-label">컨텐츠 영역</span>
+      </div>
+    </div>
+    <div data-s1-part="footer">
+      <button type="button" data-s1-component="button" data-variant="secondary" data-size="xxsm"><span data-s1-part="label">취소</span></button>
+      <button type="button" data-s1-component="button" data-variant="primary" data-size="xxsm"><span data-s1-part="label">확인</span></button>
+    </div>
+  </div>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>입력창·표·이미지처럼 확인 계열(짧은 텍스트)보다 큰 본문이 필요할 때.</li><li>Single=알림/설명체 1버튼, Dual=확인/질문체 2버튼(확인 계열과 같은 규칙).</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>짧은 확인 문구 하나면 확인 계열 Modal 을 쓴다.</li><li>페이지 전체를 차지하는 다단계 폼은 별도 페이지를 고려한다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+  </div>
+  <script type="module">
+    import { autoInit } from "./s1-ui.auto.js";
+    autoInit();
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+/* Multi Toggle — 정본 buildMultiToggleElement(:5376) · buildMultiToggle(:5513) 기준.
+   셀 색은 자체 토큰 없이 color/button/* 을 그대로 쓴다(선택=primary, 비선택=secondary, 비활성=disabled).
+   위치(모서리·인접 보더)는 :first-child/:last-child + 선택 칸 기준 인접 규칙으로 구현한다(2-canon-readiness.md C). */
+[data-s1-component="multi-toggle"] {
+  box-sizing: border-box;
+  display: inline-flex;
+}
+
+[data-s1-component="multi-toggle"] [data-s1-part="cell"] {
+  align-items: center;
+  appearance: none;
+  background: var(--color-button-bg-secondary--default);
+  border: var(--border-width-1) solid var(--color-button-border-secondary--default);
+  box-sizing: border-box;
+  color: var(--color-button-label-secondary--default);
+  cursor: pointer;
+  display: inline-flex;
+  /* 선택 위치와 무관하게 각 칸의 외곽 폭을 고정한다. */
+  flex: 0 0 auto;
+  font-family: "Pretendard", sans-serif;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+[data-s1-component="multi-toggle"][data-size="md"] [data-s1-part="cell"] {
+  height: var(--sizing-44);
+  min-width: var(--sizing-64);
+  padding-inline: var(--spacing-12);
+}
+
+[data-s1-component="multi-toggle"][data-size="sm"] [data-s1-part="cell"] {
+  height: var(--sizing-34);
+  min-width: var(--sizing-56);
+  padding-inline: var(--spacing-8);
+}
+
+/* 첫/마지막 칸만 바깥 모서리를 둥글린다(정본 first·last cornerRadius). */
+[data-s1-component="multi-toggle"] [data-s1-part="cell"]:first-child {
+  border-bottom-left-radius: var(--radius-control-sm);
+  border-top-left-radius: var(--radius-control-sm);
+}
+
+[data-s1-component="multi-toggle"] [data-s1-part="cell"]:last-child {
+  border-bottom-right-radius: var(--radius-control-sm);
+  border-top-right-radius: var(--radius-control-sm);
+}
+
+/* 칸 사이 이중선은 음수 여백으로 겹친다. border를 없애면 오른쪽 선택 시
+   왼쪽 칸의 실제 폭이 1px 줄어드는 문제가 생긴다. */
+[data-s1-component="multi-toggle"] [data-s1-part="cell"]:not(:first-child) {
+  margin-left: calc(-1 * var(--border-width-1));
+}
+
+@media (hover: hover) {
+  [data-s1-component="multi-toggle"] [data-s1-part="cell"]:hover:not([aria-checked="true"]):not([aria-disabled="true"]) {
+    background: var(--color-button-bg-secondary--hover);
+    border-color: var(--color-button-border-secondary--hover);
+    color: var(--color-button-label-secondary--hover);
+  }
+}
+
+[data-s1-component="multi-toggle"] [data-s1-part="cell"][aria-checked="true"] {
+  background: var(--color-button-bg-primary--default);
+  border-color: var(--color-button-border-primary--default);
+  color: var(--color-button-label-primary--default);
+  position: relative;
+  z-index: 1;
+}
+
+[data-s1-component="multi-toggle"] [data-s1-part="cell"][aria-disabled="true"] {
+  background: var(--color-button-bg-disabled);
+  border-color: var(--color-button-border-disabled);
+  color: var(--color-button-label-disabled);
+  cursor: not-allowed;
+}

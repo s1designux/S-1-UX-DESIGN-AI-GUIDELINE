@@ -1,0 +1,50 @@
+/* Assist Button — 정본 buildAssistButtonSet(build-components.ts:637) 기준.
+   크기 축 없음(h32 하나). 상태는 State=Default·Hover·Pressed·Disabled 4가지뿐이며
+   Pressed = Hover(코어 Button 과 같은 규칙)이라 CSS는 :hover와 :active를 합쳐 표현한다.
+   배경·기본 테두리는 원본처럼 Button Secondary 토큰을 그대로 빌려 쓴다(전용 토큰 아님). */
+[data-s1-component="assist-button"] {
+  align-items: center;
+  appearance: none;
+  background: var(--color-button-bg-secondary--default);
+  border-color: var(--color-button-border-secondary--default);
+  border-style: solid;
+  border-width: var(--border-width-1);
+  border-radius: var(--radius-4);
+  box-sizing: border-box;
+  color: var(--color-button-label-assist--default);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Pretendard", sans-serif;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  height: var(--sizing-32);
+  justify-content: center;
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+  margin: 0;
+  min-width: var(--sizing-60);
+  padding-inline: var(--spacing-12);
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+[data-s1-component="assist-button"] [data-s1-part="label"] {
+  pointer-events: none;
+  text-align: center;
+}
+
+/* Hover·Pressed = 같은 면(코어 Button 정본 규칙) — 배경은 secondary--hover, 테두리·글자는 assist 전용 토큰. */
+[data-s1-component="assist-button"]:is(:hover, :active):not(:disabled) {
+  background: var(--color-button-bg-secondary--hover);
+  border-color: var(--color-button-border-assist--hover);
+  color: var(--color-button-label-assist--hover);
+}
+
+[data-s1-component="assist-button"]:disabled {
+  background: var(--color-button-bg-disabled);
+  border-color: var(--color-button-border-disabled);
+  color: var(--color-button-label-disabled);
+  cursor: not-allowed;
+}

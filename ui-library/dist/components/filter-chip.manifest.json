@@ -1,0 +1,228 @@
+{
+  "id": "filter-chip",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "78347b26d8750c76b79608249d6b04f33a5d57761908d126063dac26ac6f03b2",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/filter-chip.json"
+  ],
+  "rootSelector": "[data-s1-component=\"filter-chip\"]",
+  "variants": [
+    "line",
+    "solid"
+  ],
+  "sizes": [
+    "sm",
+    "md"
+  ],
+  "breaks": {
+    "pc": [
+      "sm",
+      "md"
+    ],
+    "mobile": [
+      "md"
+    ]
+  },
+  "titles": [
+    "on",
+    "off"
+  ],
+  "geometry": {
+    "sm-pc": {
+      "height": "--sizing-28",
+      "fontSize": "--font-size-14",
+      "paddingLeft": "--spacing-12",
+      "paddingRight": "--spacing-6"
+    },
+    "md-pc": {
+      "height": "--sizing-34",
+      "fontSize": "--font-size-14",
+      "paddingLeft": "--spacing-16",
+      "paddingRight": "--spacing-8"
+    },
+    "md-mobile": {
+      "height": "--sizing-30",
+      "fontSize": "--font-size-14",
+      "paddingLeft": "--spacing-12",
+      "paddingRight": "--spacing-6"
+    },
+    "itemSpacing": "--spacing-4",
+    "radius": "--radius-full",
+    "border": "--border-width-1",
+    "icon": "--sizing-20 (fixed, fcIconPx 미사용, build-components.ts:2599)",
+    "source": "build-components.ts buildFilterChip 2195-2330"
+  },
+  "states": {
+    "default": "native; unopened, no confirmed value",
+    "hover": "@media (hover: hover) [data-s1-part=\"trigger\"]:hover:not(:disabled):not([aria-expanded=\"true\"])",
+    "selected": "[data-s1-part=\"trigger\"][aria-expanded=\"true\"] (= 열림)",
+    "complete": "[data-s1-part=\"trigger\"][data-complete=\"true\"] (documented data-state; 시각은 Default 와 동일 — 정본이 같은 슬롯을 쓴다)",
+    "disabled": "[data-s1-part=\"trigger\"]:disabled"
+  },
+  "canonicalStateMap": {
+    "Default": "default",
+    "Hover": "hover",
+    "Selected": "selected",
+    "Complete": "complete",
+    "Disabled": "disabled"
+  },
+  "notInCanon": {
+    "multiSelect": "정본에 다중 선택 Filter Chip 이 없다. 이번 배포에서 만들지 않았다.",
+    "errorAxis": "정본에 Error 상태가 없다.",
+    "panelSizeSameAsSelect": "패널 사이즈는 Select 와 다르게 매핑된다(SM→xsm·MD→xsm, river 결정 2026-09-01). Select 의 매핑을 재사용하지 않았다(build-components.ts:2602-2626)."
+  },
+  "parts": [
+    "trigger",
+    "title",
+    "value",
+    "icon",
+    "panel"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=filter-chip]",
+    "requiredAttributes": [
+      "data-variant",
+      "data-size",
+      "data-break",
+      "data-title"
+    ],
+    "requiredParts": [
+      "trigger",
+      "value",
+      "icon",
+      "panel"
+    ],
+    "optionalParts": [
+      "title"
+    ],
+    "trigger": "button[type=button][data-s1-part=trigger]",
+    "panel": "div[data-s1-part=panel] 안에 dropdown 코어 인스턴스(div[data-s1-component=dropdown][data-type=text])를 조립한다. 패널 사이즈는 SM→xsm·MD→xsm 로 고정 매핑한다(자동 계산하지 않고 마크업에 그대로 선언, river 결정 2026-09-01).",
+    "relations": [
+      "trigger aria-haspopup=listbox",
+      "trigger aria-expanded 는 panel 표시와 동기화",
+      "trigger accessible name = title+value 결합(예: '정렬, 최신순')",
+      "Esc 키로 패널을 닫는다(registry filter-chip.json a11y 요구) — 트리거뿐 아니라 root(트리거+패널) 전체에서 받는다(open() 이 포커스를 패널로 옮기므로 트리거 전용이면 열린 직후 Esc 가 안 먹는다)"
+    ],
+    "grouping": "코어는 칩 하나와 패널 하나만 소유한다. 여러 필터 칩을 나열할 때 사이 간격은 패턴이 담당한다.",
+    "source": "components/filter-chip/filter-chip.example.html",
+    "distribution": "examples/filter-chip.html",
+    "breakExamples": {
+      "pc": {
+        "source": "components/filter-chip/filter-chip.example.html",
+        "distribution": "examples/filter-chip.html"
+      },
+      "mobile": {
+        "source": "components/filter-chip/filter-chip.mobile.example.html",
+        "distribution": "examples/filter-chip.mobile.html"
+      }
+    }
+  },
+  "cssContract": {
+    "entry": "components/filter-chip.css",
+    "rootScope": "[data-s1-component=filter-chip]",
+    "nativeStates": [
+      ":hover",
+      ":disabled"
+    ],
+    "ariaStates": [
+      "[aria-expanded=\"true\"]"
+    ],
+    "documentedDataStates": [
+      "[data-complete=\"true\"]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다. dropdown(자식 코어)의 내부 CSS를 override하지 않는다."
+  },
+  "contentSlots": {
+    "title": "optional; data-title=on 일 때만 표시",
+    "value": "required; 현재 값 문구"
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css",
+      "components/dropdown.css",
+      "components/checkbox.css"
+    ],
+    "coreComponents": [
+      "dropdown"
+    ],
+    "coreComponentsNote": "Selected(열림) 상태의 패널은 dropdown 코어(Type=Text) 인스턴스를 그대로 조립한다(build-components.ts 2264-2296). filter-chip 을 개별 설치할 때 dropdown 의 CSS·JS 도 함께 로드해야 한다."
+  },
+  "icons": [
+    {
+      "id": "chevron",
+      "sourceKey": "e1ac97aa82f4e52f257ac1c0ea77fd09d0e5f581",
+      "asset": "assets/icons/chevron.svg",
+      "use": "trigger open/closed indicator",
+      "accessibleNamePolicy": "decorative; aria-expanded on the trigger carries the state"
+    }
+  ],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "button[aria-haspopup=listbox][aria-expanded] driving a role=listbox panel (registry filter-chip.json a11y 확정)"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "title+value 결합(예: '정렬, 최신순') — aria-label 로 런타임이 동기화"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "trigger: Enter/Space toggles; root(트리거+패널) 전체: Escape 로 닫고 트리거로 포커스 복귀; panel: dropdown 모듈의 ArrowUp/Down·Home/End·Enter/Space"
+    },
+    "focus": {
+      "status": "required",
+      "value": "열릴 때 패널의 활성 옵션으로 포커스 이동, 닫힐 때 트리거로 복귀"
+    },
+    "ariaStateSync": {
+      "status": "required",
+      "value": "런타임이 aria-expanded·data-complete·aria-label 을 갱신하고 s1:filter-chip:open·close·change 를 낸다"
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 Error 상태가 없다."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "정본이 모션을 정의하지 않는다."
+    }
+  },
+  "jsRequired": true,
+  "javascript": {
+    "runtime": "components/filter-chip.js",
+    "reason": "열림/닫힘·aria-expanded·data-complete 전환, 접근 이름 동기화, Esc·바깥 클릭 닫기, 포커스 이동/복귀를 런타임이 담당한다.",
+    "options": {},
+    "events": [
+      "s1:filter-chip:change",
+      "s1:filter-chip:open",
+      "s1:filter-chip:close"
+    ],
+    "eventDetail": {
+      "change": "{ value, option }",
+      "open": "{}",
+      "close": "{}"
+    },
+    "methods": [
+      "openPanel()",
+      "closePanel()"
+    ],
+    "lifecycle": [
+      "init(root)",
+      "destroy(root)"
+    ],
+    "controlMode": "uncontrolled",
+    "singleSelectNote": "filter-chip 는 단일 선택이라 조립한 dropdown 이 Type=Text 로 고정된다(정본이 Select Box·Filter Chip 에 항상 Type=Text 패널만 붙인다). 런타임은 s1:dropdown:change 의 detail.type이 \"text\" 일 때만 반응하고 checkbox 유형 변화(전체 선택 포함)는 의도적으로 무시한다 — filter-chip 자신이 체크박스 유형 패널을 조립하지 않기 때문이며 방어적 무시가 아니다.",
+    "disableCloseContract": "registry/components/component-behavior.pc.json 의 \"Filter Chip\" 계약(on: disable → close and block trigger clicks, status=verified)을 그대로 구현한다. 클릭 차단은 open() 의 disabled 가드, 자동 닫힘은 trigger 의 disabled 속성 변화를 관찰하는 MutationObserver 가 담당한다(인스턴스마다 자기 trigger 하나만 관찰 — 누적 없음, destroy() 가 disconnect)."
+  },
+  "sourceFingerprint": "277cc7ab7e3ce28f1214482181bcf94f79e5a043f0475f08f6982a6b9759751f"
+}

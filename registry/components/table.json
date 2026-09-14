@@ -1,0 +1,324 @@
+{
+  "_meta": {
+    "id": "table",
+    "name": "Table",
+    "category": "table",
+    "updatedAt": "2026-09-02",
+    "version": "0.4.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "stable",
+    "figmaStatus": "confirmed",
+    "harnessStatus": "implemented",
+    "description": "데이터 그리드/테이블 컴포넌트. 헤더(정렬 아이콘·체크박스 포함), 행 hover·selected, 셀 스타일 포함.",
+    "notes": [
+      "정렬 아이콘: combobox_arrow SVG, 18×18px (icon=on 헤더 variant).",
+      "Checkbox: 선택 컬럼은 s1-checkbox 코어 컴포넌트 재사용. Table에서 별도 체크박스 구현 금지.",
+      "크기 사다리 md(44/14) · sm(38/14) · xsm(34/12) — river 승인 2026-09-02. 구 정본의 sm 13px 표기는 텍스트 스타일에 13 이 없어 늘 14 로 치환돼 온 죽은 값이라 정정했다."
+    ]
+  },
+  "usage": {
+    "whenToUse": [
+      "행·열의 정형 데이터를 보여줄 때.",
+      "정렬·선택(체크박스)·행 hover/selected 가 필요할 때."
+    ],
+    "whenNotToUse": [
+      "카드형 비정형 목록에는 쓰지 않는다."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "헤더",
+      "role": "열 제목 + 정렬 아이콘 + 전체선택 체크박스."
+    },
+    {
+      "part": "행(row)",
+      "role": "default·hover·selected."
+    },
+    {
+      "part": "선택 셀",
+      "role": "코어 s1-checkbox 재사용."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "선택 컬럼은 코어 s1-checkbox 를 재사용한다.",
+      "정렬 가능한 헤더에는 정렬 방향 아이콘을 두어 정렬 상태를 표시한다."
+    ],
+    "dont": [
+      "Table 전용 체크박스를 새로 만들지 않는다(코어 재사용).",
+      "행 hover/selected 색을 raw 로 칠하지 않는다(table-cell 토큰)."
+    ]
+  },
+  "a11y": [
+    "열 제목은 th·scope=\"col\" 로 표시해 화면낭독기가 값과 짝지어 읽게 한다.",
+    "전체 선택 체크박스에는 '전체 선택', 각 행 체크박스에는 그 행을 가리키는 이름을 준다.",
+    "선택은 native checkbox 의 Tab 이동·Space 조작을 그대로 쓴다. 방향키 격자 이동은 채택하지 않는다(river 결정 2026-09-02).",
+    "정렬 기능이 범위 밖이라 aria-sort 는 쓰지 않는다(river 결정 2026-09-02)."
+  ],
+  "dependencies": {
+    "coreComponents": [
+      {
+        "id": "checkbox",
+        "usage": [
+          "header-selection",
+          "row-selection"
+        ],
+        "sourceOfTruth": "registry/components/checkbox.json",
+        "tableResponsibility": [
+          "cell-placement",
+          "alignment",
+          "selection-state-connection"
+        ],
+        "notAllowed": [
+          "redefine-checkbox-visual-style",
+          "create-table-specific-checkbox-class",
+          "override-checkbox-tokens"
+        ],
+        "notes": [
+          "indeterminate: 토큰(--checkbox-indeterminate-bg) + CSS(.is-indeterminate) 코어에 추가됨(2026-05-20).",
+          "header checkbox: 전체/일부/미선택 → is-checked/is-indeterminate/default 상태로 연동."
+        ]
+      }
+    ]
+  },
+  "variants": {
+    "header": {
+      "size": [
+        "md",
+        "sm",
+        "xsm"
+      ],
+      "position": [
+        "middle",
+        "last"
+      ],
+      "align": [
+        "center",
+        "left"
+      ],
+      "state": [
+        "default",
+        "hover"
+      ],
+      "icon": [
+        "on",
+        "off"
+      ],
+      "checkBox": [
+        "on",
+        "off"
+      ]
+    },
+    "body": {
+      "size": [
+        "md",
+        "sm",
+        "xsm"
+      ],
+      "position": [
+        "middle",
+        "last"
+      ],
+      "align": [
+        "center",
+        "left"
+      ],
+      "state": [
+        "default",
+        "hover",
+        "selected"
+      ]
+    }
+  },
+  "sizing": {
+    "rowHeightMd": "var(--sizing-44)",
+    "rowHeightSm": "var(--sizing-38)",
+    "paddingInlineStart": "var(--spacing-padding-inline-xs)",
+    "paddingInlineEnd": "var(--spacing-padding-inline-sm)",
+    "selectionCellWidth": "48px",
+    "headerFont": "Pretendard Medium 14px",
+    "bodyFont": "Pretendard Regular 14px",
+    "rowHeightXsm": "var(--sizing-34)",
+    "fontSizeMd": "var(--font-size-14)",
+    "fontSizeSm": "var(--font-size-14)",
+    "fontSizeXsm": "var(--font-size-12)"
+  },
+  "states": [
+    "default",
+    "hover",
+    "selected"
+  ],
+  "tokens": [
+    {
+      "name": "--table-header-bg",
+      "value": "var(--color-bg-default)",
+      "resolvedLight": "#FAFAFA",
+      "figmaVariable": "surface/neutral/bg/base-alt",
+      "status": "stable",
+      "description": "헤더 셀 기본 배경"
+    },
+    {
+      "name": "--table-header-text",
+      "value": "var(--color-text-secondary)",
+      "resolvedLight": "#353535",
+      "figmaVariable": "color/text/title/secondary",
+      "status": "stable",
+      "description": "헤더 셀 텍스트 색상"
+    },
+    {
+      "name": "--table-border-light",
+      "value": "var(--color-border-subtle)",
+      "resolvedLight": "#E9E9E9",
+      "figmaVariable": "color/table/border/default",
+      "status": "stable",
+      "description": "행 구분선 — 헤더·바디 셀 공통 참조"
+    },
+    {
+      "name": "--table-border-strong",
+      "value": "var(--color-border-emphasis)",
+      "resolvedLight": "#353535",
+      "figmaVariable": "color/table/border/strong",
+      "status": "stable",
+      "description": "테이블 외곽 강조 테두리 — wrap 상단 2px + 하단 1px"
+    },
+    {
+      "name": "--table-header-border",
+      "value": "var(--table-border-light)",
+      "resolvedLight": "#E9E9E9",
+      "figmaVariable": "color/table/border/default",
+      "status": "stable",
+      "description": "헤더 셀 하단 구분선"
+    },
+    {
+      "name": "--table-row-default-bg",
+      "value": "var(--color-table-cell-default)",
+      "resolvedLight": "#FFFFFF",
+      "figmaVariable": "color/table/cell/default",
+      "status": "stable",
+      "description": "행 기본 배경 — Light: base/white (#FFFFFF) / Dark: gray-dark-100 (#1C1D23)"
+    },
+    {
+      "name": "--table-row-hover-bg",
+      "value": "var(--color-table-cell-hover)",
+      "resolvedLight": "#F5F5F5",
+      "figmaVariable": "color/table/cell/hover",
+      "status": "stable",
+      "description": "행 hover 배경 — Light: gray-50 (#F5F5F5) / Dark: gray-dark-200 (#24252C)"
+    },
+    {
+      "name": "--table-row-selected-bg",
+      "value": "var(--color-table-cell-selected)",
+      "resolvedLight": "#E2F1FF",
+      "figmaVariable": "color/table/cell/selected",
+      "status": "stable",
+      "description": "행 선택 배경 — Light: blue-50 (#E2F1FF) / Dark: blue-dark-100 (#112B55). hover(gray-50)와 시각 구분 확정(HD-Table-2)"
+    },
+    {
+      "name": "--table-cell-border",
+      "value": "var(--table-border-light)",
+      "resolvedLight": "#E9E9E9",
+      "figmaVariable": "color/table/border/default",
+      "status": "stable",
+      "description": "바디 셀 하단 구분선"
+    },
+    {
+      "name": "--table-cell-text",
+      "value": "var(--color-text-body-primary)",
+      "resolvedLight": "#202020",
+      "figmaVariable": "color/text/body/primary",
+      "status": "stable",
+      "description": "바디 셀 본문 텍스트 색상"
+    }
+  ],
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "6515:4142",
+    "nodes": {
+      "pcTableHeader": "540:4940",
+      "pcTableBody": "540:4851",
+      "fullExample": "540:5241"
+    },
+    "propertyMap": {
+      "size": "size",
+      "position": "position",
+      "align": "align",
+      "state": "state",
+      "icon": "icon",
+      "checkBox": "check box"
+    }
+  },
+  "guide": {
+    "sampleColumns": [
+      "선택",
+      "이름",
+      "상태",
+      "담당자",
+      "수정일"
+    ],
+    "sampleRows": [
+      [
+        "홍길동",
+        "진행 중",
+        "김담당",
+        "08.11"
+      ],
+      [
+        "김영희",
+        "완료",
+        "이담당",
+        "08.10"
+      ],
+      [
+        "박민수",
+        "대기",
+        "최담당",
+        "08.09"
+      ],
+      [
+        "정수진",
+        "진행 중",
+        "한담당",
+        "08.08"
+      ],
+      [
+        "이도윤",
+        "검토 중",
+        "윤담당",
+        "08.07"
+      ],
+      [
+        "최서연",
+        "완료",
+        "오담당",
+        "08.06"
+      ],
+      [
+        "강민준",
+        "대기",
+        "임담당",
+        "08.05"
+      ],
+      [
+        "윤지우",
+        "진행 중",
+        "서담당",
+        "08.04"
+      ]
+    ],
+    "interactionPattern": "sortable-selectable-grid",
+    "webTag": "table",
+    "dependencies": [
+      "Table Cell",
+      "Checkbox",
+      "Pagination",
+      "Select Box"
+    ]
+  },
+  "governance": {
+    "owner": "Design System Team",
+    "deprecated": false,
+    "replacement": null
+  }
+}

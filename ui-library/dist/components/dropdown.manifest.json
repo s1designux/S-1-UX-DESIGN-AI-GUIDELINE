@@ -1,0 +1,200 @@
+{
+  "id": "dropdown",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "aa7d64251cf6a5520074ea41af73a275f7263625744ed5b74956ae1c7f9237a8",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/dropdown.json"
+  ],
+  "rootSelector": "[data-s1-component=\"dropdown\"]",
+  "variants": [
+    "text",
+    "checkbox"
+  ],
+  "sizes": [
+    "xxsm",
+    "xsm",
+    "md"
+  ],
+  "geometry": {
+    "panel": {
+      "paddingBlock": "--spacing-4",
+      "radius": "--radius-4",
+      "border": "--border-width-1",
+      "shadow": "--shadow-dropdown",
+      "minWidth": "100px (literal, not a token) — 목록 최소 폭(river 최종 확정 2026-09-07). 2026-09-08 river 결정으로 Figma 정본 build-components.ts 도 패널·옵션 행을 DD_MIN_W=100 으로 만든다(셀렉트 트리거만 140 유지).",
+      "maxWidth": "없음 — 상한 320px 은 폐기됐다(river 확정 2026-09-07). 폭을 넘는 옵션 글자는 줄바꿈이 아니라 말줄임(…) 으로 처리한다.",
+      "widthGrowth": "소비자(select.css·filter-chip.css)가 width:100% 로 트리거 폭을 물려주고, min-width:100px 이 하한을 잡는다 — 트리거가 100 미만이면 목록은 100px, 100 이상이면 목록 = 트리거 폭(규칙 ②③). dropdown 코어 단독 사용 시에만 width:max-content.",
+      "source": "build-components.ts buildDropdown(패널) · buildDropdownList(옵션 행) — 폭 상수 DD_MIN_W"
+    },
+    "option": {
+      "xxsm": {
+        "minHeight": "--sizing-28 (한 줄일 때의 높이 — 정본 그대로. 줄바꿈되면 이 값을 바닥으로 행이 늘어난다, river 결정 2026-09-01)",
+        "fontSize": "--font-size-12"
+      },
+      "xsm": {
+        "minHeight": "--sizing-34 (한 줄일 때의 높이 — 정본 그대로. 줄바꿈되면 이 값을 바닥으로 행이 늘어난다, river 결정 2026-09-01)",
+        "fontSize": "--font-size-14"
+      },
+      "md": {
+        "minHeight": "--sizing-44 (한 줄일 때의 높이 — 정본 그대로. 줄바꿈되면 이 값을 바닥으로 행이 늘어난다, river 결정 2026-09-01)",
+        "fontSize": "--font-size-14"
+      },
+      "paddingInline": "--spacing-12",
+      "paddingBlock": "--spacing-4 (줄바꿈 시 세로 여백이 무너지지 않도록 river 결정 2026-09-01 로 추가 — 한 줄일 때는 sizing 토큰 min-height 가 더 커서 시각적으로 기존과 동일)",
+      "checkboxGap": "--spacing-8",
+      "source": "build-components.ts buildDropdownList 1570-1583",
+      "selectAllRowHeight": "select-all 옵션 행만 sizing 토큰에서 --border-width-1 을 뺀 min-height 를 쓴다(예: xxsm = --sizing-28 - --border-width-1). 아래 구분선(1px)과 합쳐야 다른 줄과 같은 총높이가 된다 — build-components.ts:1909-1921 주석 '총높이는 다른 줄과 같게 유지(내용 = h-1)' 그대로. height→min-height 전환(river 결정 2026-09-01)으로 줄바꿈돼도 이 규칙이 깨지지 않는다 — '전체 선택' 문구는 고정 짧은 문자열이라 실사용에서 줄바꿈되지 않는다(확인함)."
+    },
+    "source": "build-components.ts buildDropdown 1698-1791 · buildDropdownList 1554-1697"
+  },
+  "states": {
+    "default": "option default paint",
+    "hover": "@media (hover: hover) [data-s1-part=\"option\"]:hover",
+    "selectedText": "[data-type=\"text\"] [data-s1-part=\"option\"][aria-selected=\"true\"]",
+    "selectedCheckbox": "[data-type=\"checkbox\"] [data-s1-part=\"option\"][aria-checked=\"true\"]"
+  },
+  "canonicalStateMap": {
+    "Default": "default",
+    "Hover": "hover",
+    "Selected (Type=Text)": "selectedText",
+    "Selected (Type=Checkbox)": "selectedCheckbox"
+  },
+  "notInCanon": {
+    "panelStateAxis": "정본 buildDropdown 은 패널 자체의 state 축이 없다(항상 State=Default) — 상태는 옵션 행이 담당한다. 패널에 별도 open/closed 시각 변형을 만들지 않았다.",
+    "optionFocus": "정본에 focus 변형이 없다. 2026-09-02 river 결정으로 웹에서도 만들지 않으며, 키보드 초점은 브라우저 기본 표시에 맡긴다.",
+    "mixed": "「전체 선택」의 aria-checked 는 true/false 만 쓴다. 정본에 부분선택(mixed) 모양이 없다(river 결정 2026-08-31, D2).",
+    "widthClamp": "패널·옵션 폭의 하한 100px 은 정본에 이름 붙은 sizing 토큰이 없어 리터럴 px 로 뒀다 — 정본 build-components.ts 도 상수 DD_MIN_W=100 리터럴로 쓴다(river 결정 2026-09-08)."
+  },
+  "parts": [
+    "option",
+    "option-label",
+    "option-check",
+    "divider"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=dropdown]",
+    "requiredAttributes": [
+      "data-type",
+      "data-size"
+    ],
+    "requiredParts": [
+      "option",
+      "option-label"
+    ],
+    "optionalParts": [
+      "divider"
+    ],
+    "variants": [
+      "text",
+      "checkbox"
+    ],
+    "sizes": [
+      "xxsm",
+      "xsm",
+      "md"
+    ],
+    "optionRoleText": "role=option + aria-selected, panel role=listbox",
+    "optionRoleCheckbox": "role=checkbox + aria-checked (true/false only, no mixed)",
+    "checkboxComposition": "체크박스 유형 옵션은 코어 checkbox 배포본(div[data-s1-component=checkbox] > input[data-s1-part=control])을 그대로 내부에 두되 aria-hidden 처리한다. 접근성 상태·이름은 바깥 option(role=checkbox)이 낸다.",
+    "grouping": "여러 옵션을 담는 컨테이너는 코어 자신이다. 트리거·열림 상태는 Select·Filter Chip 이 담당한다.",
+    "source": "components/dropdown/dropdown.example.html",
+    "distribution": "examples/dropdown.html",
+    "selectAllAttribute": "data-select-all=\"true\" on the option row that is the Checkbox+All 'select all' row. click/keyboard select toggles every other option to match, and every other option toggling on/off resyncs this row's own aria-checked (registry component-behavior.pc.json \"Dropdown (Checkbox)\" — verified).",
+    "checkboxAllBehavior": "select-all 클릭: 꺼져 있었으면 전체 켜기, 켜져 있었으면 전체 끄기. 모든 옵션이 켜지면 select-all 이 스스로 켜진다. 어느 경우에도 패널은 닫히지 않는다(applyTiming: immediate — confirm 버튼 없음). aria-checked 는 true/false 만 쓰고 mixed(부분선택)는 구현하지 않는다(river 결정 2026-08-31, D2)."
+  },
+  "cssContract": {
+    "entry": "components/dropdown.css",
+    "rootScope": "[data-s1-component=dropdown]",
+    "nativeStates": [],
+    "ariaStates": [
+      "[aria-selected=\"true\"]",
+      "[aria-checked=\"true\"]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다.",
+    "optionLabelOverflow": "말줄임(ellipsis) 아님 — 320px 넘는 긴 글은 white-space:normal + overflow-wrap:break-word 로 줄바꿈한다(river 결정 2026-09-01, 기존 nowrap/ellipsis 폐기)."
+  },
+  "contentSlots": {
+    "option-label": "required; 옵션 표시 문구"
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css",
+      "components/checkbox.css"
+    ],
+    "coreComponents": [
+      "checkbox"
+    ],
+    "coreComponentsNote": "체크박스 유형 옵션이 코어 checkbox 배포본을 내부에 조립한다. dropdown 을 개별 설치할 때 checkbox 의 CSS 도 함께 로드해야 체크박스 유형 옵션이 정본대로 그려진다(글자 유형만 쓰면 불필요)."
+  },
+  "icons": [],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "role=listbox/option (text) 또는 옵션별 role=checkbox (checkbox), registry dropdown.json a11y 확정"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "panel 은 표시 라벨 또는 트리거가 제공한 aria-label/aria-labelledby, 옵션은 option-label 텍스트"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "ArrowUp/ArrowDown 이동, Home/End 처음·끝, Enter/Space 선택 — roving tabindex"
+    },
+    "focus": {
+      "status": "required",
+      "value": "브라우저 기본 포커스 표시를 그대로 쓴다 — 정본에 focus 표현이 없어 웹에서 만들지 않는다(2026-09-02 river 결정)."
+    },
+    "ariaStateSync": {
+      "status": "required",
+      "value": "런타임이 aria-selected(text) 또는 aria-checked(checkbox)를 갱신하고 s1:dropdown:change 를 낸다"
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "Dropdown 은 필드 오류를 소유하지 않는다."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "정본이 모션을 정의하지 않는다."
+    }
+  },
+  "jsRequired": true,
+  "javascript": {
+    "runtime": "components/dropdown.js",
+    "reason": "옵션 선택·키보드 이동·aria 상태 동기화를 런타임이 담당한다. 열림/닫힘 자체는 이 모듈이 소유하지 않는다 — Select·Filter Chip 이 트리거 상태로 관리한다.",
+    "options": {},
+    "events": [
+      "s1:dropdown:change"
+    ],
+    "eventDetail": {
+      "type": "\"text\" | \"checkbox\"",
+      "option": "선택된(또는 select-all) 옵션 element",
+      "value": "data-value 또는 텍스트",
+      "checked": "checkbox 유형만: 그 행(또는 select-all 행 자신)의 새 checked 값",
+      "selected": "text 유형만: true",
+      "selectAll": "checkbox 유형만: 이 변화가 select-all 행 클릭으로 일어났는지(boolean)",
+      "affected": "selectAll=true 일 때만: select-all 이 함께 토글한 나머지 옵션 element 배열",
+      "selectAllChecked": "selectAll=false(일반 옵션 토글)일 때만: 토글 후 select-all 행의 현재 checked 값"
+    },
+    "methods": [
+      "focusActive()"
+    ],
+    "lifecycle": [
+      "init(root)",
+      "destroy(root)"
+    ],
+    "controlMode": "uncontrolled",
+    "behaviorContract": "registry/components/component-behavior.pc.json 의 \"Dropdown (Checkbox)\" 장부(status=verified)를 그대로 구현한다 — 옵션 개별 토글은 형제에 영향 없음, select-all 은 전체를 자신의 반대 상태로 맞춤, 모든 옵션이 켜지면 select-all 이 스스로 켜짐, 선택은 패널을 닫지 않음."
+  },
+  "sourceFingerprint": "190a0ca83f7dcc217062238b0fecba02be5036b504c77a060016de1931eff4bd"
+}

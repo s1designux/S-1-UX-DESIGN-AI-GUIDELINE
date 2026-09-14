@@ -1,0 +1,149 @@
+{
+  "id": "button",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "a7209dc2ca12849f3594647e2fe0e38e4730438b2421b5dc896253a04def3358",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/button.json"
+  ],
+  "rootSelector": "[data-s1-component=\"button\"]",
+  "variants": [
+    "primary",
+    "secondary",
+    "blue-line"
+  ],
+  "sizes": [
+    "md",
+    "xsm",
+    "xxsm",
+    "lg"
+  ],
+  "minWidths": {
+    "md": "--sizing-80",
+    "xsm": "--sizing-64",
+    "xxsm": "--sizing-56",
+    "lg": "--sizing-80"
+  },
+  "breaks": {
+    "pc": [
+      "md",
+      "xsm",
+      "xxsm"
+    ],
+    "mobile": [
+      "lg"
+    ]
+  },
+  "states": {
+    "default": "native",
+    "hover": ":hover",
+    "pressed": ":active",
+    "disabled": "disabled"
+  },
+  "canonicalStateMap": {
+    "Default": "default",
+    "Hover": "hover",
+    "Pressed": "pressed",
+    "Disabled": "disabled"
+  },
+  "parts": [
+    "label"
+  ],
+  "htmlContract": {
+    "root": "button[data-s1-component=button]",
+    "requiredAttributes": [
+      "type",
+      "data-variant",
+      "data-size"
+    ],
+    "requiredParts": [
+      "label"
+    ],
+    "variants": [
+      "primary",
+      "secondary",
+      "blue-line"
+    ],
+    "sizes": [
+      "xxsm",
+      "xsm",
+      "md",
+      "lg"
+    ],
+    "source": "components/button/button.example.html",
+    "distribution": "examples/button.html",
+    "breakExamples": {
+      "pc": {
+        "source": "components/button/button.example.html",
+        "distribution": "examples/button.html"
+      },
+      "mobile": {
+        "source": "components/button/button.mobile.example.html",
+        "distribution": "examples/button.mobile.html"
+      }
+    }
+  },
+  "cssContract": {
+    "entry": "components/button.css",
+    "rootScope": "[data-s1-component=button]",
+    "nativeStates": [
+      ":hover",
+      ":active",
+      ":disabled"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "button"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "visible label or aria-label"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "native Enter and Space activation"
+    },
+    "focus": {
+      "status": "required",
+      "value": "브라우저 기본 포커스 표시를 그대로 쓴다 — 정본에 focus 표현이 없어 웹에서 만들지 않는다(2026-09-02 river 결정)."
+    },
+    "ariaStateSync": {
+      "status": "not-applicable",
+      "reason": "This text-only native button exposes no ARIA state."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "Button does not own field errors."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "The canonical component defines no motion."
+    }
+  },
+  "jsRequired": false,
+  "javascript": {
+    "runtime": "none",
+    "reason": "Native button semantics provide the complete approved behavior."
+  },
+  "sourceFingerprint": "47e79d7ba4bf21554847941e31533d1b977b752d99b3b6947e61dd8daf761984"
+}

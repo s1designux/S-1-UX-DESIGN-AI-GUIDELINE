@@ -1,0 +1,272 @@
+{
+  "_meta": {
+    "id": "dropdown",
+    "name": "Dropdown",
+    "category": "Core",
+    "updatedAt": "2026-09-07",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "pending",
+    "a11yStatus": "stable",
+    "figmaStatus": "existing",
+    "harnessStatus": "implemented",
+    "description": "Select Box와 Filter Chip이 재사용하는 옵션 패널 컴포넌트. 옵션 줄은 글자만(단일 선택)과 체크박스(다중 선택) 두 유형이며, 체크박스 유형은 「전체」 줄을 기본 포함한다. 트리거 상태는 Select Box가 담당한다.",
+    "notes": [
+      "--dropdown-list-bg: D002(2026-05-19) 결정 — var(--color-surface-raised)로 확정. surface-default 아님.",
+      "trigger placeholder text / selected text / list border / option selected text는 D001(2026-05-19) 추가 4개 candidate 토큰.",
+      "다중 선택(체크박스) 유형 신설 2026-08-14 — 정본 buildDropdownList Type=Text/Checkbox/Checkbox+All(9→27), buildDropdown Type=Text/Checkbox(3→6). 새 토큰 0건(color/dropdown/* · color/control/* 재사용). 트리거(Select Box)는 갈래를 늘리지 않는다 — 다중 선택 표시는 글자 override."
+    ]
+  },
+  "usage": {
+    "whenToUse": [
+      "트리거를 눌러 옵션 목록에서 하나를 고를 때(글자 유형).",
+      "한 목록에서 여러 항목을 동시에 고를 때(체크박스 유형) — 필터·대상 선택 등.",
+      "Select 의 기반 컴포넌트."
+    ],
+    "whenNotToUse": [
+      "즉시 실행 액션 그룹은 Button.",
+      "적은 수의 상호배타 선택은 Radio.",
+      "항목이 3~4개 이하로 적고 항상 보여도 되는 다중 선택은 목록을 접지 말고 Checkbox 를 펼쳐 쓴다."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "트리거",
+      "role": "현재 값·placeholder 표시. default·hover·open·disabled. 다중 선택은 고른 이름을 쉼표로 나열하고 넘치면 말줄임."
+    },
+    {
+      "part": "옵션 목록",
+      "role": "surface-raised 위에 떠 있는 패널. 글자 유형·체크박스 유형 두 벌."
+    },
+    {
+      "part": "옵션",
+      "role": "hover·selected 상태 항목. 체크박스 유형은 코어 Checkbox 를 왼쪽에 배치(간격 8px)."
+    },
+    {
+      "part": "전체 선택 줄",
+      "role": "체크박스 유형 최상단. 아래에 1px 구분선으로 목록과 분리. 필요 없는 화면에서는 이 줄만 뺀다."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "목록 배경은 surface-raised(떠 있는 표면)를 쓴다.",
+      "트리거 테두리는 form-control 토큰을 참조한다.",
+      "체크박스 유형의 체크박스는 코어 Checkbox 컴포넌트를 그대로 배치한다(Figma=인스턴스, 코드=.s1-checkbox).",
+      "다중 선택은 고르는 즉시 적용하고 목록을 열어 둔다.",
+      "목록 폭은 트리거(칩·셀렉트) 폭을 따르되 100px 밑으로 내려가지 않는다 — guide.panelWidthRule 참조."
+    ],
+    "dont": [
+      "목록 배경에 surface-default 를 쓰지 않는다(D002 결정: raised).",
+      "옵션 hover/selected 색을 raw 로 칠하지 않는다.",
+      "드롭다운 전용 체크박스를 새로 만들지 않는다(코어 재사용 규칙).",
+      "체크박스 유형에서 선택된 줄의 글자를 강조하지 않는다 — 체크 표시가 이미 선택을 표현한다(2026-08-14 결정).",
+      "다중 선택에서 옵션을 고를 때 목록을 닫지 않는다.",
+      "목록에 임의의 최대 폭 상한을 두지 않는다(2026-09-07 river 결정으로 상한 폐기)."
+    ]
+  },
+  "a11y": [
+    "트리거는 aria-expanded 로 열림 상태를 노출한다.",
+    "단일 선택은 선택 옵션에 aria-selected, 목록은 role=listbox 패턴을 따른다.",
+    "다중 선택 옵션은 role=checkbox + aria-checked 로 켜짐/꺼짐을 노출한다.",
+    "「전체 선택」은 정본에 켜짐/꺼짐 2단계만 있어 aria-checked 도 true/false 만 쓴다. 부분 선택(mixed) 표시는 정본에 해당 모양이 없어 만들지 않는다(river 결정 2026-08-31)."
+  ],
+  "states": {
+    "panel": [
+      "default"
+    ]
+  },
+  "tokens": [
+    {
+      "cssVar": "--dropdown-trigger-default-bg",
+      "value": "var(--color-surface-default)",
+      "semanticRef": "color-surface-default",
+      "part": "trigger",
+      "state": "default",
+      "property": "background"
+    },
+    {
+      "cssVar": "--dropdown-trigger-hover-bg",
+      "value": "var(--color-bg-subtle)",
+      "semanticRef": "color-bg-subtle",
+      "part": "trigger",
+      "state": "hover",
+      "property": "background"
+    },
+    {
+      "cssVar": "--dropdown-trigger-open-bg",
+      "value": "var(--color-bg-subtle)",
+      "semanticRef": "color-bg-subtle",
+      "part": "trigger",
+      "state": "open",
+      "property": "background"
+    },
+    {
+      "cssVar": "--dropdown-trigger-disabled-bg",
+      "value": "var(--color-bg-subtle)",
+      "semanticRef": "color-bg-subtle",
+      "part": "trigger",
+      "state": "disabled",
+      "property": "background"
+    },
+    {
+      "cssVar": "--dropdown-trigger-default-border",
+      "value": "var(--color-form-control-border-default)",
+      "semanticRef": "color-form-control-border-default",
+      "part": "trigger",
+      "state": "default",
+      "property": "border"
+    },
+    {
+      "cssVar": "--dropdown-trigger-hover-border",
+      "value": "var(--color-border-strong)",
+      "semanticRef": "color-border-strong",
+      "part": "trigger",
+      "state": "hover",
+      "property": "border"
+    },
+    {
+      "cssVar": "--dropdown-trigger-open-border",
+      "value": "var(--color-border-focus)",
+      "semanticRef": "color-border-focus",
+      "part": "trigger",
+      "state": "open",
+      "property": "border"
+    },
+    {
+      "cssVar": "--dropdown-trigger-disabled-border",
+      "value": "var(--color-border-subtle)",
+      "semanticRef": "color-border-subtle",
+      "part": "trigger",
+      "state": "disabled",
+      "property": "border"
+    },
+    {
+      "cssVar": "--dropdown-trigger-default-text",
+      "value": "var(--color-text-secondary)",
+      "semanticRef": "color-text-secondary",
+      "part": "trigger",
+      "state": "default",
+      "property": "text"
+    },
+    {
+      "cssVar": "--dropdown-trigger-disabled-text",
+      "value": "var(--color-text-disabled)",
+      "semanticRef": "color-text-disabled",
+      "part": "trigger",
+      "state": "disabled",
+      "property": "text"
+    },
+    {
+      "cssVar": "--dropdown-trigger-placeholder-text",
+      "value": "var(--color-text-placeholder)",
+      "semanticRef": "color-text-placeholder",
+      "part": "trigger",
+      "state": "empty",
+      "property": "text"
+    },
+    {
+      "cssVar": "--dropdown-trigger-selected-text",
+      "value": "var(--color-text-primary)",
+      "semanticRef": "color-text-primary",
+      "part": "trigger",
+      "state": "filled",
+      "property": "text"
+    },
+    {
+      "cssVar": "--dropdown-list-bg",
+      "value": "var(--color-surface-raised)",
+      "semanticRef": "color-surface-raised",
+      "part": "list",
+      "state": "all",
+      "property": "background"
+    },
+    {
+      "cssVar": "--dropdown-list-border",
+      "value": "var(--color-border-default)",
+      "semanticRef": "color-border-default",
+      "part": "list",
+      "state": "all",
+      "property": "border"
+    },
+    {
+      "cssVar": "--dropdown-option-hover-bg",
+      "value": "var(--color-bg-subtle)",
+      "semanticRef": "color-bg-subtle",
+      "part": "option",
+      "state": "hover",
+      "property": "background"
+    },
+    {
+      "cssVar": "--dropdown-option-selected-bg",
+      "value": "transparent",
+      "semanticRef": null,
+      "part": "option",
+      "state": "selected",
+      "property": "background"
+    },
+    {
+      "cssVar": "--dropdown-option-selected-text",
+      "value": "var(--color-action-primary-default)",
+      "semanticRef": "color-action-primary-default",
+      "part": "option",
+      "state": "selected",
+      "property": "text"
+    }
+  ],
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "",
+    "propertyMap": {}
+  },
+  "guide": {
+    "sampleOptions": [
+      "서울",
+      "부산",
+      "제주",
+      "전체"
+    ],
+    "webTag": "div",
+    "interactionPattern": "listbox-panel",
+    "boundaryNote": "트리거와 expanded 상태는 Select Box가 담당한다.",
+    "panelWidthRule": {
+      "decidedBy": "river",
+      "decidedAt": "2026-09-07",
+      "quote": "드롭다운은 최소 100px / 칩이 드롭다운보다 width값이 작은경우 드롭다운은 100px로 보여진다 / 칩의 width가 100px이상이 되는경우 드롭다운의 width는 칩의 width와 동일하게 표출된다",
+      "minWidthPx": 100,
+      "maxWidthPx": null,
+      "rule": [
+        "목록(패널) 최소 폭은 100px 이며 어떤 경우에도 이보다 좁아지지 않는다.",
+        "트리거(필터칩·셀렉트)가 100px 보다 좁으면 목록은 100px 로 표출된다.",
+        "트리거가 100px 이상이면 목록 폭은 트리거 폭과 동일하다.",
+        "최대 폭 상한은 없다 — 폭을 트리거가 정한다.",
+        "트리거 폭을 넘는 옵션 글자는 말줄임(…)하고, 마우스를 올리면 전체 글자를 보여준다."
+      ],
+      "webImplementation": "dropdown.css 의 min-width:100px + 소비자(select.css·filter-chip.css)의 width:100% 조합. 말줄임은 dropdown.css 의 text-overflow:ellipsis, 마우스 올림 안내는 dropdown.js 의 syncEllipsisTitles(잘린 옵션에만 title 부여).",
+      "figmaCanonNote": "Figma 정본(build-components.ts)도 목록 하한 100 을 그대로 만든다 — river 결정 2026-09-08 \"100이 최소값이니까 피그마에도 최소값으로 표출되는게 맞아\". 패널·옵션 행·구분선은 상수 DD_MIN_W=100 으로 만들고, 부모가 붙일 때 규칙 ②③ 대로 폭을 다시 준다 — 셀렉트는 트리거 폭(140), 필터칩은 max(100, 칩 폭). 셀렉트 트리거 자체의 140 은 웹 select.css 의 min-width:140px 과 한 벌이라 유지한다. 말줄임은 buildDropdownList 옵션 텍스트의 layoutGrow=1 · textAutoResize=HEIGHT · textTruncation=ENDING · maxLines=1 로 반영돼 있다. 칩 라벨 길이에 따라 폭이 달라지는 연속적 연동만은 고정 폭 컴포넌트로 표현할 수 없어 이 사양으로 남는다.",
+      "measuredAt": "2026-09-07",
+      "measured": {
+        "filterChipTriggerPx": {
+          "pc-sm-titleOff": 80.3,
+          "pc-md-titleOff": 86.3,
+          "pc-sm-titleOn": 108.5,
+          "pc-md-titleOn": 114.5,
+          "mobile-md-titleOn": 108.5
+        },
+        "resultPanelPx": {
+          "pc-sm-titleOff": 100,
+          "pc-md-titleOff": 100,
+          "pc-sm-titleOn": 108.5,
+          "pc-md-titleOn": 114.5,
+          "mobile-md-titleOn": 108.5
+        },
+        "evidence": "reports/ui-library/dropdown-max-width/final-rule-check.png (12경우 전수 일치)"
+      }
+    }
+  },
+  "governance": {
+    "owner": "Design System Team",
+    "deprecated": false,
+    "replacement": null
+  }
+}

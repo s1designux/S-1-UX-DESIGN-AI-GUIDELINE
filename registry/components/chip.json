@@ -1,0 +1,337 @@
+{
+  "_meta": {
+    "id": "chip",
+    "name": "Chip",
+    "category": "Core",
+    "updatedAt": "2026-08-31",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "pending",
+    "a11yStatus": "stable",
+    "description": "Selection and filter chip component. Line type (outlined) and Solid type (filled background). Filter chip extends Line with a dropdown.",
+    "figmaNodeId": "",
+    "figmaFileKey": "yE5UCFEbmXJBlYJWB24Lz2",
+    "cssClass": "s1-chip",
+    "openIssues": [
+      "figmaNodeId: Figma Chip componentSetKey 미확인 — Scan from Selection으로 확인 필요.",
+      "darkModeStatus: pending — dark mode 시각 검증 미완료."
+    ],
+    "notes": [
+      "2026-08-01: variants.filter 상세를 registry/components/filter-chip.json 으로 이관(포인터만 유지)."
+    ]
+  },
+  "usage": {
+    "whenToUse": [
+      "선택 가능한 태그·필터를 나열할 때.",
+      "filter 는 드롭다운으로 값을 고르고 적용 완료(complete)를 표시할 때."
+    ],
+    "whenNotToUse": [
+      "단일 액션 실행은 Button.",
+      "긴 목록의 단일 선택은 Select·Dropdown."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "라벨",
+      "role": "칩 텍스트."
+    },
+    {
+      "part": "아이콘(선택)",
+      "role": "앞쪽 보조 아이콘."
+    },
+    {
+      "part": "닫기(X)(선택)",
+      "role": "선택·완료 상태에서 해제·삭제. filter complete 에 노출."
+    },
+    {
+      "part": "컨테이너",
+      "role": "line=외곽선 / solid=채운 배경."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "line=외곽선, solid=채운 배경으로 용도에 맞게 쓴다.",
+      "filter 의 complete 는 선택값 노출 + 닫기(X)로 표시한다."
+    ],
+    "dont": [
+      "selection chip 에 complete(필터 완료) 개념을 쓰지 않는다 — filter 전용.",
+      "form-control 의 filled 와 혼동하지 않는다(다른 개념)."
+    ]
+  },
+  "a11y": [
+    "선택 상태를 aria-pressed 또는 role 로 노출한다.",
+    "닫기(X)에는 삭제·해제 aria-label 을 단다."
+  ],
+  "variants": {
+    "line": {
+      "description": "Outlined chip. Background = surface-default, border changes on state. Default selection chip type.",
+      "tokenStatus": "stable",
+      "codeStatus": "implemented",
+      "darkModeStatus": "pending",
+      "cssModifier": null,
+      "tokens": [
+        {
+          "name": "--chip-line-default-bg",
+          "value": "var(--color-chip-line-bg-default)",
+          "state": "default",
+          "property": "background"
+        },
+        {
+          "name": "--chip-line-hover-bg",
+          "value": "var(--color-chip-line-bg-hover)",
+          "state": "hover",
+          "property": "background"
+        },
+        {
+          "name": "--chip-line-selected-bg",
+          "value": "var(--color-chip-line-bg-selected)",
+          "state": "selected",
+          "property": "background"
+        },
+        {
+          "name": "--chip-line-disabled-bg",
+          "value": "var(--color-chip-line-bg-disabled)",
+          "state": "disabled",
+          "property": "background"
+        },
+        {
+          "name": "--chip-line-default-border",
+          "value": "var(--color-chip-line-border-default)",
+          "state": "default",
+          "property": "border-color"
+        },
+        {
+          "name": "--chip-line-hover-border",
+          "value": "var(--color-chip-line-border-default)",
+          "state": "hover",
+          "property": "border-color"
+        },
+        {
+          "name": "--chip-line-selected-border",
+          "value": "var(--color-chip-line-border-selected)",
+          "state": "selected",
+          "property": "border-color"
+        },
+        {
+          "name": "--chip-line-disabled-border",
+          "value": "var(--color-chip-line-border-disabled)",
+          "state": "disabled",
+          "property": "border-color"
+        },
+        {
+          "name": "--chip-line-default-text",
+          "value": "var(--color-chip-line-label-default)",
+          "state": "default",
+          "property": "color"
+        },
+        {
+          "name": "--chip-line-selected-text",
+          "value": "var(--color-chip-line-label-selected)",
+          "state": "selected",
+          "property": "color"
+        },
+        {
+          "name": "--chip-line-disabled-text",
+          "value": "var(--color-chip-line-label-disabled)",
+          "state": "disabled",
+          "property": "color"
+        },
+        {
+          "name": "--chip-line-default-icon",
+          "value": "var(--color-chip-line-label-default)",
+          "state": "default",
+          "property": "icon-color"
+        },
+        {
+          "name": "--chip-line-selected-icon",
+          "value": "var(--color-chip-line-label-selected)",
+          "state": "selected",
+          "property": "icon-color"
+        },
+        {
+          "name": "--chip-line-disabled-icon",
+          "value": "var(--color-chip-line-label-disabled)",
+          "state": "disabled",
+          "property": "icon-color"
+        },
+        {
+          "name": "--chip-line-default-close-icon",
+          "value": "var(--color-chip-line-label-default)",
+          "state": "default",
+          "property": "close-icon-color"
+        },
+        {
+          "name": "--chip-line-hover-close-icon",
+          "value": "var(--color-chip-line-label-default)",
+          "state": "hover",
+          "property": "close-icon-color"
+        },
+        {
+          "name": "--chip-line-selected-close-icon",
+          "value": "var(--color-chip-line-label-selected)",
+          "state": "selected",
+          "property": "close-icon-color"
+        }
+      ]
+    },
+    "solid": {
+      "description": "Filled chip. Background = bg-subtle by default, action-primary-default when selected.",
+      "tokenStatus": "stable",
+      "codeStatus": "implemented",
+      "darkModeStatus": "pending",
+      "cssModifier": "s1-chip--solid",
+      "tokens": [
+        {
+          "name": "--chip-solid-default-bg",
+          "value": "var(--color-chip-solid-bg-default)",
+          "state": "default",
+          "property": "background"
+        },
+        {
+          "name": "--chip-solid-hover-bg",
+          "value": "var(--color-chip-solid-bg-hover)",
+          "state": "hover",
+          "property": "background"
+        },
+        {
+          "name": "--chip-solid-selected-bg",
+          "value": "var(--color-chip-solid-bg-selected)",
+          "state": "selected",
+          "property": "background"
+        },
+        {
+          "name": "--chip-solid-disabled-bg",
+          "value": "var(--color-chip-solid-bg-disabled)",
+          "state": "disabled",
+          "property": "background"
+        },
+        {
+          "name": "--chip-solid-default-border",
+          "value": "var(--color-chip-solid-border-default)",
+          "state": "default",
+          "property": "border-color",
+          "note": "border = background (invisible)"
+        },
+        {
+          "name": "--chip-solid-hover-border",
+          "value": "var(--color-chip-solid-bg-hover)",
+          "state": "hover",
+          "property": "border-color",
+          "note": "border = background (invisible) — 스트록 유지, fill과 동색"
+        },
+        {
+          "name": "--chip-solid-selected-border",
+          "value": "var(--color-chip-solid-border-selected)",
+          "state": "selected",
+          "property": "border-color"
+        },
+        {
+          "name": "--chip-solid-disabled-border",
+          "value": "var(--color-chip-solid-border-disabled)",
+          "state": "disabled",
+          "property": "border-color"
+        },
+        {
+          "name": "--chip-solid-default-text",
+          "value": "var(--color-chip-solid-label-default)",
+          "state": "default",
+          "property": "color"
+        },
+        {
+          "name": "--chip-solid-selected-text",
+          "value": "var(--color-chip-solid-label-selected)",
+          "state": "selected",
+          "property": "color"
+        },
+        {
+          "name": "--chip-solid-disabled-text",
+          "value": "var(--color-chip-solid-label-disabled)",
+          "state": "disabled",
+          "property": "color"
+        },
+        {
+          "name": "--chip-solid-default-icon",
+          "value": "var(--color-chip-solid-label-default)",
+          "state": "default",
+          "property": "icon-color"
+        },
+        {
+          "name": "--chip-solid-selected-icon",
+          "value": "var(--color-chip-solid-label-selected)",
+          "state": "selected",
+          "property": "icon-color"
+        },
+        {
+          "name": "--chip-solid-disabled-icon",
+          "value": "var(--color-chip-solid-label-disabled)",
+          "state": "disabled",
+          "property": "icon-color"
+        },
+        {
+          "name": "--chip-solid-default-close-icon",
+          "value": "var(--color-chip-solid-label-default)",
+          "state": "default",
+          "property": "close-icon-color"
+        },
+        {
+          "name": "--chip-solid-hover-close-icon",
+          "value": "var(--color-chip-solid-label-default)",
+          "state": "hover",
+          "property": "close-icon-color"
+        },
+        {
+          "name": "--chip-solid-selected-close-icon",
+          "value": "var(--color-chip-solid-label-selected)",
+          "state": "selected",
+          "property": "close-icon-color"
+        }
+      ]
+    },
+    "filter": {
+      "_movedTo": "registry/components/filter-chip.json",
+      "description": "Filter Chip 은 2026-08-01 별도 컴포넌트 문서로 분리됐다(상태 5개·Title 축·화살표·Dropdown 부착으로 Chip 과 축이 다름). 색 토큰은 여전히 chip line/solid 를 100% 공유한다.",
+      "cssClass": "ds-filter-chip",
+      "note": "이 노드에 상세를 다시 적지 말 것 — 두 곳에 같은 사실이 있으면 드리프트한다. 정본은 filter-chip.json."
+    }
+  },
+  "sizing": {
+    "--sizing-28": {
+      "value": "var(--spacing-28)",
+      "note": "28px — xsmall"
+    },
+    "--sizing-30": {
+      "value": "30px",
+      "note": "Foundation step 없음 — design spec 직접 반영"
+    },
+    "--sizing-34": {
+      "value": "34px",
+      "note": "Foundation step 없음 — design spec 직접 반영, harness default"
+    }
+  },
+  "states": [
+    "default",
+    "hover",
+    "selected",
+    "complete",
+    "disabled"
+  ],
+  "stateNotes": {
+    "selected": "Selection chip: 선택됨. Filter chip: 드롭다운 열린 상태.",
+    "complete": "Filter chip 전용. 필터 적용 완료 상태 — 선택값 노출 + 닫기(X) 아이콘 표시. Selection chip에는 없음. form-control 'filled'와 다른 개념."
+  },
+  "subVariants": [
+    "text-only",
+    "with-icon",
+    "with-close"
+  ],
+  "guide": {
+    "sampleLabels": ["라벨"],
+    "webTag": "button",
+    "interactionPattern": "press-toggle",
+    "accessibility": { "role": "button", "keyboard": ["Enter", "Space"], "attributes": ["aria-pressed"] }
+  },
+  "filterSubVariants": [
+    "label-only",
+    "with-title"
+  ]
+}

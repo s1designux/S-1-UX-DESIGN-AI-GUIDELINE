@@ -1,0 +1,159 @@
+<!-- 조립 예시 3벌 — river 지시(2026-09-09): "액션은 하단메뉴 유형에 맞게 3개로 표출한다.
+     1) start형 gnb SM + 레귤러  2) start형 gnb SM + 콤팩트1  3) start형 gnb SM + 콤팩트2".
+     "SM" = GNB 바 크기 축(data-size="sm") · "start형" = GNB 바 정렬 축(data-variant="start")
+     으로 읽었다(river 가 다른 뜻이면 값만 바꾸면 된다).
+
+     ⚠️ 핵심 규칙(river 2026-09-09, registry doDont 반영): 한 GNB 안에서는 하위메뉴를 가진 메뉴가
+     전부 같은 유형(Type)의 패널을 연다. 유형은 사이트가 하나 고르는 것이지 메뉴마다 고르는 게
+     아니다 — 벌마다 "서비스"·"통계" 두 메뉴가 같은 Type 을 가리킨다.
+
+     배선 방법은 이전과 같다: 메뉴에 aria-controls="<패널 id>" 를 준다. aria-expanded 는
+     gnb.js 가 관리하므로 기본값(false)만 넣어 둔다. aria-controls 가 없는 메뉴("공지사항")는
+     하위메뉴 없이 그냥 링크로 남는다 — 하위메뉴는 강제 의존이 아니다(3-build.md §의존 관계).
+     패널에는 host 가 고유한 id 를 주고, 초기값은 hidden 으로 닫아 둔다. 벌이 3개로 늘어난 만큼
+     id 가 겹치지 않게 벌마다 접두사(a/b/c)를 붙였다 — 문서 전체에서 고유해야 한다.
+
+     바깥 <div> 들은 이 컴포넌트의 계약이 아니라 host 페이지가 여러 벌을 나란히 두는 자리일
+     뿐이다 — gnb 는 여전히 <nav> 하나로 완결된다. -->
+
+<!-- 1) start · sm · 레귤러 -->
+<div>
+  <nav data-s1-component="gnb" data-size="sm" data-variant="start" aria-label="주 메뉴 · 레귤러 예시">
+    <div data-s1-part="leading">
+      <a data-s1-part="logo" href="#">SAMPLE LOGO</a>
+      <ul data-s1-part="menus">
+        <li><a data-s1-part="menu" href="#" aria-current="page">공지사항</a></li>
+        <li><a data-s1-part="menu" href="#" aria-expanded="false" aria-controls="gnb-sub-menu-a-service">서비스</a></li>
+        <li><a data-s1-part="menu" href="#" aria-expanded="false" aria-controls="gnb-sub-menu-a-stats">통계</a></li>
+      </ul>
+    </div>
+    <div data-s1-part="util">
+      <button type="button" data-s1-part="lang">
+        <span data-s1-part="lang-icon" aria-hidden="true"></span>
+        <span data-s1-part="lang-label">한국어</span>
+      </button>
+      <button type="button" data-s1-part="account" aria-label="계정">
+        <span data-s1-part="account-icon" aria-hidden="true"></span>
+      </button>
+      <button type="button" data-s1-part="menu-toggle" aria-label="전체 메뉴">
+        <span data-s1-part="menu-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+  <div data-s1-component="gnb-sub-menu" data-type="regular" id="gnb-sub-menu-a-service" aria-label="서비스 하위 메뉴" hidden>
+    <div data-s1-part="columns">
+      <ul data-s1-part="column">
+        <li><span data-s1-component="gnb-sub-menu-item" data-depth="1depth">서비스 소개</span></li>
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#" aria-current="page">개요</a></li>
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">요금제</a></li>
+      </ul>
+      <ul data-s1-part="column">
+        <li><span data-s1-component="gnb-sub-menu-item" data-depth="1depth">이용 안내</span></li>
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">시작하기</a></li>
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div data-s1-component="gnb-sub-menu" data-type="regular" id="gnb-sub-menu-a-stats" aria-label="통계 하위 메뉴" hidden>
+    <div data-s1-part="columns">
+      <ul data-s1-part="column">
+        <li><span data-s1-component="gnb-sub-menu-item" data-depth="1depth">방문·매출</span></li>
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">방문자 통계</a></li>
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">매출 통계</a></li>
+      </ul>
+      <ul data-s1-part="column">
+        <li><span data-s1-component="gnb-sub-menu-item" data-depth="1depth">리포트</span></li>
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">전체 리포트</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 2) start · sm · 콤팩트1(항목을 한 줄로 가로 나열) -->
+<div>
+  <nav data-s1-component="gnb" data-size="sm" data-variant="start" aria-label="주 메뉴 · 콤팩트1 예시">
+    <div data-s1-part="leading">
+      <a data-s1-part="logo" href="#">SAMPLE LOGO</a>
+      <ul data-s1-part="menus">
+        <li><a data-s1-part="menu" href="#" aria-current="page">공지사항</a></li>
+        <li><a data-s1-part="menu" href="#" aria-expanded="false" aria-controls="gnb-sub-menu-b-service">서비스</a></li>
+        <li><a data-s1-part="menu" href="#" aria-expanded="false" aria-controls="gnb-sub-menu-b-stats">통계</a></li>
+      </ul>
+    </div>
+    <div data-s1-part="util">
+      <button type="button" data-s1-part="lang">
+        <span data-s1-part="lang-icon" aria-hidden="true"></span>
+        <span data-s1-part="lang-label">한국어</span>
+      </button>
+      <button type="button" data-s1-part="account" aria-label="계정">
+        <span data-s1-part="account-icon" aria-hidden="true"></span>
+      </button>
+      <button type="button" data-s1-part="menu-toggle" aria-label="전체 메뉴">
+        <span data-s1-part="menu-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+  <div data-s1-component="gnb-sub-menu" data-type="compact-1" id="gnb-sub-menu-b-service" aria-label="서비스 하위 메뉴" hidden>
+    <div data-s1-part="columns">
+      <ul data-s1-part="column"><li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">개요</a></li></ul>
+      <ul data-s1-part="column"><li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">요금제</a></li></ul>
+      <ul data-s1-part="column"><li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">시작하기</a></li></ul>
+    </div>
+  </div>
+  <div data-s1-component="gnb-sub-menu" data-type="compact-1" id="gnb-sub-menu-b-stats" aria-label="통계 하위 메뉴" hidden>
+    <div data-s1-part="columns">
+      <ul data-s1-part="column"><li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">방문자 통계</a></li></ul>
+      <ul data-s1-part="column"><li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">매출 통계</a></li></ul>
+      <ul data-s1-part="column"><li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">리포트</a></li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- 3) start · sm · 콤팩트2(묶음마다 항목 2개까지 세로) -->
+<div>
+  <nav data-s1-component="gnb" data-size="sm" data-variant="start" aria-label="주 메뉴 · 콤팩트2 예시">
+    <div data-s1-part="leading">
+      <a data-s1-part="logo" href="#">SAMPLE LOGO</a>
+      <ul data-s1-part="menus">
+        <li><a data-s1-part="menu" href="#" aria-current="page">공지사항</a></li>
+        <li><a data-s1-part="menu" href="#" aria-expanded="false" aria-controls="gnb-sub-menu-c-service">서비스</a></li>
+        <li><a data-s1-part="menu" href="#" aria-expanded="false" aria-controls="gnb-sub-menu-c-stats">통계</a></li>
+      </ul>
+    </div>
+    <div data-s1-part="util">
+      <button type="button" data-s1-part="lang">
+        <span data-s1-part="lang-icon" aria-hidden="true"></span>
+        <span data-s1-part="lang-label">한국어</span>
+      </button>
+      <button type="button" data-s1-part="account" aria-label="계정">
+        <span data-s1-part="account-icon" aria-hidden="true"></span>
+      </button>
+      <button type="button" data-s1-part="menu-toggle" aria-label="전체 메뉴">
+        <span data-s1-part="menu-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+  <div data-s1-component="gnb-sub-menu" data-type="compact-2" id="gnb-sub-menu-c-service" aria-label="서비스 하위 메뉴" hidden>
+    <div data-s1-part="columns">
+      <ul data-s1-part="column">
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">개요</a></li>
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">요금제</a></li>
+      </ul>
+      <ul data-s1-part="column">
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">시작하기</a></li>
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div data-s1-component="gnb-sub-menu" data-type="compact-2" id="gnb-sub-menu-c-stats" aria-label="통계 하위 메뉴" hidden>
+    <div data-s1-part="columns">
+      <ul data-s1-part="column">
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">방문자 통계</a></li>
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#">매출 통계</a></li>
+      </ul>
+      <ul data-s1-part="column">
+        <li><a data-s1-component="gnb-sub-menu-item" data-depth="2depth" href="#" aria-current="page">전체 리포트</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

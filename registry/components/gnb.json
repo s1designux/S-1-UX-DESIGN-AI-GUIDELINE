@@ -1,0 +1,292 @@
+{
+  "_meta": {
+    "id": "gnb",
+    "name": "GNB",
+    "category": "navigation",
+    "updatedAt": "2026-09-09",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "candidate",
+    "a11yStatus": "stable",
+    "figmaStatus": "confirmed",
+    "harnessStatus": "implemented",
+    "description": "Global Navigation Bar. 로고 + 메뉴 슬롯(slots_menu) + 유틸리티(아이콘 3종) 조립체. 메뉴 슬롯 9 variant(size md/sm/xsm × state default/hover/selected) + GNB 바 6 variant(size md/sm/xsm × align center-between/start). PC only. viewport(1280/1440/1920)는 full-width 반응형으로 통합.",
+    "codeStatusNote": "웹 배포본 상태는 webDistribution 과 ui-library-migration.json 이 따로 가진다."
+  },
+  "usage": {
+    "whenToUse": [
+      "PC 상단 글로벌 내비게이션이 필요할 때.",
+      "로고 + 메뉴 + 유틸(아이콘) 조립."
+    ],
+    "whenNotToUse": [
+      "사이드바 내비게이션은 Navigation.",
+      "모바일 하단 탭은 Mobile Bottom Nav."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "로고",
+      "role": "좌측 브랜드."
+    },
+    {
+      "part": "메뉴 슬롯",
+      "role": "size md/sm/xsm × default/hover/selected. 메뉴들이 놓이는 자리 전체가 GNB 바의 Figma 슬롯 'Menus' — 기본은 메뉴 3개이고, 인스턴스를 넣고 빼서 메뉴 수를 늘리고 줄인다 (river 지시 2026-09-03)."
+    },
+    {
+      "part": "유틸리티",
+      "role": "우측 아이콘 3종."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "PC 전용으로 쓴다. 뷰포트(1280/1440/1920)는 full-width 반응형으로 통합한다.",
+      "메뉴 라벨 색은 navigation 역할 토큰을 쓴다."
+    ],
+    "dont": [
+      "모바일에 GNB 를 쓰지 않는다.",
+      "선택 메뉴 표시를 색만이 아니라 상태 토큰으로 일관되게 한다.",
+      "한 GNB 안에서는 하위메뉴를 가진 메뉴 전부가 같은 유형(Type)의 하위메뉴 패널을 연다 — 유형은 메뉴마다 고르는 게 아니라 사이트가 하나 고르는 것이다(river 결정 2026-09-09)."
+    ]
+  },
+  "a11y": [
+    "바 전체를 <nav> 로 감싸고 aria-label 로 이름을 준다(예: \"주 메뉴\"). 한 화면에 내비게이션이 둘 이상이면 이름으로 구분된다.",
+    "메뉴 목록은 <ul>/<li>, 각 메뉴는 <a href> 로 낸다. 링크가 아닌 동작이면 <button type=\"button\"> 을 쓴다.",
+    "현재 메뉴에 aria-current=\"page\" 를 준다. Selected 는 시각 표현이고 현재 위치를 알리는 것은 aria-current 다.",
+    "Hover 와 Selected 는 정본에서 시각이 같다 — 그래도 aria-current 는 Selected 에만 준다.",
+    "유틸 아이콘 버튼(계정·메뉴)은 <button type=\"button\"> + aria-label 로 이름을 준다. 아이콘 SVG 는 aria-hidden 이다.",
+    "언어 항목은 지구본 아이콘 + 보이는 글자 라벨을 함께 두므로 별도 aria-label 을 붙이지 않는다.",
+    "로고는 홈으로 가는 링크일 때 <a> 로 내고 글자 라벨이 접근 가능한 이름이 된다.",
+    "키보드: Tab 으로 로고 → 메뉴 순서대로 → 유틸 순서대로 이동한다. 정본에 방향키 이동이 없으므로 만들지 않는다.",
+    "포커스 표시는 브라우저 기본값을 그대로 쓴다 — 정본에 별도 focus 표현이 없다.",
+    "오류 관계·모션 감소는 이 컴포넌트에 해당 없음(not-applicable) — 오류 표시도 애니메이션도 정본에 없다.",
+    "하위메뉴를 여는 메뉴에는 aria-controls 로 그 패널의 id를, aria-expanded 로 열림/닫힘 상태를 준다 — 둘 다 이 컴포넌트의 JavaScript(gnb.js)가 관리한다(river 결정 2026-09-09). 마우스를 올리면 열리고(hover-capable), 바·패널 밖으로 나가면 150ms 유예 뒤 닫힌다. Tab 으로 들어가면 열리고, Esc 로 닫히며 초점이 그 메뉴로 되돌아온다 — 패널 안에 초점을 가두지 않는다. 마우스가 없는 기기는 클릭으로 열고 닫는다.",
+    "닫힌 하위메뉴 패널은 hidden 속성으로 접근성 트리에서도 빠진다(gnb-sub-menu a11y) — 눈에만 안 보이게 하지 않는다.",
+    "하위메뉴는 강제 의존이 아니다 — aria-controls 를 붙이지 않은 메뉴는 여전히 평범한 링크다."
+  ],
+  "variants": {
+    "menuSlot": {
+      "size": [
+        "md",
+        "sm",
+        "xsm"
+      ],
+      "state": [
+        "default",
+        "hover",
+        "selected"
+      ]
+    },
+    "bar": {
+      "size": [
+        "md",
+        "sm",
+        "xsm"
+      ],
+      "align": [
+        "center-between",
+        "start"
+      ]
+    }
+  },
+  "sizing": {
+    "menuSlotHeightMd": "56px",
+    "menuSlotHeightSm": "48px",
+    "menuSlotHeightXsm": "36px",
+    "menuSlotMinWidth": "116px",
+    "menuSlotPaddingMd": "12px 16px",
+    "menuSlotPaddingSm": "12px",
+    "menuSlotPaddingXsm": "12px",
+    "menuSlotUnderline": "2px",
+    "barHeightMd": "56px",
+    "barHeightSm": "48px",
+    "barHeightXsm": "36px",
+    "barBorderBottom": "var(--border-width-default)",
+    "barPaddingLeft": "var(--spacing-padding-inline-lg)",
+    "barPaddingRight": "var(--spacing-padding-inline-md)",
+    "startLogoMenuGap": "64px",
+    "startMenusGap": "0 (메뉴 슬롯 인접 — 참고 기준: 2슬롯 282×48 연속. Figma 540:6008 gap-24는 사용자 기준으로 제거)",
+    "menuSlotPaddingX": "md 40(외곽 lg24+내부 sm16) / sm·xsm 32(외곽 md20+내부 xs12)",
+    "menuUnderline": "내부 콘텐츠 폭 — 슬롯 외곽 px만큼 inset(md 24 / sm·xsm 20), ::after로 구현",
+    "utilGap": "var(--spacing-cluster-xxs)",
+    "utilBtnBoxMdSm": "40px",
+    "utilBtnBoxXsm": "32px",
+    "utilIconFrameMdSm": "32px",
+    "utilIconFrameXsm": "24px",
+    "utilIconGlyphMdSm": "24px (프레임 32 내 inset 12.5% — 실제 렌더 글리프)",
+    "utilIconGlyphXsm": "18px (프레임 24 내 inset — 실제 렌더 글리프)",
+    "barPaddingXsmNote": "xsm 바는 좌우 반전 — pl 20 / pr 24 (md/sm은 pl 24 / pr 20)"
+  },
+  "typography": {
+    "menuLabelMd": "Pretendard Medium 18px / line-height 1.3 / letter-spacing -0.36px",
+    "menuLabelSm": "Pretendard Medium 18px / line-height 1.3 / letter-spacing -0.36px",
+    "menuLabelXsm": "Pretendard Medium 14px / line-height 1.3 / letter-spacing -0.28px",
+    "logo": "Pretendard Bold 20px / line-height 1.3 / letter-spacing 0"
+  },
+  "tokens": [
+    {
+      "name": "--gnb-bg",
+      "value": "var(--color-navigation-bg)",
+      "resolvedLight": "#FFFFFF",
+      "figmaVariable": "color/navigation/bg",
+      "status": "stable",
+      "description": "GNB 바 배경"
+    },
+    {
+      "name": "--gnb-border",
+      "value": "var(--color-border-subtle)",
+      "resolvedLight": "#E9E9E9",
+      "figmaVariable": "color/line/gray/subtle",
+      "status": "stable",
+      "description": "GNB 바 하단 1px 라인"
+    },
+    {
+      "name": "--gnb-menu-label-default",
+      "value": "var(--color-navigation-label-default-alt)",
+      "resolvedLight": "#434343",
+      "figmaVariable": "color/navigation/label/default-alt",
+      "status": "stable",
+      "description": "메뉴 슬롯 기본 라벨 (V3.0: gray-700 #434343)"
+    },
+    {
+      "name": "--gnb-menu-label-active",
+      "value": "var(--color-navigation-label-selected)",
+      "resolvedLight": "#1D6CEB",
+      "figmaVariable": "color/navigation/label/hover",
+      "status": "stable",
+      "description": "메뉴 슬롯 hover·selected 라벨"
+    },
+    {
+      "name": "--gnb-menu-underline-active",
+      "value": "var(--color-navigation-indicator-selected)",
+      "resolvedLight": "#1D6CEB",
+      "figmaVariable": "color/line/blue",
+      "status": "stable",
+      "description": "메뉴 슬롯 hover·selected 하단 밑줄"
+    },
+    {
+      "name": "--gnb-logo-text",
+      "value": "var(--color-text-primary)",
+      "resolvedLight": "#202020",
+      "figmaVariable": "color/text/title/primary",
+      "status": "stable",
+      "description": "로고 텍스트 색상 — HD-GNB-1 resolved: V3.0 로고 = color/text/title/primary #202020 = 코드값 일치"
+    },
+    {
+      "name": "--gnb-icon",
+      "value": "var(--color-navigation-icon)",
+      "resolvedLight": "#353535",
+      "figmaVariable": "color/icon/gray-dark",
+      "status": "stable",
+      "description": "유틸리티 아이콘 색상 — HD-GNB-2 resolved: V3.0 유틸 아이콘 = color/icon/gray-dark #353535 = 코드값 일치"
+    }
+  ],
+  "newSemanticTokens": [
+    {
+      "name": "--color-navigation-label-default-alt",
+      "value": "var(--color-gray-700)",
+      "resolvedLight": "#434343",
+      "resolvedDark": "var(--color-gray-dark-700)",
+      "figmaVariable": "color/navigation/label/default-alt",
+      "status": "stable"
+    },
+    {
+      "name": "--color-navigation-icon",
+      "value": "var(--color-gray-800)",
+      "resolvedLight": "#353535",
+      "resolvedDark": "var(--color-gray-dark-700)",
+      "figmaVariable": "color/icon/gray-dark",
+      "status": "stable"
+    }
+  ],
+  "icons": [
+    {
+      "role": "language",
+      "name": "ic_인터넷",
+      "figmaNodeId": "150:5007",
+      "source": "icons-data.js (line, currentColor)"
+    },
+    {
+      "role": "account",
+      "name": "ic_계정/사용자/ID",
+      "figmaNodeId": "150:5086",
+      "source": "MCP 원본 (viewBox 0 0 24 21.5816, currentColor)"
+    },
+    {
+      "role": "menu",
+      "name": "ic_메뉴",
+      "figmaNodeId": "150:5206",
+      "source": "MCP 원본 (viewBox 0 0 24 16.9274, currentColor)"
+    }
+  ],
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "956:18233",
+    "nodes": {
+      "barMdCenterBetween": "956:18032",
+      "barMdStart": "956:18131",
+      "barSmCenterBetween": "956:18065",
+      "barSmStart": "956:18165",
+      "barXsmCenterBetween": "956:18098",
+      "barXsmStart": "956:18199",
+      "menuSlotMdDefault": "956:18004",
+      "menuSlotMdHover": "956:18007",
+      "menuSlotMdSelected": "956:18010",
+      "menuSlotSmDefault": "956:18013",
+      "menuSlotSmHover": "956:18016",
+      "menuSlotSmSelected": "956:18019",
+      "menuSlotXsmDefault": "956:18022",
+      "menuSlotXsmHover": "956:18025",
+      "menuSlotXsmSelected": "956:18028"
+    },
+    "propertyMap": {
+      "size": "variant",
+      "state": "state",
+      "align": "variant"
+    }
+  },
+  "humanDecisions": [
+    {
+      "id": "HD-GNB-1",
+      "topic": "로고 색상",
+      "detail": "Figma 로고 = color/base/black #000000. code --color-text-primary = #202020(off-black). 색상값(레거시 개선 여지) → 두갈래 분류 대상. 현재 text-primary로 연결(코드 기준). 사용자 확인 대기. → RESOLVED(2026-07-09): V3.0 원본(956:18031) 대조 결과 로고 = color/text/title/primary #202020 = 코드값 일치. 사용자 결정: V3.0 확정값 유지.",
+      "status": "resolved"
+    },
+    {
+      "id": "HD-GNB-2",
+      "topic": "유틸 아이콘 색상",
+      "detail": "Figma = color/icon/gray-dark #353535. 기존 --color-icon-default=#757575(불일치). 신규 --color-navigation-icon(=gray-800 #353535) 사용. 사용자 확인 대기. → RESOLVED(2026-07-09): V3.0 원본 대조 결과 유틸 아이콘 = color/icon/gray-dark #353535 = 코드값 일치.",
+      "status": "resolved"
+    }
+  ],
+  "guide": {
+    "sampleLogo": "SAMPLE LOGO",
+    "sampleMenus": [
+      "공지사항",
+      "서비스",
+      "통계"
+    ],
+    "utilityLabels": {
+      "language": "언어 선택",
+      "account": "계정",
+      "menu": "전체 메뉴"
+    },
+    "interactionPattern": "global-current-menu",
+    "webTag": "header"
+  },
+  "governance": {
+    "owner": "Design System Team",
+    "deprecated": false,
+    "replacement": null
+  },
+  "webDistribution": {
+    "status": "verified",
+    "manifest": "ui-library/src/components/gnb/manifest.json",
+    "runtime": "components/gnb.js",
+    "note": "river 지시(2026-09-09, D4·D5)로 하위메뉴(gnb-sub-menu) 여닫는 동작을 이 컴포넌트가 갖게 됐다 — jsRequired=true. 현재 메뉴 표시(aria-current=\"page\")는 여전히 쓰는 화면이 정적으로 넣는다. 이전 2회차 검증(PASS, 여닫는 동작 없음 전제)은 이 변경으로 superseded 다 — 델타 재검증 전.",
+    "supersedes": "2026-09-09 2회차 component-verifier PASS(런타임 없음 전제) — 범위 확장으로 무효.",
+    "pendingRiverUxApproval": true,
+    "verifiedAt": "2026-09-09",
+    "verifiedBy": "component-verifier (배포본 3회차 PASS + 정본 3회차 PASS · Gate 13 기록)"
+  }
+}

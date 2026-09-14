@@ -1,0 +1,349 @@
+{
+  "id": "date-picker",
+  "version": "0.1.0",
+  "status": "approved",
+  "canonicalFingerprint": "93a1d5e5e6016d75f21082f6778c0ac72465afda0db611aacc3231327198fd92",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/date-picker.json"
+  ],
+  "rootSelector": "[data-s1-component=\"date-picker\"]",
+  "variants": [
+    "single",
+    "range"
+  ],
+  "sizes": [
+    "xxsm",
+    "xsm",
+    "md"
+  ],
+  "views": [
+    "date",
+    "year",
+    "month"
+  ],
+  "breaks": {
+    "pc": [
+      "xxsm",
+      "xsm",
+      "md"
+    ],
+    "mobile": [
+      "md"
+    ]
+  },
+  "geometry": {
+    "xxsm-pc": {
+      "height": "--sizing-28",
+      "fontSize": "--font-size-12"
+    },
+    "xsm-pc": {
+      "height": "--sizing-34",
+      "fontSize": "--font-size-14"
+    },
+    "md-pc": {
+      "height": "--sizing-44",
+      "fontSize": "--font-size-14"
+    },
+    "md-mobile": {
+      "height": "--sizing-48",
+      "fontSize": "--font-size-14"
+    },
+    "triggerPaddingLeft": "--spacing-16",
+    "triggerPaddingRight": "--spacing-8",
+    "radius": "--radius-4",
+    "border": "--border-width-1",
+    "panel": {
+      "width": "356px (정본 PANEL_W, build-components.ts buildCalendar 3522)",
+      "height": "352px (정본 PANEL_H — Date/Year/Month 세 화면 공용 고정 높이, 내용은 세로 중앙정렬)",
+      "paddingInline": "--spacing-24",
+      "paddingBlock": "--spacing-20",
+      "shadow": "--shadow-dropdown",
+      "gapDate": "--spacing-16 (정본 State=Date itemSpacing)",
+      "gapYearMonth": "--spacing-20 (정본 State=Year/Month itemSpacing)",
+      "triggerToPanelGap": "--spacing-8 (M1 — 오케스트레이터 배선, 정본은 auto-layout stacking만 규정)",
+      "source": "build-components.ts buildCalendar 3512-3670"
+    },
+    "cell": {
+      "outer": "44×44 (308÷7, build-components.ts buildCalendarCell 3358-3364)",
+      "inner": "30×30 radius-full, strokeWeight 1 INSIDE (3336-3344)",
+      "rangeBandHeight": "30px, top 7px((44-30)/2) (3379-3387)",
+      "rangeBandStart": "x22 w22(우측 절반)",
+      "rangeBandEnd": "x0 w22(좌측 절반)",
+      "rangeBandMid": "x0 w44(풀폭)"
+    },
+    "tile": {
+      "size": "88×56, radius-4, strokeWeight 1 INSIDE (build-components.ts buildCalendarTile 3411-3416)"
+    },
+    "header": {
+      "size": "308×32 (PANEL_W - 24*2)",
+      "chevron": "16×16, 라이브러리 chevron 아이콘 재사용(180°/0° 회전)",
+      "labelFont": "24px Bold (build-components.ts makeCalHdr 3550-3562)"
+    },
+    "sheet": {
+      "width": "360px",
+      "paddingBlock": "--spacing-20",
+      "sectionGap": "--spacing-32",
+      "headerPaddingInline": "--spacing-20",
+      "calendarPaddingInline": "--spacing-24",
+      "topRadius": "--radius-8",
+      "source": "build-components.ts buildDatePickerBottomSheet 3751-3833"
+    },
+    "minWidth": "180px (정본 trigger.resize(180, sc.h) — build-components.ts:4507)",
+    "calendarSize": "달력 패널은 두 크기다 — MD(356) · SM(267). **입력창 크기를 따라간다**: md 트리거는 MD 달력, xsm·xxsm 트리거는 SM 달력(river 결정 2026-09-04 \"입력창이 작으면 달력도 자동으로 작게\"). 종전의 '캘린더 패널은 사이즈 불변(356 단일)'(2026-06-25)을 대체한다. 정본 = build-components.ts CAL_GEO.",
+    "panelSm": {
+      "width": "267px (정본 CAL_GEO.SM.panelW = 18 + 7×33 + 18)",
+      "height": "266px (Date 뷰 = 16+24+12+33+165+16) · 연/월 타일 뷰는 276 로 자연히 늘어난다",
+      "paddingInline": "18px (정본 CAL_GEO.SM.padX — spacing 토큰에 18 이 없어 raw px)",
+      "paddingBlock": "--spacing-16 (연/월 타일 뷰만 아래 --spacing-20 — 정본 padBottomTile)",
+      "gapDate": "--spacing-12",
+      "gapYearMonth": "--spacing-12 (SM 은 세 뷰 모두 12)",
+      "source": "Figma 원본 실측 3381:15306(Date) · 6434:270653(Year), 2026-09-04"
+    },
+    "cellSm": {
+      "outer": "33×33 (231÷7)",
+      "inner": "22.5×22.5 radius-full, strokeWeight 1 INSIDE",
+      "rangeBandHeight": "22.5px, top 5.25px((33-22.5)/2)",
+      "rangeBandStart": "x16.5 w16.5(우측 절반)",
+      "rangeBandEnd": "x0 w16.5(좌측 절반)",
+      "rangeBandMid": "x0 w33(풀폭)",
+      "source": "Figma 원본 실측 6434:272679(start) · 272680(mid) · 272682(end)"
+    },
+    "tileSm": {
+      "size": "68×40, radius-4, strokeWeight 1 INSIDE · 가로 간격 7px(세로 12 은 MD 와 공통) — 실측 6434:270661"
+    },
+    "headerSm": {
+      "size": "231×24 (날짜 뷰) · 231×32 (연/월 타일 뷰) — 원본에서 뷰마다 다르다",
+      "chevron": "16×16 — MD 와 동일(원본에서도 화살표는 작아지지 않는다)",
+      "labelFont": "18px Bold (title/18B, 자간 0)"
+    },
+    "textStylesSm": "요일·날짜 숫자·타일 라벨 = body/12M (12px Medium, 자간 0). MD 의 title/16M(자간 -2)과 자간까지 다르다."
+  },
+  "states": {
+    "default": "native; unopened, placeholder \"YY.MM.DD\"",
+    "hover": "@media (hover: hover) [data-s1-part=\"trigger\"]:hover:not(:disabled):not([aria-expanded=\"true\"]):not([data-filled=\"true\"])",
+    "filled": "[data-s1-part=\"trigger\"][data-filled=\"true\"] (documented data-state; no ARIA equivalent)",
+    "open": "[data-s1-part=\"trigger\"][aria-expanded=\"true\"]",
+    "disabled": "[data-s1-part=\"trigger\"]:disabled"
+  },
+  "canonicalStateMap": {
+    "Default": "default",
+    "Filled": "filled",
+    "Open": "open",
+    "Disabled": "disabled"
+  },
+  "notInCanon": {
+    "popoverPlacement": "M1 — 정본은 트리거 아래 auto-layout 세로 스택만 규정한다(오프셋/뒤집기 코드 없음). 웹은 트리거 아래 8px 팝오버, 뷰포트 아래가 모자라면 위로 뒤집는다([data-flip=up]). 2-canon-readiness.md M1. river 승인 2026-09-08(메커니즘 승인 화면 M-4, 선택 A=지금대로).",
+    "weekStart": "D3(river 결정, 2-canon-readiness.md) — 일요일 시작. 메타 정본 registry/components/date-picker.json HD-9 와 일치하지만 시각 정본 buildCalendar(3591-3600)는 월요일 시작이라 갈라진다 → CU-1 로 기록(Figma 정본 반영은 별도 작업).",
+    "yearMonthHeaderButtons": "D5/CU-2(river 결정) — 정본 헤더는 단일 라벨 1개뿐이라 연/월 화면 진입 트리거가 없다. 웹은 새 시각 부품을 만들지 않고 기존 24px Bold 라벨을 연도·월 두 개의 누를 수 있는 버튼으로 분리했다.",
+    "monthYearNavigation": "M2 — Date 화면은 한 달, Month 화면은 1년, Year 화면은 12년 단위로 이전/다음 이동한다. 정본 헤더가 세 화면 공용이라 이동 의미만 웹이 배선했다. river 승인 2026-09-08(메커니즘 승인 화면 M-5, 선택 A=지금대로).",
+    "otherMonthClick": "M3 — registry HD-7(확정: 이전달/다음달 클릭 허용, 클릭 시 해당 월로 이동 후 선택)을 그대로 구현. 시각 빌더 자체엔 클릭 동작 코드가 없다.",
+    "keyboard": "M4 — 정본에 격자 키맵이 없다. Select·Time Picker 의 승인된 목록 키맵을 격자로 확장: 화살표=날짜 이동, Home/End=주 시작·끝, PageUp/Down=달 이동, Enter=선택, Esc=닫고 트리거 복귀. river 승인 2026-09-08(메커니즘 승인 화면 M-6, 선택 A=지금대로).",
+    "selectedHoverToken": "M5 — color/date-picker/cell/bg/selected-hover 는 vars-data.ts 에 값이 있으나 시각 빌더(buildCalendarCell)에는 배선돼 있지 않다(1-inventory.md B). 파생 components.html:961 이 이미 이 용도로 참조해 의도가 확인돼 웹이 선택 셀 hover 에 적용한다. river 승인 2026-09-08(메커니즘 승인 화면 M-7, 선택 A=지금대로). 웹이 맞다고 확정됐으므로 정본 buildCalendarCell 에 이 토큰을 배선하는 것이 남은 후속(하드룰 H1② 대상). 2026-09-08 시점 build-components.ts 가 다른 세션 미커밋 상태라 미착수.",
+    "dateFormat": "M6 — 표시는 정본 트리거 그대로 YY.MM.DD(2자리 연도), 값 입출력(change 이벤트·data-value)은 YYYY-MM-DD(ISO). 4자리↔2자리 변환 로직은 registry HD-10 이 \"확정\"이라 적었지만 구체 규칙이 코드/문서 어디에도 없어(1-inventory §10) 가장 표준적인 ISO 를 웹 값 계약으로 채택했다. river 승인 2026-09-08(메커니즘 승인 화면 M-8) — 화면에서 B(다른 형식)를 고르고 4자리 YYYY.MM.DD 로 한 번 바꿨다가, 같은 날 river 지시로 원복했다(river 인용: \"오케이 그럼 원래대로 YY.MM.DD방식으로 원복하고 커밋해줘\"). 되돌린 이유는 감사 문서 §9 에 남긴다 — 기간 문구가 4자리면 최소 폭 180px 에서 잘린다.",
+    "mobileOpensSheet": "M7 — 정본 buildDatePicker 는 sc.brk===\"PC\" 일 때만 캘린더를 붙이고 모바일은 별도 buildDatePickerBottomSheet 로 완전히 분리돼 있다(1-inventory A-4). 웹도 모바일 트리거는 팝오버가 아니라 하단 시트를 연다.",
+    "rangeInteraction": "D1·D4·D6(river 결정) — Calendar Cell Type=Range(4 variant)는 정적 표본일 뿐 상호작용 상태 기계가 정본에 없다(1-inventory 목록 #2). D4: 시작일보다 앞선 날짜를 두 번째로 누르면 그 날짜가 새 시작일이 된다(자동 뒤집기 금지). D6: 시작일만 고른 상태에서 hover 하면 커서까지 cell/bg/range(기존 토큰)로 미리 칠한다.",
+    "rangeTriggerFormat": "정본에 Range 트리거 문구 규정이 없다(1-inventory 목록 #2). river 결정 2026-09-08(M-9, 선택 B=물결표): 완료 시 \"YY.MM.DD ~ YY.MM.DD\", 시작만 있을 때 \"YY.MM.DD ~ \". 종전 형태는 \"YY.MM.DD - YY.MM.DD\" 였고, 구분자를 ⭐ 가 정했던 것이 HD-5 로 승인 대상이 됐다.",
+    "disabledDates": "registry HD-6(확정) — data-disabled-dates=\"YYYY-MM-DD,...\" 속성으로 비활성 날짜를 주입한다. 비활성 기준 자체는 서비스 레벨 결정.",
+    "todayCellHover": "river 지시 2026-09-04 — 정본 buildCalendarCell 은 Standard 셀에만 hover 를 두고 '오늘' 셀 hover 는 규정이 없다. 웹은 오늘 셀에 마우스를 올리면 채움만 일반 hover 색(cell/bg/hover)으로 바뀌고 파란 테두리(cell/border/today)는 그대로 둔다. 새 토큰 0건.",
+    "selectedCellHoverBorder": "river 지시 2026-09-04 — 선택 셀 hover 시 채움이 cell/bg/selected-hover(blue/500)로 바뀌는데 테두리는 cell/border/today(blue/400)에 남아 밝은 링이 보였다. hover 상태에서는 테두리도 채움과 같은 변수를 쓴다. 새 토큰 0건.",
+    "cellNumberOpticalCentering": "river 지시 2026-09-04 — 원 안 숫자가 중앙보다 약 0.5px 위로 보이는 문제. flex 중앙정렬은 줄상자를 중앙에 놓지만 폰트의 위/아래 여백 비대칭(Pretendard ascent 0.9375em·descent 0.25em)과 숫자에 하강획이 없는 탓에 잉크는 중앙이 아니다(어긋난 양 = (ascent−descent−capHeight)/2, line-height 와 무관). CSS text-box: trim-both cap alphabetic 으로 줄상자를 잉크상자로 잘라 보정값 없이 중앙에 놓는다. 미지원 브라우저는 무시하고 기존 모양 유지.",
+    "triggerHoverState": "웹 상태 hover 는 정본 Date Picker 세트의 State 축(default·filled·open·disabled)에 없는 웹 추가분이다. river 승인 2026-09-04(승인 원장 uistate:date-picker.hover, 인용문 검증 완료). 새 토큰 0건 — 기존 color/form-control/bg/hover 만 쓴다."
+  },
+  "parts": [
+    "trigger",
+    "value",
+    "icon",
+    "panel",
+    "calendar",
+    "header",
+    "prev",
+    "next",
+    "chevron-icon",
+    "header-label",
+    "year-label",
+    "month-label",
+    "weekdays",
+    "weekday",
+    "view",
+    "grid",
+    "week",
+    "cell",
+    "cell-inner",
+    "cell-num",
+    "tile",
+    "sheet",
+    "sheet-backdrop",
+    "sheet-panel",
+    "sheet-header",
+    "sheet-title",
+    "sheet-close",
+    "calendar-wrap",
+    "sheet-footer",
+    "apply"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=date-picker]",
+    "requiredAttributes": [
+      "data-size",
+      "data-break",
+      "data-mode"
+    ],
+    "optionalAttributes": [
+      "data-value (단일 선택 초기값, YYYY-MM-DD)",
+      "data-range-start / data-range-end (기간 선택 초기값, YYYY-MM-DD)",
+      "data-disabled-dates (쉼표 구분 YYYY-MM-DD 목록)",
+      "data-placeholder (기본 YY.MM.DD)"
+    ],
+    "requiredParts": [
+      "trigger",
+      "value",
+      "icon"
+    ],
+    "trigger": "button[type=button][data-s1-part=trigger][aria-haspopup=dialog][aria-expanded]",
+    "panel": "PC: div[data-s1-part=panel][role=dialog] 안에 빈 div[data-s1-part=calendar]. Mobile: div[data-s1-part=sheet] 안에 sheet-backdrop + sheet-panel(role=dialog, aria-modal=true) — header(제목+닫기) · calendar-wrap > div[data-s1-part=calendar] · sheet-footer > apply(Button primary LG 코어 인스턴스). calendar 내부(header·view·grid·cell 등)는 런타임이 전부 채운다 — 정적 마크업으로 미리 채우지 않는다(달력은 매번 재계산이 필요해 select·time-picker 의 '정적 사전 채움' 계약을 따르지 않는다).",
+    "relations": [
+      "trigger aria-haspopup=dialog, aria-expanded 는 panel/sheet 표시와 동기화",
+      "panel(PC) role=dialog, 내부 grid는 role=grid, 날짜 셀은 role=gridcell + aria-selected(+ aria-disabled)",
+      "Esc 키로 패널/시트를 닫고 트리거로 포커스 복귀",
+      "Mobile sheet: role=dialog[aria-modal=true], 배경 클릭·닫기 버튼·Esc 로 닫힘",
+      "s1:date-picker:change 이벤트가 값을 실어 나른다 — 단일: {value}, 기간: {start,end}"
+    ],
+    "grouping": "코어는 트리거 하나와 (PC)패널 또는 (Mobile)시트 하나만 소유한다. 폼 필드 라벨·도움말은 패턴이 담당한다.",
+    "source": "components/date-picker/date-picker.example.html",
+    "distribution": "examples/date-picker.html",
+    "breakExamples": {
+      "pc": {
+        "source": "components/date-picker/date-picker.example.html",
+        "distribution": "examples/date-picker.html"
+      },
+      "mobile": {
+        "source": "components/date-picker/date-picker.mobile.example.html",
+        "distribution": "examples/date-picker.mobile.html"
+      }
+    }
+  },
+  "cssContract": {
+    "entry": "components/date-picker.css",
+    "rootScope": "[data-s1-component=date-picker]",
+    "nativeStates": [
+      ":hover",
+      ":disabled"
+    ],
+    "ariaStates": [
+      "[aria-expanded=\"true\"]",
+      "[aria-selected=\"true\"]"
+    ],
+    "documentedDataStates": [
+      "[data-filled=\"true\"]",
+      "[data-state]",
+      "[data-range-band]",
+      "[data-other-month]",
+      "[data-flip=\"up\"]",
+      "[data-view]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다. button(형제 코어)의 CSS를 override하지 않는다 — 모바일 시트의 적용 버튼은 button 코어 인스턴스를 그대로 조립한다."
+  },
+  "contentSlots": {
+    "value": "required; 현재 값 또는 placeholder 문구(\"YY.MM.DD\")"
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css",
+      "components/button.css"
+    ],
+    "coreComponents": [
+      "button"
+    ],
+    "coreComponentsNote": "모바일 바텀시트의 하단 '적용' 버튼은 승인된 button 코어(Variant=Primary, Size=LG) 인스턴스를 그대로 조립한다(build-components.ts buildDatePickerBottomSheet 3805-3824). date-picker 를 개별 설치할 때 button 의 CSS도 함께 로드해야 한다(button 은 jsRequired=false 라 JS 는 불필요)."
+  },
+  "icons": [
+    {
+      "id": "calendar",
+      "sourceKey": "ea0ffc118c38048f2cdfb5620be31c120426bb7a",
+      "asset": "assets/icons/calendar.svg",
+      "use": "trigger 달력 아이콘",
+      "accessibleNamePolicy": "decorative; 트리거의 접근 가능한 이름(연결된 값 텍스트)이 이미 이름을 제공한다"
+    },
+    {
+      "id": "chevron",
+      "sourceKey": "e1ac97aa82f4e52f257ac1c0ea77fd09d0e5f581",
+      "asset": "assets/icons/chevron.svg",
+      "use": "캘린더 헤더 이전/다음 화살표(180°/0° 회전) — select 트리거와 동일 원본 재사용",
+      "accessibleNamePolicy": "decorative; prev/next 버튼의 aria-label이 이미 이름을 제공한다"
+    },
+    {
+      "id": "close",
+      "sourceKey": "2a1abbd3597b536e34fd9523fb61eade3afe9934",
+      "asset": "assets/icons/close.svg",
+      "use": "모바일 시트 닫기 버튼",
+      "accessibleNamePolicy": "decorative; 닫기 버튼의 aria-label이 이미 이름을 제공한다"
+    }
+  ],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "button[aria-haspopup=dialog][aria-expanded] driving role=dialog panel; 날짜 격자는 role=grid/gridcell + aria-selected(+aria-disabled)"
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "visible label associated with the trigger or aria-label; sheet 는 aria-labelledby(sheet-title)"
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "trigger: Enter/Space(native click)로 열기; 격자 안: 화살표=날짜 이동, Home/End=주 시작·끝, PageUp/Down=달 이동, Enter/Space=선택; Esc=닫고 트리거로 포커스 복귀(PC)/시트 닫기(Mobile)"
+    },
+    "focus": {
+      "status": "required",
+      "value": "PC 팝오버가 열리면 격자의 첫 활성 셀로 포커스 이동, 닫히면 트리거로 복귀. Mobile 시트는 열리면 시트 안으로, 닫히면 트리거로 복귀(모달과 동일 패턴, 별도 focus trap은 시트 안에서 Esc·배경·닫기로만 닫히는 단순 계약)"
+    },
+    "ariaStateSync": {
+      "status": "required",
+      "value": "런타임이 aria-expanded·aria-selected·aria-disabled·data-filled·data-state·data-range-band 를 갱신하고 s1:date-picker:open·close·change 를 낸다"
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 Error 상태가 없다(registry states.trigger 의 error 는 figma-unconfirmed)."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "정본이 모션을 정의하지 않는다."
+    }
+  },
+  "jsRequired": true,
+  "javascript": {
+    "runtime": "components/date-picker.js",
+    "reason": "팝오버/시트 열림·닫힘, Date/Year/Month 화면 전환, 달력 그리드 계산·렌더, 단일/기간 선택 상태 기계, 기간 hover 미리보기, 키보드 이동, 뷰포트 플립 배치를 런타임이 담당한다.",
+    "options": {},
+    "events": [
+      "s1:date-picker:open",
+      "s1:date-picker:close",
+      "s1:date-picker:change"
+    ],
+    "eventDetail": {
+      "open": "{}",
+      "close": "{}",
+      "change": "단일: { value, mode: 'single' } · 기간: { start, end, mode: 'range' } (모두 YYYY-MM-DD)"
+    },
+    "methods": [
+      "openPanel()",
+      "closePanel()"
+    ],
+    "lifecycle": [
+      "init(root)",
+      "destroy(root)"
+    ],
+    "controlMode": "uncontrolled",
+    "progressiveEnhancementNote": "JavaScript 없이는 캘린더가 렌더되지 않아 날짜를 고를 수 없다 — 복합 Picker(정본 계약)라 native fallback이 없다. 트리거는 native button 이라 포커스·이름은 유지된다."
+  },
+  "sourceFingerprint": "4613ba7f5e5798e43782def0b688c877b8b23f0e9bb31ee287f7bd07f715e368"
+}

@@ -1,0 +1,160 @@
+/* Modal — 정본 buildModalShell(build-components.ts:5290) 기준.
+   변형축은 Break(PC·Mobile) × Footer(Single·Dual) 4가지뿐이다. 크기 축·상태 축은 정본에 없다.
+   딤(overlay)은 정본 빌더에 없고 registry modal.json anatomy·tokens 가 소유한다(의미의 정본). */
+[data-s1-component="modal"] {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  position: fixed;
+  z-index: 1000;
+}
+
+[data-s1-component="modal"][hidden] { display: none; }
+
+/* 딤 — color/overlay (라이트 rgba(0,0,0,0.5) · 다크 0.75, EX03 rgba 예외) */
+[data-s1-component="modal"] [data-s1-part="overlay"] {
+  background: var(--color-overlay);
+  inset: 0;
+  position: absolute;
+}
+
+/* 패널 — surface/raised · radius/8 · 1px modal/panel/border(INSIDE) · shadow/raised.
+   정본 clipsContent=true 라 넘치는 내용을 자른다(긴 본문은 콘텐츠 계열 담당 — registry guardrail). */
+[data-s1-component="modal"] [data-s1-part="panel"] {
+  background: var(--color-surface-raised);
+  border: var(--border-width-1) solid var(--color-modal-panel-border);
+  border-radius: var(--radius-8);
+  box-shadow: var(--shadow-raised);
+  box-sizing: border-box;
+  display: flex;
+  /* 정본 패널은 고정 폭이다(PC 360 · Mobile 300). 좁은 자리에 놓여도 줄어들면 안 된다. */
+  flex: none;
+  flex-direction: column;
+  overflow: hidden;
+  padding-block: var(--spacing-20);
+  position: relative;
+}
+
+[data-s1-component="modal"] [data-s1-part="content"] {
+  display: flex;
+  flex-direction: column;
+}
+
+[data-s1-component="modal"] [data-s1-part="header"] {
+  align-items: flex-end;          /* 정본 counterAxisAlignItems="MAX" */
+  display: flex;
+  gap: var(--spacing-8);
+  justify-content: space-between;
+}
+
+[data-s1-component="modal"] [data-s1-part="title"] {
+  color: var(--color-text-title-primary);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+  margin: 0;
+}
+
+[data-s1-component="modal"] [data-s1-part="body"] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);          /* 정본 body.itemSpacing = 8 */
+}
+
+[data-s1-component="modal"] [data-s1-part="message"] {
+  color: var(--color-text-body-primary);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+  margin: 0;
+  white-space: pre-line;          /* 정본 예시 문구가 줄바꿈을 포함한다 */
+}
+
+[data-s1-component="modal"] [data-s1-part="footer"] {
+  display: flex;
+  gap: var(--spacing-8);          /* 정본 Dual itemSpacing = 8 */
+}
+
+/* 닫기 — 정본은 PC 헤더에만 close 아이콘 24px(color/icon/gray-dark)을 둔다.
+   버튼 자체(24×24)가 누르는 영역이자 hover 네모다 — 아이콘은 ::after 로 분리해 배경을 가릴 필요를 없앤다. */
+[data-s1-component="modal"] [data-s1-part="close"] {
+  align-items: center;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-control-sm);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  flex: none;
+  height: var(--sizing-24);
+  justify-content: center;
+  padding: 0;
+  width: var(--sizing-24);
+}
+
+[data-s1-component="modal"] [data-s1-part="close"]::after {
+  background: var(--color-icon-gray-dark);
+  content: "";
+  display: block;
+  height: 100%;
+  mask: url("../assets/icons/close.svg") center / contain no-repeat;
+  width: 100%;
+}
+
+/* hover — river 지시 2026-09-08. modal-content(콘텐츠 계열) 와 같은 close 부품이라 동일 규칙을 적용한다.
+   새 토큰 없이 color/control/bg/hover 재사용. 정본에는 없는 웹 추가분(§두 갈래 분류 (b)).
+   Mobile 은 정본에 close 자체가 없지만(위 주석) 셀렉터 안전을 위해 Input 과 같은 방식으로 명시 제외한다
+   (river 지시 2026-09-07 — 손가락엔 hover 가 없고 48×48 히트영역이 통째로 칠해지는 문제 재발 방지). */
+@media (hover: hover) {
+  [data-s1-component="modal"]:not([data-break="mobile"]) [data-s1-part="close"]:hover {
+    background: var(--color-control-bg-hover);
+  }
+}
+
+/* ── Break=PC — 폭 360 · 좌우 여백은 패널이 아니라 내부 블록이 24씩 가진다(정본 paddingLeft/Right=0) ── */
+[data-s1-component="modal"][data-break="pc"] [data-s1-part="panel"] {
+  gap: var(--spacing-32);
+  width: 360px;                   /* 정본 comp.resize(360, …) build-components.ts:5368 — 대응 sizing 토큰 없음 */
+}
+
+[data-s1-component="modal"][data-break="pc"] [data-s1-part="content"] { gap: var(--spacing-32); }
+
+[data-s1-component="modal"][data-break="pc"] [data-s1-part="header"],
+[data-s1-component="modal"][data-break="pc"] [data-s1-part="body"],
+[data-s1-component="modal"][data-break="pc"] [data-s1-part="footer"] {
+  padding-inline: var(--spacing-24);
+}
+
+[data-s1-component="modal"][data-break="pc"] [data-s1-part="title"] {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-bold);
+}
+
+[data-s1-component="modal"][data-break="pc"] [data-s1-part="message"] {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+}
+
+[data-s1-component="modal"][data-break="pc"] [data-s1-part="footer"] { justify-content: flex-end; }
+
+/* ── Break=Mobile — 폭 300 · 패널이 좌우 20 여백을 갖고 닫기 버튼이 없다 ── */
+[data-s1-component="modal"][data-break="mobile"] [data-s1-part="panel"] {
+  gap: 30px;                      /* 정본 comp.itemSpacing = 30 build-components.ts:5369 — 대응 spacing 토큰 없음 */
+  padding-inline: var(--spacing-20);
+  width: 300px;                   /* 정본 comp.resize(300, …) build-components.ts:5368 */
+}
+
+[data-s1-component="modal"][data-break="mobile"] [data-s1-part="content"] { gap: var(--spacing-24); }
+
+[data-s1-component="modal"][data-break="mobile"] [data-s1-part="title"] {
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-bold);
+}
+
+[data-s1-component="modal"][data-break="mobile"] [data-s1-part="message"] {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+}
+
+/* 정본은 모바일 푸터를 내부폭 260 에 두고 버튼을 FILL 로 채운다 — Single 은 풀폭, Dual 은 반반. */
+[data-s1-component="modal"][data-break="mobile"] [data-s1-part="footer"] > * { flex: 1 1 0; }

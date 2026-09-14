@@ -1,0 +1,166 @@
+{
+  "_meta": {
+    "id": "textarea",
+    "name": "Textarea",
+    "category": "Core",
+    "updatedAt": "2026-05-20",
+    "version": "0.2.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "pending",
+    "a11yStatus": "stable",
+    "figmaStatus": "existing",
+    "harnessStatus": "implemented",
+    "description": "멀티라인 텍스트 입력 컴포넌트. HD-6(2026-05-12)에서 Inputbox_large → Textarea로 분리 확정. --input-* 토큰 공유 결정(2026-05-20).",
+    "notes": [
+      "HD-6 확정(2026-05-12): Inputbox_large는 Input의 variant가 아닌 별도 Textarea 컴포넌트.",
+      "--textarea-* 별도 정의 없음 — --input-* 토큰 공유 확정(2026-05-20). Input과 시각 동일, 추가 divergence 없음.",
+      "Figma Inputbox_large 노드 확인 후 figmaNodeId 등록 예정.",
+      "resize 속성(none/vertical/both) 정책 미확정.",
+      "구조 불일치(2026-07-14): 웹 Textarea 에는 안내(helper) 텍스트가 있으나(이 tokens 표 --input-helper-text), Figma 설치기 빌더는 Text Area 안내문을 생성하지 않는다(build-components.ts:1632 '1차는 필드 상태만'). 색이 아니라 '요소 존재'가 다름 — 별도 작업으로 Figma 빌더에 helper 요소 추가 필요(needs-core-update). 기본 안내색은 Input 과 동일 기준 text/state/caption(gray/500).",
+      "resize 정책 확정(2026-09-02, river 결정): 세로로만 늘릴 수 있다(resize: vertical). 가로 확장은 옆 요소를 밀어 레이아웃이 깨져 금지."
+    ]
+  },
+  "usage": {
+    "whenToUse": [
+      "여러 줄 텍스트를 입력받을 때(메모·설명 등).",
+      "Input 과 시각 동일 — --input-* 토큰을 공유한다."
+    ],
+    "whenNotToUse": [
+      "한 줄 입력은 Input.",
+      "선택형 입력은 Select·Dropdown."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "입력 영역",
+      "role": "멀티라인 텍스트. --input-* 토큰."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "색·상태는 Input 의 --input-* 토큰을 공유한다(추가 divergence 없음).",
+      "readonly 는 disabled 와 같은 bg/border, text 만 한 단계 진하게 한다."
+    ],
+    "dont": [
+      "--textarea-* 전용 토큰을 새로 만들지 않는다.",
+      "hover 상태를 만들지 않는다(HD-2, Figma 미정의)."
+    ]
+  },
+  "a11y": [
+    "라벨과 연결(for/id)하거나 aria-label 로 이름을 준다. 안내·오류 문구는 정본에 아직 없어 이번 웹 배포본에 없다 — 정본에 추가된 뒤 aria-invalid·aria-describedby 로 연결한다."
+  ],
+  "states": [
+    "default",
+    "focus",
+    "filled",
+    "disabled",
+    "readonly"
+  ],
+  "stateNotes": {
+    "focus": "border → --input-focus-border (--color-form-control-border-selected)",
+    "filled": "입력이 완료된 상태. 정본 Text Area의 Filled variant를 따른다.",
+    "disabled": "bg → --input-disabled-bg. border → --input-disabled-border. text → --input-disabled-text",
+    "readonly": "bg → --input-readonly-bg. border → --input-readonly-border. text → --input-readonly-text",
+    "hover": "삭제(HD-2). Figma 미정의."
+  },
+  "tokens": [
+    {
+      "name": "--input-default-bg",
+      "value": "var(--color-form-control-bg-default)",
+      "state": "default",
+      "property": "bg"
+    },
+    {
+      "name": "--input-disabled-bg",
+      "value": "var(--color-form-control-bg-disabled)",
+      "state": "disabled",
+      "property": "bg"
+    },
+    {
+      "name": "--input-readonly-bg",
+      "value": "var(--color-form-control-bg-disabled)",
+      "state": "readonly",
+      "property": "bg"
+    },
+    {
+      "name": "--input-default-border",
+      "value": "var(--color-form-control-border-default)",
+      "state": "default",
+      "property": "border"
+    },
+    {
+      "name": "--input-focus-border",
+      "value": "var(--color-form-control-border-selected)",
+      "state": "focus",
+      "property": "border"
+    },
+    {
+      "name": "--input-disabled-border",
+      "value": "var(--color-form-control-border-disabled)",
+      "state": "disabled",
+      "property": "border"
+    },
+    {
+      "name": "--input-readonly-border",
+      "value": "var(--color-form-control-border-disabled)",
+      "state": "readonly",
+      "property": "border"
+    },
+    {
+      "name": "--input-placeholder-text",
+      "value": "var(--color-form-control-text-placeholder)",
+      "state": "all",
+      "property": "placeholder"
+    },
+    {
+      "name": "--input-disabled-text",
+      "value": "var(--color-form-control-text-disabled)",
+      "state": "disabled",
+      "property": "color"
+    },
+    {
+      "name": "--input-readonly-text",
+      "value": "var(--color-text-readonly)",
+      "state": "readonly",
+      "property": "color"
+    },
+    {
+      "name": "--input-helper-text",
+      "value": "var(--color-text-state-caption)",
+      "state": "default",
+      "property": "helper"
+    }
+  ],
+  "plannedTokens": [],
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "641:4060",
+    "figmaNote": "641:4060 = Mobile Inputbox_large (Inputbox_multiline_long). 너비 320px 고정, M/INPUT-FIELD 접두사. PC 버전 figmaNodeId 미확인.",
+    "states": [
+      "default",
+      "selected",
+      "complete_long",
+      "disabled"
+    ],
+    "stateMapping": {
+      "selected": "focus",
+      "complete_long": "filled"
+    },
+    "platform": "mobile",
+    "propertyMap": {}
+  },
+  "guide": {
+    "sampleLabel": "설명",
+    "samplePlaceholder": "여러 줄 내용을 입력하세요",
+    "sampleValue": "디자인 시스템 적용 내용을 작성합니다.",
+    "webTag": "textarea",
+    "interactionPattern": "multiline-text-entry"
+  },
+  "governance": {
+    "owner": "Design System Team",
+    "deprecated": false,
+    "replacement": null
+  },
+  "notes": []
+}

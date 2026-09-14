@@ -1,0 +1,109 @@
+/* Generated-token consumer. Load assets/css/tokens.css and typography.css first. */
+[data-s1-component="button"] {
+  align-items: center;
+  appearance: none;
+  border-style: solid;
+  border-width: var(--border-width-1);
+  border-radius: var(--radius-button-md);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Pretendard", sans-serif;
+  font-weight: var(--font-weight-medium);
+  justify-content: center;
+  line-height: var(--line-height-130);
+  margin: 0;
+  padding-block: 0;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+[data-s1-component="button"] [data-s1-part="label"] {
+  pointer-events: none;
+  text-align: center;
+}
+
+[data-s1-component="button"][data-size="md"] {
+  font-size: var(--font-size-14);
+  height: var(--sizing-44);
+  min-width: var(--sizing-80);
+  padding-inline: var(--spacing-16);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+[data-s1-component="button"][data-size="xsm"] {
+  font-size: var(--font-size-14);
+  height: var(--sizing-34);
+  min-width: var(--sizing-64);
+  padding-inline: var(--spacing-8);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+[data-s1-component="button"][data-size="xxsm"] {
+  font-size: var(--font-size-12);
+  height: var(--sizing-28);
+  min-width: var(--sizing-56);
+  padding-inline: var(--spacing-8);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+[data-s1-component="button"][data-size="lg"] {
+  font-size: var(--font-size-16);
+  height: var(--sizing-48);
+  min-width: var(--sizing-80);
+  padding-inline: var(--spacing-16);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+[data-s1-component="button"][data-size="lg"] [data-s1-part="label"] {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+  width: 100%;
+}
+
+[data-s1-component="button"][data-variant="primary"] {
+  background: var(--color-button-bg-primary--default);
+  border-color: var(--color-button-border-primary--default);
+  color: var(--color-button-label-primary--default);
+}
+
+[data-s1-component="button"][data-variant="primary"]:is(:hover, :active):not(:disabled) {
+  background: var(--color-button-bg-primary--hover);
+  border-color: var(--color-button-border-primary--hover);
+  color: var(--color-button-label-primary--hover);
+}
+
+[data-s1-component="button"][data-variant="secondary"] {
+  background: var(--color-button-bg-secondary--default);
+  border-color: var(--color-button-border-secondary--default);
+  color: var(--color-button-label-secondary--default);
+}
+
+[data-s1-component="button"][data-variant="secondary"]:is(:hover, :active):not(:disabled) {
+  background: var(--color-button-bg-secondary--hover);
+  border-color: var(--color-button-border-secondary--hover);
+  color: var(--color-button-label-secondary--hover);
+}
+
+[data-s1-component="button"][data-variant="blue-line"] {
+  background: var(--color-button-bg-blue-line--default);
+  border-color: var(--color-button-border-blue-line--default);
+  color: var(--color-button-label-blue-line--default);
+}
+
+[data-s1-component="button"][data-variant="blue-line"]:is(:hover, :active):not(:disabled) {
+  background: var(--color-button-bg-blue-line--hover);
+  border-color: var(--color-button-border-blue-line--hover);
+  color: var(--color-button-label-blue-line--hover);
+}
+
+[data-s1-component="button"]:disabled {
+  background: var(--color-button-bg-disabled);
+  border-color: var(--color-button-border-disabled);
+  color: var(--color-button-label-disabled);
+  cursor: not-allowed;
+}

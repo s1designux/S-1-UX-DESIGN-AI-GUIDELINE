@@ -1,0 +1,372 @@
+{
+  "meta": {
+    "name": "SW Core Component Registry Index",
+    "version": "0.2.0",
+    "status": "mvp3.1",
+    "updatedAt": "2026-05-20",
+    "description": "Core Component Harness의 entry point. Theme / Platform / Component 목록을 관리한다."
+  },
+  "harness": {
+    "defaultComponent": "button",
+    "supportedThemes": [
+      "light",
+      "dark"
+    ],
+    "defaultTheme": "light",
+    "supportedPlatforms": [
+      "all",
+      "pc",
+      "mobile"
+    ],
+    "defaultPlatform": "pc"
+  },
+  "categories": [
+    {
+      "id": "all",
+      "label": "All"
+    },
+    {
+      "id": "actions",
+      "label": "Actions"
+    },
+    {
+      "id": "selection",
+      "label": "Selection"
+    },
+    {
+      "id": "form",
+      "label": "Form"
+    },
+    {
+      "id": "table",
+      "label": "Table"
+    },
+    {
+      "id": "navigation",
+      "label": "Navigation"
+    },
+    {
+      "id": "overlay",
+      "label": "Overlay"
+    }
+  ],
+  "components": [
+    {
+      "id": "button",
+      "name": "Button",
+      "label": "Button",
+      "category": "actions",
+      "path": "registry/components/button.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 1
+    },
+    {
+      "id": "checkbox",
+      "name": "Checkbox",
+      "label": "Checkbox",
+      "category": "selection",
+      "path": "registry/components/checkbox.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 2
+    },
+    {
+      "id": "radio",
+      "name": "Radio",
+      "label": "Radio",
+      "category": "selection",
+      "path": "registry/components/radio.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 3
+    },
+    {
+      "id": "toggle",
+      "name": "Toggle",
+      "label": "Toggle",
+      "category": "selection",
+      "path": "registry/components/toggle.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 4
+    },
+    {
+      "id": "multi-toggle",
+      "name": "Multi Toggle",
+      "label": "Multi Toggle",
+      "category": "selection",
+      "path": "registry/components/multi-toggle.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 18,
+      "notes": [
+        "2026-08-01 소급 등록(Gate 30 신설로 미등록 적발). 설치기·HTML 은 2026-06-30 부터 반영돼 있었으나 registry 문서만 없었다.",
+        "정본 2세트 — Multi Toggle Element(32 variants) + Multi Toggle 조합형(6 variants).",
+        "origin 분류 tbd — Ⓐ/Ⓑ river 결정 대기."
+      ]
+    },
+    {
+      "id": "chip",
+      "name": "Chip",
+      "label": "Chip",
+      "category": "selection",
+      "path": "registry/components/chip.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 5,
+      "notes": [
+        "2026-05-19 MVP-C1: line/solid split token 구조 확정. hover·icon·close-icon variant 추가. Token Details 탭 구현.",
+        "chip.json 구식 unified 구조 → line/solid split 재작성.",
+        "darkModeStatus: pending — dark mode 시각 검증 미완료.",
+        "figmaNodeId: '' — Scan from Selection으로 확인 필요.",
+        "2026-08-01: Filter Chip 을 registry/components/filter-chip.json 으로 분리(별개 컴포넌트 — 상태 5개·Title 축·Dropdown 부착). 이 항목 label 의 흡수 표기 해제."
+      ]
+    },
+    {
+      "id": "filter-chip",
+      "name": "Filter Chip",
+      "label": "Filter Chip",
+      "category": "selection",
+      "path": "registry/components/filter-chip.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 19,
+      "notes": [
+        "2026-08-01 소급 등록(Gate 30 신설로 미등록 적발). 종전엔 chip.json 의 variants.filter 로만 서술됐다.",
+        "Chip 과 색 토큰 100% 공유하나 별개 세트(상태 5개·Title 축·화살표·Dropdown 부착).",
+        "Figma 원본 대조 리포트 없음 — origin tbd."
+      ]
+    },
+    {
+      "id": "input",
+      "name": "Input",
+      "label": "Input",
+      "category": "form",
+      "path": "registry/components/input.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 6
+    },
+    {
+      "id": "select",
+      "name": "Select",
+      "label": "Select · Dropdown",
+      "category": "form",
+      "path": "registry/components/select.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 7,
+      "notes": [
+        "2026-05-19 MVP-C2: --dropdown-* 토큰 재사용 확정. Trigger States + Size Variants + Option States + Token Details 탭 구현.",
+        "Hover 컬럼 추가. CSS 버그 2건 수정 (open-bg, selected-option-bg).",
+        "figmaNodeId: 미확인 — pc_dropdown componentKey 발견, Scan from Selection으로 nodeId 확인 필요."
+      ]
+    },
+    {
+      "id": "textarea",
+      "name": "Textarea",
+      "label": "Textarea",
+      "category": "form",
+      "path": "registry/components/textarea.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 8,
+      "notes": [
+        "HD-6(2026-05-12) 확정: Figma Inputbox_large → 별도 Textarea 컴포넌트.",
+        "2026-05-20: tokenStatus→stable, harnessStatus→implemented, figmaNodeId→641:4060.",
+        "Token Details 탭 15개 --input-* 토큰 문서화 완료."
+      ]
+    },
+    {
+      "id": "date-picker",
+      "name": "DatePicker",
+      "label": "Date Picker",
+      "category": "form",
+      "path": "registry/components/date-picker.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 9,
+      "notes": [
+        "2026-05-26 HD 확정: tokenStatus→stable, weekStart=1(월), YY.MM.DD 형식, mobile bottom sheet.",
+        "figmaNodeId: 540:3794 (datepicker_input). 미결: componentSetKey, icon assets."
+      ]
+    },
+    {
+      "id": "time-picker",
+      "name": "TimePicker",
+      "label": "Time Picker",
+      "category": "form",
+      "path": "registry/components/time-picker.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 10,
+      "notes": [
+        "2026-05-26: codeStatus→preview, harnessStatus→implemented.",
+        "HD-Time-4 확정: Mobile bottom sheet. HD-Time-5 확정: shadow rgba 예외 허용.",
+        "미결: HD-Time-1 (disabled suffix icon 변경 의도 확인 필요).",
+        "primary figmaNodeId: 540:3690 (timepicker_input)."
+      ]
+    },
+    {
+      "id": "table",
+      "name": "Table",
+      "label": "Table",
+      "category": "table",
+      "path": "registry/components/table.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 11,
+      "notes": [
+        "2026-05-20: Figma MCP pc_table_header(540:4940)·pc_table_body(540:4851) 조회 완료.",
+        "HD-Table-1(dark mode)·HD-Table-2(selected≠hover) 미결."
+      ]
+    },
+    {
+      "id": "pagination",
+      "name": "Pagination",
+      "label": "Pagination",
+      "category": "navigation",
+      "path": "registry/components/pagination.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 12
+    },
+    {
+      "id": "dropdown",
+      "name": "Dropdown",
+      "label": "Dropdown (Token Source)",
+      "category": "form",
+      "path": "registry/components/dropdown.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 14,
+      "notes": [
+        "17개 --dropdown-* 토큰의 canonical source.",
+        "harness는 Select (id=select) 섹션에서 공유. 별도 harness 섹션 없음.",
+        "Select (priority 7) tokenRef: registry/components/dropdown.json."
+      ]
+    },
+    {
+      "id": "tab",
+      "name": "Line Tab",
+      "category": "navigation",
+      "priority": 15,
+      "path": "registry/components/tab.json",
+      "status": "stable"
+    },
+    {
+      "id": "gnb",
+      "name": "GNB",
+      "label": "GNB",
+      "category": "navigation",
+      "priority": 16,
+      "path": "registry/components/gnb.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "notes": [
+        "2026-06-06 figma-to-code: 메뉴 슬롯 9(size×state) + GNB 바 6(size×align) 구현. PC only.",
+        "신규 semantic --color-navigation-label-default-alt(#000000)·--color-navigation-icon(#353535).",
+        "신규 component --gnb-* 7종.",
+        "viewport(1280/1440/1920)는 full-width 반응형으로 통합. 데모 캔버스 px-240 미구현.",
+        "figmaNodeId: 540:5942(pc_gnb). 미결: HD-GNB-1(로고 색상)·HD-GNB-2(유틸 아이콘 색상) 사용자 확인 대기.",
+        "darkModeStatus: candidate — dark 시각 검증 미완료."
+      ]
+    },
+    {
+      "id": "mobile-bottom-nav",
+      "name": "Mobile Bottom Nav",
+      "label": "Bottom Nav",
+      "category": "navigation",
+      "path": "registry/components/mobile-bottom-nav.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 20,
+      "notes": [
+        "2026-08-01 소급 등록(Gate 30 신설로 미등록 적발). 설치기 편입은 2026-07-02.",
+        "정본은 탭 아이템 1칸(60×60) — 4탭 바는 컴포넌트가 아니라 인스턴스 조합.",
+        "origin B · figma-library-builder 빌드 + component-verifier 검증 완료(2026-07-02)."
+      ]
+    },
+    {
+      "id": "mobile-header",
+      "name": "Mobile Header",
+      "label": "Mobile Header",
+      "category": "navigation",
+      "path": "registry/components/mobile-header.json",
+      "status": "in-progress",
+      "harnessStatus": "not-started",
+      "priority": 21,
+      "notes": [
+        "2026-08-25 Gate 34 사용자 승인으로 정본 신설: V2.4 원본 5종 + 회원가입용 No Title 1종.",
+        "모바일 전용 shell이라 pages/components.html에는 반영하지 않고 noSectionNeeded + mobileOnly로 분류.",
+        "Figma V3.0 TEST node id·component key는 독립 빌드·검증 후 기록."
+      ]
+    },
+    {
+      "id": "modal",
+      "name": "Modal",
+      "label": "Modal (공통 팝업)",
+      "category": "overlay",
+      "path": "registry/components/modal.json",
+      "status": "in-progress",
+      "harnessStatus": "not-started",
+      "priority": 17,
+      "notes": [
+        "2026-07-15 루트 A 신규 편입: V2.4 modal_small \"삭제\"(6706:4257) 라이트 기준 Core(shell).",
+        "buildModalShell(build-components.ts) Footer=Dual 1변형. 코어 Button(XXSM) + ic_닫기 인스턴스 재사용, 신규 토큰 1 — color/modal/panel/border(2026-07-29 신설). 나머지는 전부 기존 V3.0 슬롯 재사용.",
+        "다크 그림자(shadow/raised)·나머지 4 State(Footer=Single)·사이즈 S/M/L/XL 미룸. component-verifier 검증 대기."
+      ]
+    },
+    {
+      "id": "assist-button",
+      "name": "Assist Button",
+      "label": "Assist Button",
+      "category": "actions",
+      "path": "registry/components/assist-button.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 22
+    },
+    {
+      "id": "text-button",
+      "name": "Text Button",
+      "label": "Text Button",
+      "category": "actions",
+      "path": "registry/components/text-button.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 23
+    },
+    {
+      "id": "modal-content",
+      "name": "Modal Content",
+      "label": "Modal Content",
+      "category": "overlay",
+      "path": "registry/components/modal-content.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 24
+    },
+    {
+      "id": "gnb-sub-menu-item",
+      "name": "GNB Sub Menu Item",
+      "label": "GNB Sub Menu Item",
+      "category": "navigation",
+      "path": "registry/components/gnb-sub-menu-item.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 25
+    },
+    {
+      "id": "gnb-sub-menu",
+      "name": "GNB Sub Menu",
+      "label": "GNB Sub Menu",
+      "category": "navigation",
+      "path": "registry/components/gnb-sub-menu.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 26
+    }
+  ]
+}

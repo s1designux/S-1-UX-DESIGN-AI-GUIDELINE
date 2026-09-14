@@ -1,0 +1,356 @@
+{
+  "_meta": {
+    "id": "filter-chip",
+    "name": "Filter Chip",
+    "category": "selection",
+    "updatedAt": "2026-09-07",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "pending",
+    "a11yStatus": "stable",
+    "figmaStatus": "existing",
+    "harnessStatus": "implemented",
+    "figmaNodeId": "540:3226",
+    "cssClass": "ds-filter-chip",
+    "description": "목록의 조건을 바꾸는 필터 칩. 값이 붙은 알약(pill) 트리거를 누르면 드롭다운이 열린다. Chip 과 색 토큰을 100% 공유하지만 별개 컴포넌트다 — 상태가 5개(Complete 추가)이고, 타이틀 축과 화살표·드롭다운 부품을 갖는다.",
+    "notes": [
+      "Filter Chip 전용 토큰은 화살표 아이콘 5개뿐이다(color/chip/{line,solid}/icon/* — 2026-09-10 신설, Chip 에는 화살표가 없어 실질 전용). 나머지 색은 color/chip/{line,solid}/* 를 Chip 과 그대로 공유한다.",
+      "Chip 인스턴스를 재사용하지 않고 알약을 직접 그린다(별도 빌더·별도 변형세트·별도 CSS 클래스 계열).",
+      "State=Selected 일 때만 Dropdown 컴포넌트 인스턴스를 자식으로 붙인다(BUILD_DEPENDENCIES: Filter Chip → Dropdown). Dropdown 크기는 SM→XXSM(h28), MD→XSM(h34).",
+      "Solid 의 hover 는 border 토큰이 아니라 bg/hover 를 스트록에도 써서 테두리를 배경색과 동일화한다(build-components.ts:2561).",
+      "Line 의 hover 는 border/default 를 유지한다(테두리 색이 변하지 않는다).",
+      "좌우 padding 이 비대칭이다 — 오른쪽이 좁은 이유는 화살표 아이콘 자리 때문.",
+      "웹 가이드 섹션의 코드 탭은 HTML·Token Details 2개다(Chip·Multi Toggle 은 CSS 탭 포함 3개).",
+      "chip.json 의 variants.filter 노드가 종전까지 이 컴포넌트를 대신 서술했다 — 이 파일이 정본이며 그쪽은 포인터로 축약했다."
+    ]
+  },
+  "usage": {
+    "whenToUse": [
+      "목록·표의 정렬/기간/범주 같은 조건을 바꿀 때.",
+      "선택한 값을 칩 자체에 계속 보여줘야 할 때(무엇이 걸려 있는지 한눈에)."
+    ],
+    "whenNotToUse": [
+      "단순 태그·상태 표시 — Chip 을 쓴다(누를 수 없는 표시용).",
+      "선택지가 배타적이고 개수가 적어 항상 펼쳐 두는 편이 나을 때 — Multi Toggle 을 쓴다.",
+      "폼 안의 값 입력 — Select Box 를 쓴다."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "트리거(알약)",
+      "role": "cornerRadius 999 의 가로 배치 컨테이너. 테두리 1px INSIDE."
+    },
+    {
+      "part": "타이틀",
+      "role": "Title=On 일 때만. 무엇을 거는 필터인지(예: '정렬'). 비활성이 아니면 선택 색으로 보인다."
+    },
+    {
+      "part": "값 라벨",
+      "role": "현재 선택된 값(예: '최신순'). Complete 상태에서는 확정된 값을 보여준다."
+    },
+    {
+      "part": "화살표",
+      "role": "20px 라이브러리 chevron 인스턴스. 닫힘=아래, 열림=위."
+    },
+    {
+      "part": "드롭다운",
+      "role": "Selected 상태에서만 붙는 Dropdown 컴포넌트 인스턴스. 트리거 아래 8px 간격."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "색은 Chip 의 line/solid 토큰을 그대로 쓴다(필터 전용 색을 만들지 않는다).",
+      "화살표는 라이브러리 아이콘 인스턴스를 쓰고 회전으로 방향을 바꾼다.",
+      "드롭다운은 Dropdown 컴포넌트 인스턴스를 붙인다 — 목록을 새로 그리지 않는다."
+    ],
+    "dont": [
+      "Chip 과 같은 것으로 취급해 하나로 합치지 않는다(상태·축·부품이 다르다).",
+      "좌우 padding 을 같게 맞추지 않는다(화살표 자리 확보가 목적).",
+      "Complete 를 Selected 의 별칭으로 쓰지 않는다 — Complete 는 선택이 끝나 드롭다운이 닫힌 상태다."
+    ]
+  },
+  "a11y": [
+    "트리거는 aria-haspopup=listbox·aria-expanded 로 열림 상태를 알린다.",
+    "타이틀과 값이 함께 읽히도록 접근 가능한 이름을 구성한다(예: '정렬, 최신순').",
+    "Esc 로 드롭다운을 닫을 수 있어야 한다."
+  ],
+  "states": [
+    "default",
+    "hover",
+    "selected",
+    "complete",
+    "disabled"
+  ],
+  "stateNotes": {
+    "selected": "드롭다운이 열린 상태. 이때만 Dropdown 인스턴스가 붙는다.",
+    "complete": "선택이 끝나 드롭다운이 닫힌 상태. 색은 default 와 같고 값 라벨만 확정값으로 바뀐다."
+  },
+  "sizing": {
+    "pc-sm": {
+      "height": 28,
+      "fontSize": 14,
+      "paddingLeft": 12,
+      "paddingRight": 6
+    },
+    "pc-md": {
+      "height": 34,
+      "fontSize": 14,
+      "paddingLeft": 16,
+      "paddingRight": 8
+    },
+    "mobile-md": {
+      "height": 30,
+      "fontSize": 14,
+      "paddingLeft": 12,
+      "paddingRight": 6
+    }
+  },
+  "variants": {
+    "line": {
+      "description": "테두리형. 배경은 흰색, 선택 시 테두리·라벨이 파랑.",
+      "cssModifier": "",
+      "tokens": [
+        {
+          "name": "--color-chip-line-bg-default",
+          "semanticRef": "color/chip/line/bg/default",
+          "state": "default·complete",
+          "property": "background"
+        },
+        {
+          "name": "--color-chip-line-bg-hover",
+          "semanticRef": "color/chip/line/bg/hover",
+          "state": "hover",
+          "property": "background"
+        },
+        {
+          "name": "--color-chip-line-bg-selected",
+          "semanticRef": "color/chip/line/bg/selected",
+          "state": "selected",
+          "property": "background"
+        },
+        {
+          "name": "--color-chip-line-bg-disabled",
+          "semanticRef": "color/chip/line/bg/disabled",
+          "state": "disabled",
+          "property": "background"
+        },
+        {
+          "name": "--color-chip-line-border-default",
+          "semanticRef": "color/chip/line/border/default",
+          "state": "default·hover·complete",
+          "property": "border-color"
+        },
+        {
+          "name": "--color-chip-line-border-selected",
+          "semanticRef": "color/chip/line/border/selected",
+          "state": "selected",
+          "property": "border-color"
+        },
+        {
+          "name": "--color-chip-line-border-disabled",
+          "semanticRef": "color/chip/line/border/disabled",
+          "state": "disabled",
+          "property": "border-color"
+        },
+        {
+          "name": "--color-chip-line-label-default",
+          "semanticRef": "color/chip/line/label/default",
+          "state": "default·hover·selected·complete",
+          "property": "text-color"
+        },
+        {
+          "name": "--color-chip-line-label-selected",
+          "semanticRef": "color/chip/line/label/selected",
+          "state": "title=on·not-disabled",
+          "property": "value-label-color"
+        },
+        {
+          "name": "--color-chip-line-label-disabled",
+          "semanticRef": "color/chip/line/label/disabled",
+          "state": "disabled",
+          "property": "text-color"
+        },
+        {
+          "name": "--color-chip-line-icon-default",
+          "semanticRef": "color/chip/line/icon/default",
+          "state": "default·hover·selected·complete",
+          "property": "arrow-color",
+          "note": "화살표 전용(2026-09-10 신설). 종전에는 label 토큰을 빌려 썼고 값은 그대로 옮겼다."
+        },
+        {
+          "name": "--color-chip-line-icon-disabled",
+          "semanticRef": "color/chip/line/icon/disabled",
+          "state": "disabled",
+          "property": "arrow-color"
+        }
+      ]
+    },
+    "solid": {
+      "description": "면형. 배경이 회색이고 선택 시 파랑으로 채워진다.",
+      "cssModifier": "ds-filter-chip--solid",
+      "tokens": [
+        {
+          "name": "--color-chip-solid-bg-default",
+          "semanticRef": "color/chip/solid/bg/default",
+          "state": "default·complete",
+          "property": "background"
+        },
+        {
+          "name": "--color-chip-solid-bg-hover",
+          "semanticRef": "color/chip/solid/bg/hover",
+          "state": "hover",
+          "property": "background·border-color",
+          "note": "hover 는 테두리도 이 값을 쓴다(배경색과 동일화)."
+        },
+        {
+          "name": "--color-chip-solid-bg-selected",
+          "semanticRef": "color/chip/solid/bg/selected",
+          "state": "selected",
+          "property": "background"
+        },
+        {
+          "name": "--color-chip-solid-bg-disabled",
+          "semanticRef": "color/chip/solid/bg/disabled",
+          "state": "disabled",
+          "property": "background"
+        },
+        {
+          "name": "--color-chip-solid-border-default",
+          "semanticRef": "color/chip/solid/border/default",
+          "state": "default·complete",
+          "property": "border-color"
+        },
+        {
+          "name": "--color-chip-solid-border-selected",
+          "semanticRef": "color/chip/solid/border/selected",
+          "state": "selected",
+          "property": "border-color"
+        },
+        {
+          "name": "--color-chip-solid-border-disabled",
+          "semanticRef": "color/chip/solid/border/disabled",
+          "state": "disabled",
+          "property": "border-color"
+        },
+        {
+          "name": "--color-chip-solid-label-default",
+          "semanticRef": "color/chip/solid/label/default",
+          "state": "default·hover·complete",
+          "property": "text-color"
+        },
+        {
+          "name": "--color-chip-solid-label-selected",
+          "semanticRef": "color/chip/solid/label/selected",
+          "state": "selected",
+          "property": "text-color"
+        },
+        {
+          "name": "--color-chip-solid-label-disabled",
+          "semanticRef": "color/chip/solid/label/disabled",
+          "state": "disabled",
+          "property": "text-color"
+        },
+        {
+          "name": "--color-chip-solid-icon-default",
+          "semanticRef": "color/chip/solid/icon/default",
+          "state": "default·hover·complete",
+          "property": "arrow-color",
+          "note": "화살표 전용(2026-09-10 신설). 종전에는 label 토큰을 빌려 썼고 값은 그대로 옮겼다."
+        },
+        {
+          "name": "--color-chip-solid-icon-selected",
+          "semanticRef": "color/chip/solid/icon/selected",
+          "state": "selected",
+          "property": "arrow-color"
+        },
+        {
+          "name": "--color-chip-solid-icon-disabled",
+          "semanticRef": "color/chip/solid/icon/disabled",
+          "state": "disabled",
+          "property": "arrow-color"
+        }
+      ]
+    }
+  },
+  "subVariants": [
+    "label-only",
+    "with-title"
+  ],
+  "dependencies": {
+    "coreComponents": [
+      "Dropdown"
+    ],
+    "note": "State=Selected 에서 Dropdown 인스턴스를 부착한다(BUILD_DEPENDENCIES)."
+  },
+  "figma": {
+    "componentSetKey": "",
+    "figmaNodeId": "540:3226",
+    "propertyMap": {
+      "Size": [
+        "SM",
+        "MD"
+      ],
+      "Break": [
+        "PC",
+        "Mobile"
+      ],
+      "Variant": [
+        "Line",
+        "Solid"
+      ],
+      "Title": [
+        "Off",
+        "On"
+      ],
+      "State": [
+        "Default",
+        "Hover",
+        "Selected",
+        "Complete",
+        "Disabled"
+      ]
+    },
+    "_note": "노드ID 는 build-components.ts:2542 주석의 V2.4 표기가 유일한 근거이며 원본 대조 리포트는 아직 없다(reports/figma-library-build 에 filter-chip 디렉터리 없음). componentSetKey 는 Plugin 연동 전까지 보류."
+  },
+  "origin": {
+    "classification": "tbd",
+    "note": "Chip 과 토큰을 공유하지만 별개 세트. Figma 원본 대조 리포트가 없어 Ⓐ/Ⓑ 판정 불가 — 원본 재측정 필요 여부는 river 결정 대기.",
+    "legacySource": {
+      "canonicalSet": "540:3226",
+      "_note": "코드 주석 기반. 미검증."
+    }
+  },
+  "guide": {
+    "sampleLabels": [
+      "최신순",
+      "과거순",
+      "인기순"
+    ],
+    "sampleTitle": "정렬",
+    "webTag": "button",
+    "interactionPattern": "disclosure-listbox",
+    "mobileInteractionPattern": "dialog-single-select",
+    "accessibility": {
+      "role": "button",
+      "popupRole": "listbox",
+      "keyboard": [
+        "Enter",
+        "Space",
+        "Escape",
+        "ArrowDown",
+        "ArrowUp"
+      ],
+      "attributes": [
+        "aria-haspopup",
+        "aria-expanded"
+      ]
+    },
+    "panelWidthRuleRef": "열린 목록의 폭은 칩 폭을 따른다 — 칩이 100px 보다 좁으면 목록은 100px(river 결정 2026-09-07). 규칙 정본은 registry/components/dropdown.json 의 guide.panelWidthRule."
+  },
+  "governance": {
+    "owner": "design-system",
+    "deprecated": false,
+    "replacement": null
+  }
+}

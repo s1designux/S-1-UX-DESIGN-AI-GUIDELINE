@@ -1,0 +1,23 @@
+<!-- 아이콘 네 가지는 예시다 — 실제 화면은 칸의 style 에 --s1-mobile-nav-icon 을 주어
+     받은 아이콘으로 갈아 끼운다(쓰는 법은 배포본 README).
+     아이템 1칸이 코어다. 바(배경·4칸 배치)는 화면이 소유한다.
+     다만 탭 목록 구조는 접근성상 필수라, 꾸미기 없는 role="tablist" 껍데기를 예시에 함께 둔다
+     (river 결정 2026-09-02 HD-1 선택지 B). 스타일은 호스트 화면이 정한다. -->
+<nav aria-label="주요 메뉴" role="tablist">
+  <button type="button" data-s1-component="mobile-bottom-nav" data-icon="home" role="tab" aria-selected="true">
+    <span data-s1-part="icon" aria-hidden="true"></span>
+    <span data-s1-part="label">홈</span>
+  </button>
+  <button type="button" data-s1-component="mobile-bottom-nav" data-icon="search" role="tab" aria-selected="false">
+    <span data-s1-part="icon" aria-hidden="true"></span>
+    <span data-s1-part="label">검색</span>
+  </button>
+  <button type="button" data-s1-component="mobile-bottom-nav" data-icon="notification" role="tab" aria-selected="false">
+    <span data-s1-part="icon" aria-hidden="true"></span>
+    <span data-s1-part="label">알림</span>
+  </button>
+  <button type="button" data-s1-component="mobile-bottom-nav" data-icon="settings" role="tab" aria-selected="false">
+    <span data-s1-part="icon" aria-hidden="true"></span>
+    <span data-s1-part="label">설정</span>
+  </button>
+</nav>

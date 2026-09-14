@@ -1,0 +1,336 @@
+{
+  "_meta": {
+    "id": "input",
+    "name": "Input",
+    "category": "Core",
+    "updatedAt": "2026-08-26",
+    "version": "0.5.1",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "stable",
+    "figmaNodeId": "540:3328",
+    "figmaNote": "2026-05-20 MVP-F1 플러그인 스캔으로 확인. Figma 내 프레임명이 'Login input'으로 잘못 등록된 상태 — canonical 명칭은 'Input'. 이전 stale nodeId: 6443:4408.",
+    "description": "Base text input field. Pure input element without label/helper wrapper. Label/Helper combo = Input Slots pattern.",
+    "hdResolved": "HD-1 through HD-8 resolved 2026-05-12. Token corrections applied after re-examination."
+  },
+  "usage": {
+    "whenToUse": [
+      "한 줄 텍스트·숫자를 입력받을 때 — 로그인·검색·필터·설정 폼 등.",
+      "라벨·도움말과 함께 쓰려면 Input Slots(라벨/헬퍼 조합) 패턴으로 감싼다.",
+      "안내메시지(helper)는 필요한 화면에서만 켠다 — 계정 관련 화면(로그인·비밀번호 변경·회원가입)처럼 입력 규칙을 미리 알려야 하는 곳이 대표적이다. 일반 입력·검색에는 넣지 않는다(river 결정 2026-09-07)."
+    ],
+    "whenNotToUse": [
+      "여러 줄 입력은 Textarea 를 쓴다.",
+      "선택지 중 하나를 고르는 입력은 Select·Dropdown, 날짜·시간은 DatePicker·TimePicker 를 쓴다.",
+      "안내메시지가 필요하다는 이유로 '계정용 인풋' 같은 별도 컴포넌트를 만들지 않는다 — 안내메시지는 켜고 끄는 선택 슬롯이다. 업계 관행도 검색만 별도 컴포넌트로 가르고, 쓰이는 화면으로는 가르지 않는다(river 결정 2026-09-07)."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "입력 필드(base)",
+      "role": "텍스트·숫자를 입력하는 기본 영역. 배경·테두리·텍스트는 form-control 토큰."
+    },
+    {
+      "part": "placeholder",
+      "role": "입력 전 안내 문구. 입력되면 default 텍스트 색으로 전환."
+    },
+    {
+      "part": "suffix 액션 그룹(선택)",
+      "role": "오른쪽 액션 버튼 그룹. 검색=지우기+검색 아이콘, 비밀번호=표시전환+지우기."
+    },
+    {
+      "part": "helper 텍스트(선택)",
+      "role": "필드 아래 도움말·오류·성공 메시지. color-text-state 사용."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "색·테두리는 form-control 역할 토큰(--color-form-control-*)을 통해 참조한다.",
+      "focus 는 파란 테두리(--input-focus-border)로만 표시하고 배경은 바꾸지 않는다.",
+      "라벨은 form-control 밖 제목 텍스트 토큰(--color-text-title-secondary)을 쓴다.",
+      "안내메시지는 규칙을 알려야 하는 화면에서만 켠다. 끌 때는 message 요소와 aria-describedby 를 함께 뺀다."
+    ],
+    "dont": [
+      "Input field 전체에 hover 상태를 만들지 않는다 — HD-2에서 제거됨. suffix action의 독립 Hover 배경은 예외이며, 그마저도 PC 에서만 낸다(Mobile 제외, river 지시 2026-09-07).",
+      "filled·error·focus 에 별도 배경색을 넣지 않는다 — 배경은 default 와 동일, 구분은 텍스트·테두리 색으로만.",
+      "correct(성공) 테두리를 초록으로 칠하지 않는다 — 원본은 파란색(border-selected).",
+      "모든 입력칸에 안내메시지를 기본으로 깔지 않는다 — 읽을 것이 늘어 정작 필요한 곳의 규칙 안내가 묻힌다."
+    ]
+  },
+  "a11y": [
+    "suffix 액션(지우기·검색·비밀번호 표시전환)에는 각각 aria-label 을 단다(예: 검색어 지우기, 비밀번호 보기/숨기기).",
+    "비밀번호 표시전환 토글은 aria-pressed 로 표시·숨김 상태를 노출한다.",
+    "Focus 상태의 지우기(clear) 버튼은 값이 있고 Input 또는 지우기 버튼에 초점이 있을 때만 노출한다(hidden 속성 제어).",
+    "suffix 액션의 실제 누르는 영역은 PC 28×28px, Mobile 48×48px이며 액션마다 독립된 button 영역을 가진다. Mobile 에서 액션이 둘 보일 때는 누르는 영역을 맞붙이고(간격 0) 왼쪽 아이콘 그림만 자기 영역 안쪽 끝으로 당겨 보이는 간격을 좁힌다 — 영역 48×48 과 겹치지 않음은 그대로다(river 결정 2026-09-07, 실측 28px→12px).",
+    "Mobile break 에서는 suffix 액션에 hover 배경을 내지 않는다 — 손가락에는 hover 가 없고, PC 브라우저로 모바일 화면을 볼 때 48×48 영역이 통째로 칠해져 혼란을 준다(river 지시 2026-09-07).",
+    "suffix 액션의 키보드 초점 표시는 브라우저 기본 표시에 맡긴다 — 정본에 focus 표현이 없어 웹에서 따로 만들지 않는다(2026-09-02 river 결정).",
+    "입력칸에 키보드 초점이 들어오면 field 테두리를 정본 Selected 색으로 바꾼다. error·correct·read-only 에서도 같다(2026-09-04 river 지시).",
+    "Tab 으로 들어온 초점은 커서를 값 끝에 둔다. 마우스로 눌러 들어온 초점은 누른 자리를 유지한다(2026-09-04 river 지시).",
+    "disabled 입력칸은 초점을 받지 않고 tab 순서에서 건너뛴다(native disabled)."
+  ],
+  "platforms": {
+    "pc-md": {
+      "height": "44px",
+      "heightToken": "--sizing/form-control/height/md",
+      "paddingBlock": "8px",
+      "paddingBlockToken": "--spacing/padding/block/xxs",
+      "radiusToken": "--radius/control/sm"
+    },
+    "pc-xsm": {
+      "height": "34px",
+      "heightToken": "(미확인)",
+      "paddingBlock": "8px",
+      "paddingBlockToken": "--spacing/padding/block/xxs",
+      "radiusToken": "--radius/control/sm"
+    },
+    "pc-xxsm": {
+      "height": "28px",
+      "heightToken": "(미확인)",
+      "paddingBlock": "8px",
+      "paddingBlockToken": "--spacing/padding/block/xxs",
+      "radiusToken": "--radius/control/sm"
+    },
+    "mobile": {
+      "height": "48px",
+      "heightToken": "--sizing/form-control/height/lg",
+      "paddingBlock": "12px",
+      "paddingBlockToken": "--spacing/padding/block/xs",
+      "radiusToken": "raw 4px (토큰 미참조 — Figma 원본 기준)",
+      "suffixActionHitArea": "48×48px",
+      "minHeightWithSuffixAction": "48px"
+    }
+  },
+  "platformDifferences": {
+    "padding": "PC: block/xxs(8px) / Mobile: block/xs(12px)",
+    "radius": "PC: --radius/control/sm 토큰 / Mobile: raw 4px",
+    "iconSlot-success": "PC: pw-hide 아이콘 유지 / Mobile: remove(X) 버튼 노출"
+  },
+  "states": ["default", "focus", "filled", "error", "correct", "read-only", "disabled"],
+  "stateNotes": {
+    "focus":    "Figma: 'selected'. border → --input-focus-border(blue). bg 변경 없음.",
+    "filled":   "Figma: 'complete'. HD-3: 별도 bg/border 없음. default와 동일 시각. text/default 색상으로만 구분(placeholder→typed). canonical: filled (token-aliases.json 확정).",
+    "correct":  "HD-4: correct로 통일(Figma: success). border = focus와 동일(blue, --color/form-control/border/selected). helper text = --color/text/state/correct(#1D6CEB).",
+    "error":    "border → --input-error-border(#FF4554). helper text → error 메시지.",
+    "hover":    "Input field Hover는 삭제(HD-2). suffix action Hover는 suffixAction.hover에서 별도 관리."
+  },
+  "iconSlots": ["off", "1", "2+"],
+  "inputTypes": ["normal", "password"],
+  "variants": {
+    "default": {
+      "tokenStatus": "stable",
+      "darkModeStatus": "pending",
+      "semanticTokens": {
+        "background": {
+          "--color-form-control-bg-default":  "var(--color-surface-default)",
+          "--color-form-control-bg-disabled": "var(--color-bg-subtle)"
+        },
+        "border": {
+          "--color-form-control-border-default":  "var(--color-border-default)",
+          "--color-form-control-border-selected": "Light blue/400 · Dark blue-dark/350",
+          "--color-form-control-border-error":    "var(--color-status-error)",
+          "--color-form-control-border-correct":  "Light blue/400 · Dark blue-dark/350",
+          "--color-form-control-border-disabled": "var(--color-border-subtle)"
+        },
+        "text": {
+          "--color-form-control-text-default":     "var(--color-text-secondary)",
+          "--color-form-control-text-placeholder": "var(--color-text-placeholder)",
+          "--color-form-control-text-disabled":    "var(--color-text-disabled)"
+        },
+        "label": {
+          "--color-text-title-secondary": "var(--color-text-primary)",
+          "note": "Label은 --color/text/title/secondary (#353535) 사용. form-control 네임스페이스 밖. --color-text-primary와 동일 값."
+        },
+        "helper": {
+          "--color-text-state-helper":  "var(--color-text-secondary)",
+          "--color-text-state-correct": "#1D6CEB",
+          "--color-text-state-error":   "var(--color-status-error)",
+          "note": "--color/text/state/correct = #1D6CEB (파란색). correct 상태 border와 동일 색조."
+        }
+      },
+      "componentTokens": {
+        "background": {
+          "--input-default-bg":  "var(--color-form-control-bg-default)",
+          "--input-disabled-bg": "var(--color-form-control-bg-disabled)"
+        },
+        "border": {
+          "--input-default-border":  "var(--color-form-control-border-default)",
+          "--input-focus-border":    "var(--color-form-control-border-selected)",
+          "--input-error-border":    "var(--color-form-control-border-error)",
+          "--input-correct-border":  "var(--color-form-control-border-correct)",
+          "--input-disabled-border": "var(--color-form-control-border-disabled)"
+        },
+        "text": {
+          "--input-placeholder-text": "var(--color-form-control-text-placeholder)",
+          "--input-disabled-text":    "var(--color-form-control-text-disabled)",
+          "--input-helper-text":      "var(--color-text-state-helper)",
+          "--input-correct-text":     "var(--color-text-state-correct)",
+          "--input-error-text":       "var(--color-status-error)"
+        },
+        "readonly": {
+          "--input-readonly-bg":     "var(--color-form-control-bg-disabled)",
+          "--input-readonly-border": "var(--color-form-control-border-default)",
+          "--input-readonly-text":   "var(--color-text-readonly)",
+          "note": "Textarea 와 공유. readonly bg는 disabled와 동일하고 border는 default를 유지한다. text는 --color-text-readonly로 한 단계 진하다. build-components.ts Read-Only 정본과 일치."
+        }
+      },
+      "removedTokens": {
+        "--input-hover-bg":          "HD-2: Figma 미정의",
+        "--input-hover-border":      "HD-2: Figma 미정의",
+        "--input-focus-bg":          "HD-3: complete/focus bg = default와 동일",
+        "--input-error-bg":          "HD-8: error bg = default와 동일",
+        "--input-label-text":        "수정: Label은 --color-text-title-secondary (form-control 밖)",
+        "--select-disabled-border":  "HD-5: Select 컴포넌트로 이동"
+      },
+      "corrections": {
+        "border-correct": "초기 분류 오류 수정. correct border ≠ --color-status-success. Figma 원본 = --color/form-control/border/selected (#1D6CEB, 파란색).",
+        "label-token": "초기 분류 오류 수정. Label token = --color/text/title/secondary, form-control 네임스페이스 외부.",
+        "color-text-state-correct": "신규 발견. --color/text/state/correct = #1D6CEB (correct helper text 색상)."
+      }
+    }
+  },
+  "suffixAction": {
+    "status": "approved",
+    "publicPart": "action",
+    "hitArea": { "pc": "28×28px", "mobile": "48×48px" },
+    "iconSize": { "xxsm": "20px", "default": "24px" },
+    "glyphSize": { "xxsm": "13.33px", "default": "16px" },
+    "glyphSizeRule": "정본 remove 인스턴스는 24px 프레임 안 16px 글리프이며 XXSM은 프레임 전체를 20px로 비례 축소한다.",
+    "hover": {
+      "target": "각 suffix action의 독립 hit area",
+      "inputMethod": "hover를 지원하는 마우스·트랙패드",
+      "backgroundToken": "color/form-control/bg/hover",
+      "radiusToken": "radius/4",
+      "figmaProperties": ["Password Action Hover", "Clear Action Hover"],
+      "webSelector": "@media (hover: hover) 안의 :hover:not(:disabled)"
+    },
+    "rules": [
+      "각 액션은 독립된 native button으로 구현한다.",
+      "Hover 배경은 Input field 전체가 아니라 현재 가리키는 action의 hit area에만 표시한다.",
+      "Mobile suffix action이 있으면 Input 높이는 최소 48px다."
+    ],
+    "baseClearAction": {
+      "state": "Focus",
+      "icon": "remove",
+      "visibility": "값이 있고 Input 또는 clear action에 focus가 있을 때 노출",
+      "interaction": "누르면 값을 지우고 input event를 발생시킨 뒤 Input으로 focus를 돌려준다.",
+      "event": "s1:input:clear"
+    }
+  },
+  "relatedComponents": {
+    "inputbox-large": "Textarea 컴포넌트로 편입 (HD-6). registry/components/textarea.json 예정.",
+    "timepicker-input": "Picker 계열. MVP5 이후 구현. figmaNodeId: 6443:4606",
+    "datepicker-input": "Picker 계열. MVP5 이후 구현. figmaNodeId: 6443:4655"
+  },
+  "relatedComposedFields": [
+    {
+      "id": "search-input",
+      "name": "Search Input",
+      "type": "related-composed-field",
+      "baseComponent": "Input",
+      "includedInBaseVariants": false,
+      "notFullPattern": true,
+      "documentedUnder": "Components > Input",
+      "composition": ["Input", "suffixActionGroup: clearAction + searchAction"],
+      "slotStructure": {
+        "suffixActionGroup": {
+          "description": "오른쪽 액션 버튼 그룹. 두 액션이 flex row로 나란히 배치됨.",
+          "slots": [
+            {
+              "id": "clearAction",
+              "figmaIconName": "remove",
+              "figmaNodeId": "882:4061",
+              "icon": "remove",
+              "visibility": "conditional",
+              "condition": "has-value",
+              "position": "left-of-searchAction",
+              "ariaLabel": "검색어 지우기",
+              "description": "값이 있을 때만 표시. searchAction 왼쪽에 위치. hidden attribute로 제어."
+            },
+            {
+              "id": "searchAction",
+              "figmaIconName": "ic_찾기/조회",
+              "figmaNodeId": "6452:5930",
+              "icon": "ic_찾기/조회",
+              "visibility": "always",
+              "position": "rightmost",
+              "ariaLabel": "검색",
+              "description": "항상 표시. 그룹의 가장 오른쪽 고정."
+            }
+          ]
+        }
+      },
+      "interaction": {
+        "clearAction": "입력값 삭제. 값이 없으면 hidden. 클릭 후 input focus 유지.",
+        "searchAction": "검색 트리거 또는 시각적 어포던스. Figma 기준: 항상 표시되는 ic_찾기/조회 아이콘."
+      },
+      "prefixIconSlot": false,
+      "states": ["empty", "filled"],
+      "iconStatus": "candidate",
+      "iconNote": "Figma 노드명 확인 완료. 로컬 SVG asset 미등록 — candidate inline SVG 사용 중.",
+      "tokenStatus": "reuses-base-input",
+      "figmaStatus": "confirmed",
+      "figmaNote": "Section 3 (6452:5955). Empty=6452:5907, Filled=6452:5908. 확인일: 2026-05-12.",
+      "status": "candidate",
+      "updatedAt": "2026-05-12"
+    },
+    {
+      "id": "password-field",
+      "name": "Password Field",
+      "type": "related-composed-field",
+      "baseComponent": "Input",
+      "includedInBaseVariants": false,
+      "notFullPattern": true,
+      "documentedUnder": "Components > Input",
+      "composition": ["Input", "suffixActionGroup: visibilityToggle + clearAction"],
+      "slotStructure": {
+        "suffixActionGroup": {
+          "description": "오른쪽 액션 버튼 그룹.",
+          "slots": [
+            {
+              "id": "visibilityToggle",
+              "figmaIconName": "ic_비밀번호미표시",
+              "figmaNodeId": "135:6692",
+              "icon": "ic_비밀번호미표시 / ic_비밀번호표시(미확인)",
+              "visibility": "always",
+              "position": "leftmost-in-group",
+              "ariaLabel": "비밀번호 보기 / 비밀번호 숨기기",
+              "ariaPressed": true,
+              "description": "항상 표시. 비밀번호 표시/숨김 전환. 숨김 = ic_비밀번호미표시 아이콘, 표시 = eye-off(Figma 노드명 미확인)."
+            },
+            {
+              "id": "clearAction",
+              "figmaIconName": "remove",
+              "figmaNodeId": "882:4061",
+              "icon": "remove",
+              "visibility": "conditional",
+              "condition": "has-value",
+              "position": "right-of-visibilityToggle",
+              "ariaLabel": "비밀번호 지우기",
+              "description": "값이 있을 때만 표시. visibilityToggle 오른쪽에 위치. hidden attribute로 제어."
+            }
+          ]
+        }
+      },
+      "interaction": {
+        "visibilityToggle": "input type password/text 전환. aria-label·aria-pressed 상태에 따라 변경.",
+        "clearAction": "입력값 삭제. 값이 없으면 hidden."
+      },
+      "states": ["hidden", "visible"],
+      "iconStatus": "candidate",
+      "iconNote": "visibilityToggle hidden 상태 아이콘: ic_비밀번호미표시 확인. visible 상태 eye-off 아이콘 Figma 노드명 미확인.",
+      "tokenStatus": "reuses-base-input",
+      "figmaStatus": "confirmed",
+      "figmaNote": "Section 3 (6452:5955). Hidden=6452:5891, Filled=6452:5877. 확인일: 2026-05-12.",
+      "status": "candidate",
+      "updatedAt": "2026-05-12"
+    }
+  ],
+  "separateComponentCandidates": ["DatePicker", "TimePicker", "Textarea"],
+  "patternModuleCandidates": ["Login Form", "Search Module", "Address Search", "Date Range Selection"],
+  "guide": {
+    "sampleLabel": "이름", "samplePlaceholder": "내용을 입력하세요", "sampleValue": "홍길동", "sampleMessage": "입력 내용을 확인하세요", "messageOptional": true,
+    "webTag": "input", "interactionPattern": "text-entry",
+    "searchInput": { "name": "Search Input", "samplePlaceholder": "검색어를 입력하세요", "sampleValue": "디자인 시스템", "clearLabel": "검색어 지우기", "submitLabel": "검색" }
+  }
+}
