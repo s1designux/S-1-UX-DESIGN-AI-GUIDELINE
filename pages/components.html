@@ -1824,6 +1824,8 @@
           <button class="comp-nav-btn" data-category="navigation" data-platforms="pc" onclick="showSection('login-gnb', this)" disabled>Login GNB</button>
           <button class="comp-nav-btn" data-category="overlay" data-platforms="pc mobile" onclick="showSection('modal', this)">Modal</button>
           <button class="comp-nav-btn" data-category="overlay" data-platforms="pc" onclick="showSection('modal-content', this)">Modal Content</button>
+          <button class="comp-nav-btn" data-category="overlay" data-platforms="mobile" onclick="showSection('bottom-sheet', this)">Bottom Sheet</button>
+          <button class="comp-nav-btn" data-category="overlay" data-platforms="mobile" onclick="showSection('bottom-sheet-option', this)">Bottom Sheet Option</button>
         </div><!-- /comp-nav -->
       </div><!-- /component-filter -->
 
@@ -2144,6 +2146,12 @@
 
       <!-- Approved Modal Content guide: ui-library-guide.js renders from ui-library/dist -->
       <section class="comp-section" id="modal-content" data-cov-sizes="md,lg,xl" data-cov-footer="single,dual"></section>
+
+      <!-- Approved Bottom Sheet guide: ui-library-guide.js renders from ui-library/dist -->
+      <section class="comp-section" id="bottom-sheet" data-cov-footer="none,single,dual"></section>
+
+      <!-- Approved Bottom Sheet Option guide: ui-library-guide.js renders from ui-library/dist -->
+      <section class="comp-section" id="bottom-sheet-option" data-cov-type="text,checkbox,radio,list" data-cov-states="default,selected,disabled"></section>
 
 
       <!-- Approved Table guide: ui-library-guide.js renders from ui-library/dist -->

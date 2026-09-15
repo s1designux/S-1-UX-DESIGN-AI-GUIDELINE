@@ -296,6 +296,299 @@ _Don't_
 - 상태는 :hover·:active·[disabled] 로 표현하고 별도 data 상태를 만들지 않는다.
 - 포커스 표시는 브라우저 기본값을 그대로 쓴다(정본에 별도 focus 표현이 없다).
 
+### Bottom Sheet
+
+모바일에서 화면 아래에서 올라오는 시트 그릇 3종(Footer None|Single|Dual). 딤 위에 제목·닫기(X)·본문 자리·푸터 버튼으로 뜬다. 본문은 슬롯이라 화면마다 갈아끼운다 — 기본 채움은 Bottom Sheet Option 줄이고, 날짜·시간 선택은 달력·휠을 넣어 쓴다. 모바일에서 드롭다운을 대신하는 자리다.
+
+**언제 쓰나**
+- 모바일에서 목록을 띄워 고르게 할 때 — 드롭다운 대신 쓴다(density-policy mobileSubstitutes.dropdown).
+- 모바일에서 날짜·시간처럼 넓은 선택 UI 를 띄울 때.
+- Footer=None 은 고르는 즉시 적용되는 목록, Single 은 '적용' 하나, Dual 은 '취소+적용'.
+
+**쓰지 말아야 할 때**
+- PC 화면 — PC 는 드롭다운·팝오버·모달을 쓴다. 정본 시트는 모바일 폭(360) 기준이다.
+- 확인·알림처럼 짧은 결정 — Modal 을 쓴다.
+- 비차단 알림 — 토스트·인라인 메시지.
+
+**구성 (Anatomy)**
+
+| 요소 | 역할 |
+| --- | --- |
+| 딤(backdrop) | 뒤 배경을 덮는 color-overlay 딤. 누르면 닫힌다. |
+| 패널 | 아래에 붙어 위 모서리만 둥근 시트면. 폭은 화면 폭(최대 360). |
+| 헤더 | 제목 ↔ 닫기(X). 좌우 여백 20. |
+| 본문(슬롯) | 화면이 채우는 자리. 컴포넌트는 빈 그릇만 소유한다. |
+| 푸터(선택) | 코어 Button 1개(Single) 또는 2개(Dual). Footer=None 이면 없다. |
+
+| variant | default | hover | pressed | disabled |
+| --- | --- | --- | --- | --- |
+| default | — | — | — | — |
+
+#### Agent-readable contract
+
+```yaml
+agent:
+  component: "Bottom Sheet"
+  variantAxes:
+    Footer:
+      - "None"
+      - "Single"
+      - "Dual"
+  states:
+    builder: "not-defined"
+    metadata: "unknown"
+  behavior:
+    platform: "PC"
+    status: "not-defined"
+  geometry:
+    common:
+      target: "root"
+      width: 360
+      height: 100
+      layoutMode: "VERTICAL"
+      primaryAxisSizingMode: "AUTO"
+      counterAxisSizingMode: "FIXED"
+      counterAxisAlignItems: "CENTER"
+      itemSpacing: "48"
+      paddingTop: "20"
+      paddingRight: "0"
+      paddingLeft: "0"
+      topLeftRadius: "8"
+      topRightRadius: "8"
+      bottomLeftRadius: "0"
+      bottomRightRadius: "0"
+    variants:
+      -
+        when:
+          Footer: "None"
+        paddingBottom: "40"
+      -
+        when:
+          Footer:
+            - "Single"
+            - "Dual"
+        paddingBottom: "20"
+  composition:
+    mustReuse:
+      - "Bottom Sheet Option"
+      - "Button"
+      - "button"
+      - "bottom-sheet-option"
+    mustNotCreate: "not-defined"
+    declaredParts:
+      - "content"
+      - "footer"
+  constraints: "unknown"
+  tokens:
+    figmaSemanticBindings:
+      - "border-width/1"
+      - "color/button/bg/primary--default"
+      - "color/button/bg/secondary--default"
+      - "color/button/border/primary--default"
+      - "color/button/border/secondary--default"
+      - "color/button/label/primary--default"
+      - "color/button/label/secondary--default"
+      - "color/surface/raised"
+      - "color/text/body/primary"
+      - "color/text/state/accent"
+      - "color/text/title/primary"
+      - "radius/4"
+      - "spacing/16"
+    aliasChains: "not-defined"
+  figma:
+    status: "available"
+    identifiers:
+      componentSetKey: "(미발행 — 라이브러리 publish 시 기록)"
+      fileKey: "cysG5U1udpQqVagYY1hWHW"
+    variants:
+      footer:
+        - "none"
+        - "single"
+        - "dual"
+  icons:
+    allowed:
+      - "ic_닫기 (V2.2 아이콘 라이브러리)"
+    slots: "unknown"
+```
+
+_Do_
+- 제목은 항상 둔다. 닫기(X)도 항상 둔다(정본 3변형 전부 헤더에 있다).
+- 푸터 버튼은 코어 Button 배포본(Mobile LG)을 그대로 조립한다.
+- 시트는 화면(body) 바로 아래에 둔다 — 상자 안에 넣으면 갇힌다.
+- 본문에 넣는 줄은 Bottom Sheet Option 을 쓴다. 새로 그리지 않는다.
+
+_Don't_
+- 시트 문구(실제 카피)를 컴포넌트 정본으로 넣지 않는다 — 예시일 뿐(UX라이팅 영역).
+- PC 용 크기를 만들지 않는다 — 정본에 없다.
+- 정본에 없는 층(부제·손잡이 바 등)을 임의로 만들지 않는다.
+
+**접근성 (a11y)**
+- 패널을 role=dialog · aria-modal=true 로 표시하고 aria-labelledby 로 제목을 연결한다.
+- 열릴 때 패널 안 첫 초점 요소로 초점을 옮기고, 닫힐 때 열기 전 초점 자리로 되돌린다.
+- 열려 있는 동안 Tab·Shift+Tab 은 패널 안에서만 순환한다(초점 가둠).
+- Esc 로 닫을 수 있게 한다. 닫기(X) 버튼에 '닫기' 이름을 준다.
+- 딤을 눌러도 닫힌다 — 닫기 수단이 키보드(Esc)·버튼·포인터 세 갈래로 모두 있다.
+- 열려 있는 동안 배경 스크롤을 잠근다. 시트·모달이 여럿이면 마지막 하나가 닫힐 때 되돌린다.
+
+### Bottom Sheet Option
+
+바텀시트 안에 놓이는 한 줄. Type 4종(Text·Checkbox·Radio·List) × State(Default·Selected·Disabled) 중 정본에 실재하는 9칸. Text·Checkbox·Radio 는 높이 48 고정, List 는 아바타+두 줄 글자라 내용만큼 늘어난다. 단독으로 쓰지 않고 Bottom Sheet 본문 안에서 쓴다.
+
+**언제 쓰나**
+- 바텀시트 본문에 고를 것을 줄로 늘어놓을 때.
+- Text = 한 값 고르기(고른 줄에 파란 체크), Checkbox = 여러 값 고르기, Radio = 한 값 고르기(동그라미 표시), List = 사람·항목처럼 아바타와 설명이 함께 있는 줄.
+
+**쓰지 말아야 할 때**
+- 바텀시트 밖 — PC 목록은 Dropdown 을 쓴다.
+- 표의 행 — Table 을 쓴다.
+
+**구성 (Anatomy)**
+
+| 요소 | 역할 |
+| --- | --- |
+| 라벨 | 줄의 글자. Text·Checkbox·Radio 공통. |
+| 체크 표시(선택) | Text 가 선택됐을 때 오른쪽에 붙는 파란 체크 아이콘. |
+| 컨트롤(선택) | Checkbox·Radio 코어 배포본 인스턴스. 복제하지 않는다. |
+| list-left(선택) | List 줄의 왼쪽 묶음 — 아바타 40 + 제목/서브 두 줄. |
+| 오른쪽 아이콘(선택) | List 는 기본이 화살표(chevron), 비활성이면 자물쇠(lock). |
+
+| variant | default | hover | pressed | disabled |
+| --- | --- | --- | --- | --- |
+| default | — | — | — | — |
+
+#### Agent-readable contract
+
+```yaml
+agent:
+  component: "Bottom Sheet Option"
+  variantAxes:
+    Type:
+      - "Text"
+      - "Checkbox"
+      - "Radio"
+      - "List"
+    State:
+      - "Default"
+      - "Selected"
+      - "Disabled"
+  states:
+    builder:
+      - "Default"
+      - "Selected"
+      - "Disabled"
+    metadata: "unknown"
+  behavior:
+    platform: "PC"
+    status: "not-defined"
+  geometry:
+    common:
+      target: "root"
+      width: 360
+      layoutMode: "HORIZONTAL"
+      primaryAxisSizingMode: "FIXED"
+      counterAxisAlignItems: "CENTER"
+      paddingRight: "20"
+      paddingLeft: "20"
+    variants:
+      -
+        when:
+          Type:
+            - "Text"
+            - "Checkbox"
+            - "Radio"
+        height: 48
+        counterAxisSizingMode: "FIXED"
+        primaryAxisAlignItems: "MIN"
+        itemSpacing: "8"
+        paddingTop: "8"
+        paddingBottom: "8"
+      -
+        when:
+          Type: "Text"
+          State: "Selected"
+        height: 48
+        counterAxisSizingMode: "FIXED"
+        primaryAxisAlignItems: "SPACE_BETWEEN"
+        itemSpacing: "8"
+        paddingTop: "8"
+        paddingBottom: "8"
+      -
+        when:
+          Type: "List"
+          State:
+            - "Default"
+            - "Disabled"
+        counterAxisSizingMode: "AUTO"
+        primaryAxisAlignItems: "SPACE_BETWEEN"
+        paddingTop: "12"
+        paddingBottom: "12"
+  composition:
+    mustReuse:
+      - "Checkbox"
+      - "Radio"
+      - "checkbox"
+      - "radio"
+    mustNotCreate: "not-defined"
+    declaredParts:
+      - "check"
+      - "checkbox"
+      - "chevron"
+      - "list-left"
+  constraints: "unknown"
+  tokens:
+    figmaSemanticBindings:
+      - "color/control/bg/default"
+      - "color/control/bg/selected"
+      - "color/control/border/default"
+      - "color/control/border/selected"
+      - "color/icon/gray-light"
+      - "color/surface/raised"
+      - "color/text/body/primary"
+      - "color/text/body/secondary"
+      - "color/text/state/accent"
+      - "color/text/state/disabled"
+    aliasChains: "not-defined"
+  figma:
+    status: "available"
+    identifiers:
+      componentSetKey: "(미발행 — 라이브러리 publish 시 기록)"
+      fileKey: "cysG5U1udpQqVagYY1hWHW"
+    variants:
+      type:
+        - "text"
+        - "checkbox"
+        - "radio"
+        - "list"
+      state:
+        - "default"
+        - "selected"
+        - "disabled"
+  icons:
+    allowed:
+      - "ic_확인 (V2.2)"
+      - "ic_화살표더보기 (V2.2)"
+      - "ic_계정/사용자/ID (V2.2)"
+      - "ic_잠김 (V2.2)"
+    slots: "unknown"
+```
+
+_Do_
+- Checkbox·Radio 는 코어 배포본을 그대로 넣는다.
+- 줄의 의미(고르기·이동)는 시트를 여는 화면이 ARIA 로 준다.
+- 정본에 있는 9칸만 쓴다.
+
+_Don't_
+- 선택된 줄에 배경색을 칠하지 않는다 — 정본은 글자색과 아이콘으로만 구분한다.
+- 정본에 없는 칸(Checkbox·Radio 의 비활성, List 의 선택됨)을 만들지 않는다.
+- Checkbox·Radio 코어 내부를 override 하지 않는다.
+
+**접근성 (a11y)**
+- 줄 자체는 모양만 소유한다 — 역할(role)·이름·선택 상태는 시트를 여는 화면이 준다.
+- Checkbox·Radio 는 native input 을 그대로 쓴다(코어 배포본의 계약).
+- Text 의 선택 표시(파란 체크)는 장식이다 — 선택 상태는 aria-selected·aria-checked 로 따로 알린다.
+- 비활성 줄은 disabled 또는 aria-disabled 로 알리고 초점 순서에서 뺀다.
+- List 의 아바타 아이콘은 장식이다 — 이름은 제목 글자가 갖는다.
+
 ### Button
 
 Core interactive button component. Primary / Secondary / Blue-line variants with PC 3 sizes and Mobile 1 size.
@@ -317,9 +610,9 @@ Core interactive button component. Primary / Secondary / Blue-line variants with
 
 | variant | default | hover | pressed | disabled |
 | --- | --- | --- | --- | --- |
-| primary | --button-primary-default-bg<br>--button-primary-default-text<br>--button-primary-default-icon | --button-primary-hover-bg | --button-primary-pressed-bg | --button-primary-disabled-bg<br>--button-primary-disabled-border<br>--button-primary-disabled-text |
-| secondary | --button-secondary-default-bg<br>--button-secondary-default-border<br>--button-secondary-default-text<br>--button-secondary-default-icon | --button-secondary-hover-bg | --button-secondary-pressed-bg | --button-secondary-disabled-bg<br>--button-secondary-disabled-border<br>--button-secondary-disabled-text<br>--button-secondary-disabled-icon |
-| blue-line | --button-blue-line-default-bg<br>--button-blue-line-default-border<br>--button-blue-line-default-text | --button-blue-line-hover-bg<br>--button-blue-line-hover-border | --button-blue-line-pressed-bg | --button-blue-line-disabled-bg<br>--button-blue-line-disabled-border<br>--button-blue-line-disabled-text |
+| primary | --color-button-bg-primary--default<br>--color-button-label-primary--default | --color-button-bg-primary--hover | — | --color-button-bg-disabled<br>--color-button-border-disabled<br>--color-button-label-disabled |
+| secondary | --color-button-bg-secondary--default<br>--color-button-border-secondary--default<br>--color-button-label-secondary--default | --color-button-bg-secondary--hover | — | --color-button-bg-disabled<br>--color-button-border-disabled<br>--color-button-label-disabled |
+| blue-line | --color-button-bg-blue-line--default<br>--color-button-border-blue-line--default<br>--color-button-label-blue-line--default | --color-button-bg-blue-line--hover<br>--color-button-border-blue-line--hover | — | --color-button-bg-disabled<br>--color-button-border-disabled<br>--color-button-label-disabled |
 
 #### Agent-readable contract
 
@@ -462,86 +755,50 @@ agent:
       - "spacing/8"
     aliasChains:
       -
-        chain: "--button-primary-default-bg → --color-action-primary-default"
-        status: "unresolved"
+        chain: "--color-button-bg-primary--default → --color-blue-400 → #1D6CEB"
+        status: "resolved"
       -
-        chain: "--button-primary-hover-bg → --color-action-primary-hover"
-        status: "unresolved"
+        chain: "--color-button-bg-primary--hover → --color-blue-500 → #2747B9"
+        status: "resolved"
       -
-        chain: "--button-primary-pressed-bg → --color-action-primary-pressed"
-        status: "unresolved"
+        chain: "--color-button-bg-disabled → --color-gray-50 → #F5F5F5"
+        status: "resolved"
       -
-        chain: "--button-primary-disabled-bg → --color-bg-subtle"
-        status: "unresolved"
+        chain: "--color-button-border-disabled → --color-gray-200 → #D9D9D9"
+        status: "resolved"
       -
-        chain: "--button-primary-disabled-border → --color-border-disabled"
-        status: "unresolved"
+        chain: "--color-button-label-primary--default → --color-base-white → #FFFFFF"
+        status: "resolved"
       -
-        chain: "--button-primary-default-text → --color-action-primary-text"
-        status: "unresolved"
+        chain: "--color-button-label-disabled → --color-gray-300 → #C4C4C4"
+        status: "resolved"
       -
-        chain: "--button-primary-disabled-text → --color-text-disabled"
-        status: "unresolved"
+        chain: "--color-button-bg-secondary--default → --color-base-white → #FFFFFF"
+        status: "resolved"
       -
-        chain: "--button-primary-default-icon → --color-action-primary-text"
-        status: "unresolved"
+        chain: "--color-button-bg-secondary--hover → --color-gray-50 → #F5F5F5"
+        status: "resolved"
       -
-        chain: "--button-secondary-default-bg → --color-surface-default"
-        status: "unresolved"
+        chain: "--color-button-border-secondary--default → --color-gray-200 → #D9D9D9"
+        status: "resolved"
       -
-        chain: "--button-secondary-hover-bg → --color-bg-subtle"
-        status: "unresolved"
+        chain: "--color-button-label-secondary--default → --color-gray-800 → #353535"
+        status: "resolved"
       -
-        chain: "--button-secondary-pressed-bg → --color-bg-muted"
-        status: "unresolved"
+        chain: "--color-button-bg-blue-line--default → --color-base-white → #FFFFFF"
+        status: "resolved"
       -
-        chain: "--button-secondary-disabled-bg → --color-bg-subtle"
-        status: "unresolved"
+        chain: "--color-button-bg-blue-line--hover → --color-blue-50 → #E2F1FF"
+        status: "resolved"
       -
-        chain: "--button-secondary-default-border → --color-border-default"
-        status: "unresolved"
+        chain: "--color-button-border-blue-line--default → --color-blue-400 → #1D6CEB"
+        status: "resolved"
       -
-        chain: "--button-secondary-disabled-border → --color-border-disabled"
-        status: "unresolved"
+        chain: "--color-button-border-blue-line--hover → --color-blue-400 → #1D6CEB"
+        status: "resolved"
       -
-        chain: "--button-secondary-default-text → --color-text-secondary"
-        status: "unresolved"
-      -
-        chain: "--button-secondary-disabled-text → --color-text-disabled"
-        status: "unresolved"
-      -
-        chain: "--button-secondary-default-icon → --color-icon-default"
-        status: "unresolved"
-      -
-        chain: "--button-secondary-disabled-icon → --color-icon-muted"
-        status: "unresolved"
-      -
-        chain: "--button-blue-line-default-bg → --color-surface-default"
-        status: "unresolved"
-      -
-        chain: "--button-blue-line-hover-bg → --color-action-primary-subtle"
-        status: "unresolved"
-      -
-        chain: "--button-blue-line-pressed-bg → --color-action-primary-subtle"
-        status: "unresolved"
-      -
-        chain: "--button-blue-line-disabled-bg → --color-bg-subtle"
-        status: "unresolved"
-      -
-        chain: "--button-blue-line-default-border → --color-action-primary-default"
-        status: "unresolved"
-      -
-        chain: "--button-blue-line-hover-border → --color-action-primary-default"
-        status: "unresolved"
-      -
-        chain: "--button-blue-line-disabled-border → --color-border-disabled"
-        status: "unresolved"
-      -
-        chain: "--button-blue-line-default-text → --color-action-primary-default"
-        status: "unresolved"
-      -
-        chain: "--button-blue-line-disabled-text → --color-text-disabled"
-        status: "unresolved"
+        chain: "--color-button-label-blue-line--default → --color-blue-400 → #1D6CEB"
+        status: "resolved"
   figma:
     status: "available"
     identifiers:
@@ -560,7 +817,7 @@ agent:
 _Do_
 - variant 는 primary·secondary·blue-line 만 쓴다.
 - 크기는 PC md(44)/xsm(34)/xxsm(28), Mobile lg(48) 중에서 고른다.
-- 색은 Semantic 경유 component 토큰(--button-*)으로만 참조한다.
+- 색은 배포본이 쓰는 역할 토큰(--color-button-*)으로만 참조한다.
 
 _Don't_
 - Danger·ghost variant 를 재도입하지 않는다(폐지 확정).
@@ -593,7 +850,7 @@ _Don't_
 
 | variant | default | hover | checked | disabled |
 | --- | --- | --- | --- | --- |
-| default | --checkbox-default-bg → color-control-bg-default<br>--checkbox-default-border → color-control-border-default | --checkbox-hover-bg → color-control-bg-hover<br>--checkbox-hover-border → color-control-border-default | --checkbox-checked-bg → color-control-bg-selected<br>--checkbox-checked-border → color-control-border-selected<br>--checkbox-check-icon → color-control-indicator-selected | --checkbox-disabled-bg → color-control-bg-disabled<br>--checkbox-disabled-border → color-control-border-disabled<br>--checkbox-disabled-check-icon → color-control-indicator-disabled |
+| default | --color-control-bg-default<br>--color-control-border-default | --color-control-bg-hover<br>--color-control-border-default | --color-control-bg-selected<br>--color-control-border-selected<br>--color-control-indicator-selected | --color-control-bg-disabled<br>--color-control-border-disabled<br>--color-control-indicator-disabled |
 
 #### Agent-readable contract
 
@@ -666,32 +923,32 @@ agent:
       - "color/control/border/selected"
     aliasChains:
       -
-        chain: "--checkbox-default-bg → --color-form-control-bg-default → --color-base-white → #FFFFFF"
+        chain: "--color-control-bg-default → --color-base-white → #FFFFFF"
         status: "resolved"
       -
-        chain: "--checkbox-checked-bg → --color-action-primary-default"
-        status: "unresolved"
-      -
-        chain: "--checkbox-disabled-bg → --color-bg-subtle"
-        status: "unresolved"
-      -
-        chain: "--checkbox-default-border → --color-control-border-default → --color-gray-200 → #D9D9D9"
+        chain: "--color-control-bg-hover → --color-gray-50 → #F5F5F5"
         status: "resolved"
       -
-        chain: "--checkbox-hover-border → --color-control-border-hover"
-        status: "unresolved"
-      -
-        chain: "--checkbox-checked-border → --color-control-border-selected → --color-blue-400 → #1D6CEB"
+        chain: "--color-control-bg-selected → --color-blue-400 → #1D6CEB"
         status: "resolved"
       -
-        chain: "--checkbox-disabled-border → --color-control-border-disabled → --color-gray-200 → #D9D9D9"
+        chain: "--color-control-bg-disabled → --color-gray-100 → #E9E9E9"
         status: "resolved"
       -
-        chain: "--checkbox-check-icon → --color-action-primary-text"
-        status: "unresolved"
+        chain: "--color-control-border-default → --color-gray-200 → #D9D9D9"
+        status: "resolved"
       -
-        chain: "--checkbox-disabled-check-icon → --color-border-strong"
-        status: "unresolved"
+        chain: "--color-control-border-selected → --color-blue-400 → #1D6CEB"
+        status: "resolved"
+      -
+        chain: "--color-control-border-disabled → --color-gray-200 → #D9D9D9"
+        status: "resolved"
+      -
+        chain: "--color-control-indicator-selected → --color-base-white → #FFFFFF"
+        status: "resolved"
+      -
+        chain: "--color-control-indicator-disabled → --color-gray-300 → #C4C4C4"
+        status: "resolved"
   figma:
     status: "available"
     identifiers:
@@ -740,8 +997,8 @@ Selection and filter chip component. Line type (outlined) and Solid type (filled
 
 | variant | default | hover | selected | complete | disabled |
 | --- | --- | --- | --- | --- | --- |
-| line | --chip-line-default-bg → color-chip-line-bg-default<br>--chip-line-default-border → color-chip-line-border-default<br>--chip-line-default-text → color-chip-line-label-default<br>--chip-line-default-icon → color-chip-line-label-default<br>--chip-line-default-close-icon → color-chip-line-label-default | --chip-line-hover-bg → color-chip-line-bg-hover<br>--chip-line-hover-border → color-chip-line-border-default<br>--chip-line-hover-close-icon → color-chip-line-label-default | --chip-line-selected-bg → color-chip-line-bg-selected<br>--chip-line-selected-border → color-chip-line-border-selected<br>--chip-line-selected-text → color-chip-line-label-selected<br>--chip-line-selected-icon → color-chip-line-label-selected<br>--chip-line-selected-close-icon → color-chip-line-label-selected | — | --chip-line-disabled-bg → color-chip-line-bg-disabled<br>--chip-line-disabled-border → color-chip-line-border-disabled<br>--chip-line-disabled-text → color-chip-line-label-disabled<br>--chip-line-disabled-icon → color-chip-line-label-disabled |
-| solid | --chip-solid-default-bg → color-chip-solid-bg-default<br>--chip-solid-default-border → color-chip-solid-border-default<br>--chip-solid-default-text → color-chip-solid-label-default<br>--chip-solid-default-icon → color-chip-solid-label-default<br>--chip-solid-default-close-icon → color-chip-solid-label-default | --chip-solid-hover-bg → color-chip-solid-bg-hover<br>--chip-solid-hover-border → color-chip-solid-bg-hover<br>--chip-solid-hover-close-icon → color-chip-solid-label-default | --chip-solid-selected-bg → color-chip-solid-bg-selected<br>--chip-solid-selected-border → color-chip-solid-border-selected<br>--chip-solid-selected-text → color-chip-solid-label-selected<br>--chip-solid-selected-icon → color-chip-solid-label-selected<br>--chip-solid-selected-close-icon → color-chip-solid-label-selected | — | --chip-solid-disabled-bg → color-chip-solid-bg-disabled<br>--chip-solid-disabled-border → color-chip-solid-border-disabled<br>--chip-solid-disabled-text → color-chip-solid-label-disabled<br>--chip-solid-disabled-icon → color-chip-solid-label-disabled |
+| line | --color-chip-line-bg-default<br>--color-chip-line-border-default<br>--color-chip-line-label-default<br>--color-chip-line-icon-default | --color-chip-line-bg-hover<br>--color-chip-line-border-default<br>--color-chip-line-label-default | --color-chip-line-bg-selected<br>--color-chip-line-border-selected<br>--color-chip-line-label-selected | — | --color-chip-line-bg-disabled<br>--color-chip-line-border-disabled<br>--color-chip-line-label-disabled<br>--color-chip-line-icon-disabled |
+| solid | --color-chip-solid-bg-default<br>--color-chip-solid-border-default<br>--color-chip-solid-label-default<br>--color-chip-solid-icon-default | --color-chip-solid-bg-hover<br>--color-chip-solid-label-default | --color-chip-solid-bg-selected<br>--color-chip-solid-border-selected<br>--color-chip-solid-label-selected<br>--color-chip-solid-icon-selected | — | --color-chip-solid-bg-disabled<br>--color-chip-solid-border-disabled<br>--color-chip-solid-label-disabled<br>--color-chip-solid-icon-disabled |
 | filter | — | — | — | — | — |
 
 #### Agent-readable contract
@@ -861,107 +1118,80 @@ agent:
       - "radius/full"
     aliasChains:
       -
-        chain: "--chip-line-default-bg → --color-surface-default"
-        status: "unresolved"
-      -
-        chain: "--chip-line-hover-bg → --color-bg-subtle"
-        status: "unresolved"
-      -
-        chain: "--chip-line-selected-bg → --color-surface-default"
-        status: "unresolved"
-      -
-        chain: "--chip-line-disabled-bg → --color-bg-subtle"
-        status: "unresolved"
-      -
-        chain: "--chip-line-default-border → --color-border-strong"
-        status: "unresolved"
-      -
-        chain: "--chip-line-hover-border → --color-border-strong"
-        status: "unresolved"
-      -
-        chain: "--chip-line-selected-border → --color-action-primary-default"
-        status: "unresolved"
-      -
-        chain: "--chip-line-disabled-border → --color-border-disabled"
-        status: "unresolved"
-      -
-        chain: "--chip-line-default-text → --color-text-caption"
-        status: "unresolved"
-      -
-        chain: "--chip-line-selected-text → --color-action-primary-default"
-        status: "unresolved"
-      -
-        chain: "--chip-line-disabled-text → --color-text-disabled"
-        status: "unresolved"
-      -
-        chain: "--chip-line-default-icon → --color-icon-default"
-        status: "unresolved"
-      -
-        chain: "--chip-line-selected-icon → --color-action-primary-default"
-        status: "unresolved"
-      -
-        chain: "--chip-line-disabled-icon → --color-icon-muted"
-        status: "unresolved"
-      -
-        chain: "--chip-line-default-close-icon → --color-icon-default"
-        status: "unresolved"
-      -
-        chain: "--chip-line-hover-close-icon → --color-icon-emphasis"
-        status: "unresolved"
-      -
-        chain: "--chip-line-selected-close-icon → --color-action-primary-default"
-        status: "unresolved"
-      -
-        chain: "--chip-solid-default-bg → --color-bg-subtle"
-        status: "unresolved"
-      -
-        chain: "--chip-solid-hover-bg → --color-bg-muted"
-        status: "unresolved"
-      -
-        chain: "--chip-solid-selected-bg → --color-action-primary-default"
-        status: "unresolved"
-      -
-        chain: "--chip-solid-disabled-bg → --color-bg-subtle"
-        status: "unresolved"
-      -
-        chain: "--chip-solid-default-border → transparent"
+        chain: "--color-chip-line-bg-default → --color-base-white → #FFFFFF"
         status: "resolved"
       -
-        chain: "--chip-solid-hover-border → transparent"
+        chain: "--color-chip-line-bg-hover → --color-gray-0 → #FAFAFA"
         status: "resolved"
       -
-        chain: "--chip-solid-selected-border → --color-action-primary-default"
-        status: "unresolved"
-      -
-        chain: "--chip-solid-disabled-border → transparent"
+        chain: "--color-chip-line-bg-selected → --color-base-white → #FFFFFF"
         status: "resolved"
       -
-        chain: "--chip-solid-default-text → --color-text-caption"
-        status: "unresolved"
+        chain: "--color-chip-line-bg-disabled → --color-gray-50 → #F5F5F5"
+        status: "resolved"
       -
-        chain: "--chip-solid-selected-text → --color-action-primary-text"
-        status: "unresolved"
+        chain: "--color-chip-line-border-default → --color-gray-300 → #C4C4C4"
+        status: "resolved"
       -
-        chain: "--chip-solid-disabled-text → --color-text-disabled"
-        status: "unresolved"
+        chain: "--color-chip-line-border-selected → --color-blue-400 → #1D6CEB"
+        status: "resolved"
       -
-        chain: "--chip-solid-default-icon → --color-icon-default"
-        status: "unresolved"
+        chain: "--color-chip-line-border-disabled → --color-gray-100 → #E9E9E9"
+        status: "resolved"
       -
-        chain: "--chip-solid-selected-icon → --color-action-primary-text"
-        status: "unresolved"
+        chain: "--color-chip-line-label-default → --color-gray-500 → #757575"
+        status: "resolved"
       -
-        chain: "--chip-solid-disabled-icon → --color-icon-muted"
-        status: "unresolved"
+        chain: "--color-chip-line-label-selected → --color-blue-400 → #1D6CEB"
+        status: "resolved"
       -
-        chain: "--chip-solid-default-close-icon → --color-icon-default"
-        status: "unresolved"
+        chain: "--color-chip-line-label-disabled → --color-gray-300 → #C4C4C4"
+        status: "resolved"
       -
-        chain: "--chip-solid-hover-close-icon → --color-icon-emphasis"
-        status: "unresolved"
+        chain: "--color-chip-line-icon-default → --color-gray-500 → #757575"
+        status: "resolved"
       -
-        chain: "--chip-solid-selected-close-icon → --color-action-primary-text"
-        status: "unresolved"
+        chain: "--color-chip-line-icon-disabled → --color-gray-300 → #C4C4C4"
+        status: "resolved"
+      -
+        chain: "--color-chip-solid-bg-default → --color-gray-50 → #F5F5F5"
+        status: "resolved"
+      -
+        chain: "--color-chip-solid-bg-hover → --color-gray-100 → #E9E9E9"
+        status: "resolved"
+      -
+        chain: "--color-chip-solid-bg-selected → --color-blue-400 → #1D6CEB"
+        status: "resolved"
+      -
+        chain: "--color-chip-solid-bg-disabled → --color-gray-50 → #F5F5F5"
+        status: "resolved"
+      -
+        chain: "--color-chip-solid-border-default → --color-gray-50 → #F5F5F5"
+        status: "resolved"
+      -
+        chain: "--color-chip-solid-border-selected → --color-blue-400 → #1D6CEB"
+        status: "resolved"
+      -
+        chain: "--color-chip-solid-border-disabled → --color-gray-50 → #F5F5F5"
+        status: "resolved"
+      -
+        chain: "--color-chip-solid-label-default → --color-gray-800 → #353535"
+        status: "resolved"
+      -
+        chain: "--color-chip-solid-label-selected → --color-base-white → #FFFFFF"
+        status: "resolved"
+      -
+        chain: "--color-chip-solid-label-disabled → --color-gray-300 → #C4C4C4"
+        status: "resolved"
+      -
+        chain: "--color-chip-solid-icon-default → --color-gray-800 → #353535"
+        status: "resolved"
+      -
+        chain: "--color-chip-solid-icon-selected → --color-base-white → #FFFFFF"
+        status: "resolved"
+      -
+        chain: "--color-chip-solid-icon-disabled → --color-gray-300 → #C4C4C4"
+        status: "resolved"
   figma:
     status: "figma-unconfirmed"
     identifiers: "figma-unconfirmed"
@@ -1005,7 +1235,7 @@ Date selection component. Uses Base Input as trigger field. PC popover calendar 
 
 | variant | default | hover | pressed | disabled |
 | --- | --- | --- | --- | --- |
-| default | --input-default-bg<br>--input-default-border | --date-picker-cell-hover-bg → color-bg-subtle<br>--date-picker-nav-hover-bg → color-bg-subtle | — | --input-disabled-bg<br>--input-disabled-border<br>--input-disabled-text<br>--date-picker-cell-disabled-text → color-text-disabled |
+| default | --color-form-control-bg-default<br>--color-form-control-border-default<br>--color-date-picker-icon-default → color-icon-default | --color-date-picker-cell-bg-hover → color-bg-subtle | — | --color-form-control-bg-disabled<br>--color-form-control-border-disabled<br>--color-form-control-text-disabled<br>--color-date-picker-text-disabled → color-text-disabled |
 
 #### Agent-readable contract
 
@@ -1161,28 +1391,70 @@ agent:
       - "radius/full"
     aliasChains:
       -
-        chain: "--input-default-bg → --color-form-control-bg-default → --color-base-white → #FFFFFF"
+        chain: "--color-form-control-bg-default → --color-base-white → #FFFFFF"
         status: "resolved"
       -
-        chain: "--input-default-border → --color-form-control-border-default → --color-gray-200 → #D9D9D9"
+        chain: "--color-form-control-border-default → --color-gray-200 → #D9D9D9"
         status: "resolved"
       -
-        chain: "--input-focus-border → --color-form-control-border-selected → --color-blue-400 → #1D6CEB"
+        chain: "--color-form-control-border-selected → --color-blue-400 → #1D6CEB"
         status: "resolved"
       -
-        chain: "--input-disabled-bg → --color-form-control-bg-disabled → --color-gray-50 → #F5F5F5"
+        chain: "--color-form-control-bg-disabled → --color-gray-50 → #F5F5F5"
         status: "resolved"
       -
-        chain: "--input-disabled-border → --color-form-control-border-disabled → --color-gray-100 → #E9E9E9"
+        chain: "--color-form-control-border-disabled → --color-gray-100 → #E9E9E9"
         status: "resolved"
       -
-        chain: "--input-error-border → --color-form-control-border-error → --color-red-300 → #FF4554"
+        chain: "--color-form-control-border-error → --color-red-300 → #FF4554"
         status: "resolved"
       -
-        chain: "--input-placeholder-text → --color-form-control-text-placeholder → --color-gray-500 → #757575"
+        chain: "--color-form-control-text-placeholder → --color-gray-500 → #757575"
         status: "resolved"
       -
-        chain: "--input-disabled-text → --color-form-control-text-disabled → --color-gray-300 → #C4C4C4"
+        chain: "--color-form-control-text-disabled → --color-gray-300 → #C4C4C4"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-panel-bg → --color-base-white → #FFFFFF"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-text-secondary → --color-gray-800 → #353535"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-text-other-month → --color-gray-300 → #C4C4C4"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-cell-bg-hover → --color-gray-50 → #F5F5F5"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-cell-bg-selected → --color-blue-400 → #1D6CEB"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-text-selected → --color-base-white → #FFFFFF"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-cell-border-today → --color-blue-400 → #1D6CEB"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-text-today → --color-blue-400 → #1D6CEB"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-cell-bg-today → --color-base-white → #FFFFFF"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-text-disabled → --color-gray-300 → #C4C4C4"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-text-primary → --color-gray-900 → #202020"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-icon-default → --color-gray-900 → #202020"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-text-sunday → --color-red-300 → #FF4554"
+        status: "resolved"
+      -
+        chain: "--color-date-picker-text-saturday → --color-blue-400 → #1D6CEB"
         status: "resolved"
   figma:
     status: "partial"
@@ -1244,7 +1516,7 @@ Select Box와 Filter Chip이 재사용하는 옵션 패널 컴포넌트. 옵션 
 
 | variant | default | hover | pressed | disabled |
 | --- | --- | --- | --- | --- |
-| default | --dropdown-trigger-default-bg → color-surface-default<br>--dropdown-trigger-default-border → color-form-control-border-default<br>--dropdown-trigger-default-text → color-text-secondary<br>--dropdown-list-bg → color-surface-raised<br>--dropdown-list-border → color-border-default | --dropdown-trigger-hover-bg → color-bg-subtle<br>--dropdown-trigger-hover-border → color-border-strong<br>--dropdown-list-bg → color-surface-raised<br>--dropdown-list-border → color-border-default<br>--dropdown-option-hover-bg → color-bg-subtle | --dropdown-list-bg → color-surface-raised<br>--dropdown-list-border → color-border-default | --dropdown-trigger-disabled-bg → color-bg-subtle<br>--dropdown-trigger-disabled-border → color-border-subtle<br>--dropdown-trigger-disabled-text → color-text-disabled<br>--dropdown-list-bg → color-surface-raised<br>--dropdown-list-border → color-border-default |
+| default | --color-dropdown-list-bg<br>--color-dropdown-list-border<br>--color-dropdown-option-label-default | --color-dropdown-option-bg-hover<br>--color-dropdown-list-bg<br>--color-dropdown-list-border | --color-dropdown-list-bg<br>--color-dropdown-list-border | --color-dropdown-list-bg<br>--color-dropdown-list-border |
 
 #### Agent-readable contract
 
@@ -1335,56 +1607,23 @@ agent:
       - "color/dropdown/option/label/selected"
     aliasChains:
       -
-        chain: "--dropdown-trigger-default-bg → --color-form-control-bg-default → --color-base-white → #FFFFFF"
+        chain: "--color-dropdown-list-bg → --color-base-white → #FFFFFF"
         status: "resolved"
       -
-        chain: "--dropdown-trigger-hover-bg → --color-form-control-bg-hover → --color-gray-0 → #FAFAFA"
+        chain: "--color-dropdown-option-bg-hover → --color-gray-50 → #F5F5F5"
         status: "resolved"
       -
-        chain: "--dropdown-trigger-open-bg → --color-form-control-bg-hover → --color-gray-0 → #FAFAFA"
+        chain: "--color-dropdown-list-border → --color-gray-200 → #D9D9D9"
         status: "resolved"
       -
-        chain: "--dropdown-trigger-disabled-bg → --color-form-control-bg-disabled → --color-gray-50 → #F5F5F5"
+        chain: "--color-dropdown-option-label-default → --color-gray-800 → #353535"
         status: "resolved"
       -
-        chain: "--dropdown-trigger-default-border → --color-form-control-border-default → --color-gray-200 → #D9D9D9"
+        chain: "--color-dropdown-option-label-selected → --color-blue-400 → #1D6CEB"
         status: "resolved"
       -
-        chain: "--dropdown-trigger-hover-border → --color-form-control-border-hover"
-        status: "unresolved"
-      -
-        chain: "--dropdown-trigger-open-border → --color-border-focus"
-        status: "unresolved"
-      -
-        chain: "--dropdown-trigger-disabled-border → --color-form-control-border-disabled → --color-gray-100 → #E9E9E9"
+        chain: "--color-dropdown-option-bg-selected → --color-blue-50 → #E2F1FF"
         status: "resolved"
-      -
-        chain: "--dropdown-trigger-default-text → --color-text-secondary"
-        status: "unresolved"
-      -
-        chain: "--dropdown-trigger-disabled-text → --color-text-disabled"
-        status: "unresolved"
-      -
-        chain: "--dropdown-trigger-placeholder-text → --color-text-placeholder"
-        status: "unresolved"
-      -
-        chain: "--dropdown-trigger-selected-text → --color-text-primary"
-        status: "unresolved"
-      -
-        chain: "--dropdown-list-bg → --color-surface-default"
-        status: "unresolved"
-      -
-        chain: "--dropdown-list-border → --color-border-default"
-        status: "unresolved"
-      -
-        chain: "--dropdown-option-hover-bg → --color-bg-subtle"
-        status: "unresolved"
-      -
-        chain: "--dropdown-option-selected-bg → transparent"
-        status: "resolved"
-      -
-        chain: "--dropdown-option-selected-text → --color-action-primary-default"
-        status: "unresolved"
   figma:
     status: "figma-unconfirmed"
     identifiers: "figma-unconfirmed"
@@ -1726,8 +1965,8 @@ Global Navigation Bar. 로고 + 메뉴 슬롯(slots_menu) + 유틸리티(아이�
 
 | variant | default | hover | pressed | disabled |
 | --- | --- | --- | --- | --- |
-| menuSlot | --gnb-menu-label-default → color-navigation-label-default-alt | — | — | — |
-| bar | --gnb-menu-label-default → color-navigation-label-default-alt | — | — | — |
+| menuSlot | --color-navigation-label-default-alt | --color-navigation-label-hover | — | — |
+| bar | --color-navigation-label-default-alt | --color-navigation-label-hover | — | — |
 
 #### Agent-readable contract
 
@@ -1813,26 +2052,26 @@ agent:
       - "color/text/title/primary"
     aliasChains:
       -
-        chain: "--gnb-bg → --color-navigation-bg → --color-base-white → #FFFFFF"
+        chain: "--color-navigation-bg → --color-base-white → #FFFFFF"
         status: "resolved"
       -
-        chain: "--gnb-border → --color-border-subtle"
-        status: "unresolved"
-      -
-        chain: "--gnb-menu-label-default → --color-navigation-label-default-alt → --color-gray-700 → #434343"
+        chain: "--color-line-gray-subtle → --color-gray-100 → #E9E9E9"
         status: "resolved"
       -
-        chain: "--gnb-menu-label-active → --color-navigation-label-selected → --color-blue-400 → #1D6CEB"
+        chain: "--color-navigation-label-default-alt → --color-gray-700 → #434343"
         status: "resolved"
       -
-        chain: "--gnb-menu-underline-active → --color-navigation-indicator-selected → --color-blue-400 → #1D6CEB"
+        chain: "--color-navigation-label-hover → --color-blue-400 → #1D6CEB"
         status: "resolved"
       -
-        chain: "--gnb-logo-text → --color-text-primary"
-        status: "unresolved"
+        chain: "--color-line-blue → --color-blue-400 → #1D6CEB"
+        status: "resolved"
       -
-        chain: "--gnb-icon → --color-navigation-icon"
-        status: "unresolved"
+        chain: "--color-text-title-primary → --color-base-black → #000000"
+        status: "resolved"
+      -
+        chain: "--color-icon-gray-dark → --color-gray-800 → #353535"
+        status: "resolved"
   figma:
     status: "available"
     identifiers:
@@ -2104,7 +2343,7 @@ Base text input field. Pure input element without label/helper wrapper. Label/He
 
 | variant | default | focus | filled | error | correct | read-only | disabled |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| default | --color-form-control-bg-default → color-surface-default<br>--color-form-control-border-default → color-border-default<br>--color-form-control-text-default → color-text-secondary | — | — | --color-form-control-border-error → color-status-error<br>--color-text-state-error → color-status-error | --color-form-control-border-correct<br>--color-text-state-correct | — | --color-form-control-bg-disabled → color-bg-subtle<br>--color-form-control-border-disabled → color-border-subtle<br>--color-form-control-text-disabled → color-text-disabled |
+| default | --color-form-control-bg-default → color-surface-default<br>--color-form-control-border-default → color-border-default<br>--color-form-control-text-default → color-text-secondary | — | — | --color-form-control-border-error → color-status-error | --color-form-control-border-correct<br>--color-text-state-correct | — | --color-form-control-bg-disabled → color-bg-subtle<br>--color-form-control-border-disabled → color-border-subtle<br>--color-form-control-text-disabled → color-text-disabled |
 
 #### Agent-readable contract
 
@@ -2307,6 +2546,9 @@ agent:
       -
         chain: "--color-text-state-correct → --color-blue-400 → #1D6CEB"
         status: "resolved"
+      -
+        chain: "--color-text-state-caution → --color-red-300 → #FF4554"
+        status: "resolved"
   figma:
     status: "available"
     identifiers:
@@ -2322,7 +2564,7 @@ agent:
 
 _Do_
 - 색·테두리는 form-control 역할 토큰(--color-form-control-*)을 통해 참조한다.
-- focus 는 파란 테두리(--input-focus-border)로만 표시하고 배경은 바꾸지 않는다.
+- focus 는 파란 테두리(--color-form-control-border-selected)로만 표시하고 배경은 바꾸지 않는다.
 - 라벨은 form-control 밖 제목 텍스트 토큰(--color-text-title-secondary)을 쓴다.
 - 안내메시지는 규칙을 알려야 하는 화면에서만 켠다. 끌 때는 message 요소와 aria-describedby 를 함께 뺀다.
 
@@ -2366,7 +2608,7 @@ _Don't_
 
 | variant | unselected | selected |
 | --- | --- | --- |
-| default | --color-icon-gray → color/icon/gray<br>--color-navigation-label-default → color/navigation/label/default<br>--color-navigation-bg → color/navigation/bg | --color-icon-blue → color/icon/blue<br>--color-navigation-label-selected → color/navigation/label/selected<br>--color-navigation-bg → color/navigation/bg |
+| default | --color-navigation-icon-default → color/navigation/icon/default<br>--color-navigation-label-default → color/navigation/label/default<br>--color-navigation-bg → color/navigation/bg | --color-icon-blue → color/icon/blue<br>--color-navigation-label-selected → color/navigation/label/selected<br>--color-navigation-bg → color/navigation/bg |
 
 #### Agent-readable contract
 
@@ -2430,7 +2672,7 @@ agent:
       - "color/navigation/label/selected"
     aliasChains:
       -
-        chain: "--color-icon-gray → --color-gray-dark-600 → #55575F"
+        chain: "--color-navigation-icon-default → --color-gray-300 → #C4C4C4"
         status: "resolved"
       -
         chain: "--color-navigation-label-default → --color-gray-600 → #555555"
@@ -2613,6 +2855,8 @@ _Don't_
 - 아이콘 버튼의 실제 터치 영역은 화면 구현에서 최소 44×44를 확보한다.
 
 ### Modal
+
+> ⚠️ 배포본에 아직 없는 컴포넌트입니다(codeStatus: `in-progress`). 아래 토큰은 `ui-library/dist` 로 값이 풀리지 않으니 이 절을 보고 구현하지 마세요.
 
 확인 계열 모달 그릇 4종(Break PC|Mobile × Footer Single|Dual). 딤(overlay) 위 공통 팝업 셸 — 제목+본문+푸터의 3층 껍데기. PC는 제목 옆 닫기 버튼과 컴팩트 푸터를 사용하고, Mobile은 닫기 없이 300px 패널과 LG 버튼을 사용한다. 실제 문구는 예시(UX라이팅 영역·컴포넌트 아님).
 
@@ -3144,6 +3388,8 @@ _Don't_
 
 ### Navigation
 
+> ⚠️ 배포본에 아직 없는 컴포넌트입니다(codeStatus: `not-started`). 아래 토큰은 `ui-library/dist` 로 값이 풀리지 않으니 이 절을 보고 구현하지 마세요.
+
 사이드바/상단 네비게이션 컴포넌트. 항목 hover·active 상태, 구분선, 활성 인디케이터 포함.
 
 **언제 쓰나**
@@ -3164,7 +3410,7 @@ _Don't_
 
 | variant | default | hover | active | disabled |
 | --- | --- | --- | --- | --- |
-| default | --nav-bg → color-surface-default<br>--nav-item-default-text → color-text-tertiary<br>--nav-item-default-icon → color-icon-default<br>--nav-item-indicator-default → color-border-subtle<br>--nav-divider → color-border-subtle | --nav-bg → color-surface-default<br>--nav-item-hover-bg → color-bg-subtle<br>--nav-divider → color-border-subtle | --nav-bg → color-surface-default<br>--nav-item-active-bg → color-action-primary-subtle<br>--nav-item-active-text → color-action-primary-default<br>--nav-item-active-icon → color-action-primary-default<br>--nav-item-indicator → color-action-primary-default<br>--nav-divider → color-border-subtle | --nav-bg → color-surface-default<br>--nav-divider → color-border-subtle |
+| default | --color-navigation-bg<br>--color-navigation-label-default<br>--nav-item-default-icon → color-icon-default<br>--color-navigation-indicator-default<br>--nav-divider → color-border-subtle | --color-navigation-bg<br>--nav-item-hover-bg → color-bg-subtle<br>--nav-divider → color-border-subtle | --color-navigation-bg<br>--nav-item-active-bg → color-action-primary-subtle<br>--color-navigation-label-selected<br>--nav-item-active-icon → color-action-primary-default<br>--color-navigation-indicator-selected<br>--nav-divider → color-border-subtle | --color-navigation-bg<br>--nav-divider → color-border-subtle |
 
 #### Agent-readable contract
 
@@ -3192,8 +3438,8 @@ agent:
     figmaSemanticBindings: "not-defined"
     aliasChains:
       -
-        chain: "--nav-bg → --color-surface-default"
-        status: "unresolved"
+        chain: "--color-navigation-bg → --color-base-white → #FFFFFF"
+        status: "resolved"
       -
         chain: "--nav-item-hover-bg → --color-bg-subtle"
         status: "unresolved"
@@ -3201,11 +3447,11 @@ agent:
         chain: "--nav-item-active-bg → --color-action-primary-subtle"
         status: "unresolved"
       -
-        chain: "--nav-item-default-text → --color-text-inverse"
-        status: "unresolved"
+        chain: "--color-navigation-label-default → --color-gray-600 → #555555"
+        status: "resolved"
       -
-        chain: "--nav-item-active-text → --color-action-primary-default"
-        status: "unresolved"
+        chain: "--color-navigation-label-selected → --color-blue-400 → #1D6CEB"
+        status: "resolved"
       -
         chain: "--nav-item-default-icon → --color-icon-default"
         status: "unresolved"
@@ -3213,10 +3459,10 @@ agent:
         chain: "--nav-item-active-icon → --color-action-primary-default"
         status: "unresolved"
       -
-        chain: "--nav-item-indicator → --color-action-primary-default"
-        status: "unresolved"
+        chain: "--color-navigation-indicator-selected → --color-blue-400 → #1D6CEB"
+        status: "resolved"
       -
-        chain: "--nav-item-indicator-default → transparent"
+        chain: "--color-navigation-indicator-default → --color-gray-200 → #D9D9D9"
         status: "resolved"
       -
         chain: "--nav-divider → --color-border-subtle"
@@ -3262,8 +3508,8 @@ _Don't_
 
 | variant | default | hover | selected | disabled |
 | --- | --- | --- | --- | --- |
-| arrow | — | --pagination-control-hover-bg → color-bg-subtle | — | — |
-| number | — | --pagination-control-hover-bg → color-bg-subtle | --pagination-number-text-selected → color-text-secondary | — |
+| arrow | --color-pagination-control-bg-default<br>--color-pagination-control-border-default | --color-pagination-control-bg-hover | — | — |
+| number | --color-pagination-control-bg-default<br>--color-pagination-control-border-default | --color-pagination-control-bg-hover | — | — |
 
 #### Agent-readable contract
 
@@ -3363,20 +3609,20 @@ agent:
       - "color/pagination/number/selected"
     aliasChains:
       -
-        chain: "--pagination-control-bg → --color-surface-default"
-        status: "unresolved"
-      -
-        chain: "--pagination-control-border → --color-border-default"
-        status: "unresolved"
-      -
-        chain: "--pagination-control-hover-bg → --color-bg-subtle"
-        status: "unresolved"
-      -
-        chain: "--pagination-number-text → --color-gray-400 → #9D9D9D"
+        chain: "--color-pagination-control-bg-default → --color-base-white → #FFFFFF"
         status: "resolved"
       -
-        chain: "--pagination-number-text-selected → --color-text-secondary"
-        status: "unresolved"
+        chain: "--color-pagination-control-border-default → --color-gray-200 → #D9D9D9"
+        status: "resolved"
+      -
+        chain: "--color-pagination-control-bg-hover → --color-gray-50 → #F5F5F5"
+        status: "resolved"
+      -
+        chain: "--color-gray-400 → #9D9D9D"
+        status: "resolved"
+      -
+        chain: "--color-text-body-primary → --color-gray-800 → #353535"
+        status: "resolved"
   figma:
     status: "available"
     identifiers:
@@ -3424,7 +3670,7 @@ _Don't_
 
 | variant | default | hover | selected | disabled |
 | --- | --- | --- | --- | --- |
-| default | --radio-default-bg → color-control-bg-default<br>--radio-default-border → color-control-border-default | --radio-hover-bg → color-control-bg-hover<br>--radio-hover-border → color-control-border-default | --radio-selected-border → color-control-border-selected<br>--radio-selected-dot → color-control-indicator-selected-alt | --radio-disabled-bg → color-control-bg-disabled<br>--radio-disabled-border → color-control-border-disabled<br>--radio-disabled-dot → color-control-indicator-disabled |
+| default | --color-control-bg-default<br>--color-control-border-default | --color-control-bg-hover<br>--color-control-border-default | --color-control-border-selected<br>--color-control-indicator-selected-alt | --color-control-bg-disabled<br>--color-control-border-disabled<br>--color-control-indicator-disabled |
 
 #### Agent-readable contract
 
@@ -3503,29 +3749,29 @@ agent:
       - "color/control/label/disabled"
     aliasChains:
       -
-        chain: "--radio-default-bg → --color-form-control-bg-default → --color-base-white → #FFFFFF"
+        chain: "--color-control-bg-default → --color-base-white → #FFFFFF"
         status: "resolved"
       -
-        chain: "--radio-disabled-bg → --color-bg-subtle"
-        status: "unresolved"
-      -
-        chain: "--radio-default-border → --color-control-border-default → --color-gray-200 → #D9D9D9"
+        chain: "--color-control-bg-hover → --color-gray-50 → #F5F5F5"
         status: "resolved"
       -
-        chain: "--radio-hover-border → --color-control-border-hover"
-        status: "unresolved"
-      -
-        chain: "--radio-selected-border → --color-control-border-selected → --color-blue-400 → #1D6CEB"
+        chain: "--color-control-bg-disabled → --color-gray-100 → #E9E9E9"
         status: "resolved"
       -
-        chain: "--radio-disabled-border → --color-control-border-disabled → --color-gray-200 → #D9D9D9"
+        chain: "--color-control-border-default → --color-gray-200 → #D9D9D9"
         status: "resolved"
       -
-        chain: "--radio-selected-dot → --color-action-primary-default"
-        status: "unresolved"
+        chain: "--color-control-border-selected → --color-blue-400 → #1D6CEB"
+        status: "resolved"
       -
-        chain: "--radio-disabled-dot → --color-border-strong"
-        status: "unresolved"
+        chain: "--color-control-border-disabled → --color-gray-200 → #D9D9D9"
+        status: "resolved"
+      -
+        chain: "--color-control-indicator-selected-alt → --color-blue-400 → #1D6CEB"
+        status: "resolved"
+      -
+        chain: "--color-control-indicator-disabled → --color-gray-300 → #C4C4C4"
+        status: "resolved"
   figma:
     status: "figma-unconfirmed"
     identifiers: "figma-unconfirmed"
@@ -3570,7 +3816,7 @@ _Don't_
 
 | variant | default | hover | open | filled | disabled |
 | --- | --- | --- | --- | --- | --- |
-| default | --dropdown-trigger-default-bg → color-surface-default<br>--dropdown-trigger-default-border → color-form-control-border-default<br>--dropdown-trigger-default-text → color-text-secondary<br>--dropdown-list-bg → color-surface-raised<br>--dropdown-list-border → color-border-default | --dropdown-trigger-hover-bg → color-bg-subtle<br>--dropdown-trigger-hover-border → color-border-strong<br>--dropdown-list-bg → color-surface-raised<br>--dropdown-list-border → color-border-default<br>--dropdown-option-hover-bg → color-bg-subtle | --dropdown-trigger-open-bg → color-bg-subtle<br>--dropdown-trigger-open-border → color-border-focus<br>--dropdown-list-bg → color-surface-raised<br>--dropdown-list-border → color-border-default | --dropdown-trigger-selected-text → color-text-primary<br>--dropdown-list-bg → color-surface-raised<br>--dropdown-list-border → color-border-default | --dropdown-trigger-disabled-bg → color-bg-subtle<br>--dropdown-trigger-disabled-border → color-border-subtle<br>--dropdown-trigger-disabled-text → color-text-disabled<br>--dropdown-list-bg → color-surface-raised<br>--dropdown-list-border → color-border-default |
+| default | --color-dropdown-list-bg<br>--color-dropdown-list-border<br>--color-dropdown-option-label-default | --color-dropdown-option-bg-hover<br>--color-dropdown-list-bg<br>--color-dropdown-list-border | --color-dropdown-list-bg<br>--color-dropdown-list-border | --color-dropdown-option-label-selected<br>--color-dropdown-list-bg<br>--color-dropdown-list-border | --color-dropdown-list-bg<br>--color-dropdown-list-border |
 
 #### Agent-readable contract
 
@@ -3701,56 +3947,23 @@ agent:
       - "color/form-control/text/selected"
     aliasChains:
       -
-        chain: "--dropdown-trigger-default-bg → --color-form-control-bg-default → --color-base-white → #FFFFFF"
+        chain: "--color-dropdown-list-bg → --color-base-white → #FFFFFF"
         status: "resolved"
       -
-        chain: "--dropdown-trigger-hover-bg → --color-form-control-bg-hover → --color-gray-0 → #FAFAFA"
+        chain: "--color-dropdown-option-bg-hover → --color-gray-50 → #F5F5F5"
         status: "resolved"
       -
-        chain: "--dropdown-trigger-open-bg → --color-form-control-bg-hover → --color-gray-0 → #FAFAFA"
+        chain: "--color-dropdown-list-border → --color-gray-200 → #D9D9D9"
         status: "resolved"
       -
-        chain: "--dropdown-trigger-disabled-bg → --color-form-control-bg-disabled → --color-gray-50 → #F5F5F5"
+        chain: "--color-dropdown-option-label-default → --color-gray-800 → #353535"
         status: "resolved"
       -
-        chain: "--dropdown-trigger-default-border → --color-form-control-border-default → --color-gray-200 → #D9D9D9"
+        chain: "--color-dropdown-option-label-selected → --color-blue-400 → #1D6CEB"
         status: "resolved"
       -
-        chain: "--dropdown-trigger-hover-border → --color-form-control-border-hover"
-        status: "unresolved"
-      -
-        chain: "--dropdown-trigger-open-border → --color-border-focus"
-        status: "unresolved"
-      -
-        chain: "--dropdown-trigger-disabled-border → --color-form-control-border-disabled → --color-gray-100 → #E9E9E9"
+        chain: "--color-dropdown-option-bg-selected → --color-blue-50 → #E2F1FF"
         status: "resolved"
-      -
-        chain: "--dropdown-trigger-default-text → --color-text-secondary"
-        status: "unresolved"
-      -
-        chain: "--dropdown-trigger-disabled-text → --color-text-disabled"
-        status: "unresolved"
-      -
-        chain: "--dropdown-trigger-placeholder-text → --color-text-placeholder"
-        status: "unresolved"
-      -
-        chain: "--dropdown-trigger-selected-text → --color-text-primary"
-        status: "unresolved"
-      -
-        chain: "--dropdown-list-bg → --color-surface-default"
-        status: "unresolved"
-      -
-        chain: "--dropdown-list-border → --color-border-default"
-        status: "unresolved"
-      -
-        chain: "--dropdown-option-hover-bg → --color-bg-subtle"
-        status: "unresolved"
-      -
-        chain: "--dropdown-option-selected-bg → transparent"
-        status: "resolved"
-      -
-        chain: "--dropdown-option-selected-text → --color-action-primary-default"
-        status: "unresolved"
   figma:
     status: "available"
     identifiers:
@@ -3795,7 +4008,7 @@ _Don't_
 
 | variant | default | hover | pressed | disabled |
 | --- | --- | --- | --- | --- |
-| default | --tab-label-default → color-navigation-label-default<br>--tab-indicator-default → color-navigation-indicator-default | — | — | — |
+| default | --color-navigation-label-default<br>--color-navigation-indicator-default | — | — | — |
 
 #### Agent-readable contract
 
@@ -3887,19 +4100,19 @@ agent:
       - "color/navigation/label/selected"
     aliasChains:
       -
-        chain: "--tab-bg → --color-navigation-bg → --color-base-white → #FFFFFF"
+        chain: "--color-navigation-bg → --color-base-white → #FFFFFF"
         status: "resolved"
       -
-        chain: "--tab-label-default → --color-navigation-label-default → --color-gray-600 → #555555"
+        chain: "--color-navigation-label-default → --color-gray-600 → #555555"
         status: "resolved"
       -
-        chain: "--tab-label-selected → --color-navigation-label-selected → --color-blue-400 → #1D6CEB"
+        chain: "--color-navigation-label-selected → --color-blue-400 → #1D6CEB"
         status: "resolved"
       -
-        chain: "--tab-indicator-default → --color-navigation-indicator-default → --color-gray-200 → #D9D9D9"
+        chain: "--color-navigation-indicator-default → --color-gray-200 → #D9D9D9"
         status: "resolved"
       -
-        chain: "--tab-indicator-selected → --color-navigation-indicator-selected → --color-blue-400 → #1D6CEB"
+        chain: "--color-navigation-indicator-selected → --color-blue-400 → #1D6CEB"
         status: "resolved"
   figma:
     status: "available"
@@ -3946,8 +4159,8 @@ _Don't_
 
 | variant | default | hover | selected |
 | --- | --- | --- | --- |
-| header | --table-row-default-bg → color-table-cell-default | --table-row-hover-bg → color-table-cell-hover | --table-row-selected-bg → color-table-cell-selected |
-| body | --table-row-default-bg → color-table-cell-default | --table-row-hover-bg → color-table-cell-hover | --table-row-selected-bg → color-table-cell-selected |
+| header | --color-table-border-default | --color-table-cell-hover | --color-table-cell-selected |
+| body | --color-table-border-default | --color-table-cell-hover | --color-table-cell-selected |
 
 #### Agent-readable contract
 
@@ -4047,35 +4260,26 @@ agent:
       - "color/text/body/secondary"
     aliasChains:
       -
-        chain: "--table-header-bg → --color-table-header-bg → --color-gray-0 → #FAFAFA"
+        chain: "--color-table-header-bg → --color-gray-0 → #FAFAFA"
         status: "resolved"
       -
-        chain: "--table-header-text → --color-text-secondary"
-        status: "unresolved"
-      -
-        chain: "--table-border-light → --color-table-border-default → --color-gray-100 → #E9E9E9"
+        chain: "--color-text-title-secondary → --color-gray-800 → #353535"
         status: "resolved"
       -
-        chain: "--table-border-strong → --color-table-border-strong → --color-gray-800 → #353535"
+        chain: "--color-table-border-default → --color-gray-100 → #E9E9E9"
         status: "resolved"
       -
-        chain: "--table-header-border → --table-border-light → --color-table-border-default → --color-gray-100 → #E9E9E9"
+        chain: "--color-table-border-strong → --color-gray-800 → #353535"
         status: "resolved"
       -
-        chain: "--table-row-default-bg → --color-surface-default"
-        status: "unresolved"
-      -
-        chain: "--table-row-hover-bg → --color-bg-subtle"
-        status: "unresolved"
-      -
-        chain: "--table-row-selected-bg → --color-bg-selected"
-        status: "unresolved"
-      -
-        chain: "--table-cell-border → --table-border-light → --color-table-border-default → --color-gray-100 → #E9E9E9"
+        chain: "--color-table-cell-hover → --color-gray-50 → #F5F5F5"
         status: "resolved"
       -
-        chain: "--table-cell-text → --color-text-secondary"
-        status: "unresolved"
+        chain: "--color-table-cell-selected → --color-blue-50 → #E2F1FF"
+        status: "resolved"
+      -
+        chain: "--color-text-body-primary → --color-gray-800 → #353535"
+        status: "resolved"
   figma:
     status: "available"
     identifiers:
@@ -4218,7 +4422,7 @@ _Don't_
 
 | variant | default | focus | filled | disabled | readonly |
 | --- | --- | --- | --- | --- | --- |
-| default | --input-default-bg → color-form-control-bg-default<br>--input-default-border → color-form-control-border-default<br>--input-placeholder-text → color-form-control-text-placeholder<br>--input-helper-text → color-text-state-caption | --input-focus-border → color-form-control-border-selected<br>--input-placeholder-text → color-form-control-text-placeholder | --input-placeholder-text → color-form-control-text-placeholder | --input-disabled-bg → color-form-control-bg-disabled<br>--input-disabled-border → color-form-control-border-disabled<br>--input-placeholder-text → color-form-control-text-placeholder<br>--input-disabled-text → color-form-control-text-disabled | --input-readonly-bg → color-form-control-bg-disabled<br>--input-readonly-border → color-form-control-border-disabled<br>--input-placeholder-text → color-form-control-text-placeholder<br>--input-readonly-text → color-text-readonly |
+| default | --color-form-control-bg-default<br>--color-form-control-border-default<br>--color-form-control-text-placeholder<br>--color-text-state-caption | --color-form-control-border-selected<br>--color-form-control-text-placeholder | --color-form-control-text-placeholder | --color-form-control-bg-disabled<br>--color-form-control-border-disabled<br>--color-form-control-text-placeholder<br>--color-form-control-text-disabled | --color-form-control-bg-disabled<br>--color-form-control-border-default<br>--color-form-control-text-placeholder<br>--color-form-control-text-read-only |
 
 #### Agent-readable contract
 
@@ -4307,37 +4511,31 @@ agent:
       - "color/form-control/text/selected"
     aliasChains:
       -
-        chain: "--input-default-bg → --color-form-control-bg-default → --color-base-white → #FFFFFF"
+        chain: "--color-form-control-bg-default → --color-base-white → #FFFFFF"
         status: "resolved"
       -
-        chain: "--input-disabled-bg → --color-form-control-bg-disabled → --color-gray-50 → #F5F5F5"
+        chain: "--color-form-control-bg-disabled → --color-gray-50 → #F5F5F5"
         status: "resolved"
       -
-        chain: "--input-readonly-bg → --color-form-control-bg-disabled → --color-gray-50 → #F5F5F5"
+        chain: "--color-form-control-border-default → --color-gray-200 → #D9D9D9"
         status: "resolved"
       -
-        chain: "--input-default-border → --color-form-control-border-default → --color-gray-200 → #D9D9D9"
+        chain: "--color-form-control-border-selected → --color-blue-400 → #1D6CEB"
         status: "resolved"
       -
-        chain: "--input-focus-border → --color-form-control-border-selected → --color-blue-400 → #1D6CEB"
+        chain: "--color-form-control-border-disabled → --color-gray-100 → #E9E9E9"
         status: "resolved"
       -
-        chain: "--input-disabled-border → --color-form-control-border-disabled → --color-gray-100 → #E9E9E9"
+        chain: "--color-form-control-text-placeholder → --color-gray-500 → #757575"
         status: "resolved"
       -
-        chain: "--input-readonly-border → --color-form-control-border-disabled → --color-gray-100 → #E9E9E9"
+        chain: "--color-form-control-text-disabled → --color-gray-300 → #C4C4C4"
         status: "resolved"
       -
-        chain: "--input-placeholder-text → --color-form-control-text-placeholder → --color-gray-500 → #757575"
+        chain: "--color-form-control-text-read-only → --color-gray-500 → #757575"
         status: "resolved"
       -
-        chain: "--input-disabled-text → --color-form-control-text-disabled → --color-gray-300 → #C4C4C4"
-        status: "resolved"
-      -
-        chain: "--input-readonly-text → --color-text-readonly"
-        status: "unresolved"
-      -
-        chain: "--input-helper-text → --color-text-state-helper → --color-gray-400 → #9D9D9D"
+        chain: "--color-text-state-caption → --color-gray-500 → #757575"
         status: "resolved"
   figma:
     status: "available"
@@ -4592,7 +4790,7 @@ _Don't_
 
 | variant | on | off | disabled |
 | --- | --- | --- | --- |
-| default | --toggle-on-bg → color-control-bg-selected<br>--toggle-knob → color-control-indicator-selected | --toggle-off-bg → color-control-indicator-unselected<br>--toggle-knob → color-control-indicator-selected | --toggle-disabled-bg → color-control-bg-disabled<br>--toggle-knob → color-control-indicator-selected |
+| default | --color-control-bg-selected<br>--color-control-indicator-selected | --color-control-indicator-unselected<br>--color-control-indicator-selected | --color-control-bg-disabled<br>--color-control-indicator-selected |
 
 #### Agent-readable contract
 
@@ -4656,17 +4854,17 @@ agent:
       - "color/control/indicator/unselected"
     aliasChains:
       -
-        chain: "--toggle-on-bg → --color-action-primary-default"
-        status: "unresolved"
+        chain: "--color-control-bg-selected → --color-blue-400 → #1D6CEB"
+        status: "resolved"
       -
-        chain: "--toggle-off-bg → --color-text-placeholder"
-        status: "unresolved"
+        chain: "--color-control-indicator-unselected → --color-gray-300 → #C4C4C4"
+        status: "resolved"
       -
-        chain: "--toggle-disabled-bg → --color-bg-muted"
-        status: "unresolved"
+        chain: "--color-control-bg-disabled → --color-gray-100 → #E9E9E9"
+        status: "resolved"
       -
-        chain: "--toggle-knob → --color-action-primary-text"
-        status: "unresolved"
+        chain: "--color-control-indicator-selected → --color-base-white → #FFFFFF"
+        status: "resolved"
   figma:
     status: "figma-unconfirmed"
     identifiers: "figma-unconfirmed"
@@ -4742,6 +4940,16 @@ _Don't_
 - 플랫폼별 컨테이너·컬럼: web 1200px/12 · app 1024px/8 · mobile 375px/4.
 - 컴포넌트는 플랫폼에 따라 크기·패딩·아이콘 슬롯이 달라질 수 있다(예: Input 은 PC 패딩 8px·토큰 radius / Mobile 패딩 12px·raw 4px, 모바일에서 지우기 버튼 노출). 각 컴포넌트의 플랫폼 차이는 해당 컴포넌트 항목을 참조한다.
 
+**밀도 (Density) — 크기는 화면에 한 번만 정한다**
+- 크기는 컴포넌트마다 고르지 않는다. 화면을 감싸는 요소에 밀도 한 단어와 화면 구분을 한 번만 준다 — data-s1-density="wide|normal|narrow" (넓게 44px · 보통 34px · 좁게 28px) 와 data-s1-break="pc|mobile". 그러면 안쪽 컨트롤이 data-size 없이도 같은 줄 높이로 그려진다.
+- 어느 밀도를 쓰나 — 일반 사용자용 폼·상세 화면은 넓게, 관리자 화면·표 안·도구 모음은 보통, 표 칸 안이나 필터 줄처럼 아주 좁은 자리는 좁게. 모바일은 밀도 축이 없다(손가락 기준 높이 하나) — data-s1-break="mobile" 만 준다.
+- 한 자리만 다르게 해야 하면 그 컴포넌트에 data-size 를 직접 준다 — 직접 준 값이 밀도보다 우선한다. 밀도가 닿는 컴포넌트와 눈금은 registry/governance/density-policy.json 이 정본이다(상단 바·모달·탭·달력은 자기 눈금을 쓰므로 대상이 아니다).
+- 같은 크기 단어가 컴포넌트마다 다른 높이를 뜻한다 — 버튼 md=44 인데 칩 md=34 다. 그래서 "전부 md 로" 는 줄을 어긋나게 만든다. 크기 단어 대신 밀도를 쓴다.
+- 밀도 선언은 한 화면에 한 번만 한다. 밀도 선언 안에 또 밀도 선언을 겹치면 안쪽이 이기지 않는다 — 다르게 할 자리는 겹치지 말고 그 컴포넌트에 data-size 를 직접 준다.
+- 감싸는 요소의 화면 구분(data-s1-break)을 화면이 떠 있는 동안 바꾸면, 날짜 선택은 그 값을 다시 읽지 않는다 — 바꾼 뒤 다시 초기화한다.
+- 모바일에서는 드롭다운 대신 바텀시트를 쓰고, 멀티 토글 대신 라디오(하나 고르기)나 체크박스(여러 개 고르기)를 쓴다 — 이 둘은 모바일 크기가 없다. 라디오·체크박스는 크기 축이 없어 그대로 쓰면 되고, 바텀시트는 승인된 배포본 부품이 있다 — 시트 그릇(bottom-sheet)에 줄(bottom-sheet-option)을 넣어 쓴다(2026-09-15 승인).
+- 그 밀도에 맞는 크기가 없는 컴포넌트는 가장 가까운 크기로 대신한다 — 아래를 먼저 쓰고 아래가 없으면 위를 쓴다. 칩은 넓게에서 34, 멀티 토글·표는 좁게에서 34 가 된다.
+
 ## 9. Agent Prompt Guide
 
 이 문서는 AI 에이전트가 S1 디자인시스템 기준으로 UI·토큰 산출물을 만들 때 통째로 읽는 단일 컨텍스트다.
@@ -4777,9 +4985,10 @@ DESIGN_SYSTEM_GAP:
 - 컴포넌트를 새로 만들기 전에 §4 Components 에서 기존 코어를 먼저 찾는다.
 - Light 기준으로 만들고 Dark 값을 함께 확인한다.
 - 컴포넌트별 Agent-readable contract에 실제로 나열된 상태만 다룬다. 전역 상태 목록을 모든 컴포넌트에 일괄 적용하지 않는다.
+- 화면을 만들 때 컴포넌트마다 크기를 고르지 말고, 감싸는 요소에 data-s1-break 와 data-s1-density 를 한 번만 선언한다(§8 밀도).
 
 **해석 순서 (Resolution)**
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: c5bea5970f44 · 손편집 금지 -->
+<!-- generated-stamp: 4712480d5afb · 손편집 금지 -->

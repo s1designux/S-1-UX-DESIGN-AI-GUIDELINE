@@ -21,4 +21,6 @@ export { default as S1DatePicker } from "./date-picker.jsx";
 export { default as S1AssistButton } from "./assist-button.jsx";
 export { default as S1TextButton } from "./text-button.jsx";
 export { default as S1ModalContent } from "./modal-content.jsx";
+export { default as S1BottomSheetOption } from "./bottom-sheet-option.jsx";
+export { default as S1BottomSheet } from "./bottom-sheet.jsx";
 export { S1_VERSION, S1_RELEASED_AT } from "./version.js";

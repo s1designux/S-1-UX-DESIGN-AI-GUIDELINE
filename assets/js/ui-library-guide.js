@@ -160,6 +160,18 @@ const componentConfig = {
       mobile: "바텀시트(캘린더 + 적용 버튼) · 단일/기간 선택"
     },
     runtime: S1UI.datePicker
+  },
+  "bottom-sheet": {
+    title: "Bottom Sheet",
+    description: "모바일에서 화면 아래에서 올라오는 시트입니다. 어두운 배경 위에 제목·닫기·본문·버튼 순으로 뜹니다. 모바일에서 드롭다운 대신 쓰는 자리입니다.",
+    approvedScope: "푸터 3종(없음 · 버튼 1개 · 버튼 2개) · 폭은 화면 폭(최대 360) · 높이는 내용만큼 · 크기 축 없음 · 모바일 전용 · Esc 닫기 · 딤 눌러 닫기 · 초점 가둠",
+    runtime: S1UI.bottomSheet
+  },
+  "bottom-sheet-option": {
+    title: "Bottom Sheet Option",
+    description: "바텀시트 안에 놓이는 한 줄입니다. 단독으로 쓰지 않고 시트 본문에 넣어 씁니다.",
+    approvedScope: "유형 4종(글자 · 체크박스 · 라디오 · 목록) × 상태 3종 중 정본에 실재하는 9칸 · 글자·체크박스·라디오 줄은 높이 48 고정 · 목록 줄은 내용만큼 · 크기 축 없음 · JavaScript 불필요",
+    runtime: null
   }
 };
 
@@ -393,12 +405,18 @@ function buttonStateMatrix() {
   /* Mobile 은 크기 축이 하나뿐이라 크기 라벨(LG)을 표출하지 않는다.
      한 표에서 유형(행) × 상태(열)를 한꺼번에 본다. */
   const mobileSizes = [["lg", ""]];
-  const mobileStateMatrix = `<div class="comp-state-matrix" style="grid-template-columns: 100px repeat(${states.length}, minmax(80px, 1fr));">
+  /* 모바일 표에는 Hover 칸을 두지 않는다 — 손가락에는 마우스오버가 없다.
+     registry/components/button.json 의 harness.mobileColumns 가 2026-05-11 부터 이렇게 선언해
+     두었는데 이 화면이 하드코딩으로 PC 와 같은 칸을 그리고 있었다(독립 검증 3회차 ❌(a)-2).
+     2026-09-15 배포본에서 모바일 :hover 칠을 실제로 걷어냈으므로, 화면도 사실과 맞춘다. */
+  const mobileStates = states.filter((state) => state !== "hover");
+  const mobileStateLabels = stateLabels.filter((label) => label !== "Hover");
+  const mobileStateMatrix = `<div class="comp-state-matrix" style="grid-template-columns: 100px repeat(${mobileStates.length}, minmax(80px, 1fr));">
       ${`<div class="matrix-col-header" style="grid-column:1"></div>` +
-        stateLabels.map((label) => `<div class="matrix-col-header">${label}</div>`).join("")}
+        mobileStateLabels.map((label) => `<div class="matrix-col-header">${label}</div>`).join("")}
       ${variants.map(([variant, vLabel]) =>
         `<div class="matrix-row-label">${vLabel}</div>` +
-        states.map((state) => `<div class="comp-state-cell">${state === "disabled"
+        mobileStates.map((state) => `<div class="comp-state-cell">${state === "disabled"
           ? buttonMarkup(variant, "lg", "버튼", true)
           : buttonMarkup(variant, "lg", "버튼", false, state)}</div>`).join("")
       ).join("")}
@@ -1672,6 +1690,148 @@ function modalContentStateMatrix() {
     </div>`;
 }
 
+/* ── State matrix: Bottom Sheet ──
+   정본 buildBottomSheet 의 변형은 Footer(None·Single·Dual) 한 축뿐이고 크기·Break 축이 없다
+   (모바일 전용, 폭은 화면 폭). Action 은 실제로 열리는 진짜 시트(딤이 화면을 덮는다)이고,
+   아래 칸은 지면에 눕혀 보여주는 검수 표시다 — modal 과 같은 방식.
+   본문 기본 채움은 정본 그대로 Bottom Sheet Option Type=Text 4줄(2번째 Selected)이다. */
+
+let bottomSheetId = 0;
+
+function bottomSheetMarkup({ footer = "single", isPreview = false } = {}) {
+  bottomSheetId += 1;
+  /* 한 페이지에 시트가 여럿 그려지므로 제목 id 는 자리마다 새로 만든다(함정 T5 — 같은 문자열 재사용 금지). */
+  const titleId = `guide-bottom-sheet-title-${bottomSheetId}`;
+  const tabindex = isPreview ? ' tabindex="-1"' : "";
+  const rows = [
+    bottomSheetOptionMarkup({ label: "항목 1", isPreview }),
+    bottomSheetOptionMarkup({ state: "selected", label: "항목 2", isPreview }),
+    bottomSheetOptionMarkup({ label: "항목 3", isPreview }),
+    bottomSheetOptionMarkup({ label: "항목 4", isPreview })
+  ].join("");
+  /* 정본: Single = primary 1개, Dual = secondary("취소") → primary("적용") 순서. 둘 다 Mobile LG. */
+  const buttons = footer === "dual"
+    ? `<button type="button" data-s1-component="button" data-variant="secondary" data-size="lg" data-sheet-close${tabindex}><span data-s1-part="label">취소</span></button>`
+      + `<button type="button" data-s1-component="button" data-variant="primary" data-size="lg" data-sheet-close${tabindex}><span data-s1-part="label">적용</span></button>`
+    : `<button type="button" data-s1-component="button" data-variant="primary" data-size="lg" data-sheet-close${tabindex}><span data-s1-part="label">적용</span></button>`;
+  const footerBlock = footer === "none" ? "" : `<div data-s1-part="sheet-footer">${buttons}</div>`;
+  return `<div data-s1-component="bottom-sheet" data-break="mobile" data-footer="${footer}"${isPreview ? ' class="is-preview"' : " hidden"}>
+      <div data-s1-part="sheet-backdrop"></div>
+      <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="${titleId}" tabindex="-1">
+        <div data-s1-part="sheet-content">
+          <div data-s1-part="sheet-header">
+            <span data-s1-part="sheet-title" id="${titleId}">항목 선택</span>
+            <button type="button" data-s1-part="sheet-close" aria-label="닫기"${tabindex}></button>
+          </div>
+          <div data-s1-part="sheet-body">${rows}</div>
+        </div>
+        ${footerBlock}
+      </div>
+    </div>`;
+}
+
+function bottomSheetStateMatrix() {
+  const footers = [["none", "None", "푸터 없음"], ["single", "Single", "버튼 1개"], ["dual", "Dual", "버튼 2개"]];
+
+  const action = `<div class="comp-action-top">
+    <div class="matrix-col-header-action">Action</div>
+    <div class="uilg-bottom-sheet-action">
+      <button type="button" data-s1-component="button" data-variant="secondary" data-size="lg" data-sheet-open><span data-s1-part="label">시트 열기</span></button>
+      ${bottomSheetMarkup({ footer: "dual" })}
+    </div>
+    <p class="uilg-demo-note">눌러서 열어 보세요. Esc 키로 닫히고, <strong>어두운 배경을 눌러도 닫힙니다.</strong> Tab 키는 시트 안에서만 돕니다. 닫으면 열기 전 자리로 초점이 돌아옵니다.</p>
+  </div>`;
+
+  const header = `<div class="matrix-col-header" style="grid-column:1"></div>` +
+    footers.map(([, label, dim]) => `<div class="matrix-col-header">${label}<span class="uilg-size-dim">${dim}</span></div>`).join("");
+  const row = `<div class="matrix-row-label">Bottom Sheet<span>본문은 빈 자리</span></div>` +
+    footers.map(([footer]) => `<div class="comp-state-cell">${bottomSheetMarkup({ footer, isPreview: true })}</div>`).join("");
+  /* 시트 폭은 정본 360 이다. 칸이 그보다 좁으면 패널이 눌려 제목과 닫기(X)가 맞붙는다
+     (2026-09-15 독립 검증 별건 — 137.8px 로 눌림). 360 + 좌우 여백 24×2 = 408 을 최소로 둔다. */
+  const grid = `<div class="comp-state-matrix" style="grid-template-columns: 110px repeat(${footers.length}, minmax(408px, 1fr));">${header}${row}</div>`;
+
+  /* 모바일 전용 컴포넌트라 플랫폼별 블록을 가르지 않는다(modal-content 가 PC 전용으로 한 블록만 두는 것과 같다).
+     한 블록만 두면 같은 마크업이 두 번 그려지지 않아 중복 id 도 생기지 않는다(함정 T5). */
+  return `<div class="platform-section"><div class="preview-area">${action}${grid}</div></div>`;
+}
+
+/* ── State matrix: Bottom Sheet Option ──
+   정본 buildBottomSheetOption 은 Type 4 × State 3 의 12칸 매트릭스가 아니라 **9칸**이다.
+   없는 3칸(checkbox:disabled · radio:disabled · list:selected)은 만들지 않고 빈 칸으로 둔다
+   (manifest absentCombinations). gnb-sub-menu-item 의 "해당 없음" 칸과 같은 처리다. */
+
+let bottomSheetOptionId = 0;
+const BOTTOM_SHEET_OPTION_ABSENT = new Set(["checkbox:disabled", "radio:disabled", "list:selected"]);
+
+function bottomSheetOptionMarkup({ type = "text", state = "default", label = "항목", isPreview = false } = {}) {
+  bottomSheetOptionId += 1;
+  /* checkbox·radio 는 native input 이라 id·name 이 문서 안에서 고유해야 한다 — 자리마다 새로 발급한다(함정 T5). */
+  const uid = `guide-bso-${bottomSheetOptionId}`;
+  const tabindex = isPreview ? ' tabindex="-1"' : "";
+  const root = `data-s1-component="bottom-sheet-option" data-type="${type}" data-state="${state}"`;
+  if (type === "checkbox" || type === "radio") {
+    /* 라디오는 자리마다 name 을 새로 만든다 — 같은 name 을 나누면 먼저 그려진 칸의 선택이 조용히 풀린다. */
+    const name = type === "radio" ? ` name="${uid}-group"` : "";
+    const checked = state === "selected" ? " checked" : "";
+    return `<div ${root}>
+      <div data-s1-component="${type}">
+        <input type="${type}" id="${uid}" data-s1-part="control" aria-labelledby="${uid}-label"${name}${checked}${tabindex}>
+      </div>
+      <span data-s1-part="label" id="${uid}-label">${label}</span>
+    </div>`;
+  }
+  if (type === "list") {
+    return `<div ${root}>
+      <div data-s1-part="list-left">
+        <div data-s1-part="avatar" aria-hidden="true"></div>
+        <div data-s1-part="list-text">
+          <span data-s1-part="list-title">제목</span>
+          <span data-s1-part="list-sub">서브 텍스트</span>
+        </div>
+      </div>
+      <span data-s1-part="${state === "disabled" ? "lock" : "chevron"}" aria-hidden="true"></span>
+    </div>`;
+  }
+  /* Text — Selected 만 우측에 체크 표시를 갖는다. 행 배경은 상태별 분기가 없다(정본). */
+  return `<div ${root}>
+      <span data-s1-part="label">${label}</span>${state === "selected" ? `
+      <span data-s1-part="check" aria-hidden="true"></span>` : ""}
+    </div>`;
+}
+
+function bottomSheetOptionStateMatrix() {
+  const states = [["default", "Default"], ["selected", "Selected"], ["disabled", "Disabled"]];
+  const types = [["text", "Text", "글자"], ["checkbox", "Checkbox", "체크박스"], ["radio", "Radio", "라디오"], ["list", "List", "목록"]];
+
+  const action = `<div class="comp-action-top">
+    <div class="matrix-col-header-action">Action</div>
+    <div class="uilg-bottom-sheet-option-action">
+      <div class="uilg-bottom-sheet-option-cell">
+        ${bottomSheetOptionMarkup({ type: "text", state: "selected", label: "글자 줄 · 고른 줄" })}
+        ${bottomSheetOptionMarkup({ type: "checkbox", label: "체크박스 줄 · 눌러 보세요" })}
+        ${bottomSheetOptionMarkup({ type: "radio", label: "라디오 줄 · 눌러 보세요" })}
+        ${bottomSheetOptionMarkup({ type: "list", label: "목록 줄" })}
+      </div>
+    </div>
+    <p class="uilg-demo-note">시트 본문에 줄을 쌓은 모습입니다(폭 360). 체크박스·라디오 줄은 승인된 배포본을 그대로 넣은 것이라 실제로 눌러서 켜고 끌 수 있습니다. <strong>고른 줄에 배경색을 칠하지 않습니다</strong> — 정본이 글자색과 표시로만 구분합니다. 고르기 동작(선택 반영·목록 역할)은 시트를 여는 화면이 맡습니다.</p>
+  </div>`;
+
+  const header = `<div class="matrix-col-header" style="grid-column:1"></div>` +
+    states.map(([, label]) => `<div class="matrix-col-header">${label}</div>`).join("");
+  const rows = types.map(([type, label, korean]) =>
+    `<div class="matrix-row-label">${label}<span>${korean}</span></div>` +
+    states.map(([state]) => {
+      if (BOTTOM_SHEET_OPTION_ABSENT.has(`${type}:${state}`)) {
+        return `<div class="comp-state-cell"><span class="uilg-na">정본에 없음</span></div>`;
+      }
+      /* 줄이 시트 폭 안에서 어떻게 보이는지 알 수 있게 360 폭 상자 안에 넣는다. */
+      return `<div class="comp-state-cell"><div class="uilg-bottom-sheet-option-cell">${bottomSheetOptionMarkup({ type, state, isPreview: true })}</div></div>`;
+    }).join("")).join("");
+  const grid = `<div class="comp-state-matrix" style="grid-template-columns: 110px repeat(${states.length}, minmax(240px, 1fr));">${header}${rows}</div>`;
+
+  return `<div class="platform-section"><div class="preview-area">${action}${grid}</div></div>`;
+}
+
 /* ── Mobile Bottom Nav — 탭 아이템 1칸(60×60). 360×780 모바일 목업은 안내 화면 전용 크롬이다(D6).
    목업 크롬(휴대폰 테두리·상태바 그림·화면 내용 스켈레톤)은 dist 부품이 아니므로 data-s1-component 을
    갖지 않는다 — 부품 표본에는 data-guide-sample="part", 조립 표본에는 "set" 을 붙인다(부품 표본 격리). */
@@ -2753,6 +2913,8 @@ function stateMatrix(id) {
   if (id === "table") return tableStateMatrix();
   if (id === "modal") return modalStateMatrix();
   if (id === "modal-content") return modalContentStateMatrix();
+  if (id === "bottom-sheet") return bottomSheetStateMatrix();
+  if (id === "bottom-sheet-option") return bottomSheetOptionStateMatrix();
   if (id === "assist-button") return assistButtonStateMatrix();
   if (id === "text-button") return textButtonStateMatrix();
   if (id === "mobile-bottom-nav") return mobileBottomNavStateMatrix();
@@ -3061,6 +3223,24 @@ async function mountGuide(id) {
         });
       });
     }
+    if (id === "bottom-sheet") {
+      /* Action 영역의 진짜 시트만 배선한다. 미리보기 칸(.is-preview)은 지면에 눕혀 둔 표시라
+         init 하지 않는다 — init 하면(이미 열린 마크업이라) 배경 스크롤이 잠긴 채로 남는다. */
+      section.querySelectorAll(".uilg-bottom-sheet-action").forEach((area) => {
+        const root = area.querySelector('[data-s1-component="bottom-sheet"]');
+        const trigger = area.querySelector("[data-sheet-open]");
+        if (!root || !trigger) return;
+        /* 배포본 계약대로 시트는 body 바로 아래에 둔다(manifest.htmlContract.placement).
+           안내 화면 안에 두면 상단 고정바가 시트 위에 남는다 — 쌓임 맥락에 갇히기 때문이다. */
+        document.body.append(root);
+        const api = config.runtime.init(root);
+        trigger.addEventListener("click", () => api?.open());
+        root.querySelectorAll("[data-sheet-close]").forEach((button) => {
+          if (button.dataset.s1Part === "sheet-close") return;   /* 닫기(X)·딤은 런타임이 이미 배선한다 */
+          button.addEventListener("click", () => api?.close({ reason: "footer-button" }));
+        });
+      });
+    }
     if (id === "mobile-header") {
       /* 옵션칩으로 고른 유형을 목업 헤더 슬롯에 다시 그린다. 배포본은 런타임이 없는 정적 크롬이라
          init 은 필요 없고, 화면이 마크업만 갈아끼운다(부품 경계 그대로). */
@@ -3127,6 +3307,6 @@ async function mountGuide(id) {
   }
 }
 
-const guideComponents = ["input", "button", "assist-button", "text-button", "checkbox", "radio", "toggle", "chip", "select", "dropdown", "filter-chip", "tab", "pagination", "textarea", "multi-toggle", "modal", "modal-content", "table", "mobile-bottom-nav", "mobile-header", "gnb", "gnb-sub-menu-item", "gnb-sub-menu", "time-picker", "date-picker"];
+const guideComponents = ["input", "button", "assist-button", "text-button", "checkbox", "radio", "toggle", "chip", "select", "dropdown", "filter-chip", "tab", "pagination", "textarea", "multi-toggle", "modal", "modal-content", "table", "mobile-bottom-nav", "mobile-header", "gnb", "gnb-sub-menu-item", "gnb-sub-menu", "time-picker", "date-picker", "bottom-sheet", "bottom-sheet-option"];
 await Promise.all(guideComponents.map(mountGuide));
 document.dispatchEvent(new CustomEvent("s1:component-guide:ready", { detail: { components: guideComponents } }));

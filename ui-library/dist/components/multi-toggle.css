@@ -77,3 +77,26 @@
   color: var(--color-button-label-disabled);
   cursor: not-allowed;
 }
+
+
+/* ── 밀도(density) — registry/governance/density-policy.json 에서 생성. 손편집 금지 ── */
+/* density:wide 넓게(44px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="wide"] [data-s1-component="multi-toggle"]:not([data-size]) [data-s1-part="cell"] {
+  height: var(--sizing-44);
+  min-width: var(--sizing-64);
+  padding-inline: var(--spacing-12);
+}
+
+/* density:normal 보통(34px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="normal"] [data-s1-component="multi-toggle"]:not([data-size]) [data-s1-part="cell"] {
+  height: var(--sizing-34);
+  min-width: var(--sizing-56);
+  padding-inline: var(--spacing-8);
+}
+
+/* density:narrow 좁게(28px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="narrow"] [data-s1-component="multi-toggle"]:not([data-size]) [data-s1-part="cell"] {
+  height: var(--sizing-34);
+  min-width: var(--sizing-56);
+  padding-inline: var(--spacing-8);
+}

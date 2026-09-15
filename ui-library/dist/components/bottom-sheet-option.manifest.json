@@ -1,0 +1,199 @@
+{
+  "id": "bottom-sheet-option",
+  "version": "0.1.1",
+  "status": "approved",
+  "canonicalFingerprint": "caa0b6750e4efe8b458178ff6738577c2e6f21dd8d27e0d2439aa1965bbe9235",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/bottom-sheet-option.json"
+  ],
+  "rootSelector": "[data-s1-component=\"bottom-sheet-option\"]",
+  "variants": [
+    "text",
+    "checkbox",
+    "radio",
+    "list"
+  ],
+  "sizes": [],
+  "breaks": {
+    "pc": [],
+    "mobile": []
+  },
+  "states": {
+    "default": "[data-state=\"default\"] (기본값)",
+    "selected": "[data-state=\"selected\"] — Text·Checkbox·Radio 에만 있다",
+    "disabled": "[data-state=\"disabled\"] — Text·List 에만 있다"
+  },
+  "canonicalStateMap": {
+    "Type=Text × State=Default": "text:default",
+    "Type=Text × State=Selected": "text:selected",
+    "Type=Text × State=Disabled": "text:disabled",
+    "Type=Checkbox × State=Default": "checkbox:default",
+    "Type=Checkbox × State=Selected": "checkbox:selected",
+    "Type=Radio × State=Default": "radio:default",
+    "Type=Radio × State=Selected": "radio:selected",
+    "Type=List × State=Default": "list:default",
+    "Type=List × State=Disabled": "list:disabled"
+  },
+  "absentCombinations": [
+    "checkbox:disabled — 정본에 없다(build-components.ts 5123-5124 order 배열에 없음).",
+    "radio:disabled — 정본에 없다(같은 이유).",
+    "list:selected — 정본에 없다(같은 이유). List 는 Default·Disabled 두 칸뿐이다."
+  ],
+  "notInCanon": {
+    "selectedBackground": "정본은 선택 줄에 배경색을 칠하지 않는다 — 글자색·아이콘으로만 구분한다(build-components.ts buildBottomSheetOption, 행 배경은 Type·State 공통 color/surface/raised).",
+    "standalone": "단독으로 배포하지 않고 Bottom Sheet 본문 안에서 쓴다(registry bottom-sheet-option.json whenNotToUse).",
+    "listItemSpacing": "List 행 itemSpacing 이 정본 코드에 지정돼 있지 않다(1-inventory.md §6 미확인). 웹은 justify-content:space-between 양끝 배치라 영향 없다."
+  },
+  "parts": [
+    "label",
+    "check",
+    "list-left",
+    "avatar",
+    "list-text",
+    "list-title",
+    "list-sub",
+    "chevron",
+    "lock"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=bottom-sheet-option][data-type][data-state]",
+    "requiredAttributes": [
+      "data-type",
+      "data-state"
+    ],
+    "requiredParts": [],
+    "optionalParts": [
+      "label",
+      "check",
+      "list-left",
+      "avatar",
+      "list-text",
+      "list-title",
+      "list-sub",
+      "chevron",
+      "lock"
+    ],
+    "typeStructure": {
+      "text": "span[data-s1-part=label] 직계 자식(+ selected 면 span[data-s1-part=check] 직계 자식).",
+      "checkbox": "div[data-s1-component=checkbox] 코어(control 만, 코어 자신의 label 은 쓰지 않는다 — 정본 Label=Off) + span[data-s1-part=label] 직계 자식. control 의 접근 가능한 이름은 aria-labelledby 로 그 label span 을 가리킨다.",
+      "radio": "div[data-s1-component=radio] 코어(control 만, 같은 이유로 Label=Off) + span[data-s1-part=label] 직계 자식. checkbox 와 같은 aria-labelledby 방식.",
+      "list": "div[data-s1-part=list-left]( div[data-s1-part=avatar] + div[data-s1-part=list-text]( span[data-s1-part=list-title] + span[data-s1-part=list-sub] ) ) + State=Default 면 span[data-s1-part=chevron], State=Disabled 면 span[data-s1-part=lock]."
+    },
+    "grouping": "이 컴포넌트는 줄 모양만 소유한다. 목록 구조(role·이름·선택 상태)와 고르기 동작은 시트를 여는 화면이 소유한다.",
+    "relations": [
+      "checkbox·radio 코어를 그대로 조립한다 — 복제하지 않는다.",
+      "checkbox·radio 코어 내부에는 코어 자신의 label 을 넣지 않는다(정본 Label=Off) — 이 컴포넌트의 label span 이 보이는 글자를 낸다.",
+      "라벨(span[data-s1-part=label])은 root 의 직계 자식일 때만 이 컴포넌트의 CSS 가 적용된다 — checkbox·radio 코어 내부 part 를 건드리지 않기 위해서다(CSS `>` 직계 자식 스코프)."
+    ],
+    "source": "components/bottom-sheet-option/bottom-sheet-option.example.html",
+    "distribution": "examples/bottom-sheet-option.html"
+  },
+  "cssContract": {
+    "entry": "components/bottom-sheet-option.css",
+    "rootScope": "[data-s1-component=bottom-sheet-option]",
+    "nativeStates": [],
+    "ariaStates": [],
+    "documentedDataStates": [
+      "[data-type]",
+      "[data-state]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다. checkbox·radio 코어의 내부 CSS를 override하지 않는다."
+  },
+  "contentSlots": {
+    "label": "선택; Text·Checkbox·Radio 의 보이는 글자.",
+    "list-title": "선택; List 제목.",
+    "list-sub": "선택; List 서브 텍스트."
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css",
+      "components/checkbox.css",
+      "components/radio.css"
+    ],
+    "coreComponents": [
+      "checkbox",
+      "radio"
+    ],
+    "coreComponentsNote": "Checkbox·Radio 행은 그 코어 배포본을 그대로 조립한다(control 만, Label=Off). bottom-sheet-option 을 개별 설치할 때 checkbox·radio 의 CSS 도 함께 로드해야 한다."
+  },
+  "icons": [
+    {
+      "id": "check24",
+      "sourceKey": "5ab251e0d90adb555ee2fa316f84e86041f19916",
+      "asset": "assets/icons/check24.svg",
+      "use": "Type=Text·State=Selected 의 우측 체크 표시",
+      "accessibleNamePolicy": "decorative; 선택 상태는 그 줄의 aria-selected·aria-checked 가 알린다",
+      "note": "ic_확인 의 24 프레임 표출. 기존 check(16 프레임)는 체크박스 전용이라 그대로 두고, 여기서는 24 프레임 자산을 쓴다 — 16 을 24 로 확대하면 선 굵기까지 1.5배가 되어 정본보다 굵어진다(2026-09-15 독립 검증). 원본 픽셀 대조 오차 0.00181."
+    },
+    {
+      "id": "chevron",
+      "sourceKey": "e1ac97aa82f4e52f257ac1c0ea77fd09d0e5f581",
+      "asset": "assets/icons/chevron.svg",
+      "use": "List:Default 우측 화살표",
+      "accessibleNamePolicy": "decorative; 이름은 List 제목 글자가 갖는다",
+      "note": "기존 등록 자산 재사용 — 재등록 아님. 자산이 이미 오른쪽(▶)을 가리켜 회전을 걸지 않는다(T8 함정 확인, CSS 주석 참조)."
+    },
+    {
+      "id": "account",
+      "sourceKey": "a423e2e05cfff2f93062d6a83d6f3bdf79ca9647",
+      "asset": "assets/icons/account.svg",
+      "use": "List avatar 안 ::after 아이콘",
+      "accessibleNamePolicy": "decorative; 이름은 List 제목 글자가 갖는다",
+      "note": "기존 등록 자산 재사용 — 재등록 아님."
+    },
+    {
+      "id": "lock",
+      "sourceKey": "28aa6b1615f3afb29ff22cf2767f0c771c941fdc",
+      "asset": "assets/icons/lock.svg",
+      "use": "List:Disabled 우측 잠금 표시",
+      "accessibleNamePolicy": "decorative; 잠긴 줄이라는 뜻은 그 줄의 aria-disabled 와 글자가 전달한다",
+      "note": "오케스트레이터가 2026-09-15 등록(HD-1 해소, 🤖 figma-inspector get_design_context). 원본 대조 PASS(오차 0.00203, ui-library-icon-origin-check.js --record)."
+    }
+  ],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "Checkbox·Radio 는 native input[type=checkbox|radio] 를 그대로 쓴다(코어 배포본의 계약). Text·List 는 역할이 없는 div/span 이다 — role·이름·선택 상태는 시트를 여는 화면이 준다(registry a11y)."
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "Checkbox·Radio 는 control 의 aria-labelledby 가 이 컴포넌트의 label span id 를 가리킨다(associated label — checkbox·radio manifest accessibleName 계약 충족). Text·List 는 이 컴포넌트 자체가 이름을 갖지 않는다 — 시트를 여는 화면이 role·이름을 준다."
+    },
+    "keyboard": {
+      "status": "not-applicable",
+      "reason": "이 컴포넌트는 줄 모양만 소유한다. Checkbox·Radio 의 키보드 동작은 그 코어 계약(Tab·Space/방향키)을 그대로 상속한다. Text·List 자체는 상호작용 요소가 아니다 — 누를 수 있게 만들면 시트를 여는 화면이 role=button/option 과 함께 처리한다."
+    },
+    "focus": {
+      "status": "not-applicable",
+      "reason": "정본에 별도 focus 표현이 없다. Checkbox·Radio 코어의 기본 포커스 표시를 그대로 쓴다."
+    },
+    "ariaStateSync": {
+      "status": "not-applicable",
+      "reason": "선택 상태 ARIA 동기화(aria-selected·aria-checked)는 시트를 여는 화면이 소유한다 — 이 컴포넌트는 시각 상태(data-state)만 갖는다."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 오류 표시가 없다."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "정본이 모션을 정의하지 않는다."
+    }
+  },
+  "jsRequired": false,
+  "javascript": {
+    "runtime": "none",
+    "reason": "줄 모양만 소유한다. 고르기 동작(선택 반영·role·이벤트)은 시트를 여는 화면이 배선한다."
+  },
+  "sourceFingerprint": "fea372a072661d8e1826706b5e148239a13f79cc033eec0216480c17b5da1f08"
+}

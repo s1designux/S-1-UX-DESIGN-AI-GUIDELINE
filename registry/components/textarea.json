@@ -58,7 +58,7 @@
     "readonly"
   ],
   "stateNotes": {
-    "focus": "border → --input-focus-border (--color-form-control-border-selected)",
+    "focus": "border → --color-form-control-border-selected",
     "filled": "입력이 완료된 상태. 정본 Text Area의 Filled variant를 따른다.",
     "disabled": "bg → --input-disabled-bg. border → --input-disabled-border. text → --input-disabled-text",
     "readonly": "bg → --input-readonly-bg. border → --input-readonly-border. text → --input-readonly-text",
@@ -66,68 +66,57 @@
   },
   "tokens": [
     {
-      "name": "--input-default-bg",
-      "value": "var(--color-form-control-bg-default)",
+      "name": "--color-form-control-bg-default",
       "state": "default",
       "property": "bg"
     },
     {
-      "name": "--input-disabled-bg",
-      "value": "var(--color-form-control-bg-disabled)",
+      "name": "--color-form-control-bg-disabled",
       "state": "disabled",
       "property": "bg"
     },
     {
-      "name": "--input-readonly-bg",
-      "value": "var(--color-form-control-bg-disabled)",
+      "name": "--color-form-control-bg-disabled",
       "state": "readonly",
       "property": "bg"
     },
     {
-      "name": "--input-default-border",
-      "value": "var(--color-form-control-border-default)",
+      "name": "--color-form-control-border-default",
       "state": "default",
       "property": "border"
     },
     {
-      "name": "--input-focus-border",
-      "value": "var(--color-form-control-border-selected)",
+      "name": "--color-form-control-border-selected",
       "state": "focus",
       "property": "border"
     },
     {
-      "name": "--input-disabled-border",
-      "value": "var(--color-form-control-border-disabled)",
+      "name": "--color-form-control-border-disabled",
       "state": "disabled",
       "property": "border"
     },
     {
-      "name": "--input-readonly-border",
-      "value": "var(--color-form-control-border-disabled)",
+      "name": "--color-form-control-border-default",
       "state": "readonly",
       "property": "border"
     },
     {
-      "name": "--input-placeholder-text",
-      "value": "var(--color-form-control-text-placeholder)",
+      "name": "--color-form-control-text-placeholder",
       "state": "all",
       "property": "placeholder"
     },
     {
-      "name": "--input-disabled-text",
-      "value": "var(--color-form-control-text-disabled)",
+      "name": "--color-form-control-text-disabled",
       "state": "disabled",
       "property": "color"
     },
     {
-      "name": "--input-readonly-text",
-      "value": "var(--color-text-readonly)",
+      "name": "--color-form-control-text-read-only",
       "state": "readonly",
       "property": "color"
     },
     {
-      "name": "--input-helper-text",
-      "value": "var(--color-text-state-caption)",
+      "name": "--color-text-state-caption",
       "state": "default",
       "property": "helper"
     }

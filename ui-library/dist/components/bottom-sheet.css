@@ -1,0 +1,99 @@
+/* Bottom Sheet — 정본 buildBottomSheet(build-components.ts:5152~5327) 기준.
+   변형축은 Footer 한 축(None·Single·Dual)뿐이다. 크기 축·Break 축은 정본에 없다 — 시트 자체가
+   모바일 전용이고, 폭은 화면 폭(정본 360=모바일 프레임 폭)을 따른다(modal 의 PC 360 고정과 다른 이유).
+
+   루트에 data-s1-part="sheet" 를 함께 달 수 있다 — 이미 배포된 date-picker·time-picker 시트가
+   그 이름으로 자기 부품을 부르고 있어서, 함께 달아두면 기존 JS 선택자가 그대로 산다(D. 이관 참고).
+
+   사용자 지정 속성 2개는 공개 계약이다(manifest cssContract.customization) — date-picker·time-picker 는
+   패널 안 간격·그림자가 독립 시트 정본과 달라서(32/없음 vs 48/raised-up) 이 손잡이로 자기 값을 준다. */
+[data-s1-component="bottom-sheet"] {
+  --s1-bottom-sheet-gap: var(--spacing-48);
+  --s1-bottom-sheet-shadow: var(--shadow-raised-up);
+  align-items: flex-end;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  position: fixed;
+  z-index: 1000;
+}
+
+[data-s1-component="bottom-sheet"][hidden] { display: none; }
+
+[data-s1-component="bottom-sheet"] [data-s1-part="sheet-backdrop"] {
+  background: var(--color-overlay);
+  inset: 0;
+  position: absolute;
+}
+
+/* 패널 — surface/raised · 위 모서리만 radius/8 · shadow/raised-up(공개 손잡이 경유) · 세로 패딩 20.
+   좌우 패딩은 0 — "좌우 20"은 root 가 아니라 header·footer 가 각자 갖는다(1-inventory.md §2). */
+[data-s1-component="bottom-sheet"] [data-s1-part="sheet-panel"] {
+  background: var(--color-surface-raised);
+  border-top-left-radius: var(--radius-8);
+  border-top-right-radius: var(--radius-8);
+  box-shadow: var(--s1-bottom-sheet-shadow);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1-bottom-sheet-gap);
+  max-height: 92vh;
+  /* 정본 360 은 Figma 모바일 프레임의 화면 폭이다(date-picker·time-picker 시트와 같은 처리, 이미 배포됨).
+     360 고정으로 두면 좁은 기기에서 넘치고 넓은 기기에서 옆이 뜬다. */
+  max-width: 360px;
+  overflow-y: auto;
+  padding-block: var(--spacing-20);
+  position: relative;
+  width: 100%;
+}
+
+/* Footer=None 은 아래 여백이 40 — 버튼이 없어 시트 끝이 손가락에 가깝기 때문(정본 5254-5255). */
+[data-s1-component="bottom-sheet"][data-footer="none"] [data-s1-part="sheet-panel"] {
+  padding-bottom: var(--spacing-40);
+}
+
+/* content — 정본 content 프레임의 웹 대응. 선택 부품(date-picker·time-picker 는 한 층이라 안 쓴다). */
+[data-s1-component="bottom-sheet"] [data-s1-part="sheet-content"] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+}
+
+[data-s1-component="bottom-sheet"] [data-s1-part="sheet-header"] {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: var(--spacing-20);
+}
+
+[data-s1-component="bottom-sheet"] [data-s1-part="sheet-title"] {
+  color: var(--color-text-title-primary);
+  font-family: "Pretendard", sans-serif;
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+}
+
+[data-s1-component="bottom-sheet"] [data-s1-part="sheet-close"] {
+  appearance: none;
+  background-color: var(--color-icon-gray-dark);
+  border: none;
+  cursor: pointer;
+  height: 24px;
+  mask: url("../assets/icons/close.svg") center / contain no-repeat;
+  padding: 0;
+  width: 24px;
+}
+
+[data-s1-component="bottom-sheet"] [data-s1-part="sheet-footer"] {
+  display: flex;
+  gap: var(--spacing-8);
+  padding-inline: var(--spacing-20);
+}
+
+/* 푸터 버튼은 코어 Button 인스턴스를 그대로 조립한다 — FILL(정본), Single 은 1개, Dual 은 2개. */
+[data-s1-component="bottom-sheet"] [data-s1-part="sheet-footer"] > [data-s1-component="button"] {
+  flex: 1 1 0;
+  width: 100%;
+}

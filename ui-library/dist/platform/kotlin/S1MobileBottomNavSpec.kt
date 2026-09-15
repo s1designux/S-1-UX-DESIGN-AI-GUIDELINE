@@ -10,7 +10,7 @@ object S1MobileBottomNavSpec {
     val boxes: Map<String, Map<String, S1Box>> = mapOf(
         "home|unselected" to mapOf(
             "root" to S1Box(height = 60f, width = 60f, gap = 4f),
-            "icon" to S1Box(background = S1Palette.colorIconGray, height = 32f, width = 32f, icon = "mobile-nav-home"),
+            "icon" to S1Box(background = S1Palette.colorNavigationIconDefault, height = 32f, width = 32f, icon = "mobile-nav-home"),
             "label" to S1Box(foreground = S1Palette.colorNavigationLabelDefault, fontSize = 12f, lineHeight = 1.3f, fontWeight = 500)
         ),
         "home|selected" to mapOf(
@@ -20,7 +20,7 @@ object S1MobileBottomNavSpec {
         ),
         "search|unselected" to mapOf(
             "root" to S1Box(height = 60f, width = 60f, gap = 4f),
-            "icon" to S1Box(background = S1Palette.colorIconGray, height = 32f, width = 32f, icon = "nav-search"),
+            "icon" to S1Box(background = S1Palette.colorNavigationIconDefault, height = 32f, width = 32f, icon = "nav-search"),
             "label" to S1Box(foreground = S1Palette.colorNavigationLabelDefault, fontSize = 12f, lineHeight = 1.3f, fontWeight = 500)
         ),
         "search|selected" to mapOf(
@@ -30,7 +30,7 @@ object S1MobileBottomNavSpec {
         ),
         "notification|unselected" to mapOf(
             "root" to S1Box(height = 60f, width = 60f, gap = 4f),
-            "icon" to S1Box(background = S1Palette.colorIconGray, height = 32f, width = 32f, icon = "nav-notification"),
+            "icon" to S1Box(background = S1Palette.colorNavigationIconDefault, height = 32f, width = 32f, icon = "nav-notification"),
             "label" to S1Box(foreground = S1Palette.colorNavigationLabelDefault, fontSize = 12f, lineHeight = 1.3f, fontWeight = 500)
         ),
         "notification|selected" to mapOf(
@@ -40,7 +40,7 @@ object S1MobileBottomNavSpec {
         ),
         "settings|unselected" to mapOf(
             "root" to S1Box(height = 60f, width = 60f, gap = 4f),
-            "icon" to S1Box(background = S1Palette.colorIconGray, height = 32f, width = 32f, icon = "nav-settings"),
+            "icon" to S1Box(background = S1Palette.colorNavigationIconDefault, height = 32f, width = 32f, icon = "nav-settings"),
             "label" to S1Box(foreground = S1Palette.colorNavigationLabelDefault, fontSize = 12f, lineHeight = 1.3f, fontWeight = 500)
         ),
         "settings|selected" to mapOf(

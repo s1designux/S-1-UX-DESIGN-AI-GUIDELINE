@@ -636,6 +636,33 @@
 
 .uilg-modal-action { display: flex; }
 
+/* ── Bottom Sheet · Bottom Sheet Option 안내 화면 전용 ── (위 Modal 과 같은 이유·같은 방식)
+   배포본 시트는 화면 전체를 덮는 오버레이다(position:fixed;inset:0). 안내 화면의 상태 칸에서는
+   지면 안에 눕혀 보여줘야 해서 이 페이지가 자리만 바꾼다. 이 CSS 는 dist 에 넣지 않는다
+   (배포본 계약 cssContract.previewNote). 색·크기·간격은 그대로 dist 가 그린다. */
+.uilg [data-s1-component="bottom-sheet"].is-preview {
+  inset: auto;
+  overflow-x: auto;
+  padding: var(--spacing-24);
+  position: relative;
+}
+
+/* 배포본 패널은 `max-width:360px; width:100%` 라 좁은 칸에 들어가면 그 칸만큼 눌린다 —
+   눌리면 제목과 닫기(X)가 맞붙어 실제 모양과 달라 보인다(2026-09-15 독립 검증 별건).
+   검수 칸에서는 정본 폭 360 을 고정해 보여준다. 실제 기기에서는 화면 폭이 곧 시트 폭이라
+   360 이 그대로 나오므로 과장이 아니다. 이 규칙은 안내 화면 소유이며 dist 에 넣지 않는다. */
+.uilg [data-s1-component="bottom-sheet"].is-preview [data-s1-part="sheet-panel"] {
+  flex: none;
+  max-width: none;
+  width: 360px;
+}
+
+.uilg-bottom-sheet-action { display: flex; }
+
+/* 옵션 줄은 시트 본문 폭(정본 360) 안에서 봐야 배치가 읽힌다 — 칸마다 그 폭 상자에 넣는다. */
+.uilg-bottom-sheet-option-action { display: flex; }
+.uilg-bottom-sheet-option-cell { max-width: 360px; width: 100%; }
+
 /* ── Mobile Bottom Nav · Mobile Header 안내 화면 전용 모바일 목업(D6) ──
    휴대폰 테두리·상태바 그림·화면 내용 스켈레톤은 안내 화면 전용 크롬이다. dist 부품이 아니며
    data-s1-component 을 갖지 않는다(부품 표본 격리 — data-guide-sample="part"/"set" 는 실제

@@ -1,0 +1,136 @@
+{
+  "_meta": {
+    "id": "bottom-sheet",
+    "name": "Bottom Sheet",
+    "category": "overlay",
+    "updatedAt": "2026-09-15",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "stable",
+    "figmaStatus": "existing",
+    "harnessStatus": "implemented",
+    "description": "모바일에서 화면 아래에서 올라오는 시트 그릇 3종(Footer None|Single|Dual). 딤 위에 제목·닫기(X)·본문 자리·푸터 버튼으로 뜬다. 본문은 슬롯이라 화면마다 갈아끼운다 — 기본 채움은 Bottom Sheet Option 줄이고, 날짜·시간 선택은 달력·휠을 넣어 쓴다. 모바일에서 드롭다운을 대신하는 자리다.",
+    "a11yApproval": "modal 표준안(river 승인 2026-09-02)과 같은 규칙을 따른다 — role=dialog·aria-modal·제목 연결·초점 가둠·Esc 닫기·초점 복귀·배경 스크롤 잠금. 다른 점 한 가지: 딤 클릭 닫기를 제공한다(이미 배포된 date-picker 시트의 동작이며 빼면 퇴행).",
+    "codeStatusNote": "정본 buildBottomSheet 는 빌드돼 있다. 웹 배포본 상태는 webDistribution 과 ui-library-migration.json 이 따로 가진다."
+  },
+  "usage": {
+    "whenToUse": [
+      "모바일에서 목록을 띄워 고르게 할 때 — 드롭다운 대신 쓴다(density-policy mobileSubstitutes.dropdown).",
+      "모바일에서 날짜·시간처럼 넓은 선택 UI 를 띄울 때.",
+      "Footer=None 은 고르는 즉시 적용되는 목록, Single 은 '적용' 하나, Dual 은 '취소+적용'."
+    ],
+    "whenNotToUse": [
+      "PC 화면 — PC 는 드롭다운·팝오버·모달을 쓴다. 정본 시트는 모바일 폭(360) 기준이다.",
+      "확인·알림처럼 짧은 결정 — Modal 을 쓴다.",
+      "비차단 알림 — 토스트·인라인 메시지."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "딤(backdrop)",
+      "role": "뒤 배경을 덮는 color-overlay 딤. 누르면 닫힌다."
+    },
+    {
+      "part": "패널",
+      "role": "아래에 붙어 위 모서리만 둥근 시트면. 폭은 화면 폭(최대 360)."
+    },
+    {
+      "part": "헤더",
+      "role": "제목 ↔ 닫기(X). 좌우 여백 20."
+    },
+    {
+      "part": "본문(슬롯)",
+      "role": "화면이 채우는 자리. 컴포넌트는 빈 그릇만 소유한다."
+    },
+    {
+      "part": "푸터(선택)",
+      "role": "코어 Button 1개(Single) 또는 2개(Dual). Footer=None 이면 없다."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "제목은 항상 둔다. 닫기(X)도 항상 둔다(정본 3변형 전부 헤더에 있다).",
+      "푸터 버튼은 코어 Button 배포본(Mobile LG)을 그대로 조립한다.",
+      "시트는 화면(body) 바로 아래에 둔다 — 상자 안에 넣으면 갇힌다.",
+      "본문에 넣는 줄은 Bottom Sheet Option 을 쓴다. 새로 그리지 않는다."
+    ],
+    "dont": [
+      "시트 문구(실제 카피)를 컴포넌트 정본으로 넣지 않는다 — 예시일 뿐(UX라이팅 영역).",
+      "PC 용 크기를 만들지 않는다 — 정본에 없다.",
+      "정본에 없는 층(부제·손잡이 바 등)을 임의로 만들지 않는다."
+    ]
+  },
+  "a11y": [
+    "패널을 role=dialog · aria-modal=true 로 표시하고 aria-labelledby 로 제목을 연결한다.",
+    "열릴 때 패널 안 첫 초점 요소로 초점을 옮기고, 닫힐 때 열기 전 초점 자리로 되돌린다.",
+    "열려 있는 동안 Tab·Shift+Tab 은 패널 안에서만 순환한다(초점 가둠).",
+    "Esc 로 닫을 수 있게 한다. 닫기(X) 버튼에 '닫기' 이름을 준다.",
+    "딤을 눌러도 닫힌다 — 닫기 수단이 키보드(Esc)·버튼·포인터 세 갈래로 모두 있다.",
+    "열려 있는 동안 배경 스크롤을 잠근다. 시트·모달이 여럿이면 마지막 하나가 닫힐 때 되돌린다."
+  ],
+  "variantAxis": {
+    "property": [
+      "Footer"
+    ],
+    "values": {
+      "Footer": [
+        "None",
+        "Single",
+        "Dual"
+      ]
+    },
+    "titleAlways": true,
+    "sizeAxis": "없음 — 폭은 화면 폭(정본 360 = 모바일 프레임 폭), 높이는 내용에 따라 늘어난다.",
+    "note": "정본에 Break 축이 없다. 시트 자체가 모바일 전용이다."
+  },
+  "scope": "light+dark",
+  "tokens": {
+    "_note": "색은 예외 없이 Semantic 경유. 신규 토큰 0건 — 전부 기존 슬롯 재사용.",
+    "panel-bg": "color/surface/raised",
+    "overlay": "color/overlay (딤 — EX03 rgba 예외)",
+    "title-text": "color/text/title/primary",
+    "close-icon": "color/icon/gray-dark",
+    "panel-radius": "radius/8 (위 모서리만)",
+    "shadow": "shadow/raised-up (--shadow-raised-up) — 아래에서 올라오는 표면이라 y 부호가 반전된 그림자. Light·Dark 같은 값(vars-data.ts:451).",
+    "spacing": "root itemSpacing 48(본문↔푸터) · content itemSpacing 24(헤더↔본문) · 세로 패딩 20 / 아래 Footer=None 은 40 · 헤더·푸터 좌우 20 · 푸터 버튼 사이 8"
+  },
+  "reuses": {
+    "coreComponents": [
+      "button",
+      "bottom-sheet-option"
+    ],
+    "libraryIcons": [
+      "ic_닫기 (V2.2 아이콘 라이브러리)"
+    ],
+    "note": "푸터 버튼 = 코어 Button Mobile LG(h48). 본문 기본 채움 = Bottom Sheet Option. 시각 override 금지."
+  },
+  "figma": {
+    "componentSetKey": "(미발행 — 라이브러리 publish 시 기록)",
+    "fileKey": "cysG5U1udpQqVagYY1hWHW",
+    "targetFile": "SW UX GUIDE V3.0-TEST",
+    "builder": "plugins/figma-vars-installer/src/build-components.ts · buildBottomSheet (5152)",
+    "propertyMap": {
+      "footer": [
+        "none",
+        "single",
+        "dual"
+      ]
+    },
+    "note": "변형축 Footer=None|Single|Dual(3변형). 본문은 Figma SLOT 노드(이름 \"Content\")이며 preferredValues 가 Bottom Sheet Option 세트다. Dark 는 별도 마스터가 아니라 Appearance 모드로 제공한다."
+  },
+  "governance": {
+    "verify": "new",
+    "verifyNote": "2026-09-15 정본 판독(📖 source-reader, build-components.ts 5152-5327 전체 추적)으로 변형축·geometry·토큰·자식 트리를 확인했다. Figma 실물 렌더 대조는 하지 않았다.",
+    "coreReuseRule": "button·bottom-sheet-option 은 reuses.coreComponents 명시. 상태·variant 부족 시 needs-core-update 기록(임의 구현 금지)."
+  },
+  "webDistribution": {
+    "status": "approved",
+    "manifest": "ui-library/src/components/bottom-sheet/manifest.json",
+    "runtime": "components/bottom-sheet.js",
+    "note": "웹 배포본은 딤+패널 그릇과 여닫기 런타임을 제공한다. 본문은 빈 슬롯이고 화면이 채운다. date-picker·time-picker 가 이 부품을 재사용한다.",
+    "workId": "bottom-sheet",
+    "approvedAt": "2026-09-15"
+  }
+}

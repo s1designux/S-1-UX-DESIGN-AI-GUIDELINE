@@ -48,7 +48,7 @@
     "do": [
       "variant 는 primary·secondary·blue-line 만 쓴다.",
       "크기는 PC md(44)/xsm(34)/xxsm(28), Mobile lg(48) 중에서 고른다.",
-      "색은 Semantic 경유 component 토큰(--button-*)으로만 참조한다."
+      "색은 배포본이 쓰는 역할 토큰(--color-button-*)으로만 참조한다."
     ],
     "dont": [
       "Danger·ghost variant 를 재도입하지 않는다(폐지 확정).",
@@ -98,14 +98,12 @@
       "codeStatus": "implemented",
       "darkModeStatus": "stable",
       "tokens": [
-        "--button-primary-default-bg",
-        "--button-primary-hover-bg",
-        "--button-primary-pressed-bg",
-        "--button-primary-disabled-bg",
-        "--button-primary-disabled-border",
-        "--button-primary-default-text",
-        "--button-primary-disabled-text",
-        "--button-primary-default-icon"
+        "--color-button-bg-primary--default",
+        "--color-button-bg-primary--hover",
+        "--color-button-bg-disabled",
+        "--color-button-border-disabled",
+        "--color-button-label-primary--default",
+        "--color-button-label-disabled"
       ]
     },
     "secondary": {
@@ -113,16 +111,13 @@
       "codeStatus": "implemented",
       "darkModeStatus": "stable",
       "tokens": [
-        "--button-secondary-default-bg",
-        "--button-secondary-hover-bg",
-        "--button-secondary-pressed-bg",
-        "--button-secondary-disabled-bg",
-        "--button-secondary-default-border",
-        "--button-secondary-disabled-border",
-        "--button-secondary-default-text",
-        "--button-secondary-disabled-text",
-        "--button-secondary-default-icon",
-        "--button-secondary-disabled-icon"
+        "--color-button-bg-secondary--default",
+        "--color-button-bg-secondary--hover",
+        "--color-button-bg-disabled",
+        "--color-button-border-secondary--default",
+        "--color-button-border-disabled",
+        "--color-button-label-secondary--default",
+        "--color-button-label-disabled"
       ]
     },
     "blue-line": {
@@ -130,53 +125,46 @@
       "codeStatus": "implemented",
       "darkModeStatus": "stable",
       "tokens": [
-        "--button-blue-line-default-bg",
-        "--button-blue-line-hover-bg",
-        "--button-blue-line-pressed-bg",
-        "--button-blue-line-disabled-bg",
-        "--button-blue-line-default-border",
-        "--button-blue-line-hover-border",
-        "--button-blue-line-disabled-border",
-        "--button-blue-line-default-text",
-        "--button-blue-line-disabled-text"
+        "--color-button-bg-blue-line--default",
+        "--color-button-bg-blue-line--hover",
+        "--color-button-bg-disabled",
+        "--color-button-border-blue-line--default",
+        "--color-button-border-blue-line--hover",
+        "--color-button-border-disabled",
+        "--color-button-label-blue-line--default",
+        "--color-button-label-disabled"
       ]
     }
   },
   "tokens": {
     "background": [
-      "--button-primary-default-bg",
-      "--button-primary-hover-bg",
-      "--button-primary-pressed-bg",
-      "--button-primary-disabled-bg",
-      "--button-secondary-default-bg",
-      "--button-secondary-hover-bg",
-      "--button-secondary-pressed-bg",
-      "--button-secondary-disabled-bg",
-      "--button-blue-line-default-bg",
-      "--button-blue-line-hover-bg",
-      "--button-blue-line-pressed-bg",
-      "--button-blue-line-disabled-bg"
+      "--color-button-bg-primary--default",
+      "--color-button-bg-primary--hover",
+      "--color-button-bg-disabled",
+      "--color-button-bg-secondary--default",
+      "--color-button-bg-secondary--hover",
+      "--color-button-bg-disabled",
+      "--color-button-bg-blue-line--default",
+      "--color-button-bg-blue-line--hover",
+      "--color-button-bg-disabled"
     ],
     "text": [
-      "--button-primary-default-text",
-      "--button-primary-disabled-text",
-      "--button-secondary-default-text",
-      "--button-secondary-disabled-text",
-      "--button-blue-line-default-text",
-      "--button-blue-line-disabled-text"
+      "--color-button-label-primary--default",
+      "--color-button-label-disabled",
+      "--color-button-label-secondary--default",
+      "--color-button-label-disabled",
+      "--color-button-label-blue-line--default",
+      "--color-button-label-disabled"
     ],
     "border": [
-      "--button-primary-disabled-border",
-      "--button-secondary-default-border",
-      "--button-secondary-disabled-border",
-      "--button-blue-line-default-border",
-      "--button-blue-line-hover-border",
-      "--button-blue-line-disabled-border"
+      "--color-button-border-disabled",
+      "--color-button-border-secondary--default",
+      "--color-button-border-disabled",
+      "--color-button-border-blue-line--default",
+      "--color-button-border-blue-line--hover",
+      "--color-button-border-disabled"
     ],
     "icon": [
-      "--button-primary-default-icon",
-      "--button-secondary-default-icon",
-      "--button-secondary-disabled-icon"
     ]
   },
   "sizing": {

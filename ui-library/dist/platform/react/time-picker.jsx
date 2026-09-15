@@ -83,7 +83,7 @@ export default function S1TimePicker({ size, breakName = DEFAULT_BREAK, parts, o
             {slot(partScope, "icon").content ?? ""}
           </span>
         </button>
-        <div data-s1-part="sheet" hidden {...(slot(partScope, "sheet").attrs ?? {})}>
+        <div data-s1-component="bottom-sheet" data-s1-part="sheet" data-break="mobile" data-footer="single" hidden {...(slot(partScope, "sheet").attrs ?? {})}>
           <div data-s1-part="sheet-backdrop" {...(slot(partScope, "sheetBackdrop").attrs ?? {})}>
             {slot(partScope, "sheetBackdrop").content ?? ""}
           </div>

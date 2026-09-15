@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "a7b8d3d8dc15ae927a4083846e6b75fbd6f2e823",
+  "commit": "b525fb6605742778f238a6c81902adc5a703f4a6",
   "scope": "PC",
-  "generatedAt": "2026-09-14",
-  "syncedAt": "2026-09-14 21:59 (KST)",
-  "sourceCommitDate": "2026-09-14 16:24 (KST)",
-  "sourceCommitSubject": "docs(mobile-bottom-nav): 하단 내비 아이콘은 Solid 만 — 규칙을 받는 자료까지 적는다"
+  "generatedAt": "2026-09-16",
+  "syncedAt": "2026-09-16 06:17 (KST)",
+  "sourceCommitDate": "2026-09-15 17:07 (KST)",
+  "sourceCommitSubject": "feat(install-prompt): 다운로드 화면 2단 배치 — 머리말 통합·안내 1~4·문구 축약"
 }

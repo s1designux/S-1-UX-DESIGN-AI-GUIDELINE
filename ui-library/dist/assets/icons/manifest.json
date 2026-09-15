@@ -1,6 +1,6 @@
 {
   "sourceRegistry": "registry/figma/allowed-remote-keys.json",
-  "sourceRegistryFingerprint": "3fb4ebdd76f8ac68915295383f0bcebe7dae7545afd4e57a57f3568f1d0e8a38",
+  "sourceRegistryFingerprint": "5725e81ad7c4e5e0715a536bdb769f6a87b13c1c0e42e644ef8015b7c8898b6e",
   "icons": [
     {
       "id": "clock",
@@ -583,6 +583,63 @@
       "geometryEvidence": "Figma 가 보고한 프레임 내 여백(inset 세로 14% · 가로 12.5%)을 그대로 옮겼다. 저장소 내보내기 ic_사용환경설정_solid.png(24 프레임)와 같은 좌표계다.",
       "dependencies": [],
       "sourceExport": "assets/icons/ic_사용환경설정_solid.png"
+    },
+    {
+      "id": "lock",
+      "sourceKey": "28aa6b1615f3afb29ff22cf2767f0c771c941fdc",
+      "sourceSetKey": "b3ccc4b275de6aac8e3940df2ae97fbb00168624",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_잠김 세트 8:751 · Line variant 8:749 (이 세트만 속성명이 Type=Line 이다) 실물 벡터 — 🤖 figma-inspector 가 get_design_context 로 2026-09-15 확보. build-components.ts:4966 LOCK_FALLBACK_SVG 는 라이브러리 로드 실패용 근사치라 쓰지 않았다(chevron 2026-09-01 · close 2026-09-02 와 같은 사고를 피한다). 잉크색은 선례와 같이 #353535 → black 정규화.",
+      "file": "lock.svg",
+      "webAssetFingerprint": "e86ed1026f1b8bab34046763adb1d0f01339068200b9ccaa7c206590f81e3481",
+      "symbolId": "s1-icon-lock",
+      "individualFile": "assets/icons/lock.svg",
+      "accessibleNamePolicy": "decorative; 잠긴 줄이라는 뜻은 그 줄의 aria-disabled 와 글자가 전달한다",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 5,
+          "y": 3,
+          "width": 14,
+          "height": 18
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "Figma 노드 8:749 get_design_context 인셋 12.5%(상하)·20.83%(좌우) 실측 — 24 프레임 안 (5, 3) 에 14×18 도형. 저장소 내보내기 assets/icons/ic_잠김_line.png(48×48 = 24 기준 2배)와 픽셀 대조.",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_잠김_line.png"
+    },
+    {
+      "id": "check24",
+      "sourceKey": "5ab251e0d90adb555ee2fa316f84e86041f19916",
+      "sourceBuilderSymbol": "Figma 아이콘 라이브러리 V2.2 ic_확인 세트 97:167 · Line variant 97:166 실물 벡터 — 🤖 figma-inspector 가 get_design_context 로 2026-09-15 확보(river 가 활성 탭을 라이브러리로 전환해 준 뒤). 정본은 이 아이콘을 24px 로 놓는다(build-components.ts:5051). build-components.ts:4967 CHECK_24_SVG 는 로드 실패용 근사치 폴백이라 쓰지 않았다. 잉크색 #353535 → black 정규화.",
+      "file": "check24.svg",
+      "webAssetFingerprint": "2c65a72b53863a10beea57425f3bcb62399e62593858a609d36a42f68cea57a2",
+      "symbolId": "s1-icon-check24",
+      "individualFile": "assets/icons/check24.svg",
+      "accessibleNamePolicy": "decorative; 선택 상태는 그 줄의 aria-selected·aria-checked 가 알린다",
+      "geometry": {
+        "frame": {
+          "width": 24,
+          "height": 24
+        },
+        "glyph": {
+          "x": 3,
+          "y": 6.1008,
+          "width": 18,
+          "height": 11.8001
+        },
+        "scaling": "proportional"
+      },
+      "geometryEvidence": "Figma 노드 97:166 get_design_context 인셋 25.42%(상하)·12.5%(좌우) 실측 — 24 프레임 안 (3, 6.1008) 에 18×11.8001 도형. 저장소 내보내기 assets/icons/ic_확인_line.png(48×48) 알파 경계 실측 (3,6) 18×12 와 반올림 차이 수준으로 일치한다. 도형은 stroke 가 아니라 fill 폴리곤 1개다(lock 과 같은 패턴) — 팔 폭 실측 ≈1.02 이며, 45° 대각선이라 PNG 세로 런 1.5 와 모순되지 않는다(1.02×√2≈1.44).",
+      "dependencies": [],
+      "sourceExport": "assets/icons/ic_확인_line.png",
+      "relatedIcons": [
+        "check"
+      ],
+      "relatedIconsNote": "같은 라이브러리 아이콘(ic_확인)의 24 프레임 표출이다. check(16 프레임)는 체크박스가 16px 로 쓰므로 건드리지 않는다. 16 프레임 자산을 24 로 확대하면 선 굵기까지 1.5배가 되어 정본보다 굵어진다(2026-09-15 독립 검증 실측 2.27px vs 1.5px) — 그래서 프레임별로 자산을 나눈다."
     }
   ]
 }

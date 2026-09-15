@@ -2,7 +2,7 @@
   "id": "time-picker",
   "version": "0.2.0",
   "status": "approved",
-  "canonicalFingerprint": "91bc48bcce188a0530b3d38573dbdac1ab39abd9e2607333c0093fbc2477c474",
+  "canonicalFingerprint": "a37a11665159dcf9a3af0b735d7829ae98324bba91336961d145e92a28c8d0eb",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -243,13 +243,15 @@
       "assets/css/tokens.css",
       "assets/css/typography.css",
       "components/button.css",
-      "components/tab.css"
+      "components/tab.css",
+      "components/bottom-sheet.css"
     ],
     "coreComponents": [
       "button",
-      "tab"
+      "tab",
+      "bottom-sheet"
     ],
-    "coreComponentsNote": "목록 모드(패널·칸)는 기존과 동일하게 dropdown semantic token 만 재사용하고 컴포넌트 의존이 없다. 모바일 휠 바텀시트(data-mobile-ui=wheel)의 하단 \"적용\" 버튼은 승인된 button 코어(Variant=Primary, Size=LG) 인스턴스를, DateTime 변형의 날짜/시간 탭은 승인된 tab 코어(Line Tab, Size=SM, Break=Mobile) 인스턴스를 그대로 조립한다(build-components.ts buildDatePickerBottomSheet 3805-3824 패턴과 동일 · buildTimePickerMobileBottomSheet 4004-4020). time-picker 를 개별 설치할 때 wheel 모드를 쓰려면 button·tab 의 CSS(둘 다 jsRequired 는 tab=true·button=false)도 함께 로드해야 한다."
+    "coreComponentsNote": "목록 모드(패널·칸)는 기존과 동일하게 dropdown semantic token 만 재사용하고 컴포넌트 의존이 없다. 모바일 휠 바텀시트(data-mobile-ui=wheel)의 하단 \"적용\" 버튼은 승인된 button 코어(Variant=Primary, Size=LG) 인스턴스를, DateTime 변형의 날짜/시간 탭은 승인된 tab 코어(Line Tab, Size=SM, Break=Mobile) 인스턴스를 그대로 조립한다(build-components.ts buildDatePickerBottomSheet 3805-3824 패턴과 동일 · buildTimePickerMobileBottomSheet 4004-4020). 시트 껍데기(딤·패널·헤더·제목·닫기)는 2026-09-15 부터 bottom-sheet 코어 CSS 를 그대로 받는다 — time-picker.css 는 --s1-bottom-sheet-gap(32)·--s1-bottom-sheet-shadow(none) 두 손잡이만 준다. 여닫기·초점 가둠 런타임은 time-picker.js 가 계속 자체 소유한다(bottom-sheet.js 를 겹쳐 물리지 않는다). time-picker 를 개별 설치할 때 wheel 모드를 쓰려면 button·tab·bottom-sheet 의 CSS(button=false·tab=true·bottom-sheet 의 JS 는 로드하지 않는다)도 함께 로드해야 한다."
   },
   "icons": [
     {
@@ -323,5 +325,5 @@
     "controlMode": "uncontrolled",
     "progressiveEnhancementNote": "JavaScript 없이는 목록 칸이 생성되지 않아 선택할 수 없다 — 복합 Picker(정본 계약)라 native fallback이 없다. 트리거는 native button 이라 포커스·이름은 유지된다(계약 progressiveEnhancement 조항에 따른 명시적 unsupported 상태)."
   },
-  "sourceFingerprint": "5de78855e7a8f06279bb77603bb1098704c3ba995906bb950a008e9a6de47934"
+  "sourceFingerprint": "a0ad32eea0811b161b55a57b8ead67714410a84d04842b25ca0cc0afe80c3d5b"
 }

@@ -449,6 +449,8 @@ public enum S1Tokens {
         public static let colorModalPanelBorder: UInt32 = 0xFFD9D9D9
         /// --color-navigation-bg = #FFFFFF
         public static let colorNavigationBg: UInt32 = 0xFFFFFFFF
+        /// --color-navigation-icon-default = #C4C4C4
+        public static let colorNavigationIconDefault: UInt32 = 0xFFC4C4C4
         /// --color-navigation-indicator-default = #D9D9D9
         public static let colorNavigationIndicatorDefault: UInt32 = 0xFFD9D9D9
         /// --color-navigation-indicator-hover = #1D6CEB
@@ -1051,6 +1053,8 @@ public enum S1Tokens {
         public static let colorModalPanelBorder: UInt32 = 0xFF3E4049
         /// --color-navigation-bg = #1C1D23
         public static let colorNavigationBg: UInt32 = 0xFF1C1D23
+        /// --color-navigation-icon-default = #55575F
+        public static let colorNavigationIconDefault: UInt32 = 0xFF55575F
         /// --color-navigation-indicator-default = #2E2F38
         public static let colorNavigationIndicatorDefault: UInt32 = 0xFF2E2F38
         /// --color-navigation-indicator-hover = #3070D8

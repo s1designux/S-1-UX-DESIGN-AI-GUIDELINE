@@ -103,9 +103,11 @@
 
 /* Mobile break 는 hover 를 내지 않는다 — 손가락에는 hover 가 없고,
    PC 브라우저에서 Mobile 화면을 볼 때 48×48 누르는 영역이 통째로 칠해져
-   실제 아이콘보다 훨씬 큰 면이 반응하는 것처럼 보이기 때문이다(river 지시 2026-09-07). */
+   실제 아이콘보다 훨씬 큰 면이 반응하는 것처럼 보이기 때문이다(river 지시 2026-09-07).
+   화면 구분을 감싸는 요소에만 적었을 때도 같아야 한다 — 자기 [data-break] 가 없어도
+   모바일 감싸개 안이면 hover 를 내지 않는다(2026-09-15). 자기가 pc 라고 적었으면 그쪽이 이긴다. */
 @media (hover: hover) {
-  [data-s1-component="input"]:not([data-break="mobile"]) [data-s1-part="action"]:hover:not(:disabled) {
+  [data-s1-component="input"]:not([data-break="mobile"]):is([data-break="pc"], :not([data-s1-break="mobile"] *)) [data-s1-part="action"]:hover:not(:disabled) {
     background: var(--color-form-control-bg-hover);
     border-radius: var(--radius-control-sm);
   }
@@ -269,4 +271,153 @@
    (2026-09-02 focus-visible 철회 때 함께 지워졌던 규칙 — 2026-09-04 river 지시로 복원) */
 [data-s1-component="input"]:has([data-s1-part="control"]:focus-visible) [data-s1-part="field"] {
   border-color: var(--color-form-control-border-selected);
+}
+
+
+/* ── 밀도(density) — registry/governance/density-policy.json 에서 생성. 손편집 금지 ── */
+/* density:wide 넓게(44px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="wide"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="field"] {
+  height: var(--sizing-44);
+  padding-inline: var(--spacing-16) var(--spacing-12);
+}
+
+[data-s1-density="wide"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="control"] {
+  font-size: var(--font-size-14);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: 0;
+}
+
+[data-s1-break="pc"][data-s1-density="wide"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="field"] {
+  height: var(--sizing-44);
+  padding-inline: var(--spacing-16) var(--spacing-12);
+}
+
+[data-s1-break="pc"][data-s1-density="wide"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="control"] {
+  font-size: var(--font-size-14);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: 0;
+}
+
+/* density:normal 보통(34px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="normal"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="field"] {
+  height: var(--sizing-34);
+  padding-inline: var(--spacing-12) var(--spacing-8);
+}
+
+[data-s1-density="normal"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="control"] {
+  font-size: var(--font-size-14);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: 0;
+}
+
+[data-s1-break="pc"][data-s1-density="normal"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="field"] {
+  height: var(--sizing-34);
+  padding-inline: var(--spacing-12) var(--spacing-8);
+}
+
+[data-s1-break="pc"][data-s1-density="normal"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="control"] {
+  font-size: var(--font-size-14);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: 0;
+}
+
+/* density:narrow 좁게(28px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="narrow"] [data-s1-component="input"]:not([data-size]) [data-s1-part="action-icon"] {
+  height: var(--sizing-20);
+  width: var(--sizing-20);
+}
+
+[data-s1-density="narrow"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="field"] {
+  height: var(--sizing-28);
+  padding-inline: var(--spacing-12) var(--spacing-8);
+}
+
+[data-s1-density="narrow"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="control"] {
+  font-size: var(--font-size-12);
+  letter-spacing: var(--letter-spacing-normal);
+  padding-inline: 0;
+}
+
+[data-s1-break="pc"][data-s1-density="narrow"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="field"] {
+  height: var(--sizing-28);
+  padding-inline: var(--spacing-12) var(--spacing-8);
+}
+
+[data-s1-break="pc"][data-s1-density="narrow"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="control"] {
+  font-size: var(--font-size-12);
+  letter-spacing: var(--letter-spacing-normal);
+  padding-inline: 0;
+}
+
+/* bridge:pc 감싸기에 화면 구분을 적었으면 컴포넌트가 안 적어도 같은 규칙이 선다 */
+:is([data-s1-break="pc"], [data-s1-density="wide"], [data-s1-density="normal"], [data-s1-density="narrow"]) [data-s1-component="input"]:not([data-break="mobile"])[data-size="xxsm"] [data-s1-part="field"] {
+  height: var(--sizing-28);
+  padding-inline: var(--spacing-12) var(--spacing-8);
+}
+
+:is([data-s1-break="pc"], [data-s1-density="wide"], [data-s1-density="normal"], [data-s1-density="narrow"]) [data-s1-component="input"]:not([data-break="mobile"])[data-size="xxsm"] [data-s1-part="control"] {
+  font-size: var(--font-size-12);
+  letter-spacing: var(--letter-spacing-normal);
+  padding-inline: 0;
+}
+
+:is([data-s1-break="pc"], [data-s1-density="wide"], [data-s1-density="normal"], [data-s1-density="narrow"]) [data-s1-component="input"]:not([data-break="mobile"])[data-size="xsm"] [data-s1-part="field"] {
+  height: var(--sizing-34);
+  padding-inline: var(--spacing-12) var(--spacing-8);
+}
+
+:is([data-s1-break="pc"], [data-s1-density="wide"], [data-s1-density="normal"], [data-s1-density="narrow"]) [data-s1-component="input"]:not([data-break="mobile"])[data-size="xsm"] [data-s1-part="control"] {
+  font-size: var(--font-size-14);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: 0;
+}
+
+:is([data-s1-break="pc"], [data-s1-density="wide"], [data-s1-density="normal"], [data-s1-density="narrow"]) [data-s1-component="input"]:not([data-break="mobile"])[data-size="md"] [data-s1-part="field"] {
+  height: var(--sizing-44);
+  padding-inline: var(--spacing-16) var(--spacing-12);
+}
+
+:is([data-s1-break="pc"], [data-s1-density="wide"], [data-s1-density="normal"], [data-s1-density="narrow"]) [data-s1-component="input"]:not([data-break="mobile"])[data-size="md"] [data-s1-part="control"] {
+  font-size: var(--font-size-14);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: 0;
+}
+
+/* bridge:mobile 감싸기에 화면 구분을 적었으면 컴포넌트가 안 적어도 같은 규칙이 선다 */
+[data-s1-break="mobile"] [data-s1-component="input"]:not([data-break="pc"]) [data-s1-part="action"] + [data-s1-part="action"] {
+  margin-inline-start: 0;
+}
+
+[data-s1-break="mobile"] [data-s1-component="input"]:not([data-break="pc"]) [data-s1-part="action"]:has(+ [data-s1-part="action"]:not([hidden])) {
+  justify-content: flex-end;
+}
+
+[data-s1-break="mobile"] [data-s1-component="input"]:not([data-break="pc"]) [data-s1-part="action"] {
+  height: var(--sizing-48);
+  width: var(--sizing-48);
+}
+
+[data-s1-break="mobile"] [data-s1-component="input"]:not([data-break="pc"])[data-size="md"] [data-s1-part="field"] {
+  height: var(--sizing-48);
+  min-height: var(--sizing-48);
+  padding-inline: var(--spacing-16) 0;
+}
+
+[data-s1-break="mobile"] [data-s1-component="input"]:not([data-break="pc"])[data-size="md"] [data-s1-part="control"] {
+  font-size: var(--font-size-14);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: 0;
+}
+
+/* density:mobile 모바일은 밀도 축이 없다 — 손가락 기준 높이 하나 */
+[data-s1-break="mobile"] [data-s1-component="input"]:not([data-break="pc"]):not([data-size]) [data-s1-part="field"] {
+  height: var(--sizing-48);
+  min-height: var(--sizing-48);
+  padding-inline: var(--spacing-16) 0;
+}
+
+[data-s1-break="mobile"] [data-s1-component="input"]:not([data-break="pc"]):not([data-size]) [data-s1-part="control"] {
+  font-size: var(--font-size-14);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: 0;
 }

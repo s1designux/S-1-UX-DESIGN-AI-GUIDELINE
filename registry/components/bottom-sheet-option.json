@@ -1,0 +1,158 @@
+{
+  "_meta": {
+    "id": "bottom-sheet-option",
+    "name": "Bottom Sheet Option",
+    "category": "overlay",
+    "updatedAt": "2026-09-15",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "implemented",
+    "darkModeStatus": "stable",
+    "a11yStatus": "stable",
+    "figmaStatus": "existing",
+    "harnessStatus": "implemented",
+    "description": "바텀시트 안에 놓이는 한 줄. Type 4종(Text·Checkbox·Radio·List) × State(Default·Selected·Disabled) 중 정본에 실재하는 9칸. Text·Checkbox·Radio 는 높이 48 고정, List 는 아바타+두 줄 글자라 내용만큼 늘어난다. 단독으로 쓰지 않고 Bottom Sheet 본문 안에서 쓴다.",
+    "a11yApproval": "목록 역할은 시트를 여는 화면이 준다 — 한 값 고르기는 role=radio, 여러 값 고르기는 native checkbox, 이동은 링크·버튼. 컴포넌트는 줄 모양만 소유한다.",
+    "codeStatusNote": "정본 buildBottomSheetOption 은 빌드돼 있다. 웹 배포본 상태는 webDistribution 과 ui-library-migration.json 이 따로 가진다."
+  },
+  "usage": {
+    "whenToUse": [
+      "바텀시트 본문에 고를 것을 줄로 늘어놓을 때.",
+      "Text = 한 값 고르기(고른 줄에 파란 체크), Checkbox = 여러 값 고르기, Radio = 한 값 고르기(동그라미 표시), List = 사람·항목처럼 아바타와 설명이 함께 있는 줄."
+    ],
+    "whenNotToUse": [
+      "바텀시트 밖 — PC 목록은 Dropdown 을 쓴다.",
+      "표의 행 — Table 을 쓴다."
+    ]
+  },
+  "anatomy": [
+    {
+      "part": "라벨",
+      "role": "줄의 글자. Text·Checkbox·Radio 공통."
+    },
+    {
+      "part": "체크 표시(선택)",
+      "role": "Text 가 선택됐을 때 오른쪽에 붙는 파란 체크 아이콘."
+    },
+    {
+      "part": "컨트롤(선택)",
+      "role": "Checkbox·Radio 코어 배포본 인스턴스. 복제하지 않는다."
+    },
+    {
+      "part": "list-left(선택)",
+      "role": "List 줄의 왼쪽 묶음 — 아바타 40 + 제목/서브 두 줄."
+    },
+    {
+      "part": "오른쪽 아이콘(선택)",
+      "role": "List 는 기본이 화살표(chevron), 비활성이면 자물쇠(lock)."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "Checkbox·Radio 는 코어 배포본을 그대로 넣는다.",
+      "줄의 의미(고르기·이동)는 시트를 여는 화면이 ARIA 로 준다.",
+      "정본에 있는 9칸만 쓴다."
+    ],
+    "dont": [
+      "선택된 줄에 배경색을 칠하지 않는다 — 정본은 글자색과 아이콘으로만 구분한다.",
+      "정본에 없는 칸(Checkbox·Radio 의 비활성, List 의 선택됨)을 만들지 않는다.",
+      "Checkbox·Radio 코어 내부를 override 하지 않는다."
+    ]
+  },
+  "a11y": [
+    "줄 자체는 모양만 소유한다 — 역할(role)·이름·선택 상태는 시트를 여는 화면이 준다.",
+    "Checkbox·Radio 는 native input 을 그대로 쓴다(코어 배포본의 계약).",
+    "Text 의 선택 표시(파란 체크)는 장식이다 — 선택 상태는 aria-selected·aria-checked 로 따로 알린다.",
+    "비활성 줄은 disabled 또는 aria-disabled 로 알리고 초점 순서에서 뺀다.",
+    "List 의 아바타 아이콘은 장식이다 — 이름은 제목 글자가 갖는다."
+  ],
+  "variantAxis": {
+    "property": [
+      "Type",
+      "State"
+    ],
+    "values": {
+      "Type": [
+        "Text",
+        "Checkbox",
+        "Radio",
+        "List"
+      ],
+      "State": [
+        "Default",
+        "Selected",
+        "Disabled"
+      ]
+    },
+    "absentCombinations": [
+      "Checkbox:Disabled",
+      "Radio:Disabled",
+      "List:Selected"
+    ],
+    "sizeAxis": "없음 — Text·Checkbox·Radio 는 48 고정, List 는 내용만큼(세로 패딩 12).",
+    "note": "정본에 실재하는 칸은 12개가 아니라 9개다(build-components.ts 5123-5124 order 배열)."
+  },
+  "scope": "light+dark",
+  "tokens": {
+    "_note": "색은 예외 없이 Semantic 경유. 신규 토큰 0건.",
+    "row-bg": "color/surface/raised — 전 Type·State 공통. State 별 배경 분기 없음.",
+    "label-default": "color/text/body/primary",
+    "label-selected": "color/text/state/accent (Text 만)",
+    "label-disabled": "color/text/state/disabled (Text 만)",
+    "check-icon": "color/icon/blue (Text:Selected)",
+    "chevron-icon": "color/icon/gray-dark (List:Default)",
+    "lock-icon": "color/icon/gray (List:Disabled)",
+    "avatar-bg": "color/icon/gray-light",
+    "avatar-icon": "color/icon/white",
+    "list-title": "color/text/body/primary",
+    "list-sub": "color/text/body/secondary",
+    "typography": "라벨·List 제목 = body/16M · List 서브 = body/14R",
+    "spacing": "Text·Checkbox·Radio 좌우 20 / 위아래 8 / 사이 8 · List 좌우 20 / 위아래 12 · list-left 사이 12 · list-text 사이 2"
+  },
+  "reuses": {
+    "coreComponents": [
+      "checkbox",
+      "radio"
+    ],
+    "libraryIcons": [
+      "ic_확인 (V2.2)",
+      "ic_화살표더보기 (V2.2)",
+      "ic_계정/사용자/ID (V2.2)",
+      "ic_잠김 (V2.2)"
+    ],
+    "note": "Checkbox·Radio 코어 배포본을 그대로 넣는다. 시각 override 금지."
+  },
+  "figma": {
+    "componentSetKey": "(미발행 — 라이브러리 publish 시 기록)",
+    "fileKey": "cysG5U1udpQqVagYY1hWHW",
+    "targetFile": "SW UX GUIDE V3.0-TEST",
+    "builder": "plugins/figma-vars-installer/src/build-components.ts · buildBottomSheetOption (4957)",
+    "propertyMap": {
+      "type": [
+        "text",
+        "checkbox",
+        "radio",
+        "list"
+      ],
+      "state": [
+        "default",
+        "selected",
+        "disabled"
+      ]
+    },
+    "note": "실재 9칸. Dark 는 별도 마스터가 아니라 Appearance 모드로 제공한다."
+  },
+  "governance": {
+    "verify": "new",
+    "verifyNote": "2026-09-15 정본 판독(📖 source-reader, build-components.ts 4957-5150 전체 추적)으로 9칸·geometry·토큰·자식 구조를 확인했다. Figma 실물 렌더 대조는 하지 않았다.",
+    "coreReuseRule": "checkbox·radio 는 reuses.coreComponents 명시. 상태·variant 부족 시 needs-core-update 기록(임의 구현 금지)."
+  },
+  "webDistribution": {
+    "status": "approved",
+    "manifest": "ui-library/src/components/bottom-sheet-option/manifest.json",
+    "runtime": null,
+    "note": "런타임 없음 — 줄 모양만 소유한다. 고르기 동작은 시트를 여는 화면이 배선한다.",
+    "workId": "bottom-sheet",
+    "approvedAt": "2026-09-15"
+  }
+}

@@ -23,3 +23,5 @@ export * as gnbSubMenu from "./components/gnb-sub-menu.js";
 export * as assistButton from "./components/assist-button.js";
 export * as textButton from "./components/text-button.js";
 export * as modalContent from "./components/modal-content.js";
+export * as bottomSheetOption from "./components/bottom-sheet-option.js";
+export * as bottomSheet from "./components/bottom-sheet.js";

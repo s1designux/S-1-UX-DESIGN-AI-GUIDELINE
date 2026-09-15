@@ -3,6 +3,49 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-09-16 06:17 (KST)
+
+- 원본 커밋: `b525fb6` — feat(install-prompt): 다운로드 화면 2단 배치 — 머리말 통합·안내 1~4·문구 축약
+- 새로 추가된 파일 16개
+  - `registry/components/bottom-sheet-option.json`
+  - `registry/components/bottom-sheet.json`
+  - `ui-library/dist/assets/icons/check24.svg`
+  - `ui-library/dist/assets/icons/lock.svg`
+  - `ui-library/dist/components/bottom-sheet-option.css`
+  - `ui-library/dist/components/bottom-sheet-option.js`
+  - `ui-library/dist/components/bottom-sheet-option.manifest.json`
+  - `ui-library/dist/components/bottom-sheet.css`
+  - `ui-library/dist/components/bottom-sheet.js`
+  - `ui-library/dist/components/bottom-sheet.manifest.json`
+  - `ui-library/dist/examples/bottom-sheet-option.html`
+  - `ui-library/dist/examples/bottom-sheet.html`
+  - `ui-library/dist/platform/react/bottom-sheet-option.jsx`
+  - `ui-library/dist/platform/react/bottom-sheet.jsx`
+  - `ui-library/dist/platform/vue/BottomSheet.vue`
+  - `ui-library/dist/platform/vue/BottomSheetOption.vue`
+- 내용이 바뀐 파일 94개
+  - `assets/css/tokens.css`
+  - `assets/css/ui-library-guide.css`
+  - `assets/js/ui-library-guide.js`
+  - `design/DESIGN.core.md`
+  - `pages/components.html`
+  - `registry/components/button.json`
+  - `registry/components/checkbox.json`
+  - `registry/components/chip.json`
+  - `registry/components/component-facts.json`
+  - `registry/components/date-picker.json`
+  - `registry/components/dropdown.json`
+  - `registry/components/gnb.json`
+  - `registry/components/index.json`
+  - `registry/components/input.json`
+  - `registry/components/mobile-bottom-nav.json`
+  - `registry/components/nav.json`
+  - `registry/components/pagination.json`
+  - `registry/components/radio.json`
+  - `registry/components/tab.json`
+  - `registry/components/table.json`
+  - … 외 74개
+
 ## 2026-09-14 21:59 (KST)
 
 - 원본 커밋: `a7b8d3d` — docs(mobile-bottom-nav): 하단 내비 아이콘은 Solid 만 — 규칙을 받는 자료까지 적는다

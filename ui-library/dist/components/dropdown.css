@@ -119,3 +119,35 @@
 [data-s1-component="dropdown"] [data-s1-part="option"] [data-s1-component="checkbox"] {
   pointer-events: none;
 }
+
+
+/* ── 밀도(density) — registry/governance/density-policy.json 에서 생성. 손편집 금지 ── */
+/* density:wide 넓게(44px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="wide"] [data-s1-component="dropdown"]:not([data-size]) [data-s1-part="option"] {
+  font-size: var(--font-size-14);
+  min-height: var(--sizing-44);
+}
+
+[data-s1-density="wide"] [data-s1-component="dropdown"]:not([data-size]) [data-s1-part="option"][data-select-all="true"] {
+  min-height: calc(var(--sizing-44) - var(--border-width-1));
+}
+
+/* density:normal 보통(34px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="normal"] [data-s1-component="dropdown"]:not([data-size]) [data-s1-part="option"] {
+  font-size: var(--font-size-14);
+  min-height: var(--sizing-34);
+}
+
+[data-s1-density="normal"] [data-s1-component="dropdown"]:not([data-size]) [data-s1-part="option"][data-select-all="true"] {
+  min-height: calc(var(--sizing-34) - var(--border-width-1));
+}
+
+/* density:narrow 좁게(28px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="narrow"] [data-s1-component="dropdown"]:not([data-size]) [data-s1-part="option"] {
+  font-size: var(--font-size-12);
+  min-height: var(--sizing-28);
+}
+
+[data-s1-density="narrow"] [data-s1-component="dropdown"]:not([data-size]) [data-s1-part="option"][data-select-all="true"] {
+  min-height: calc(var(--sizing-28) - var(--border-width-1));
+}

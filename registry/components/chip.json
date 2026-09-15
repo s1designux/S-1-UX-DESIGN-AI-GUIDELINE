@@ -71,104 +71,87 @@
       "cssModifier": null,
       "tokens": [
         {
-          "name": "--chip-line-default-bg",
-          "value": "var(--color-chip-line-bg-default)",
+          "name": "--color-chip-line-bg-default",
           "state": "default",
           "property": "background"
         },
         {
-          "name": "--chip-line-hover-bg",
-          "value": "var(--color-chip-line-bg-hover)",
+          "name": "--color-chip-line-bg-hover",
           "state": "hover",
           "property": "background"
         },
         {
-          "name": "--chip-line-selected-bg",
-          "value": "var(--color-chip-line-bg-selected)",
+          "name": "--color-chip-line-bg-selected",
           "state": "selected",
           "property": "background"
         },
         {
-          "name": "--chip-line-disabled-bg",
-          "value": "var(--color-chip-line-bg-disabled)",
+          "name": "--color-chip-line-bg-disabled",
           "state": "disabled",
           "property": "background"
         },
         {
-          "name": "--chip-line-default-border",
-          "value": "var(--color-chip-line-border-default)",
+          "name": "--color-chip-line-border-default",
           "state": "default",
           "property": "border-color"
         },
         {
-          "name": "--chip-line-hover-border",
-          "value": "var(--color-chip-line-border-default)",
+          "name": "--color-chip-line-border-default",
           "state": "hover",
           "property": "border-color"
         },
         {
-          "name": "--chip-line-selected-border",
-          "value": "var(--color-chip-line-border-selected)",
+          "name": "--color-chip-line-border-selected",
           "state": "selected",
           "property": "border-color"
         },
         {
-          "name": "--chip-line-disabled-border",
-          "value": "var(--color-chip-line-border-disabled)",
+          "name": "--color-chip-line-border-disabled",
           "state": "disabled",
           "property": "border-color"
         },
         {
-          "name": "--chip-line-default-text",
-          "value": "var(--color-chip-line-label-default)",
+          "name": "--color-chip-line-label-default",
           "state": "default",
           "property": "color"
         },
         {
-          "name": "--chip-line-selected-text",
-          "value": "var(--color-chip-line-label-selected)",
+          "name": "--color-chip-line-label-selected",
           "state": "selected",
           "property": "color"
         },
         {
-          "name": "--chip-line-disabled-text",
-          "value": "var(--color-chip-line-label-disabled)",
+          "name": "--color-chip-line-label-disabled",
           "state": "disabled",
           "property": "color"
         },
         {
-          "name": "--chip-line-default-icon",
-          "value": "var(--color-chip-line-label-default)",
+          "name": "--color-chip-line-icon-default",
           "state": "default",
           "property": "icon-color"
         },
         {
-          "name": "--chip-line-selected-icon",
-          "value": "var(--color-chip-line-label-selected)",
+          "name": "--color-chip-line-label-selected",
           "state": "selected",
           "property": "icon-color"
         },
         {
-          "name": "--chip-line-disabled-icon",
-          "value": "var(--color-chip-line-label-disabled)",
+          "name": "--color-chip-line-icon-disabled",
           "state": "disabled",
           "property": "icon-color"
         },
         {
-          "name": "--chip-line-default-close-icon",
-          "value": "var(--color-chip-line-label-default)",
+          "name": "--color-chip-line-label-default",
           "state": "default",
           "property": "close-icon-color"
         },
         {
-          "name": "--chip-line-hover-close-icon",
-          "value": "var(--color-chip-line-label-default)",
+          "name": "--color-chip-line-label-default",
           "state": "hover",
           "property": "close-icon-color"
         },
         {
-          "name": "--chip-line-selected-close-icon",
-          "value": "var(--color-chip-line-label-selected)",
+          "name": "--color-chip-line-label-selected",
           "state": "selected",
           "property": "close-icon-color"
         }
@@ -182,106 +165,89 @@
       "cssModifier": "s1-chip--solid",
       "tokens": [
         {
-          "name": "--chip-solid-default-bg",
-          "value": "var(--color-chip-solid-bg-default)",
+          "name": "--color-chip-solid-bg-default",
           "state": "default",
           "property": "background"
         },
         {
-          "name": "--chip-solid-hover-bg",
-          "value": "var(--color-chip-solid-bg-hover)",
+          "name": "--color-chip-solid-bg-hover",
           "state": "hover",
           "property": "background"
         },
         {
-          "name": "--chip-solid-selected-bg",
-          "value": "var(--color-chip-solid-bg-selected)",
+          "name": "--color-chip-solid-bg-selected",
           "state": "selected",
           "property": "background"
         },
         {
-          "name": "--chip-solid-disabled-bg",
-          "value": "var(--color-chip-solid-bg-disabled)",
+          "name": "--color-chip-solid-bg-disabled",
           "state": "disabled",
           "property": "background"
         },
         {
-          "name": "--chip-solid-default-border",
-          "value": "var(--color-chip-solid-border-default)",
+          "name": "--color-chip-solid-border-default",
           "state": "default",
           "property": "border-color",
           "note": "border = background (invisible)"
         },
         {
-          "name": "--chip-solid-hover-border",
-          "value": "var(--color-chip-solid-bg-hover)",
+          "name": "--color-chip-solid-bg-hover",
           "state": "hover",
           "property": "border-color",
           "note": "border = background (invisible) — 스트록 유지, fill과 동색"
         },
         {
-          "name": "--chip-solid-selected-border",
-          "value": "var(--color-chip-solid-border-selected)",
+          "name": "--color-chip-solid-border-selected",
           "state": "selected",
           "property": "border-color"
         },
         {
-          "name": "--chip-solid-disabled-border",
-          "value": "var(--color-chip-solid-border-disabled)",
+          "name": "--color-chip-solid-border-disabled",
           "state": "disabled",
           "property": "border-color"
         },
         {
-          "name": "--chip-solid-default-text",
-          "value": "var(--color-chip-solid-label-default)",
+          "name": "--color-chip-solid-label-default",
           "state": "default",
           "property": "color"
         },
         {
-          "name": "--chip-solid-selected-text",
-          "value": "var(--color-chip-solid-label-selected)",
+          "name": "--color-chip-solid-label-selected",
           "state": "selected",
           "property": "color"
         },
         {
-          "name": "--chip-solid-disabled-text",
-          "value": "var(--color-chip-solid-label-disabled)",
+          "name": "--color-chip-solid-label-disabled",
           "state": "disabled",
           "property": "color"
         },
         {
-          "name": "--chip-solid-default-icon",
-          "value": "var(--color-chip-solid-label-default)",
+          "name": "--color-chip-solid-icon-default",
           "state": "default",
           "property": "icon-color"
         },
         {
-          "name": "--chip-solid-selected-icon",
-          "value": "var(--color-chip-solid-label-selected)",
+          "name": "--color-chip-solid-icon-selected",
           "state": "selected",
           "property": "icon-color"
         },
         {
-          "name": "--chip-solid-disabled-icon",
-          "value": "var(--color-chip-solid-label-disabled)",
+          "name": "--color-chip-solid-icon-disabled",
           "state": "disabled",
           "property": "icon-color"
         },
         {
-          "name": "--chip-solid-default-close-icon",
-          "value": "var(--color-chip-solid-label-default)",
+          "name": "--color-chip-solid-label-default",
           "state": "default",
           "property": "close-icon-color"
         },
         {
-          "name": "--chip-solid-hover-close-icon",
-          "value": "var(--color-chip-solid-label-default)",
+          "name": "--color-chip-solid-label-default",
           "state": "hover",
           "property": "close-icon-color"
         },
         {
-          "name": "--chip-solid-selected-close-icon",
-          "value": "var(--color-chip-solid-label-selected)",
+          "name": "--color-chip-solid-label-selected",
           "state": "selected",
           "property": "close-icon-color"
         }

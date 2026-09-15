@@ -84,8 +84,8 @@
   },
   "tokens": [
     {
-      "cssVar": "--color-icon-gray",
-      "semanticRef": "color/icon/gray",
+      "cssVar": "--color-navigation-icon-default",
+      "semanticRef": "color/navigation/icon/default",
       "state": "unselected",
       "property": "icon-color"
     },

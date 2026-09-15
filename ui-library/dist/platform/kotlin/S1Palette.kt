@@ -446,6 +446,8 @@ object S1Palette {
     val colorModalPanelBorder: S1Color = S1Color(0xFFD9D9D9, 0xFF3E4049)
     /** --color-navigation-bg — 라이트 #FFFFFF · 다크 #1C1D23 */
     val colorNavigationBg: S1Color = S1Color(0xFFFFFFFF, 0xFF1C1D23)
+    /** --color-navigation-icon-default — 라이트 #C4C4C4 · 다크 #55575F */
+    val colorNavigationIconDefault: S1Color = S1Color(0xFFC4C4C4, 0xFF55575F)
     /** --color-navigation-indicator-default — 라이트 #D9D9D9 · 다크 #2E2F38 */
     val colorNavigationIndicatorDefault: S1Color = S1Color(0xFFD9D9D9, 0xFF2E2F38)
     /** --color-navigation-indicator-hover — 라이트 #1D6CEB · 다크 #3070D8 */

@@ -232,6 +232,7 @@ constexpr std::uint32_t S1_COLOR_LINE_BLUE = 0xFF1D6CEBu; // --color-line-blue =
 constexpr std::uint32_t S1_COLOR_LINE_GRAY_SUBTLE = 0xFFE9E9E9u; // --color-line-gray-subtle = #E9E9E9
 constexpr std::uint32_t S1_COLOR_MODAL_PANEL_BORDER = 0xFFD9D9D9u; // --color-modal-panel-border = #D9D9D9
 constexpr std::uint32_t S1_COLOR_NAVIGATION_BG = 0xFFFFFFFFu; // --color-navigation-bg = #FFFFFF
+constexpr std::uint32_t S1_COLOR_NAVIGATION_ICON_DEFAULT = 0xFFC4C4C4u; // --color-navigation-icon-default = #C4C4C4
 constexpr std::uint32_t S1_COLOR_NAVIGATION_INDICATOR_DEFAULT = 0xFFD9D9D9u; // --color-navigation-indicator-default = #D9D9D9
 constexpr std::uint32_t S1_COLOR_NAVIGATION_INDICATOR_HOVER = 0xFF1D6CEBu; // --color-navigation-indicator-hover = #1D6CEB
 constexpr std::uint32_t S1_COLOR_NAVIGATION_INDICATOR_SELECTED = 0xFF1D6CEBu; // --color-navigation-indicator-selected = #1D6CEB
@@ -534,6 +535,7 @@ constexpr std::uint32_t S1_COLOR_LINE_BLUE = 0xFF3070D8u; // --color-line-blue =
 constexpr std::uint32_t S1_COLOR_LINE_GRAY_SUBTLE = 0xFF2E2F38u; // --color-line-gray-subtle = #2E2F38
 constexpr std::uint32_t S1_COLOR_MODAL_PANEL_BORDER = 0xFF3E4049u; // --color-modal-panel-border = #3E4049
 constexpr std::uint32_t S1_COLOR_NAVIGATION_BG = 0xFF1C1D23u; // --color-navigation-bg = #1C1D23
+constexpr std::uint32_t S1_COLOR_NAVIGATION_ICON_DEFAULT = 0xFF55575Fu; // --color-navigation-icon-default = #55575F
 constexpr std::uint32_t S1_COLOR_NAVIGATION_INDICATOR_DEFAULT = 0xFF2E2F38u; // --color-navigation-indicator-default = #2E2F38
 constexpr std::uint32_t S1_COLOR_NAVIGATION_INDICATOR_HOVER = 0xFF3070D8u; // --color-navigation-indicator-hover = #3070D8
 constexpr std::uint32_t S1_COLOR_NAVIGATION_INDICATOR_SELECTED = 0xFF3070D8u; // --color-navigation-indicator-selected = #3070D8

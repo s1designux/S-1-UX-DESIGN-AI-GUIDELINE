@@ -304,7 +304,11 @@ export function init(root) {
   const { trigger, value, panel, panelCalendar, sheet, sheetBackdrop, sheetPanel, sheetClose, sheetCalendar, apply } = getParts(root);
   if (!trigger || !value) return null;
 
-  const brk = root.dataset.break === "mobile" ? "mobile" : "pc";
+  /* 자기 data-break 가 먼저고, 없으면 감싸는 요소의 화면 선언(data-s1-break)을 따른다.
+     감싸기에만 모바일을 적어 두면 높이는 모바일인데 PC 팝업이 열리던 어긋남을 없앤다(2026-09-15). */
+  const ownBreak = root.dataset.break;
+  const declaredBreak = ownBreak || root.closest("[data-s1-break]")?.dataset.s1Break;
+  const brk = declaredBreak === "mobile" ? "mobile" : "pc";
   const mode = root.dataset.mode === "range" ? "range" : "single";
   const disabledSet = new Set((root.dataset.disabledDates || "").split(",").map((s) => s.trim()).filter(Boolean));
   const today = startOfDay(new Date());

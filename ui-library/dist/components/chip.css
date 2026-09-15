@@ -107,3 +107,81 @@
 [data-s1-component="chip"]:disabled {
   cursor: not-allowed;
 }
+
+
+/* ── 밀도(density) — registry/governance/density-policy.json 에서 생성. 손편집 금지 ── */
+/* density:wide 넓게(44px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="wide"] [data-s1-component="chip"]:not([data-size]):not([data-break="mobile"]) {
+  font-size: var(--font-size-14);
+  height: var(--sizing-34);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: var(--spacing-16);
+}
+
+[data-s1-break="pc"][data-s1-density="wide"] [data-s1-component="chip"]:not([data-size]):not([data-break="mobile"]) {
+  font-size: var(--font-size-14);
+  height: var(--sizing-34);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: var(--spacing-16);
+}
+
+/* density:normal 보통(34px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="normal"] [data-s1-component="chip"]:not([data-size]):not([data-break="mobile"]) {
+  font-size: var(--font-size-14);
+  height: var(--sizing-34);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: var(--spacing-16);
+}
+
+[data-s1-break="pc"][data-s1-density="normal"] [data-s1-component="chip"]:not([data-size]):not([data-break="mobile"]) {
+  font-size: var(--font-size-14);
+  height: var(--sizing-34);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: var(--spacing-16);
+}
+
+/* density:narrow 좁게(28px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="narrow"] [data-s1-component="chip"]:not([data-size]):not([data-break="mobile"]) {
+  font-size: var(--font-size-12);
+  height: var(--sizing-28);
+  letter-spacing: var(--letter-spacing-normal);
+  padding-inline: var(--spacing-16);
+}
+
+[data-s1-break="pc"][data-s1-density="narrow"] [data-s1-component="chip"]:not([data-size]):not([data-break="mobile"]) {
+  font-size: var(--font-size-12);
+  height: var(--sizing-28);
+  letter-spacing: var(--letter-spacing-normal);
+  padding-inline: var(--spacing-16);
+}
+
+/* bridge:pc 감싸기에 화면 구분을 적었으면 컴포넌트가 안 적어도 같은 규칙이 선다 */
+:is([data-s1-break="pc"], [data-s1-density="wide"], [data-s1-density="normal"], [data-s1-density="narrow"]) [data-s1-component="chip"][data-size="sm"]:not([data-break="mobile"]) {
+  font-size: var(--font-size-12);
+  height: var(--sizing-28);
+  letter-spacing: var(--letter-spacing-normal);
+  padding-inline: var(--spacing-16);
+}
+
+:is([data-s1-break="pc"], [data-s1-density="wide"], [data-s1-density="normal"], [data-s1-density="narrow"]) [data-s1-component="chip"][data-size="md"]:not([data-break="mobile"]) {
+  font-size: var(--font-size-14);
+  height: var(--sizing-34);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: var(--spacing-16);
+}
+
+/* bridge:mobile 감싸기에 화면 구분을 적었으면 컴포넌트가 안 적어도 같은 규칙이 선다 */
+[data-s1-break="mobile"] [data-s1-component="chip"][data-size="sm"]:not([data-break="pc"]) {
+  font-size: var(--font-size-14);
+  height: var(--sizing-30);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: var(--spacing-12);
+}
+
+/* density:mobile 모바일은 밀도 축이 없다 — 손가락 기준 높이 하나 */
+[data-s1-break="mobile"] [data-s1-component="chip"]:not([data-size]):not([data-break="pc"]) {
+  font-size: var(--font-size-14);
+  height: var(--sizing-30);
+  letter-spacing: var(--letter-spacing-tight);
+  padding-inline: var(--spacing-12);
+}

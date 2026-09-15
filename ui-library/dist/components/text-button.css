@@ -34,8 +34,23 @@
   color: var(--color-text-body-tertiary);
 }
 
-[data-s1-component="text-button"]:is(:hover, :active):not(:disabled) {
+/* ── 상태 표시: 누름(:active)은 어디서나 · 마우스오버(:hover)는 PC 에서만 ─────────────────
+   정본 상태는 Default·Hover·Pressed·Disabled 이고 Hover 와 Pressed 는 같은 모양(밑줄)이다.
+   그런데 **모바일에는 마우스오버가 없어야 한다** — 손가락에는 hover 가 없고, PC 브라우저로
+   모바일 화면을 볼 때 글자에 밑줄이 그어져 눌린 것처럼 보인다.
+   Input 의 suffix 액션(river 지시 2026-09-07)·Button(river 지시 2026-09-15)에 이어 같은 규칙을
+   여기에도 적용한다 — river 지시 2026-09-15 "텍스트버튼도 A로 빼줘".
+   이 컴포넌트는 크기 축이 없어(sizes: []) Button 처럼 LG 로 가려낼 수 없다. 그래서 화면 구분
+   선언으로 가른다: 자기가 mobile 이라고 적었거나 모바일 감싸개 안이면 hover 를 내지 않고,
+   자기가 pc 라고 적었으면 그쪽이 이긴다(Input 의 input.css:110 과 같은 형태). */
+[data-s1-component="text-button"]:active:not(:disabled) {
   text-decoration: underline;
+}
+
+@media (hover: hover) {
+  [data-s1-component="text-button"]:not([data-break="mobile"]):is([data-break="pc"], :not([data-s1-break="mobile"] *)):hover:not(:disabled) {
+    text-decoration: underline;
+  }
 }
 
 [data-s1-component="text-button"]:disabled {

@@ -2,7 +2,7 @@
   "id": "text-button",
   "version": "0.1.0",
   "status": "approved",
-  "canonicalFingerprint": "650ef2f80c4a12b771b84496f381ae336c91c2f3724fd77864dc3f74d6bd73b3",
+  "canonicalFingerprint": "42bd2e76c6d1879ae8ad16704ebfaa370b14d4b3155e32ae252f740eebf5a5a3",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -21,7 +21,7 @@
   },
   "states": {
     "default": "native",
-    "hover": ":hover",
+    "hover": "@media (hover: hover) 안의 :hover:not(:disabled) — 모바일 선언 밖에서만",
     "pressed": ":active",
     "disabled": "disabled"
   },
@@ -35,7 +35,8 @@
     "sizeAxis": "정본에 크기 축이 없다 — 배경·테두리·고정 크기가 전부 없고 글자만 있다(hug).",
     "hoverColor": "Hover·Pressed 는 색을 바꾸지 않고 밑줄만 더한다(원본 그대로) — 새 색 토큰 0.",
     "pressedState": "Pressed 는 원본에 없어 코어 Button 의 정본 규칙(pressed = hover)을 그대로 따른다.",
-    "mobileVariant": "레거시 B m_subbutton(글자+화살표, 모바일)은 범위 밖(river 결정 2026-09-08 ④)."
+    "mobileVariant": "레거시 B m_subbutton(글자+화살표, 모바일)은 범위 밖(river 결정 2026-09-08 ④).",
+    "mobileHover": "정본 Text Button 에는 Hover 가 있지만 웹은 **모바일 선언 안에서 마우스오버 밑줄을 내지 않는다** — 손가락에는 hover 가 없고, PC 브라우저로 모바일 화면을 볼 때 글자에 밑줄이 그어져 눌린 것처럼 보인다. Input(river 지시 2026-09-07)·Button(river 지시 2026-09-15)에 이은 같은 규칙이며 river 지시 2026-09-15 \"텍스트버튼도 A로 빼줘\" 로 추가했다. 누름(:active)은 어디서나 그대로 둔다 — 정본 Pressed 는 Hover 와 같은 모양이고 손가락으로도 눌리기 때문이다. 이 컴포넌트는 크기 축이 없어(sizes: []) Button 처럼 LG 로 가려낼 수 없어 화면 구분 선언으로 가른다. 선택자: @media (hover: hover) 안의 :not([data-break=\"mobile\"]):is([data-break=\"pc\"], :not([data-s1-break=\"mobile\"] *)):hover:not(:disabled) — Input 의 input.css:110 과 같은 형태."
   },
   "parts": [
     "label"
@@ -116,5 +117,5 @@
     "runtime": "none",
     "reason": "Native button semantics provide the complete approved behavior; hover/pressed underline is pure CSS."
   },
-  "sourceFingerprint": "ba610f28db117708d76465a5ab1e2dd2193802cfbe9c4958b0156558a986f966"
+  "sourceFingerprint": "63195f1e82d513f5dcf2141f328e25148cdbad7f2bcc4ee02b8732909ea46100"
 }

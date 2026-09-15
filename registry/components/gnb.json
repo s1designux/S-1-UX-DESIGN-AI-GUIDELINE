@@ -125,56 +125,49 @@
   },
   "tokens": [
     {
-      "name": "--gnb-bg",
-      "value": "var(--color-navigation-bg)",
+      "name": "--color-navigation-bg",
       "resolvedLight": "#FFFFFF",
       "figmaVariable": "color/navigation/bg",
       "status": "stable",
       "description": "GNB 바 배경"
     },
     {
-      "name": "--gnb-border",
-      "value": "var(--color-border-subtle)",
+      "name": "--color-line-gray-subtle",
       "resolvedLight": "#E9E9E9",
       "figmaVariable": "color/line/gray/subtle",
       "status": "stable",
       "description": "GNB 바 하단 1px 라인"
     },
     {
-      "name": "--gnb-menu-label-default",
-      "value": "var(--color-navigation-label-default-alt)",
+      "name": "--color-navigation-label-default-alt",
       "resolvedLight": "#434343",
       "figmaVariable": "color/navigation/label/default-alt",
       "status": "stable",
       "description": "메뉴 슬롯 기본 라벨 (V3.0: gray-700 #434343)"
     },
     {
-      "name": "--gnb-menu-label-active",
-      "value": "var(--color-navigation-label-selected)",
+      "name": "--color-navigation-label-hover",
       "resolvedLight": "#1D6CEB",
       "figmaVariable": "color/navigation/label/hover",
       "status": "stable",
       "description": "메뉴 슬롯 hover·selected 라벨"
     },
     {
-      "name": "--gnb-menu-underline-active",
-      "value": "var(--color-navigation-indicator-selected)",
+      "name": "--color-line-blue",
       "resolvedLight": "#1D6CEB",
       "figmaVariable": "color/line/blue",
       "status": "stable",
       "description": "메뉴 슬롯 hover·selected 하단 밑줄"
     },
     {
-      "name": "--gnb-logo-text",
-      "value": "var(--color-text-primary)",
+      "name": "--color-text-title-primary",
       "resolvedLight": "#202020",
       "figmaVariable": "color/text/title/primary",
       "status": "stable",
       "description": "로고 텍스트 색상 — HD-GNB-1 resolved: V3.0 로고 = color/text/title/primary #202020 = 코드값 일치"
     },
     {
-      "name": "--gnb-icon",
-      "value": "var(--color-navigation-icon)",
+      "name": "--color-icon-gray-dark",
       "resolvedLight": "#353535",
       "figmaVariable": "color/icon/gray-dark",
       "status": "stable",

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>S1 UI 컴포넌트 미리보기 — 22종</title>
+  <title>S1 UI 컴포넌트 미리보기 — 24종</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/typography.css">
@@ -47,10 +47,10 @@
 <body>
   <div class="page">
     <div class="page-head">
-      <h1>S1 UI 컴포넌트 미리보기 — 22종</h1>
+      <h1>S1 UI 컴포넌트 미리보기 — 24종</h1>
       <p>이 페이지는 배포본에 들어 있는 마크업을 그대로 얹어 그린 것입니다. 여기 보이는 모습이 실제 모습입니다.<br>
          React·Vue 는 제목의 이름을 그대로 부르면 됩니다. 크기·변형은 각 이름 옆에 적힌 값만 쓸 수 있습니다.</p>
-      <p class="fingerprint">버전 0.5.0 · 정본 지문 5a96654ece28dec43ed8454b0fe138008e64cf190c2909b2c71a355114d4bb26</p>
+      <p class="fingerprint">버전 0.6.10 · 정본 지문 706ab4e1643d76a52873b374411652ca8a0c570fe170fac67c24e327d296420c</p>
     </div>
     <nav class="index">
         <a href="#input">S1Input</a>
@@ -75,6 +75,8 @@
         <a href="#assist-button">S1AssistButton</a>
         <a href="#text-button">S1TextButton</a>
         <a href="#modal-content">S1ModalContent</a>
+        <a href="#bottom-sheet-option">S1BottomSheetOption</a>
+        <a href="#bottom-sheet">S1BottomSheet</a>
     </nav>
       <section class="component" id="input">
         <header class="component-head">
@@ -960,7 +962,7 @@
     <span data-s1-part="value">시간 선택</span>
     <span data-s1-part="icon" aria-hidden="true"></span>
   </button>
-  <div data-s1-part="sheet" hidden>
+  <div data-s1-component="bottom-sheet" data-s1-part="sheet" data-break="mobile" data-footer="single" hidden>
     <div data-s1-part="sheet-backdrop"></div>
     <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="time-picker-wheel-title-time-only" tabindex="-1">
       <div data-s1-part="sheet-header">
@@ -988,7 +990,7 @@
     <span data-s1-part="value">시작 일시 선택</span>
     <span data-s1-part="icon" aria-hidden="true"></span>
   </button>
-  <div data-s1-part="sheet" hidden>
+  <div data-s1-component="bottom-sheet" data-s1-part="sheet" data-break="mobile" data-footer="single" hidden>
     <div data-s1-part="sheet-backdrop"></div>
     <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="time-picker-wheel-title-date-time" tabindex="-1">
       <div data-s1-part="sheet-header">
@@ -1082,7 +1084,7 @@
     <span data-s1-part="value">YY.MM.DD</span>
     <span data-s1-part="icon" aria-hidden="true"></span>
   </button>
-  <div data-s1-part="sheet" hidden>
+  <div data-s1-component="bottom-sheet" data-s1-part="sheet" data-break="mobile" data-footer="single" hidden>
     <div data-s1-part="sheet-backdrop"></div>
     <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="date-picker-mobile-sheet-title" tabindex="-1">
       <div data-s1-part="sheet-header">
@@ -1221,6 +1223,147 @@
             <div class="usage-block usage-block-avoid">
               <div class="usage-title">이럴 땐 다른 걸</div>
               <ul><li>짧은 확인 문구 하나면 확인 계열 Modal 을 쓴다.</li><li>페이지 전체를 차지하는 다단계 폼은 별도 페이지를 고려한다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="bottom-sheet-option">
+        <header class="component-head">
+          <div>
+            <h2>S1BottomSheetOption</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="bottom-sheet-option"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd><code>text</code> <code>checkbox</code> <code>radio</code> <code>list</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="bottom-sheet-option" data-type="text" data-state="default">
+    <span data-s1-part="label">항목 1</span>
+  </div>
+<div data-s1-component="bottom-sheet-option" data-type="text" data-state="selected">
+    <span data-s1-part="label">항목 2</span>
+    <span data-s1-part="check" aria-hidden="true"></span>
+  </div>
+<div data-s1-component="bottom-sheet-option" data-type="text" data-state="disabled">
+    <span data-s1-part="label">항목 3</span>
+  </div>
+<div data-s1-component="bottom-sheet-option" data-type="checkbox" data-state="default">
+    <div data-s1-component="checkbox">
+      <input type="checkbox" id="bso-example-checkbox-default" data-s1-part="control" aria-labelledby="bso-example-checkbox-default-label">
+    </div>
+    <span data-s1-part="label" id="bso-example-checkbox-default-label">항목 4</span>
+  </div>
+<div data-s1-component="bottom-sheet-option" data-type="checkbox" data-state="selected">
+    <div data-s1-component="checkbox">
+      <input type="checkbox" id="bso-example-checkbox-selected" data-s1-part="control" aria-labelledby="bso-example-checkbox-selected-label" checked>
+    </div>
+    <span data-s1-part="label" id="bso-example-checkbox-selected-label">항목 5</span>
+  </div>
+<div data-s1-component="bottom-sheet-option" data-type="radio" data-state="default">
+    <div data-s1-component="radio">
+      <input type="radio" id="bso-example-radio-default" name="bso-example-radio-group" data-s1-part="control" aria-labelledby="bso-example-radio-default-label">
+    </div>
+    <span data-s1-part="label" id="bso-example-radio-default-label">항목 6</span>
+  </div>
+<div data-s1-component="bottom-sheet-option" data-type="radio" data-state="selected">
+    <div data-s1-component="radio">
+      <input type="radio" id="bso-example-radio-selected" name="bso-example-radio-group" data-s1-part="control" aria-labelledby="bso-example-radio-selected-label" checked>
+    </div>
+    <span data-s1-part="label" id="bso-example-radio-selected-label">항목 7</span>
+  </div>
+<div data-s1-component="bottom-sheet-option" data-type="list" data-state="default">
+    <div data-s1-part="list-left">
+      <div data-s1-part="avatar" aria-hidden="true"></div>
+      <div data-s1-part="list-text">
+        <span data-s1-part="list-title">제목</span>
+        <span data-s1-part="list-sub">서브 텍스트</span>
+      </div>
+    </div>
+    <span data-s1-part="chevron" aria-hidden="true"></span>
+  </div>
+<div data-s1-component="bottom-sheet-option" data-type="list" data-state="disabled">
+    <div data-s1-part="list-left">
+      <div data-s1-part="avatar" aria-hidden="true"></div>
+      <div data-s1-part="list-text">
+        <span data-s1-part="list-title">제목</span>
+        <span data-s1-part="list-sub">서브 텍스트</span>
+      </div>
+    </div>
+    <span data-s1-part="lock" aria-hidden="true"></span>
+  </div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>바텀시트 본문에 고를 것을 줄로 늘어놓을 때.</li><li>Text = 한 값 고르기(고른 줄에 파란 체크), Checkbox = 여러 값 고르기, Radio = 한 값 고르기(동그라미 표시), List = 사람·항목처럼 아바타와 설명이 함께 있는 줄.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>바텀시트 밖 — PC 목록은 Dropdown 을 쓴다.</li><li>표의 행 — Table 을 쓴다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="bottom-sheet">
+        <header class="component-head">
+          <div>
+            <h2>S1BottomSheet</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="bottom-sheet"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd><code>none</code> <code>single</code> <code>dual</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><div data-s1-component="bottom-sheet" data-s1-part="sheet" data-break="mobile" data-footer="single">
+  <div data-s1-part="sheet-backdrop"></div>
+  <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="bottom-sheet-example-title" tabindex="-1">
+    <div data-s1-part="sheet-content">
+      <div data-s1-part="sheet-header">
+        <span data-s1-part="sheet-title" id="bottom-sheet-example-title">항목 선택</span>
+        <button type="button" data-s1-part="sheet-close" aria-label="닫기"></button>
+      </div>
+      <div data-s1-part="sheet-body">
+        <div data-s1-component="bottom-sheet-option" data-type="text" data-state="default">
+          <span data-s1-part="label">항목 1</span>
+        </div>
+        <div data-s1-component="bottom-sheet-option" data-type="text" data-state="selected">
+          <span data-s1-part="label">항목 2</span>
+          <span data-s1-part="check" aria-hidden="true"></span>
+        </div>
+        <div data-s1-component="bottom-sheet-option" data-type="text" data-state="default">
+          <span data-s1-part="label">항목 3</span>
+        </div>
+        <div data-s1-component="bottom-sheet-option" data-type="text" data-state="default">
+          <span data-s1-part="label">항목 4</span>
+        </div>
+      </div>
+    </div>
+    <div data-s1-part="sheet-footer">
+      <button type="button" data-s1-component="button" data-variant="primary" data-size="lg"><span data-s1-part="label">적용</span></button>
+    </div>
+  </div>
+</div></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>모바일에서 목록을 띄워 고르게 할 때 — 드롭다운 대신 쓴다(density-policy mobileSubstitutes.dropdown).</li><li>모바일에서 날짜·시간처럼 넓은 선택 UI 를 띄울 때.</li><li>Footer=None 은 고르는 즉시 적용되는 목록, Single 은 '적용' 하나, Dual 은 '취소+적용'.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>PC 화면 — PC 는 드롭다운·팝오버·모달을 쓴다. 정본 시트는 모바일 폭(360) 기준이다.</li><li>확인·알림처럼 짧은 결정 — Modal 을 쓴다.</li><li>비차단 알림 — 토스트·인라인 메시지.</li></ul>
             </div>
           </div>
         </div>

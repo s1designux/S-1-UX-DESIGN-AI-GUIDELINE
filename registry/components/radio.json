@@ -54,15 +54,15 @@
   ],
   "states": ["default", "hover", "selected", "disabled"],
   "tokens": [
-    { "cssVar": "--radio-default-bg",      "value": "var(--color-control-bg-default)",          "semanticRef": "color-control-bg-default",          "state": "default",  "property": "background" },
-    { "cssVar": "--radio-hover-bg",        "value": "var(--color-control-bg-hover)",            "semanticRef": "color-control-bg-hover",            "state": "hover",    "property": "background" },
-    { "cssVar": "--radio-disabled-bg",     "value": "var(--color-control-bg-disabled)",         "semanticRef": "color-control-bg-disabled",         "state": "disabled", "property": "background" },
-    { "cssVar": "--radio-default-border",  "value": "var(--color-control-border-default)",      "semanticRef": "color-control-border-default",      "state": "default",  "property": "border" },
-    { "cssVar": "--radio-hover-border",    "value": "var(--color-control-border-default)",      "semanticRef": "color-control-border-default",      "state": "hover",    "property": "border" },
-    { "cssVar": "--radio-selected-border", "value": "var(--color-control-border-selected)",     "semanticRef": "color-control-border-selected",     "state": "selected", "property": "border" },
-    { "cssVar": "--radio-disabled-border", "value": "var(--color-control-border-disabled)",     "semanticRef": "color-control-border-disabled",     "state": "disabled", "property": "border" },
-    { "cssVar": "--radio-selected-dot",    "value": "var(--color-control-indicator-selected-alt)", "semanticRef": "color-control-indicator-selected-alt", "state": "selected", "property": "dot-icon" },
-    { "cssVar": "--radio-disabled-dot",    "value": "var(--color-control-indicator-disabled)",  "semanticRef": "color-control-indicator-disabled",  "state": "disabled", "property": "dot-icon" }
+    { "cssVar": "--color-control-bg-default",      "state": "default",  "property": "background" },
+    { "cssVar": "--color-control-bg-hover",        "state": "hover",    "property": "background" },
+    { "cssVar": "--color-control-bg-disabled",     "state": "disabled", "property": "background" },
+    { "cssVar": "--color-control-border-default",  "state": "default",  "property": "border" },
+    { "cssVar": "--color-control-border-default",    "state": "hover",    "property": "border" },
+    { "cssVar": "--color-control-border-selected", "state": "selected", "property": "border" },
+    { "cssVar": "--color-control-border-disabled", "state": "disabled", "property": "border" },
+    { "cssVar": "--color-control-indicator-selected-alt",    "state": "selected", "property": "dot-icon" },
+    { "cssVar": "--color-control-indicator-disabled",    "state": "disabled", "property": "dot-icon" }
   ],
   "figma": {
     "componentSetKey": "",

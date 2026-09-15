@@ -2,9 +2,9 @@
   "_meta": {
     "note": "자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요."
   },
-  "version": "0.5.0",
-  "releasedAt": "2026-09-14",
-  "canonicalFingerprint": "5a96654ece28dec43ed8454b0fe138008e64cf190c2909b2c71a355114d4bb26",
+  "version": "0.6.10",
+  "releasedAt": "2026-09-15",
+  "canonicalFingerprint": "706ab4e1643d76a52873b374411652ca8a0c570fe170fac67c24e327d296420c",
   "generatedAt": null,
   "platforms": {
     "html-css-js": {
@@ -88,7 +88,9 @@
     "date-picker",
     "assist-button",
     "text-button",
-    "modal-content"
+    "modal-content",
+    "bottom-sheet-option",
+    "bottom-sheet"
   ],
-  "tokenCount": 488
+  "tokenCount": 489
 }

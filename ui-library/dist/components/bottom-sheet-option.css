@@ -1,0 +1,144 @@
+/* Bottom Sheet Option — 정본 buildBottomSheetOption(build-components.ts:4957~5150) 기준.
+   변형축은 Type(Text·Checkbox·Radio·List) × State(Default·Selected·Disabled)지만 실제로 존재하는 칸은
+   9개뿐이다 — checkbox:disabled · radio:disabled · list:selected 는 정본에 없다(manifest absentCombinations).
+   이 컴포넌트는 시트 안 줄 모양만 소유한다. 목록 구조·고르기 동작은 화면(시트를 여는 쪽)이 소유한다. */
+[data-s1-component="bottom-sheet-option"] {
+  align-items: center;
+  background: var(--color-surface-raised);
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+}
+
+/* Text·Checkbox·Radio — 360×48 고정, 좌우 20 위아래 8, 사이 간격 8 (build-components.ts:5017-5028). */
+[data-s1-component="bottom-sheet-option"]:is([data-type="text"], [data-type="checkbox"], [data-type="radio"]) {
+  gap: var(--spacing-8);
+  height: 48px;
+  justify-content: flex-start;
+  padding-block: var(--spacing-8);
+  padding-inline: var(--spacing-20);
+}
+
+/* Text:Selected 만 주축 정렬이 SPACE_BETWEEN — 라벨과 check 아이콘이 양끝에 선다. */
+[data-s1-component="bottom-sheet-option"][data-type="text"][data-state="selected"] {
+  justify-content: space-between;
+}
+
+/* List — 360×hug, 좌우 20 위아래 12 (build-components.ts:5103-5116). itemSpacing 은 정본에 지정이 없어
+   웹은 space-between 양끝 배치로 대신한다(manifest notInCanon.listItemSpacing). */
+[data-s1-component="bottom-sheet-option"][data-type="list"] {
+  justify-content: space-between;
+  padding-block: var(--spacing-12);
+  padding-inline: var(--spacing-20);
+}
+
+/* 라벨 — body/16M, 정본 행 배경은 State 별 분기가 없다(선택 표시는 글자색·아이콘으로만 한다).
+   Checkbox·Radio 는 그 코어 자신의 label part 를 그대로 쓴다(코어 예시 그대로 복사) — 여기서
+   ">" 직계 자식으로 좁혀서 코어 내부로 스타일이 새지 않게 막는다(계약 "다른 코어 내부 part 선택 금지"). */
+[data-s1-component="bottom-sheet-option"] > [data-s1-part="label"] {
+  color: var(--color-text-body-primary);
+  font-family: "Pretendard", sans-serif;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+}
+
+[data-s1-component="bottom-sheet-option"][data-type="text"][data-state="selected"] > [data-s1-part="label"] {
+  color: var(--color-text-state-accent);
+}
+
+[data-s1-component="bottom-sheet-option"][data-type="text"][data-state="disabled"] > [data-s1-part="label"] {
+  color: var(--color-text-state-disabled);
+}
+
+/* Text:Selected 우측 체크 — color/icon/blue, 24×24.
+   ★ check.svg(16 프레임)가 아니라 check24.svg 를 쓴다. 둘은 같은 라이브러리 아이콘(ic_확인)의
+   다른 프레임 표출이며, 16 프레임 자산을 24 로 확대하면 **선 굵기까지 1.5배**가 되어 정본보다
+   굵어진다(2026-09-15 독립 검증 실측 2.27px vs 정본 1.5px · 면적 +26%). 이 줄은 chevron·lock 과
+   같은 목록 안에 같은 크기로 나란히 서기 때문에 굵기 차이가 그대로 보인다.
+   check(16)은 체크박스가 계속 쓰므로 건드리지 않는다. */
+[data-s1-component="bottom-sheet-option"] > [data-s1-part="check"] {
+  background-color: var(--color-icon-blue);
+  flex: none;
+  height: 24px;
+  mask: url("../assets/icons/check24.svg") center / contain no-repeat;
+  width: 24px;
+}
+
+/* List 좌측 묶음 — avatar + 제목/서브. gap 12 (build-components.ts List list-left). */
+[data-s1-component="bottom-sheet-option"] [data-s1-part="list-left"] {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-12);
+  min-width: 0;
+}
+
+/* avatar — 40×40 원형, color/icon/gray-light 배경. 안의 account 아이콘은 ::after 로 분리해
+   본체 배경을 가릴 필요를 없앤다(modal close 부품과 같은 방식). */
+[data-s1-component="bottom-sheet-option"] [data-s1-part="avatar"] {
+  align-items: center;
+  background-color: var(--color-icon-gray-light);
+  border-radius: var(--radius-full);
+  display: flex;
+  flex: none;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+}
+
+[data-s1-component="bottom-sheet-option"] [data-s1-part="avatar"]::after {
+  background-color: var(--color-icon-white);
+  content: "";
+  display: block;
+  height: 24px;
+  mask: url("../assets/icons/account.svg") center / contain no-repeat;
+  width: 24px;
+}
+
+[data-s1-component="bottom-sheet-option"] [data-s1-part="list-text"] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  min-width: 0;
+}
+
+[data-s1-component="bottom-sheet-option"] [data-s1-part="list-title"] {
+  color: var(--color-text-body-primary);
+  font-family: "Pretendard", sans-serif;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+}
+
+[data-s1-component="bottom-sheet-option"] [data-s1-part="list-sub"] {
+  color: var(--color-text-body-secondary);
+  font-family: "Pretendard", sans-serif;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+}
+
+/* List:Default 우측 chevron — color/icon/gray-dark, 24×24.
+   방향 확인(T8 함정): 등록된 chevron.svg(M10.375 7.75L14.625 12L10.375 16.25)는 이미 오른쪽(▶)을
+   가리키는 자산이다 — Figma chevDown 을 아래 방향 자산으로 등록해 CSS 회전으로 다른 방향을 만드는
+   체계(icons/manifest.json chevron geometryEvidence)와 달리, 이 아이콘은 그 자체로 오른쪽이다.
+   정본 List 도 오른쪽 화살표를 쓰므로 여기서는 회전을 걸지 않는다. */
+[data-s1-component="bottom-sheet-option"] [data-s1-part="chevron"] {
+  background-color: var(--color-icon-gray-dark);
+  flex: none;
+  height: 24px;
+  mask: url("../assets/icons/chevron.svg") center / contain no-repeat;
+  width: 24px;
+}
+
+/* List:Disabled 우측 잠금 — color/icon/gray, 24×24. chevron 대신 이 칸에만 쓰인다. */
+[data-s1-component="bottom-sheet-option"] [data-s1-part="lock"] {
+  background-color: var(--color-icon-gray);
+  flex: none;
+  height: 24px;
+  mask: url("../assets/icons/lock.svg") center / contain no-repeat;
+  width: 24px;
+}

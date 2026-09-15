@@ -93,3 +93,19 @@
 [data-s1-component="table"] [data-s1-part="cell"][data-state="selected"] {
   background: var(--color-table-cell-selected);
 }
+
+
+/* ── 밀도(density) — registry/governance/density-policy.json 에서 생성. 손편집 금지 ── */
+/* density:normal 보통(34px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="normal"] [data-s1-component="table"]:not([data-size]) [data-s1-part="header-cell"],
+[data-s1-density="normal"] [data-s1-component="table"]:not([data-size]) [data-s1-part="cell"] {
+  font-size: var(--font-size-12);
+  height: var(--sizing-34);
+}
+
+/* density:narrow 좁게(28px) — data-size 를 직접 주면 그쪽이 이긴다 */
+[data-s1-density="narrow"] [data-s1-component="table"]:not([data-size]) [data-s1-part="header-cell"],
+[data-s1-density="narrow"] [data-s1-component="table"]:not([data-size]) [data-s1-part="cell"] {
+  font-size: var(--font-size-12);
+  height: var(--sizing-34);
+}

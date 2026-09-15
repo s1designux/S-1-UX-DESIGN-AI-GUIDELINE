@@ -107,19 +107,19 @@
     "trigger": {
       "note": "Base Input tokens 재사용 (Figma --color/form-control/* 확인)",
       "reuses": [
-        "--input-default-bg",
-        "--input-default-border",
-        "--input-focus-border",
-        "--input-disabled-bg",
-        "--input-disabled-border",
-        "--input-error-border",
-        "--input-placeholder-text",
-        "--input-disabled-text"
+        "--color-form-control-bg-default",
+        "--color-form-control-border-default",
+        "--color-form-control-border-selected",
+        "--color-form-control-bg-disabled",
+        "--color-form-control-border-disabled",
+        "--color-form-control-border-error",
+        "--color-form-control-text-placeholder",
+        "--color-form-control-text-disabled"
       ],
       "figmaVariables": {
         "--color/form-control/bg/default": "white (--input-default-bg)",
         "--color/form-control/border/default": "#d9d9d9 (--input-default-border)",
-        "--color/form-control/border/selected": "#1d6ceb (--input-focus-border)",
+        "--color/form-control/border/selected": "#1d6ceb (--color-form-control-border-selected)",
         "--color/form-control/bg/disabled": "#f5f5f5 (--input-disabled-bg)",
         "--color/form-control/border/disabled": "#d9d9d9 (--input-disabled-border)",
         "--color/form-control/text/placeholder": "#757575 (--input-placeholder-text)",
@@ -129,36 +129,36 @@
     },
     "panel": {
       "note": "PC popover panel — figma-unconfirmed. mobile bottomsheet 구조 참고.",
-      "--date-picker-panel-bg": "candidate: var(--color-surface-default)",
+      "--color-date-picker-panel-bg": "candidate: var(--color-surface-default)",
       "panel-border": "stable: color/date-picker/panel/border (--color-date-picker-panel-border) — light gray/200 · dark gray-dark/500. 2026-07-29 라이트를 gray/300 → gray/200 으로 변경(사용자 결정): Modal·Dropdown·Time Picker Dropdown·Date Picker 4개 패널 보더 값 통일. 다크 불변. 종전 candidate 표기 `var(--color-border-default)` 는 폐지된 generic 토큰을 가리켜 실현되지 않았으므로 폐기함(웹 CSS 는 이미 --color-date-picker-panel-border 참조라 값이 자동 반영)",
       "panel-shadow": "stable: var(--shadow-dropdown) — 공용 그림자 토큰(tokens/semantic.md §9-A). 2026-07-29 교체: 종전 candidate `--date-picker-panel-shadow: 0 4px 16px rgba(0,0,0,0.10)` 은 어느 CSS 에도 정의된 적이 없고 실제 구현값(0 4px 8px rgba(0,0,0,0.15))과도 달라 실현하지 않고 폐기함"
     },
     "cell": {
       "note": "Figma mobile bottomsheet (540:3836) 확인값",
-      "--date-picker-cell-text": "candidate: var(--color-text-secondary) (Figma: --color/text/body/tertiary #757575)",
-      "--date-picker-cell-other-month-text": "stable: var(--color-text-disabled) (Figma: --color/text/state/disabled #c4c4c4 확인)",
-      "--date-picker-cell-hover-bg": "candidate: var(--color-bg-subtle)",
-      "--date-picker-cell-selected-bg": "stable: var(--color-action-primary-default) (Figma: --color/control/bg/selected #1d6ceb 확인)",
-      "--date-picker-cell-selected-text": "stable: var(--color-base-white) (Figma: --color/text/state/accent-inverse white 확인)",
-      "--date-picker-cell-today-border": "stable: var(--color-action-primary-default) (Figma: --color/control/border/selected #1d6ceb 확인)",
-      "--date-picker-cell-today-text": "stable: var(--color-action-primary-default) (Figma: --color/text/state/accent #1d6ceb 확인)",
-      "--date-picker-cell-today-bg": "stable: var(--color-surface-default) (Figma: white 확인)",
-      "--date-picker-cell-disabled-text": "candidate: var(--color-text-disabled)"
+      "--color-date-picker-text-secondary": "candidate: var(--color-text-secondary) (Figma: --color/text/body/tertiary #757575)",
+      "--color-date-picker-text-other-month": "stable: var(--color-text-disabled) (Figma: --color/text/state/disabled #c4c4c4 확인)",
+      "--color-date-picker-cell-bg-hover": "candidate: var(--color-bg-subtle)",
+      "--color-date-picker-cell-bg-selected": "stable: var(--color-action-primary-default) (Figma: --color/control/bg/selected #1d6ceb 확인)",
+      "--color-date-picker-text-selected": "stable: var(--color-base-white) (Figma: --color/text/state/accent-inverse white 확인)",
+      "--color-date-picker-cell-border-today": "stable: var(--color-action-primary-default) (Figma: --color/control/border/selected #1d6ceb 확인)",
+      "--color-date-picker-text-today": "stable: var(--color-action-primary-default) (Figma: --color/text/state/accent #1d6ceb 확인)",
+      "--color-date-picker-cell-bg-today": "stable: var(--color-surface-default) (Figma: white 확인)",
+      "--color-date-picker-text-disabled": "candidate: var(--color-text-disabled)"
     },
     "header": {
-      "--date-picker-header-text": "candidate: var(--color-text-primary) (Figma: --color/text/title/primary black 확인)",
-      "--date-picker-nav-hover-bg": "candidate: var(--color-bg-subtle)"
+      "--color-date-picker-text-primary": "candidate: var(--color-text-primary) (Figma: --color/text/title/primary black 확인)",
+      "--color-date-picker-cell-bg-hover": "candidate: var(--color-bg-subtle)"
     },
     "icon": {
       "figmaNode": "ic_날짜/근태,달력 (node 221:3835)",
       "size": "24×24px (Figma 확인)",
-      "--date-picker-icon-color": "candidate: var(--color-icon-default)"
+      "--color-date-picker-icon-default": "candidate: var(--color-icon-default)"
     },
     "weekday": {
       "note": "Figma mobile: 월화수목금토일 순서. weekday text color Figma: --color/text/body/primary(#353535)",
-      "--date-picker-weekday-text": "candidate: var(--color-text-primary) (Figma: --color/text/body/primary #353535 확인)",
-      "--date-picker-sunday-text": "candidate: var(--color-status-error) (HD-8 미결)",
-      "--date-picker-saturday-text": "candidate: var(--color-action-primary-default) (HD-8 미결)"
+      "--color-date-picker-text-primary": "candidate: var(--color-text-primary) (Figma: --color/text/body/primary #353535 확인)",
+      "--color-date-picker-text-sunday": "candidate: var(--color-status-error) (HD-8 미결)",
+      "--color-date-picker-text-saturday": "candidate: var(--color-action-primary-default) (HD-8 미결)"
     }
   },
   "cellGeometry": {

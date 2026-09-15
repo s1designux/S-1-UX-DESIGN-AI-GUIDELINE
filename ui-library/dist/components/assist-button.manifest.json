@@ -2,7 +2,7 @@
   "id": "assist-button",
   "version": "0.1.0",
   "status": "approved",
-  "canonicalFingerprint": "2b8eadb190b86167ccd8c8a3b3aa1a384413b141e0d52015d7aa9df6f935b1d0",
+  "canonicalFingerprint": "db7778d0a5e667aacd0a7b93671341a9548fb78362a822fe742bf08897cceb39",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -108,5 +108,5 @@
     "runtime": "none",
     "reason": "Native button semantics provide the complete approved behavior."
   },
-  "sourceFingerprint": "3573cdc66e46f6ad95c4d6c870c8b079efd181187d41eb3ade727f82cb5801eb"
+  "sourceFingerprint": "f6267a176d569f7a4fc817daaf09c54d59727a6d177102001413dc2e2e9894f1"
 }

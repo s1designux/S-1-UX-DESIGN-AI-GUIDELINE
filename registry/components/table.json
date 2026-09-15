@@ -152,80 +152,70 @@
   ],
   "tokens": [
     {
-      "name": "--table-header-bg",
-      "value": "var(--color-bg-default)",
+      "name": "--color-table-header-bg",
       "resolvedLight": "#FAFAFA",
       "figmaVariable": "surface/neutral/bg/base-alt",
       "status": "stable",
       "description": "헤더 셀 기본 배경"
     },
     {
-      "name": "--table-header-text",
-      "value": "var(--color-text-secondary)",
+      "name": "--color-text-title-secondary",
       "resolvedLight": "#353535",
       "figmaVariable": "color/text/title/secondary",
       "status": "stable",
       "description": "헤더 셀 텍스트 색상"
     },
     {
-      "name": "--table-border-light",
-      "value": "var(--color-border-subtle)",
+      "name": "--color-table-border-default",
       "resolvedLight": "#E9E9E9",
       "figmaVariable": "color/table/border/default",
       "status": "stable",
       "description": "행 구분선 — 헤더·바디 셀 공통 참조"
     },
     {
-      "name": "--table-border-strong",
-      "value": "var(--color-border-emphasis)",
+      "name": "--color-table-border-strong",
       "resolvedLight": "#353535",
       "figmaVariable": "color/table/border/strong",
       "status": "stable",
       "description": "테이블 외곽 강조 테두리 — wrap 상단 2px + 하단 1px"
     },
     {
-      "name": "--table-header-border",
-      "value": "var(--table-border-light)",
+      "name": "--color-table-border-default",
       "resolvedLight": "#E9E9E9",
       "figmaVariable": "color/table/border/default",
       "status": "stable",
       "description": "헤더 셀 하단 구분선"
     },
     {
-      "name": "--table-row-default-bg",
-      "value": "var(--color-table-cell-default)",
+      "name": "--color-table-cell-hover",
       "resolvedLight": "#FFFFFF",
       "figmaVariable": "color/table/cell/default",
       "status": "stable",
       "description": "행 기본 배경 — Light: base/white (#FFFFFF) / Dark: gray-dark-100 (#1C1D23)"
     },
     {
-      "name": "--table-row-hover-bg",
-      "value": "var(--color-table-cell-hover)",
+      "name": "--color-table-cell-hover",
       "resolvedLight": "#F5F5F5",
       "figmaVariable": "color/table/cell/hover",
       "status": "stable",
       "description": "행 hover 배경 — Light: gray-50 (#F5F5F5) / Dark: gray-dark-200 (#24252C)"
     },
     {
-      "name": "--table-row-selected-bg",
-      "value": "var(--color-table-cell-selected)",
+      "name": "--color-table-cell-selected",
       "resolvedLight": "#E2F1FF",
       "figmaVariable": "color/table/cell/selected",
       "status": "stable",
       "description": "행 선택 배경 — Light: blue-50 (#E2F1FF) / Dark: blue-dark-100 (#112B55). hover(gray-50)와 시각 구분 확정(HD-Table-2)"
     },
     {
-      "name": "--table-cell-border",
-      "value": "var(--table-border-light)",
+      "name": "--color-table-border-default",
       "resolvedLight": "#E9E9E9",
       "figmaVariable": "color/table/border/default",
       "status": "stable",
       "description": "바디 셀 하단 구분선"
     },
     {
-      "name": "--table-cell-text",
-      "value": "var(--color-text-body-primary)",
+      "name": "--color-text-body-primary",
       "resolvedLight": "#202020",
       "figmaVariable": "color/text/body/primary",
       "status": "stable",

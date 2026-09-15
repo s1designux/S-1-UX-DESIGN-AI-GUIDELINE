@@ -3,7 +3,7 @@
     "name": "SW Core Component Registry Index",
     "version": "0.2.0",
     "status": "mvp3.1",
-    "updatedAt": "2026-05-20",
+    "updatedAt": "2026-09-15",
     "description": "Core Component Harness의 entry point. Theme / Platform / Component 목록을 관리한다."
   },
   "harness": {
@@ -367,6 +367,26 @@
       "status": "in-progress",
       "harnessStatus": "implemented",
       "priority": 26
+    },
+    {
+      "id": "bottom-sheet",
+      "name": "Bottom Sheet",
+      "label": "Bottom Sheet",
+      "category": "overlay",
+      "path": "registry/components/bottom-sheet.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 27
+    },
+    {
+      "id": "bottom-sheet-option",
+      "name": "Bottom Sheet Option",
+      "label": "Bottom Sheet Option",
+      "category": "overlay",
+      "path": "registry/components/bottom-sheet-option.json",
+      "status": "in-progress",
+      "harnessStatus": "implemented",
+      "priority": 28
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "id": "tab",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "status": "approved",
-  "canonicalFingerprint": "70d77ee493d74e247efe059d1ec618c0ee2ed08c4729e58f71599f196f0b0506",
+  "canonicalFingerprint": "e494622ece86425ec4d553d0b8c9817c867c6b46dd08d4080c905658551de83c",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -127,5 +127,5 @@
     "runtime": "components/tab/tab.js",
     "reason": "선택 상태와 화살표 키 이동을 동기화한다."
   },
-  "sourceFingerprint": "b4dc5aca8ef6507797942619263dbfa6dde348e4b12b88b61bc93c9e8429eeab"
+  "sourceFingerprint": "77d80ff7ddcf8071e4bafd49b73701eb62d5b6f17b7f2b24acf8197efbd281f5"
 }

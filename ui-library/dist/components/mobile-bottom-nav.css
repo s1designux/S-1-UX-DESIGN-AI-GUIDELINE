@@ -31,7 +31,7 @@
    한 바 안에서 Line 과 섞이면 칸마다 무게가 달라 보인다. 예시 4종도 전부 Solid 다.
    받은 파일이 단색 도형이면 색은 이 컴포넌트가 계속 토큰으로 칠한다(마스크 방식). */
 [data-s1-component="mobile-bottom-nav"] [data-s1-part="icon"] {
-  background-color: var(--color-icon-gray);
+  background-color: var(--color-navigation-icon-default);
   display: block;
   flex: none;
   height: var(--sizing-32);

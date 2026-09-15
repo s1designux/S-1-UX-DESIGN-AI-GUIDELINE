@@ -47,7 +47,7 @@
   "doDont": {
     "do": [
       "색·테두리는 form-control 역할 토큰(--color-form-control-*)을 통해 참조한다.",
-      "focus 는 파란 테두리(--input-focus-border)로만 표시하고 배경은 바꾸지 않는다.",
+      "focus 는 파란 테두리(--color-form-control-border-selected)로만 표시하고 배경은 바꾸지 않는다.",
       "라벨은 form-control 밖 제목 텍스트 토큰(--color-text-title-secondary)을 쓴다.",
       "안내메시지는 규칙을 알려야 하는 화면에서만 켠다. 끌 때는 message 요소와 aria-describedby 를 함께 뺀다."
     ],
@@ -108,10 +108,10 @@
   },
   "states": ["default", "focus", "filled", "error", "correct", "read-only", "disabled"],
   "stateNotes": {
-    "focus":    "Figma: 'selected'. border → --input-focus-border(blue). bg 변경 없음.",
+    "focus":    "Figma: 'selected'. border → --color-form-control-border-selected(blue). bg 변경 없음.",
     "filled":   "Figma: 'complete'. HD-3: 별도 bg/border 없음. default와 동일 시각. text/default 색상으로만 구분(placeholder→typed). canonical: filled (token-aliases.json 확정).",
     "correct":  "HD-4: correct로 통일(Figma: success). border = focus와 동일(blue, --color/form-control/border/selected). helper text = --color/text/state/correct(#1D6CEB).",
-    "error":    "border → --input-error-border(#FF4554). helper text → error 메시지.",
+    "error":    "border → --color-form-control-border-error(#FF4554). helper text → error 메시지.",
     "hover":    "Input field Hover는 삭제(HD-2). suffix action Hover는 suffixAction.hover에서 별도 관리."
   },
   "iconSlots": ["off", "1", "2+"],
@@ -144,33 +144,33 @@
         "helper": {
           "--color-text-state-helper":  "var(--color-text-secondary)",
           "--color-text-state-correct": "#1D6CEB",
-          "--color-text-state-error":   "var(--color-status-error)",
+          "--color-text-state-caution":   "var(--color-status-error)",
           "note": "--color/text/state/correct = #1D6CEB (파란색). correct 상태 border와 동일 색조."
         }
       },
       "componentTokens": {
         "background": {
-          "--input-default-bg":  "var(--color-form-control-bg-default)",
-          "--input-disabled-bg": "var(--color-form-control-bg-disabled)"
+          "--color-form-control-bg-default":  "var(--color-form-control-bg-default)",
+          "--color-form-control-bg-disabled": "var(--color-form-control-bg-disabled)"
         },
         "border": {
-          "--input-default-border":  "var(--color-form-control-border-default)",
-          "--input-focus-border":    "var(--color-form-control-border-selected)",
-          "--input-error-border":    "var(--color-form-control-border-error)",
-          "--input-correct-border":  "var(--color-form-control-border-correct)",
-          "--input-disabled-border": "var(--color-form-control-border-disabled)"
+          "--color-form-control-border-default":  "var(--color-form-control-border-default)",
+          "--color-form-control-border-selected":    "var(--color-form-control-border-selected)",
+          "--color-form-control-border-error":    "var(--color-form-control-border-error)",
+          "--color-form-control-border-correct":  "var(--color-form-control-border-correct)",
+          "--color-form-control-border-disabled": "var(--color-form-control-border-disabled)"
         },
         "text": {
-          "--input-placeholder-text": "var(--color-form-control-text-placeholder)",
-          "--input-disabled-text":    "var(--color-form-control-text-disabled)",
-          "--input-helper-text":      "var(--color-text-state-helper)",
-          "--input-correct-text":     "var(--color-text-state-correct)",
-          "--input-error-text":       "var(--color-status-error)"
+          "--color-form-control-text-placeholder": "var(--color-form-control-text-placeholder)",
+          "--color-form-control-text-disabled":    "var(--color-form-control-text-disabled)",
+          "--color-text-state-helper":      "var(--color-text-state-helper)",
+          "--color-text-state-correct":     "var(--color-text-state-correct)",
+          "--color-text-state-caution":       "var(--color-status-error)"
         },
         "readonly": {
-          "--input-readonly-bg":     "var(--color-form-control-bg-disabled)",
-          "--input-readonly-border": "var(--color-form-control-border-default)",
-          "--input-readonly-text":   "var(--color-text-readonly)",
+          "--color-form-control-bg-disabled":     "var(--color-form-control-bg-disabled)",
+          "--color-form-control-border-default": "var(--color-form-control-border-default)",
+          "--color-form-control-text-read-only":   "var(--color-text-readonly)",
           "note": "Textarea 와 공유. readonly bg는 disabled와 동일하고 border는 default를 유지한다. text는 --color-text-readonly로 한 단계 진하다. build-components.ts Read-Only 정본과 일치."
         }
       },

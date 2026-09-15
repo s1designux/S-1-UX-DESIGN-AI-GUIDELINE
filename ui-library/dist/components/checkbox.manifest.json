@@ -1,8 +1,8 @@
 {
   "id": "checkbox",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "status": "approved",
-  "canonicalFingerprint": "612dd07b14cc04e5a98b9ad225e1cb3ebe07893e802069db2b9917d02f1ff634",
+  "canonicalFingerprint": "9110d71b950cd71df03c3ddf7b26fc0de239d55ea0abfc069ec9795035ea3c18",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -139,5 +139,5 @@
     "runtime": "none",
     "reason": "Native checkbox semantics provide the complete approved behavior."
   },
-  "sourceFingerprint": "6e2670d1c8e7ae8d90f20dfb3fcb84dd8ec6e83916b79dd1b9e08efd0011500d"
+  "sourceFingerprint": "dcd6127c600a0bf6c4b1c8464b0b08a9727424139f46d83370351a0d75ae0b86"
 }

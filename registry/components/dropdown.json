@@ -78,137 +78,67 @@
   },
   "tokens": [
     {
-      "cssVar": "--dropdown-trigger-default-bg",
-      "value": "var(--color-surface-default)",
-      "semanticRef": "color-surface-default",
+      "cssVar": "--color-dropdown-list-bg",
       "part": "trigger",
       "state": "default",
       "property": "background"
     },
     {
-      "cssVar": "--dropdown-trigger-hover-bg",
-      "value": "var(--color-bg-subtle)",
-      "semanticRef": "color-bg-subtle",
+      "cssVar": "--color-dropdown-option-bg-hover",
       "part": "trigger",
       "state": "hover",
       "property": "background"
     },
     {
-      "cssVar": "--dropdown-trigger-open-bg",
-      "value": "var(--color-bg-subtle)",
-      "semanticRef": "color-bg-subtle",
-      "part": "trigger",
-      "state": "open",
-      "property": "background"
-    },
-    {
-      "cssVar": "--dropdown-trigger-disabled-bg",
-      "value": "var(--color-bg-subtle)",
-      "semanticRef": "color-bg-subtle",
-      "part": "trigger",
-      "state": "disabled",
-      "property": "background"
-    },
-    {
-      "cssVar": "--dropdown-trigger-default-border",
-      "value": "var(--color-form-control-border-default)",
-      "semanticRef": "color-form-control-border-default",
+      "cssVar": "--color-dropdown-list-border",
       "part": "trigger",
       "state": "default",
       "property": "border"
     },
     {
-      "cssVar": "--dropdown-trigger-hover-border",
-      "value": "var(--color-border-strong)",
-      "semanticRef": "color-border-strong",
-      "part": "trigger",
-      "state": "hover",
-      "property": "border"
-    },
-    {
-      "cssVar": "--dropdown-trigger-open-border",
-      "value": "var(--color-border-focus)",
-      "semanticRef": "color-border-focus",
-      "part": "trigger",
-      "state": "open",
-      "property": "border"
-    },
-    {
-      "cssVar": "--dropdown-trigger-disabled-border",
-      "value": "var(--color-border-subtle)",
-      "semanticRef": "color-border-subtle",
-      "part": "trigger",
-      "state": "disabled",
-      "property": "border"
-    },
-    {
-      "cssVar": "--dropdown-trigger-default-text",
-      "value": "var(--color-text-secondary)",
-      "semanticRef": "color-text-secondary",
+      "cssVar": "--color-dropdown-option-label-default",
       "part": "trigger",
       "state": "default",
       "property": "text"
     },
     {
-      "cssVar": "--dropdown-trigger-disabled-text",
-      "value": "var(--color-text-disabled)",
-      "semanticRef": "color-text-disabled",
-      "part": "trigger",
-      "state": "disabled",
-      "property": "text"
-    },
-    {
-      "cssVar": "--dropdown-trigger-placeholder-text",
-      "value": "var(--color-text-placeholder)",
-      "semanticRef": "color-text-placeholder",
+      "cssVar": "--color-dropdown-option-label-default",
       "part": "trigger",
       "state": "empty",
       "property": "text"
     },
     {
-      "cssVar": "--dropdown-trigger-selected-text",
-      "value": "var(--color-text-primary)",
-      "semanticRef": "color-text-primary",
+      "cssVar": "--color-dropdown-option-label-selected",
       "part": "trigger",
       "state": "filled",
       "property": "text"
     },
     {
-      "cssVar": "--dropdown-list-bg",
-      "value": "var(--color-surface-raised)",
-      "semanticRef": "color-surface-raised",
+      "cssVar": "--color-dropdown-list-bg",
       "part": "list",
       "state": "all",
       "property": "background"
     },
     {
-      "cssVar": "--dropdown-list-border",
-      "value": "var(--color-border-default)",
-      "semanticRef": "color-border-default",
+      "cssVar": "--color-dropdown-list-border",
       "part": "list",
       "state": "all",
       "property": "border"
     },
     {
-      "cssVar": "--dropdown-option-hover-bg",
-      "value": "var(--color-bg-subtle)",
-      "semanticRef": "color-bg-subtle",
+      "cssVar": "--color-dropdown-option-bg-hover",
       "part": "option",
       "state": "hover",
       "property": "background"
     },
     {
-      "cssVar": "--dropdown-option-selected-bg",
-      "value": "transparent",
-      "semanticRef": null,
+      "cssVar": "--color-dropdown-option-bg-selected",
       "part": "option",
       "state": "selected",
       "property": "background"
     },
     {
-      "cssVar": "--dropdown-option-selected-text",
-      "value": "var(--color-action-primary-default)",
-      "semanticRef": "color-action-primary-default",
+      "cssVar": "--color-dropdown-option-label-selected",
       "part": "option",
       "state": "selected",
       "property": "text"

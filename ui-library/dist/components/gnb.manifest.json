@@ -1,8 +1,8 @@
 {
   "id": "gnb",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "status": "verified",
-  "canonicalFingerprint": "45fe2f5bc0406a4c23a3589169db90b0e1155c5874ba9d43d43ffcb3a7ff0f62",
+  "canonicalFingerprint": "aa67dd902828357ed4363b952e963e3eafd57d64d2b2ed2e2ee86016532e3ad0",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -229,5 +229,5 @@
     },
     "behaviorContract": "registry/components/component-behavior.pc.json 의 \"GNB\" 장부."
   },
-  "sourceFingerprint": "c4c532d631af7c752757c99be1c5e7bf95a63afa70097b797aeafbfb2160881a"
+  "sourceFingerprint": "6604b0635ee6248825823f7b040bb84e14a86ba78c4d6e36793ea69d583184e6"
 }

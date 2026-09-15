@@ -1,6 +1,6 @@
 {
   "name": "@s1/ui-vue",
-  "version": "0.5.0",
+  "version": "0.6.10",
   "description": "S1 디자인 시스템 — 승인된 배포본 마크업을 그대로 옮긴 Vue 컴포넌트",
   "type": "module",
   "main": "./index.js",

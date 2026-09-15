@@ -286,3 +286,19 @@ export interface S1ModalContentProps extends S1BaseProps {
   onClose?: (event: CustomEvent) => void;
 }
 export declare function S1ModalContent(props: S1ModalContentProps): ReactElement;
+
+export interface S1BottomSheetOptionProps extends S1BaseProps {
+  /** 승인된 변형: text · checkbox · radio · list */
+  variant?: "text" | "checkbox" | "radio" | "list";
+}
+export declare function S1BottomSheetOption(props: S1BottomSheetOptionProps): ReactElement;
+
+export interface S1BottomSheetProps extends S1BaseProps {
+  /** 승인된 변형: none · single · dual */
+  variant?: "none" | "single" | "dual";
+  /** s1:bottom-sheet:open */
+  onOpen?: (event: CustomEvent) => void;
+  /** s1:bottom-sheet:close */
+  onClose?: (event: CustomEvent) => void;
+}
+export declare function S1BottomSheet(props: S1BottomSheetProps): ReactElement;
