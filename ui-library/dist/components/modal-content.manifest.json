@@ -1,8 +1,8 @@
 {
   "id": "modal-content",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "status": "approved",
-  "canonicalFingerprint": "aab934baad143bfc646cd2602fbec0d9fc79cf068208141e1cd0f7a4ec8ea18d",
+  "canonicalFingerprint": "ace32ebbaa18dcf255d1cfb0e25169b4cee952182c6bd42bb1768dba9e572691",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -218,5 +218,5 @@
     "prewiredOpenNote": "이미 열린 채로 들어온 마크업(검수 화면·정적 예시)도 init 시점에 Escape·초점 가둠·스크롤 잠금을 배선한다.",
     "heightBehaviorNote": "높이 grow→85vh→내부 스크롤은 순수 CSS(flex + overflow-y:auto)로 처리되며 JS 는 관여하지 않는다."
   },
-  "sourceFingerprint": "a2dd75dd0c2e687b99f27613fa40da486e983984c5566de0329dbc1b39d7fcca"
+  "sourceFingerprint": "e25789f7ad9aa3dc23380997450456164278395c52dcae5d342a5d3529e7394d"
 }

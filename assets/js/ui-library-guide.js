@@ -122,7 +122,7 @@ const componentConfig = {
   "mobile-header": {
     title: "Mobile Header",
     description: "모바일 화면 상단 AppBar입니다. 상태바(StatusBar)는 OS·브라우저가 그리는 영역이라 배포본에 넣지 않습니다.",
-    approvedScope: "Type 6종(Home 2 · Standard 4) · AppBar 56px 고정 · 크기 축 없음 · JavaScript 불필요",
+    approvedScope: "Type 7종(Home 3 · Standard 4) · AppBar 56px 고정 · 크기 축 없음 · JavaScript 불필요",
     runtime: S1UI.mobileHeader
   },
   gnb: {
@@ -1920,14 +1920,22 @@ function mobileBottomNavStateMatrix() {
     <div class="platform-section platform-section-mobile"><div class="preview-area">${block()}</div></div>`;
 }
 
-/* ── Mobile Header — Type 6종. StatusBar·Platform 축은 river 결정(D5)으로 배포본에서 뺐다.
-   안내 화면 목업 안에서만 상태바를 그림으로 보여준다(D6). */
+/* ── Mobile Header — Type 7종. StatusBar·Platform 축은 river 결정(D5)으로 배포본에서 뺐다.
+   안내 화면 목업 안에서만 상태바를 그림으로 보여준다(D6).
+   6종 → 7종: river 승인 2026-09-08 로 정본(MOBILE_HEADER_TYPES)에 "Home / Title + 1 Icon" 이
+   추가됐고, 2026-09-15 river 지시("웹에도 넣어줘")로 배포본·안내 화면에 반영했다. */
 function mobileHeaderMarkup(variant) {
   const back = `<button type="button" data-s1-part="back" aria-label="이전"><span data-s1-part="back-icon" aria-hidden="true"></span></button>`;
   const close = `<button type="button" data-s1-part="close" aria-label="닫기"><span data-s1-part="close-icon" aria-hidden="true"></span></button>`;
   const spacer = `<span data-s1-part="spacer" aria-hidden="true"></span>`;
   if (variant === "home-title") {
     return `<header data-guide-sample="part" data-s1-component="mobile-header" data-variant="home-title"><h1 data-s1-part="title">홈 타이틀</h1></header>`;
+  }
+  if (variant === "home-title-1icon") {
+    return `<header data-guide-sample="part" data-s1-component="mobile-header" data-variant="home-title-1icon">
+      <h1 data-s1-part="title">홈 타이틀</h1>
+      <button type="button" data-s1-part="notification" aria-label="알림"><span data-s1-part="notification-icon" aria-hidden="true"></span></button>
+    </header>`;
   }
   if (variant === "home-title-subtitle") {
     return `<header data-guide-sample="part" data-s1-component="mobile-header" data-variant="home-title-subtitle">
@@ -1949,6 +1957,7 @@ function mobileHeaderMarkup(variant) {
 
 const MOBILE_HEADER_TYPES = [
   ["Home / Title", "home-title"],
+  ["Home / Title + 1 Icon", "home-title-1icon"],
   ["Home / Title + Subtitle + 1 Icon", "home-title-subtitle"],
   ["Standard / Title", "standard-title"],
   ["Standard / Title + Close", "standard-title-close"],
@@ -1978,7 +1987,7 @@ function mobileHeaderActionBlock(breakName) {
     </label>`;
   }).join("");
 
-  /* 칩은 목업 왼쪽에 세로 6행으로 세운다 — 목업이 길어서 아래에 두면 모니터에서 잘린다(river 지시). */
+  /* 칩은 목업 왼쪽에 세로 7행으로 세운다 — 목업이 길어서 아래에 두면 모니터에서 잘린다(river 지시). */
   return `<div class="comp-action-top">
       <div class="matrix-col-header-action">Action</div>
       <div class="uilg-mobile-action uilg-mobile-action--with-picker">

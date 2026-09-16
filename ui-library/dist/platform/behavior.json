@@ -824,7 +824,7 @@
           "name": "back/close/notification carry a context-appropriate aria-label; title-bearing variants render an h1",
           "headingRole": "variants without title text render an empty non-heading span; the page body's own h1 acts as the primary heading"
         },
-        "runtimeNote": "런타임 없음(jsRequired=false). StatusBar·Platform 축은 river 결정(D5)으로 배포본에서 뺐다 — AppBar 56px·Type 6종만 배포한다."
+        "runtimeNote": "런타임 없음(jsRequired=false). StatusBar·Platform 축은 river 결정(D5)으로 배포본에서 뺐다 — AppBar 56px·Type 7종(Home 3 · Standard 4)을 배포한다. 2026-09-15 에 Home / Title + 1 Icon 이 더해져 6종 → 7종."
       }
     }
   }

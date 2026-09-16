@@ -3,6 +3,32 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-09-17 06:15 (KST)
+
+- 원본 커밋: `5bf5267` — Merge branch 'main' into worktree-river-decisions
+- 내용이 바뀐 파일 57개
+  - `assets/js/main.js`
+  - `assets/js/ui-library-guide.js`
+  - `design/DESIGN.core.md`
+  - `pages/components.html`
+  - `registry/components/component-behavior.pc.json`
+  - `registry/components/component-facts.json`
+  - `registry/components/date-picker.json`
+  - `registry/components/gnb.json`
+  - `registry/components/mobile-header.json`
+  - `registry/components/modal-content.json`
+  - `ui-library/dist/components/assist-button.manifest.json`
+  - `ui-library/dist/components/bottom-sheet-option.manifest.json`
+  - `ui-library/dist/components/bottom-sheet.manifest.json`
+  - `ui-library/dist/components/button.manifest.json`
+  - `ui-library/dist/components/checkbox.manifest.json`
+  - `ui-library/dist/components/chip.manifest.json`
+  - `ui-library/dist/components/date-picker.manifest.json`
+  - `ui-library/dist/components/dropdown.manifest.json`
+  - `ui-library/dist/components/filter-chip.manifest.json`
+  - `ui-library/dist/components/gnb-sub-menu-item.manifest.json`
+  - … 외 37개
+
 ## 2026-09-16 06:17 (KST)
 
 - 원본 커밋: `b525fb6` — feat(install-prompt): 다운로드 화면 2단 배치 — 머리말 통합·안내 1~4·문구 축약

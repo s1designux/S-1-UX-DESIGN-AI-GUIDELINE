@@ -1,8 +1,8 @@
 {
   "id": "toggle",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "status": "approved",
-  "canonicalFingerprint": "799da06911d761f8aef6380b372237b894a6d36dee516754db0a43d4a45bd1bd",
+  "canonicalFingerprint": "337c36d0a510456054d88b6ab89ace41032adf90b966911a09059f7c48cd842b",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -128,5 +128,5 @@
     "runtime": "components/toggle.js",
     "reason": "role=switch 는 native checked 가 없어 aria-checked 상태 전환을 런타임이 담당한다."
   },
-  "sourceFingerprint": "e2f4ea2d7a478c7f68b1d9cb98e893d352d8bb278e4f63a29ff4240c7a586367"
+  "sourceFingerprint": "3f86633db1098ba2ecc1c397d52fa27b477eaf4c674b49cf9f91d0ceec384be1"
 }

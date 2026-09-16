@@ -32,11 +32,17 @@ const SITE_NAV = [
   { type: 'item', id: 'dashboard', href: 'dashboard.html', rootHref: 'pages/dashboard.html', icon: '🛡', text: 'Agent Team', status: 'ready' },
   { type: 'item', id: 'pipeline-status', href: 'pipeline-status.html', rootHref: 'pages/pipeline-status.html', icon: '🔗', text: '파이프라인 상태', status: 'new' },
   { type: 'item', id: 'update-management', href: 'update-management.html', rootHref: 'pages/update-management.html', icon: '🗂', text: '업데이트 관리', status: 'ready' },
+  { type: 'item', id: 'registry-explorer', href: 'registry-explorer.html', rootHref: 'pages/registry-explorer.html', icon: '🗄', text: 'Registry Explorer', status: 'ready' },
 
   /* ── Harness Admin (2026-06-24 메뉴에서 숨김 — 파일/route 는 보존, 직접 URL 접근만 가능.
      river: 결과물 위주로만 봐서 관리 메뉴 7개 거의 안 봄 → 메뉴 비노출. 차후 정말 불필요한지 확인 후 삭제 결정.)
-       harness-overview · registry-explorer · token-mapping · migration-board
-       registry-health(System Status) · reports · legacy(Legacy Guide)
+       harness-overview · reports · legacy(Legacy Guide)
+
+     2026-09-15 정리(river 결정) — 숨김 상태로 석 달 둔 뒤 네 화면을 실제로 열어 보고 갈랐다:
+       · registry-explorer → 살아 있었다(정본 데이터 그대로). System 그룹으로 복귀.
+         단 Component 탭은 은퇴한 별칭 토큰층이 유일 소스라 함께 걷어냈다.
+       · token-mapping · migration-board · registry-health → 은퇴.
+         site-map _archive + deprecated-tokens.json legacyFiles + page-layout-policy retired.
      ── Archive 페이지(ai-snippets·guide-md·md-review)는 2026-06-24 삭제됨 ── */
 ];
 
@@ -221,7 +227,7 @@ var SEARCH_INDEX = [
   { label: 'PC Components',     sublabel: 'PC 컴포넌트 가이드 (Variables 정본)', type: 'page', page: 'components.html?platform=pc', keywords: 'component pc button checkbox radio toggle chip input select dropdown textarea datepicker table gnb pagination variables 컴포넌트 피씨' },
   { label: 'Mobile Components', sublabel: '모바일 컴포넌트 가이드 (Variables 정본)', type: 'page', page: 'components.html?platform=mobile', keywords: 'component mobile button checkbox radio toggle chip input select textarea datepicker timepicker bottom nav 모바일 컴포넌트 하단내비' },
   { label: 'Icons',             sublabel: '아이콘 818개',    type: 'page', page: 'icons.html',       keywords: 'icon svg 아이콘' },
-  { label: 'Token Mapping',     sublabel: 'Figma ↔ CSS',    type: 'page', page: 'token-mapping.html', keywords: 'token mapping figma css 토큰 매핑' },
+  { label: 'Registry Explorer', sublabel: '토큰 원장 검수',   type: 'page', page: 'registry-explorer.html', keywords: 'registry explorer 원장 foundation semantic 토큰 목록' },
   { label: 'Reports',           sublabel: '리포트 목록',     type: 'page', page: 'reports.html',     keywords: 'report mvp 리포트' },
 
   // Components

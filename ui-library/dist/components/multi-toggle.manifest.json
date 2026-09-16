@@ -1,8 +1,8 @@
 {
   "id": "multi-toggle",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "status": "approved",
-  "canonicalFingerprint": "19140fba8b98eaed9e528022de63989621c80c4f43b10aa328eca08317496d2d",
+  "canonicalFingerprint": "ce0db27734c928cfba774c54dd1f2b6b7405e58ad14f32fad9b156d948db7538",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -157,5 +157,5 @@
     "controlMode": "uncontrolled",
     "behavior": "좌우(위아래) 화살표로 이동, Space·Enter·클릭으로 선택. disabled 칸은 이동·포커스 대상에서 제외."
   },
-  "sourceFingerprint": "db05d866d46ab6dc5dbd4c08d5c9a98adaa512a3c5eed2f7c03cf1b54d73aa3b"
+  "sourceFingerprint": "be460b7174e5650654ed2b8241bb1c18eb7b3d75b3da9b2fdb2a3fe775eaccf9"
 }

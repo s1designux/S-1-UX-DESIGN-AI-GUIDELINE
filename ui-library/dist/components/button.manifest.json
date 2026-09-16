@@ -1,8 +1,8 @@
 {
   "id": "button",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "status": "approved",
-  "canonicalFingerprint": "77265d5da86c952b73d51e8b82a7deae2c6813bb8a491627cfaf00a9dbf71c3e",
+  "canonicalFingerprint": "e78475d1765aa89413de84e026e260bd0b0a60c15814dd431cfaa1a6a224e3af",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -148,5 +148,5 @@
   "notInCanon": {
     "mobileHover": "정본 Button 세트는 Size=LG 에도 State=Hover 를 갖지만 웹은 **모바일(LG)에 마우스오버 칠을 내지 않는다** — 손가락에는 hover 가 없고, PC 브라우저로 모바일 화면을 볼 때 큰 버튼이 통째로 칠해져 혼란을 준다. Input 의 suffix 액션에서 같은 이유로 이미 걷어냈고(river 지시 2026-09-07), 2026-09-15 river 가 바텀시트 검수에서 Button 에도 같은 규칙을 지시했다. 누름(:active)은 LG 를 포함해 그대로 둔다 — 정본 Pressed 는 Hover 와 같은 칠이고 손가락으로도 눌리기 때문이다. **크기를 직접 적지 않고 감싸는 요소에 data-s1-break=\"mobile\" 만 선언해 48 로 서는 버튼도 같다** — density-policy.json 이 river 승인(2026-09-14)으로 button 의 mobileHeight 를 48 로 정본화했으므로 그렇게 만든 48px 도 정책이 낸 모양이다. 자기가 크기를 직접 적었으면 그쪽이 이긴다. 선택자: @media (hover: hover) 안의 :hover:not(:disabled):not([data-size=\"lg\"]):is([data-size], :not([data-s1-break=\"mobile\"] *)) (Input 의 input.css:110 과 짝을 맞춘 형태)."
   },
-  "sourceFingerprint": "0a6fa5f546580c415f243b7553d38829023c5b2fee462f7047289a08eaa207ba"
+  "sourceFingerprint": "94b8d9b45f77a372100bbc67335135d80ec21bd5ceebc3af2ce8eb9ba39a10e4"
 }

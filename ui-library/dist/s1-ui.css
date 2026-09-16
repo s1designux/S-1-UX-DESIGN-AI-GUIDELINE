@@ -2140,7 +2140,9 @@
 /* component:mobile-header */
 /* Mobile Header — 정본 buildMobileHeaderVariant(build-components.ts:3474)·buildMobileHeader(:3160) 기준.
    river 결정(D5): 상태바(StatusBar)를 웹 배포본에서 제외하고 AppBar 56px 만 배포한다.
-   Platform(App/Web) 축도 상태바 유무 차이일 뿐이라 함께 제외 — Type 6종 1축만 남는다. */
+   Platform(App/Web) 축도 상태바 유무 차이일 뿐이라 함께 제외 — Type 1축만 남는다.
+   Type 은 7종이다(Home 3 · Standard 4) — Home / Title + 1 Icon 은 river 승인 2026-09-08 로 정본에 늘었고
+   2026-09-15 river 지시 "웹에도 넣어줘" 로 배포본에 들어왔다. */
 [data-s1-component="mobile-header"] {
   align-items: center;
   box-sizing: border-box;
@@ -2198,12 +2200,19 @@
 
 /* Home — 좌측 정렬 18/Bold(title/18B) */
 [data-s1-component="mobile-header"][data-variant="home-title"] [data-s1-part="title"],
+[data-s1-component="mobile-header"][data-variant="home-title-1icon"] [data-s1-part="title"],
 [data-s1-component="mobile-header"][data-variant="home-title-subtitle"] [data-s1-part="title"] {
   font-size: var(--font-size-18);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-normal);
   line-height: var(--line-height-130);
   text-align: left;
+}
+
+/* Home / Title + 1 Icon 만 title-notification 사이 gap 8 (정본 appBar.itemSpacing = 8, build-components.ts:3614).
+   home-title 은 이 gap 이 없다 — 알림 슬롯이 아예 없는 유형이라서다. */
+[data-s1-component="mobile-header"][data-variant="home-title-1icon"] {
+  gap: var(--spacing-8);
 }
 
 /* ── Home / Title + Subtitle + 1 Icon 전용 ── */

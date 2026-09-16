@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "b525fb6605742778f238a6c81902adc5a703f4a6",
+  "commit": "5bf526720834db6baa9a8563dea60e29cb69f81e",
   "scope": "PC",
-  "generatedAt": "2026-09-16",
-  "syncedAt": "2026-09-16 06:17 (KST)",
-  "sourceCommitDate": "2026-09-15 17:07 (KST)",
-  "sourceCommitSubject": "feat(install-prompt): 다운로드 화면 2단 배치 — 머리말 통합·안내 1~4·문구 축약"
+  "generatedAt": "2026-09-17",
+  "syncedAt": "2026-09-17 06:15 (KST)",
+  "sourceCommitDate": "2026-09-16 19:44 (KST)",
+  "sourceCommitSubject": "Merge branch 'main' into worktree-river-decisions"
 }

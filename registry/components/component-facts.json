@@ -3,7 +3,7 @@
     "generated": true,
     "source": "plugins/figma-vars-installer/src/build-components.ts",
     "method": "mock-execution",
-    "sourceHash": "5ffeb42d115f",
+    "sourceHash": "29f118c6de79",
     "unknownValuePolicy": [
       "unknown",
       "not-defined",
@@ -2571,6 +2571,33 @@
         "Options"
       ]
     },
+    "Calendar Nav Arrow": {
+      "variantAxes": {
+        "State": [
+          "Default",
+          "Hover",
+          "Disabled"
+        ]
+      },
+      "geometry": [
+        {
+          "when": "all",
+          "target": "root",
+          "width": 24,
+          "height": 24,
+          "cornerRadius": "4"
+        }
+      ],
+      "anatomy": [
+        "chevron"
+      ],
+      "tokenBindings": [
+        "color/date-picker/cell/bg/hover"
+      ],
+      "composition": {
+        "buildDependencies": []
+      }
+    },
     "Calendar Cell": {
       "variantAxes": {
         "Size": [
@@ -2800,8 +2827,10 @@
         "color/date-picker/panel/border",
         "color/date-picker/text/disabled",
         "color/date-picker/text/primary",
+        "color/date-picker/text/saturday",
         "color/date-picker/text/secondary",
         "color/date-picker/text/selected",
+        "color/date-picker/text/sunday",
         "color/date-picker/text/today",
         "color/date-picker/tile/bg/default",
         "color/date-picker/tile/bg/disabled",
@@ -2810,7 +2839,9 @@
         "radius/full"
       ],
       "composition": {
-        "buildDependencies": []
+        "buildDependencies": [
+          "Calendar Nav Arrow"
+        ]
       }
     },
     "Date Picker": {
@@ -2929,8 +2960,10 @@
         "color/date-picker/panel/border",
         "color/date-picker/text/disabled",
         "color/date-picker/text/primary",
+        "color/date-picker/text/saturday",
         "color/date-picker/text/secondary",
         "color/date-picker/text/selected",
+        "color/date-picker/text/sunday",
         "color/date-picker/text/today",
         "color/form-control/bg/default",
         "color/form-control/bg/disabled",
@@ -2993,8 +3026,10 @@
         "color/date-picker/panel/bg",
         "color/date-picker/text/disabled",
         "color/date-picker/text/primary",
+        "color/date-picker/text/saturday",
         "color/date-picker/text/secondary",
         "color/date-picker/text/selected",
+        "color/date-picker/text/sunday",
         "color/date-picker/text/today",
         "color/surface/raised",
         "color/text/title/primary",
@@ -3838,7 +3873,10 @@
         "buildDependencies": [
           "Button"
         ]
-      }
+      },
+      "slots": [
+        "Content"
+      ]
     },
     "Filter Chip": {
       "variantAxes": {

@@ -1375,8 +1375,10 @@ agent:
       - "color/date-picker/panel/border"
       - "color/date-picker/text/disabled"
       - "color/date-picker/text/primary"
+      - "color/date-picker/text/saturday"
       - "color/date-picker/text/secondary"
       - "color/date-picker/text/selected"
+      - "color/date-picker/text/sunday"
       - "color/date-picker/text/today"
       - "color/form-control/bg/default"
       - "color/form-control/bg/disabled"
@@ -2105,10 +2107,10 @@ _Don't_
 - 유틸 아이콘 버튼(계정·메뉴)은 <button type="button"> + aria-label 로 이름을 준다. 아이콘 SVG 는 aria-hidden 이다.
 - 언어 항목은 지구본 아이콘 + 보이는 글자 라벨을 함께 두므로 별도 aria-label 을 붙이지 않는다.
 - 로고는 홈으로 가는 링크일 때 <a> 로 내고 글자 라벨이 접근 가능한 이름이 된다.
-- 키보드: Tab 으로 로고 → 메뉴 순서대로 → 유틸 순서대로 이동한다. 정본에 방향키 이동이 없으므로 만들지 않는다.
+- 키보드: Tab 으로 로고 → 메뉴 순서대로 → 유틸 순서대로 이동한다. 하위메뉴를 연 메뉴를 지날 때는 그 패널 안 링크들도 이 순서 사이에 끼어든다(아래 하위메뉴 항목 참고). 정본에 방향키 이동이 없으므로 만들지 않는다.
 - 포커스 표시는 브라우저 기본값을 그대로 쓴다 — 정본에 별도 focus 표현이 없다.
 - 오류 관계·모션 감소는 이 컴포넌트에 해당 없음(not-applicable) — 오류 표시도 애니메이션도 정본에 없다.
-- 하위메뉴를 여는 메뉴에는 aria-controls 로 그 패널의 id를, aria-expanded 로 열림/닫힘 상태를 준다 — 둘 다 이 컴포넌트의 JavaScript(gnb.js)가 관리한다(river 결정 2026-09-09). 마우스를 올리면 열리고(hover-capable), 바·패널 밖으로 나가면 150ms 유예 뒤 닫힌다. Tab 으로 들어가면 열리고, Esc 로 닫히며 초점이 그 메뉴로 되돌아온다 — 패널 안에 초점을 가두지 않는다. 마우스가 없는 기기는 클릭으로 열고 닫는다.
+- 하위메뉴를 여는 메뉴에는 aria-controls 로 그 패널의 id를, aria-expanded 로 열림/닫힘 상태를 준다 — 둘 다 이 컴포넌트의 JavaScript(gnb.js)가 관리한다(river 결정 2026-09-09). 마우스를 올리면 열리고(hover-capable), 바·패널 밖으로 나가면 150ms 유예 뒤 닫힌다. Tab 으로 들어가면 열리고, Esc 로 닫히며 초점이 그 메뉴로 되돌아온다. 열린 패널이 있는 메뉴에서 Tab 을 한 번 더 누르면 초점이 그 패널의 첫 링크로 들어가고, 패널의 마지막 링크에서 Tab 을 누르면 패널이 닫히며 다음 메뉴(또는 유틸 버튼)로 넘어간다 — 패널 첫 링크에서 Shift+Tab 을 누르면 다시 그 메뉴로 돌아간다(river 결정 2026-09-15, gnb-nav 후속). 되돌아오는 방향도 같다 — 어떤 자리에서 Shift+Tab 을 누를 때 바로 앞이 하위메뉴를 가진 메뉴면 그 목록의 마지막 링크부터 훑는다(river 결정 2026-09-16). 이건 초점을 패널 안에 가두는 게 아니다 — 원래 Tab 순서에 없던 패널 내용을 순서 안에 끼워 넣을 뿐, 패널 안 어디서든 Tab/Shift+Tab 을 계속 누르면 결국 패널을 벗어난다 — 그 메뉴 뒤에 갈 곳이 없는 조립(유틸 영역 없는 GNB)에서는 Tab 을 가로채지 않고 GNB 바깥으로 그대로 넘긴다. 마우스가 없는 기기는 클릭으로 열고 닫는다(다만 첫 탭이 열지 못하는 선행 결함이 있다 — BACKLOG 0-d D-2).
 - 닫힌 하위메뉴 패널은 hidden 속성으로 접근성 트리에서도 빠진다(gnb-sub-menu a11y) — 눈에만 안 보이게 하지 않는다.
 - 하위메뉴는 강제 의존이 아니다 — aria-controls 를 붙이지 않은 메뉴는 여전히 평범한 링크다.
 
@@ -2781,7 +2783,7 @@ agent:
     accessibility:
       name: "back/close/notification carry a context-appropriate aria-label; title-bearing variants render an h1"
       headingRole: "variants without title text render an empty non-heading span; the page body's own h1 acts as the primary heading"
-    runtimeNote: "런타임 없음(jsRequired=false). StatusBar·Platform 축은 river 결정(D5)으로 배포본에서 뺐다 — AppBar 56px·Type 6종만 배포한다."
+    runtimeNote: "런타임 없음(jsRequired=false). StatusBar·Platform 축은 river 결정(D5)으로 배포본에서 뺐다 — AppBar 56px·Type 7종(Home 3 · Standard 4)을 배포한다. 2026-09-15 에 Home / Title + 1 Icon 이 더해져 6종 → 7종."
   geometry:
     common:
       target: "root"
@@ -3045,7 +3047,7 @@ _Don't_
 | 딤(overlay) | 뒤 배경을 덮는 color-overlay 딤. 확인 계열과 같은 토큰. |
 | 헤더 | 제목(16B) + 닫기(X). 확인 계열과 같은 규칙 — 제목 항상 존재. |
 | 본문(content-area) | 입력창·표·이미지 등 콘텐츠가 들어가는 자리. 유일하게 스크롤되는 영역. |
-| 본문 자리표시(content) | 회색 박스 + '컨텐츠 영역' 안내문구. 실제 화면에서는 이 자리를 실제 콘텐츠로 교체한다. |
+| 본문 자리표시(content) | 회색 박스 + '컨텐츠 영역' 안내문구. 이 자리가 Figma 슬롯('Content')이며 네모칸은 그 기본 내용이다 — 빼고 입력 폼·표·이미지 등 무엇이든 넣는다. 좌우 여백 24 는 슬롯 밖(content-area)에 고정이다. |
 | 푸터 | 코어 Button 1개(Single) 또는 2개(Dual), XXSM h28. 확인 계열과 같은 규칙. |
 
 | variant | default | hover | pressed | disabled |
@@ -4991,4 +4993,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: 4712480d5afb · 손편집 금지 -->
+<!-- generated-stamp: e94adfd12bfd · 손편집 금지 -->

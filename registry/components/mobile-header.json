@@ -24,7 +24,8 @@
       "2026-08-31 river: 스펙은 Platform별 Home 2종·Standard 4종 행으로 배치하고, 폭이 길어져 Dark 스펙은 Light 스펙 아래에 둔다.",
       "2026-08-25 river: StatusBar 인스턴스의 Light 모드 핀을 해제해 다크를 상속하게 했고, 배경을 투명으로 두어 헤더 전체가 한 색으로 이어지게 했다(원본 구조). StatusBar 정본 세트는 변경하지 않았다.",
       "StatusBar는 선택한 Platform과 같은 정본 인스턴스를 재사용하며, 색은 Semantic 변수·텍스트는 Pretendard 정본 스타일에만 바인딩한다.",
-      "원본 아래화살표 legacy key는 V3 import가 불가능해 river 승인(2026-08-25)에 따라 아이콘 라이브러리 V2.2 419:68의 오른쪽 화살표를 -90° 회전해 사용한다."
+      "원본 아래화살표 legacy key는 V3 import가 불가능해 river 승인(2026-08-25)에 따라 아이콘 라이브러리 V2.2 419:68의 오른쪽 화살표를 -90° 회전해 사용한다.",
+      "2026-09-08 river 승인: 'Home / Title + 1 Icon' 신설(build-components.ts:3460 주석). 레거시(V2.4)에도 Figma 라이브러리 실물 컴포넌트에도 없는 신규 조합이라 figma.propertyMap·variantNodes에는 아직 노드 id가 없다 — 지어내지 않고 비워둔다. 2026-09-15 이 유형을 웹 배포본에 추가하며 variants.Type에만 반영했다."
     ]
   },
   "usage": {
@@ -76,6 +77,7 @@
   "variants": {
     "Type": [
       "Home / Title",
+      "Home / Title + 1 Icon",
       "Home / Title + Subtitle + 1 Icon",
       "Standard / Title",
       "Standard / Title + Close",
@@ -199,7 +201,7 @@
     ],
     "interactionPattern": "mobile-appbar",
     "webTag": "header",
-    "boundaryNote": "2026-09-02 ui-library-code 워크플로우로 웹 배포본을 만들었다 — components.html 섹션은 손관리가 아니라 ui-library-guide.js 가 dist 로 렌더한다(managedBy: ui-library-guide). StatusBar·Platform 축은 river 결정(D5)으로 배포본에서 뺐다 — AppBar 56px·Type 6종만 배포한다."
+    "boundaryNote": "2026-09-02 ui-library-code 워크플로우로 웹 배포본을 만들었다 — components.html 섹션은 손관리가 아니라 ui-library-guide.js 가 dist 로 렌더한다(managedBy: ui-library-guide). StatusBar·Platform 축은 river 결정(D5)으로 배포본에서 뺐다 — AppBar 56px·Type 7종(Home 3 · Standard 4)을 배포한다(2026-09-15 에 Home / Title + 1 Icon 이 더해져 6종 → 7종)."
   },
   "governance": {
     "owner": "design-system",

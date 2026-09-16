@@ -1863,8 +1863,16 @@
         "title"
       ],
       "unreadPcOnly": 0,
-      "unreadDisplayRules": 0,
-      "unreadDeclarations": []
+      "unreadDisplayRules": 1,
+      "unreadDeclarations": [
+        {
+          "selector": "[data-s1-component=\"mobile-header\"][data-variant=\"home-title-1icon\"]",
+          "media": null,
+          "property": "gap",
+          "value": "var(--spacing-8)",
+          "reason": "display-rule"
+        }
+      ]
     },
     {
       "component": "mobile-bottom-nav",

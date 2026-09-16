@@ -1,8 +1,8 @@
 {
   "id": "table",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "status": "approved",
-  "canonicalFingerprint": "6de3fe5b7790826f5f729610aefff8ac8063f392245091eadb0fbbb150e4e564",
+  "canonicalFingerprint": "f48f1aa97cbbb643beb9364db049029d8fb45f5c81e2da496b1f23143bb36542",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -172,5 +172,5 @@
     ],
     "behaviorLedger": "registry/components/component-behavior.pc.json > Table"
   },
-  "sourceFingerprint": "9756b7ebc0b4bab7c30264cb155f1049bfe11139ba7b91b494c1795fae19fe85"
+  "sourceFingerprint": "b431c4e3d7000139e460c3ee9ac2a542fb376340c7c2dd9ebe5a3dfe49fcd0e5"
 }

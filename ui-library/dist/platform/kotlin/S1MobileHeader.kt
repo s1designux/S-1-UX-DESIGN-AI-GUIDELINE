@@ -35,7 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 
 /**
- * 승인된 모바일 헤더. 유형 6종이 유일한 축이고, 유형마다 들어있는 슬롯이 다르다 —
+ * 승인된 모바일 헤더. 유형이 유일한 축이고, 유형마다 들어있는 슬롯이 다르다 —
  * 없는 슬롯에 값을 넘기면 그 값은 그려지지 않는다(유형이 슬롯을 정한다).
  *
  * 상태바는 부품에 없다. 안드로이드에서는 OS 가 그리는 영역이라 우리가 그리면 가짜가 된다
