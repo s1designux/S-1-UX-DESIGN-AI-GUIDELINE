@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "5bf526720834db6baa9a8563dea60e29cb69f81e",
+  "commit": "e03082cff32e08197a1586a0b0ba1e74f882eb90",
   "scope": "PC",
-  "generatedAt": "2026-09-17",
-  "syncedAt": "2026-09-17 06:15 (KST)",
-  "sourceCommitDate": "2026-09-16 19:44 (KST)",
-  "sourceCommitSubject": "Merge branch 'main' into worktree-river-decisions"
+  "generatedAt": "2026-09-18",
+  "syncedAt": "2026-09-18 06:19 (KST)",
+  "sourceCommitDate": "2026-09-17 10:25 (KST)",
+  "sourceCommitSubject": "feat(gate): 레거시 이름을 기계가 정본 이름에 붙인다 — Gate 52 · 적대 시험 내장"
 }

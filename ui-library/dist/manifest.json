@@ -1,9 +1,9 @@
 {
   "id": "s1-ui",
-  "version": "0.8.0",
-  "releasedAt": "2026-09-16",
+  "version": "0.8.1",
+  "releasedAt": "2026-09-17",
   "status": "approved",
-  "canonicalFingerprint": "f8f738913d5f57d2603d93603202c02b126b8d6932aed4c2e229c538a5feaf34",
+  "canonicalFingerprint": "13b6a436dc24e150be72ed1f37243d4947a5de5427a289ef98a486497b5d1aa1",
   "tokenMapFingerprint": "796fb798dd329910ba6c42a29fb4af9e0fd217446b3fa847e140bc70a0a8f4c7",
   "commonCssDependencies": [
     "assets/css/tokens.css",
@@ -914,11 +914,11 @@
     },
     {
       "id": "time-picker",
-      "version": "0.3.1",
+      "version": "0.3.2",
       "status": "approved",
       "jsRequired": true,
-      "canonicalFingerprint": "f0b653021a026b569df4031342faf3f299bae0267ee25621f3ed470ad010dba3",
-      "sourceFingerprint": "94870634f8df0dfd9214ce334ec32588f03899aa7c043bc44cee4ee3c04bde24",
+      "canonicalFingerprint": "ff85bad66f50c10c50d3f342b16d543370673352ae2b84efd4bceacf78a670af",
+      "sourceFingerprint": "3d8708522e4b4e62861b580e0875faebd53746414d18414634bcd247bfb61eb0",
       "css": "components/time-picker.css",
       "js": "components/time-picker.js",
       "example": "examples/time-picker.html",

@@ -4578,10 +4578,10 @@ _Don't_
 | 트리거/필드 | 시간 표시 + ic_시계 아이콘. |
 | 드롭다운 패널 | 시간 선택 목록. |
 
-| variant | default | focus | filled | disabled |
-| --- | --- | --- | --- | --- |
-| input | --color-form-control-bg-default → color-surface-default<br>--color-form-control-border-default → color-control-border-default<br>--color-form-control-text-default → color-text-secondary | — | — | --color-form-control-bg-disabled → color-bg-subtle<br>--color-form-control-border-disabled → color-border-subtle<br>--color-form-control-text-disabled → color-text-disabled |
-| dropdown_panel | --color-form-control-bg-default → color-surface-default<br>--color-form-control-border-default → color-control-border-default<br>--color-form-control-text-default → color-text-secondary | — | — | --color-form-control-bg-disabled → color-bg-subtle<br>--color-form-control-border-disabled → color-border-subtle<br>--color-form-control-text-disabled → color-text-disabled |
+| variant | default | hover | focus | filled | disabled |
+| --- | --- | --- | --- | --- | --- |
+| input | --color-form-control-bg-default → color-surface-default<br>--color-form-control-border-default → color-control-border-default<br>--color-form-control-text-default → color-text-secondary | — | — | — | --color-form-control-bg-disabled → color-bg-subtle<br>--color-form-control-border-disabled → color-border-subtle<br>--color-form-control-text-disabled → color-text-disabled |
+| dropdown_panel | --color-form-control-bg-default → color-surface-default<br>--color-form-control-border-default → color-control-border-default<br>--color-form-control-text-default → color-text-secondary | — | — | — | --color-form-control-bg-disabled → color-bg-subtle<br>--color-form-control-border-disabled → color-border-subtle<br>--color-form-control-text-disabled → color-text-disabled |
 
 #### Agent-readable contract
 
@@ -4614,6 +4614,7 @@ agent:
       - "Disabled"
     metadata:
       - "default"
+      - "hover"
       - "focus"
       - "filled"
       - "disabled"
@@ -4993,4 +4994,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: e94adfd12bfd · 손편집 금지 -->
+<!-- generated-stamp: ec13038fb1fd · 손편집 금지 -->

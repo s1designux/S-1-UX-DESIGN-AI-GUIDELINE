@@ -96,6 +96,7 @@
   },
   "states": [
     "default",
+    "hover",
     "focus",
     "filled",
     "disabled"
