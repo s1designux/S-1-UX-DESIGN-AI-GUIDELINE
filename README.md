@@ -31,6 +31,13 @@ S-1 디자인 시스템을 AI 에이전트와 개발자가 시각적으로 정�
 
 React·Vue·Swift·Kotlin·C++ 로 쓸 때는 `ui-library/dist/platform/<플랫폼>/` 안의 README 를 보세요.
 
+## AI에게 줄 때는 이 한 장
+
+AI(클로드·GPT·Cursor 등)에게 작업을 시킬 때는 [`ONBOARDING.md`](ONBOARDING.md) 를 그대로 주세요.
+AI가 **어떤 도구·어떤 매체(PC/모바일)·어떤 기술**인지 객관식으로 물어본 뒤, 그 조합에 맞는 규칙만 읽고 시작합니다.
+만든 결과는 검수기가 판정합니다 — `npm run ai:check -- <폴더> --platform pc --report 판정표.html`.
+자세한 것은 [`ai/README.md`](ai/README.md).
+
 ## 가장 먼저 읽을 파일
 
 [`design/DESIGN.core.md`](design/DESIGN.core.md)를 최우선 구현 기준으로 사용하세요. 이 문서에는 디자인 원칙, 토큰, 컴포넌트 구조, 상태, 아이콘, PC 동작 계약이 통합되어 있습니다.
