@@ -2358,9 +2358,12 @@ function gnbSubMenuStateMatrix() {
    Focus 칸은 정본 Focus 변형 그대로다: 트리거 문구는 placeholder "시간 선택" 이고
    패널은 TPD:focus-default(=24h/시 Selected, 확인 비활성)다(build-components.ts 2333·2559). */
 
+/* 표본 목록은 정본 간격을 그대로 따른다 — 분은 24h 1분 · 12h 5분(data-minute-step 과 같은 값),
+   시는 24h 두 자리(00~23) · 12h 한 자리(1~12)다(time-picker.js buildItems·buildMinuteItems).
+   미리보기 칸(.is-preview)만 마크업이 목록을 든다 — 고른 값 언저리 네 줄이다. */
 const timePickerSample = {
-  hour: ["08", "09", "10", "11"],
-  minute: ["00", "15", "30", "45"],
+  "24h": { hour: ["08", "09", "10", "11"], minute: ["28", "29", "30", "31"] },
+  "12h": { hour: ["8", "9", "10", "11"], minute: ["20", "25", "30", "35"] },
   ampm: ["오전", "오후"]
 };
 
@@ -2384,12 +2387,18 @@ const timePickerPanelStates = {
   "분 Selected": { hour: "09", minute: "30" }
 };
 
-function timePickerPanel(type, pick) {
-  const hour = timePickerColumn("hour", "시", timePickerSample.hour, { selected: pick.hour, hover: pick.hourHover });
-  const minute = timePickerColumn("minute", "분", timePickerSample.minute, { selected: pick.minute, hover: pick.minuteHover });
-  const ampm = timePickerColumn("ampm", "오전오후", timePickerSample.ampm, { selected: type === "12h" ? "오전" : null });
+/* 실제 동작 표본은 목록을 비워 낸다 — 배포본 init 은 칸이 이미 있으면 채우기를 건너뛰므로
+   (time-picker.js getCells 분기) 마크업이 표본 네 줄을 들고 있으면 전 구간(00~23 · 00~59)이
+   영영 만들어지지 않고 스크롤도 생기지 않는다. */
+function timePickerPanel(type, pick, isPreview = false) {
+  const sample = timePickerSample[type === "12h" ? "12h" : "24h"];
+  /* 12h 의 시는 한 자리 표기라 상태 정의의 "09" 를 "9" 로 맞춘다. */
+  const asHour = (v) => (v == null ? null : type === "12h" ? String(Number(v)) : v);
+  const hour = timePickerColumn("hour", "시", isPreview ? sample.hour : [], { selected: asHour(pick.hour), hover: asHour(pick.hourHover) });
+  const minute = timePickerColumn("minute", "분", isPreview ? sample.minute : [], { selected: pick.minute, hover: pick.minuteHover });
+  const ampm = timePickerColumn("ampm", "오전오후", isPreview ? timePickerSample.ampm : [], { selected: isPreview && type === "12h" ? "오전" : null });
   const columns = type === "12h" ? [ampm, hour, minute].join(timePickerDivider) : [hour, minute].join(timePickerDivider);
-  const complete = Boolean(pick.hour && pick.minute);
+  const complete = isPreview && Boolean(pick.hour && pick.minute);
   return `<div data-s1-part="columns">${columns}</div>
       <div data-s1-part="footer"><button type="button" data-s1-part="confirm"${complete ? "" : " disabled"}>확인</button></div>`;
 }
@@ -2423,7 +2432,7 @@ function timePickerMarkup({ size = "md", breakName = "pc", type = "24h", state =
         <span data-s1-part="value">${value}</span>
         <span data-s1-part="icon" aria-hidden="true"></span>
       </button>
-      <div data-s1-part="panel"${panelHidden}>${timePickerPanel(type, timePickerPanelStates[panelState])}</div>
+      <div data-s1-part="panel"${panelHidden}>${timePickerPanel(type, timePickerPanelStates[panelState], isPreview)}</div>
     </div>`;
 }
 

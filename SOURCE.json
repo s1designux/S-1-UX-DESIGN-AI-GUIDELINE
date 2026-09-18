@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "e03082cff32e08197a1586a0b0ba1e74f882eb90",
+  "commit": "a36c0e1e8b93e8cc8cfd5f4c86b055fe944e23ad",
   "scope": "PC",
-  "generatedAt": "2026-09-18",
-  "syncedAt": "2026-09-18 06:19 (KST)",
-  "sourceCommitDate": "2026-09-17 10:25 (KST)",
-  "sourceCommitSubject": "feat(gate): 레거시 이름을 기계가 정본 이름에 붙인다 — Gate 52 · 적대 시험 내장"
+  "generatedAt": "2026-09-19",
+  "syncedAt": "2026-09-19 05:52 (KST)",
+  "sourceCommitDate": "2026-09-18 17:31 (KST)",
+  "sourceCommitSubject": "Merge branch 'main' into worktree-ui-rework"
 }

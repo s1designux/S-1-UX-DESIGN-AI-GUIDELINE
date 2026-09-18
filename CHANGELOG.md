@@ -3,6 +3,13 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-09-19 05:52 (KST)
+
+- 원본 커밋: `a36c0e1` — Merge branch 'main' into worktree-ui-rework
+- 내용이 바뀐 파일 2개
+  - `assets/js/main.js`
+  - `assets/js/ui-library-guide.js`
+
 ## 2026-09-18 06:19 (KST)
 
 - 원본 커밋: `e03082c` — feat(gate): 레거시 이름을 기계가 정본 이름에 붙인다 — Gate 52 · 적대 시험 내장
