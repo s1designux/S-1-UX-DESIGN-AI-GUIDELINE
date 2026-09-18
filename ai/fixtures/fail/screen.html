@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <style>
+    /* 일부러 어긋나게 만든 표본 — 고치지 마세요. */
+    .card { padding: 20px; gap: 13px; background: #ffffff; }
+    .card h2 { font-size: 22px; color: rgba(0, 0, 0, .6); }
+    .card p { color: var(--color-text-nonexistent); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <button type="button" data-s1-component="button" data-variant="primary" data-size="md">
+      <span data-s1-part="label">저장</span>
+    </button>
+    <button type="button" data-s1-component="button" data-variant="danger" data-size="lg">
+      <span data-s1-part="label">삭제</span>
+    </button>
+    <button class="s1-button custom-btn">직접 만든 버튼</button>
+    <div data-s1-component="input" data-size="md" data-break="mobile"></div>
+    <select><option>직접 만든 선택</option></select>
+  </div>
+</body>
+</html>

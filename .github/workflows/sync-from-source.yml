@@ -22,6 +22,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Verify PC behavior contracts
         run: npm test
+      - name: Rebuild the AI checker's answer sheet
+        run: npm run ai:scope
+      - name: Self-check the checker
+        run: npm run ai:selftest
       - name: Commit verified updates
         run: |
           git config user.name "github-actions[bot]"

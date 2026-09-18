@@ -1,0 +1,1921 @@
+{
+  "_meta": {
+    "note": "자동 생성물 — 손으로 고치지 마세요. `node ai/scripts/build-scope.mjs` 로 다시 만듭니다.",
+    "sources": [
+      "ui-library/dist/platform/contract.json",
+      "ui-library/dist/platform/tokens.json",
+      "ui-library/dist/tools/lint-rules.json",
+      "ui-library/dist/examples/*.html",
+      "ai/rules/platform-scope.overrides.json"
+    ],
+    "distVersion": "0.8.1",
+    "distReleasedAt": "2026-09-17",
+    "canonicalFingerprint": "13b6a436dc24e150be72ed1f37243d4947a5de5427a289ef98a486497b5d1aa1",
+    "builtAt": "2026-09-18"
+  },
+  "rules": {
+    "_meta": {
+      "note": "자동 생성물 — 손으로 고치지 마세요.",
+      "source": "registry/governance/audit-rules.json",
+      "sourceVersion": "0.2.0",
+      "rule": "검사기는 여기 있는 규칙만 집행한다. 새 판정 기준을 검사기가 만들지 않는다."
+    },
+    "hex": {
+      "id": "R02",
+      "name": "no-raw-hex-in-component",
+      "severity": "error",
+      "description": "Component Token 값에 HEX를 직접 사용하지 않는다. 예외: foundation.colors.json만 허용."
+    },
+    "rgba": {
+      "id": "R07",
+      "name": "rgba-allowed-exceptions-only",
+      "severity": "error",
+      "description": "rgba()는 token-exceptions.json의 EX03(overlay)에만 허용한다. 그 외 사용은 금지. (EX02 dark border 예외는 ND-2로 폐지, 2026-06-06)"
+    },
+    "exception": "EX03 — color-overlay 만 rgba 를 허용한다."
+  },
+  "platforms": [
+    "pc",
+    "mobile"
+  ],
+  "breakAttribute": "data-break",
+  "componentAttribute": "data-s1-component",
+  "partAttribute": "data-s1-part",
+  "scale": {
+    "spacing": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36,
+      40,
+      44,
+      48,
+      56,
+      64,
+      80,
+      96,
+      128
+    ],
+    "fontSize": [
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      24,
+      32
+    ],
+    "radius": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      16,
+      20
+    ],
+    "borderWidth": [
+      1,
+      2
+    ]
+  },
+  "grouping": {
+    "note": "S1 조합 문법 — 간격은 이 세 자리에서 고른다.",
+    "withinGroup": 8,
+    "betweenGroups": 24,
+    "inline": 12
+  },
+  "tokenNames": [
+    "--border-width-1",
+    "--border-width-2",
+    "--border-width-default",
+    "--border-width-strong",
+    "--breakpoint-2xl",
+    "--breakpoint-lg",
+    "--breakpoint-md",
+    "--breakpoint-sm",
+    "--breakpoint-xl",
+    "--breakpoint-xs",
+    "--color-base-black",
+    "--color-base-home-bg",
+    "--color-base-white",
+    "--color-bg-home",
+    "--color-bg-level-0",
+    "--color-bg-level-1",
+    "--color-bg-level-2",
+    "--color-bg-level-3",
+    "--color-blue-100",
+    "--color-blue-150",
+    "--color-blue-200",
+    "--color-blue-250",
+    "--color-blue-300",
+    "--color-blue-350",
+    "--color-blue-400",
+    "--color-blue-450",
+    "--color-blue-50",
+    "--color-blue-500",
+    "--color-blue-dark-100",
+    "--color-blue-dark-150",
+    "--color-blue-dark-200",
+    "--color-blue-dark-250",
+    "--color-blue-dark-300",
+    "--color-blue-dark-350",
+    "--color-blue-dark-400",
+    "--color-blue-dark-450",
+    "--color-blue-dark-50",
+    "--color-blue-dark-500",
+    "--color-brand-blue",
+    "--color-brand-ci",
+    "--color-brand-gray",
+    "--color-brand-red",
+    "--color-brown-100",
+    "--color-brown-150",
+    "--color-brown-200",
+    "--color-brown-250",
+    "--color-brown-300",
+    "--color-brown-350",
+    "--color-brown-400",
+    "--color-brown-450",
+    "--color-brown-50",
+    "--color-brown-500",
+    "--color-brown-dark-100",
+    "--color-brown-dark-150",
+    "--color-brown-dark-200",
+    "--color-brown-dark-250",
+    "--color-brown-dark-300",
+    "--color-brown-dark-350",
+    "--color-brown-dark-400",
+    "--color-brown-dark-450",
+    "--color-brown-dark-50",
+    "--color-brown-dark-500",
+    "--color-button-bg-blue-line--default",
+    "--color-button-bg-blue-line--hover",
+    "--color-button-bg-disabled",
+    "--color-button-bg-primary--default",
+    "--color-button-bg-primary--hover",
+    "--color-button-bg-secondary--default",
+    "--color-button-bg-secondary--hover",
+    "--color-button-border-assist--hover",
+    "--color-button-border-blue-line--default",
+    "--color-button-border-blue-line--hover",
+    "--color-button-border-disabled",
+    "--color-button-border-primary--default",
+    "--color-button-border-primary--hover",
+    "--color-button-border-secondary--default",
+    "--color-button-border-secondary--hover",
+    "--color-button-label-assist--default",
+    "--color-button-label-assist--hover",
+    "--color-button-label-blue-line--default",
+    "--color-button-label-blue-line--hover",
+    "--color-button-label-disabled",
+    "--color-button-label-primary--default",
+    "--color-button-label-primary--hover",
+    "--color-button-label-secondary--default",
+    "--color-button-label-secondary--hover",
+    "--color-chip-line-bg-default",
+    "--color-chip-line-bg-disabled",
+    "--color-chip-line-bg-hover",
+    "--color-chip-line-bg-selected",
+    "--color-chip-line-border-default",
+    "--color-chip-line-border-disabled",
+    "--color-chip-line-border-selected",
+    "--color-chip-line-icon-default",
+    "--color-chip-line-icon-disabled",
+    "--color-chip-line-label-default",
+    "--color-chip-line-label-disabled",
+    "--color-chip-line-label-selected",
+    "--color-chip-solid-bg-default",
+    "--color-chip-solid-bg-disabled",
+    "--color-chip-solid-bg-hover",
+    "--color-chip-solid-bg-selected",
+    "--color-chip-solid-bg-selected-hover",
+    "--color-chip-solid-border-default",
+    "--color-chip-solid-border-disabled",
+    "--color-chip-solid-border-selected",
+    "--color-chip-solid-icon-default",
+    "--color-chip-solid-icon-disabled",
+    "--color-chip-solid-icon-selected",
+    "--color-chip-solid-label-default",
+    "--color-chip-solid-label-disabled",
+    "--color-chip-solid-label-selected",
+    "--color-control-bg-default",
+    "--color-control-bg-disabled",
+    "--color-control-bg-hover",
+    "--color-control-bg-selected",
+    "--color-control-border-default",
+    "--color-control-border-disabled",
+    "--color-control-border-selected",
+    "--color-control-indicator-disabled",
+    "--color-control-indicator-selected",
+    "--color-control-indicator-selected-alt",
+    "--color-control-indicator-unselected",
+    "--color-control-label-default",
+    "--color-control-label-disabled",
+    "--color-date-picker-cell-bg-hover",
+    "--color-date-picker-cell-bg-range",
+    "--color-date-picker-cell-bg-selected",
+    "--color-date-picker-cell-bg-selected-hover",
+    "--color-date-picker-cell-bg-today",
+    "--color-date-picker-cell-border-today",
+    "--color-date-picker-icon-default",
+    "--color-date-picker-icon-disabled",
+    "--color-date-picker-icon-hover",
+    "--color-date-picker-panel-bg",
+    "--color-date-picker-panel-border",
+    "--color-date-picker-text-disabled",
+    "--color-date-picker-text-other-month",
+    "--color-date-picker-text-primary",
+    "--color-date-picker-text-saturday",
+    "--color-date-picker-text-secondary",
+    "--color-date-picker-text-selected",
+    "--color-date-picker-text-sunday",
+    "--color-date-picker-text-today",
+    "--color-date-picker-tile-bg-default",
+    "--color-date-picker-tile-bg-disabled",
+    "--color-date-picker-tile-bg-hover",
+    "--color-date-picker-tile-bg-selected",
+    "--color-date-picker-tile-border-default",
+    "--color-date-picker-tile-border-disabled",
+    "--color-dropdown-list-bg",
+    "--color-dropdown-list-border",
+    "--color-dropdown-option-bg-default",
+    "--color-dropdown-option-bg-hover",
+    "--color-dropdown-option-bg-selected",
+    "--color-dropdown-option-label-default",
+    "--color-dropdown-option-label-hover",
+    "--color-dropdown-option-label-selected",
+    "--color-form-control-bg-default",
+    "--color-form-control-bg-disabled",
+    "--color-form-control-bg-hover",
+    "--color-form-control-bg-selected",
+    "--color-form-control-border-correct",
+    "--color-form-control-border-default",
+    "--color-form-control-border-disabled",
+    "--color-form-control-border-error",
+    "--color-form-control-border-selected",
+    "--color-form-control-icon-default",
+    "--color-form-control-icon-disabled",
+    "--color-form-control-icon-hover",
+    "--color-form-control-icon-selected",
+    "--color-form-control-label-default",
+    "--color-form-control-label-disabled",
+    "--color-form-control-text-cursor",
+    "--color-form-control-text-default",
+    "--color-form-control-text-disabled",
+    "--color-form-control-text-placeholder",
+    "--color-form-control-text-read-only",
+    "--color-form-control-text-selected",
+    "--color-gray-0",
+    "--color-gray-100",
+    "--color-gray-200",
+    "--color-gray-300",
+    "--color-gray-400",
+    "--color-gray-50",
+    "--color-gray-500",
+    "--color-gray-600",
+    "--color-gray-700",
+    "--color-gray-800",
+    "--color-gray-900",
+    "--color-gray-dark-0",
+    "--color-gray-dark-100",
+    "--color-gray-dark-200",
+    "--color-gray-dark-300",
+    "--color-gray-dark-400",
+    "--color-gray-dark-50",
+    "--color-gray-dark-500",
+    "--color-gray-dark-600",
+    "--color-gray-dark-700",
+    "--color-gray-dark-800",
+    "--color-gray-dark-900",
+    "--color-green-100",
+    "--color-green-150",
+    "--color-green-200",
+    "--color-green-250",
+    "--color-green-300",
+    "--color-green-350",
+    "--color-green-400",
+    "--color-green-450",
+    "--color-green-50",
+    "--color-green-500",
+    "--color-green-dark-100",
+    "--color-green-dark-150",
+    "--color-green-dark-200",
+    "--color-green-dark-250",
+    "--color-green-dark-300",
+    "--color-green-dark-350",
+    "--color-green-dark-400",
+    "--color-green-dark-450",
+    "--color-green-dark-50",
+    "--color-green-dark-500",
+    "--color-icon-blue",
+    "--color-icon-gray",
+    "--color-icon-gray-dark",
+    "--color-icon-gray-light",
+    "--color-icon-red",
+    "--color-icon-white",
+    "--color-line-blue",
+    "--color-line-gray-subtle",
+    "--color-modal-panel-border",
+    "--color-navigation-bg",
+    "--color-navigation-icon-default",
+    "--color-navigation-indicator-default",
+    "--color-navigation-indicator-hover",
+    "--color-navigation-indicator-selected",
+    "--color-navigation-label-default",
+    "--color-navigation-label-default-alt",
+    "--color-navigation-label-hover",
+    "--color-navigation-label-selected",
+    "--color-navigation-submenu-label-default",
+    "--color-orange-100",
+    "--color-orange-150",
+    "--color-orange-200",
+    "--color-orange-250",
+    "--color-orange-300",
+    "--color-orange-350",
+    "--color-orange-400",
+    "--color-orange-450",
+    "--color-orange-50",
+    "--color-orange-500",
+    "--color-orange-dark-100",
+    "--color-orange-dark-150",
+    "--color-orange-dark-200",
+    "--color-orange-dark-250",
+    "--color-orange-dark-300",
+    "--color-orange-dark-350",
+    "--color-orange-dark-400",
+    "--color-orange-dark-450",
+    "--color-orange-dark-50",
+    "--color-orange-dark-500",
+    "--color-overlay",
+    "--color-overlay-wheel-fade",
+    "--color-pagination-control-bg-default",
+    "--color-pagination-control-bg-disabled",
+    "--color-pagination-control-bg-hover",
+    "--color-pagination-control-border-default",
+    "--color-pagination-control-border-disabled",
+    "--color-pagination-control-border-hover",
+    "--color-pagination-control-icon-default",
+    "--color-pagination-control-icon-disabled",
+    "--color-pagination-control-icon-hover",
+    "--color-pagination-control-icon-selected",
+    "--color-pagination-number-default",
+    "--color-pagination-number-hover",
+    "--color-pagination-number-selected",
+    "--color-purple-100",
+    "--color-purple-150",
+    "--color-purple-200",
+    "--color-purple-250",
+    "--color-purple-300",
+    "--color-purple-350",
+    "--color-purple-400",
+    "--color-purple-450",
+    "--color-purple-50",
+    "--color-purple-500",
+    "--color-purple-dark-100",
+    "--color-purple-dark-150",
+    "--color-purple-dark-200",
+    "--color-purple-dark-250",
+    "--color-purple-dark-300",
+    "--color-purple-dark-350",
+    "--color-purple-dark-400",
+    "--color-purple-dark-450",
+    "--color-purple-dark-50",
+    "--color-purple-dark-500",
+    "--color-red-100",
+    "--color-red-150",
+    "--color-red-200",
+    "--color-red-250",
+    "--color-red-300",
+    "--color-red-350",
+    "--color-red-400",
+    "--color-red-450",
+    "--color-red-50",
+    "--color-red-500",
+    "--color-red-dark-100",
+    "--color-red-dark-150",
+    "--color-red-dark-200",
+    "--color-red-dark-250",
+    "--color-red-dark-300",
+    "--color-red-dark-350",
+    "--color-red-dark-400",
+    "--color-red-dark-450",
+    "--color-red-dark-50",
+    "--color-red-dark-500",
+    "--color-scroll-bg",
+    "--color-skyblue-100",
+    "--color-skyblue-150",
+    "--color-skyblue-200",
+    "--color-skyblue-250",
+    "--color-skyblue-300",
+    "--color-skyblue-350",
+    "--color-skyblue-400",
+    "--color-skyblue-450",
+    "--color-skyblue-50",
+    "--color-skyblue-500",
+    "--color-skyblue-dark-100",
+    "--color-skyblue-dark-150",
+    "--color-skyblue-dark-200",
+    "--color-skyblue-dark-250",
+    "--color-skyblue-dark-300",
+    "--color-skyblue-dark-350",
+    "--color-skyblue-dark-400",
+    "--color-skyblue-dark-450",
+    "--color-skyblue-dark-50",
+    "--color-skyblue-dark-500",
+    "--color-status-card-text-disabled",
+    "--color-status-card-text-error",
+    "--color-status-card-text-primary--default",
+    "--color-status-card-text-primary--sub",
+    "--color-status-card-text-secondary--default",
+    "--color-status-card-text-secondary--sub",
+    "--color-status-card-text-tertiary--default",
+    "--color-status-card-text-tertiary--sub",
+    "--color-status-dark-green",
+    "--color-status-dark-red",
+    "--color-status-dark-yellow",
+    "--color-surface-raised",
+    "--color-table-border-default",
+    "--color-table-border-strong",
+    "--color-table-cell-default",
+    "--color-table-cell-hover",
+    "--color-table-cell-selected",
+    "--color-table-header-bg",
+    "--color-text-body-primary",
+    "--color-text-body-secondary",
+    "--color-text-body-tertiary",
+    "--color-text-state-accent",
+    "--color-text-state-accent-inverse",
+    "--color-text-state-caption",
+    "--color-text-state-caution",
+    "--color-text-state-correct",
+    "--color-text-state-disabled",
+    "--color-text-state-helper",
+    "--color-text-title-primary",
+    "--color-text-title-secondary",
+    "--color-visual-gray-100",
+    "--color-visual-gray-150",
+    "--color-visual-gray-200",
+    "--color-visual-gray-250",
+    "--color-visual-gray-300",
+    "--color-visual-gray-350",
+    "--color-visual-gray-400",
+    "--color-visual-gray-450",
+    "--color-visual-gray-50",
+    "--color-visual-gray-500",
+    "--color-visual-gray-dark-100",
+    "--color-visual-gray-dark-150",
+    "--color-visual-gray-dark-200",
+    "--color-visual-gray-dark-250",
+    "--color-visual-gray-dark-300",
+    "--color-visual-gray-dark-350",
+    "--color-visual-gray-dark-400",
+    "--color-visual-gray-dark-450",
+    "--color-visual-gray-dark-50",
+    "--color-visual-gray-dark-500",
+    "--color-yellow-100",
+    "--color-yellow-150",
+    "--color-yellow-200",
+    "--color-yellow-250",
+    "--color-yellow-300",
+    "--color-yellow-350",
+    "--color-yellow-400",
+    "--color-yellow-450",
+    "--color-yellow-50",
+    "--color-yellow-500",
+    "--color-yellow-dark-100",
+    "--color-yellow-dark-150",
+    "--color-yellow-dark-200",
+    "--color-yellow-dark-250",
+    "--color-yellow-dark-300",
+    "--color-yellow-dark-350",
+    "--color-yellow-dark-400",
+    "--color-yellow-dark-450",
+    "--color-yellow-dark-50",
+    "--color-yellow-dark-500",
+    "--font-size-10",
+    "--font-size-12",
+    "--font-size-14",
+    "--font-size-16",
+    "--font-size-18",
+    "--font-size-20",
+    "--font-size-24",
+    "--font-size-32",
+    "--font-weight-bold",
+    "--font-weight-medium",
+    "--font-weight-regular",
+    "--letter-spacing-normal",
+    "--letter-spacing-tight",
+    "--letter-spacing-wide",
+    "--line-height-130",
+    "--line-height-140",
+    "--opacity-0",
+    "--opacity-100",
+    "--opacity-25",
+    "--opacity-50",
+    "--opacity-75",
+    "--radius-0",
+    "--radius-10",
+    "--radius-12",
+    "--radius-16",
+    "--radius-2",
+    "--radius-20",
+    "--radius-4",
+    "--radius-6",
+    "--radius-8",
+    "--radius-button-md",
+    "--radius-card-md",
+    "--radius-control-sm",
+    "--radius-control-xs",
+    "--radius-full",
+    "--radius-modal-md",
+    "--shadow-dropdown",
+    "--shadow-raised",
+    "--shadow-raised-up",
+    "--sizing-10",
+    "--sizing-128",
+    "--sizing-16",
+    "--sizing-18",
+    "--sizing-20",
+    "--sizing-24",
+    "--sizing-28",
+    "--sizing-30",
+    "--sizing-32",
+    "--sizing-34",
+    "--sizing-38",
+    "--sizing-40",
+    "--sizing-44",
+    "--sizing-48",
+    "--sizing-56",
+    "--sizing-60",
+    "--sizing-64",
+    "--sizing-80",
+    "--spacing-10",
+    "--spacing-12",
+    "--spacing-128",
+    "--spacing-14",
+    "--spacing-16",
+    "--spacing-2",
+    "--spacing-20",
+    "--spacing-24",
+    "--spacing-28",
+    "--spacing-32",
+    "--spacing-36",
+    "--spacing-4",
+    "--spacing-40",
+    "--spacing-44",
+    "--spacing-48",
+    "--spacing-56",
+    "--spacing-6",
+    "--spacing-64",
+    "--spacing-8",
+    "--spacing-80",
+    "--spacing-96",
+    "--spacing-label-gap-block-md",
+    "--spacing-label-gap-block-sm",
+    "--spacing-label-gap-inline-lg",
+    "--spacing-label-gap-inline-md",
+    "--spacing-label-gap-inline-sm"
+  ],
+  "darkOnlyTokens": [],
+  "components": [
+    {
+      "id": "input",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "contract.breaks.pc = xxsm·xsm·md",
+        "contract.breaks.mobile = md",
+        "examples 에 data-break=\"pc\" 사용",
+        "examples 에 data-break=\"mobile\" 사용"
+      ],
+      "sizesByPlatform": {
+        "pc": [
+          "xxsm",
+          "xsm",
+          "md"
+        ],
+        "mobile": [
+          "md"
+        ]
+      },
+      "sizes": [
+        "xxsm",
+        "xsm",
+        "md"
+      ],
+      "variants": [
+        "base"
+      ],
+      "variantAttribute": null,
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [
+        "data-size",
+        "data-break"
+      ],
+      "requiredParts": [
+        "field",
+        "control"
+      ],
+      "parts": [
+        "label",
+        "field",
+        "control",
+        "action",
+        "action-icon",
+        "message"
+      ],
+      "states": [
+        "default",
+        "filled",
+        "focus",
+        "error",
+        "correct",
+        "readOnly",
+        "disabled"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:input:clear",
+        "s1:input:search"
+      ]
+    },
+    {
+      "id": "button",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "contract.breaks.pc = md·xsm·xxsm",
+        "contract.breaks.mobile = lg",
+        "variants.pcSize = md·xsm·xxsm",
+        "variants.mobileSize = lg",
+        "platformSupport = all·pc·mobile"
+      ],
+      "sizesByPlatform": {
+        "pc": [
+          "md",
+          "xsm",
+          "xxsm"
+        ],
+        "mobile": [
+          "lg"
+        ]
+      },
+      "sizes": [
+        "md",
+        "xsm",
+        "xxsm",
+        "lg"
+      ],
+      "variants": [
+        "primary",
+        "secondary",
+        "blue-line"
+      ],
+      "variantAttribute": "data-variant",
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [
+        "type",
+        "data-variant",
+        "data-size"
+      ],
+      "requiredParts": [
+        "label"
+      ],
+      "parts": [
+        "label"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "pressed",
+        "disabled"
+      ],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "checkbox",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "no-platform-axis",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "base"
+      ],
+      "variantAttribute": null,
+      "sizeAttribute": null,
+      "requiredAttributes": [],
+      "requiredParts": [
+        "control"
+      ],
+      "parts": [
+        "control",
+        "label"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "checked",
+        "disabled",
+        "disabledChecked"
+      ],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "radio",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "no-platform-axis",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "base"
+      ],
+      "variantAttribute": null,
+      "sizeAttribute": null,
+      "requiredAttributes": [],
+      "requiredParts": [
+        "control"
+      ],
+      "parts": [
+        "control",
+        "label"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "selected",
+        "disabled",
+        "disabledSelected"
+      ],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "toggle",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "no-platform-axis",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "base"
+      ],
+      "variantAttribute": null,
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "type",
+        "role",
+        "aria-checked"
+      ],
+      "requiredParts": [
+        "knob"
+      ],
+      "parts": [
+        "knob"
+      ],
+      "states": [
+        "off",
+        "on",
+        "disabled",
+        "disabledOn"
+      ],
+      "jsRequired": true,
+      "events": []
+    },
+    {
+      "id": "chip",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "contract.breaks.pc = sm·md",
+        "contract.breaks.mobile = sm",
+        "examples 에 data-break=\"pc\" 사용",
+        "examples 에 data-break=\"mobile\" 사용"
+      ],
+      "sizesByPlatform": {
+        "pc": [
+          "sm",
+          "md"
+        ],
+        "mobile": [
+          "sm"
+        ]
+      },
+      "sizes": [
+        "sm",
+        "md"
+      ],
+      "variants": [
+        "line",
+        "solid"
+      ],
+      "variantAttribute": "data-variant",
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [
+        "type",
+        "data-variant",
+        "data-size",
+        "data-break",
+        "aria-pressed"
+      ],
+      "requiredParts": [
+        "label"
+      ],
+      "parts": [
+        "label"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "selected",
+        "disabled"
+      ],
+      "jsRequired": true,
+      "events": []
+    },
+    {
+      "id": "dropdown",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "no-platform-axis",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [
+        "xxsm",
+        "xsm",
+        "md"
+      ],
+      "variants": [
+        "text",
+        "checkbox"
+      ],
+      "variantAttribute": "data-type",
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [
+        "data-type",
+        "data-size"
+      ],
+      "requiredParts": [
+        "option",
+        "option-label"
+      ],
+      "parts": [
+        "option",
+        "option-label",
+        "option-check",
+        "divider"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "selectedText",
+        "selectedCheckbox"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:dropdown:change"
+      ]
+    },
+    {
+      "id": "select",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "contract.breaks.pc = xxsm·xsm·md",
+        "contract.breaks.mobile = md",
+        "examples 에 data-break=\"pc\" 사용",
+        "examples 에 data-break=\"mobile\" 사용"
+      ],
+      "sizesByPlatform": {
+        "pc": [
+          "xxsm",
+          "xsm",
+          "md"
+        ],
+        "mobile": [
+          "md"
+        ]
+      },
+      "sizes": [
+        "xxsm",
+        "xsm",
+        "md"
+      ],
+      "variants": [
+        "base"
+      ],
+      "variantAttribute": null,
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [
+        "data-size",
+        "data-break"
+      ],
+      "requiredParts": [
+        "trigger",
+        "value",
+        "icon",
+        "panel"
+      ],
+      "parts": [
+        "trigger",
+        "value",
+        "icon",
+        "panel"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "open",
+        "filled",
+        "disabled"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:select:change",
+        "s1:select:open",
+        "s1:select:close"
+      ]
+    },
+    {
+      "id": "filter-chip",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "contract.breaks.pc = sm·md",
+        "contract.breaks.mobile = md",
+        "examples 에 data-break=\"pc\" 사용",
+        "examples 에 data-break=\"mobile\" 사용"
+      ],
+      "sizesByPlatform": {
+        "pc": [
+          "sm",
+          "md"
+        ],
+        "mobile": [
+          "md"
+        ]
+      },
+      "sizes": [
+        "sm",
+        "md"
+      ],
+      "variants": [
+        "line",
+        "solid"
+      ],
+      "variantAttribute": "data-variant",
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [
+        "data-variant",
+        "data-size",
+        "data-break",
+        "data-title"
+      ],
+      "requiredParts": [
+        "trigger",
+        "value",
+        "icon",
+        "panel"
+      ],
+      "parts": [
+        "trigger",
+        "title",
+        "value",
+        "icon",
+        "panel"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "selected",
+        "complete",
+        "disabled"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:filter-chip:change",
+        "s1:filter-chip:open",
+        "s1:filter-chip:close"
+      ]
+    },
+    {
+      "id": "tab",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "contract.breaks.pc = md·sm·xsm",
+        "contract.breaks.mobile = sm",
+        "examples 에 data-break=\"pc\" 사용",
+        "examples 에 data-break=\"mobile\" 사용"
+      ],
+      "sizesByPlatform": {
+        "pc": [
+          "md",
+          "sm",
+          "xsm"
+        ],
+        "mobile": [
+          "sm"
+        ]
+      },
+      "sizes": [
+        "md",
+        "sm",
+        "xsm"
+      ],
+      "variants": [
+        "line"
+      ],
+      "variantAttribute": null,
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [
+        "data-size",
+        "data-break",
+        "role",
+        "aria-label"
+      ],
+      "requiredParts": [
+        "tab"
+      ],
+      "parts": [
+        "tab",
+        "tabpanel (optional)"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "selected"
+      ],
+      "jsRequired": true,
+      "events": []
+    },
+    {
+      "id": "pagination",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "no-platform-axis",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [
+        "28"
+      ],
+      "variants": [
+        "bar"
+      ],
+      "variantAttribute": null,
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "data-total-pages",
+        "data-page",
+        "aria-label"
+      ],
+      "requiredParts": [
+        "arrow-group",
+        "pages",
+        "page"
+      ],
+      "parts": [
+        "arrow-group",
+        "pages",
+        "page",
+        "icon"
+      ],
+      "states": [
+        "single",
+        "first",
+        "last",
+        "middle",
+        "selected"
+      ],
+      "jsRequired": true,
+      "events": []
+    },
+    {
+      "id": "textarea",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "examples 에 data-break=\"pc\" 사용",
+        "examples 에 data-break=\"mobile\" 사용"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "base"
+      ],
+      "variantAttribute": null,
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "data-break"
+      ],
+      "requiredParts": [
+        "control"
+      ],
+      "parts": [
+        "control"
+      ],
+      "states": [
+        "default",
+        "focus",
+        "filled",
+        "disabled",
+        "readonly"
+      ],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "multi-toggle",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "no-platform-axis",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [
+        "md",
+        "sm"
+      ],
+      "variants": [
+        "base"
+      ],
+      "variantAttribute": null,
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [
+        "data-size"
+      ],
+      "requiredParts": [
+        "cell"
+      ],
+      "parts": [
+        "cell"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "selected",
+        "disabled"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:multi-toggle:change"
+      ]
+    },
+    {
+      "id": "modal",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "examples 에 data-break=\"pc\" 사용",
+        "examples 에 data-break=\"mobile\" 사용"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "single",
+        "dual"
+      ],
+      "variantAttribute": "data-footer",
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "data-break",
+        "data-footer"
+      ],
+      "requiredParts": [
+        "overlay",
+        "panel",
+        "content",
+        "header",
+        "title",
+        "body",
+        "message",
+        "footer"
+      ],
+      "parts": [
+        "overlay",
+        "panel",
+        "content",
+        "header",
+        "title",
+        "body",
+        "message",
+        "footer",
+        "close"
+      ],
+      "states": [
+        "closed",
+        "open"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:modal:open",
+        "s1:modal:close"
+      ]
+    },
+    {
+      "id": "table",
+      "status": "approved",
+      "platform": "pc-only",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "contract.breaks.pc = md·sm·xsm"
+      ],
+      "sizesByPlatform": {
+        "pc": [
+          "md",
+          "sm",
+          "xsm"
+        ],
+        "mobile": []
+      },
+      "sizes": [
+        "md",
+        "sm",
+        "xsm"
+      ],
+      "variants": [
+        "base"
+      ],
+      "variantAttribute": null,
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [
+        "data-size"
+      ],
+      "requiredParts": [
+        "table",
+        "header-cell",
+        "row",
+        "cell"
+      ],
+      "parts": [
+        "table",
+        "header-cell",
+        "row",
+        "cell"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "selected"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:table:selectionchange"
+      ]
+    },
+    {
+      "id": "mobile-bottom-nav",
+      "status": "approved",
+      "platform": "mobile-only",
+      "platformSource": "overrides",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "home",
+        "search",
+        "notification",
+        "settings"
+      ],
+      "variantAttribute": "data-icon",
+      "sizeAttribute": null,
+      "requiredAttributes": [],
+      "requiredParts": [
+        "icon",
+        "label"
+      ],
+      "parts": [
+        "icon",
+        "label"
+      ],
+      "states": [
+        "unselected",
+        "selected"
+      ],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "mobile-header",
+      "status": "approved",
+      "platform": "mobile-only",
+      "platformSource": "overrides",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "home-title",
+        "home-title-subtitle",
+        "standard-title",
+        "standard-title-close",
+        "standard-no-title",
+        "standard-no-title-close"
+      ],
+      "variantAttribute": "data-variant",
+      "sizeAttribute": null,
+      "requiredAttributes": [],
+      "requiredParts": [],
+      "parts": [
+        "title",
+        "title-row",
+        "arrow-icon",
+        "stack",
+        "subtitle",
+        "back",
+        "back-icon",
+        "close",
+        "close-icon",
+        "spacer",
+        "notification",
+        "notification-icon"
+      ],
+      "states": [],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "time-picker",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "contract.breaks.pc = xxsm·xsm·md",
+        "contract.breaks.mobile = md",
+        "examples 에 data-break=\"pc\" 사용",
+        "examples 에 data-break=\"mobile\" 사용"
+      ],
+      "sizesByPlatform": {
+        "pc": [
+          "xxsm",
+          "xsm",
+          "md"
+        ],
+        "mobile": [
+          "md"
+        ]
+      },
+      "sizes": [
+        "xxsm",
+        "xsm",
+        "md"
+      ],
+      "variants": [
+        "base"
+      ],
+      "variantAttribute": null,
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [
+        "data-size",
+        "data-break",
+        "data-type"
+      ],
+      "requiredParts": [
+        "trigger",
+        "value",
+        "icon",
+        "panel",
+        "column",
+        "divider",
+        "footer",
+        "confirm"
+      ],
+      "parts": [
+        "trigger",
+        "value",
+        "icon",
+        "panel",
+        "column",
+        "cell",
+        "divider",
+        "footer",
+        "confirm",
+        "sheet",
+        "sheet-backdrop",
+        "sheet-panel",
+        "sheet-header",
+        "sheet-title",
+        "sheet-close",
+        "tabs",
+        "date-panel",
+        "wheel",
+        "wheel-col",
+        "wheel-cell",
+        "fade-top",
+        "fade-bottom",
+        "sheet-footer",
+        "apply"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "filled",
+        "disabled"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:time-picker:open",
+        "s1:time-picker:close",
+        "s1:time-picker:change"
+      ]
+    },
+    {
+      "id": "date-picker",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "contract.breaks.pc = xxsm·xsm·md",
+        "contract.breaks.mobile = md",
+        "examples 에 data-break=\"pc\" 사용",
+        "examples 에 data-break=\"mobile\" 사용",
+        "platformSupport = pc·mobile"
+      ],
+      "sizesByPlatform": {
+        "pc": [
+          "xxsm",
+          "xsm",
+          "md"
+        ],
+        "mobile": [
+          "md"
+        ]
+      },
+      "sizes": [
+        "xxsm",
+        "xsm",
+        "md"
+      ],
+      "variants": [
+        "single",
+        "range"
+      ],
+      "variantAttribute": "data-mode",
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [
+        "data-size",
+        "data-break",
+        "data-mode"
+      ],
+      "requiredParts": [
+        "trigger",
+        "value",
+        "icon"
+      ],
+      "parts": [
+        "trigger",
+        "value",
+        "icon",
+        "panel",
+        "calendar",
+        "header",
+        "prev",
+        "next",
+        "chevron-icon",
+        "header-label",
+        "year-label",
+        "month-label",
+        "weekdays",
+        "weekday",
+        "view",
+        "grid",
+        "week",
+        "cell",
+        "cell-inner",
+        "cell-num",
+        "tile",
+        "sheet",
+        "sheet-backdrop",
+        "sheet-panel",
+        "sheet-header",
+        "sheet-title",
+        "sheet-close",
+        "calendar-wrap",
+        "sheet-footer",
+        "apply"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "filled",
+        "open",
+        "disabled"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:date-picker:open",
+        "s1:date-picker:close",
+        "s1:date-picker:change"
+      ]
+    },
+    {
+      "id": "gnb",
+      "status": "verified",
+      "platform": "pc-only",
+      "platformSource": "overrides",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [
+        "md",
+        "sm",
+        "xsm"
+      ],
+      "variants": [
+        "center-between",
+        "start"
+      ],
+      "variantAttribute": "data-variant",
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [],
+      "requiredParts": [],
+      "parts": [
+        "logo",
+        "leading",
+        "menus",
+        "menu",
+        "util",
+        "lang",
+        "lang-icon",
+        "lang-label",
+        "account",
+        "account-icon",
+        "menu-toggle",
+        "menu-icon"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "selected"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:gnb:open",
+        "s1:gnb:close"
+      ]
+    },
+    {
+      "id": "gnb-sub-menu-item",
+      "status": "verified",
+      "platform": "pc-only",
+      "platformSource": "overrides",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [],
+      "variantAttribute": null,
+      "sizeAttribute": null,
+      "requiredAttributes": [],
+      "requiredParts": [],
+      "parts": [],
+      "states": [
+        "default",
+        "hover",
+        "selected"
+      ],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "gnb-sub-menu",
+      "status": "verified",
+      "platform": "pc-only",
+      "platformSource": "overrides",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [],
+      "variantAttribute": null,
+      "sizeAttribute": null,
+      "requiredAttributes": [],
+      "requiredParts": [
+        "columns",
+        "column"
+      ],
+      "parts": [
+        "columns",
+        "column"
+      ],
+      "states": [],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "assist-button",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "no-platform-axis",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [],
+      "variantAttribute": null,
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "type"
+      ],
+      "requiredParts": [
+        "label"
+      ],
+      "parts": [
+        "label"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "pressed",
+        "disabled"
+      ],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "text-button",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "no-platform-axis",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "primary",
+        "secondary"
+      ],
+      "variantAttribute": "data-variant",
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "type",
+        "data-variant"
+      ],
+      "requiredParts": [
+        "label"
+      ],
+      "parts": [
+        "label"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "pressed",
+        "disabled"
+      ],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "modal-content",
+      "status": "approved",
+      "platform": "pc-only",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "contract.breaks.pc = md·lg·xl"
+      ],
+      "sizesByPlatform": {
+        "pc": [
+          "md",
+          "lg",
+          "xl"
+        ],
+        "mobile": []
+      },
+      "sizes": [
+        "md",
+        "lg",
+        "xl"
+      ],
+      "variants": [
+        "single",
+        "dual"
+      ],
+      "variantAttribute": "data-footer",
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [
+        "data-size",
+        "data-footer"
+      ],
+      "requiredParts": [
+        "overlay",
+        "panel",
+        "header",
+        "title",
+        "close",
+        "content-area",
+        "content",
+        "content-label",
+        "footer"
+      ],
+      "parts": [
+        "overlay",
+        "panel",
+        "header",
+        "title",
+        "close",
+        "content-area",
+        "content",
+        "content-label",
+        "footer"
+      ],
+      "states": [
+        "closed",
+        "open"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:modal-content:open",
+        "s1:modal-content:close"
+      ]
+    },
+    {
+      "id": "bottom-sheet-option",
+      "status": "approved",
+      "platform": "mobile-only",
+      "platformSource": "overrides",
+      "platformEvidence": [
+        "매체로 갈리는 변형이 없음 — 두 매체에서 같은 모습"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "text",
+        "checkbox",
+        "radio",
+        "list"
+      ],
+      "variantAttribute": "data-type",
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "data-type",
+        "data-state"
+      ],
+      "requiredParts": [],
+      "parts": [
+        "label",
+        "check",
+        "list-left",
+        "avatar",
+        "list-text",
+        "list-title",
+        "list-sub",
+        "chevron",
+        "lock"
+      ],
+      "states": [
+        "default",
+        "selected",
+        "disabled"
+      ],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "bottom-sheet",
+      "status": "approved",
+      "platform": "mobile-only",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "examples 에 data-break=\"mobile\" 사용"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "none",
+        "single",
+        "dual"
+      ],
+      "variantAttribute": "data-footer",
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "data-break",
+        "data-footer"
+      ],
+      "requiredParts": [
+        "sheet-backdrop",
+        "sheet-panel",
+        "sheet-header",
+        "sheet-title",
+        "sheet-close",
+        "sheet-body"
+      ],
+      "parts": [
+        "sheet-backdrop",
+        "sheet-panel",
+        "sheet-content",
+        "sheet-header",
+        "sheet-title",
+        "sheet-close",
+        "sheet-body",
+        "sheet-footer"
+      ],
+      "states": [
+        "closed",
+        "open"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:bottom-sheet:open",
+        "s1:bottom-sheet:close"
+      ]
+    }
+  ]
+}

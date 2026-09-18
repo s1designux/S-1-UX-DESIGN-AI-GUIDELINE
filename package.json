@@ -5,6 +5,9 @@
   "description": "AI-readable visual and PC behavior guideline for the S-1 UX Design System",
   "scripts": {
     "sync": "node scripts/sync-from-source.js",
-    "test": "node scripts/component-behavior-check.js"
+    "test": "node scripts/component-behavior-check.js",
+    "ai:scope": "node ai/scripts/build-scope.mjs",
+    "ai:check": "node ai/check/s1-check.mjs",
+    "ai:selftest": "node ai/scripts/self-test.mjs"
   }
 }
