@@ -546,7 +546,7 @@
           "selector": "[data-s1-component=\"input\"][data-break=\"pc\"][data-size=\"md\"] [data-s1-part=\"field\"]",
           "media": null,
           "property": "padding-inline",
-          "value": "var(--spacing-16) var(--spacing-12)",
+          "value": "var(--spacing-12) var(--spacing-12)",
           "reason": "pc-only"
         },
         {
@@ -581,7 +581,7 @@
           "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"input\"]:not([data-break=\"mobile\"]):not([data-size]) [data-s1-part=\"field\"]",
           "media": null,
           "property": "padding-inline",
-          "value": "var(--spacing-16) var(--spacing-12)",
+          "value": "var(--spacing-12) var(--spacing-12)",
           "reason": "pc-only"
         },
         {
@@ -616,7 +616,7 @@
           "selector": "[data-s1-break=\"pc\"][data-s1-density=\"wide\"] [data-s1-component=\"input\"]:not([data-break=\"mobile\"]):not([data-size]) [data-s1-part=\"field\"]",
           "media": null,
           "property": "padding-inline",
-          "value": "var(--spacing-16) var(--spacing-12)",
+          "value": "var(--spacing-12) var(--spacing-12)",
           "reason": "pc-only"
         },
         {
@@ -875,7 +875,7 @@
           "selector": ":is([data-s1-break=\"pc\"], [data-s1-density=\"wide\"], [data-s1-density=\"normal\"], [data-s1-density=\"narrow\"]) [data-s1-component=\"input\"]:not([data-break=\"mobile\"])[data-size=\"md\"] [data-s1-part=\"field\"]",
           "media": null,
           "property": "padding-inline",
-          "value": "var(--spacing-16) var(--spacing-12)",
+          "value": "var(--spacing-12) var(--spacing-12)",
           "reason": "pc-only"
         },
         {
@@ -945,7 +945,7 @@
           "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"input\"]:not([data-break=\"pc\"])[data-size=\"md\"] [data-s1-part=\"field\"]",
           "media": null,
           "property": "padding-inline",
-          "value": "var(--spacing-16) 0",
+          "value": "var(--spacing-12) 0",
           "reason": "pc-only"
         },
         {
@@ -987,7 +987,7 @@
           "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"input\"]:not([data-break=\"pc\"]):not([data-size]) [data-s1-part=\"field\"]",
           "media": null,
           "property": "padding-inline",
-          "value": "var(--spacing-16) 0",
+          "value": "var(--spacing-12) 0",
           "reason": "pc-only"
         },
         {
@@ -1500,7 +1500,7 @@
         "icon",
         "panel"
       ],
-      "unreadPcOnly": 8,
+      "unreadPcOnly": 10,
       "unreadDisplayRules": 18,
       "unreadDeclarations": [
         {
@@ -1651,6 +1651,13 @@
           "reason": "pc-only"
         },
         {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"select\"][data-size=\"md\"]:not([data-break=\"pc\"]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-right",
+          "value": "var(--spacing-12)",
+          "reason": "pc-only"
+        },
+        {
           "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"select\"]:not([data-size]) [data-s1-part=\"trigger\"]",
           "media": null,
           "property": "font-size",
@@ -1683,6 +1690,13 @@
           "media": null,
           "property": "height",
           "value": "var(--sizing-48)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"select\"]:not([data-size]):not([data-break=\"pc\"]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-right",
+          "value": "var(--spacing-12)",
           "reason": "pc-only"
         }
       ]

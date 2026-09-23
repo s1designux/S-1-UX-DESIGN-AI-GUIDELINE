@@ -3,7 +3,7 @@
     "generated": true,
     "source": "plugins/figma-vars-installer/src/build-components.ts",
     "method": "mock-execution",
-    "sourceHash": "29f118c6de79",
+    "sourceHash": "bce7100d683a",
     "unknownValuePolicy": [
       "unknown",
       "not-defined",
@@ -2118,6 +2118,81 @@
         "buildDependencies": []
       }
     },
+    "List Row": {
+      "variantAxes": {
+        "Type": [
+          "Nav",
+          "Value",
+          "Read",
+          "Pick",
+          "Agree",
+          "Switch",
+          "Thumb"
+        ],
+        "State": [
+          "Default",
+          "Pressed",
+          "Disabled"
+        ]
+      },
+      "geometry": [
+        {
+          "when": "all",
+          "target": "root",
+          "width": 360,
+          "height": 1,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "AUTO",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "spacing/12",
+          "paddingTop": "spacing/12",
+          "paddingRight": "spacing/20",
+          "paddingBottom": "spacing/12",
+          "paddingLeft": "spacing/20"
+        }
+      ],
+      "anatomy": [
+        "text",
+        "그림",
+        "오른쪽 칸",
+        "왼쪽 칸"
+      ],
+      "tokenBindings": [
+        "color/bg/level-0",
+        "color/bg/level-1",
+        "color/bg/level-2",
+        "color/control/bg/default",
+        "color/control/bg/disabled",
+        "color/control/bg/selected",
+        "color/control/border/default",
+        "color/control/border/disabled",
+        "color/control/indicator/disabled",
+        "color/control/indicator/selected",
+        "color/text/body/primary",
+        "color/text/body/tertiary",
+        "color/text/state/disabled",
+        "color/text/title/primary",
+        "radius/4",
+        "sizing/40",
+        "sizing/44",
+        "spacing/12",
+        "spacing/2",
+        "spacing/20",
+        "spacing/8"
+      ],
+      "composition": {
+        "buildDependencies": [
+          "Checkbox",
+          "Toggle"
+        ]
+      },
+      "slots": [
+        "그림",
+        "오른쪽 칸",
+        "왼쪽 칸"
+      ]
+    },
     "Input": {
       "variantAxes": {
         "Size": [
@@ -2202,7 +2277,7 @@
           "paddingTop": "0",
           "paddingRight": "12",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
@@ -2223,7 +2298,7 @@
           "paddingTop": "0",
           "paddingRight": "0",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
@@ -2336,7 +2411,7 @@
           "paddingTop": "0",
           "paddingRight": "12",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "minWidth": "200",
           "cornerRadius": "4",
           "strokeWeight": "1",
@@ -2358,7 +2433,7 @@
           "paddingTop": "0",
           "paddingRight": "0",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "minWidth": "200",
           "cornerRadius": "4",
           "strokeWeight": "1",
@@ -2470,7 +2545,7 @@
           "paddingTop": "0",
           "paddingRight": "8",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
@@ -2491,7 +2566,7 @@
           "paddingTop": "0",
           "paddingRight": "8",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
@@ -2512,7 +2587,7 @@
           "paddingTop": "0",
           "paddingRight": "8",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
@@ -2531,9 +2606,9 @@
           "primaryAxisAlignItems": "SPACE_BETWEEN",
           "counterAxisAlignItems": "CENTER",
           "paddingTop": "0",
-          "paddingRight": "8",
+          "paddingRight": "12",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
@@ -2869,7 +2944,7 @@
             "Break": "PC"
           },
           "target": "trigger",
-          "width": 180,
+          "width": 140,
           "height": 28,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -2879,7 +2954,7 @@
           "paddingTop": "0",
           "paddingRight": "8",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
@@ -2890,7 +2965,7 @@
             "Break": "PC"
           },
           "target": "trigger",
-          "width": 180,
+          "width": 140,
           "height": 34,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -2900,7 +2975,7 @@
           "paddingTop": "0",
           "paddingRight": "8",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
@@ -2911,7 +2986,7 @@
             "Break": "PC"
           },
           "target": "trigger",
-          "width": 180,
+          "width": 140,
           "height": 44,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -2921,7 +2996,7 @@
           "paddingTop": "0",
           "paddingRight": "8",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
@@ -2932,7 +3007,7 @@
             "Break": "Mobile"
           },
           "target": "trigger",
-          "width": 180,
+          "width": 140,
           "height": 48,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -2940,9 +3015,9 @@
           "primaryAxisAlignItems": "SPACE_BETWEEN",
           "counterAxisAlignItems": "CENTER",
           "paddingTop": "0",
-          "paddingRight": "8",
+          "paddingRight": "12",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
@@ -3184,7 +3259,7 @@
             "Break": "PC"
           },
           "target": "trigger",
-          "width": 150,
+          "width": 140,
           "height": 28,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -3195,7 +3270,7 @@
           "paddingTop": "0",
           "paddingRight": "6",
           "paddingBottom": "0",
-          "paddingLeft": "10",
+          "paddingLeft": "12",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
@@ -3206,7 +3281,7 @@
             "Break": "PC"
           },
           "target": "trigger",
-          "width": 150,
+          "width": 140,
           "height": 34,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -3228,7 +3303,7 @@
             "Break": "PC"
           },
           "target": "trigger",
-          "width": 150,
+          "width": 140,
           "height": 44,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -3239,7 +3314,7 @@
           "paddingTop": "0",
           "paddingRight": "8",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
@@ -3250,7 +3325,7 @@
             "Break": "Mobile"
           },
           "target": "trigger",
-          "width": 150,
+          "width": 140,
           "height": 48,
           "layoutMode": "HORIZONTAL",
           "primaryAxisSizingMode": "FIXED",
@@ -3259,9 +3334,9 @@
           "counterAxisAlignItems": "CENTER",
           "itemSpacing": "8",
           "paddingTop": "0",
-          "paddingRight": "8",
+          "paddingRight": "12",
           "paddingBottom": "0",
-          "paddingLeft": "16",
+          "paddingLeft": "12",
           "cornerRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"

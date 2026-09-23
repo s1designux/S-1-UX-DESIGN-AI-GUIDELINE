@@ -1,0 +1,198 @@
+{
+  "id": "list-row",
+  "version": "0.3.1",
+  "status": "candidate",
+  "canonicalFingerprint": "591ac12e7ca5a259c5818c0c9d0b6bc2d6d685cf33a70a1a7eda84e8ac7a2fe4",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/list-row.json"
+  ],
+  "rootSelector": "[data-s1-component=\"list-row\"]",
+  "variants": [
+    "nav",
+    "value",
+    "read",
+    "pick",
+    "agree",
+    "switch",
+    "thumb"
+  ],
+  "sizes": [],
+  "geometry": {
+    "root": {
+      "paddingLeft": "--spacing-20",
+      "paddingRight": "--spacing-20",
+      "paddingBlock": "--spacing-12",
+      "itemSpacing": "--spacing-12",
+      "note": "높이를 숫자로 고정하지 않는다 — 여백 토큰 + 글 자리(text min-height)가 높이를 만든다. 수치는 전부 정본 선례(buildBottomSheetOption List 행·선택행)에서 끌어왔다 — 좌우 20, 위아래 12, 왼쪽 요소↔글 itemSpacing 12(2026-09-21 정정: 이전 20/16·16 은 list-row 류에 선례가 없어 걷어냈다)."
+    },
+    "thumbnail": {
+      "width": "--sizing-40",
+      "height": "--sizing-40",
+      "radius": "--radius-4",
+      "note": "선례 Bottom Sheet Option 아바타와 같은 크기(40) — 2026-09-21 정정(이전 48 은 새로 지어낸 값이라 선례로 교체). 글 자리 최소 높이(44)보다 작아 이 줄만 높이가 튀지 않는다. 슬롯이라 채워도 40 각 고정 — 그림(img)은 잘라 채운다(object-fit: cover). 인라인 svg 는 자기 비율대로 칸 안에 맞춰 들어간다."
+    },
+    "text": {
+      "gap": "--spacing-2",
+      "minHeight": "--sizing-44",
+      "minHeightNote": "일곱 유형 모두 같은 줄 높이(68 = 12+44+12)로 세우기 위해 이 부품이 정한 유일한 값이다(선례 없음, 제목만 있는 줄과 설명 붙은 줄(41)을 같게 만든다). 2026-09-21 정정: 48(썸네일 크기에서 따온 값)을 걷어내고 정본 선례 대조로 44 로 교체."
+    },
+    "trail": {
+      "gap": "--spacing-8",
+      "note": "선례 Bottom Sheet Option 선택행 itemSpacing 8 — 2026-09-21 정정(이전 4 는 선례 없음)."
+    },
+    "chevron": {
+      "width": "--sizing-24",
+      "height": "--sizing-24"
+    },
+    "source": "build-components.ts buildListRow",
+    "provenance": "좌우 20 · 위아래 12 · 왼쪽 요소↔글 12 · 제목↔설명 2 · 오른쪽 칸 내부 8 · 그림 40 · 화살표 24 는 전부 정본 선례(Bottom Sheet Option List 행·선택행)에서 끌어왔다. 글 자리 최소 44 만 이 부품이 정한 값이다."
+  },
+  "states": {
+    "default": "속성 생략 또는 [data-state=\"default\"]",
+    "pressed": "실제 :active(button 루트), 또는 documented [data-state=\"pressed\"] — 모바일 전용이라 Hover 가 없다(river 2026-09-21). 눌림 배경은 Hover 가 쓰던 한 단계(bg/level-1)를 그대로 쓴다.",
+    "disabled": "button 의 native :disabled, 또는 [aria-disabled=\"true\"]/[data-state=\"disabled\"](div·label 루트)"
+  },
+  "canonicalStateMap": {
+    "State=Default": "default",
+    "State=Pressed": "pressed",
+    "State=Disabled": "disabled"
+  },
+  "notInCanon": {
+    "focusVisible": "정본에 focus 변형이 없다. 다른 코어와 같은 이유로(2026-09-02 river 결정) 웹에서도 만들지 않으며, 키보드 초점은 브라우저 기본 표시에 맡긴다."
+  },
+  "parts": [
+    "lead",
+    "thumbnail",
+    "text",
+    "title",
+    "description",
+    "trail",
+    "value",
+    "chevron"
+  ],
+  "htmlContract": {
+    "root": "요소는 유형(Type)이 하는 일에 맞춘다 — Nav·Value(눌러서 이동/편집)=button, Read·Thumb(보여주기만)=div(누르지 않는다), Pick·Agree(고르기)=label(체크 코어를 감싸 클릭 영역을 넓힌다), Switch=div(토글 컨트롤 자체가 상호작용 요소다). 공통 속성 data-s1-component=list-row, data-type, 선택 data-state. Density 축은 없다(2026-09-21 정정 — 한 벌만 쓴다).",
+    "requiredAttributes": [
+      "data-type"
+    ],
+    "requiredParts": [
+      "text",
+      "title"
+    ],
+    "optionalParts": [
+      "description",
+      "lead",
+      "thumbnail",
+      "trail",
+      "value",
+      "chevron"
+    ],
+    "typeStructure": {
+      "nav": "button[data-s1-component=list-row][data-type=nav] > div[data-s1-part=text](title+description) + span[data-s1-part=trail](슬롯) > span[data-s1-part=chevron].",
+      "value": "button[data-s1-component=list-row][data-type=value] > div[data-s1-part=text] + span[data-s1-part=trail](슬롯) > span[data-s1-part=value] + span[data-s1-part=chevron](값 텍스트 + 화살표 — 정본 buildListRow 와 같음. Switch 만 화살표 대신 toggle 을 받는다).",
+      "read": "div[data-s1-component=list-row][data-type=read] > div[data-s1-part=text] 뿐 — 왼쪽·오른쪽 칸 없음(정본에 슬롯이 없다).",
+      "pick": "label[data-s1-component=list-row][data-type=pick] > span[data-s1-part=lead](슬롯) > div[data-s1-component=checkbox](control 만, Label=Off) + div[data-s1-part=text]. checkbox control 의 accessible name 은 aria-labelledby 로 title 을 가리킨다.",
+      "agree": "label[data-s1-component=list-row][data-type=agree] > span[data-s1-part=lead](슬롯) > div[data-s1-component=checkbox](control 만) + div[data-s1-part=text] + span[data-s1-part=trail](슬롯) > span[data-s1-part=chevron](장식 — 두 번째 클릭 영역이 필요하면 쓰는 화면이 별도로 구성한다).",
+      "switch": "div[data-s1-component=list-row][data-type=switch] > div[data-s1-part=text] + span[data-s1-part=trail](슬롯) > button[data-s1-component=toggle](코어 그대로, role=switch, aria-labelledby 로 title 을 가리킨다).",
+      "thumb": "div[data-s1-component=list-row][data-type=thumb] > div[data-s1-part=thumbnail](슬롯 — 비우거나 <img>/아이콘/아바타를 넣는다) + div[data-s1-part=text]."
+    },
+    "grouping": "이 컴포넌트는 줄 모양과 상태만 소유한다. 목록 구조(role·이름·선택 반영)와 고르기·이동 동작은 목록을 그리는 화면이 소유한다.",
+    "relations": [
+      "checkbox·toggle 코어를 그대로 조립한다 — 복제하지 않는다.",
+      "checkbox 코어 내부에는 코어 자신의 label 을 넣지 않는다(Label=Off) — 이 컴포넌트의 title 이 보이는 글자이자 accessible name 출처다.",
+      "다른 코어(checkbox·toggle·radio·text-button 등) 내부 part 는 이 컴포넌트 CSS 가 선택하지 않는다 — 자리(flex)만 준다.",
+      "lead·trail 은 슬롯이다(정본 makeSlot \"왼쪽 칸\"·\"오른쪽 칸\", river 2026-09-22) — 기본 내용을 빼고 다른 부품으로 갈아끼우거나 비울 수 있다. 비우면([data-s1-part=lead]:empty / [data-s1-part=trail]:empty) 그 칸 자체가 사라진다."
+    ],
+    "source": "components/list-row/list-row.example.html",
+    "distribution": "examples/list-row.html"
+  },
+  "cssContract": {
+    "entry": "components/list-row.css",
+    "rootScope": "[data-s1-component=list-row]",
+    "nativeStates": [
+      ":active",
+      ":disabled"
+    ],
+    "documentedDataStates": [
+      "[data-type]",
+      "[data-state]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다. checkbox·toggle 코어의 내부 CSS를 override하지 않는다."
+  },
+  "contentSlots": {
+    "title": "필수; 보이는 제목.",
+    "description": "선택; 있으면 제목 아래에 표출한다. 없어도 글 자리 최소 높이(44)가 자리를 지켜 줄 높이는 같다.",
+    "value": "선택; Type=Value 의 오른쪽 값 글자.",
+    "lead": "Type=Pick·Agree 전용, 내용을 끼우는 자리(슬롯) — 정본 build-components.ts makeSlot(\"왼쪽 칸\", river 2026-09-22). 기본은 checkbox control 만(Label=Off). 쓰는 화면이 그 안의 기본을 빼고 radio·아이콘 같은 다른 부품으로 갈아끼우거나 비울 수 있다. 비우면([data-s1-part=lead]:empty) 왼쪽 칸 자체가 사라진다(자리표시 없음 — thumbnail 과 다르다). 넣는 것은 글 자리 최소 높이(44)를 넘지 않아야 한다 — 넘으면 CSS max-height+overflow:hidden 으로 넘치는 부분을 자른다(줄 높이 68 유지, river 2026-09-22).",
+    "trail": "Type=Nav·Value·Agree·Switch 전용, 내용을 끼우는 자리(슬롯) — 정본 build-components.ts makeSlot(\"오른쪽 칸\", river 2026-09-22). 유형이 기본(화살표만 / 값+화살표 / 토글)을 준다. 쓰는 화면이 그 기본을 빼고 작은 버튼·배지 같은 다른 부품으로 갈아끼우거나 비울 수 있다. 비우면([data-s1-part=trail]:empty) 오른쪽 칸 자체가 사라진다. 넣는 것은 글 자리 최소 높이(44)를 넘지 않아야 한다 — 넘으면 CSS max-height+overflow:hidden 으로 넘치는 부분을 자른다(줄 높이 68 유지, river 2026-09-22).",
+    "thumbnail": "Type=Thumb 전용, 내용을 끼우는 자리(슬롯) — 정본 build-components.ts makeSlot(\"그림\"). 쓰는 화면이 <img>·아이콘·아바타를 안에 놓거나 비워 둔다. 비우면 정본 자리표시(40 각, bg/level-2)만 보이고([data-s1-part=thumbnail]:empty), 채우면 회색 바탕은 사라진다. 그림(img)은 40 각 안에서 잘려 채워지고(object-fit: cover), 인라인 svg 는 자기 비율대로 맞춰 들어간다. 40 보다 큰 것을 넣지 않는다 — 줄 높이(68)는 글 자리가 정한다."
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css",
+      "components/checkbox.css",
+      "components/toggle.css"
+    ],
+    "coreComponents": [
+      "checkbox",
+      "toggle"
+    ],
+    "coreComponentsNote": "Pick·Agree 는 checkbox 코어(control 만)를, Switch 는 toggle 코어를 그대로 조립한다. list-row 를 개별 설치할 때 checkbox·toggle 의 CSS·JS 도 함께 로드해야 한다(Switch 는 toggle.js 런타임이 필요하다)."
+  },
+  "icons": [
+    {
+      "id": "chevron",
+      "sourceKey": "e1ac97aa82f4e52f257ac1c0ea77fd09d0e5f581",
+      "asset": "assets/icons/chevron.svg",
+      "use": "Nav·Value·Agree 우측 화살표(Switch 만 없다 — toggle 로 대체)",
+      "accessibleNamePolicy": "decorative; 이름은 제목 글자가 갖는다",
+      "note": "기존 등록 자산 재사용 — 재등록 아님. 자산이 이미 오른쪽(▶)을 가리켜 회전을 걸지 않는다(T8 함정 확인, bottom-sheet-option 과 같은 결론)."
+    }
+  ],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "Nav·Value=button(누르면 이동/편집). Read·Thumb=역할 없는 div(누를 수 없다). Pick·Agree=label 이 checkbox 코어의 native input[type=checkbox] 를 감싼다. Switch=div 안에 toggle 코어의 native button[role=switch] 를 그대로 둔다."
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "Nav·Value·Read·Thumb 은 title 글자가 곧 보이는 이름이다(별도 aria 불필요). Pick·Agree 의 checkbox control 과 Switch 의 toggle 은 aria-labelledby 로 이 컴포넌트의 title id 를 가리켜 accessible name 을 만든다(checkbox·toggle 각자 계약의 accessibleName 요건을 충족)."
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "Nav·Value(button)·Pick/Agree 의 checkbox·Switch 의 toggle 은 각자 코어 계약의 Tab 순서·Space/Enter 활성화를 그대로 따른다. Read·Thumb 는 상호작용 요소가 아니므로 초점 순서에 들어가지 않는다."
+    },
+    "focus": {
+      "status": "required",
+      "value": "브라우저 기본 포커스 표시를 그대로 쓴다 — 정본에 focus 표현이 없어 웹에서 만들지 않는다(다른 코어와 동일한 2026-09-02 river 결정)."
+    },
+    "ariaStateSync": {
+      "status": "not-applicable",
+      "reason": "이 컴포넌트 자체는 선택·열림 등의 상태를 갖지 않는다. checkbox·toggle 의 ariaStateSync 는 그 코어 자신의 계약을 그대로 따른다."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 오류 표시가 없다."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "정본이 모션을 정의하지 않는다."
+    }
+  },
+  "jsRequired": false,
+  "javascript": {
+    "runtime": "none",
+    "reason": "줄 모양·상태만 소유한다. 실제 이동·선택 반영·이벤트는 목록을 그리는 화면이 배선한다. Switch 의 아리아 전환은 toggle 코어 자신의 런타임이 담당한다(list-row 가 별도로 담당하지 않는다)."
+  },
+  "sourceFingerprint": "ba7fcab95cd2c8f4ab40d674accfd291ed75da5642da43a205306185bd6eb264"
+}

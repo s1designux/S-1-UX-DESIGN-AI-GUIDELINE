@@ -140,7 +140,7 @@ fun S1Gallery(modifier: Modifier = Modifier, dark: Boolean = false) {
                     value = text,
                     onValueChange = { text = it },
                     label = "이름",
-                    placeholder = "내용을 입력하세요",
+                    placeholder = "입력해 주세요",
                     message = "안내 문구"
                 )
                 S1Input(value = "오류 값", onValueChange = {}, message = "다시 확인해 주세요", isError = true)

@@ -3,6 +3,38 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-09-24 06:28 (KST)
+
+- 원본 커밋: `91c8344` — Merge main into worktree-audit-hand-drawn — 설치기 묶음 재생성으로 부딪힘 해소
+- 새로 추가된 파일 5개
+  - `registry/components/list-row.json`
+  - `ui-library/dist/components/list-row.css`
+  - `ui-library/dist/components/list-row.js`
+  - `ui-library/dist/components/list-row.manifest.json`
+  - `ui-library/dist/examples/list-row.html`
+- 내용이 바뀐 파일 67개
+  - `assets/js/ui-library-guide.js`
+  - `design/DESIGN.core.md`
+  - `registry/components/checkbox.json`
+  - `registry/components/component-facts.json`
+  - `registry/components/date-picker.json`
+  - `registry/components/index.json`
+  - `registry/components/input.json`
+  - `ui-library/dist/components/assist-button.manifest.json`
+  - `ui-library/dist/components/bottom-sheet-option.manifest.json`
+  - `ui-library/dist/components/bottom-sheet.manifest.json`
+  - `ui-library/dist/components/button.manifest.json`
+  - `ui-library/dist/components/checkbox.manifest.json`
+  - `ui-library/dist/components/chip.manifest.json`
+  - `ui-library/dist/components/date-picker.css`
+  - `ui-library/dist/components/date-picker.js`
+  - `ui-library/dist/components/date-picker.manifest.json`
+  - `ui-library/dist/components/dropdown.manifest.json`
+  - `ui-library/dist/components/filter-chip.manifest.json`
+  - `ui-library/dist/components/gnb-sub-menu-item.manifest.json`
+  - `ui-library/dist/components/gnb-sub-menu.manifest.json`
+  - … 외 47개
+
 ## 2026-09-19 05:52 (KST)
 
 - 원본 커밋: `a36c0e1` — Merge branch 'main' into worktree-ui-rework

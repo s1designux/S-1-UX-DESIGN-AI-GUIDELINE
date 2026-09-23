@@ -47,7 +47,7 @@ export default function S1DatePicker({ variant, size, breakName = DEFAULT_BREAK,
       <div data-s1-component="date-picker" data-size={size ?? "md"} data-break="pc" data-mode={variant ?? "single"} ref={rootRef} className={className} style={style} {...rest}>
         <button type="button" data-s1-part="trigger" aria-haspopup="dialog" aria-expanded="false" {...(slot(partScope, "trigger").attrs ?? {})}>
           <span data-s1-part="value" {...(slot(partScope, "value").attrs ?? {})}>
-            {slot(partScope, "value").content ?? "YY.MM.DD"}
+            {slot(partScope, "value").content ?? "날짜 선택"}
           </span>
           <span data-s1-part="icon" aria-hidden="true" {...(slot(partScope, "icon").attrs ?? {})}>
             {slot(partScope, "icon").content ?? ""}
@@ -65,7 +65,7 @@ export default function S1DatePicker({ variant, size, breakName = DEFAULT_BREAK,
       <div data-s1-component="date-picker" data-size={size ?? "md"} data-break="mobile" data-mode={variant ?? "single"} ref={rootRef} className={className} style={style} {...rest}>
         <button type="button" data-s1-part="trigger" aria-haspopup="dialog" aria-expanded="false" {...(slot(partScope, "trigger").attrs ?? {})}>
           <span data-s1-part="value" {...(slot(partScope, "value").attrs ?? {})}>
-            {slot(partScope, "value").content ?? "YY.MM.DD"}
+            {slot(partScope, "value").content ?? "날짜 선택"}
           </span>
           <span data-s1-part="icon" aria-hidden="true" {...(slot(partScope, "icon").attrs ?? {})}>
             {slot(partScope, "icon").content ?? ""}

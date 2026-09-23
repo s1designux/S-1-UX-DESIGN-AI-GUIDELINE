@@ -281,12 +281,13 @@
     "HD-6": "확정 — Core는 인터페이스만 제공. data-disabled-dates=\"YYYY-MM-DD,...\" 속성으로 날짜 주입. 비활성 기준은 서비스 레벨 결정.",
     "HD-7": "확정 — 이전달/다음달 날짜 항상 클릭 허용. 클릭 시 해당 월로 이동 후 날짜 선택.",
     "HD-11": "확정 — 달력 요일 머리글에서 토요일·일요일을 색으로 구분한다(토=date-picker/text/saturday, 일=date-picker/text/sunday). river 결정 2026-09-15 \"토/일 색 구분하는걸로 다시 얘기했었음\" — 2026-06-30 의 '경비업 특성상 주말 색 미적용' 결정을 뒤집는다. 웹 배포본(date-picker.css)은 이미 그렇게 칠하고 있었고 Figma 정본만 전 요일 text/primary 였다. 이 결정으로 정본을 웹에 맞췄다(build-components.ts 요일 머리글 wkColor).",
+    "HD-13-placeholder": "확정 — 빈 트리거 안내 문구는 폭과 상관없이 \"날짜 선택\"(river 지시 2026-09-23). 2026-09-22 에 \"날짜를 선택하세요\" + 폭에 따른 자동 축약으로 한 번 바꿨다가 다음 날 river 가 번복해 짧은 문구 한 가지로 굳혔다. 값 표시 형식(YY.MM.DD)·값 입출력(ISO)은 그대로다. 서비스는 data-placeholder 로 교체한다.",
     "HD-12": "확정 — 달력 헤더의 이전/다음 화살표를 자기 부품으로 뺀다(세트 이름 'Calendar Nav Arrow', State=Default/Hover/Disabled). river 결정 2026-09-15 \"달력 화살표를 작은 부품으로 빼줘\" · Gate 34 정본 신설 승인 기록. 그 전에는 헤더에 아이콘을 직접 그려 손올림·못누름 색을 담을 자리가 없었고, 토큰(date-picker/icon/hover·disabled)이 만들어진 채 연결되지 않은 상태였다. 웹 배포본은 이미 두 상태를 쓰고 있었다(date-picker.css prev/next)."
   },
   "updatedAt": "2026-05-26",
   "guide": {
     "sampleLabel": "날짜",
-    "samplePlaceholder": "YY.MM.DD",
+    "samplePlaceholder": "날짜 선택",
     "sampleValue": "26.08.11",
     "sampleDates": [
       "9",

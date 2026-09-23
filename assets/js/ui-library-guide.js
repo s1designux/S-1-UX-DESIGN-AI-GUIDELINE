@@ -236,7 +236,7 @@ function list(items) {
 function inputMarkup({
   label = false,
   value = "",
-  placeholder = "내용을 입력하세요",
+  placeholder = "입력해 주세요",
   state = "default",
   size = "md",
   breakName = "pc",
@@ -2697,10 +2697,11 @@ function datePickerMarkup({ size = "md", breakName = "pc", mode = "single", stat
   const force = state === "hover" ? ' data-force-state="hover"' : "";
   const preview = isPreview ? " is-preview" : "";
   const panelHidden = isPreview ? (open ? "" : " hidden") : " hidden";
-  /* 표시 형식 YY.MM.DD(정본 그대로) · 기간 구분자 ~ — river 결정 2026-09-08(M-9). */
+  /* 값 표시 형식 YY.MM.DD(정본 그대로) · 기간 구분자 ~ — river 결정 2026-09-08(M-9).
+     빈 트리거 안내 문구는 폭과 상관없이 "날짜 선택" — river 지시 2026-09-23(전날의 "날짜를 선택하세요"+자동 축약을 번복). */
   const value = mode === "range"
-    ? (filled || open ? "26.01.17 ~ 26.01.22" : "YY.MM.DD")
-    : (filled || open ? "26.01.17" : "YY.MM.DD");
+    ? (filled || open ? "26.01.17 ~ 26.01.22" : "날짜 선택")
+    : (filled || open ? "26.01.17" : "날짜 선택");
   const calendarOpenInner = dpCalendar(view, mode === "range" ? { range: rangeOpts || { start: 17, end: 22 }, hoverEnd: (rangeOpts && rangeOpts.hoverEnd) || null } : {});
   /* V-2: pages/ui-review.html 의 F-2 수정과 같은 분기를 여기에도 넣는다 — mobile 은 panel 이 아니라
      dist/examples/date-picker.mobile.html 과 같은 sheet 구조를 내야 date-picker.js 의 init() 이

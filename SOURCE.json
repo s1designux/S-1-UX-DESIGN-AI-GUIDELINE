@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "a36c0e1e8b93e8cc8cfd5f4c86b055fe944e23ad",
+  "commit": "91c8344be4fa3306dd452aa878db4a47ec96b559",
   "scope": "PC",
-  "generatedAt": "2026-09-19",
-  "syncedAt": "2026-09-19 05:52 (KST)",
-  "sourceCommitDate": "2026-09-18 17:31 (KST)",
-  "sourceCommitSubject": "Merge branch 'main' into worktree-ui-rework"
+  "generatedAt": "2026-09-24",
+  "syncedAt": "2026-09-24 06:28 (KST)",
+  "sourceCommitDate": "2026-09-23 14:27 (KST)",
+  "sourceCommitSubject": "Merge main into worktree-audit-hand-drawn — 설치기 묶음 재생성으로 부딪힘 해소"
 }

@@ -329,7 +329,7 @@
   "separateComponentCandidates": ["DatePicker", "TimePicker", "Textarea"],
   "patternModuleCandidates": ["Login Form", "Search Module", "Address Search", "Date Range Selection"],
   "guide": {
-    "sampleLabel": "이름", "samplePlaceholder": "내용을 입력하세요", "sampleValue": "홍길동", "sampleMessage": "입력 내용을 확인하세요", "messageOptional": true,
+    "sampleLabel": "이름", "samplePlaceholder": "입력해 주세요", "sampleValue": "홍길동", "sampleMessage": "입력 내용을 확인하세요", "messageOptional": true,
     "webTag": "input", "interactionPattern": "text-entry",
     "searchInput": { "name": "Search Input", "samplePlaceholder": "검색어를 입력하세요", "sampleValue": "디자인 시스템", "clearLabel": "검색어 지우기", "submitLabel": "검색" }
   }

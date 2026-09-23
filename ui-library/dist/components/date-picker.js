@@ -8,6 +8,10 @@ const instances = new WeakMap();
 const WEEKDAY_LABELS = ["일", "월", "화", "수", "목", "금", "토"]; // D3: 일요일 시작(river 결정, CU-1)
 const MONTH_LABELS = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
 
+/* 트리거 안내 문구 — 폭과 상관없이 항상 "날짜 선택"(river 지시 2026-09-23,
+   전날의 "날짜를 선택하세요" + 자동 축약을 번복한다). 서비스는 data-placeholder 로 바꾼다. */
+const PLACEHOLDER_DEFAULT = "날짜 선택";
+
 function pad2(n) {
   return String(n).padStart(2, "0");
 }
@@ -335,15 +339,17 @@ export function init(root) {
   const container = brk === "mobile" ? sheetCalendar : panelCalendar;
   if (!container) return null;
 
+  const applyPlaceholder = () => { value.textContent = root.dataset.placeholder || PLACEHOLDER_DEFAULT; };
+
   const syncValueText = () => {
     if (mode === "single") {
-      value.textContent = s.selected ? formatDisplay(s.selected) : (root.dataset.placeholder || "YY.MM.DD");
+      if (s.selected) value.textContent = formatDisplay(s.selected); else applyPlaceholder();
       trigger.dataset.filled = s.selected ? "true" : "false";
     } else {
       const { start, end } = s.selected || {};
       if (start && end) { value.textContent = `${formatDisplay(start)} ~ ${formatDisplay(end)}`; trigger.dataset.filled = "true"; }
       else if (start) { value.textContent = `${formatDisplay(start)} ~ `; trigger.dataset.filled = "true"; }
-      else { value.textContent = root.dataset.placeholder || "YY.MM.DD"; trigger.dataset.filled = "false"; }
+      else { applyPlaceholder(); trigger.dataset.filled = "false"; }
     }
   };
 
@@ -561,6 +567,7 @@ export function init(root) {
     apply?.addEventListener("click", handleApplyClick);
   }
 
+  /* 폭이 바뀌면 안내 문구 길이를 다시 고른다(창 크기·칸 폭·처음 그려질 때). */
   const disabledObserver = new MutationObserver(() => {
     if (trigger.disabled && isOpen(root, trigger)) close({ returnFocus: false });
   });

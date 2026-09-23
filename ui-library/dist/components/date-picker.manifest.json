@@ -1,8 +1,8 @@
 {
   "id": "date-picker",
-  "version": "0.2.1",
+  "version": "0.2.7",
   "status": "approved",
-  "canonicalFingerprint": "c2cf1b8ea41acaa0ed0819edd2f301edcf7b615d2607ac7b5d060b2c8c33498a",
+  "canonicalFingerprint": "c748414909ce4f5c0d29feb1ed958f4f2eea5d4c97ed160d6cc854d62eb9f745",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -122,7 +122,7 @@
     "textStylesSm": "요일·날짜 숫자·타일 라벨 = body/12M (12px Medium, 자간 0). MD 의 title/16M(자간 -2)과 자간까지 다르다."
   },
   "states": {
-    "default": "native; unopened, placeholder \"YY.MM.DD\"",
+    "default": "native; unopened, placeholder \"날짜 선택\"",
     "hover": "@media (hover: hover) [data-s1-part=\"trigger\"]:hover:not(:disabled):not([aria-expanded=\"true\"]):not([data-filled=\"true\"])",
     "filled": "[data-s1-part=\"trigger\"][data-filled=\"true\"] (documented data-state; no ARIA equivalent)",
     "open": "[data-s1-part=\"trigger\"][aria-expanded=\"true\"]",
@@ -135,6 +135,7 @@
     "Disabled": "disabled"
   },
   "notInCanon": {
+    "placeholderText": "river 지시 2026-09-23 — 빈 트리거 안내 문구는 폭과 상관없이 \"날짜 선택\". 전날(09-22)의 \"날짜를 선택하세요\" + 폭에 따른 자동 축약을 번복한 것이라 축약 코드는 걷어냈다. 정본(build-components.ts buildDatePicker Default·Disabled txt)도 같은 문구다. 서비스는 data-placeholder 로 교체한다.",
     "popoverPlacement": "M1 — 정본은 트리거 아래 auto-layout 세로 스택만 규정한다(오프셋/뒤집기 코드 없음). 웹은 트리거 아래 8px 팝오버, 뷰포트 아래가 모자라면 위로 뒤집는다([data-flip=up]). 2-canon-readiness.md M1. river 승인 2026-09-08(메커니즘 승인 화면 M-4, 선택 A=지금대로).",
     "weekStart": "D3(river 결정, 2-canon-readiness.md) — 일요일 시작. 메타 정본 registry/components/date-picker.json HD-9 와 일치하지만 시각 정본 buildCalendar(3591-3600)는 월요일 시작이라 갈라진다 → CU-1 로 기록(Figma 정본 반영은 별도 작업).",
     "yearMonthHeaderButtons": "D5/CU-2(river 결정) — 정본 헤더는 단일 라벨 1개뿐이라 연/월 화면 진입 트리거가 없다. 웹은 새 시각 부품을 만들지 않고 기존 24px Bold 라벨을 연도·월 두 개의 누를 수 있는 버튼으로 분리했다.",
@@ -195,7 +196,7 @@
       "data-value (단일 선택 초기값, YYYY-MM-DD)",
       "data-range-start / data-range-end (기간 선택 초기값, YYYY-MM-DD)",
       "data-disabled-dates (쉼표 구분 YYYY-MM-DD 목록)",
-      "data-placeholder (기본 YY.MM.DD)"
+      "data-placeholder (기본 \"날짜 선택\")"
     ],
     "requiredParts": [
       "trigger",
@@ -247,7 +248,7 @@
     "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다. button(형제 코어)의 CSS를 override하지 않는다 — 모바일 시트의 적용 버튼은 button 코어 인스턴스를 그대로 조립한다."
   },
   "contentSlots": {
-    "value": "required; 현재 값 또는 placeholder 문구(\"YY.MM.DD\")"
+    "value": "required; 현재 값 또는 안내 문구(\"날짜 선택\")"
   },
   "dependencies": {
     "font": [
@@ -347,5 +348,5 @@
     "controlMode": "uncontrolled",
     "progressiveEnhancementNote": "JavaScript 없이는 캘린더가 렌더되지 않아 날짜를 고를 수 없다 — 복합 Picker(정본 계약)라 native fallback이 없다. 트리거는 native button 이라 포커스·이름은 유지된다."
   },
-  "sourceFingerprint": "2e4d3450adf75c7e5b6cda2787e2d2f2de9c20472e6bc3fa4965f26fda228147"
+  "sourceFingerprint": "0cb7cedc7755843deecc70bb582abb3a947b01c04c6acce59c7c30b8a1b452e5"
 }

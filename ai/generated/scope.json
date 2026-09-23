@@ -8,10 +8,10 @@
       "ui-library/dist/examples/*.html",
       "ai/rules/platform-scope.overrides.json"
     ],
-    "distVersion": "0.8.1",
-    "distReleasedAt": "2026-09-17",
-    "canonicalFingerprint": "13b6a436dc24e150be72ed1f37243d4947a5de5427a289ef98a486497b5d1aa1",
-    "builtAt": "2026-09-22"
+    "distVersion": "0.13.13",
+    "distReleasedAt": "2026-09-23",
+    "canonicalFingerprint": "964c65df9a45841d3d8b2d8f0e104e747ee13e0c44be43946113096b6100cb27",
+    "builtAt": "2026-09-23"
   },
   "rules": {
     "_meta": {
@@ -1916,6 +1916,55 @@
         "s1:bottom-sheet:open",
         "s1:bottom-sheet:close"
       ]
+    },
+    {
+      "id": "list-row",
+      "status": "candidate",
+      "platform": "mobile-only",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "platformSupport = mobile·note"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "nav",
+        "value",
+        "read",
+        "pick",
+        "agree",
+        "switch",
+        "thumb"
+      ],
+      "variantAttribute": "data-type",
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "data-type"
+      ],
+      "requiredParts": [
+        "text",
+        "title"
+      ],
+      "parts": [
+        "lead",
+        "thumbnail",
+        "text",
+        "title",
+        "description",
+        "trail",
+        "value",
+        "chevron"
+      ],
+      "states": [
+        "default",
+        "pressed",
+        "disabled"
+      ],
+      "jsRequired": false,
+      "events": []
     }
   ]
 }

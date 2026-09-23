@@ -30,7 +30,7 @@
     },
     {
       "part": "체크 표시",
-      "role": "checked 인디케이터 아이콘(정본 ic_확인 16px). 색은 control indicator 토큰."
+      "role": "checked 인디케이터 — 16px 안에 그린 보통 선(stroke 1.5, 모서리 둥글게) 체크 표시. 색은 control indicator 토큰. 2026-09-23 river 지시로 라이브러리 아이콘(ic_확인) 인스턴스에서 레거시 정본 540:3134 과 같은 선 벡터로 바꿨다."
     },
     {
       "part": "라벨(선택)",

@@ -11,35 +11,35 @@ object S1SelectSpec {
     val boxes: Map<String, Map<String, S1Box>> = mapOf(
         "md|mobile|default" to mapOf(
             "root" to S1Box(),
-            "trigger" to S1Box(background = S1Palette.colorFormControlBgDefault, foreground = S1Palette.colorFormControlTextPlaceholder, borderColor = S1Palette.colorFormControlBorderDefault, borderWidth = 1f, radius = 4f, height = 48f, minWidth = 140f, paddingStart = 16f, paddingEnd = 8f, fontSize = 14f, fontWeight = 400),
+            "trigger" to S1Box(background = S1Palette.colorFormControlBgDefault, foreground = S1Palette.colorFormControlTextPlaceholder, borderColor = S1Palette.colorFormControlBorderDefault, borderWidth = 1f, radius = 4f, height = 48f, minWidth = 140f, paddingStart = 12f, paddingEnd = 12f, fontSize = 14f, fontWeight = 400),
             "value" to S1Box(),
             "icon" to S1Box(background = S1Palette.colorFormControlIconDefault, height = 24f, width = 24f, rotation = 90f, icon = "chevron"),
             "panel" to S1Box(marginTop = 8f, left = 0f)
         ),
         "md|mobile|hover" to mapOf(
             "root" to S1Box(),
-            "trigger" to S1Box(background = S1Palette.colorFormControlBgHover, foreground = S1Palette.colorFormControlTextPlaceholder, borderColor = S1Palette.colorFormControlBorderDefault, borderWidth = 1f, radius = 4f, height = 48f, minWidth = 140f, paddingStart = 16f, paddingEnd = 8f, fontSize = 14f, fontWeight = 400),
+            "trigger" to S1Box(background = S1Palette.colorFormControlBgHover, foreground = S1Palette.colorFormControlTextPlaceholder, borderColor = S1Palette.colorFormControlBorderDefault, borderWidth = 1f, radius = 4f, height = 48f, minWidth = 140f, paddingStart = 12f, paddingEnd = 12f, fontSize = 14f, fontWeight = 400),
             "value" to S1Box(),
             "icon" to S1Box(background = S1Palette.colorFormControlIconHover, height = 24f, width = 24f, rotation = 90f, icon = "chevron"),
             "panel" to S1Box(marginTop = 8f, left = 0f)
         ),
         "md|mobile|filled" to mapOf(
             "root" to S1Box(),
-            "trigger" to S1Box(background = S1Palette.colorFormControlBgDefault, foreground = S1Palette.colorFormControlTextSelected, borderColor = S1Palette.colorFormControlBorderDefault, borderWidth = 1f, radius = 4f, height = 48f, minWidth = 140f, paddingStart = 16f, paddingEnd = 8f, fontSize = 14f, fontWeight = 400),
+            "trigger" to S1Box(background = S1Palette.colorFormControlBgDefault, foreground = S1Palette.colorFormControlTextSelected, borderColor = S1Palette.colorFormControlBorderDefault, borderWidth = 1f, radius = 4f, height = 48f, minWidth = 140f, paddingStart = 12f, paddingEnd = 12f, fontSize = 14f, fontWeight = 400),
             "value" to S1Box(),
             "icon" to S1Box(background = S1Palette.colorFormControlIconDefault, height = 24f, width = 24f, rotation = 90f, icon = "chevron"),
             "panel" to S1Box(marginTop = 8f, left = 0f)
         ),
         "md|mobile|open" to mapOf(
             "root" to S1Box(),
-            "trigger" to S1Box(background = S1Palette.colorFormControlBgSelected, foreground = S1Palette.colorFormControlTextPlaceholder, borderColor = S1Palette.colorFormControlBorderSelected, borderWidth = 1f, radius = 4f, height = 48f, minWidth = 140f, paddingStart = 16f, paddingEnd = 8f, fontSize = 14f, fontWeight = 400),
+            "trigger" to S1Box(background = S1Palette.colorFormControlBgSelected, foreground = S1Palette.colorFormControlTextPlaceholder, borderColor = S1Palette.colorFormControlBorderSelected, borderWidth = 1f, radius = 4f, height = 48f, minWidth = 140f, paddingStart = 12f, paddingEnd = 12f, fontSize = 14f, fontWeight = 400),
             "value" to S1Box(),
             "icon" to S1Box(background = S1Palette.colorFormControlIconSelected, height = 24f, width = 24f, rotation = -90f, icon = "chevron"),
             "panel" to S1Box(marginTop = 8f, left = 0f)
         ),
         "md|mobile|disabled" to mapOf(
             "root" to S1Box(),
-            "trigger" to S1Box(background = S1Palette.colorFormControlBgDisabled, foreground = S1Palette.colorFormControlTextDisabled, borderColor = S1Palette.colorFormControlBorderDisabled, borderWidth = 1f, radius = 4f, height = 48f, minWidth = 140f, paddingStart = 16f, paddingEnd = 8f, fontSize = 14f, fontWeight = 400),
+            "trigger" to S1Box(background = S1Palette.colorFormControlBgDisabled, foreground = S1Palette.colorFormControlTextDisabled, borderColor = S1Palette.colorFormControlBorderDisabled, borderWidth = 1f, radius = 4f, height = 48f, minWidth = 140f, paddingStart = 12f, paddingEnd = 12f, fontSize = 14f, fontWeight = 400),
             "value" to S1Box(),
             "icon" to S1Box(background = S1Palette.colorFormControlIconDisabled, height = 24f, width = 24f, rotation = 90f, icon = "chevron"),
             "panel" to S1Box(marginTop = 8f, left = 0f)

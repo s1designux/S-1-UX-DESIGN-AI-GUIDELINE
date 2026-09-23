@@ -845,7 +845,7 @@ _Don't_
 | 요소 | 역할 |
 | --- | --- |
 | 박스 | 체크 영역. 배경·테두리는 control 토큰. |
-| 체크 표시 | checked 인디케이터 아이콘(정본 ic_확인 16px). 색은 control indicator 토큰. |
+| 체크 표시 | checked 인디케이터 — 16px 안에 그린 보통 선(stroke 1.5, 모서리 둥글게) 체크 표시. 색은 control indicator 토큰. 2026-09-23 river 지시로 라이브러리 아이콘(ic_확인) 인스턴스에서 레거시 정본 540:3134 과 같은 선 벡터로 바꿨다. |
 | 라벨(선택) | 선택 부품. 없는 것이 기본이고, 붙이면 라벨 클릭도 선택 영역이 된다(본문 14 Medium, 간격 8). |
 
 | variant | default | hover | checked | disabled |
@@ -1323,16 +1323,15 @@ agent:
   geometry:
     common:
       target: "trigger"
-      width: 180
+      width: 140
       layoutMode: "HORIZONTAL"
       primaryAxisSizingMode: "FIXED"
       counterAxisSizingMode: "FIXED"
       primaryAxisAlignItems: "SPACE_BETWEEN"
       counterAxisAlignItems: "CENTER"
       paddingTop: "0"
-      paddingRight: "8"
       paddingBottom: "0"
-      paddingLeft: "16"
+      paddingLeft: "12"
       cornerRadius: "4"
       strokeWeight: "1"
       strokeAlign: "INSIDE"
@@ -1342,21 +1341,25 @@ agent:
           Size: "XXSM"
           Break: "PC"
         height: 28
+        paddingRight: "8"
       -
         when:
           Size: "XSM"
           Break: "PC"
         height: 34
+        paddingRight: "8"
       -
         when:
           Size: "MD"
           Break: "PC"
         height: 44
+        paddingRight: "8"
       -
         when:
           Size: "MD"
           Break: "Mobile"
         height: 48
+        paddingRight: "12"
   composition:
     mustReuse:
       - "Calendar"
@@ -2448,6 +2451,7 @@ agent:
       counterAxisAlignItems: "CENTER"
       paddingTop: "0"
       paddingBottom: "0"
+      paddingLeft: "12"
       cornerRadius: "4"
       strokeWeight: "1"
       strokeAlign: "INSIDE"
@@ -2458,28 +2462,24 @@ agent:
           Break: "PC"
         height: 28
         paddingRight: "8"
-        paddingLeft: "12"
       -
         when:
           Size: "XSM"
           Break: "PC"
         height: 34
         paddingRight: "8"
-        paddingLeft: "12"
       -
         when:
           Size: "MD"
           Break: "PC"
         height: 44
         paddingRight: "12"
-        paddingLeft: "16"
       -
         when:
           Size: "MD"
           Break: "Mobile"
         height: 48
         paddingRight: "0"
-        paddingLeft: "16"
   composition:
     mustReuse: "not-defined"
     mustNotCreate: "not-defined"
@@ -2586,6 +2586,154 @@ _Don't_
 - 입력칸에 키보드 초점이 들어오면 field 테두리를 정본 Selected 색으로 바꾼다. error·correct·read-only 에서도 같다(2026-09-04 river 지시).
 - Tab 으로 들어온 초점은 커서를 값 끝에 둔다. 마우스로 눌러 들어온 초점은 누른 자리를 유지한다(2026-09-04 river 지시).
 - disabled 입력칸은 초점을 받지 않고 tab 순서에서 건너뛴다(native disabled).
+
+### List Row
+
+> ⚠️ 배포본에 아직 없는 컴포넌트입니다(codeStatus: `planned`). 아래 토큰은 `ui-library/dist` 로 값이 풀리지 않으니 이 절을 보고 구현하지 마세요.
+
+모바일 목록의 한 줄. 왼쪽 칸(비움·체크·그림) + 가운데 글(제목, 필요하면 설명) + 오른쪽 칸(비움·화살표·값·토글) 세 자리로 짜인다. 높이를 숫자로 고정하지 않고 위아래 여백 토큰과 글 자리가 높이를 정한다.
+
+**언제 쓰나**
+- 같은 모양의 줄이 반복되는 목록을 만들 때.
+
+**쓰지 말아야 할 때**
+- 표의 행 — Table 을 쓴다.
+- 바텀시트 안의 고르기 줄 — Bottom Sheet Option 을 쓴다.
+- 드롭다운 안의 옵션 줄 — Dropdown List 를 쓴다.
+
+**구성 (Anatomy)**
+
+| 요소 | 역할 |
+| --- | --- |
+| 왼쪽 칸(선택 · 슬롯) | 기본은 체크 코어 인스턴스 18. 라디오·아이콘으로 갈아끼울 수 있고 비울 수 있다. |
+| 그림(Thumb 유형 · 슬롯) | 사진·아이콘·아바타가 들어가는 40각 자리. 기본은 자리표시. |
+| 가운데 글 | 제목과 설명. 남는 폭을 차지하고 최소 높이 44 를 갖는다. 슬롯이 아니다 — 글자를 바꾸는 자리이고, 설명 줄은 '설명 보임' 스위치로 켜고 끈다. |
+| 오른쪽 칸(선택 · 슬롯) | 유형이 주는 기본(화살표 24 · 값 · 토글) 위에 작은 버튼·배지로 갈아끼울 수 있다. |
+| 구분선 | 줄과 줄 사이. 줄이 소유하지 않고 목록이 긋는다. |
+
+| variant | default | hover | pressed | disabled |
+| --- | --- | --- | --- | --- |
+| default | — | — | — | — |
+
+#### Agent-readable contract
+
+```yaml
+agent:
+  component: "List Row"
+  variantAxes:
+    Type:
+      - "Nav"
+      - "Value"
+      - "Read"
+      - "Pick"
+      - "Agree"
+      - "Switch"
+      - "Thumb"
+    State:
+      - "Default"
+      - "Pressed"
+      - "Disabled"
+  states:
+    builder:
+      - "Default"
+      - "Pressed"
+      - "Disabled"
+    metadata: "unknown"
+  behavior:
+    platform: "PC"
+    status: "not-defined"
+  geometry:
+    common:
+      target: "root"
+      width: 360
+      height: 1
+      layoutMode: "HORIZONTAL"
+      primaryAxisSizingMode: "FIXED"
+      counterAxisSizingMode: "AUTO"
+      counterAxisAlignItems: "CENTER"
+      itemSpacing: "spacing/12"
+      paddingTop: "spacing/12"
+      paddingRight: "spacing/20"
+      paddingBottom: "spacing/12"
+      paddingLeft: "spacing/20"
+    variants:
+      -
+        when: "all"
+  composition:
+    mustReuse:
+      - "Checkbox"
+      - "Toggle"
+      - "checkbox"
+      - "toggle"
+    mustNotCreate: "not-defined"
+    declaredParts:
+      - "text"
+      - "그림"
+      - "오른쪽 칸"
+      - "왼쪽 칸"
+  constraints: "unknown"
+  tokens:
+    figmaSemanticBindings:
+      - "color/bg/level-0"
+      - "color/bg/level-1"
+      - "color/bg/level-2"
+      - "color/control/bg/default"
+      - "color/control/bg/disabled"
+      - "color/control/bg/selected"
+      - "color/control/border/default"
+      - "color/control/border/disabled"
+      - "color/control/indicator/disabled"
+      - "color/control/indicator/selected"
+      - "color/text/body/primary"
+      - "color/text/body/tertiary"
+      - "color/text/state/disabled"
+      - "color/text/title/primary"
+      - "radius/4"
+      - "sizing/40"
+      - "sizing/44"
+      - "spacing/12"
+      - "spacing/2"
+      - "spacing/20"
+      - "spacing/8"
+    aliasChains: "not-defined"
+  figma:
+    status: "available"
+    identifiers:
+      componentSetKey: "(미발행 — 라이브러리 publish 시 기록)"
+      fileKey: "cysG5U1udpQqVagYY1hWHW"
+    variants:
+      type:
+        - "nav"
+        - "value"
+        - "read"
+        - "pick"
+        - "agree"
+        - "switch"
+        - "thumb"
+      state:
+        - "default"
+        - "pressed"
+        - "disabled"
+  icons:
+    allowed: "figma-unconfirmed"
+    slots: "unknown"
+```
+
+_Do_
+- 체크·토글은 코어 배포본 인스턴스를 그대로 넣는다.
+- 높이는 여백 토큰과 글 자리 최소 높이로 잡는다 — 일곱 유형이 같은 높이로 선다.
+- 수치가 필요하면 정본 선례에서 끌어온다.
+
+_Don't_
+- 줄 높이를 숫자로 못 박지 않는다.
+- 체크·토글 코어 내부를 복제하거나 override 하지 않는다.
+- 서비스 전용 수치(레거시에서 옮겨 온 값)를 이 부품에 넣지 않는다 — 서비스 프로파일이 갖는다.
+
+**접근성 (a11y)**
+- 줄이 하는 일에 맞는 요소를 쓴다 — 눌러서 이동하면 button·link, 보여주기만 하면 요소를 누르게 두지 않는다.
+- 체크·토글은 코어 배포본의 접근성 계약을 그대로 따른다(체크=native input, 토글=role switch).
+- 화살표 아이콘은 장식이다 — 이름은 제목 글자가 갖는다.
+- 비활성 줄은 초점 순서에서 뺀다.
 
 ### Mobile Bottom Nav
 
@@ -3893,9 +4041,8 @@ agent:
       primaryAxisAlignItems: "SPACE_BETWEEN"
       counterAxisAlignItems: "CENTER"
       paddingTop: "0"
-      paddingRight: "8"
       paddingBottom: "0"
-      paddingLeft: "16"
+      paddingLeft: "12"
       cornerRadius: "4"
       strokeWeight: "1"
       strokeAlign: "INSIDE"
@@ -3905,21 +4052,25 @@ agent:
           Size: "XXSM"
           Break: "PC"
         height: 28
+        paddingRight: "8"
       -
         when:
           Size: "XSM"
           Break: "PC"
         height: 34
+        paddingRight: "8"
       -
         when:
           Size: "MD"
           Break: "PC"
         height: 44
+        paddingRight: "8"
       -
         when:
           Size: "MD"
           Break: "Mobile"
         height: 48
+        paddingRight: "12"
   composition:
     mustReuse:
       - "Dropdown"
@@ -4651,7 +4802,7 @@ agent:
   geometry:
     common:
       target: "trigger"
-      width: 150
+      width: 140
       layoutMode: "HORIZONTAL"
       primaryAxisSizingMode: "FIXED"
       counterAxisSizingMode: "FIXED"
@@ -4660,6 +4811,7 @@ agent:
       itemSpacing: "8"
       paddingTop: "0"
       paddingBottom: "0"
+      paddingLeft: "12"
       cornerRadius: "4"
       strokeWeight: "1"
       strokeAlign: "INSIDE"
@@ -4670,28 +4822,24 @@ agent:
           Break: "PC"
         height: 28
         paddingRight: "6"
-        paddingLeft: "10"
       -
         when:
           Size: "XSM"
           Break: "PC"
         height: 34
         paddingRight: "8"
-        paddingLeft: "12"
       -
         when:
           Size: "MD"
           Break: "PC"
         height: 44
         paddingRight: "8"
-        paddingLeft: "16"
       -
         when:
           Size: "MD"
           Break: "Mobile"
         height: 48
-        paddingRight: "8"
-        paddingLeft: "16"
+        paddingRight: "12"
   composition:
     mustReuse:
       - "Time Picker Dropdown"
@@ -4994,4 +5142,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: ec13038fb1fd · 손편집 금지 -->
+<!-- generated-stamp: aae46fba2c9c · 손편집 금지 -->

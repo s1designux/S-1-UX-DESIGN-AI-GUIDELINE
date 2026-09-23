@@ -1,8 +1,8 @@
 {
   "id": "pagination",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "status": "approved",
-  "canonicalFingerprint": "c8103ac79f905228471d425399a2633fdfa6da6d118ca8d3ff92c19263716ef4",
+  "canonicalFingerprint": "86e2c84f5ca5e55a5bde2cc6d7df21873ec42f3728d94779f14563e57140435c",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -122,5 +122,5 @@
     "runtime": "components/pagination/pagination.js",
     "reason": "현재 페이지와 양 끝 비활성 상태를 동기화한다."
   },
-  "sourceFingerprint": "31297467bce435da0eb2ec785763e59e270880f10f38d52b0b87ef0211f37387"
+  "sourceFingerprint": "e23d986039213c73ddfa8d6f739bed6d8ce8159738b63dfe5e7ab6671171bea6"
 }

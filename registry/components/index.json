@@ -387,6 +387,16 @@
       "status": "in-progress",
       "harnessStatus": "implemented",
       "priority": 28
+    },
+    {
+      "id": "list-row",
+      "name": "List Row",
+      "label": "List Row",
+      "category": "core",
+      "path": "registry/components/list-row.json",
+      "status": "in-progress",
+      "harnessStatus": "planned",
+      "priority": 29
     }
   ]
 }

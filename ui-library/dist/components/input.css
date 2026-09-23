@@ -2,10 +2,11 @@
    둘 다 별도 컴포넌트가 아니라 이 Input을 조립한다(river D1, 2026-09-04). */
 [data-s1-component="input"] {
   box-sizing: border-box;
-  display: flex;
+  display: inline-flex; /* 기본 폭을 부품이 스스로 갖는다 — 종전 flex + width:100% 는 부모에 따라 제멋대로 늘어났다(river 지시 2026-09-23) */
   flex-direction: column;
   gap: var(--spacing-6);
-  width: 100%;
+  max-width: 100%;
+  width: 200px; /* 정본 field.resize(200, sc.h) — 글을 쓰는 칸이라 날짜·시간·선택(140)보다 넓다. 더 넓게 쓰려면 쓰는 쪽에서 width 를 준다 */
 }
 
 /* Search 최소 폭 — 정본 SEARCH_MIN_W(build-components.ts) 와 같은 200px.
@@ -162,6 +163,7 @@
   margin: 0;
 }
 
+/* 왼쪽 안쪽 여백은 크기와 상관없이 12 — 낮은 칸에서 16 은 글자가 가운데서 밀려 보였다(river 결정 2026-09-23). */
 [data-s1-component="input"][data-break="pc"][data-size="xxsm"] [data-s1-part="field"] {
   height: var(--sizing-28);
   padding-inline: var(--spacing-12) var(--spacing-8);
@@ -186,7 +188,7 @@
 
 [data-s1-component="input"][data-break="pc"][data-size="md"] [data-s1-part="field"] {
   height: var(--sizing-44);
-  padding-inline: var(--spacing-16) var(--spacing-12);
+  padding-inline: var(--spacing-12) var(--spacing-12);
 }
 
 [data-s1-component="input"][data-break="pc"][data-size="md"] [data-s1-part="control"] {
@@ -200,7 +202,7 @@
 [data-s1-component="input"][data-break="mobile"][data-size="md"] [data-s1-part="field"] {
   height: var(--sizing-48);
   min-height: var(--sizing-48);
-  padding-inline: var(--spacing-16) 0;
+  padding-inline: var(--spacing-12) 0;
 }
 
 [data-s1-component="input"][data-break="mobile"][data-size="md"] [data-s1-part="control"] {
@@ -278,7 +280,7 @@
 /* density:wide 넓게(44px) — data-size 를 직접 주면 그쪽이 이긴다 */
 [data-s1-density="wide"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="field"] {
   height: var(--sizing-44);
-  padding-inline: var(--spacing-16) var(--spacing-12);
+  padding-inline: var(--spacing-12) var(--spacing-12);
 }
 
 [data-s1-density="wide"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="control"] {
@@ -289,7 +291,7 @@
 
 [data-s1-break="pc"][data-s1-density="wide"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="field"] {
   height: var(--sizing-44);
-  padding-inline: var(--spacing-16) var(--spacing-12);
+  padding-inline: var(--spacing-12) var(--spacing-12);
 }
 
 [data-s1-break="pc"][data-s1-density="wide"] [data-s1-component="input"]:not([data-break="mobile"]):not([data-size]) [data-s1-part="control"] {
@@ -374,7 +376,7 @@
 
 :is([data-s1-break="pc"], [data-s1-density="wide"], [data-s1-density="normal"], [data-s1-density="narrow"]) [data-s1-component="input"]:not([data-break="mobile"])[data-size="md"] [data-s1-part="field"] {
   height: var(--sizing-44);
-  padding-inline: var(--spacing-16) var(--spacing-12);
+  padding-inline: var(--spacing-12) var(--spacing-12);
 }
 
 :is([data-s1-break="pc"], [data-s1-density="wide"], [data-s1-density="normal"], [data-s1-density="narrow"]) [data-s1-component="input"]:not([data-break="mobile"])[data-size="md"] [data-s1-part="control"] {
@@ -400,7 +402,7 @@
 [data-s1-break="mobile"] [data-s1-component="input"]:not([data-break="pc"])[data-size="md"] [data-s1-part="field"] {
   height: var(--sizing-48);
   min-height: var(--sizing-48);
-  padding-inline: var(--spacing-16) 0;
+  padding-inline: var(--spacing-12) 0;
 }
 
 [data-s1-break="mobile"] [data-s1-component="input"]:not([data-break="pc"])[data-size="md"] [data-s1-part="control"] {
@@ -413,7 +415,7 @@
 [data-s1-break="mobile"] [data-s1-component="input"]:not([data-break="pc"]):not([data-size]) [data-s1-part="field"] {
   height: var(--sizing-48);
   min-height: var(--sizing-48);
-  padding-inline: var(--spacing-16) 0;
+  padding-inline: var(--spacing-12) 0;
 }
 
 [data-s1-break="mobile"] [data-s1-component="input"]:not([data-break="pc"]):not([data-size]) [data-s1-part="control"] {

@@ -60,7 +60,7 @@ export default function S1Input({ size, breakName = DEFAULT_BREAK, parts, value,
     return (
       <div data-s1-component="input" data-size={size ?? "md"} data-break="pc" ref={rootRef} className={className} style={style} {...rest}>
         <div data-s1-part="field" {...(slot(partScope, "field").attrs ?? {})}>
-          <input id={`${uid}-control`} data-s1-part="control" aria-label="이름" placeholder="내용을 입력하세요" {...(slot(partScope, "control").attrs ?? {})} {...controlProps} />
+          <input id={`${uid}-control`} data-s1-part="control" aria-label="이름" placeholder="입력해 주세요" {...(slot(partScope, "control").attrs ?? {})} {...controlProps} />
           <button type="button" data-s1-part="action" data-action="clear" aria-label="입력 내용 지우기" hidden {...(slot(partScope, "action").attrs ?? {})}>
             <span data-s1-part="action-icon" aria-hidden="true" {...(slot(partScope, "actionIcon").attrs ?? {})}>
               {slot(partScope, "actionIcon").content ?? ""}
@@ -73,7 +73,7 @@ export default function S1Input({ size, breakName = DEFAULT_BREAK, parts, value,
     return (
       <div data-s1-component="input" data-size={size ?? "md"} data-break="mobile" ref={rootRef} className={className} style={style} {...rest}>
         <div data-s1-part="field" {...(slot(partScope, "field").attrs ?? {})}>
-          <input id={`${uid}-control`} data-s1-part="control" aria-label="이름" placeholder="내용을 입력하세요" {...(slot(partScope, "control").attrs ?? {})} {...controlProps} />
+          <input id={`${uid}-control`} data-s1-part="control" aria-label="이름" placeholder="입력해 주세요" {...(slot(partScope, "control").attrs ?? {})} {...controlProps} />
           <button type="button" data-s1-part="action" data-action="clear" aria-label="입력 내용 지우기" hidden {...(slot(partScope, "action").attrs ?? {})}>
             <span data-s1-part="action-icon" aria-hidden="true" {...(slot(partScope, "actionIcon").attrs ?? {})}>
               {slot(partScope, "actionIcon").content ?? ""}

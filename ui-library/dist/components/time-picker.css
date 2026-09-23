@@ -24,12 +24,12 @@
   font-weight: var(--font-weight-regular);
   gap: var(--spacing-8);
   justify-content: space-between;
-  /* 정본 trigger.resize(150, sc.h) (build-components.ts:2726). river 지시(2026-09-03):
+  /* 정본 trigger.resize(140, sc.h) — 날짜·선택 칸과 같은 기본 폭(river 결정 2026-09-23). river 지시(2026-09-03):
      ①기본 폭이 너무 좁고 ②값이 들어오면(Filled) 글자가 짧아져 입력칸이 줄어들었다 — 둘 다
      내용에 따라 폭이 정해지던 탓이다. 정본 폭을 최소 폭으로 두면 상태가 바뀌어도 크기가 그대로다.
      Select 가 정본 140 을 같은 방식으로 쓰는 선례와 동일(river 지시 2026-09-01, select.css:23).
      width:100% 는 그대로라 소비자가 더 넓게 쓸 수 있다. */
-  min-width: 150px;
+  min-width: 140px; /* 정본 trigger.resize(140) — 날짜·선택 칸과 같은 기본 폭 (river 결정 2026-09-23) */
   width: 100%;
 }
 
@@ -42,7 +42,7 @@
   line-height: var(--line-height-130);
   letter-spacing: var(--letter-spacing-normal);
   height: var(--sizing-28);
-  padding-left: var(--spacing-10);
+  padding-left: var(--spacing-12);
   padding-right: var(--spacing-6);
 }
 [data-s1-component="time-picker"][data-size="xsm"] [data-s1-part="trigger"] {
@@ -64,11 +64,13 @@
   line-height: var(--line-height-130);
   letter-spacing: var(--letter-spacing-tight);
   height: var(--sizing-44);
-  padding-left: var(--spacing-16);
+  padding-left: var(--spacing-12);
   padding-right: var(--spacing-8);
 }
+/* Mobile 아이콘 끝 여백 12 — Input·Search 와 같은 자리로 통일(river 결정 2026-09-21). */
 [data-s1-component="time-picker"][data-size="md"][data-break="mobile"] [data-s1-part="trigger"] {
   height: var(--sizing-48);
+  padding-right: var(--spacing-12);
 }
 
 [data-s1-component="time-picker"] [data-s1-part="value"] {
@@ -139,8 +141,8 @@
   margin-top: var(--spacing-4);
   /* 목록이 입력칸보다 좁아 보이지 않게 한다 — river 지시 2026-09-03 「24시간만 인풋에 맞춰줘,
      12시간제는 현재 유지」. 정본 고정폭(24h=121 · 12h=194)은 width 로 그대로 두고 최소 폭만
-     트리거를 따르게 해서, 24h 는 121→트리거 폭(기본 150)으로 넓어지고 12h 는 194 를 유지한다
-     (194 > 150 이라 min-width 가 이기지 못한다). 소비자가 트리거를 더 넓히면 목록도 함께 따라간다.
+     트리거를 따르게 해서, 24h 는 121→트리거 폭(기본 140)으로 넓어지고 12h 는 194 를 유지한다
+     (194 > 140 이라 min-width 가 이기지 못한다). 소비자가 트리거를 더 넓히면 목록도 함께 따라간다.
      같은 규칙을 Select 이 먼저 쓰고 있다(select.css:105, river 2차 지시 2026-09-01
      「트리거보다 목록이 좁아 보이거나 어긋나 보이면 안 된다」). */
   min-width: 100%;
@@ -406,7 +408,7 @@
   line-height: var(--line-height-130);
   letter-spacing: var(--letter-spacing-tight);
   height: var(--sizing-44);
-  padding-left: var(--spacing-16);
+  padding-left: var(--spacing-12);
   padding-right: var(--spacing-8);
 }
 
@@ -436,7 +438,7 @@
   line-height: var(--line-height-130);
   letter-spacing: var(--letter-spacing-normal);
   height: var(--sizing-28);
-  padding-left: var(--spacing-10);
+  padding-left: var(--spacing-12);
   padding-right: var(--spacing-6);
 }
 
@@ -445,6 +447,7 @@
 /* bridge:mobile 감싸기에 화면 구분을 적었으면 컴포넌트가 안 적어도 같은 규칙이 선다 */
 [data-s1-break="mobile"] [data-s1-component="time-picker"][data-size="md"]:not([data-break="pc"]) [data-s1-part="trigger"] {
   height: var(--sizing-48);
+  padding-right: var(--spacing-12);
 }
 
 /* density:mobile 모바일은 밀도 축이 없다 — 손가락 기준 높이 하나 */
@@ -456,7 +459,7 @@
   line-height: var(--line-height-130);
   letter-spacing: var(--letter-spacing-tight);
   height: var(--sizing-44);
-  padding-left: var(--spacing-16);
+  padding-left: var(--spacing-12);
   padding-right: var(--spacing-8);
 }
 
@@ -464,4 +467,5 @@
 
 [data-s1-break="mobile"] [data-s1-component="time-picker"]:not([data-size]):not([data-break="pc"]) [data-s1-part="trigger"] {
   height: var(--sizing-48);
+  padding-right: var(--spacing-12);
 }
