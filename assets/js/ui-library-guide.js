@@ -2469,7 +2469,7 @@ function timePickerWheelMarkup({ content = "time-only" } = {}) {
         <span data-s1-part="value">${triggerLabel}</span>
         <span data-s1-part="icon" aria-hidden="true"></span>
       </button>
-      <div data-s1-part="sheet" hidden>
+      <div data-s1-component="bottom-sheet" data-s1-part="sheet" data-break="mobile" data-footer="single" hidden>
         <div data-s1-part="sheet-backdrop"></div>
         <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="${sheetTitleId}" tabindex="-1">
           <div data-s1-part="sheet-header">
@@ -2711,7 +2711,7 @@ function datePickerMarkup({ size = "md", breakName = "pc", mode = "single", stat
   // R-1 과 같은 방식(modal.is-preview 선례, ui-library-guide.css) — sheet 는 root 의 .is-preview 를
   // CSS 선택자로 잡아 position:fixed→relative 로 눕힌다. 여기서 별도 클래스를 추가하지 않는다.
   const body = breakName === "mobile"
-    ? `<div data-s1-part="sheet"${panelHidden}>
+    ? `<div data-s1-component="bottom-sheet" data-s1-part="sheet" data-break="mobile" data-footer="single"${panelHidden}>
         <div data-s1-part="sheet-backdrop"></div>
         <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="${sheetTitleId}" tabindex="-1">
           <div data-s1-part="sheet-header">

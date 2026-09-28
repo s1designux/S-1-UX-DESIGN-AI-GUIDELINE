@@ -3118,6 +3118,12 @@
 [data-s1-component="date-picker"] [data-s1-part="cell"][data-weekday="0"][data-state="range-mid"] [data-s1-part="cell-num"] { color: var(--color-date-picker-text-sunday); }
 [data-s1-component="date-picker"] [data-s1-part="cell"][data-weekday="6"][data-state="default"] [data-s1-part="cell-num"],
 [data-s1-component="date-picker"] [data-s1-part="cell"][data-weekday="6"][data-state="range-mid"] [data-s1-part="cell-num"] { color: var(--color-date-picker-text-saturday); }
+/* 옆달(other-month) 은 요일색을 받지 않는다 — 정본이 other-month 를 Calendar Cell Standard:Disabled 로
+   매핑하기 때문이다(build-components.ts dayKindToCellKey). 위 요일 규칙은 속성 5개라 속성 3개짜리
+   이 규칙을 이겨서, 6월 달력의 5/31(일)·7/4(토) 같은 옆달 주말이 빨강·파랑으로 나왔다
+   (river 지적 2026-09-28). 요일 규칙과 같은 상태 축을 붙여 특정도를 맞춘다 — 새 토큰·새 색 0건. */
+[data-s1-component="date-picker"] [data-s1-part="cell"][data-other-month="true"][data-state="default"] [data-s1-part="cell-num"],
+[data-s1-component="date-picker"] [data-s1-part="cell"][data-other-month="true"][data-state="range-mid"] [data-s1-part="cell-num"],
 [data-s1-component="date-picker"] [data-s1-part="cell"][data-other-month="true"] [data-s1-part="cell-num"] { color: var(--color-date-picker-text-other-month); }
 
 [data-s1-component="date-picker"] [data-s1-part="cell"][data-state="disabled"] [data-s1-part="cell-num"],

@@ -3,6 +3,30 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-09-29 08:13 (KST)
+
+- 원본 커밋: `7bcb384` — fix(date-picker): 옆달 날짜가 주말이면 요일색으로 나오던 것 회색으로 (0.13.14)
+- 내용이 바뀐 파일 19개
+  - `assets/js/ui-library-guide.js`
+  - `pages/components.html`
+  - `registry/components/component-facts.json`
+  - `ui-library/dist/components/date-picker.css`
+  - `ui-library/dist/components/date-picker.manifest.json`
+  - `ui-library/dist/manifest.json`
+  - `ui-library/dist/platform/contract.json`
+  - `ui-library/dist/platform/cpp/s1_version.h`
+  - `ui-library/dist/platform/kotlin/README.md`
+  - `ui-library/dist/platform/kotlin/S1Version.kt`
+  - `ui-library/dist/platform/manifest.json`
+  - `ui-library/dist/platform/react/README.md`
+  - `ui-library/dist/platform/react/package.json`
+  - `ui-library/dist/platform/react/version.js`
+  - `ui-library/dist/platform/swift/S1Version.swift`
+  - `ui-library/dist/platform/vue/package.json`
+  - `ui-library/dist/platform/vue/version.js`
+  - `ui-library/dist/preview.html`
+  - `ui-library/dist/s1-ui.css`
+
 ## 2026-09-24 06:28 (KST)
 
 - 원본 커밋: `91c8344` — Merge main into worktree-audit-hand-drawn — 설치기 묶음 재생성으로 부딪힘 해소

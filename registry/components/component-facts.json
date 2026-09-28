@@ -3,7 +3,7 @@
     "generated": true,
     "source": "plugins/figma-vars-installer/src/build-components.ts",
     "method": "mock-execution",
-    "sourceHash": "bce7100d683a",
+    "sourceHash": "b2dfbf84951e",
     "unknownValuePolicy": [
       "unknown",
       "not-defined",
@@ -2118,6 +2118,140 @@
         "buildDependencies": []
       }
     },
+    "Filter Chip": {
+      "variantAxes": {
+        "Size": [
+          "SM",
+          "MD"
+        ],
+        "Break": [
+          "PC",
+          "Mobile"
+        ],
+        "Variant": [
+          "Line",
+          "Solid"
+        ],
+        "Title": [
+          "Off",
+          "On"
+        ],
+        "State": [
+          "Default",
+          "Hover",
+          "Selected",
+          "Complete",
+          "Disabled"
+        ]
+      },
+      "geometry": [
+        {
+          "when": {
+            "Size": "SM",
+            "Break": "PC"
+          },
+          "target": "chip",
+          "height": 28,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "4",
+          "paddingRight": "6",
+          "paddingLeft": "12",
+          "topLeftRadius": "radius/full",
+          "topRightRadius": "radius/full",
+          "bottomLeftRadius": "radius/full",
+          "bottomRightRadius": "radius/full",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Size": "MD",
+            "Break": "PC"
+          },
+          "target": "chip",
+          "height": 34,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "4",
+          "paddingRight": "8",
+          "paddingLeft": "16",
+          "topLeftRadius": "radius/full",
+          "topRightRadius": "radius/full",
+          "bottomLeftRadius": "radius/full",
+          "bottomRightRadius": "radius/full",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Size": "MD",
+            "Break": "Mobile"
+          },
+          "target": "chip",
+          "height": 30,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "4",
+          "paddingRight": "6",
+          "paddingLeft": "12",
+          "topLeftRadius": "radius/full",
+          "topRightRadius": "radius/full",
+          "bottomLeftRadius": "radius/full",
+          "bottomRightRadius": "radius/full",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        }
+      ],
+      "anatomy": [
+        "chip",
+        "dropdown"
+      ],
+      "tokenBindings": [
+        "color/chip/line/bg/default",
+        "color/chip/line/bg/disabled",
+        "color/chip/line/bg/hover",
+        "color/chip/line/bg/selected",
+        "color/chip/line/border/default",
+        "color/chip/line/border/disabled",
+        "color/chip/line/border/selected",
+        "color/chip/line/label/default",
+        "color/chip/line/label/disabled",
+        "color/chip/line/label/selected",
+        "color/chip/solid/bg/default",
+        "color/chip/solid/bg/disabled",
+        "color/chip/solid/bg/hover",
+        "color/chip/solid/bg/selected",
+        "color/chip/solid/border/default",
+        "color/chip/solid/border/disabled",
+        "color/chip/solid/border/selected",
+        "color/chip/solid/label/default",
+        "color/chip/solid/label/disabled",
+        "color/chip/solid/label/selected",
+        "color/dropdown/list/bg",
+        "color/dropdown/list/border",
+        "color/dropdown/option/bg/default",
+        "color/dropdown/option/bg/hover",
+        "color/dropdown/option/label/default",
+        "color/dropdown/option/label/hover",
+        "color/dropdown/option/label/selected",
+        "radius/full"
+      ],
+      "composition": {
+        "buildDependencies": [
+          "Dropdown"
+        ]
+      },
+      "slots": [
+        "Options"
+      ]
+    },
     "List Row": {
       "variantAxes": {
         "Type": [
@@ -3566,192 +3700,6 @@
         ]
       }
     },
-    "Bottom Sheet Option": {
-      "variantAxes": {
-        "Type": [
-          "Text",
-          "Checkbox",
-          "Radio",
-          "List"
-        ],
-        "State": [
-          "Default",
-          "Selected",
-          "Disabled"
-        ]
-      },
-      "geometry": [
-        {
-          "when": {
-            "Type": [
-              "Text",
-              "Checkbox",
-              "Radio"
-            ]
-          },
-          "target": "root",
-          "width": 360,
-          "height": 48,
-          "layoutMode": "HORIZONTAL",
-          "primaryAxisSizingMode": "FIXED",
-          "counterAxisSizingMode": "FIXED",
-          "primaryAxisAlignItems": "MIN",
-          "counterAxisAlignItems": "CENTER",
-          "itemSpacing": "8",
-          "paddingTop": "8",
-          "paddingRight": "20",
-          "paddingBottom": "8",
-          "paddingLeft": "20"
-        },
-        {
-          "when": {
-            "Type": "Text",
-            "State": "Selected"
-          },
-          "target": "root",
-          "width": 360,
-          "height": 48,
-          "layoutMode": "HORIZONTAL",
-          "primaryAxisSizingMode": "FIXED",
-          "counterAxisSizingMode": "FIXED",
-          "primaryAxisAlignItems": "SPACE_BETWEEN",
-          "counterAxisAlignItems": "CENTER",
-          "itemSpacing": "8",
-          "paddingTop": "8",
-          "paddingRight": "20",
-          "paddingBottom": "8",
-          "paddingLeft": "20"
-        },
-        {
-          "when": {
-            "Type": "List",
-            "State": [
-              "Default",
-              "Disabled"
-            ]
-          },
-          "target": "root",
-          "width": 360,
-          "layoutMode": "HORIZONTAL",
-          "primaryAxisSizingMode": "FIXED",
-          "counterAxisSizingMode": "AUTO",
-          "primaryAxisAlignItems": "SPACE_BETWEEN",
-          "counterAxisAlignItems": "CENTER",
-          "paddingTop": "12",
-          "paddingRight": "20",
-          "paddingBottom": "12",
-          "paddingLeft": "20"
-        }
-      ],
-      "anatomy": [
-        "check",
-        "checkbox",
-        "chevron",
-        "list-left"
-      ],
-      "tokenBindings": [
-        "color/control/bg/default",
-        "color/control/bg/selected",
-        "color/control/border/default",
-        "color/control/border/selected",
-        "color/icon/gray-light",
-        "color/surface/raised",
-        "color/text/body/primary",
-        "color/text/body/secondary",
-        "color/text/state/accent",
-        "color/text/state/disabled"
-      ],
-      "composition": {
-        "buildDependencies": [
-          "Checkbox",
-          "Radio"
-        ]
-      }
-    },
-    "Bottom Sheet": {
-      "variantAxes": {
-        "Footer": [
-          "None",
-          "Single",
-          "Dual"
-        ]
-      },
-      "geometry": [
-        {
-          "when": {
-            "Footer": "None"
-          },
-          "target": "root",
-          "width": 360,
-          "height": 100,
-          "layoutMode": "VERTICAL",
-          "primaryAxisSizingMode": "AUTO",
-          "counterAxisSizingMode": "FIXED",
-          "counterAxisAlignItems": "CENTER",
-          "itemSpacing": "48",
-          "paddingTop": "20",
-          "paddingRight": "0",
-          "paddingBottom": "40",
-          "paddingLeft": "0",
-          "topLeftRadius": "8",
-          "topRightRadius": "8",
-          "bottomLeftRadius": "0",
-          "bottomRightRadius": "0"
-        },
-        {
-          "when": {
-            "Footer": [
-              "Single",
-              "Dual"
-            ]
-          },
-          "target": "root",
-          "width": 360,
-          "height": 100,
-          "layoutMode": "VERTICAL",
-          "primaryAxisSizingMode": "AUTO",
-          "counterAxisSizingMode": "FIXED",
-          "counterAxisAlignItems": "CENTER",
-          "itemSpacing": "48",
-          "paddingTop": "20",
-          "paddingRight": "0",
-          "paddingBottom": "20",
-          "paddingLeft": "0",
-          "topLeftRadius": "8",
-          "topRightRadius": "8",
-          "bottomLeftRadius": "0",
-          "bottomRightRadius": "0"
-        }
-      ],
-      "anatomy": [
-        "content",
-        "footer"
-      ],
-      "tokenBindings": [
-        "border-width/1",
-        "color/button/bg/primary--default",
-        "color/button/bg/secondary--default",
-        "color/button/border/primary--default",
-        "color/button/border/secondary--default",
-        "color/button/label/primary--default",
-        "color/button/label/secondary--default",
-        "color/surface/raised",
-        "color/text/body/primary",
-        "color/text/state/accent",
-        "color/text/title/primary",
-        "radius/4",
-        "spacing/16"
-      ],
-      "composition": {
-        "buildDependencies": [
-          "Bottom Sheet Option",
-          "Button"
-        ]
-      },
-      "slots": [
-        "Content"
-      ]
-    },
     "Modal": {
       "variantAxes": {
         "Break": [
@@ -3953,138 +3901,190 @@
         "Content"
       ]
     },
-    "Filter Chip": {
+    "Bottom Sheet Option": {
       "variantAxes": {
-        "Size": [
-          "SM",
-          "MD"
-        ],
-        "Break": [
-          "PC",
-          "Mobile"
-        ],
-        "Variant": [
-          "Line",
-          "Solid"
-        ],
-        "Title": [
-          "Off",
-          "On"
+        "Type": [
+          "Text",
+          "Checkbox",
+          "Radio",
+          "List"
         ],
         "State": [
           "Default",
-          "Hover",
           "Selected",
-          "Complete",
           "Disabled"
         ]
       },
       "geometry": [
         {
           "when": {
-            "Size": "SM",
-            "Break": "PC"
+            "Type": [
+              "Text",
+              "Checkbox",
+              "Radio"
+            ]
           },
-          "target": "chip",
-          "height": 28,
+          "target": "root",
+          "width": 360,
+          "height": 48,
           "layoutMode": "HORIZONTAL",
-          "primaryAxisSizingMode": "AUTO",
+          "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "MIN",
           "counterAxisAlignItems": "CENTER",
-          "itemSpacing": "4",
-          "paddingRight": "6",
-          "paddingLeft": "12",
-          "topLeftRadius": "radius/full",
-          "topRightRadius": "radius/full",
-          "bottomLeftRadius": "radius/full",
-          "bottomRightRadius": "radius/full",
-          "strokeWeight": "1",
-          "strokeAlign": "INSIDE"
+          "itemSpacing": "8",
+          "paddingTop": "8",
+          "paddingRight": "20",
+          "paddingBottom": "8",
+          "paddingLeft": "20"
         },
         {
           "when": {
-            "Size": "MD",
-            "Break": "PC"
+            "Type": "Text",
+            "State": "Selected"
           },
-          "target": "chip",
-          "height": 34,
+          "target": "root",
+          "width": 360,
+          "height": 48,
           "layoutMode": "HORIZONTAL",
-          "primaryAxisSizingMode": "AUTO",
+          "primaryAxisSizingMode": "FIXED",
           "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "SPACE_BETWEEN",
           "counterAxisAlignItems": "CENTER",
-          "itemSpacing": "4",
-          "paddingRight": "8",
-          "paddingLeft": "16",
-          "topLeftRadius": "radius/full",
-          "topRightRadius": "radius/full",
-          "bottomLeftRadius": "radius/full",
-          "bottomRightRadius": "radius/full",
-          "strokeWeight": "1",
-          "strokeAlign": "INSIDE"
+          "itemSpacing": "8",
+          "paddingTop": "8",
+          "paddingRight": "20",
+          "paddingBottom": "8",
+          "paddingLeft": "20"
         },
         {
           "when": {
-            "Size": "MD",
-            "Break": "Mobile"
+            "Type": "List",
+            "State": [
+              "Default",
+              "Disabled"
+            ]
           },
-          "target": "chip",
-          "height": 30,
+          "target": "root",
+          "width": 360,
           "layoutMode": "HORIZONTAL",
-          "primaryAxisSizingMode": "AUTO",
-          "counterAxisSizingMode": "FIXED",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "AUTO",
+          "primaryAxisAlignItems": "SPACE_BETWEEN",
           "counterAxisAlignItems": "CENTER",
-          "itemSpacing": "4",
-          "paddingRight": "6",
-          "paddingLeft": "12",
-          "topLeftRadius": "radius/full",
-          "topRightRadius": "radius/full",
-          "bottomLeftRadius": "radius/full",
-          "bottomRightRadius": "radius/full",
-          "strokeWeight": "1",
-          "strokeAlign": "INSIDE"
+          "paddingTop": "12",
+          "paddingRight": "20",
+          "paddingBottom": "12",
+          "paddingLeft": "20"
         }
       ],
       "anatomy": [
-        "chip",
-        "dropdown"
+        "check",
+        "checkbox",
+        "chevron",
+        "list-left"
       ],
       "tokenBindings": [
-        "color/chip/line/bg/default",
-        "color/chip/line/bg/disabled",
-        "color/chip/line/bg/hover",
-        "color/chip/line/bg/selected",
-        "color/chip/line/border/default",
-        "color/chip/line/border/disabled",
-        "color/chip/line/border/selected",
-        "color/chip/line/label/default",
-        "color/chip/line/label/disabled",
-        "color/chip/line/label/selected",
-        "color/chip/solid/bg/default",
-        "color/chip/solid/bg/disabled",
-        "color/chip/solid/bg/hover",
-        "color/chip/solid/bg/selected",
-        "color/chip/solid/border/default",
-        "color/chip/solid/border/disabled",
-        "color/chip/solid/border/selected",
-        "color/chip/solid/label/default",
-        "color/chip/solid/label/disabled",
-        "color/chip/solid/label/selected",
-        "color/dropdown/list/bg",
-        "color/dropdown/list/border",
-        "color/dropdown/option/bg/default",
-        "color/dropdown/option/bg/hover",
-        "color/dropdown/option/label/default",
-        "color/dropdown/option/label/hover",
-        "color/dropdown/option/label/selected",
-        "radius/full"
+        "color/control/bg/default",
+        "color/control/bg/selected",
+        "color/control/border/default",
+        "color/control/border/selected",
+        "color/icon/gray-light",
+        "color/surface/raised",
+        "color/text/body/primary",
+        "color/text/body/secondary",
+        "color/text/state/accent",
+        "color/text/state/disabled"
       ],
       "composition": {
         "buildDependencies": [
-          "Dropdown"
+          "Checkbox",
+          "Radio"
+        ]
+      }
+    },
+    "Bottom Sheet": {
+      "variantAxes": {
+        "Footer": [
+          "None",
+          "Single",
+          "Dual"
+        ]
+      },
+      "geometry": [
+        {
+          "when": {
+            "Footer": "None"
+          },
+          "target": "root",
+          "width": 360,
+          "height": 100,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "48",
+          "paddingTop": "20",
+          "paddingRight": "0",
+          "paddingBottom": "40",
+          "paddingLeft": "0",
+          "topLeftRadius": "8",
+          "topRightRadius": "8",
+          "bottomLeftRadius": "0",
+          "bottomRightRadius": "0"
+        },
+        {
+          "when": {
+            "Footer": [
+              "Single",
+              "Dual"
+            ]
+          },
+          "target": "root",
+          "width": 360,
+          "height": 100,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "48",
+          "paddingTop": "20",
+          "paddingRight": "0",
+          "paddingBottom": "20",
+          "paddingLeft": "0",
+          "topLeftRadius": "8",
+          "topRightRadius": "8",
+          "bottomLeftRadius": "0",
+          "bottomRightRadius": "0"
+        }
+      ],
+      "anatomy": [
+        "content",
+        "footer"
+      ],
+      "tokenBindings": [
+        "border-width/1",
+        "color/button/bg/primary--default",
+        "color/button/bg/secondary--default",
+        "color/button/border/primary--default",
+        "color/button/border/secondary--default",
+        "color/button/label/primary--default",
+        "color/button/label/secondary--default",
+        "color/surface/raised",
+        "color/text/body/primary",
+        "color/text/state/accent",
+        "color/text/title/primary",
+        "radius/4",
+        "spacing/16"
+      ],
+      "composition": {
+        "buildDependencies": [
+          "Bottom Sheet Option",
+          "Button"
         ]
       },
       "slots": [
-        "Options"
+        "Content"
       ]
     }
   }

@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "91c8344be4fa3306dd452aa878db4a47ec96b559",
+  "commit": "7bcb3843199166e78713e7bd0b3aae6e6542fb16",
   "scope": "PC",
-  "generatedAt": "2026-09-24",
-  "syncedAt": "2026-09-24 06:28 (KST)",
-  "sourceCommitDate": "2026-09-23 14:27 (KST)",
-  "sourceCommitSubject": "Merge main into worktree-audit-hand-drawn — 설치기 묶음 재생성으로 부딪힘 해소"
+  "generatedAt": "2026-09-29",
+  "syncedAt": "2026-09-29 08:13 (KST)",
+  "sourceCommitDate": "2026-09-28 16:16 (KST)",
+  "sourceCommitSubject": "fix(date-picker): 옆달 날짜가 주말이면 요일색으로 나오던 것 회색으로 (0.13.14)"
 }

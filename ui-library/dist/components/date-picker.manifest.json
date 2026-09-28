@@ -348,5 +348,5 @@
     "controlMode": "uncontrolled",
     "progressiveEnhancementNote": "JavaScript 없이는 캘린더가 렌더되지 않아 날짜를 고를 수 없다 — 복합 Picker(정본 계약)라 native fallback이 없다. 트리거는 native button 이라 포커스·이름은 유지된다."
   },
-  "sourceFingerprint": "0cb7cedc7755843deecc70bb582abb3a947b01c04c6acce59c7c30b8a1b452e5"
+  "sourceFingerprint": "525c6d22c850859a6c2440b0a9209f978180b59800195c13e665d23a8168ab01"
 }

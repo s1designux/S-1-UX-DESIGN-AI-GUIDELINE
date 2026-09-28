@@ -1788,11 +1788,16 @@
       <div class="component-filter">
         <div class="category-nav" id="categoryNav">
           <button class="category-btn is-active" onclick="filterByCategory('all', this)">All</button>
+          <button class="category-btn" onclick="filterByCategory('platform', this)">Platform</button>
+          <button class="category-btn" onclick="filterByCategory('navigation', this)">Navigation</button>
           <button class="category-btn" onclick="filterByCategory('actions', this)">Actions</button>
           <button class="category-btn" onclick="filterByCategory('selection', this)">Selection</button>
-          <button class="category-btn" onclick="filterByCategory('form', this)">Form</button>
+          <button class="category-btn" onclick="filterByCategory('dropdown', this)">Dropdown</button>
+          <button class="category-btn" onclick="filterByCategory('chip', this)">Chip</button>
+          <button class="category-btn" onclick="filterByCategory('form', this)">Form Control</button>
+          <button class="category-btn" onclick="filterByCategory('date-picker', this)">Date Picker</button>
+          <button class="category-btn" onclick="filterByCategory('time-picker', this)">Time Picker</button>
           <button class="category-btn" onclick="filterByCategory('table', this)">Table</button>
-          <button class="category-btn" onclick="filterByCategory('navigation', this)">Navigation</button>
           <button class="category-btn" onclick="filterByCategory('overlay', this)">Overlay</button>
         </div>
         <div class="comp-nav">
@@ -1803,14 +1808,14 @@
           <button class="comp-nav-btn" data-category="selection" data-platforms="pc mobile" onclick="showSection('radio', this)">Radio</button>
           <button class="comp-nav-btn" data-category="selection" data-platforms="pc mobile" onclick="showSection('toggle', this)">Toggle</button>
           <button class="comp-nav-btn" data-category="selection" data-platforms="pc" onclick="showSection('multi-toggle', this)">Multi Toggle</button>
-          <button class="comp-nav-btn" data-category="selection" data-platforms="pc mobile" onclick="showSection('chip', this)">Chip</button>
-          <button class="comp-nav-btn" data-category="selection" data-platforms="pc mobile" onclick="showSection('filter-chip', this)">Filter Chip</button>
+          <button class="comp-nav-btn" data-category="chip" data-platforms="pc mobile" onclick="showSection('chip', this)">Chip</button>
+          <button class="comp-nav-btn" data-category="chip" data-platforms="pc mobile" onclick="showSection('filter-chip', this)">Filter Chip</button>
           <button class="comp-nav-btn" data-category="form" data-platforms="pc mobile" onclick="showSection('input', this)">Input</button>
-          <button class="comp-nav-btn" data-category="form" data-platforms="pc mobile" onclick="showSection('date-picker', this)">Date Picker</button>
-          <button class="comp-nav-btn" data-category="form" data-platforms="pc mobile" onclick="showSection('time-picker', this)">Time Picker</button>
+          <button class="comp-nav-btn" data-category="date-picker" data-platforms="pc mobile" onclick="showSection('date-picker', this)">Date Picker</button>
+          <button class="comp-nav-btn" data-category="time-picker" data-platforms="pc mobile" onclick="showSection('time-picker', this)">Time Picker</button>
           <button class="comp-nav-btn" data-category="form" data-platforms="pc mobile" onclick="showSection('textarea', this)">Textarea</button>
           <button class="comp-nav-btn" data-category="form" data-platforms="pc mobile" onclick="showSection('select', this)">Select</button>
-          <button class="comp-nav-btn" data-category="form" data-platforms="pc" onclick="showSection('dropdown', this)">Dropdown</button>
+          <button class="comp-nav-btn" data-category="dropdown" data-platforms="pc" onclick="showSection('dropdown', this)">Dropdown</button>
           <button class="comp-nav-btn" data-category="table" data-platforms="pc" onclick="showSection('table', this)">Table</button>
           <button class="comp-nav-btn" data-category="navigation" data-platforms="pc mobile" onclick="showSection('tab', this)">Line Tab</button>
           <button class="comp-nav-btn" data-category="navigation" data-platforms="pc" onclick="showSection('gnb', this)">GNB</button>
@@ -1819,9 +1824,9 @@
           <button class="comp-nav-btn" data-category="navigation" data-platforms="pc" onclick="showSection('pagination', this)">Pagination</button>
           <button class="comp-nav-btn" data-category="navigation" data-platforms="mobile" onclick="showSection('mobile-bottom-nav', this)">Bottom Nav</button>
           <button class="comp-nav-btn" data-category="navigation" data-platforms="mobile" onclick="showSection('mobile-header', this)">Mobile Header</button>
-          <button class="comp-nav-btn" data-category="navigation" data-platforms="pc mobile" onclick="showSection('ci', this)" disabled>CI Logo</button>
-          <button class="comp-nav-btn" data-category="navigation" data-platforms="pc" onclick="showSection('footer', this)" disabled>Footer</button>
-          <button class="comp-nav-btn" data-category="navigation" data-platforms="pc" onclick="showSection('login-gnb', this)" disabled>Login GNB</button>
+          <button class="comp-nav-btn" data-category="platform" data-platforms="pc mobile" onclick="showSection('ci', this)" disabled>CI Logo</button>
+          <button class="comp-nav-btn" data-category="platform" data-platforms="pc" onclick="showSection('footer', this)" disabled>Footer</button>
+          <button class="comp-nav-btn" data-category="platform" data-platforms="pc" onclick="showSection('login-gnb', this)" disabled>Login GNB</button>
           <button class="comp-nav-btn" data-category="overlay" data-platforms="pc mobile" onclick="showSection('modal', this)">Modal</button>
           <button class="comp-nav-btn" data-category="overlay" data-platforms="pc" onclick="showSection('modal-content', this)">Modal Content</button>
           <button class="comp-nav-btn" data-category="overlay" data-platforms="mobile" onclick="showSection('bottom-sheet', this)">Bottom Sheet</button>
