@@ -1501,7 +1501,7 @@
         "panel"
       ],
       "unreadPcOnly": 10,
-      "unreadDisplayRules": 18,
+      "unreadDisplayRules": 22,
       "unreadDeclarations": [
         {
           "selector": "[data-s1-component=\"select\"][data-size=\"xxsm\"] [data-s1-part=\"trigger\"]",
@@ -1550,6 +1550,34 @@
           "media": null,
           "property": "display",
           "value": "none",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"select\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "z-index",
+          "value": "1001",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"select\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "margin-top",
+          "value": "0",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"select\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "position",
+          "value": "fixed",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"select\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "top",
+          "value": "auto",
           "reason": "display-rule"
         },
         {
@@ -1946,7 +1974,7 @@
         "title"
       ],
       "unreadPcOnly": 36,
-      "unreadDisplayRules": 1,
+      "unreadDisplayRules": 5,
       "unreadDeclarations": [
         {
           "selector": "[data-s1-component=\"filter-chip\"][data-size=\"sm\"][data-break=\"pc\"] [data-s1-part=\"trigger\"]",
@@ -1995,6 +2023,34 @@
           "media": null,
           "property": "width",
           "value": "100%",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"filter-chip\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "z-index",
+          "value": "1001",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"filter-chip\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "margin-top",
+          "value": "0",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"filter-chip\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "position",
+          "value": "fixed",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"filter-chip\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "top",
+          "value": "auto",
           "reason": "display-rule"
         },
         {

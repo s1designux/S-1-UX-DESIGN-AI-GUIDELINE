@@ -511,11 +511,11 @@ constexpr std::uint32_t S1_COLOR_FORM_CONTROL_BG_HOVER = 0xFF24252Cu; // --color
 constexpr std::uint32_t S1_COLOR_FORM_CONTROL_BG_SELECTED = 0xFF24252Cu; // --color-form-control-bg-selected = #24252C
 constexpr std::uint32_t S1_COLOR_FORM_CONTROL_BORDER_CORRECT = 0xFF4285E8u; // --color-form-control-border-correct = #4285E8
 constexpr std::uint32_t S1_COLOR_FORM_CONTROL_BORDER_DEFAULT = 0xFF3E4049u; // --color-form-control-border-default = #3E4049
-constexpr std::uint32_t S1_COLOR_FORM_CONTROL_BORDER_DISABLED = 0xFF24252Cu; // --color-form-control-border-disabled = #24252C
+constexpr std::uint32_t S1_COLOR_FORM_CONTROL_BORDER_DISABLED = 0xFF2E2F38u; // --color-form-control-border-disabled = #2E2F38
 constexpr std::uint32_t S1_COLOR_FORM_CONTROL_BORDER_ERROR = 0xFFF06070u; // --color-form-control-border-error = #F06070
 constexpr std::uint32_t S1_COLOR_FORM_CONTROL_BORDER_SELECTED = 0xFF4285E8u; // --color-form-control-border-selected = #4285E8
-constexpr std::uint32_t S1_COLOR_FORM_CONTROL_ICON_DEFAULT = 0xFF8A8C96u; // --color-form-control-icon-default = #8A8C96
-constexpr std::uint32_t S1_COLOR_FORM_CONTROL_ICON_DISABLED = 0xFF3E4049u; // --color-form-control-icon-disabled = #3E4049
+constexpr std::uint32_t S1_COLOR_FORM_CONTROL_ICON_DEFAULT = 0xFFB8BABFu; // --color-form-control-icon-default = #B8BABF
+constexpr std::uint32_t S1_COLOR_FORM_CONTROL_ICON_DISABLED = 0xFF55575Fu; // --color-form-control-icon-disabled = #55575F
 constexpr std::uint32_t S1_COLOR_FORM_CONTROL_ICON_HOVER = 0xFFB8BABFu; // --color-form-control-icon-hover = #B8BABF
 constexpr std::uint32_t S1_COLOR_FORM_CONTROL_ICON_SELECTED = 0xFFB8BABFu; // --color-form-control-icon-selected = #B8BABF
 constexpr std::uint32_t S1_COLOR_FORM_CONTROL_LABEL_DEFAULT = 0xFFB8BABFu; // --color-form-control-label-default = #B8BABF
@@ -523,7 +523,7 @@ constexpr std::uint32_t S1_COLOR_FORM_CONTROL_LABEL_DISABLED = 0xFF55575Fu; // -
 constexpr std::uint32_t S1_COLOR_FORM_CONTROL_TEXT_CURSOR = 0xFF4285E8u; // --color-form-control-text-cursor = #4285E8
 constexpr std::uint32_t S1_COLOR_FORM_CONTROL_TEXT_DEFAULT = 0xFFB8BABFu; // --color-form-control-text-default = #B8BABF
 constexpr std::uint32_t S1_COLOR_FORM_CONTROL_TEXT_DISABLED = 0xFF55575Fu; // --color-form-control-text-disabled = #55575F
-constexpr std::uint32_t S1_COLOR_FORM_CONTROL_TEXT_PLACEHOLDER = 0xFF55575Fu; // --color-form-control-text-placeholder = #55575F
+constexpr std::uint32_t S1_COLOR_FORM_CONTROL_TEXT_PLACEHOLDER = 0xFF8A8C96u; // --color-form-control-text-placeholder = #8A8C96
 constexpr std::uint32_t S1_COLOR_FORM_CONTROL_TEXT_READ_ONLY = 0xFF8A8C96u; // --color-form-control-text-read-only = #8A8C96
 constexpr std::uint32_t S1_COLOR_FORM_CONTROL_TEXT_SELECTED = 0xFFB8BABFu; // --color-form-control-text-selected = #B8BABF
 constexpr std::uint32_t S1_COLOR_ICON_BLUE = 0xFF3070D8u; // --color-icon-blue = #3070D8

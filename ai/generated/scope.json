@@ -8,10 +8,10 @@
       "ui-library/dist/examples/*.html",
       "ai/rules/platform-scope.overrides.json"
     ],
-    "distVersion": "0.13.14",
-    "distReleasedAt": "2026-09-28",
-    "canonicalFingerprint": "964c65df9a45841d3d8b2d8f0e104e747ee13e0c44be43946113096b6100cb27",
-    "builtAt": "2026-09-28"
+    "distVersion": "0.13.16",
+    "distReleasedAt": "2026-09-29",
+    "canonicalFingerprint": "07ff83a14fe7f5bff0ef9948b515841d3b3ec5c1a984d3b2b3fbc0466d852f23",
+    "builtAt": "2026-09-29"
   },
   "rules": {
     "_meta": {

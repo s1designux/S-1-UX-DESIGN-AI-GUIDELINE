@@ -3,6 +3,32 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-09-30 07:12 (KST)
+
+- 원본 커밋: `1a6d5fe` — feat(tokens): 폼컨트롤 다크값 4건 정본 반영 (Figma V3.0 TEST 실측)
+- 내용이 바뀐 파일 40개
+  - `assets/css/tokens.css`
+  - `pages/components.html`
+  - `ui-library/dist/assets/css/tokens.css`
+  - `ui-library/dist/components/date-picker.css`
+  - `ui-library/dist/components/date-picker.js`
+  - `ui-library/dist/components/date-picker.manifest.json`
+  - `ui-library/dist/components/filter-chip.css`
+  - `ui-library/dist/components/filter-chip.js`
+  - `ui-library/dist/components/filter-chip.manifest.json`
+  - `ui-library/dist/components/input.manifest.json`
+  - `ui-library/dist/components/select.css`
+  - `ui-library/dist/components/select.js`
+  - `ui-library/dist/components/select.manifest.json`
+  - `ui-library/dist/components/table.manifest.json`
+  - `ui-library/dist/components/textarea.manifest.json`
+  - `ui-library/dist/components/time-picker.css`
+  - `ui-library/dist/components/time-picker.js`
+  - `ui-library/dist/components/time-picker.manifest.json`
+  - `ui-library/dist/manifest.json`
+  - `ui-library/dist/platform/contract.json`
+  - … 외 20개
+
 ## 2026-09-29 08:13 (KST)
 
 - 원본 커밋: `7bcb384` — fix(date-picker): 옆달 날짜가 주말이면 요일색으로 나오던 것 회색으로 (0.13.14)

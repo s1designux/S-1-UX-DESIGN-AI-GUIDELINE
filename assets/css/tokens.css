@@ -750,19 +750,19 @@
   --color-form-control-bg-selected     : var(--color-gray-dark-200);
   --color-form-control-border-correct  : var(--color-blue-dark-350);
   --color-form-control-border-default  : var(--color-gray-dark-500);
-  --color-form-control-border-disabled : var(--color-gray-dark-200);
+  --color-form-control-border-disabled : var(--color-gray-dark-300);
   --color-form-control-border-error    : var(--color-red-dark-350);
   --color-form-control-border-selected : var(--color-blue-dark-350);
   --color-form-control-label-default   : var(--color-gray-dark-800);
   --color-form-control-label-disabled  : var(--color-gray-dark-600);
   --color-form-control-text-default    : var(--color-gray-dark-800);
   --color-form-control-text-disabled   : var(--color-gray-dark-600);
-  --color-form-control-text-placeholder: var(--color-gray-dark-600);
+  --color-form-control-text-placeholder: var(--color-gray-dark-700);
   --color-form-control-text-selected   : var(--color-gray-dark-800);
-  --color-form-control-icon-default    : var(--color-gray-dark-700);
+  --color-form-control-icon-default    : var(--color-gray-dark-800);
   --color-form-control-icon-hover      : var(--color-gray-dark-800);
   --color-form-control-icon-selected   : var(--color-gray-dark-800);
-  --color-form-control-icon-disabled   : var(--color-gray-dark-500);
+  --color-form-control-icon-disabled   : var(--color-gray-dark-600);
   --color-form-control-text-cursor     : var(--color-blue-dark-350);
   --color-form-control-text-read-only  : var(--color-gray-dark-700);
 

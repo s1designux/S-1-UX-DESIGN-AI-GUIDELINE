@@ -155,6 +155,17 @@
 [data-s1-component="time-picker"] [data-s1-part="panel"][hidden] {
   display: none;
 }
+/* 열려 있는 동안만 화면 고정 층으로 띄운다 — 스크롤 상자(overflow:auto/hidden) 안에서도 잘리지 않고,
+   화면 아래가 모자라면 위로 뒤집힌다. 좌표·최소폭은 JS(floatPanel)가 트리거 기준으로 계산해
+   인라인으로 넣는다(fixed 가 되면 min-width:100% 의 기준이 뷰포트로 바뀐다). 닫으면 되돌아온다. */
+[data-s1-component="time-picker"] [data-s1-part="panel"][data-s1-float="fixed"] {
+  /* 떠 있는 동안에는 페이지의 고정 머리말·툴바보다 위다 — 지금 보고 있는 것이 이 목록이기 때문.
+     닫히면 이 규칙이 사라져 원래 z-index 10 으로 돌아간다. */
+  z-index: 1001;
+  margin-top: 0;
+  position: fixed;
+  top: auto;
+}
 
 [data-s1-component="time-picker"][data-type="24h"] [data-s1-part="panel"] { width: 121px; }
 [data-s1-component="time-picker"][data-type="12h"] [data-s1-part="panel"] { width: 194px; }

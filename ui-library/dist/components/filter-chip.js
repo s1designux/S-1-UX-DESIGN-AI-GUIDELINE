@@ -5,6 +5,52 @@ export const jsRequired = true;
 
 const instances = new WeakMap();
 
+/* ── 팝오버 띄우기 (date-picker·time-picker·select·filter-chip 공통 배선, 2026-09-28) ──────────────
+   패널은 기본적으로 컴포넌트 안에 position:absolute 로 붙는다. 소비자가 컴포넌트를 스크롤 상자
+   (overflow:auto|scroll|hidden) 안에 넣으면 그 상자가 패널을 잘라낸다 — 특히 위로 뒤집을 때 상자
+   윗변에서 잘린다(안내 페이지 Date Picker XXSM 실측: 위쪽 165px 잘림).
+   그래서 **열려 있는 동안만** position:fixed 로 띄우고 트리거 좌표로 직접 붙인다 — 어떤 조상도
+   자르지 못한다. 닫으면 인라인 값을 전부 지워 원래(absolute) 계약으로 되돌린다(정적 Open 표본 불변).
+   width:100% / min-width:100% 를 쓰는 패널은 fixed 가 되면 기준이 뷰포트로 바뀌므로, 띄우는 동안
+   따라갈 요소의 실제 폭을 px 로 고정해 준다. */
+const PANEL_VIEWPORT_MARGIN = 8;
+
+function floatPanel(trigger, panel, { gap = 8, widthFrom = null, minWidthFrom = null } = {}) {
+  if (widthFrom) panel.style.width = `${widthFrom.getBoundingClientRect().width}px`;
+  if (minWidthFrom) panel.style.minWidth = `${minWidthFrom.getBoundingClientRect().width}px`;
+  panel.setAttribute("data-s1-float", "fixed");
+  // 재계산 전에 좌표를 0,0 으로 되돌려야 이전 위치가 크기 측정에 섞이지 않는다.
+  panel.style.top = "0px";
+  panel.style.left = "0px";
+  const t = trigger.getBoundingClientRect();
+  const p = panel.getBoundingClientRect();
+  const vw = document.documentElement.clientWidth;
+  const vh = document.documentElement.clientHeight;
+  const roomBelow = vh - t.bottom - gap;
+  const roomAbove = t.top - gap;
+  /* 위로 뒤집는 건 **위에 온전히 들어갈 때만** 이다. 양쪽 다 모자라면 아래로 둔다 —
+     아래로 넘친 부분은 스크롤로 볼 수 있지만, 위로 넘친 부분은 볼 방법이 없다. */
+  const flipUp = p.height > roomBelow && p.height <= roomAbove;
+  /* 세로는 트리거에 그대로 붙인다(화면 안으로 끌어당기지 않는다) — 끌어당기면 트리거가 화면 밖으로
+     스크롤됐을 때 패널만 화면 끝에 홀로 남는다. 가로만 화면 밖으로 나가지 않게 당겨 준다. */
+  const maxLeft = Math.max(PANEL_VIEWPORT_MARGIN, vw - PANEL_VIEWPORT_MARGIN - p.width);
+  const top = flipUp ? t.top - gap - p.height : t.bottom + gap;
+  const left = Math.min(Math.max(PANEL_VIEWPORT_MARGIN, t.left), maxLeft);
+  panel.style.top = `${Math.round(top)}px`;
+  panel.style.left = `${Math.round(left)}px`;
+  if (flipUp) panel.setAttribute("data-flip", "up");
+  else panel.removeAttribute("data-flip");
+}
+
+function unfloatPanel(panel) {
+  panel.removeAttribute("data-s1-float");
+  panel.removeAttribute("data-flip");
+  panel.style.top = "";
+  panel.style.left = "";
+  panel.style.width = "";
+  panel.style.minWidth = "";
+}
+
 function getParts(root) {
   return {
     trigger: root.querySelector('[data-s1-part="trigger"]'),
@@ -55,11 +101,19 @@ export function init(root) {
   });
   disabledObserver.observe(trigger, { attributes: true, attributeFilter: ["disabled"] });
 
+  // 패널은 열려 있는 동안 화면 고정 층으로 띄운다 — 스크롤 상자 안에서도 잘리지 않는다.
+  // 폭은 CSS 가 width:100%(= 칩 폭)로 잡으므로, 띄우는 동안 root 의 실제 폭을 px 로 넘겨준다.
+  const positionPanel = () => { if (!panel.hidden) floatPanel(trigger, panel, { gap: 8, widthFrom: root }); };
+  const handleReposition = () => positionPanel();
+
   const close = ({ returnFocus = true } = {}) => {
     if (!isOpen(trigger)) return;
     trigger.setAttribute("aria-expanded", "false");
     panel.hidden = true;
+    unfloatPanel(panel);
     document.removeEventListener("pointerdown", handleOutsidePointer, true);
+    window.removeEventListener("scroll", handleReposition, true);
+    window.removeEventListener("resize", handleReposition);
     if (returnFocus) trigger.focus();
     root.dispatchEvent(new CustomEvent("s1:filter-chip:close", { bubbles: true, detail: {} }));
   };
@@ -68,7 +122,10 @@ export function init(root) {
     if (trigger.disabled || isOpen(trigger)) return;
     trigger.setAttribute("aria-expanded", "true");
     panel.hidden = false;
+    positionPanel();
     document.addEventListener("pointerdown", handleOutsidePointer, true);
+    window.addEventListener("scroll", handleReposition, true);
+    window.addEventListener("resize", handleReposition);
     dropdownApi?.focusActive();
     root.dispatchEvent(new CustomEvent("s1:filter-chip:open", { bubbles: true, detail: {} }));
   };
@@ -115,6 +172,9 @@ export function init(root) {
       root.removeEventListener("keydown", handleRootKeydown);
       root.removeEventListener("s1:dropdown:change", handleDropdownChange);
       document.removeEventListener("pointerdown", handleOutsidePointer, true);
+      window.removeEventListener("scroll", handleReposition, true);
+      window.removeEventListener("resize", handleReposition);
+      unfloatPanel(panel);
       disabledObserver.disconnect();
       destroyDropdown(dropdownRoot);
       instances.delete(root);

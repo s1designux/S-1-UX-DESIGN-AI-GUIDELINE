@@ -103,9 +103,11 @@
       padding: 24px 32px;
       transition: background 0.3s;
       overflow-x: auto;
-      /* controls-sticky(z-index:9)·page-header(z-index:10) 아래에 드롭다운이 올라오지 않도록
-         스태킹 컨텍스트를 preview-area 안에 격리한다. 내부 z-index 값은 이 경계 밖으로 경쟁하지 않음 */
-      isolation: isolate;
+      /* 종전에는 isolation:isolate 로 스태킹을 이 상자 안에 가뒀다. 그러면 「정적으로 펼쳐 둔 표본
+         드롭다운」이 상단 고정 바를 덮지 않아 좋지만, **실제로 눌러서 연 팝오버**(화면 고정 층으로
+         뜨는 것)까지 함께 가둬 고정 바 밑에 깔린다(river 지시 2026-09-29 「큰 달력 가림도 풀어줘」).
+         그래서 격리를 걷고, 같은 목적을 z-index 층으로 다시 세운다:
+           정적 표본(8~20) < 상단 고정 바(100) < 실제로 연 팝오버(1001) */
       /* 컴포넌트 데모 글자(버튼·칩·라벨 텍스트)가 본문처럼 드래그 선택되며
          I-빔 텍스트 커서가 뜨는 것을 방지 — 컴포넌트는 UI 부품처럼 동작해야 함 */
       -webkit-user-select: none;
@@ -203,7 +205,8 @@
     .comp-sticky-bar {
       position: sticky;
       top: 0;
-      z-index: 10;
+      /* 정적 표본 드롭다운(8~20)보다 위, 실제로 연 팝오버(1001)보다 아래 */
+      z-index: 100;
       background: #fff;
       border-top: 1px solid #e5e7eb;
       border-bottom: 1px solid #e5e7eb;
@@ -770,7 +773,7 @@
     /* Date Picker — PC Calendar (Figma 540:4216 확인) */
     .s1-date-picker { position: relative; display: inline-block; width: 100%; max-width: 280px; }
     /* PC popover panel — Figma 540:4216: width=356px, py=20px, px=24px, border=1px #d9d9d9, radius=4px, shadow */
-    /* z-index: 8 — sticky page-header(10)·controls-sticky(9) 아래에 위치하여 헤더 위로 올라오지 않음 */
+    /* z-index: 8 — 상단 고정 바(100) 아래에 위치하여 헤더 위로 올라오지 않음 */
     .s1-date-picker__panel {
       position: absolute; top: calc(100% + 8px); left: 0; z-index: 8;
       width: 356px;
@@ -911,7 +914,7 @@
     /* 실제로 연 인터랙티브 달력 패널(hidden 해제됨)만 z-index를 20으로 올려, DOM상 뒤에 오는
        이웃 정적 프리뷰 달력(Open(Focus) 컬럼의 항상 열린 2026.05 등, 기본 z-index:8)에 가려지지 않게 한다.
        정적 프리뷰 패널은 .s1-date-picker 컨테이너 밖(평범한 div)에 있어 이 선택자에서 제외된다.
-       preview-area의 isolation:isolate 안에 갇혀 헤더(10)·controls-sticky(9) 위로는 못 올라온다. */
+       20 은 상단 고정 바(100)보다 낮아 헤더 위로는 올라오지 않는다. */
     .s1-date-picker .s1-date-picker__panel:not([hidden]) { z-index: 20; }
     /* Trigger opened state — 설치기 정본: Open = bg/selected(다크 gray-dark/200) + border/selected + 값 텍스트 text/selected(gray/900) */
     .s1-date-picker--opened .s1-input-wrap,
@@ -1218,7 +1221,7 @@
     /* TimePicker Input형 dropdown — Figma pc_timepicker_input_dropdown (540:3506) */
     /* width 최소값 기준: 24h 변형(540:3507) min-w/w = 121px. 12h 변형(540:3536)은 194px. 가장 좁은 24h를 floor로 표기 */
     /* 트리거 is-focus = 드롭다운 열림. Figma "selected" = 코드 "is-focus" = 동작 "open" */
-    /* z-index: 8 — controls-sticky(9)·page-header(10) 아래. preview-area isolation: isolate로 헤더 위 노출 방지 */
+    /* z-index: 8 — 상단 고정 바(100) 아래 */
     .s1-tp-dropdown {
       position: absolute; top: calc(100% + 8px); left: 0;
       z-index: 8; min-width: 121px; width: 121px;
@@ -1284,7 +1287,7 @@
       letter-spacing: -0.02em;
     }
     .s1-tp-confirm-btn.is-active { color: var(--color-action-primary-default); }
-    /* Select형 custom dropdown — z-index: 8 동일 규칙 */
+    /* Select형 custom dropdown — z-index: 8 동일 규칙 (상단 고정 바 100 아래) */
     .s1-tp-select-dropdown {
       position: absolute; top: calc(100% + 8px); left: 0; right: 0;
       z-index: 8;

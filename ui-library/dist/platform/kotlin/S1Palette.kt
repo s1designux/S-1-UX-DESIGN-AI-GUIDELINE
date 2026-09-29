@@ -312,16 +312,16 @@ object S1Palette {
     val colorFormControlBorderCorrect: S1Color = S1Color(0xFF1D6CEB, 0xFF4285E8)
     /** --color-form-control-border-default — 라이트 #D9D9D9 · 다크 #3E4049 */
     val colorFormControlBorderDefault: S1Color = S1Color(0xFFD9D9D9, 0xFF3E4049)
-    /** --color-form-control-border-disabled — 라이트 #E9E9E9 · 다크 #24252C */
-    val colorFormControlBorderDisabled: S1Color = S1Color(0xFFE9E9E9, 0xFF24252C)
+    /** --color-form-control-border-disabled — 라이트 #E9E9E9 · 다크 #2E2F38 */
+    val colorFormControlBorderDisabled: S1Color = S1Color(0xFFE9E9E9, 0xFF2E2F38)
     /** --color-form-control-border-error — 라이트 #FF4554 · 다크 #F06070 */
     val colorFormControlBorderError: S1Color = S1Color(0xFFFF4554, 0xFFF06070)
     /** --color-form-control-border-selected — 라이트 #1D6CEB · 다크 #4285E8 */
     val colorFormControlBorderSelected: S1Color = S1Color(0xFF1D6CEB, 0xFF4285E8)
-    /** --color-form-control-icon-default — 라이트 #353535 · 다크 #8A8C96 */
-    val colorFormControlIconDefault: S1Color = S1Color(0xFF353535, 0xFF8A8C96)
-    /** --color-form-control-icon-disabled — 라이트 #C4C4C4 · 다크 #3E4049 */
-    val colorFormControlIconDisabled: S1Color = S1Color(0xFFC4C4C4, 0xFF3E4049)
+    /** --color-form-control-icon-default — 라이트 #353535 · 다크 #B8BABF */
+    val colorFormControlIconDefault: S1Color = S1Color(0xFF353535, 0xFFB8BABF)
+    /** --color-form-control-icon-disabled — 라이트 #C4C4C4 · 다크 #55575F */
+    val colorFormControlIconDisabled: S1Color = S1Color(0xFFC4C4C4, 0xFF55575F)
     /** --color-form-control-icon-hover — 라이트 #202020 · 다크 #B8BABF */
     val colorFormControlIconHover: S1Color = S1Color(0xFF202020, 0xFFB8BABF)
     /** --color-form-control-icon-selected — 라이트 #202020 · 다크 #B8BABF */
@@ -336,8 +336,8 @@ object S1Palette {
     val colorFormControlTextDefault: S1Color = S1Color(0xFF353535, 0xFFB8BABF)
     /** --color-form-control-text-disabled — 라이트 #C4C4C4 · 다크 #55575F */
     val colorFormControlTextDisabled: S1Color = S1Color(0xFFC4C4C4, 0xFF55575F)
-    /** --color-form-control-text-placeholder — 라이트 #757575 · 다크 #55575F */
-    val colorFormControlTextPlaceholder: S1Color = S1Color(0xFF757575, 0xFF55575F)
+    /** --color-form-control-text-placeholder — 라이트 #757575 · 다크 #8A8C96 */
+    val colorFormControlTextPlaceholder: S1Color = S1Color(0xFF757575, 0xFF8A8C96)
     /** --color-form-control-text-read-only — 라이트 #757575 · 다크 #8A8C96 */
     val colorFormControlTextReadOnly: S1Color = S1Color(0xFF757575, 0xFF8A8C96)
     /** --color-form-control-text-selected — 라이트 #202020 · 다크 #B8BABF */
