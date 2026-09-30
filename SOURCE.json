@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "1a6d5fe57e2fdc6aff9ed80383725222f972e514",
+  "commit": "777d836a908891128ad7026358fc002684625660",
   "scope": "PC",
-  "generatedAt": "2026-09-30",
-  "syncedAt": "2026-09-30 07:12 (KST)",
-  "sourceCommitDate": "2026-09-29 14:33 (KST)",
-  "sourceCommitSubject": "feat(tokens): 폼컨트롤 다크값 4건 정본 반영 (Figma V3.0 TEST 실측)"
+  "generatedAt": "2026-10-01",
+  "syncedAt": "2026-10-01 07:12 (KST)",
+  "sourceCommitDate": "2026-09-30 15:08 (KST)",
+  "sourceCommitSubject": "fix(guide): 모달·콘텐츠 모달·바텀시트 미리보기가 스크롤 시 고정 머리말 위로 튀어나오던 것"
 }

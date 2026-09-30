@@ -80,6 +80,12 @@
   white-space: nowrap;
 }
 
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. */
+[data-s1-component="time-picker"][data-size="xxsm"] [data-s1-part="value"] {
+  position: relative;
+  top: 1px;
+}
+
 /* 아이콘 — clock. 크기: XXSM=20px, 그 외=24px (fcIconPx, build-components.ts:1506·2411). */
 [data-s1-component="time-picker"] [data-s1-part="icon"] {
   background-color: var(--color-form-control-icon-default);
@@ -189,7 +195,7 @@
 }
 
 [data-s1-component="time-picker"] [data-s1-part="divider"] {
-  background: var(--color-line-gray-subtle);
+  background: var(--color-line-default);
   flex: 0 0 auto;
   width: var(--border-width-1);
 }
@@ -243,7 +249,7 @@
    panelW-16 길이의 1px 선을 둔다(build-components.ts 2540-2547). 투명 border 로 정본의
    1px 행 높이를 유지하고, 실제 선은 그 자리에 안쪽으로만 그린다. */
 [data-s1-component="time-picker"] [data-s1-part="columns"] + [data-s1-part="footer"] {
-  background: linear-gradient(var(--color-line-gray-subtle), var(--color-line-gray-subtle)) no-repeat 50% 0 / calc(100% - var(--spacing-16)) var(--border-width-1);
+  background: linear-gradient(var(--color-line-default), var(--color-line-default)) no-repeat 50% 0 / calc(100% - var(--spacing-16)) var(--border-width-1);
   background-origin: border-box;
   border-top: var(--border-width-1) solid transparent;
 }
@@ -451,6 +457,12 @@
   height: var(--sizing-28);
   padding-left: var(--spacing-12);
   padding-right: var(--spacing-6);
+}
+
+/* 한글 세로 보정 — 웹 전용(밀도 사본) */
+[data-s1-density="narrow"] [data-s1-component="time-picker"]:not([data-size]) [data-s1-part="value"] {
+  position: relative;
+  top: 1px;
 }
 
 [data-s1-density="narrow"] [data-s1-component="time-picker"]:not([data-size]) [data-s1-part="icon"] { width: var(--sizing-20); height: var(--sizing-20); }

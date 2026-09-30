@@ -52,6 +52,12 @@
   color: var(--color-text-state-disabled);
 }
 
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. */
+[data-s1-component="bottom-sheet-option"] > [data-s1-part="label"] {
+  position: relative;
+  top: 1px;
+}
+
 /* Text:Selected 우측 체크 — color/icon/blue, 24×24.
    ★ check.svg(16 프레임)가 아니라 check24.svg 를 쓴다. 둘은 같은 라이브러리 아이콘(ic_확인)의
    다른 프레임 표출이며, 16 프레임 자산을 24 로 확대하면 **선 굵기까지 1.5배**가 되어 정본보다

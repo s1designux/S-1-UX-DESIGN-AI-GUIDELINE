@@ -21,6 +21,12 @@
   letter-spacing: var(--letter-spacing-normal);
 }
 
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. */
+[data-s1-component="gnb-sub-menu-item"][data-depth="2depth"] {
+  position: relative;
+  top: 1px;
+}
+
 /* Hover 와 Selected 는 정본에서 색이 같다 — GNB 메뉴와 같은 구조다.
    원본에 hover 표본이 없어 selected 와 같은 색으로 사전 등록한 개선이다(정본 주석 3688).
    data-force-state="hover" 는 안내 화면이 마우스 없이 Hover 칸을 미리보기로 흉내내는 용도다

@@ -1,0 +1,142 @@
+{
+  "id": "expandable-card",
+  "version": "0.1.1",
+  "status": "candidate",
+  "canonicalFingerprint": "e5e1b554d08aac7e3e3535320dd8d365fdf97ab3f00de24a62680163e2673a20",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/expandable-card.json"
+  ],
+  "rootSelector": "[data-s1-component=\"expandable-card\"]",
+  "variants": [],
+  "sizes": [],
+  "states": {
+    "closed": "header[aria-expanded=false] · panel-wrap 에 data-open 없음 — 펼침칸이 접혀 숨는다",
+    "open": "header[aria-expanded=true] · panel-wrap[data-open=true] — 펼침칸이 부드럽게 열린다",
+    "hover": "header:hover — 머리줄 배경 bg/level-1(열려 있을 때는 기본색 유지)"
+  },
+  "canonicalStateMap": {},
+  "notInCanon": {
+    "pcType": "PC 유형(리스트형·컨텐츠박스형)은 이번 범위 밖이다(river 2026-09-29). 모바일 한 유형만.",
+    "focusVisible": "정본에 focus 변형이 없다. 웹에서도 만들지 않으며 키보드 초점은 브라우저 기본 표시에 맡긴다."
+  },
+  "parts": [
+    "header",
+    "text",
+    "title",
+    "subtitle",
+    "body",
+    "note",
+    "caption",
+    "toggle-icon",
+    "panel-wrap",
+    "panel"
+  ],
+  "htmlContract": {
+    "root": "div[data-s1-component=expandable-card] > button[data-s1-part=header][aria-expanded][aria-controls] + div[data-s1-part=panel-wrap][id] > div[data-s1-part=panel]. header 안은 span[data-s1-part=text](title·subtitle·body·note·caption 중 필요한 것) + span[data-s1-part=toggle-icon].",
+    "requiredAttributes": [],
+    "requiredParts": [
+      "header",
+      "text",
+      "title",
+      "toggle-icon",
+      "panel-wrap",
+      "panel"
+    ],
+    "optionalParts": [
+      "subtitle",
+      "body",
+      "note",
+      "caption"
+    ],
+    "grouping": "카드 여러 장의 세로 간격·너비는 화면이 소유한다(카드 자신은 너비 100%).",
+    "relations": [
+      "원본: SW UX GUIDE V2.4 「card」 expandable-card (540:6547 닫힘 / 540:6555 펼침) 실측 — padding 16/16/20/20 · 세로 간격 10 · radius 10 · 테두리 line/default · 펼침칸 바탕 bg/level-2 · 헤더와 펼침칸 사이 선 없음.",
+      "글자 다섯 자리는 원본 실측 그대로다 — title 16/700 · subtitle 14/700 · body 14/400 · note 12/400 · caption 12/400."
+    ],
+    "source": "components/expandable-card/expandable-card.example.html",
+    "distribution": "examples/expandable-card.html"
+  },
+  "cssContract": {
+    "entry": "components/expandable-card.css",
+    "rootScope": "[data-s1-component=expandable-card]",
+    "nativeStates": [
+      ":hover"
+    ],
+    "ariaStates": [
+      "[aria-expanded=\"true\"]"
+    ],
+    "documentedDataStates": [
+      "[data-open]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "contentSlots": {
+    "header": "머리줄 글 묶음 — title 필수, 나머지 글 자리는 선택.",
+    "panel": "펼침칸 안 내용 — 화면이 넣는다. 안의 글자는 같은 part 이름(title·subtitle·body·note·caption)을 쓴다."
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [
+    {
+      "id": "chevron",
+      "sourceKey": "e1ac97aa82f4e52f257ac1c0ea77fd09d0e5f581",
+      "asset": "assets/icons/chevron.svg",
+      "use": "머리줄 오른쪽 여닫이 화살표(24) — 닫힘은 아래, 열림은 위로 뒤집는다(회전 아님)",
+      "accessibleNamePolicy": "decorative; 이름은 머리줄 글자가 갖는다",
+      "note": "기존 등록 자산 재사용 — 재등록 아님. 자산이 오른쪽(▶)을 가리키므로 rotate(90deg)로 아래를 만들고 열림은 scaleX(-1)로 위가 된다(T8 함정 — 각도가 아니라 향하는 쪽으로 검증)."
+    }
+  ],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "머리줄은 button[type=button] — aria-expanded 로 열림 여부, aria-controls 로 펼침칸 id 를 가리킨다."
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "머리줄 안 title 글자가 이름이다(별도 aria 불필요)."
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "Tab 으로 머리줄에 초점이 가고 Enter·Space 로 여닫는다(native button)."
+    },
+    "focus": {
+      "status": "required",
+      "value": "브라우저 기본 포커스 표시를 그대로 쓴다 — 정본에 focus 표현이 없어 웹에서 만들지 않는다(다른 코어와 동일한 2026-09-02 river 결정)."
+    },
+    "ariaStateSync": {
+      "status": "required",
+      "value": "런타임이 aria-expanded ↔ panel-wrap[data-open] 두 표시를 항상 함께 맞춘다."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 오류 표시가 없다."
+    },
+    "reducedMotion": {
+      "status": "required",
+      "value": "prefers-reduced-motion: reduce 이면 펼침·화살표·배경 전환 모션을 끈다."
+    }
+  },
+  "jsRequired": true,
+  "javascript": {
+    "runtime": "init(root) → { open, set(next), toggle(), destroy() }",
+    "events": [
+      "s1:expandable-card:change"
+    ],
+    "reason": "머리줄 클릭으로 aria-expanded 와 panel-wrap[data-open] 을 함께 바꾼다. 초기 표시는 마크업(aria-expanded)이 정한다."
+  },
+  "sourceFingerprint": "ab208ea2fe65e8d0a63229b8e0d3b8984e5e7e70ee98cd24e4390f88f7f49755"
+}

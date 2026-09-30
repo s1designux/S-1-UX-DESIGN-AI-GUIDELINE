@@ -229,7 +229,8 @@ constexpr std::uint32_t S1_COLOR_ICON_GRAY_LIGHT = 0xFFC4C4C4u; // --color-icon-
 constexpr std::uint32_t S1_COLOR_ICON_RED = 0xFFFF4554u; // --color-icon-red = #FF4554
 constexpr std::uint32_t S1_COLOR_ICON_WHITE = 0xFFFFFFFFu; // --color-icon-white = #FFFFFF
 constexpr std::uint32_t S1_COLOR_LINE_BLUE = 0xFF1D6CEBu; // --color-line-blue = #1D6CEB
-constexpr std::uint32_t S1_COLOR_LINE_GRAY_SUBTLE = 0xFFE9E9E9u; // --color-line-gray-subtle = #E9E9E9
+constexpr std::uint32_t S1_COLOR_LINE_DEFAULT = 0xFFE9E9E9u; // --color-line-default = #E9E9E9
+constexpr std::uint32_t S1_COLOR_LINE_STRONG = 0xFF353535u; // --color-line-strong = #353535
 constexpr std::uint32_t S1_COLOR_MODAL_PANEL_BORDER = 0xFFD9D9D9u; // --color-modal-panel-border = #D9D9D9
 constexpr std::uint32_t S1_COLOR_NAVIGATION_BG = 0xFFFFFFFFu; // --color-navigation-bg = #FFFFFF
 constexpr std::uint32_t S1_COLOR_NAVIGATION_ICON_DEFAULT = 0xFFC4C4C4u; // --color-navigation-icon-default = #C4C4C4
@@ -355,6 +356,13 @@ constexpr std::uint32_t S1_COLOR_TABLE_CELL_DEFAULT = 0xFFFFFFFFu; // --color-ta
 constexpr std::uint32_t S1_COLOR_TABLE_CELL_HOVER = 0xFFF5F5F5u; // --color-table-cell-hover = #F5F5F5
 constexpr std::uint32_t S1_COLOR_TABLE_CELL_SELECTED = 0xFFE2F1FFu; // --color-table-cell-selected = #E2F1FF
 constexpr std::uint32_t S1_COLOR_TABLE_HEADER_BG = 0xFFFAFAFAu; // --color-table-header-bg = #FAFAFA
+constexpr std::uint32_t S1_COLOR_TAG_LINE_BORDER_BLUE = 0xFF1D6CEBu; // --color-tag-line-border-blue = #1D6CEB
+constexpr std::uint32_t S1_COLOR_TAG_LINE_BORDER_RED = 0xFFFF4554u; // --color-tag-line-border-red = #FF4554
+constexpr std::uint32_t S1_COLOR_TAG_LINE_LABEL_BLUE = 0xFF1D6CEBu; // --color-tag-line-label-blue = #1D6CEB
+constexpr std::uint32_t S1_COLOR_TAG_LINE_LABEL_RED = 0xFFFF4554u; // --color-tag-line-label-red = #FF4554
+constexpr std::uint32_t S1_COLOR_TAG_SOLID_BG_BLUE = 0xFF1D6CEBu; // --color-tag-solid-bg-blue = #1D6CEB
+constexpr std::uint32_t S1_COLOR_TAG_SOLID_BG_RED = 0xFFFF4554u; // --color-tag-solid-bg-red = #FF4554
+constexpr std::uint32_t S1_COLOR_TAG_SOLID_LABEL = 0xFFFFFFFFu; // --color-tag-solid-label = #FFFFFF
 constexpr std::uint32_t S1_COLOR_TEXT_BODY_PRIMARY = 0xFF353535u; // --color-text-body-primary = #353535
 constexpr std::uint32_t S1_COLOR_TEXT_BODY_SECONDARY = 0xFF555555u; // --color-text-body-secondary = #555555
 constexpr std::uint32_t S1_COLOR_TEXT_BODY_TERTIARY = 0xFF757575u; // --color-text-body-tertiary = #757575
@@ -532,7 +540,8 @@ constexpr std::uint32_t S1_COLOR_ICON_GRAY_DARK = 0xFFB8BABFu; // --color-icon-g
 constexpr std::uint32_t S1_COLOR_ICON_GRAY_LIGHT = 0xFF35363Fu; // --color-icon-gray-light = #35363F
 constexpr std::uint32_t S1_COLOR_ICON_RED = 0xFFF06070u; // --color-icon-red = #F06070
 constexpr std::uint32_t S1_COLOR_LINE_BLUE = 0xFF3070D8u; // --color-line-blue = #3070D8
-constexpr std::uint32_t S1_COLOR_LINE_GRAY_SUBTLE = 0xFF2E2F38u; // --color-line-gray-subtle = #2E2F38
+constexpr std::uint32_t S1_COLOR_LINE_DEFAULT = 0xFF2E2F38u; // --color-line-default = #2E2F38
+constexpr std::uint32_t S1_COLOR_LINE_STRONG = 0xFF8A8C96u; // --color-line-strong = #8A8C96
 constexpr std::uint32_t S1_COLOR_MODAL_PANEL_BORDER = 0xFF3E4049u; // --color-modal-panel-border = #3E4049
 constexpr std::uint32_t S1_COLOR_NAVIGATION_BG = 0xFF1C1D23u; // --color-navigation-bg = #1C1D23
 constexpr std::uint32_t S1_COLOR_NAVIGATION_ICON_DEFAULT = 0xFF55575Fu; // --color-navigation-icon-default = #55575F
@@ -575,6 +584,12 @@ constexpr std::uint32_t S1_COLOR_TABLE_CELL_DEFAULT = 0xFF1C1D23u; // --color-ta
 constexpr std::uint32_t S1_COLOR_TABLE_CELL_HOVER = 0xFF24252Cu; // --color-table-cell-hover = #24252C
 constexpr std::uint32_t S1_COLOR_TABLE_CELL_SELECTED = 0xFF112B55u; // --color-table-cell-selected = #112B55
 constexpr std::uint32_t S1_COLOR_TABLE_HEADER_BG = 0xFF24252Cu; // --color-table-header-bg = #24252C
+constexpr std::uint32_t S1_COLOR_TAG_LINE_BORDER_BLUE = 0xFF3070D8u; // --color-tag-line-border-blue = #3070D8
+constexpr std::uint32_t S1_COLOR_TAG_LINE_BORDER_RED = 0xFFF06070u; // --color-tag-line-border-red = #F06070
+constexpr std::uint32_t S1_COLOR_TAG_LINE_LABEL_BLUE = 0xFF3070D8u; // --color-tag-line-label-blue = #3070D8
+constexpr std::uint32_t S1_COLOR_TAG_LINE_LABEL_RED = 0xFFF06070u; // --color-tag-line-label-red = #F06070
+constexpr std::uint32_t S1_COLOR_TAG_SOLID_BG_BLUE = 0xFF3070D8u; // --color-tag-solid-bg-blue = #3070D8
+constexpr std::uint32_t S1_COLOR_TAG_SOLID_BG_RED = 0xFFF06070u; // --color-tag-solid-bg-red = #F06070
 constexpr std::uint32_t S1_COLOR_TEXT_BODY_PRIMARY = 0xFFECEDF0u; // --color-text-body-primary = #ECEDF0
 constexpr std::uint32_t S1_COLOR_TEXT_BODY_SECONDARY = 0xFFB8BABFu; // --color-text-body-secondary = #B8BABF
 constexpr std::uint32_t S1_COLOR_TEXT_BODY_TERTIARY = 0xFF8A8C96u; // --color-text-body-tertiary = #8A8C96

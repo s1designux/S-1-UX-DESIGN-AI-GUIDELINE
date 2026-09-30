@@ -8,10 +8,10 @@
       "ui-library/dist/examples/*.html",
       "ai/rules/platform-scope.overrides.json"
     ],
-    "distVersion": "0.13.16",
-    "distReleasedAt": "2026-09-29",
-    "canonicalFingerprint": "07ff83a14fe7f5bff0ef9948b515841d3b3ec5c1a984d3b2b3fbc0466d852f23",
-    "builtAt": "2026-09-29"
+    "distVersion": "0.14.6",
+    "distReleasedAt": "2026-09-30",
+    "canonicalFingerprint": "02a63fe2444545e7f2ff7a247389bb09bcf2278cb56b1447f439870b98e0cd54",
+    "builtAt": "2026-09-30"
   },
   "rules": {
     "_meta": {
@@ -326,7 +326,8 @@
     "--color-icon-red",
     "--color-icon-white",
     "--color-line-blue",
-    "--color-line-gray-subtle",
+    "--color-line-default",
+    "--color-line-strong",
     "--color-modal-panel-border",
     "--color-navigation-bg",
     "--color-navigation-icon-default",
@@ -452,6 +453,13 @@
     "--color-table-cell-hover",
     "--color-table-cell-selected",
     "--color-table-header-bg",
+    "--color-tag-line-border-blue",
+    "--color-tag-line-border-red",
+    "--color-tag-line-label-blue",
+    "--color-tag-line-label-red",
+    "--color-tag-solid-bg-blue",
+    "--color-tag-solid-bg-red",
+    "--color-tag-solid-label",
     "--color-text-body-primary",
     "--color-text-body-secondary",
     "--color-text-body-tertiary",
@@ -1962,6 +1970,115 @@
         "default",
         "pressed",
         "disabled"
+      ],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "expandable-card",
+      "status": "candidate",
+      "platform": "mobile-only",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "platformSupport = mobile·note"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [],
+      "variantAttribute": null,
+      "sizeAttribute": null,
+      "requiredAttributes": [],
+      "requiredParts": [
+        "header",
+        "text",
+        "title",
+        "toggle-icon",
+        "panel-wrap",
+        "panel"
+      ],
+      "parts": [
+        "header",
+        "text",
+        "title",
+        "subtitle",
+        "body",
+        "note",
+        "caption",
+        "toggle-icon",
+        "panel-wrap",
+        "panel"
+      ],
+      "states": [
+        "closed",
+        "open",
+        "hover"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:expandable-card:change"
+      ]
+    },
+    {
+      "id": "data-tag",
+      "status": "candidate",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "platformSupport = mobile·pc·note"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "blue",
+        "red"
+      ],
+      "variantAttribute": "data-tone",
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "data-shape",
+        "data-solid",
+        "data-tone"
+      ],
+      "requiredParts": [],
+      "parts": [],
+      "states": [
+        "default"
+      ],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "divider",
+      "status": "candidate",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "platformSupport = mobile·pc·note"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "x",
+        "y"
+      ],
+      "variantAttribute": "data-axis",
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "data-axis"
+      ],
+      "requiredParts": [],
+      "parts": [],
+      "states": [
+        "default"
       ],
       "jsRequired": false,
       "events": []

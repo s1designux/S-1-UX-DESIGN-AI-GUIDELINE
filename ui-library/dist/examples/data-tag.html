@@ -1,0 +1,13 @@
+<!-- 뱃지는 보여주기만 하는 span 이다(누르지 않는다). 모양(data-shape: chips 알약 · square 네모) ×
+     채움(data-solid: on 채움 · off 테두리) × 색(data-tone: blue 승인·확인 · red 주의·에러) 여덟 벌이 전부다.
+     안에는 글자만 넣는다(부품 자리 없음). 글자는 12 Medium 으로 컴포넌트가 정한다 — 화면이 글자 크기를 따로 주지 않는다. -->
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+  <span data-s1-component="data-tag" data-shape="chips" data-solid="on" data-tone="blue">승인</span>
+  <span data-s1-component="data-tag" data-shape="chips" data-solid="on" data-tone="red">주의</span>
+  <span data-s1-component="data-tag" data-shape="chips" data-solid="off" data-tone="blue">확인</span>
+  <span data-s1-component="data-tag" data-shape="chips" data-solid="off" data-tone="red">에러</span>
+  <span data-s1-component="data-tag" data-shape="square" data-solid="on" data-tone="blue">승인</span>
+  <span data-s1-component="data-tag" data-shape="square" data-solid="on" data-tone="red">주의</span>
+  <span data-s1-component="data-tag" data-shape="square" data-solid="off" data-tone="blue">확인</span>
+  <span data-s1-component="data-tag" data-shape="square" data-solid="off" data-tone="red">에러</span>
+</div>

@@ -67,7 +67,7 @@
 
 .uilg-badge {
   background: var(--color-bg-level-2);
-  border: 1px solid var(--color-line-gray-subtle);
+  border: 1px solid var(--color-line-default);
   border-radius: var(--radius-full);
   color: var(--color-text-body-secondary);
   font-size: var(--font-size-12);
@@ -84,7 +84,7 @@
 
 .uilg-demo {
   background: var(--color-bg-level-0);
-  border: 1px solid var(--color-line-gray-subtle);
+  border: 1px solid var(--color-line-default);
   border-radius: var(--radius-12);
   display: grid;
   gap: var(--spacing-24);
@@ -121,7 +121,7 @@
    각각 앞 블록에 붙었다. 예외가 필요한 자리는 인라인 style 로 덮는다(우선순위가 높다). */
 .uilg-separator {
   border: 0;
-  border-top: 1px solid var(--color-line-gray-subtle);
+  border-top: 1px solid var(--color-line-default);
   margin: var(--spacing-24) 0;
   width: 100%;
 }
@@ -169,7 +169,7 @@
 }
 
 .uilg-option-chip {
-  border: 1px solid var(--color-line-gray-subtle);
+  border: 1px solid var(--color-line-default);
   border-radius: var(--radius-full);
   color: var(--color-text-body-secondary);
   cursor: pointer;
@@ -389,6 +389,8 @@
    상태 칸 안에 눕혀 보여준다. 이 CSS 는 dist 에 넣지 않는다(cssContract.previewNote). */
 .uilg [data-s1-component="modal-content"].is-preview {
   inset: auto;
+  /* 배포본의 화면 최상층(z-index 1000)을 그대로 두면 스크롤 시 고정 머리말 위로 튀어나온다 — 지면 층으로 내린다. */
+  z-index: auto;
   padding: var(--spacing-24);
   position: relative;
 }
@@ -422,7 +424,7 @@
 
 .uilg-code {
   background: var(--color-bg-level-0);
-  border: 1px solid var(--color-line-gray-subtle);
+  border: 1px solid var(--color-line-default);
   border-radius: var(--radius-12);
   max-width: 100%;
   min-width: 0;
@@ -434,7 +436,7 @@
 .uilg-code-toolbar {
   align-items: center;
   background: var(--color-bg-level-1);
-  border-bottom: 1px solid var(--color-line-gray-subtle);
+  border-bottom: 1px solid var(--color-line-default);
   display: flex;
   flex-wrap: wrap;
   gap: 0;
@@ -465,7 +467,7 @@
 }
 
 .uilg-copy {
-  border: 1px solid var(--color-line-gray-subtle);
+  border: 1px solid var(--color-line-default);
   border-radius: var(--radius-4);
   min-height: 30px;
   padding: 0 var(--spacing-10);
@@ -492,7 +494,7 @@
 
 .uilg-rules {
   background: var(--color-bg-level-0);
-  border: 1px solid var(--color-line-gray-subtle);
+  border: 1px solid var(--color-line-default);
   border-radius: var(--radius-12);
   display: grid;
   gap: var(--spacing-16);
@@ -532,7 +534,7 @@
 
 .uilg-usage-details {
   background: var(--color-bg-level-0);
-  border: 1px solid var(--color-line-gray-subtle);
+  border: 1px solid var(--color-line-default);
   border-radius: var(--radius-12);
   padding: 0;
 }
@@ -563,7 +565,7 @@
 }
 
 .uilg-usage-body {
-  border-top: 1px solid var(--color-line-gray-subtle);
+  border-top: 1px solid var(--color-line-default);
   display: grid;
   gap: var(--spacing-16);
   padding: var(--spacing-20);
@@ -622,6 +624,8 @@
    (배포본 계약 cssContract.previewNote). 색·크기·간격은 그대로 dist 가 그린다. */
 .uilg [data-s1-component="modal"].is-preview {
   inset: auto;
+  /* 배포본의 화면 최상층(z-index 1000)을 그대로 두면 스크롤 시 고정 머리말 위로 튀어나온다 — 지면 층으로 내린다. */
+  z-index: auto;
   padding: var(--spacing-24);
   position: relative;
 }
@@ -642,6 +646,8 @@
    (배포본 계약 cssContract.previewNote). 색·크기·간격은 그대로 dist 가 그린다. */
 .uilg [data-s1-component="bottom-sheet"].is-preview {
   inset: auto;
+  /* 배포본의 화면 최상층(z-index 1000)을 그대로 두면 스크롤 시 고정 머리말 위로 튀어나온다 — 지면 층으로 내린다. */
+  z-index: auto;
   overflow-x: auto;
   padding: var(--spacing-24);
   position: relative;
@@ -894,4 +900,72 @@
 }
 .uilg [data-s1-part="tile"][data-force-state="hover"]:not([aria-selected="true"]) {
   background: var(--color-date-picker-tile-bg-hover);
+}
+
+/* ── Expandable Card · Divider 안내 화면 배치 (배치 전용 — 부품 시각·색은 dist 가 소유) ──
+   카드 폭은 부품이 갖지 않는다(너비 100%) — 모바일 360 화면에 좌우 16 여백을 뺀 328 을
+   안내 화면의 감싸개가 준다(정본 buildExpandableCard CARD_W = 328). */
+.uilg-expandable-card-action {
+  display: grid;
+  gap: var(--spacing-12);
+  max-width: 328px;
+  width: 100%;
+}
+
+.comp-state-cell [data-s1-component="expandable-card"] { max-width: 328px; }
+
+/* 구분선은 스스로 자리를 만들지 않는다 — 목록·한 줄 묶음 같은 「쓰는 모습」을 화면이 만든다. */
+.uilg-divider-action {
+  display: grid;
+  gap: var(--spacing-24);
+  max-width: 328px;
+  width: 100%;
+}
+
+.uilg-divider-list {
+  display: grid;
+}
+
+.uilg-divider-row {
+  color: var(--color-text-body-secondary);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-130);
+  padding: var(--spacing-12) var(--spacing-20);
+}
+
+.uilg-divider-meta {
+  align-items: center;
+  color: var(--color-text-body-secondary);
+  display: flex;
+  font-size: var(--font-size-12);
+  gap: var(--spacing-8);
+  line-height: var(--line-height-130);
+  margin: 0;
+}
+
+.uilg-divider-cell {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 40px;
+}
+
+.uilg-divider-cell [data-s1-component="divider"][data-axis="x"] { max-width: 180px; }
+
+/* 뱃지는 표·목록 칸 안에서 쓰는 표시다 — 줄과 간격은 안내 화면이 만든다(부품은 라벨 하나만 그린다). */
+.uilg-data-tag-action {
+  display: grid;
+  gap: var(--spacing-8);
+  max-width: 360px;
+  width: 100%;
+}
+
+.uilg-data-tag-row {
+  align-items: center;
+  color: var(--color-text-body-secondary);
+  display: flex;
+  font-size: var(--font-size-14);
+  gap: var(--spacing-12);
+  justify-content: space-between;
+  line-height: var(--line-height-130);
 }

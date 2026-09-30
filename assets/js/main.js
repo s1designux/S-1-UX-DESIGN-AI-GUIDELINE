@@ -120,9 +120,8 @@ function renderSidebar() {
 
   return `
     <div class="sidebar-logo">
-      <a href="${isRoot ? 'index.html' : '../index.html'}" class="logo-mark" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:8px;">
-        <div class="logo-dot"></div>
-        <span class="logo-title">S1 UX DESIGN GUIDE</span>
+      <a href="${isRoot ? 'index.html' : '../index.html'}" class="logo-mark">
+        <img class="logo-img" src="${isRoot ? '' : '../'}assets/img/logo-s1-ux-design-guide.svg" alt="S1 UX DESIGN GUIDE" width="623" height="60">
       </a>
       <div class="logo-version">UX Guide V2.4 · 2026</div>
     </div>

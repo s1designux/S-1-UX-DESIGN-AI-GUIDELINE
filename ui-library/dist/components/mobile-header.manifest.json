@@ -207,5 +207,5 @@
     "runtime": "none",
     "reason": "정적 크롬이다 — 열림/닫힘 등 로컬 상태가 없어 native 시맨틱만으로 충분하다."
   },
-  "sourceFingerprint": "a1ac881e3af9b2e4b57c8b9b9ff14973e7d514f1a32eb0418047ecd1a3afaf5a"
+  "sourceFingerprint": "d4ed593f833626c15dd7b64179844cc3f59443b6f46323f51024e6cfe9e2e60b"
 }

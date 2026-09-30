@@ -397,6 +397,36 @@
       "status": "in-progress",
       "harnessStatus": "planned",
       "priority": 29
+    },
+    {
+      "id": "expandable-card",
+      "name": "Expandable Card",
+      "label": "Expandable Card",
+      "category": "core",
+      "path": "registry/components/expandable-card.json",
+      "status": "in-progress",
+      "harnessStatus": "planned",
+      "priority": 30
+    },
+    {
+      "id": "divider",
+      "name": "Divider",
+      "label": "Divider",
+      "category": "core",
+      "path": "registry/components/divider.json",
+      "status": "in-progress",
+      "harnessStatus": "planned",
+      "priority": 31
+    },
+    {
+      "id": "data-tag",
+      "name": "Data Tag",
+      "label": "Data Tag",
+      "category": "core",
+      "path": "registry/components/data-tag.json",
+      "status": "in-progress",
+      "harnessStatus": "planned",
+      "priority": 32
     }
   ]
 }

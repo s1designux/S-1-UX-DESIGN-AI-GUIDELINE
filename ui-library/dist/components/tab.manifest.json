@@ -127,5 +127,5 @@
     "runtime": "components/tab/tab.js",
     "reason": "선택 상태와 화살표 키 이동을 동기화한다."
   },
-  "sourceFingerprint": "089bc3f3a875046097184fc2831f792a7dadfb3f68f109574b764c94fdb6f16f"
+  "sourceFingerprint": "4e68dc4d0a0ceab1a99e95ce8cbee18bd92169ddfa82a0a5aff5883a80e47504"
 }

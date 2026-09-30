@@ -195,5 +195,5 @@
     "runtime": "none",
     "reason": "줄 모양만 소유한다. 고르기 동작(선택 반영·role·이벤트)은 시트를 여는 화면이 배선한다."
   },
-  "sourceFingerprint": "201ad6cc3a318b77b58345f3e4a775c051641a78b844ffa2ea6e44b29ae40787"
+  "sourceFingerprint": "bba54ec125f715614884abeb2d172b4caf9680ababbd12d402ef69c6b8b12be9"
 }

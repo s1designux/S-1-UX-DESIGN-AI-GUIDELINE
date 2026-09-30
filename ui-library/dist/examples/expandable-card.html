@@ -1,0 +1,50 @@
+<!-- 접힘카드(모바일 한 유형) — 닫힘 · 열림 두 상태를 보인다.
+     헤더는 button(aria-expanded · aria-controls), 펼침칸은 panel-wrap(id) 안 panel.
+     열려 있으면 panel-wrap 에 data-open="true" 를 함께 둔다 — 여닫는 동작은 런타임이 맞춘다.
+     글자는 title(16 Bold) · subtitle(14 Bold) · body(14 Regular) · note(12 Regular) · caption(캡션) 다섯 자리이며
+     화면이 글자 크기를 따로 주지 않는다. -->
+<div>
+  <div data-s1-component="expandable-card">
+    <button type="button" data-s1-part="header" aria-expanded="false" aria-controls="exp-card-example-closed">
+      <span data-s1-part="text">
+        <span data-s1-part="title">타이틀</span>
+        <span data-s1-part="subtitle">서브타이틀</span>
+        <span data-s1-part="body">서브타이틀</span>
+        <span data-s1-part="note">서브타이틀</span>
+        <span data-s1-part="caption">서브타이틀</span>
+      </span>
+      <span data-s1-part="toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div data-s1-part="panel-wrap" id="exp-card-example-closed">
+      <div data-s1-part="panel">
+        <span data-s1-part="title">타이틀</span>
+        <span data-s1-part="subtitle">서브타이틀</span>
+        <span data-s1-part="body">서브타이틀</span>
+        <span data-s1-part="note">서브타이틀</span>
+        <span data-s1-part="caption">서브타이틀</span>
+      </div>
+    </div>
+  </div>
+
+  <div data-s1-component="expandable-card">
+    <button type="button" data-s1-part="header" aria-expanded="true" aria-controls="exp-card-example-open">
+      <span data-s1-part="text">
+        <span data-s1-part="title">타이틀</span>
+        <span data-s1-part="subtitle">서브타이틀</span>
+        <span data-s1-part="body">서브타이틀</span>
+        <span data-s1-part="note">서브타이틀</span>
+        <span data-s1-part="caption">서브타이틀</span>
+      </span>
+      <span data-s1-part="toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div data-s1-part="panel-wrap" id="exp-card-example-open" data-open="true">
+      <div data-s1-part="panel">
+        <span data-s1-part="title">타이틀</span>
+        <span data-s1-part="subtitle">서브타이틀</span>
+        <span data-s1-part="body">서브타이틀</span>
+        <span data-s1-part="note">서브타이틀</span>
+        <span data-s1-part="caption">서브타이틀</span>
+      </div>
+    </div>
+  </div>
+</div>

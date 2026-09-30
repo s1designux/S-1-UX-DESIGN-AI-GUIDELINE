@@ -1,9 +1,9 @@
 # PC 에서 쓸 수 있는 부품
 
 > 자동 생성물 — 손으로 고치지 마세요. `node ai/scripts/build-scope.mjs` 로 다시 만듭니다.
-> 배포본 0.13.16 (2026-09-29 판) 기준.
+> 배포본 0.14.6 (2026-09-30 판) 기준.
 
-## 써도 되는 것 (23종)
+## 써도 되는 것 (25종)
 
 - `input` — 크기 xxsm · xsm · md · 동작 스크립트 필요
 - `button` — 크기 md · xsm · xxsm
@@ -28,14 +28,17 @@
 - `assist-button`
 - `text-button`
 - `modal-content` — 크기 md · lg · xl · 동작 스크립트 필요
+- `data-tag`
+- `divider`
 
-## PC 화면에 놓지 않는 것 (5종)
+## PC 화면에 놓지 않는 것 (6종)
 
 - `mobile-bottom-nav` — 모바일 전용
 - `mobile-header` — 모바일 전용
 - `bottom-sheet-option` — 모바일 전용
 - `bottom-sheet` — 모바일 전용
 - `list-row` — 모바일 전용
+- `expandable-card` — 모바일 전용
 
 ## 아직 확정되지 않은 것 (0종)
 

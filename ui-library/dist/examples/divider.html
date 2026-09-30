@@ -1,0 +1,16 @@
+<!-- 구분선은 꾸미기 없는 hr 한 줄이다. 가로(x)는 기본·굵게, 색은 기본선·강한선(data-tone=strong),
+     글자 줄에 맞춰 들여 쓰는 목록용(data-inset=text)이 있다.
+     세로(y)는 글자 줄보다 짧은 14 — 세로선 hr 에는 aria-orientation="vertical" 을 함께 쓴다.
+     자리를 만들어 주는 감싸개(div)는 화면이 소유한다(이 예시는 그 감싸개를 꾸미지 않는다). -->
+<div>
+  <hr data-s1-component="divider" data-axis="x">
+  <hr data-s1-component="divider" data-axis="x" data-weight="strong">
+  <hr data-s1-component="divider" data-axis="x" data-tone="strong">
+  <hr data-s1-component="divider" data-axis="x" data-tone="strong" data-weight="strong">
+  <hr data-s1-component="divider" data-axis="x" data-inset="text">
+  <span style="display:flex;align-items:center;gap:1em">
+    <span>왼쪽</span>
+    <hr data-s1-component="divider" data-axis="y" aria-orientation="vertical">
+    <span>오른쪽</span>
+  </span>
+</div>

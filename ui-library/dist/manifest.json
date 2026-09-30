@@ -1,9 +1,9 @@
 {
   "id": "s1-ui",
-  "version": "0.13.16",
-  "releasedAt": "2026-09-29",
+  "version": "0.14.6",
+  "releasedAt": "2026-09-30",
   "status": "approved",
-  "canonicalFingerprint": "07ff83a14fe7f5bff0ef9948b515841d3b3ec5c1a984d3b2b3fbc0466d852f23",
+  "canonicalFingerprint": "02a63fe2444545e7f2ff7a247389bb09bcf2278cb56b1447f439870b98e0cd54",
   "tokenMapFingerprint": "796fb798dd329910ba6c42a29fb4af9e0fd217446b3fa847e140bc70a0a8f4c7",
   "commonCssDependencies": [
     "assets/css/tokens.css",
@@ -16,7 +16,7 @@
     }
   ],
   "commonCssFingerprints": {
-    "assets/css/tokens.css": "09841ce6259f62b62489f0272d43f3b37afae6cc36d7cf166a392ed2c2c1537a",
+    "assets/css/tokens.css": "85a5021acbd16e4d732d341944490a8ea9cda73459d825f9482938e33ac91c1f",
     "assets/css/typography.css": "d5961f792bec6b8d339c0f4362ae4da15bac829e0bfec5ecb7d4dc732ce232da"
   },
   "jsRequired": true,
@@ -687,7 +687,7 @@
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "e262083ad8767a5f245d4bb61720a16afcad7dd84c4cdf1203063fdbbbdda039",
-      "sourceFingerprint": "32da6401a12ef6367f85c6a1febddfb7ff493536c19ae671e4f974228ba108f1",
+      "sourceFingerprint": "3ff48ce83c545e749444f1ce8922067ceea3294177b46c32526fecfc2a17bb62",
       "css": "components/button.css",
       "js": "components/button.js",
       "example": "examples/button.html",
@@ -803,7 +803,7 @@
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "6027e37f43bd201b6a8433b9de931301cb88adec8b485df9e5fd28165503f98d",
-      "sourceFingerprint": "089bc3f3a875046097184fc2831f792a7dadfb3f68f109574b764c94fdb6f16f",
+      "sourceFingerprint": "4e68dc4d0a0ceab1a99e95ce8cbee18bd92169ddfa82a0a5aff5883a80e47504",
       "css": "components/tab.css",
       "js": "components/tab.js",
       "example": "examples/tab.html",
@@ -904,7 +904,7 @@
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "4401336a59006689d32602671bf94496dacbd57e4f676317dd17a6d391782308",
-      "sourceFingerprint": "a1ac881e3af9b2e4b57c8b9b9ff14973e7d514f1a32eb0418047ecd1a3afaf5a",
+      "sourceFingerprint": "d4ed593f833626c15dd7b64179844cc3f59443b6f46323f51024e6cfe9e2e60b",
       "css": "components/mobile-header.css",
       "js": "components/mobile-header.js",
       "example": "examples/mobile-header.html",
@@ -914,11 +914,11 @@
     },
     {
       "id": "time-picker",
-      "version": "0.3.8",
+      "version": "0.3.9",
       "status": "approved",
       "jsRequired": true,
-      "canonicalFingerprint": "c7bf302520f2315a813b9975da713adf8dc0f0a88f57d7aeeca2699c42ce356d",
-      "sourceFingerprint": "3be8a7b0042b5f2146f78206f194d12c25f84740389de108a63fc46646384df4",
+      "canonicalFingerprint": "309fab0f225270689e95d2a77917b1b77541ad0233faed17128676ae24f3f0e1",
+      "sourceFingerprint": "569fe1b391d8e837c1e617ca304a3ee4f5ac97e86f8169891e61e9be018e7cfd",
       "css": "components/time-picker.css",
       "js": "components/time-picker.js",
       "example": "examples/time-picker.html",
@@ -933,7 +933,7 @@
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "2ae30cfab5b98e853489332aa525b2e1d946bec317f2bb4ded9d6f05907ac64b",
-      "sourceFingerprint": "fd3073c587d81b2cc45ab02fcf015b461d697f3f240ac333450af445dff969a6",
+      "sourceFingerprint": "0e03813c5576323e14faa7e7c39d4dccff6c89c97a9c27e122527532edc3fcbe",
       "css": "components/date-picker.css",
       "js": "components/date-picker.js",
       "example": "examples/date-picker.html",
@@ -944,11 +944,11 @@
     },
     {
       "id": "gnb",
-      "version": "0.2.2",
+      "version": "0.2.4",
       "status": "verified",
       "jsRequired": true,
-      "canonicalFingerprint": "951af843113ba1349a87819a4ec7bd6fe987e6da285900022897f65c7f7409df",
-      "sourceFingerprint": "bf66ba74287c99968566e9e03c4392ca750c03e89823b245d99e0c02d4fdaf46",
+      "canonicalFingerprint": "141ff9bc8bfa75cf70d3e8d7bd6b97b66283971be811b7f666411ab5ee2c619b",
+      "sourceFingerprint": "ec35774e35ce4d13f11597ee3b0d5c9c8014c68e24b8d8395aef3422efe1ec4a",
       "css": "components/gnb.css",
       "js": "components/gnb.js",
       "example": "examples/gnb.html",
@@ -962,7 +962,7 @@
       "status": "verified",
       "jsRequired": false,
       "canonicalFingerprint": "1bb39c44cfcb22edb00db977a784d70c435304aafb55c5d00e6fab1d953bbd82",
-      "sourceFingerprint": "d8e5d775d52f3b1c052565f057768b8ec4c542fc550c8cc9a6dd18d7cedecfea",
+      "sourceFingerprint": "22df66fa50112e961025ae51c9f5cea0c806f30bd7ae0a802efc57be9317e365",
       "css": "components/gnb-sub-menu-item.css",
       "js": "components/gnb-sub-menu-item.js",
       "example": "examples/gnb-sub-menu-item.html",
@@ -972,11 +972,11 @@
     },
     {
       "id": "gnb-sub-menu",
-      "version": "0.2.2",
+      "version": "0.2.4",
       "status": "verified",
       "jsRequired": false,
-      "canonicalFingerprint": "b5a8c17297511f64c9c9ae7f08560841b364060537d05ea5097982fd513569a3",
-      "sourceFingerprint": "80695529e241529d672ca6a0ed968f67f388da07967290f0a29502a8fd9b3604",
+      "canonicalFingerprint": "4d24732009e9f4cc20c3137285ff431512ae096deb59bb348c55f7d9203b64b6",
+      "sourceFingerprint": "9399f28f0eed3b8244661267ded3985e546fd53b9f840e005c11b188ef4f0f22",
       "css": "components/gnb-sub-menu.css",
       "js": "components/gnb-sub-menu.js",
       "example": "examples/gnb-sub-menu.html",
@@ -1032,7 +1032,7 @@
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "33ea5d4629ee675f7e85e2aaa2353d76a31f0fa7bdbf27297dfd7a4bbc5d3057",
-      "sourceFingerprint": "201ad6cc3a318b77b58345f3e4a775c051641a78b844ffa2ea6e44b29ae40787",
+      "sourceFingerprint": "bba54ec125f715614884abeb2d172b4caf9680ababbd12d402ef69c6b8b12be9",
       "css": "components/bottom-sheet-option.css",
       "js": "components/bottom-sheet-option.js",
       "example": "examples/bottom-sheet-option.html",
@@ -1067,6 +1067,48 @@
       "examples": {
         "pc": "examples/list-row.html"
       }
+    },
+    {
+      "id": "expandable-card",
+      "version": "0.1.1",
+      "status": "candidate",
+      "jsRequired": true,
+      "canonicalFingerprint": "e5e1b554d08aac7e3e3535320dd8d365fdf97ab3f00de24a62680163e2673a20",
+      "sourceFingerprint": "ab208ea2fe65e8d0a63229b8e0d3b8984e5e7e70ee98cd24e4390f88f7f49755",
+      "css": "components/expandable-card.css",
+      "js": "components/expandable-card.js",
+      "example": "examples/expandable-card.html",
+      "examples": {
+        "pc": "examples/expandable-card.html"
+      }
+    },
+    {
+      "id": "data-tag",
+      "version": "0.1.0",
+      "status": "candidate",
+      "jsRequired": false,
+      "canonicalFingerprint": "09e9c5965090f6a380613607b8e6c781020c0421e6ab4781512065579e4857aa",
+      "sourceFingerprint": "9f5d10b54693e58506cde98dca46ec24e4af4d04538985927335b3b70bd51e58",
+      "css": "components/data-tag.css",
+      "js": "components/data-tag.js",
+      "example": "examples/data-tag.html",
+      "examples": {
+        "pc": "examples/data-tag.html"
+      }
+    },
+    {
+      "id": "divider",
+      "version": "0.1.0",
+      "status": "candidate",
+      "jsRequired": false,
+      "canonicalFingerprint": "d3652b4550a81eaa1aeebda781ba0e746e9f01cdf5a697311b12fd55e4b49b22",
+      "sourceFingerprint": "1168be5412bf46ba2e7e3dad0c484fa05971c5d8018c146632dfb02f21132762",
+      "css": "components/divider.css",
+      "js": "components/divider.js",
+      "example": "examples/divider.html",
+      "examples": {
+        "pc": "examples/divider.html"
+      }
     }
   ],
   "bundleParity": {
@@ -1098,7 +1140,10 @@
       "modal-content",
       "bottom-sheet-option",
       "bottom-sheet",
-      "list-row"
+      "list-row",
+      "expandable-card",
+      "data-tag",
+      "divider"
     ],
     "source": "ui-library/src/components/*",
     "rule": "Full and individual outputs are generated in this build invocation from identical source strings."

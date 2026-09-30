@@ -3,7 +3,7 @@
     "generated": true,
     "source": "plugins/figma-vars-installer/src/build-components.ts",
     "method": "mock-execution",
-    "sourceHash": "b2dfbf84951e",
+    "sourceHash": "70ed99245dad",
     "unknownValuePolicy": [
       "unknown",
       "not-defined",
@@ -239,7 +239,7 @@
       ],
       "tokenBindings": [
         "color/icon/gray-dark",
-        "color/line/gray/subtle",
+        "color/line/default",
         "color/navigation/bg",
         "color/text/title/primary"
       ],
@@ -274,7 +274,7 @@
         "color/bg/level-0",
         "color/bg/level-3",
         "color/icon/blue",
-        "color/line/gray/subtle",
+        "color/line/default",
         "color/scroll/bg",
         "color/text/body/secondary"
       ],
@@ -324,7 +324,7 @@
       ],
       "tokenBindings": [
         "color/icon/gray-light",
-        "color/line/gray/subtle",
+        "color/line/default",
         "color/navigation/bg",
         "color/text/body/tertiary",
         "spacing/28",
@@ -537,7 +537,7 @@
         "leading"
       ],
       "tokenBindings": [
-        "color/line/gray/subtle",
+        "color/line/default",
         "color/navigation/bg",
         "color/navigation/indicator/selected",
         "color/navigation/label/default-alt",
@@ -643,7 +643,7 @@
         "Columns"
       ],
       "tokenBindings": [
-        "color/line/gray/subtle",
+        "color/line/default",
         "color/navigation/bg",
         "color/navigation/label/default",
         "color/navigation/label/selected",
@@ -2252,6 +2252,84 @@
         "Options"
       ]
     },
+    "Data Tag": {
+      "variantAxes": {
+        "Type": [
+          "Chips",
+          "Square"
+        ],
+        "Variant": [
+          "Line",
+          "Solid"
+        ],
+        "Color": [
+          "Blue",
+          "Red"
+        ]
+      },
+      "geometry": [
+        {
+          "when": {
+            "Type": "Chips"
+          },
+          "target": "root",
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": "6",
+          "paddingRight": "8",
+          "paddingBottom": "6",
+          "paddingLeft": "8",
+          "topLeftRadius": "radius/full",
+          "topRightRadius": "radius/full",
+          "bottomLeftRadius": "radius/full",
+          "bottomRightRadius": "radius/full",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Type": "Square"
+          },
+          "target": "root",
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": "6",
+          "paddingRight": "8",
+          "paddingBottom": "6",
+          "paddingLeft": "8",
+          "topLeftRadius": "radius/4",
+          "topRightRadius": "radius/4",
+          "bottomLeftRadius": "radius/4",
+          "bottomRightRadius": "radius/4",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        }
+      ],
+      "anatomy": [],
+      "tokenBindings": [
+        "border-width/1",
+        "color/tag/line/border/blue",
+        "color/tag/line/border/red",
+        "color/tag/line/label/blue",
+        "color/tag/line/label/red",
+        "color/tag/solid/bg/blue",
+        "color/tag/solid/bg/red",
+        "color/tag/solid/label",
+        "radius/4",
+        "radius/full",
+        "spacing/6",
+        "spacing/8"
+      ],
+      "composition": {
+        "buildDependencies": []
+      }
+    },
     "List Row": {
       "variantAxes": {
         "Type": [
@@ -2326,6 +2404,114 @@
         "오른쪽 칸",
         "왼쪽 칸"
       ]
+    },
+    "Expandable Card": {
+      "variantAxes": {
+        "State": [
+          "Collapsed",
+          "Expanded"
+        ]
+      },
+      "geometry": [
+        {
+          "when": "all",
+          "target": "root",
+          "width": 328,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "itemSpacing": "0",
+          "topLeftRadius": "radius/10",
+          "topRightRadius": "radius/10",
+          "bottomLeftRadius": "radius/10",
+          "bottomRightRadius": "radius/10",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        }
+      ],
+      "anatomy": [
+        "header",
+        "panel"
+      ],
+      "tokenBindings": [
+        "border-width/1",
+        "color/bg/level-0",
+        "color/bg/level-2",
+        "color/line/default",
+        "color/text/body/secondary",
+        "color/text/body/tertiary",
+        "color/text/title/primary",
+        "radius/10",
+        "sizing/24",
+        "spacing/10",
+        "spacing/16",
+        "spacing/20"
+      ],
+      "composition": {
+        "buildDependencies": []
+      }
+    },
+    "Divider": {
+      "variantAxes": {
+        "Axis": [
+          "X",
+          "Y"
+        ],
+        "Weight": [
+          "Default",
+          "Strong"
+        ],
+        "Tone": [
+          "Default",
+          "Strong"
+        ]
+      },
+      "geometry": [
+        {
+          "when": {
+            "Axis": "X",
+            "Weight": "Default"
+          },
+          "target": "root",
+          "width": 240,
+          "height": 1
+        },
+        {
+          "when": {
+            "Axis": "X",
+            "Weight": "Strong"
+          },
+          "target": "root",
+          "width": 240,
+          "height": 2
+        },
+        {
+          "when": {
+            "Axis": "Y",
+            "Weight": "Default"
+          },
+          "target": "root",
+          "width": 1,
+          "height": 14
+        },
+        {
+          "when": {
+            "Axis": "Y",
+            "Weight": "Strong"
+          },
+          "target": "root",
+          "width": 2,
+          "height": 14
+        }
+      ],
+      "anatomy": [],
+      "tokenBindings": [
+        "color/line/default",
+        "color/line/strong"
+      ],
+      "composition": {
+        "buildDependencies": []
+      }
     },
     "Input": {
       "variantAxes": {
@@ -3355,7 +3541,7 @@
         "color/dropdown/option/label/default",
         "color/dropdown/option/label/hover",
         "color/dropdown/option/label/selected",
-        "color/line/gray/subtle",
+        "color/line/default",
         "color/text/state/accent",
         "color/text/state/disabled"
       ],
@@ -3496,7 +3682,7 @@
         "color/form-control/text/default",
         "color/form-control/text/disabled",
         "color/form-control/text/placeholder",
-        "color/line/gray/subtle",
+        "color/line/default",
         "color/text/state/disabled"
       ],
       "composition": {

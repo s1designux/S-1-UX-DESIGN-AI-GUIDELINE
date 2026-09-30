@@ -1,0 +1,45 @@
+/* Divider (구분선) — 승격 후보 시제품(assets/css/restyle-candidates.css §2) 승인본 그대로.
+   축: data-axis=x|y · data-weight=default|strong · data-tone=default|strong · data-inset=none|text
+   색은 선 토큰 두 개가 정한다 — 기본선은 --color-line-default(gray/100),
+   표 위·아래 같은 강한 선은 --color-line-strong(gray/800).
+   파란 선(--color-line-blue)은 쓰지 않는다(river 2026-09-29). */
+[data-s1-component="divider"] {
+  background: var(--color-line-default);
+  border: 0;
+  display: block;
+  flex: none;
+  margin: 0;
+}
+
+[data-s1-component="divider"][data-tone="strong"] {
+  background: var(--color-line-strong);
+}
+
+[data-s1-component="divider"][data-axis="x"] {
+  height: var(--border-width-default);
+  width: 100%;
+}
+
+[data-s1-component="divider"][data-axis="x"][data-weight="strong"] {
+  height: var(--border-width-strong);
+}
+
+/* 세로선 — 글자 줄보다 짧게 세운다(늘리지 않는다). 높이 14 (river 2026-09-29 "2픽셀 줄여봐").
+   정본 sizing 단계에 14 가 없어(…10 · 16 · 18 …) 같은 값의 spacing/14 를 쓴다.
+   river 결정 2026-09-29 — "이걸 크기로 적용할건 아닌거같은데, 일단 그대로 둬".
+   즉 sizing/14 신설은 하지 않는다. 이 선의 길이는 크기 축이 아니라 간격 값으로 본다. */
+[data-s1-component="divider"][data-axis="y"] {
+  align-self: center;
+  height: var(--spacing-14);
+  width: var(--border-width-default);
+}
+
+[data-s1-component="divider"][data-axis="y"][data-weight="strong"] {
+  width: var(--border-width-strong);
+}
+
+/* 글자 줄에 맞춰 좌우를 들여 쓰는 형태 — 목록 안 구분선에 쓴다 */
+[data-s1-component="divider"][data-inset="text"] {
+  margin-inline: var(--spacing-20);
+  width: auto;
+}

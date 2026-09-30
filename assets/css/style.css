@@ -56,17 +56,19 @@ ul { list-style: none; }
   flex-shrink: 0;
 }
 .logo-mark {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
+  display: block;
+  margin-bottom: 6px;
+  text-decoration: none;
+  color: inherit;
 }
-.logo-dot {
-  width: 8px; height: 8px;
-  background: #0072ce;
-  border-radius: 2px;
+/* 로고는 사이드바 안쪽 폭(240 - 좌우 16씩 = 208)의 80% 로 두고 왼쪽에 붙인다
+   (river 지시 2026-09-29 — 처음 넣었던 꽉 찬 크기의 80%). 비율 623:60. */
+.logo-img {
+  display: block;
+  width: 80%;
+  height: auto;
+  margin-left: 0;
 }
-.logo-title { font-size: 14px; font-weight: 700; color: #111827; letter-spacing: -0.02em; }
 .logo-version { font-size: 11px; color: #9ca3af; }
 
 .sidebar-search {
