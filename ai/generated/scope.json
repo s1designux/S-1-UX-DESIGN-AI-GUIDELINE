@@ -8,10 +8,10 @@
       "ui-library/dist/examples/*.html",
       "ai/rules/platform-scope.overrides.json"
     ],
-    "distVersion": "0.14.6",
-    "distReleasedAt": "2026-09-30",
-    "canonicalFingerprint": "02a63fe2444545e7f2ff7a247389bb09bcf2278cb56b1447f439870b98e0cd54",
-    "builtAt": "2026-09-30"
+    "distVersion": "0.14.13",
+    "distReleasedAt": "2026-10-01",
+    "canonicalFingerprint": "50680881f47c128937dc2a9f69dbb7b6d1151ed2038829c8eeaa527a32bf77e2",
+    "builtAt": "2026-10-01"
   },
   "rules": {
     "_meta": {
@@ -330,12 +330,14 @@
     "--color-line-strong",
     "--color-modal-panel-border",
     "--color-navigation-bg",
+    "--color-navigation-bg--hover",
     "--color-navigation-icon-default",
     "--color-navigation-indicator-default",
     "--color-navigation-indicator-hover",
     "--color-navigation-indicator-selected",
     "--color-navigation-label-default",
     "--color-navigation-label-default-alt",
+    "--color-navigation-label-default-side",
     "--color-navigation-label-hover",
     "--color-navigation-label-selected",
     "--color-navigation-submenu-label-default",

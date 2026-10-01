@@ -1637,9 +1637,6 @@
 [data-s1-component="tab"][data-size="xsm"][data-break="pc"] [data-s1-part="tab"] { height: var(--sizing-40); font-size: var(--font-size-14); }
 [data-s1-component="tab"][data-size="sm"][data-break="mobile"] [data-s1-part="tab"] { height: var(--sizing-32); font-size: var(--font-size-16); }
 
-/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. 글자가 버튼에 직접 들어 있어 위 여백 2px 로 가운데를 1px 내린다(높이·밑줄은 그대로). */
-[data-s1-component="tab"]:is([data-size="md"], [data-size="sm"]) [data-s1-part="tab"] { padding-top: 2px; }
-
 @media (hover: hover) {
   [data-s1-component="tab"] [data-s1-part="tab"]:hover:not([aria-selected="true"]),
   [data-s1-component="tab"] [data-s1-part="tab"][data-force-state="hover"]:not([aria-selected="true"]) { color: var(--color-navigation-label-hover); }

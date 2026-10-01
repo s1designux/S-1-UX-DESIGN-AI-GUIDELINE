@@ -66,6 +66,12 @@
   line-height: var(--line-height-130);
   letter-spacing: var(--letter-spacing-normal);
 }
+.typo-title-12b {
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-130);
+  letter-spacing: var(--letter-spacing-normal);
+}
 .typo-title-14m {
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-medium);

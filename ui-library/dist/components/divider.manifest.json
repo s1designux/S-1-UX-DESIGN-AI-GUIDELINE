@@ -2,7 +2,7 @@
   "id": "divider",
   "version": "0.1.0",
   "status": "candidate",
-  "canonicalFingerprint": "d3652b4550a81eaa1aeebda781ba0e746e9f01cdf5a697311b12fd55e4b49b22",
+  "canonicalFingerprint": "484a1115cf8af5a076754040ea3820151737d6f70121018aa2cb9bc9911d94b0",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -105,5 +105,5 @@
     "runtime": "none",
     "reason": "정적 선이라 스크립트가 필요 없다."
   },
-  "sourceFingerprint": "1168be5412bf46ba2e7e3dad0c484fa05971c5d8018c146632dfb02f21132762"
+  "sourceFingerprint": "d960861345054455d97b28edf65b8209a787f844fb17faac656b64864e05aad2"
 }

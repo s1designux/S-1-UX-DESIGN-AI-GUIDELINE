@@ -2,9 +2,9 @@
   "_meta": {
     "note": "자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요."
   },
-  "version": "0.14.6",
-  "releasedAt": "2026-09-30",
-  "canonicalFingerprint": "02a63fe2444545e7f2ff7a247389bb09bcf2278cb56b1447f439870b98e0cd54",
+  "version": "0.14.13",
+  "releasedAt": "2026-10-01",
+  "canonicalFingerprint": "50680881f47c128937dc2a9f69dbb7b6d1151ed2038829c8eeaa527a32bf77e2",
   "generatedAt": null,
   "platforms": {
     "html-css-js": {
@@ -47,7 +47,7 @@
         "assist-button",
         "filter-chip"
       ],
-      "textStyles": 20,
+      "textStyles": 21,
       "icons": 16,
       "sample": "platform/kotlin-sample",
       "preview": "platform/kotlin/preview/S1Gallery.kt",
@@ -92,5 +92,5 @@
     "bottom-sheet-option",
     "bottom-sheet"
   ],
-  "tokenCount": 497
+  "tokenCount": 499
 }

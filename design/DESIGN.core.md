@@ -176,6 +176,7 @@ agentContractDefaults:
       - "navNotification"
       - "navSearch"
       - "navSettings"
+      - "panelFold"
       - "remove"
       - "search"
   unknownMarkers:
@@ -5500,4 +5501,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: 2d21508f1f58 · 손편집 금지 -->
+<!-- generated-stamp: 4e483b81fe42 · 손편집 금지 -->

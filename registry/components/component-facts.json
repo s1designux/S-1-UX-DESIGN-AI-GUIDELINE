@@ -3,7 +3,7 @@
     "generated": true,
     "source": "plugins/figma-vars-installer/src/build-components.ts",
     "method": "mock-execution",
-    "sourceHash": "70ed99245dad",
+    "sourceHash": "3efea8a150db",
     "unknownValuePolicy": [
       "unknown",
       "not-defined",
@@ -31,6 +31,7 @@
       "navNotification",
       "navSearch",
       "navSettings",
+      "panelFold",
       "remove",
       "search"
     ]
@@ -662,6 +663,290 @@
       "slots": [
         "Columns"
       ]
+    },
+    "Side Nav Item": {
+      "variantAxes": {
+        "Mode": [
+          "Expanded",
+          "Collapsed"
+        ],
+        "State": [
+          "Default",
+          "Hover",
+          "Selected",
+          "Disabled"
+        ]
+      },
+      "geometry": [
+        {
+          "when": {
+            "Mode": "Expanded"
+          },
+          "target": "root",
+          "width": 216,
+          "height": 40,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "AUTO",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "8",
+          "paddingTop": "8",
+          "paddingRight": "10",
+          "paddingBottom": "8",
+          "paddingLeft": "10",
+          "minHeight": "40",
+          "topLeftRadius": "radius/6",
+          "topRightRadius": "radius/6",
+          "bottomLeftRadius": "radius/6",
+          "bottomRightRadius": "radius/6"
+        },
+        {
+          "when": {
+            "Mode": "Collapsed"
+          },
+          "target": "root",
+          "width": 64,
+          "height": 64,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "2",
+          "paddingTop": "2",
+          "paddingRight": "2",
+          "paddingBottom": "2",
+          "paddingLeft": "2",
+          "topLeftRadius": "radius/6",
+          "topRightRadius": "radius/6",
+          "bottomLeftRadius": "radius/6",
+          "bottomRightRadius": "radius/6"
+        }
+      ],
+      "anatomy": [
+        "icon",
+        "label",
+        "toggle"
+      ],
+      "tokenBindings": [
+        "color/button/bg/primary--default",
+        "color/button/label/primary--default",
+        "color/navigation/bg--hover",
+        "color/navigation/label/default-side",
+        "color/navigation/label/selected",
+        "color/text/state/disabled",
+        "radius/6",
+        "sizing/20",
+        "sizing/24",
+        "sizing/40",
+        "sizing/64",
+        "spacing/10",
+        "spacing/2",
+        "spacing/8"
+      ],
+      "composition": {
+        "buildDependencies": []
+      }
+    },
+    "Side Nav Sub Item": {
+      "variantAxes": {
+        "State": [
+          "Default",
+          "Hover",
+          "Selected"
+        ]
+      },
+      "geometry": [
+        {
+          "when": "all",
+          "target": "root",
+          "width": 188,
+          "height": 40,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "FIXED",
+          "counterAxisSizingMode": "AUTO",
+          "counterAxisAlignItems": "CENTER",
+          "paddingTop": "8",
+          "paddingRight": "10",
+          "paddingBottom": "8",
+          "paddingLeft": "10",
+          "minHeight": "40",
+          "topLeftRadius": "radius/6",
+          "topRightRadius": "radius/6",
+          "bottomLeftRadius": "radius/6",
+          "bottomRightRadius": "radius/6"
+        }
+      ],
+      "anatomy": [
+        "label"
+      ],
+      "tokenBindings": [
+        "color/navigation/bg--hover",
+        "color/navigation/label/default-side",
+        "color/navigation/label/selected",
+        "radius/6",
+        "sizing/40",
+        "spacing/10",
+        "spacing/8"
+      ],
+      "composition": {
+        "buildDependencies": []
+      }
+    },
+    "Side Nav": {
+      "variantAxes": {
+        "Type": [
+          "Menu",
+          "Brand"
+        ],
+        "Size": [
+          "MD",
+          "LG"
+        ],
+        "State": [
+          "Expanded",
+          "Collapsed"
+        ]
+      },
+      "geometry": [
+        {
+          "when": {
+            "Type": "Menu",
+            "Size": "MD",
+            "State": "Expanded"
+          },
+          "target": "root",
+          "width": 240,
+          "height": 400,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "MIN",
+          "itemSpacing": "0",
+          "paddingTop": "12",
+          "paddingRight": "12",
+          "paddingBottom": "16",
+          "paddingLeft": "12",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "State": "Collapsed"
+          },
+          "target": "root",
+          "width": 80,
+          "height": 400,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "CENTER",
+          "itemSpacing": "16",
+          "paddingTop": "12",
+          "paddingRight": "8",
+          "paddingBottom": "16",
+          "paddingLeft": "8",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Type": "Menu",
+            "Size": "LG",
+            "State": "Expanded"
+          },
+          "target": "root",
+          "width": 280,
+          "height": 400,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "MIN",
+          "itemSpacing": "0",
+          "paddingTop": "12",
+          "paddingRight": "12",
+          "paddingBottom": "16",
+          "paddingLeft": "12",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Type": "Brand",
+            "Size": "MD",
+            "State": "Expanded"
+          },
+          "target": "root",
+          "width": 240,
+          "height": 400,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "MIN",
+          "itemSpacing": "8",
+          "paddingTop": "12",
+          "paddingRight": "12",
+          "paddingBottom": "16",
+          "paddingLeft": "12",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Type": "Brand",
+            "Size": "LG",
+            "State": "Expanded"
+          },
+          "target": "root",
+          "width": 280,
+          "height": 400,
+          "layoutMode": "VERTICAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "counterAxisAlignItems": "MIN",
+          "itemSpacing": "8",
+          "paddingTop": "12",
+          "paddingRight": "12",
+          "paddingBottom": "16",
+          "paddingLeft": "12",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        }
+      ],
+      "anatomy": [
+        "head",
+        "items"
+      ],
+      "tokenBindings": [
+        "border-width/1",
+        "color/button/bg/primary--default",
+        "color/button/label/primary--default",
+        "color/line/default",
+        "color/navigation/bg",
+        "color/navigation/label/default-side",
+        "color/navigation/label/selected",
+        "color/text/state/disabled",
+        "radius/6",
+        "sizing/20",
+        "sizing/24",
+        "sizing/32",
+        "sizing/40",
+        "sizing/48",
+        "sizing/64",
+        "sizing/80",
+        "spacing/10",
+        "spacing/12",
+        "spacing/16",
+        "spacing/2",
+        "spacing/28",
+        "spacing/8"
+      ],
+      "composition": {
+        "buildDependencies": [
+          "Side Nav Item",
+          "Side Nav Sub Item"
+        ]
+      }
     },
     "Mobile Bottom Nav": {
       "variantAxes": {

@@ -3,6 +3,32 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-10-02 07:38 (KST)
+
+- 원본 커밋: `77d319a` — fix(installer): 시간 선택 펼친 모습 — 재설치 때도 시간 목록을 찾아 붙인다
+- 내용이 바뀐 파일 60개
+  - `assets/css/tokens.css`
+  - `assets/css/typography.css`
+  - `design/DESIGN.core.md`
+  - `registry/components/component-facts.json`
+  - `ui-library/dist/assets/css/tokens.css`
+  - `ui-library/dist/assets/css/typography.css`
+  - `ui-library/dist/assets/icons/manifest.json`
+  - `ui-library/dist/components/assist-button.manifest.json`
+  - `ui-library/dist/components/bottom-sheet-option.manifest.json`
+  - `ui-library/dist/components/bottom-sheet.manifest.json`
+  - `ui-library/dist/components/button.manifest.json`
+  - `ui-library/dist/components/checkbox.manifest.json`
+  - `ui-library/dist/components/chip.manifest.json`
+  - `ui-library/dist/components/data-tag.manifest.json`
+  - `ui-library/dist/components/date-picker.manifest.json`
+  - `ui-library/dist/components/divider.manifest.json`
+  - `ui-library/dist/components/dropdown.manifest.json`
+  - `ui-library/dist/components/expandable-card.manifest.json`
+  - `ui-library/dist/components/filter-chip.manifest.json`
+  - `ui-library/dist/components/gnb-sub-menu-item.manifest.json`
+  - … 외 40개
+
 ## 2026-10-01 07:12 (KST)
 
 - 원본 커밋: `777d836` — fix(guide): 모달·콘텐츠 모달·바텀시트 미리보기가 스크롤 시 고정 머리말 위로 튀어나오던 것

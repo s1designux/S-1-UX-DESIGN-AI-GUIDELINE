@@ -2,7 +2,7 @@
   "id": "data-tag",
   "version": "0.1.0",
   "status": "candidate",
-  "canonicalFingerprint": "09e9c5965090f6a380613607b8e6c781020c0421e6ab4781512065579e4857aa",
+  "canonicalFingerprint": "317e13f72b6f1e9bfb3bb3fc9fff7fa11de9cb3084d61823f434029cabc956e2",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -108,5 +108,5 @@
     "runtime": "none",
     "reason": "보여주기만 하는 표시라 스크립트가 필요 없다."
   },
-  "sourceFingerprint": "9f5d10b54693e58506cde98dca46ec24e4af4d04538985927335b3b70bd51e58"
+  "sourceFingerprint": "e385eb8ff165ed47c89c2921ca35988c91569b6d8a6d3083722d0c677bc28bc2"
 }

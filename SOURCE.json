@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "777d836a908891128ad7026358fc002684625660",
+  "commit": "77d319ab0cbc38b8c730cfd6016d410b403164e4",
   "scope": "PC",
-  "generatedAt": "2026-10-01",
-  "syncedAt": "2026-10-01 07:12 (KST)",
-  "sourceCommitDate": "2026-09-30 15:08 (KST)",
-  "sourceCommitSubject": "fix(guide): 모달·콘텐츠 모달·바텀시트 미리보기가 스크롤 시 고정 머리말 위로 튀어나오던 것"
+  "generatedAt": "2026-10-02",
+  "syncedAt": "2026-10-02 07:38 (KST)",
+  "sourceCommitDate": "2026-10-01 17:10 (KST)",
+  "sourceCommitSubject": "fix(installer): 시간 선택 펼친 모습 — 재설치 때도 시간 목록을 찾아 붙인다"
 }
