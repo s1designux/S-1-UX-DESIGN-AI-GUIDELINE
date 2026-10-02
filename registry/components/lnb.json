@@ -146,7 +146,7 @@
     "status": "in-progress",
     "manifest": "ui-library/src/components/lnb/manifest.json",
     "runtime": "init(root) → { collapsed, collapse(next), toggleCollapse(), destroy() }",
-    "note": "하위메뉴 여닫이와 접기 단추 상태를 부품이 갖고, 메뉴 항목과 로고 그림은 쓰는 화면이 정한다. needs-decision — 펼침 폭 240·280 raw 값, 다크 메뉴명 밝기, 접기 아이콘 배포 자산.",
+    "note": "하위메뉴 여닫이와 접기 단추 상태를 부품이 갖고, 메뉴 항목과 로고 그림은 쓰는 화면이 정한다. 펼침 폭 240·280 은 raw 값 그대로 쓰기로 결정(river 2026-10-02 \"지금 숫자 그대로 둘게\"). needs-decision — 다크 메뉴명 밝기, 접기 아이콘 배포 자산.",
     "workId": "promoted-parts-4"
   },
   "geometry": {

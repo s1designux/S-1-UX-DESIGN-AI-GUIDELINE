@@ -3091,7 +3091,7 @@ _Don't_
 **접근성 (a11y)**
 - 줄이 하는 일에 맞는 요소를 쓴다 — 눌러서 이동하면 button·link, 보여주기만 하면 요소를 누르게 두지 않는다.
 - 체크·토글은 코어 배포본의 접근성 계약을 그대로 따른다(체크=native input, 토글=role switch).
-- 화살표 아이콘은 장식이다 — 이름은 제목 글자가 갖는다.
+- 화살표 아이콘은 장식이다 — 이름은 제목 글자가 갖는다. 단 동의(Agree) 줄의 화살표는 **약관 열기 버튼**이다 — 체크와 따로 누르는 자리이고 눌러도 동의 체크가 바뀌지 않는다. 버튼 이름은 "약관 보기"처럼 하는 일을 말한다(river 2026-10-02).
 - 비활성 줄은 초점 순서에서 뺀다.
 
 ### LNB
@@ -5601,4 +5601,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: b40967d3f311 · 손편집 금지 -->
+<!-- generated-stamp: 75ec343b9b40 · 손편집 금지 -->

@@ -2,7 +2,7 @@
   "_meta": {
     "note": "자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요.",
     "purpose": "개발 툴과 검사기가 함께 읽는 허용목록. 여기 없는 variant·size·속성은 승인된 적이 없는 것이다.",
-    "canonicalFingerprint": "e6019e4b4fea169d19ada1317f492ee4fb5874d66068f1135dbe11f95b1bb27b"
+    "canonicalFingerprint": "783486db3584b2bbee00a5fc50150916a1ce3b48c92369ccf8d0e6c6a6d0fd8c"
   },
   "components": [
     {
@@ -64,8 +64,8 @@
         "init is idempotent",
         "destroy removes listeners and hides clear action"
       ],
-      "canonicalFingerprint": "83288ee211a9de772f7ad09fdcddfbc4014ba261ae8a61708ad05d692a843e00",
-      "sourceFingerprint": "e715da99262c7bc9874b943fea3ec8b60dfe6d7c465f5cafaaf6562b30f93c0c"
+      "canonicalFingerprint": "74d324b9b93b6d6de0ac2434a163f74814e35170f97097eee011bd8bb1b1f5e3",
+      "sourceFingerprint": "ce3f3232d60aa0f78edb1e37bd383dd279af495410840c2c4f03400efe4dc506"
     },
     {
       "id": "button",
@@ -115,8 +115,8 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "5ed82a9324a94cd624f8ec73aa4dca9a73570b5305a18ee55e6cbedb7204eba9",
-      "sourceFingerprint": "bfa846f3717a190e4cdb28a2078b68b070ad41a216a556ef7feb6ea14c6c6f87"
+      "canonicalFingerprint": "4227305ab757473c235e2f3d0b7b6c32503ea627056247c045b09c566e7e3380",
+      "sourceFingerprint": "a582f647cc65994a363b6878fe55b6a3cba6bf81b0d915f1fd6c4a2346ff2d70"
     },
     {
       "id": "checkbox",
@@ -148,8 +148,8 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "3ed1016c385c4e83be8da767f904537a50658fdff8801fc7facb7c2469c5f564",
-      "sourceFingerprint": "6f5aec093a9fe8e1913b1a01f8529edb8543090c16ea39e1511e45a2bef36bec"
+      "canonicalFingerprint": "9158001c35cb1a5e0d8ec536b3d702c7863f4a2e9821f4fc4fed96fcedb010b4",
+      "sourceFingerprint": "58962827af53b44e369bf44408aea537835389b9685e3fc1921f2d7832b4261e"
     },
     {
       "id": "radio",
@@ -181,8 +181,8 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "03e57c7e9ece53bd87409ea989e16be3bfbf1f04393c59acf2be54994022fa01",
-      "sourceFingerprint": "1b7436f6c712f2b3fec1c597e70b1ea92908a1fdbbbb0efd3d9ad29c210c3859"
+      "canonicalFingerprint": "65070e327eeea6b6328d04ccdf9b1e85c1ecfbbac4e27c05a8c0305b41254a57",
+      "sourceFingerprint": "417ff7727c21dd4668301c3bce54d746359dba1ca74193b8723d2f11c30301c3"
     },
     {
       "id": "toggle",
@@ -216,8 +216,8 @@
       "jsRequired": true,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "dac554053e1c0ee2e488cea931c1295dfc79c6a3dc88a9def1e94be69280a902",
-      "sourceFingerprint": "7916985417c702647aa75cfd7ae0c3fd5e5d8cf4b518b3ebd079a3bdd56b3386"
+      "canonicalFingerprint": "ba9919ac0abe1e1abf188873f3c2dcfc1d314ad526f0233a349df21747da87b7",
+      "sourceFingerprint": "0773f6eeb4cea2f7f79972e311f67023ac50a12be050b2f5736cdf786f3e65f5"
     },
     {
       "id": "chip",
@@ -265,8 +265,8 @@
       "jsRequired": true,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "3574b18f80aaed407cf6a057fbba276e7b9ceb9627008ba5b69a613eb6f75b04",
-      "sourceFingerprint": "eda60b714328db2019291a8ce0e71820a831234635332f73d30559d0dc1ce94b"
+      "canonicalFingerprint": "051db87b774f682680546323a06e735e53736f490705625d612fc3c7dd8800fb",
+      "sourceFingerprint": "bac474302052862f8dd8b887f0bee91b8a02e64732fcc5584e5bc614e8973bf1"
     },
     {
       "id": "dropdown",
@@ -313,8 +313,8 @@
         "init(root)",
         "destroy(root)"
       ],
-      "canonicalFingerprint": "731e5fa8859446db163d1415812b891d32cc7fb9d3e503ac827c62f9f8644fb4",
-      "sourceFingerprint": "3e45ba74b3d0778f333d4d468755c9874fdcb07062cf5f5116fec85b4608fd9f"
+      "canonicalFingerprint": "4e89e12cf0da2ea199dfbb6a62cfc9a944ab8d600b7c1df0e4fffc3d1cbb3658",
+      "sourceFingerprint": "f7bb9e882d54b9cd6eac22a9eab2dfe7647d78075413365d73fe6ef26a6519d3"
     },
     {
       "id": "select",
@@ -374,8 +374,8 @@
         "init(root)",
         "destroy(root)"
       ],
-      "canonicalFingerprint": "9e852c09c203627dc890b9801fa8b5342812caf8ec1c83ad65d2856bc61cbacc",
-      "sourceFingerprint": "d3da5a4702eed7af3b401f4791480f493d5ca9d7031c65957eaad9e220e3bbde"
+      "canonicalFingerprint": "18c3bac6333c269d9e2a7e9e52372b31960e4b01d03b53f2ee166d99d7790456",
+      "sourceFingerprint": "58e13abacd18aea2525ffc0f5d33202d63ffcd51f0e303269661bf38b65bd2e3"
     },
     {
       "id": "filter-chip",
@@ -437,8 +437,8 @@
         "init(root)",
         "destroy(root)"
       ],
-      "canonicalFingerprint": "5dd105bc2204c945d8c6b66629c4eb687b870445ee6e578579976b25c6bdbfaf",
-      "sourceFingerprint": "c41328345db1bbac3bf0ce5c138680f4eb72050e9b44f4ed4bd23d702710614a"
+      "canonicalFingerprint": "214385a0e27507cf053ae2f8f9f45e77ada305e7db2bfcf7090fece0b1776e60",
+      "sourceFingerprint": "f40107c1e876228d6ee4a4883fc2e71beba2f6f0956a3f7fd423a8f54cede2d6"
     },
     {
       "id": "tab",
@@ -486,8 +486,8 @@
       "jsRequired": true,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "d9ba2df4e82931e55ae29e2fbda141f230b6669fa2bf89b0450510df5e41a705",
-      "sourceFingerprint": "15eedea7e2cee313b4df15e0a6b96db9e0e7725b0a305d1ca2209a29cb191ca9"
+      "canonicalFingerprint": "5e8f86f24a6987acea8325575038d4401e300900ce25c64c38cc038757daebe2",
+      "sourceFingerprint": "b58358a966e40fcc49183aea5a14d61723ce19cda784af64a940faff188426a5"
     },
     {
       "id": "pagination",
@@ -529,8 +529,8 @@
       "jsRequired": true,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "34c94e76edee0081266f3a8ac74252e5633e29ef48b7a17026630e9761b0ee33",
-      "sourceFingerprint": "5fda599085c24709327ed110485b67e7eca6bc71d0b527937d8bb44db1e44393"
+      "canonicalFingerprint": "3df9b1f45e27908f0f7a57fb0fc2c8ab49fe9b2813e212ac4f75c1f930cd3a2c",
+      "sourceFingerprint": "c38c6fe2d06ee67c06984645a7906946980831f8abb5ed4c9d7fe0355a67a052"
     },
     {
       "id": "textarea",
@@ -563,8 +563,8 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "10f9384cabeb960c182b0fe2216f0ebbc9704e7a9006a9859927d07f5a124e56",
-      "sourceFingerprint": "498ea18652dd530aecd845bcf754fdd19327e9a83ebc4abd4b728d7b7bdb1f21"
+      "canonicalFingerprint": "a2de9d0962d59c774e7426fd518eb33e2f90767f4e24e62d19b4248dd560dc25",
+      "sourceFingerprint": "8de64bfd9d5a19af1525eea1906b3ed2eead53766a07e31c7aa8e751cf485408"
     },
     {
       "id": "multi-toggle",
@@ -605,8 +605,8 @@
         "init is idempotent",
         "destroy removes listeners"
       ],
-      "canonicalFingerprint": "ced7200194ae2f94eddbbe676c6e5b2ec7480cd2cef708bffac53ef27c8e1a72",
-      "sourceFingerprint": "30ea9b873534cf4bbeb1900bc65230164e9840b60dff851e9fd6f337785408ce"
+      "canonicalFingerprint": "ae3bdb07ec2314ed05d26683885f03a3e91736289a28bbc3f979b0ce442f267a",
+      "sourceFingerprint": "1641ce55be70858e20e800d0bc11bbcc0d8de092d93f5cf71377e075dfe75f89"
     },
     {
       "id": "modal",
@@ -662,8 +662,8 @@
         "init(root)",
         "destroy(root)"
       ],
-      "canonicalFingerprint": "477f84a5f02980172ee435d1ee0473d5b0365ea5b509bfd77ac8b797cc84c634",
-      "sourceFingerprint": "3324b7a26156916997dbe768548078e043c0eb40a3c4d2680474d40d6ae8945f"
+      "canonicalFingerprint": "582c98fae2137f7a61dcec40644e64b81e41623a49c826e451d1453d89763320",
+      "sourceFingerprint": "81b2ffbc856ddd30efb6852cc6ebc16f26864a157ddd46f2046984c409e55295"
     },
     {
       "id": "table",
@@ -712,8 +712,8 @@
         "s1:table:selectionchange"
       ],
       "lifecycle": [],
-      "canonicalFingerprint": "6eb9d840d47831b9ef9f5d9a7860727f9350054e928ef13f3d20428e5f5d735d",
-      "sourceFingerprint": "d44b78809012a0396ef95ba6b44e05e958529da48b8966b6aa48dd4ae18608c1"
+      "canonicalFingerprint": "38dfb75472e12079966941f5fc92b6ffdfbec151d302f48835df4e972ae158ed",
+      "sourceFingerprint": "4a1f9165f53e1f8a519159e76fbb9da79cf462e5b56b7a88706a0e17bb1b0273"
     },
     {
       "id": "mobile-bottom-nav",
@@ -746,8 +746,8 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "66c1471b1eea9385f4035f90985e2b435c9092b4cfd25932a96ffe434de0609f",
-      "sourceFingerprint": "7fdb7228bca2413c7a8fd073bc804f52d2d1cdb4ea15a84677dfd0716459e145"
+      "canonicalFingerprint": "75282d7b2526b2960251072de14292536e4047c9ae5c560f7eefdbd93e92c6e8",
+      "sourceFingerprint": "28ca616445c4d850554a3ed579729c7888d97b740d9a65609cbf741539b35634"
     },
     {
       "id": "mobile-header",
@@ -786,8 +786,8 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "384d6e6c85588e577f7985b37f7638cd7606d7f17ff5f72437a8c969b3816fd1",
-      "sourceFingerprint": "34ba2ba82ddc4ba84b25c6e8da92680540868c5fc62730aab312cea9624baf23"
+      "canonicalFingerprint": "3303abdc3a7be8f46cea85599ae878aee46096c8ffd72ddfe18199a69f7421a4",
+      "sourceFingerprint": "1a349ee6cc283e5fc3a10d0ab4ebf269f75f97b6d18526c82f337075fe8e3755"
     },
     {
       "id": "time-picker",
@@ -872,8 +872,8 @@
         "init(root)",
         "destroy(root)"
       ],
-      "canonicalFingerprint": "ebf42fedcbc1703ecb827bed01f59739fcaee90ed00d501a69a45819c5f0f998",
-      "sourceFingerprint": "6906cc63b6514f8d5f138fcfffdd9c4427ef513bd5800a58396fe8042e80963e"
+      "canonicalFingerprint": "7ebb028fa3968d0141666f463b779aef3baf1f698bc9ea0468e5b4c2e3528428",
+      "sourceFingerprint": "b4a42073e95fa2be87be878a1150baa31c4fdae952a6b86d095714ed86ecb287"
     },
     {
       "id": "date-picker",
@@ -960,12 +960,12 @@
         "init(root)",
         "destroy(root)"
       ],
-      "canonicalFingerprint": "5a0acd77602e23b5e4a70dc4de27bcf8690941d67641794e1d8d444d632ce577",
-      "sourceFingerprint": "d4c310566bff749e6f64e5dd0672d8247a17664565422fdec5def7c1ca766c29"
+      "canonicalFingerprint": "934945a7ce9d7a374389cebdee02db7ed5398ae19f6abef54428bffcc65cc409",
+      "sourceFingerprint": "a7b6c0b494fe18872b8517c465234bf724f87f34ed5902c6f674cedb9affb3cd"
     },
     {
       "id": "gnb",
-      "status": "verified",
+      "status": "approved",
       "rootSelector": "[data-s1-component=\"gnb\"]",
       "root": "nav[data-s1-component=gnb][data-size][data-variant]",
       "variants": [
@@ -1010,12 +1010,12 @@
         "init(root)",
         "destroy(root)"
       ],
-      "canonicalFingerprint": "b7270eea4463271914ebc600e073a6717f193433a4b11f09a0a6546a1e6da4db",
-      "sourceFingerprint": "4e9255630fcbf4a9a3d53c31b0482ff67b92340964eb9b9707e1840423741383"
+      "canonicalFingerprint": "8134272afeda109eeb03e4dfaa1d31105a7244814da79ed44a753675bf6b6956",
+      "sourceFingerprint": "b034b0b56db005ff08016325b530e674a69ba2afc3669df9359058b0a3e5c4f5"
     },
     {
       "id": "gnb-sub-menu-item",
-      "status": "verified",
+      "status": "approved",
       "rootSelector": "[data-s1-component=\"gnb-sub-menu-item\"]",
       "root": "(a[href] | span)[data-s1-component=gnb-sub-menu-item][data-depth]",
       "variants": [],
@@ -1034,12 +1034,12 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "ae9e137f4cd8f18a29969eb4c80f38f4d1b58b28176f69d24f3990774a258dfe",
-      "sourceFingerprint": "8d02eac6232d54082159784d9b616753cc7e5b3914e0ed9c9bdebcb9a12cbd33"
+      "canonicalFingerprint": "b07b354a23f96950f94e4eefabf8ac540723824a19d6bcbd2fe5b79a80683227",
+      "sourceFingerprint": "a8c0a89cd95c92dbfd9c3984e76045c26cf22d84dc09dda143861f0782aaa770"
     },
     {
       "id": "gnb-sub-menu",
-      "status": "verified",
+      "status": "approved",
       "rootSelector": "[data-s1-component=\"gnb-sub-menu\"]",
       "root": "div[data-s1-component=gnb-sub-menu][data-type]",
       "variants": [],
@@ -1060,8 +1060,8 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "dd662efbdbc2266c4f9892cdf768529348d95577044eb6ff0242afe012bc020d",
-      "sourceFingerprint": "90019b5c15d9d127ab520316a82d3e4b294f88c9a96025660032200cfcaa5189"
+      "canonicalFingerprint": "bb5c6b604896261b44a23a749c1e80477ec3fd8badd468304abedf696e8cc9ac",
+      "sourceFingerprint": "594c1a8a129b57d4e2eac7689edae7eae0aa3846b5bde4fd3dc37a64bec59034"
     },
     {
       "id": "assist-button",
@@ -1094,8 +1094,8 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "b15804563c67c8f5e5c1e9d2da23ad109fef1e1491481551a7276405d74e1c1b",
-      "sourceFingerprint": "44648bdb8607716509e66506dea4a4c5d5cd8d0909c22cd7cdbd584664cc152f"
+      "canonicalFingerprint": "33061be7e9d345752f2c533d8be4f5303b0904ff17f6d9bc0e079989773ae2e5",
+      "sourceFingerprint": "ad84b00ee7cc50868c0c2ce35a09232a462090daf9fb33a3376217a0698ac0f9"
     },
     {
       "id": "text-button",
@@ -1132,8 +1132,8 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "2fd0b287ddb85f252b13b9b645ccf20ad166b8cc1c2d59ecc89123f7aa123eae",
-      "sourceFingerprint": "94ec79a6829583b569f414c66caa3ec628fe77e5d26d69769d1d776e8a03b62a"
+      "canonicalFingerprint": "17da62a75a28ba51c74e6c3988f958f104245b178b76275b08bc896faf10a91e",
+      "sourceFingerprint": "6505d9c69269e3a4fa99cb1bffe6c95b8ed3e624d8f3680efaeee36f189bbcf8"
     },
     {
       "id": "modal-content",
@@ -1198,8 +1198,8 @@
         "init(root)",
         "destroy(root)"
       ],
-      "canonicalFingerprint": "9229f752bcf2ffd275d74d854ecaef64b90de9469c519c74e443390ef7d8d545",
-      "sourceFingerprint": "30d22bacb5825a4a04001132a7e76c1f7f3de9ad224384ecbace74f4062e7d76"
+      "canonicalFingerprint": "158d0afd4feb581583207e0012047c328c4b0b55f840840bec486342248dcfa5",
+      "sourceFingerprint": "7ccc8e6589d8c5317ee74720658ebad56cc3b90b8a86cb6d4e1e5cf6eeab8c5e"
     },
     {
       "id": "bottom-sheet-option",
@@ -1243,8 +1243,8 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "dbd15c9dadd87792a595ef015a434077f88b220fd21f10bcf549994decbaefab",
-      "sourceFingerprint": "464cdab2f0d4a52f044cc263959c691357ef71a4faf5e73cda33b2fc89a3c70f"
+      "canonicalFingerprint": "1c27893fba149cfeb2915b88896b154c5ba8ce303caa5c8f9b12fdd8e214c902",
+      "sourceFingerprint": "7b887c926fad9d1409080f044d2748ea2d9cef67552f5c7150e07526c944b36f"
     },
     {
       "id": "bottom-sheet",
@@ -1298,14 +1298,14 @@
         "init(root)",
         "destroy(root)"
       ],
-      "canonicalFingerprint": "91931a270107ec39ada864e2c9744d2c5d85c20c3e5078ea063f31fd3252a9b5",
-      "sourceFingerprint": "299489125a2fe78098c8249c8e7e024e3b1a193e16fbaf52c1eaa47a7087eb36"
+      "canonicalFingerprint": "14035c5c6f0403cfc0a58b3b65c8421e649bbd013a6777266844fe0bb86bc23a",
+      "sourceFingerprint": "27fc2c01b125a27a187fe443e218429626ac2a4f45447edc6c6c6b8220a25e27"
     },
     {
       "id": "list-row",
-      "status": "candidate",
+      "status": "approved",
       "rootSelector": "[data-s1-component=\"list-row\"]",
-      "root": "요소는 유형(Type)이 하는 일에 맞춘다 — Nav·Value(눌러서 이동/편집)=button, Read·Thumb(보여주기만)=div(누르지 않는다), Pick·Agree(고르기)=label(체크 코어를 감싸 클릭 영역을 넓힌다), Switch=div(토글 컨트롤 자체가 상호작용 요소다). 공통 속성 data-s1-component=list-row, data-type, 선택 data-state. Density 축은 없다(2026-09-21 정정 — 한 벌만 쓴다).",
+      "root": "요소는 유형(Type)이 하는 일에 맞춘다 — Nav·Value(눌러서 이동/편집)=button, Read·Thumb(보여주기만)=div(누르지 않는다), Pick(고르기)=label(체크 코어를 감싸 클릭 영역을 넓힌다), Agree=div(체크 영역 label[check] + 오른쪽 칸의 약관 열기 button — label 안에 button 을 넣지 않는다), Switch=div(토글 컨트롤 자체가 상호작용 요소다). 공통 속성 data-s1-component=list-row, data-type, 선택 data-state. Density 축은 없다(2026-09-21 정정 — 한 벌만 쓴다).",
       "variants": [
         "nav",
         "value",
@@ -1330,7 +1330,9 @@
         "description",
         "trail",
         "value",
-        "chevron"
+        "chevron",
+        "check",
+        "open"
       ],
       "variantAttribute": "data-type",
       "sizeAttribute": null,
@@ -1344,12 +1346,12 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "9c65f36023e022888d1f7bc6b7f9b442da3a8accf27acbc6c18fb00a968949f0",
-      "sourceFingerprint": "83f383394c893d7911540f0baed7d7ab74fa14088c7630c993e836d5dda0612f"
+      "canonicalFingerprint": "3345a6516a406b4ae682a44f45e9864fb165001dcf273abac54e9b85e6053b99",
+      "sourceFingerprint": "4fcd6a5b2072063483491711b5d426b38fc95ae6fdead1b5fe4c0ead90accf53"
     },
     {
       "id": "expandable-card",
-      "status": "candidate",
+      "status": "approved",
       "rootSelector": "[data-s1-component=\"expandable-card\"]",
       "root": "div[data-s1-component=expandable-card] > button[data-s1-part=header][aria-expanded][aria-controls] + div[data-s1-part=panel-wrap][id] > div[data-s1-part=panel]. header 안은 span[data-s1-part=text](title·subtitle·body·note·caption 중 필요한 것) + span[data-s1-part=toggle-icon].",
       "variants": [],
@@ -1388,12 +1390,12 @@
         "s1:expandable-card:change"
       ],
       "lifecycle": [],
-      "canonicalFingerprint": "bbd89e3389153686038e77e02bcbb5c4bc9ecf169975205d6832b525d6831256",
-      "sourceFingerprint": "99c24c3da0f576f860e731cf6e9a73059287a2d4754c21ee57680797edd4c972"
+      "canonicalFingerprint": "6d70380b945a5903105aabf7c6e5d7b16ecc87e947066abd6c1c6fba39d4c6e1",
+      "sourceFingerprint": "3783d9a0c2a7d1c885d1f6d24b0e2e39837d6c55e2335f0c7ddb6b2d82cc7fb6"
     },
     {
       "id": "data-tag",
-      "status": "candidate",
+      "status": "approved",
       "rootSelector": "[data-s1-component=\"data-tag\"]",
       "root": "span[data-s1-component=data-tag] — 누르지 않는 표시. 안에는 글자만 둔다(부품 자리 없음).",
       "variants": [
@@ -1417,12 +1419,12 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "317e13f72b6f1e9bfb3bb3fc9fff7fa11de9cb3084d61823f434029cabc956e2",
-      "sourceFingerprint": "e385eb8ff165ed47c89c2921ca35988c91569b6d8a6d3083722d0c677bc28bc2"
+      "canonicalFingerprint": "8077597dca7b6713be2727346a533f058e8b1c8f01f00cc19a90b1a9d6e5c337",
+      "sourceFingerprint": "b4f30132350a92c35e30c1eceb406f50259c9b1145988f51042bb33760d5c215"
     },
     {
       "id": "divider",
-      "status": "candidate",
+      "status": "approved",
       "rootSelector": "[data-s1-component=\"divider\"]",
       "root": "hr[data-s1-component=divider]. 세로선(data-axis=y)에는 aria-orientation=vertical 을 함께 쓴다. 자식·부품 자리가 없다.",
       "variants": [
@@ -1444,8 +1446,8 @@
       "jsRequired": false,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "484a1115cf8af5a076754040ea3820151737d6f70121018aa2cb9bc9911d94b0",
-      "sourceFingerprint": "d960861345054455d97b28edf65b8209a787f844fb17faac656b64864e05aad2"
+      "canonicalFingerprint": "2620a26494375b10e21e38e73939fa0f537faa17e461e564b61f3f0512f081d0",
+      "sourceFingerprint": "44ebb908f683285c3348e5ccf5f65f6ab5278c98c62614f3a2078a9b62bf46d8"
     },
     {
       "id": "lnb",
@@ -1497,8 +1499,8 @@
         "s1:lnb:toggle"
       ],
       "lifecycle": [],
-      "canonicalFingerprint": "fd815ced0134725e797fd35a6d1970b5e269d53e143d3bd07cb18fa46f3f0134",
-      "sourceFingerprint": "b889efc9f654eec124fd3cec39ddaf8de625dd10201d74d712a8fcd12c6644c9"
+      "canonicalFingerprint": "76a99e7148f72a0adbfd7701394d19d48ba060f37a298e0ae2742d9be75841cf",
+      "sourceFingerprint": "6900e615c50c7729d6d6e9584bd6e31d6adacc8569ccd299d3f110ccfdce7ed6"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "id": "bottom-sheet-option",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "status": "approved",
-  "canonicalFingerprint": "dbd15c9dadd87792a595ef015a434077f88b220fd21f10bcf549994decbaefab",
+  "canonicalFingerprint": "1c27893fba149cfeb2915b88896b154c5ba8ce303caa5c8f9b12fdd8e214c902",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -110,8 +110,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -195,5 +195,5 @@
     "runtime": "none",
     "reason": "줄 모양만 소유한다. 고르기 동작(선택 반영·role·이벤트)은 시트를 여는 화면이 배선한다."
   },
-  "sourceFingerprint": "464cdab2f0d4a52f044cc263959c691357ef71a4faf5e73cda33b2fc89a3c70f"
+  "sourceFingerprint": "7b887c926fad9d1409080f044d2748ea2d9cef67552f5c7150e07526c944b36f"
 }

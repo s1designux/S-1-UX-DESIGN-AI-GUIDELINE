@@ -17,7 +17,7 @@
   color: var(--color-form-control-text-placeholder);
   cursor: pointer;
   display: flex;
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-weight: var(--font-weight-regular);
   justify-content: space-between;
   min-width: 140px; /* 정본 trigger.resize(140, sc.h) — river 2차 지시(2026-09-01): 셀렉트박스 본체(트리거)에도 최소 폭. Filter Chip 트리거는 정본이 primaryAxisSizingMode=AUTO(내용에 맞춰 줄어듦)라 여기 적용 안 함(filter-chip.css는 손대지 않음). */

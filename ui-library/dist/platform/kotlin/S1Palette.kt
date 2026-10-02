@@ -440,8 +440,8 @@ object S1Palette {
     val colorIconWhite: S1Color = S1Color(0xFFFFFFFF, 0xFFFFFFFF)
     /** --color-line-blue — 라이트 #1D6CEB · 다크 #3070D8 */
     val colorLineBlue: S1Color = S1Color(0xFF1D6CEB, 0xFF3070D8)
-    /** --color-line-default — 라이트 #E9E9E9 · 다크 #2E2F38 */
-    val colorLineDefault: S1Color = S1Color(0xFFE9E9E9, 0xFF2E2F38)
+    /** --color-line-default — 라이트 #E9E9E9 · 다크 #35363F */
+    val colorLineDefault: S1Color = S1Color(0xFFE9E9E9, 0xFF35363F)
     /** --color-line-strong — 라이트 #353535 · 다크 #8A8C96 */
     val colorLineStrong: S1Color = S1Color(0xFF353535, 0xFF8A8C96)
     /** --color-modal-panel-border — 라이트 #D9D9D9 · 다크 #3E4049 */

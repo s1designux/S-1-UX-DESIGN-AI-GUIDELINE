@@ -1,8 +1,8 @@
 {
   "id": "chip",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "status": "approved",
-  "canonicalFingerprint": "3574b18f80aaed407cf6a057fbba276e7b9ceb9627008ba5b69a613eb6f75b04",
+  "canonicalFingerprint": "051db87b774f682680546323a06e735e53736f490705625d612fc3c7dd8800fb",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -125,8 +125,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -171,5 +171,5 @@
     "runtime": "components/chip.js",
     "reason": "registry 가 선언한 aria-pressed 선택 상태 전환을 런타임이 담당한다."
   },
-  "sourceFingerprint": "eda60b714328db2019291a8ce0e71820a831234635332f73d30559d0dc1ce94b"
+  "sourceFingerprint": "bac474302052862f8dd8b887f0bee91b8a02e64732fcc5584e5bc614e8973bf1"
 }

@@ -1,6 +1,6 @@
 # @s1/ui-react
 
-**배포본 번호 0.16.1** · 2026-10-02 판
+**배포본 번호 0.18.3** · 2026-10-02 판
 이 번호가 최신인지는 디자인가이드 내려받기 화면에서 확인하세요 — 번호가 다르면 새로 받으면 됩니다.
 코드에서 볼 때는 `import { S1_VERSION } from "@s1/ui-react"` 입니다.
 
@@ -92,11 +92,18 @@ import { S1Button, S1Input, S1Table } from "@s1/ui-react";
 | `S1MobileHeader` | `home-title` `home-title-subtitle` `standard-title` `standard-title-close` `standard-no-title` `standard-no-title-close` | — | — | `parts` | 모바일 앱 또는 모바일 웹 화면에서 상단 전역 크롬과 화면 이동 동작을 제공할 때. 회원가입처럼 앱바 안 제목을 비우고 본문 큰 제목을 사용하는 화면에는 Standard / No Title을 쓴다. |
 | `S1TimePicker` | — | PC `xxsm` `xsm` `md` · 모바일 `md` | `pc` `mobile` | `onOpen` · `onClose` · `onChange` | 시간(시/분)을 드롭다운 목록에서 고를 때. |
 | `S1DatePicker` | `single` `range` | PC `xxsm` `xsm` `md` · 모바일 `md` | `pc` `mobile` | `onOpen` · `onClose` · `onChange` | 날짜(단일/기간)를 고를 때. 트리거는 Base Input 필드. PC 는 팝오버 캘린더, Mobile 은 바텀시트로 표출. |
+| `S1Gnb` | `center-between` `start` | `md` `sm` `xsm` | — | `onOpen` · `onClose` | PC 상단 글로벌 내비게이션이 필요할 때. 로고 + 메뉴 + 유틸(아이콘) 조립. |
+| `S1GnbSubMenuItem` | — | — | — | `parts` | GNB 하위메뉴 패널의 카테고리 제목 또는 항목을 놓을 때. |
+| `S1GnbSubMenu` | — | — | — | `columns` | GNB 주 메뉴 아래로 하위 메뉴를 펼쳐 보일 때. |
 | `S1AssistButton` | — | — | — | `parts` | 본문 옆이나 목록 행 안처럼 좁은 자리에서, 눈에 덜 띄는 보조 동작 하나를 둘 때. 코어 Button 의 4크기(MD·XSM·XXSM·LG) 어디에도 맞지 않는, 원본에 정의된 고정 32px 자리. |
 | `S1TextButton` | `primary` `secondary` | — | — | `parts` | 링크에 가까운 가벼운 보조 동작(더보기·자세히 등)을 텍스트만으로 표시할 때. Primary 는 강조가 필요한 텍스트 액션, Secondary 는 덜 중요한 텍스트 액션. |
 | `S1ModalContent` | `single` `dual` | PC `md` `lg` `xl` | — | `onOpen` · `onClose` | 입력창·표·이미지처럼 확인 계열(짧은 텍스트)보다 큰 본문이 필요할 때. Single=알림/설명체 1버튼, Dual=확인/질문체 2버튼(확인 계열과 같은 규칙). |
 | `S1BottomSheetOption` | `text` `checkbox` `radio` `list` | — | — | `parts` | 바텀시트 본문에 고를 것을 줄로 늘어놓을 때. Text = 한 값 고르기(고른 줄에 파란 체크), Checkbox = 여러 값 고르기, Radio = 한 값 고르기(동그라미 표시), List = 사람·항목처럼 아바타와 설명이 함께 있는 줄. |
 | `S1BottomSheet` | `none` `single` `dual` | — | — | `onOpen` · `onClose` | 모바일에서 목록을 띄워 고르게 할 때 — 드롭다운 대신 쓴다(density-policy mobileSubstitutes.dropdown). 모바일에서 날짜·시간처럼 넓은 선택 UI 를 띄울 때. Footer=None 은 고르는 즉시 적용되는 목록, Single 은 '적용' 하나, Dual 은 '취소+적용'. |
+| `S1ListRow` | `nav` `value` `read` `pick` `agree` `switch` `thumb` | — | — | `parts` | 같은 모양의 줄이 반복되는 목록을 만들 때. |
+| `S1ExpandableCard` | — | — | — | `onChange` | 한 화면에 여러 덩어리를 쌓아 두고, 필요한 것만 펴서 보게 할 때. 질문과 답처럼 제목만으로 고르고 내용은 접어 두는 목록. |
+| `S1DataTag` | `blue` `red` | — | — | `parts` | 표나 목록에서 한 줄의 상태를 한 눈에 보이게 할 때. 승인·확인(파랑), 주의·에러(빨강)처럼 뜻이 정해진 상태를 표시할 때. |
+| `S1Divider` | `x` `y` | — | — | `parts` | 목록 줄 사이를 나눌 때. 표 위·아래처럼 영역을 크게 끊을 때(강한선). 한 줄 안에서 값과 값을 끊을 때(세로선). |
 | `S1Lnb` | `menu` `brand` | `md` `lg` | — | `onCollapse` · `onToggle` | 화면 왼쪽에 세로로 서서 같은 서비스 안의 큰 영역을 오가는 메뉴가 필요할 때. 하위메뉴(2뎁스)까지 한 판에서 보여 줄 때. |
 
 크기·변형은 위에 적힌 값만 쓸 수 있습니다. 다른 값을 주면 그 자리에서 오류로 알려 줍니다.
@@ -124,11 +131,18 @@ import { S1Button, S1Input, S1Table } from "@s1/ui-react";
 | `S1MobileHeader` | PC 화면의 전역 내비게이션에는 GNB를 쓴다. 모바일 화면이 아닌 PC 전용 헤더에는 사용하지 않는다. |
 | `S1TimePicker` | 날짜는 DatePicker. 자유 텍스트만 필요하면 Input. |
 | `S1DatePicker` | 시간만 고를 때는 TimePicker. 자유 텍스트 날짜 입력만 필요하면 Input. |
+| `S1Gnb` | 사이드바 내비게이션은 Navigation. 모바일 하단 탭은 Mobile Bottom Nav. |
+| `S1GnbSubMenuItem` | 상단바의 주 메뉴는 GNB 의 메뉴 슬롯을 쓴다. 패널 없이 이 부품만 화면에 두지 않는다. |
+| `S1GnbSubMenu` | 모바일에는 쓰지 않는다(PC 전용). 단일 목록 하나만 띄우는 자리에는 Dropdown 을 쓴다. |
 | `S1AssistButton` | 화면의 주 액션(저장·확인 등)에는 코어 Button 을 쓴다. 배경·테두리가 없는 링크형 액션은 Text Button 을 쓴다. |
 | `S1TextButton` | 배경·테두리가 있는 버튼이 필요하면 코어 Button 또는 Assist Button 을 쓴다. 페이지 이동 전용 링크는 <a> 를 우선 고려한다. |
 | `S1ModalContent` | 짧은 확인 문구 하나면 확인 계열 Modal 을 쓴다. 페이지 전체를 차지하는 다단계 폼은 별도 페이지를 고려한다. |
 | `S1BottomSheetOption` | 바텀시트 밖 — PC 목록은 Dropdown 을 쓴다. 표의 행 — Table 을 쓴다. |
 | `S1BottomSheet` | PC 화면 — PC 는 드롭다운·팝오버·모달을 쓴다. 정본 시트는 모바일 폭(360) 기준이다. 확인·알림처럼 짧은 결정 — Modal 을 쓴다. 비차단 알림 — 토스트·인라인 메시지. |
+| `S1ListRow` | 표의 행 — Table 을 쓴다. 바텀시트 안의 고르기 줄 — Bottom Sheet Option 을 쓴다. 드롭다운 안의 옵션 줄 — Dropdown List 를 쓴다. |
+| `S1ExpandableCard` | 화면을 덮어야 하는 내용 — Bottom Sheet·Modal 을 쓴다. 같은 모양의 한 줄이 반복될 뿐 펼칠 내용이 없을 때 — List Row 를 쓴다. |
+| `S1DataTag` | 누르는 것 — Chip 이나 Button 을 쓴다. 고르는 것 — Filter Chip 을 쓴다. 뜻이 정해지지 않은 색을 쓰고 싶을 때 — 색을 늘리지 않는다. |
+| `S1Divider` | 바탕색이 이미 영역을 나누고 있을 때 — 선을 겹쳐 넣지 않는다. 카드 테두리 대신 쓰려 할 때 — 테두리는 그 부품이 갖는다. |
 | `S1Lnb` | 화면 위쪽 가로 메뉴가 필요할 때 — GNB 를 쓴다. 모바일 하단 이동 막대가 필요할 때 — Mobile Bottom Nav 를 쓴다. |
 
 ## 6. 고치지 마세요

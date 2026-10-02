@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Components · S1 UX DESIGN GUIDE</title>
   <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="../ui-library/dist/assets/css/tokens.css">
   <link rel="stylesheet" href="../ui-library/dist/assets/css/typography.css">
   <link rel="stylesheet" href="../ui-library/dist/s1-ui.css">
@@ -1498,7 +1498,7 @@
       min-width: 116px;
       height: 56px; /* md */
       padding: 12px 40px; /* py block-xs 12 / px = 외곽 lg24 + 내부 sm16 = 40 (md) */
-      font-family: 'Pretendard', sans-serif;
+      font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
       font-size: 18px;
       font-weight: var(--font-weight-medium);
       line-height: var(--line-height-130);
@@ -1554,7 +1554,7 @@
     .s1-gnb--start .s1-gnb-util { margin-left: auto; }
 
     .s1-gnb-logo {
-      font-family: 'Pretendard', sans-serif;
+      font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
       font-size: 20px;
       font-weight: var(--font-weight-bold);
       line-height: var(--line-height-130);
@@ -1838,6 +1838,7 @@
           <button class="comp-nav-btn" data-category="overlay" data-platforms="mobile" onclick="showSection('bottom-sheet', this)">Bottom Sheet</button>
           <button class="comp-nav-btn" data-category="overlay" data-platforms="mobile" onclick="showSection('bottom-sheet-option', this)">Bottom Sheet Option</button>
           <button class="comp-nav-btn" data-category="list" data-platforms="mobile" onclick="showSection('expandable-card', this)">Expandable Card</button>
+          <button class="comp-nav-btn" data-category="list" data-platforms="mobile" onclick="showSection('list-row', this)">List Row</button>
           <button class="comp-nav-btn" data-category="common" data-platforms="pc mobile" onclick="showSection('divider', this)">Divider</button>
           <button class="comp-nav-btn" data-category="chip" data-platforms="pc mobile" onclick="showSection('data-tag', this)">Data Tag</button>
         </div><!-- /comp-nav -->
@@ -2542,6 +2543,9 @@ update(); // 초기화</pre>
 
       <!-- Approved LNB guide: ui-library-guide.js renders from ui-library/dist -->
       <section class="comp-section" id="lnb" data-cov-type="menu,brand" data-cov-sizes="md,lg" data-cov-states="expanded,collapsed,default,hover,selected,disabled" data-cov-mode="expanded,collapsed"></section>
+
+      <!-- Approved List Row guide: ui-library-guide.js renders from ui-library/dist -->
+      <section class="comp-section" id="list-row" data-cov-type="nav,value,read,pick,agree,switch,thumb" data-cov-states="default,pressed,disabled"></section>
 
       <!-- >>> GEN:COMPONENT-STUBS >>> 자동 생성 (npm run stubs:gen). 수동 편집 금지. -->
       <!-- ═══ LINE TAB ═══ -->
@@ -3414,7 +3418,7 @@ update(); // 초기화</pre>
   applyPlatformMenu();
 
   (function initFromHash() {
-    var valid = ['button','checkbox','radio','toggle','multi-toggle','chip','filter-chip','input','date-picker','time-picker','textarea','select','dropdown','table','pagination','tab','gnb','gnb-sub-menu','gnb-sub-menu-item','mobile-bottom-nav','mobile-header','ci','footer','login-gnb','modal','lnb']; // 마이그레이션 완료 컴포넌트 + 회사 고유 자산 3종(상위가 없어 어디에도 안 보이던 것 — 2026-08-02 노출)
+    var valid = ['button','checkbox','radio','toggle','multi-toggle','chip','filter-chip','input','date-picker','time-picker','textarea','select','dropdown','table','pagination','tab','gnb','gnb-sub-menu','gnb-sub-menu-item','mobile-bottom-nav','mobile-header','ci','footer','login-gnb','modal','lnb','expandable-card','divider','data-tag','list-row']; // 마이그레이션 완료 컴포넌트 + 회사 고유 자산 3종(상위가 없어 어디에도 안 보이던 것 — 2026-08-02 노출)
     var hash  = window.location.hash.replace('#', '');
     var id    = (hash && valid.includes(hash)) ? hash : 'button'; // 기본은 Button(양 플랫폼 공통)
     var btn   = document.querySelector('.comp-nav-btn[onclick*="\'' + id + '\'"]');

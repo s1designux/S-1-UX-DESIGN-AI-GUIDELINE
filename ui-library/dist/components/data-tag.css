@@ -14,7 +14,7 @@
   box-sizing: border-box;
   color: var(--color-text-body-tertiary);
   display: inline-flex;
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: var(--font-size-12);
   font-weight: var(--font-weight-medium);
   justify-content: center;

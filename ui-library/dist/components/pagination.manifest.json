@@ -1,8 +1,8 @@
 {
   "id": "pagination",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "status": "approved",
-  "canonicalFingerprint": "34c94e76edee0081266f3a8ac74252e5633e29ef48b7a17026630e9761b0ee33",
+  "canonicalFingerprint": "3df9b1f45e27908f0f7a57fb0fc2c8ab49fe9b2813e212ac4f75c1f930cd3a2c",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -67,8 +67,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -122,5 +122,5 @@
     "runtime": "components/pagination/pagination.js",
     "reason": "현재 페이지와 양 끝 비활성 상태를 동기화한다."
   },
-  "sourceFingerprint": "5fda599085c24709327ed110485b67e7eca6bc71d0b527937d8bb44db1e44393"
+  "sourceFingerprint": "c38c6fe2d06ee67c06984645a7906946980831f8abb5ed4c9d7fe0355a67a052"
 }

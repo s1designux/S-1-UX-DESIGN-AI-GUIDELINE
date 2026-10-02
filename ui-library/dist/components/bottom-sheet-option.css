@@ -37,7 +37,7 @@
    ">" 직계 자식으로 좁혀서 코어 내부로 스타일이 새지 않게 막는다(계약 "다른 코어 내부 part 선택 금지"). */
 [data-s1-component="bottom-sheet-option"] > [data-s1-part="label"] {
   color: var(--color-text-body-primary);
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--letter-spacing-tight);
@@ -111,7 +111,7 @@
 
 [data-s1-component="bottom-sheet-option"] [data-s1-part="list-title"] {
   color: var(--color-text-body-primary);
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--letter-spacing-tight);
@@ -120,7 +120,7 @@
 
 [data-s1-component="bottom-sheet-option"] [data-s1-part="list-sub"] {
   color: var(--color-text-body-secondary);
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-regular);
   letter-spacing: var(--letter-spacing-tight);

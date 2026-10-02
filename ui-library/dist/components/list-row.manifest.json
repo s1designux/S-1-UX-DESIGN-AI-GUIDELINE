@@ -1,8 +1,8 @@
 {
   "id": "list-row",
-  "version": "0.3.2",
-  "status": "candidate",
-  "canonicalFingerprint": "9c65f36023e022888d1f7bc6b7f9b442da3a8accf27acbc6c18fb00a968949f0",
+  "version": "0.4.0",
+  "status": "approved",
+  "canonicalFingerprint": "3345a6516a406b4ae682a44f45e9864fb165001dcf273abac54e9b85e6053b99",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -52,7 +52,7 @@
   },
   "states": {
     "default": "속성 생략 또는 [data-state=\"default\"]",
-    "pressed": "실제 :active(button 루트), 또는 documented [data-state=\"pressed\"] — 모바일 전용이라 Hover 가 없다(river 2026-09-21). 눌림 배경은 Hover 가 쓰던 한 단계(bg/level-1)를 그대로 쓴다.",
+    "pressed": "실제 :active(Nav·Value=button 루트, Pick=label 루트, Agree=체크 영역(label[check])을 누를 때만 줄이 눌림 — 약관 열기 버튼을 누를 땐 줄 전체가 눌림이 되지 않는다; 비활성 제외), 또는 documented [data-state=\"pressed\"] — 모바일 전용이라 Hover 가 없다(river 2026-09-21). 눌림 배경은 Hover 가 쓰던 한 단계(bg/level-1)를 그대로 쓴다.",
     "disabled": "button 의 native :disabled, 또는 [aria-disabled=\"true\"]/[data-state=\"disabled\"](div·label 루트)"
   },
   "canonicalStateMap": {
@@ -71,10 +71,12 @@
     "description",
     "trail",
     "value",
-    "chevron"
+    "chevron",
+    "check",
+    "open"
   ],
   "htmlContract": {
-    "root": "요소는 유형(Type)이 하는 일에 맞춘다 — Nav·Value(눌러서 이동/편집)=button, Read·Thumb(보여주기만)=div(누르지 않는다), Pick·Agree(고르기)=label(체크 코어를 감싸 클릭 영역을 넓힌다), Switch=div(토글 컨트롤 자체가 상호작용 요소다). 공통 속성 data-s1-component=list-row, data-type, 선택 data-state. Density 축은 없다(2026-09-21 정정 — 한 벌만 쓴다).",
+    "root": "요소는 유형(Type)이 하는 일에 맞춘다 — Nav·Value(눌러서 이동/편집)=button, Read·Thumb(보여주기만)=div(누르지 않는다), Pick(고르기)=label(체크 코어를 감싸 클릭 영역을 넓힌다), Agree=div(체크 영역 label[check] + 오른쪽 칸의 약관 열기 button — label 안에 button 을 넣지 않는다), Switch=div(토글 컨트롤 자체가 상호작용 요소다). 공통 속성 data-s1-component=list-row, data-type, 선택 data-state. Density 축은 없다(2026-09-21 정정 — 한 벌만 쓴다).",
     "requiredAttributes": [
       "data-type"
     ],
@@ -88,14 +90,16 @@
       "thumbnail",
       "trail",
       "value",
-      "chevron"
+      "chevron",
+      "check",
+      "open"
     ],
     "typeStructure": {
       "nav": "button[data-s1-component=list-row][data-type=nav] > div[data-s1-part=text](title+description) + span[data-s1-part=trail](슬롯) > span[data-s1-part=chevron].",
       "value": "button[data-s1-component=list-row][data-type=value] > div[data-s1-part=text] + span[data-s1-part=trail](슬롯) > span[data-s1-part=value] + span[data-s1-part=chevron](값 텍스트 + 화살표 — 정본 buildListRow 와 같음. Switch 만 화살표 대신 toggle 을 받는다).",
       "read": "div[data-s1-component=list-row][data-type=read] > div[data-s1-part=text] 뿐 — 왼쪽·오른쪽 칸 없음(정본에 슬롯이 없다).",
       "pick": "label[data-s1-component=list-row][data-type=pick] > span[data-s1-part=lead](슬롯) > div[data-s1-component=checkbox](control 만, Label=Off) + div[data-s1-part=text]. checkbox control 의 accessible name 은 aria-labelledby 로 title 을 가리킨다.",
-      "agree": "label[data-s1-component=list-row][data-type=agree] > span[data-s1-part=lead](슬롯) > div[data-s1-component=checkbox](control 만) + div[data-s1-part=text] + span[data-s1-part=trail](슬롯) > span[data-s1-part=chevron](장식 — 두 번째 클릭 영역이 필요하면 쓰는 화면이 별도로 구성한다).",
+      "agree": "div[data-s1-component=list-row][data-type=agree] > label[data-s1-part=check] > (span[data-s1-part=lead](슬롯) > div[data-s1-component=checkbox](control 만) + div[data-s1-part=text]) + span[data-s1-part=trail](슬롯) > button[type=button][data-s1-part=open](약관 열기, aria-label=\"… 보기\") > span[data-s1-part=chevron](장식 aria-hidden). 체크 영역을 누르면 체크가 바뀌고, 약관 열기 버튼은 체크를 바꾸지 않는다.",
       "switch": "div[data-s1-component=list-row][data-type=switch] > div[data-s1-part=text] + span[data-s1-part=trail](슬롯) > button[data-s1-component=toggle](코어 그대로, role=switch, aria-labelledby 로 title 을 가리킨다).",
       "thumb": "div[data-s1-component=list-row][data-type=thumb] > div[data-s1-part=thumbnail](슬롯 — 비우거나 <img>/아이콘/아바타를 넣는다) + div[data-s1-part=text]."
     },
@@ -104,7 +108,8 @@
       "checkbox·toggle 코어를 그대로 조립한다 — 복제하지 않는다.",
       "checkbox 코어 내부에는 코어 자신의 label 을 넣지 않는다(Label=Off) — 이 컴포넌트의 title 이 보이는 글자이자 accessible name 출처다.",
       "다른 코어(checkbox·toggle·radio·text-button 등) 내부 part 는 이 컴포넌트 CSS 가 선택하지 않는다 — 자리(flex)만 준다.",
-      "lead·trail 은 슬롯이다(정본 makeSlot \"왼쪽 칸\"·\"오른쪽 칸\", river 2026-09-22) — 기본 내용을 빼고 다른 부품으로 갈아끼우거나 비울 수 있다. 비우면([data-s1-part=lead]:empty / [data-s1-part=trail]:empty) 그 칸 자체가 사라진다."
+      "lead·trail 은 슬롯이다(정본 makeSlot \"왼쪽 칸\"·\"오른쪽 칸\", river 2026-09-22) — 기본 내용을 빼고 다른 부품으로 갈아끼우거나 비울 수 있다. 비우면([data-s1-part=lead]:empty / [data-s1-part=trail]:empty) 그 칸 자체가 사라진다.",
+      "Agree 의 약관 열기 버튼 click 은 이 컴포넌트가 받지 않는다 — 약관 화면을 여는 동작은 쓰는 화면이 배선한다(jsRequired:false). 체크 label 과 버튼은 서로 형제라 버튼을 눌러도 체크가 바뀌지 않는다."
     ],
     "source": "components/list-row/list-row.example.html",
     "distribution": "examples/list-row.html"
@@ -127,7 +132,7 @@
     "description": "선택; 있으면 제목 아래에 표출한다. 없어도 글 자리 최소 높이(44)가 자리를 지켜 줄 높이는 같다.",
     "value": "선택; Type=Value 의 오른쪽 값 글자.",
     "lead": "Type=Pick·Agree 전용, 내용을 끼우는 자리(슬롯) — 정본 build-components.ts makeSlot(\"왼쪽 칸\", river 2026-09-22). 기본은 checkbox control 만(Label=Off). 쓰는 화면이 그 안의 기본을 빼고 radio·아이콘 같은 다른 부품으로 갈아끼우거나 비울 수 있다. 비우면([data-s1-part=lead]:empty) 왼쪽 칸 자체가 사라진다(자리표시 없음 — thumbnail 과 다르다). 넣는 것은 글 자리 최소 높이(44)를 넘지 않아야 한다 — 넘으면 CSS max-height+overflow:hidden 으로 넘치는 부분을 자른다(줄 높이 68 유지, river 2026-09-22).",
-    "trail": "Type=Nav·Value·Agree·Switch 전용, 내용을 끼우는 자리(슬롯) — 정본 build-components.ts makeSlot(\"오른쪽 칸\", river 2026-09-22). 유형이 기본(화살표만 / 값+화살표 / 토글)을 준다. 쓰는 화면이 그 기본을 빼고 작은 버튼·배지 같은 다른 부품으로 갈아끼우거나 비울 수 있다. 비우면([data-s1-part=trail]:empty) 오른쪽 칸 자체가 사라진다. 넣는 것은 글 자리 최소 높이(44)를 넘지 않아야 한다 — 넘으면 CSS max-height+overflow:hidden 으로 넘치는 부분을 자른다(줄 높이 68 유지, river 2026-09-22).",
+    "trail": "Type=Nav·Value·Agree·Switch 전용, 내용을 끼우는 자리(슬롯) — 정본 build-components.ts makeSlot(\"오른쪽 칸\", river 2026-09-22). 유형이 기본(화살표만 / 값+화살표 / 토글 / Agree 는 약관 열기 button 안의 화살표)을 준다. 쓰는 화면이 그 기본을 빼고 작은 버튼·배지 같은 다른 부품으로 갈아끼우거나 비울 수 있다. 비우면([data-s1-part=trail]:empty) 오른쪽 칸 자체가 사라진다. 넣는 것은 글 자리 최소 높이(44)를 넘지 않아야 한다 — 넘으면 CSS max-height+overflow:hidden 으로 넘치는 부분을 자른다(줄 높이 68 유지, river 2026-09-22).",
     "thumbnail": "Type=Thumb 전용, 내용을 끼우는 자리(슬롯) — 정본 build-components.ts makeSlot(\"그림\"). 쓰는 화면이 <img>·아이콘·아바타를 안에 놓거나 비워 둔다. 비우면 정본 자리표시(40 각, bg/level-2)만 보이고([data-s1-part=thumbnail]:empty), 채우면 회색 바탕은 사라진다. 그림(img)은 40 각 안에서 잘려 채워지고(object-fit: cover), 인라인 svg 는 자기 비율대로 맞춰 들어간다. 40 보다 큰 것을 넣지 않는다 — 줄 높이(68)는 글 자리가 정한다."
   },
   "dependencies": {
@@ -147,30 +152,30 @@
       "checkbox",
       "toggle"
     ],
-    "coreComponentsNote": "Pick·Agree 는 checkbox 코어(control 만)를, Switch 는 toggle 코어를 그대로 조립한다. list-row 를 개별 설치할 때 checkbox·toggle 의 CSS·JS 도 함께 로드해야 한다(Switch 는 toggle.js 런타임이 필요하다)."
+    "coreComponentsNote": "Pick·Agree 는 checkbox 코어(control 만)를, Switch 는 toggle 코어를 그대로 조립한다. list-row 를 개별 설치할 때 checkbox·toggle 의 CSS·JS 도 함께 로드해야 한다(Switch 는 toggle.js 런타임이 필요하다). lead·trail 슬롯에 radio·text-button 등 다른 부품을 갈아끼워 쓰는 화면은 그 부품의 배포본도 함께 로드한다(예시 페이지에는 기본 부품만 싣는다)."
   },
   "icons": [
     {
       "id": "chevron",
       "sourceKey": "e1ac97aa82f4e52f257ac1c0ea77fd09d0e5f581",
       "asset": "assets/icons/chevron.svg",
-      "use": "Nav·Value·Agree 우측 화살표(Switch 만 없다 — toggle 로 대체)",
-      "accessibleNamePolicy": "decorative; 이름은 제목 글자가 갖는다",
+      "use": "Nav·Value 우측 화살표 · Agree 약관 열기 버튼 안의 화살표(Switch 만 없다 — toggle 로 대체)",
+      "accessibleNamePolicy": "decorative(aria-hidden); Nav·Value 는 제목 글자가, Agree 는 약관 열기 버튼의 aria-label 이 이름을 갖는다",
       "note": "기존 등록 자산 재사용 — 재등록 아님. 자산이 이미 오른쪽(▶)을 가리켜 회전을 걸지 않는다(T8 함정 확인, bottom-sheet-option 과 같은 결론)."
     }
   ],
   "a11y": {
     "nativeSemantics": {
       "status": "required",
-      "value": "Nav·Value=button(누르면 이동/편집). Read·Thumb=역할 없는 div(누를 수 없다). Pick·Agree=label 이 checkbox 코어의 native input[type=checkbox] 를 감싼다. Switch=div 안에 toggle 코어의 native button[role=switch] 를 그대로 둔다."
+      "value": "Nav·Value=button(누르면 이동/편집). Read·Thumb=역할 없는 div(누를 수 없다). Pick=label 이 checkbox 코어의 native input[type=checkbox] 를 감싼다. Agree=div 루트 안에 체크 label(checkbox 를 감쌈)과 약관 열기 native button 이 형제로 있다(label 안에 button 중첩 없음). Switch=div 안에 toggle 코어의 native button[role=switch] 를 그대로 둔다."
     },
     "accessibleName": {
       "status": "required",
-      "value": "Nav·Value·Read·Thumb 은 title 글자가 곧 보이는 이름이다(별도 aria 불필요). Pick·Agree 의 checkbox control 과 Switch 의 toggle 은 aria-labelledby 로 이 컴포넌트의 title id 를 가리켜 accessible name 을 만든다(checkbox·toggle 각자 계약의 accessibleName 요건을 충족)."
+      "value": "Nav·Value·Read·Thumb 은 title 글자가 곧 보이는 이름이다(별도 aria 불필요). Pick·Agree 의 checkbox control 과 Switch 의 toggle 은 aria-labelledby 로 이 컴포넌트의 title id 를 가리켜 accessible name 을 만든다(checkbox·toggle 각자 계약의 accessibleName 요건을 충족). Agree 의 약관 열기 버튼은 하는 일을 말하는 aria-label(예: \"이용약관 보기\")을 갖고 화살표 아이콘은 aria-hidden 이다."
     },
     "keyboard": {
       "status": "required",
-      "value": "Nav·Value(button)·Pick/Agree 의 checkbox·Switch 의 toggle 은 각자 코어 계약의 Tab 순서·Space/Enter 활성화를 그대로 따른다. Read·Thumb 는 상호작용 요소가 아니므로 초점 순서에 들어가지 않는다."
+      "value": "Nav·Value(button)·Pick/Agree 의 checkbox·Switch 의 toggle 은 각자 코어 계약의 Tab 순서·Space/Enter 활성화를 그대로 따른다. Read·Thumb 는 상호작용 요소가 아니므로 초점 순서에 들어가지 않는다. Agree 는 체크 → 약관 열기 버튼 순으로 Tab 초점이 간다. 줄이 비활성이면 체크 input·버튼 모두 disabled."
     },
     "focus": {
       "status": "required",
@@ -192,7 +197,7 @@
   "jsRequired": false,
   "javascript": {
     "runtime": "none",
-    "reason": "줄 모양·상태만 소유한다. 실제 이동·선택 반영·이벤트는 목록을 그리는 화면이 배선한다. Switch 의 아리아 전환은 toggle 코어 자신의 런타임이 담당한다(list-row 가 별도로 담당하지 않는다)."
+    "reason": "줄 모양·상태만 소유한다. 실제 이동·선택 반영·이벤트는 목록을 그리는 화면이 배선한다. Switch 의 아리아 전환은 toggle 코어 자신의 런타임이 담당한다(list-row 가 별도로 담당하지 않는다). Agree 의 약관 열기 버튼 click(약관 화면 열기)도 쓰는 화면이 받는다."
   },
-  "sourceFingerprint": "83f383394c893d7911540f0baed7d7ab74fa14088c7630c993e836d5dda0612f"
+  "sourceFingerprint": "4fcd6a5b2072063483491711b5d426b38fc95ae6fdead1b5fe4c0ead90accf53"
 }

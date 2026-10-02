@@ -1,8 +1,8 @@
 {
   "id": "mobile-header",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "status": "approved",
-  "canonicalFingerprint": "384d6e6c85588e577f7985b37f7638cd7606d7f17ff5f72437a8c969b3816fd1",
+  "canonicalFingerprint": "3303abdc3a7be8f46cea85599ae878aee46096c8ffd72ddfe18199a69f7421a4",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -116,8 +116,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -207,5 +207,5 @@
     "runtime": "none",
     "reason": "정적 크롬이다 — 열림/닫힘 등 로컬 상태가 없어 native 시맨틱만으로 충분하다."
   },
-  "sourceFingerprint": "34ba2ba82ddc4ba84b25c6e8da92680540868c5fc62730aab312cea9624baf23"
+  "sourceFingerprint": "1a349ee6cc283e5fc3a10d0ab4ebf269f75f97b6d18526c82f337075fe8e3755"
 }

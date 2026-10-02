@@ -2,9 +2,9 @@
   "_meta": {
     "note": "자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요."
   },
-  "version": "0.16.1",
+  "version": "0.18.3",
   "releasedAt": "2026-10-02",
-  "canonicalFingerprint": "e6019e4b4fea169d19ada1317f492ee4fb5874d66068f1135dbe11f95b1bb27b",
+  "canonicalFingerprint": "783486db3584b2bbee00a5fc50150916a1ce3b48c92369ccf8d0e6c6a6d0fd8c",
   "generatedAt": null,
   "platforms": {
     "html-css-js": {
@@ -86,11 +86,18 @@
     "mobile-header",
     "time-picker",
     "date-picker",
+    "gnb",
+    "gnb-sub-menu-item",
+    "gnb-sub-menu",
     "assist-button",
     "text-button",
     "modal-content",
     "bottom-sheet-option",
     "bottom-sheet",
+    "list-row",
+    "expandable-card",
+    "data-tag",
+    "divider",
     "lnb"
   ],
   "tokenCount": 499

@@ -1,8 +1,8 @@
 {
   "id": "modal-content",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "status": "approved",
-  "canonicalFingerprint": "9229f752bcf2ffd275d74d854ecaef64b90de9469c519c74e443390ef7d8d545",
+  "canonicalFingerprint": "158d0afd4feb581583207e0012047c328c4b0b55f840840bec486342248dcfa5",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -133,8 +133,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -218,5 +218,5 @@
     "prewiredOpenNote": "이미 열린 채로 들어온 마크업(검수 화면·정적 예시)도 init 시점에 Escape·초점 가둠·스크롤 잠금을 배선한다.",
     "heightBehaviorNote": "높이 grow→85vh→내부 스크롤은 순수 CSS(flex + overflow-y:auto)로 처리되며 JS 는 관여하지 않는다."
   },
-  "sourceFingerprint": "30d22bacb5825a4a04001132a7e76c1f7f3de9ad224384ecbace74f4062e7d76"
+  "sourceFingerprint": "7ccc8e6589d8c5317ee74720658ebad56cc3b90b8a86cb6d4e1e5cf6eeab8c5e"
 }

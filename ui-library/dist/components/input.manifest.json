@@ -1,12 +1,12 @@
 {
   "id": "input",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "status": "approved",
   "statusNote": "Base Input 은 2026-09-04 river 승인. 이번에 얹은 Password·Search 옵션은 2026-09-07 river 직접 검수 후 승인(결정 D1~D16). 정본 buildSearch 구조 변경은 🤖 component-verifier 가 검증하고 Gate 13 에 기록했다.",
   "modes": [
     "search"
   ],
-  "canonicalFingerprint": "83288ee211a9de772f7ad09fdcddfbc4014ba261ae8a61708ad05d692a843e00",
+  "canonicalFingerprint": "74d324b9b93b6d6de0ac2434a163f74814e35170f97097eee011bd8bb1b1f5e3",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -158,8 +158,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -264,5 +264,5 @@
     "controlMode": "uncontrolled",
     "behavior": "Focus에서 값이 있을 때 remove action을 보이고, 실행하면 값 삭제·input event 발생·Input focus 복귀. Password 옵션(type=password + action[data-action=password])이 있으면 누를 때마다 type 을 password↔text 로 바꾸고 aria-pressed·aria-label 을 맞춘 뒤 focus 를 되돌린다. Search 옵션(root[data-mode=search] + action[data-action=search])이 있으면 클릭 또는 Enter(IME 조합 제외)에서 s1:input:search 를 발화하고, clear 표시 조건은 focus 와 무관하게 값 유무만 본다."
   },
-  "sourceFingerprint": "e715da99262c7bc9874b943fea3ec8b60dfe6d7c465f5cafaaf6562b30f93c0c"
+  "sourceFingerprint": "ce3f3232d60aa0f78edb1e37bd383dd279af495410840c2c4f03400efe4dc506"
 }

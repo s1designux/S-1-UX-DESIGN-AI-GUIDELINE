@@ -1,8 +1,8 @@
 {
   "id": "modal",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "status": "approved",
-  "canonicalFingerprint": "477f84a5f02980172ee435d1ee0473d5b0365ea5b509bfd77ac8b797cc84c634",
+  "canonicalFingerprint": "582c98fae2137f7a61dcec40644e64b81e41623a49c826e451d1453d89763320",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -142,8 +142,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -226,5 +226,5 @@
     "scrollLockNote": "배경 스크롤 잠금은 열린 모달 수를 세어 마지막 하나가 닫힐 때만 원래 값으로 되돌린다 — 모달이 여럿 있는 화면에서 스크롤이 잠긴 채 남는 사고를 막는다.",
     "prewiredOpenNote": "이미 열린 채로 들어온 마크업(검수 화면·정적 예시)도 init 시점에 Escape·초점 가둠·스크롤 잠금을 배선한다."
   },
-  "sourceFingerprint": "3324b7a26156916997dbe768548078e043c0eb40a3c4d2680474d40d6ae8945f"
+  "sourceFingerprint": "81b2ffbc856ddd30efb6852cc6ebc16f26864a157ddd46f2046984c409e55295"
 }

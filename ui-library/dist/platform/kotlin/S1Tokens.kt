@@ -1066,8 +1066,8 @@ object S1Tokens {
         const val colorIconRed: Long = 0xFFF06070
         /** --color-line-blue = #3070D8 */
         const val colorLineBlue: Long = 0xFF3070D8
-        /** --color-line-default = #2E2F38 */
-        const val colorLineDefault: Long = 0xFF2E2F38
+        /** --color-line-default = #35363F */
+        const val colorLineDefault: Long = 0xFF35363F
         /** --color-line-strong = #8A8C96 */
         const val colorLineStrong: Long = 0xFF8A8C96
         /** --color-modal-panel-border = #3E4049 */

@@ -8,7 +8,7 @@
   box-sizing: border-box;
   cursor: pointer;
   display: inline-flex;
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-weight: var(--font-weight-medium);
   justify-content: center;
   line-height: var(--line-height-130);

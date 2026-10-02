@@ -68,7 +68,7 @@
 
 [data-s1-component="bottom-sheet"] [data-s1-part="sheet-title"] {
   color: var(--color-text-title-primary);
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: var(--font-size-20);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-normal);

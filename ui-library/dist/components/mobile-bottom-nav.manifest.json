@@ -1,8 +1,8 @@
 {
   "id": "mobile-bottom-nav",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "status": "approved",
-  "canonicalFingerprint": "66c1471b1eea9385f4035f90985e2b435c9092b4cfd25932a96ffe434de0609f",
+  "canonicalFingerprint": "75282d7b2526b2960251072de14292536e4047c9ae5c560f7eefdbd93e92c6e8",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -72,8 +72,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -161,5 +161,5 @@
     "notification": "icon=notification",
     "settings": "icon=settings"
   },
-  "sourceFingerprint": "7fdb7228bca2413c7a8fd073bc804f52d2d1cdb4ea15a84677dfd0716459e145"
+  "sourceFingerprint": "28ca616445c4d850554a3ed579729c7888d97b740d9a65609cbf741539b35634"
 }

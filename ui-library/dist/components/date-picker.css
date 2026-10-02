@@ -19,7 +19,7 @@
   color: var(--color-form-control-text-placeholder);
   cursor: pointer;
   display: flex;
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-weight: var(--font-weight-regular);
   gap: var(--spacing-8);
   justify-content: space-between;
@@ -213,7 +213,7 @@
   border: none;
   color: var(--color-date-picker-text-primary);
   cursor: pointer;
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: var(--font-size-24);
   /* 호스트 페이지 상속 차단 — 정본 텍스트 스타일은 전부 130% 이고(10px 만 140%, 여기선 미사용),
      자간은 스타일마다 다르다: body/14·16 계열과 title/16M·18M 은 -2%(tight), 나머지는 0(normal).
@@ -300,7 +300,7 @@
 }
 [data-s1-component="date-picker"] [data-s1-part="cell-num"] {
   color: var(--color-date-picker-text-secondary);
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: var(--font-size-16);
   /* 호스트 페이지 상속 차단 — 정본 텍스트 스타일은 전부 130% 이고(10px 만 140%, 여기선 미사용),
      자간은 스타일마다 다르다: body/14·16 계열과 title/16M·18M 은 -2%(tight), 나머지는 0(normal).
@@ -389,7 +389,7 @@
   color: var(--color-date-picker-text-primary);
   cursor: pointer;
   display: flex;
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: var(--font-size-16);
   /* 호스트 페이지 상속 차단 — 정본 텍스트 스타일은 전부 130% 이고(10px 만 140%, 여기선 미사용),
      자간은 스타일마다 다르다: body/14·16 계열과 title/16M·18M 은 -2%(tight), 나머지는 0(normal).

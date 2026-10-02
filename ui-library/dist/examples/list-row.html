@@ -6,7 +6,7 @@
 
      루트 요소는 그 줄이 하는 일에 맞춘다(registry list-row.json a11y):
        Nav·Value(눌러서 이동/편집) = button · Read·Thumb(보여주기만) = div(누르지 않음) ·
-       Pick·Agree(고르기) = label(체크 코어를 감싸 클릭 영역을 넓힌다) · Switch = div(토글 자체가 컨트롤).
+       Pick(고르기) = label(체크 코어를 감싸 클릭 영역을 넓힌다) · Agree = div(체크 영역 label + 약관 열기 button) · Switch = div(토글 자체가 컨트롤).
      체크·토글 코어는 그대로 조립한다(control 만, 코어 자신의 label 은 쓰지 않고 이 컴포넌트의
      title 이 accessible name 을 aria-labelledby 로 준다 — bottom-sheet-option 과 같은 방식). -->
 <div>
@@ -51,53 +51,27 @@
     </div>
   </label>
 
-  <label data-s1-component="list-row" data-type="agree" data-state="default">
-    <span data-s1-part="lead">
-      <div data-s1-component="checkbox">
-        <input type="checkbox" id="lr-example-agree-control" data-s1-part="control" aria-labelledby="lr-example-agree-title">
+  <!-- Agree: 루트는 div. 체크 영역(label.check = 왼쪽 칸 + 글 자리)을 누르면 체크가 바뀌고,
+       오른쪽 칸의 화살표는 진짜 button(약관 열기)이라 눌러도 체크는 바뀌지 않는다.
+       버튼 click 으로 약관 화면을 여는 것은 쓰는 화면이 배선한다. label 안에 button 을 넣지 않는다. -->
+  <div data-s1-component="list-row" data-type="agree" data-state="default">
+    <label data-s1-part="check">
+      <span data-s1-part="lead">
+        <div data-s1-component="checkbox">
+          <input type="checkbox" id="lr-example-agree-control" data-s1-part="control" aria-labelledby="lr-example-agree-title">
+        </div>
+      </span>
+      <div data-s1-part="text">
+        <span data-s1-part="title" id="lr-example-agree-title">이용약관 동의</span>
+        <span data-s1-part="description">필수 동의 항목입니다</span>
       </div>
-    </span>
-    <div data-s1-part="text">
-      <span data-s1-part="title" id="lr-example-agree-title">이용약관 동의</span>
-      <span data-s1-part="description">필수 동의 항목입니다</span>
-    </div>
+    </label>
     <span data-s1-part="trail">
-      <span data-s1-part="chevron" aria-hidden="true"></span>
-    </span>
-  </label>
-
-  <!-- lead 슬롯에 checkbox 대신 radio 코어를 갈아끼운 예시(Label=Off, control 만) —
-       여러 옵션 중 하나만 고르는 목록에 쓴다. -->
-  <label data-s1-component="list-row" data-type="pick" data-state="default">
-    <span data-s1-part="lead">
-      <div data-s1-component="radio">
-        <input type="radio" id="lr-example-radio-control" name="lr-example-radio-group" data-s1-part="control" aria-labelledby="lr-example-radio-title">
-      </div>
-    </span>
-    <div data-s1-part="text">
-      <span data-s1-part="title" id="lr-example-radio-title">카드 결제</span>
-      <span data-s1-part="description">한 가지만 고르는 목록의 예시</span>
-    </div>
-  </label>
-
-  <!-- trail 슬롯에 기본 화살표 대신 작은 텍스트버튼을 갈아끼운 예시(agree 는 label 루트라
-       버튼을 겹쳐 넣어도 버튼-안-버튼이 되지 않는다). -->
-  <label data-s1-component="list-row" data-type="agree" data-state="default">
-    <span data-s1-part="lead">
-      <div data-s1-component="checkbox">
-        <input type="checkbox" id="lr-example-agree-swap-control" data-s1-part="control" aria-labelledby="lr-example-agree-swap-title">
-      </div>
-    </span>
-    <div data-s1-part="text">
-      <span data-s1-part="title" id="lr-example-agree-swap-title">마케팅 수신 동의</span>
-      <span data-s1-part="description">화살표 대신 약관 보기 버튼</span>
-    </div>
-    <span data-s1-part="trail">
-      <button type="button" data-s1-component="text-button" data-variant="secondary">
-        <span data-s1-part="label">약관 보기</span>
+      <button type="button" data-s1-part="open" aria-label="이용약관 보기">
+        <span data-s1-part="chevron" aria-hidden="true"></span>
       </button>
     </span>
-  </label>
+  </div>
 
   <div data-s1-component="list-row" data-type="switch" data-state="default">
     <div data-s1-part="text">
@@ -105,7 +79,7 @@
       <span data-s1-part="description">새 소식 알림 받기</span>
     </div>
     <span data-s1-part="trail">
-      <button type="button" data-s1-component="toggle" role="switch" aria-checked="false" aria-labelledby="lr-example-switch-title">
+      <button type="button" data-s1-component="toggle" role="switch" aria-checked="true" aria-labelledby="lr-example-switch-title">
         <span data-s1-part="knob" aria-hidden="true"></span>
       </button>
     </span>
@@ -125,9 +99,9 @@
   <div data-s1-component="list-row" data-type="thumb" data-state="default">
     <div data-s1-part="thumbnail">
       <svg viewBox="0 0 40 40" role="img" aria-hidden="true">
-        <rect width="40" height="40" fill="#8FA8FF"></rect>
-        <circle cx="14" cy="16" r="5" fill="#FFFFFF"></circle>
-        <path d="M0 34 L14 20 L24 30 L30 24 L40 34 V40 H0 Z" fill="#FFFFFF" opacity="0.85"></path>
+        <rect width="40" height="40" fill="currentColor" opacity="0.25"></rect>
+        <circle cx="14" cy="16" r="5" fill="currentColor" opacity="0.7"></circle>
+        <path d="M0 34 L14 20 L24 30 L30 24 L40 34 V40 H0 Z" fill="currentColor" opacity="0.55"></path>
       </svg>
     </div>
     <div data-s1-part="text">

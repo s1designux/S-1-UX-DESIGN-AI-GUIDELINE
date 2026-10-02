@@ -1,8 +1,8 @@
 {
   "id": "table",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "status": "approved",
-  "canonicalFingerprint": "6eb9d840d47831b9ef9f5d9a7860727f9350054e928ef13f3d20428e5f5d735d",
+  "canonicalFingerprint": "38dfb75472e12079966941f5fc92b6ffdfbec151d302f48835df4e972ae158ed",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -112,8 +112,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -172,5 +172,5 @@
     ],
     "behaviorLedger": "registry/components/component-behavior.pc.json > Table"
   },
-  "sourceFingerprint": "d44b78809012a0396ef95ba6b44e05e958529da48b8966b6aa48dd4ae18608c1"
+  "sourceFingerprint": "4a1f9165f53e1f8a519159e76fbb9da79cf462e5b56b7a88706a0e17bb1b0273"
 }

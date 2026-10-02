@@ -1067,8 +1067,8 @@ public enum S1Tokens {
         public static let colorIconRed: UInt32 = 0xFFF06070
         /// --color-line-blue = #3070D8
         public static let colorLineBlue: UInt32 = 0xFF3070D8
-        /// --color-line-default = #2E2F38
-        public static let colorLineDefault: UInt32 = 0xFF2E2F38
+        /// --color-line-default = #35363F
+        public static let colorLineDefault: UInt32 = 0xFF35363F
         /// --color-line-strong = #8A8C96
         public static let colorLineStrong: UInt32 = 0xFF8A8C96
         /// --color-modal-panel-border = #3E4049

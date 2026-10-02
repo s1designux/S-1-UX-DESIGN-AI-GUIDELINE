@@ -1,8 +1,8 @@
 {
   "id": "tab",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "status": "approved",
-  "canonicalFingerprint": "d9ba2df4e82931e55ae29e2fbda141f230b6669fa2bf89b0450510df5e41a705",
+  "canonicalFingerprint": "5e8f86f24a6987acea8325575038d4401e300900ce25c64c38cc038757daebe2",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -81,8 +81,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -127,5 +127,5 @@
     "runtime": "components/tab/tab.js",
     "reason": "선택 상태와 화살표 키 이동을 동기화한다."
   },
-  "sourceFingerprint": "15eedea7e2cee313b4df15e0a6b96db9e0e7725b0a305d1ca2209a29cb191ca9"
+  "sourceFingerprint": "b58358a966e40fcc49183aea5a14d61723ce19cda784af64a940faff188426a5"
 }

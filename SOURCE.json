@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "aa0f4a85600185b87e83a077f754f6932a241402",
+  "commit": "9fbe3ffe3f62b7fc609b5fa2fcf9a00655b38c23",
   "scope": "PC",
-  "generatedAt": "2026-10-02",
-  "syncedAt": "2026-10-02 11:06 (KST)",
-  "sourceCommitDate": "2026-10-02 11:05 (KST)",
-  "sourceCommitSubject": "docs(lnb): 펼침 폭 240·280 raw 유지 확정 — needs-decision 해소 (0.16.2)"
+  "generatedAt": "2026-10-03",
+  "syncedAt": "2026-10-03 07:10 (KST)",
+  "sourceCommitDate": "2026-10-02 22:13 (KST)",
+  "sourceCommitSubject": "chore(map): 시스템 맵 재생성 (worktree-gate-trim 합치기)"
 }

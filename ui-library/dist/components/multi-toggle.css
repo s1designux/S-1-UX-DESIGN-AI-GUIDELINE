@@ -17,7 +17,7 @@
   display: inline-flex;
   /* 선택 위치와 무관하게 각 칸의 외곽 폭을 고정한다. */
   flex: 0 0 auto;
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-medium);
   justify-content: center;

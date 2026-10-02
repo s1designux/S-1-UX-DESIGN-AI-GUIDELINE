@@ -191,6 +191,12 @@ const componentConfig = {
     approvedScope: "Type 2종(Menu 로고 없음 · Brand 로고 얹음) × Size 2종(MD 240 · LG 280) × State 2종(Expanded · Collapsed) · 메뉴 칸 Mode 2종 × 상태 4종(Default · Hover · Selected · Disabled) · 하위 메뉴 줄 상태 3종 · PC 전용 · 하위메뉴 여닫기와 판 접기는 JavaScript",
     runtime: S1UI.lnb
   },
+  "list-row": {
+    title: "List Row",
+    description: "목록 안에 들어가는 줄 한 개입니다. 모바일 전용이며, 유형마다 하는 일(이동 · 값 · 읽기 · 선택 · 동의 · 토글 · 썸네일)에 맞는 요소로 짜입니다.",
+    approvedScope: "유형 7종(Nav · Value · Read · Pick · Agree · Switch · Thumb) × 상태 3종(Default · Pressed · Disabled) · 내용을 바꿔 끼우는 자리 3곳(왼쪽 칸 · 그림 · 오른쪽 칸) · 동의 줄은 체크와 약관 열기 버튼이 따로 · 줄 높이 68(여백 토큰 + 글 자리) · Hover 없음 · 크기 축 없음 · 모바일 전용 · 줄 자체는 JavaScript 불필요",
+    runtime: null
+  },
   "bottom-sheet-option": {
     title: "Bottom Sheet Option",
     description: "바텀시트 안에 놓이는 한 줄입니다. 단독으로 쓰지 않고 시트 본문에 넣어 씁니다.",
@@ -3095,10 +3101,6 @@ function dataTagStateMatrix() {
    ※ 하위메뉴 aria-controls/id 는 인스턴스마다 새로 만든다(함정 T5). */
 let lnbSeq = 0;
 /* 로고 자리 — 배포본 예제와 같은 빈 자리표시 그림. 실제 화면은 자기 서비스 로고를 넣는다. */
-/* 판 접기 아이콘 — 배포본은 이 그림을 자산으로 싣지 않고 쓰는 화면이 --s1-collapse-icon 으로 넣는다(manifest collapseIconAsset).
-   안내 화면도 「쓰는 화면」으로서 아이콘 가이드에 등록된 ic_패널접기 라인형·솔리드형을 넣는다.
-   상대 주소는 사용처(dist CSS) 기준으로 풀리므로 절대 주소로 만들어 인라인으로 준다. */
-const LNB_COLLAPSE_ICON_STYLE = `--s1-collapse-icon: url('${new URL("../img/candidate-icons/ic_패널접기_line.svg", import.meta.url).href}'); --s1-collapse-icon-solid: url('${new URL("../img/candidate-icons/ic_패널접기_solid.svg", import.meta.url).href}')`;
 const LNB_LOGO_PLACEHOLDER = "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20150%2024%27%2F%3E";
 
 function lnbItemMarkup({ label, current = false, disabled = false, sub = null, open = false, force = "", isPreview = false }) {
@@ -3127,7 +3129,7 @@ function lnbMarkup({ type = "menu", size = "md", state = "expanded", open = fals
     lnbItemMarkup({ label: "컴포넌트", sub: [{ label: "PC 컴포넌트" }, { label: "Mobile 컴포넌트" }], open, isPreview }),
     lnbItemMarkup({ label: "준비 중", disabled: true, isPreview })
   ].join("");
-  return `<nav data-s1-component="lnb" data-guide-sample="set" data-variant="${type}" data-size="${size}" data-state="${state}" aria-label="${escapeHtml(label)}" style="${LNB_COLLAPSE_ICON_STYLE}"${isPreview ? ' class="is-preview"' : ""}>
+  return `<nav data-s1-component="lnb" data-guide-sample="set" data-variant="${type}" data-size="${size}" data-state="${state}" aria-label="${escapeHtml(label)}"${isPreview ? ' class="is-preview"' : ""}>
       <div data-s1-part="head">${brand}<button type="button" data-s1-part="collapse" aria-pressed="${collapsed}" aria-label="메뉴 접기"${tab}><span data-s1-part="collapse-icon" aria-hidden="true"></span></button></div>
       <ul data-s1-part="items">${items}</ul>
     </nav>`;
@@ -3186,7 +3188,108 @@ function lnbStateMatrix() {
     </div></div>`;
 }
 
+/* ── State matrix: List Row (Figma 이름 List Row · 정본 buildListRow) ──
+   정본 축 = Type 7(Nav · Value · Read · Pick · Agree · Switch · Thumb) × State 3(Default · Pressed · Disabled).
+   모바일 전용이라 Hover 가 없고(river 2026-09-21) 크기 축·촘촘함 축도 없다 — 유형을 행으로, 상태를 열로 한 표에 둔다
+   (표출 정책 _meta.uiLibraryGuideLayout.stateMatrix.singleValueAxis).
+   루트 요소는 유형이 하는 일에 맞춘다(manifest htmlContract.typeStructure) — Nav·Value=button · Read·Thumb=div ·
+   Pick=label(체크 코어를 감싼다) · Agree=div(체크 영역 label + 약관 열기 button 형제) · Switch=div.
+   Pressed 는 손가락 없이 볼 수 있게 documented data-state 로 켠 표본이다. Disabled 는 button 이면 native disabled,
+   아니면 aria-disabled 를 함께 달고, 안의 체크·토글·약관 버튼에도 각자 공개 API 인 native disabled 를 준다.
+   체크·토글은 승인된 코어 배포본을 그대로 조립한다 — 내부를 복제하지 않는다.
+   ※ id·aria-labelledby 는 자리마다 새로 만든다(함정 T5). */
+let listRowSeq = 0;
+const LIST_ROW_CONTENT = {
+  nav: { title: "설정", description: "환경설정 및 계정 관리" },
+  value: { title: "테마", description: "화면 표시 방식", value: "라이트" },
+  read: { title: "버전", description: "현재 설치된 버전 정보" },
+  pick: { title: "빠른 배송", description: "당일 도착 옵션" },
+  agree: { title: "이용약관 동의", description: "필수 동의 항목입니다" },
+  switch: { title: "알림", description: "새 소식 알림 받기" },
+  thumb: { title: "여행 사진", description: "2026년 9월 14일" }
+};
+
+function listRowMarkup({ type = "nav", state = "default", isPreview = false } = {}) {
+  listRowSeq += 1;
+  const uid = `guide-list-row-${listRowSeq}`;
+  const titleId = `${uid}-title`;
+  const content = LIST_ROW_CONTENT[type];
+  const isButton = type === "nav" || type === "value";
+  const tag = isButton ? "button" : type === "pick" ? "label" : "div";
+  const disabled = state === "disabled";
+  const tab = isPreview ? ' tabindex="-1"' : "";
+  const needsTitleId = type === "pick" || type === "agree" || type === "switch";
+  const root = [
+    isButton ? 'type="button" ' : "",
+    `data-s1-component="list-row" data-guide-sample="set" data-type="${type}" data-state="${state}"`,
+    isPreview ? ' class="is-preview"' : "",
+    disabled ? (isButton ? " disabled" : ' aria-disabled="true"') : "",
+    isButton ? tab : ""
+  ].join("");
+  const text = `<div data-s1-part="text"><span data-s1-part="title"${needsTitleId ? ` id="${titleId}"` : ""}>${content.title}</span><span data-s1-part="description">${content.description}</span></div>`;
+  const chevron = '<span data-s1-part="chevron" aria-hidden="true"></span>';
+  const checkbox = `<div data-s1-component="checkbox"><input type="checkbox" id="${uid}-control" data-s1-part="control" aria-labelledby="${titleId}"${disabled ? " disabled" : ""}${tab}></div>`;
+  let inner;
+  if (type === "nav") inner = `${text}<span data-s1-part="trail">${chevron}</span>`;
+  else if (type === "value") inner = `${text}<span data-s1-part="trail"><span data-s1-part="value">${content.value}</span>${chevron}</span>`;
+  else if (type === "read") inner = text;
+  else if (type === "pick") inner = `<span data-s1-part="lead">${checkbox}</span>${text}`;
+  else if (type === "agree") inner = `<label data-s1-part="check"><span data-s1-part="lead">${checkbox}</span>${text}</label><span data-s1-part="trail"><button type="button" data-s1-part="open" aria-label="이용약관 보기"${disabled ? " disabled" : ""}${tab}>${chevron}</button></span>`;
+  /* 미리보기 칸의 토글은 정지 그림이다 — 토글 뿌리에도 .is-preview 를 달아 깨우지 않는 표본임을 밝힌다. */
+  else if (type === "switch") inner = `${text}<span data-s1-part="trail"><button type="button" data-s1-component="toggle"${isPreview ? ' class="is-preview"' : ""} role="switch" aria-checked="true" aria-labelledby="${titleId}"${disabled ? " disabled" : ""}${tab}><span data-s1-part="knob" aria-hidden="true"></span></button></span>`;
+  else inner = `<div data-s1-part="thumbnail" aria-hidden="true"></div>${text}`;
+  return `<${tag} ${root}>${inner}</${tag}>`;
+}
+
+/* 슬롯 갈아끼운 보기 — dist examples/list-row.html 의 슬롯 예시와 같은 구성.
+   radio · text-button 은 각자 승인된 배포본 마크업 그대로. 그림은 currentColor + 투명도만 쓴다(색을 새로 정하지 않는다). */
+function listRowSlotSwapMarkup(kind) {
+  listRowSeq += 1;
+  const uid = `guide-list-row-swap-${listRowSeq}`;
+  const titleId = `${uid}-title`;
+  const text = (title, description, withId = false) => `<div data-s1-part="text"><span data-s1-part="title"${withId ? ` id="${titleId}"` : ""}>${title}</span><span data-s1-part="description">${description}</span></div>`;
+  if (kind === "thumb-filled") return `<div data-s1-component="list-row" data-guide-sample="set" data-type="thumb" data-state="default"><div data-s1-part="thumbnail"><svg viewBox="0 0 40 40" role="img" aria-hidden="true"><rect width="40" height="40" fill="currentColor" opacity="0.25"></rect><circle cx="14" cy="16" r="5" fill="currentColor" opacity="0.7"></circle><path d="M0 34 L14 20 L24 30 L30 24 L40 34 V40 H0 Z" fill="currentColor" opacity="0.55"></path></svg></div>${text("프로필 사진", "그림을 채운 예시")}</div>`;
+  if (kind === "lead-radio") return `<label data-s1-component="list-row" data-guide-sample="set" data-type="pick" data-state="default"><span data-s1-part="lead"><div data-s1-component="radio"><input type="radio" id="${uid}-control" name="${uid}-group" data-s1-part="control" aria-labelledby="${titleId}"></div></span>${text("카드 결제", "한 가지만 고르는 목록의 예시", true)}</label>`;
+  if (kind === "trail-text-button") return `<div data-s1-component="list-row" data-guide-sample="set" data-type="agree" data-state="default"><label data-s1-part="check"><span data-s1-part="lead"><div data-s1-component="checkbox"><input type="checkbox" id="${uid}-control" data-s1-part="control" aria-labelledby="${titleId}"></div></span>${text("마케팅 수신 동의", "화살표 대신 약관 보기 버튼", true)}</label><span data-s1-part="trail"><button type="button" data-s1-component="text-button" data-variant="secondary" aria-label="마케팅 수신 약관 보기"><span data-s1-part="label">약관 보기</span></button></span></div>`;
+  return `<div data-s1-component="list-row" data-guide-sample="set" data-type="read" data-state="default"><span data-s1-part="lead"></span>${text("빈 칸 두 개", "왼쪽 · 오른쪽 칸을 비우면 칸이 사라집니다")}<span data-s1-part="trail"></span></div>`;
+}
+
+function listRowStateMatrix() {
+  const types = [["nav", "Nav", "이동"], ["value", "Value", "값"], ["read", "Read", "읽기"], ["pick", "Pick", "선택"], ["agree", "Agree", "동의"], ["switch", "Switch", "토글"], ["thumb", "Thumb", "썸네일"]];
+  const states = [["default", "Default"], ["pressed", "Pressed"], ["disabled", "Disabled"]];
+  const swaps = [["thumb-filled", "그림 칸 채움", "Thumb"], ["lead-radio", "왼쪽 칸 → 라디오", "Pick"], ["trail-text-button", "오른쪽 칸 → 약관 보기", "Agree"], ["empty-both", "양쪽 칸 비움", "Read"]];
+
+  const action = `<div class="comp-action-top">
+      <div class="matrix-col-header-action">Action</div>
+      <div class="uilg-list-row-action">
+        <div class="uilg-list-row-list">${types.map(([type]) => listRowMarkup({ type })).join("")}</div>
+      </div>
+      <p class="uilg-demo-note">목록에 일곱 유형을 쌓은 모습입니다(폭 최대 360). 선택 · 동의의 체크와 토글은 승인된 배포본을 그대로 넣은 것이라 실제로 눌러 볼 수 있습니다. <strong>동의 줄은 두 부분으로 나뉩니다</strong> — 체크와 글을 누르면 동의가 체크되고, 오른쪽 화살표는 약관을 여는 버튼이라 눌러도 체크가 바뀌지 않습니다. 줄 사이 구분선과 실제 이동 · 약관 열기는 목록을 그리는 화면이 맡습니다.</p>
+    </div>`;
+
+  const header = `<div class="matrix-col-header" style="grid-column:1"></div>` +
+    states.map(([, label]) => `<div class="matrix-col-header">${label}</div>`).join("");
+  const rows = types.map(([type, label, korean]) =>
+    `<div class="matrix-row-label">${label}<span>${korean}</span></div>` +
+    states.map(([state]) => `<div class="comp-state-cell"><div class="uilg-list-row-cell">${listRowMarkup({ type, state, isPreview: true })}</div></div>`).join("")
+  ).join("");
+  const grid = `<div class="comp-state-matrix uilg-list-row-matrix" style="grid-template-columns: 110px repeat(${states.length}, minmax(240px, 1fr));">${header}${rows}</div>`;
+
+  const swapHeader = `<div class="matrix-col-header" style="grid-column:1"></div><div class="matrix-col-header">Default</div>`;
+  const swapRows = swaps.map(([kind, label, type]) =>
+    `<div class="matrix-row-label">${label}<span>${type}</span></div><div class="comp-state-cell"><div class="uilg-list-row-cell">${listRowSlotSwapMarkup(kind)}</div></div>`
+  ).join("");
+  const swapGrid = `<div class="comp-state-matrix uilg-list-row-matrix" style="grid-template-columns: 110px minmax(240px, 360px);">${swapHeader}${swapRows}</div>`;
+
+  return `<div class="platform-section"><div class="preview-area">${action}${grid}
+      <p class="uilg-list-row-matrix-title">슬롯 갈아끼운 보기 — 왼쪽 칸 · 그림 자리 · 오른쪽 칸</p>
+      <p class="uilg-demo-note">줄에는 내용을 바꿔 끼우는 자리가 세 군데 있습니다. 그림 자리는 비우면 회색 자리표시가, 그림을 넣으면 그림이 보입니다. 왼쪽 · 오른쪽 칸은 라디오나 작은 버튼으로 바꾸거나 비울 수 있고, 비우면 칸 자체가 사라집니다. 넣은 것이 44 보다 크면 넘치는 부분은 잘려 줄 높이 68 을 지킵니다.</p>
+      ${swapGrid}
+    </div></div>`;
+}
+
 function stateMatrix(id) {
+  if (id === "list-row") return listRowStateMatrix();
   if (id === "lnb") return lnbStateMatrix();
   if (id === "date-picker") return datePickerStateMatrix();
   if (id === "input") return inputStateMatrix();
@@ -3469,6 +3572,11 @@ async function mountGuide(id) {
          Open/Selected 칸이 사라진다. Action 영역의 실물만 살린다. */
       section.querySelectorAll(`[data-s1-component="${id}"]:not(.is-preview)`).forEach((root) => config.runtime.init(root));
     }
+    if (id === "list-row") {
+      /* 줄 자체는 런타임이 없다(jsRequired:false). Action 의 토글 줄만 승인된 toggle 배포본 런타임으로 살린다 —
+         미리보기 칸은 지면에 눕힌 표본이라 init 하지 않는다. */
+      section.querySelectorAll('.uilg-list-row-action [data-s1-component="toggle"]').forEach((root) => S1UI.toggle.init(root));
+    }
     if (id === "lnb") {
       /* 견본 메뉴의 href="#" 가 안내 화면을 맨 위로 튕기지 않게 한다 — 이동 자체는 쓰는 화면(라우터)의 몫이다. */
       section.querySelectorAll('[data-s1-component="lnb"] a[href="#"]').forEach((link) => link.addEventListener("click", (event) => event.preventDefault()));
@@ -3614,6 +3722,6 @@ async function mountGuide(id) {
   }
 }
 
-const guideComponents = ["input", "button", "assist-button", "text-button", "checkbox", "radio", "toggle", "chip", "select", "dropdown", "filter-chip", "tab", "pagination", "textarea", "multi-toggle", "modal", "modal-content", "table", "mobile-bottom-nav", "mobile-header", "gnb", "gnb-sub-menu-item", "gnb-sub-menu", "time-picker", "date-picker", "bottom-sheet", "bottom-sheet-option", "expandable-card", "divider", "data-tag", "lnb"];
+const guideComponents = ["input", "button", "assist-button", "text-button", "checkbox", "radio", "toggle", "chip", "select", "dropdown", "filter-chip", "tab", "pagination", "textarea", "multi-toggle", "modal", "modal-content", "table", "mobile-bottom-nav", "mobile-header", "gnb", "gnb-sub-menu-item", "gnb-sub-menu", "time-picker", "date-picker", "bottom-sheet", "bottom-sheet-option", "expandable-card", "divider", "data-tag", "lnb", "list-row"];
 await Promise.all(guideComponents.map(mountGuide));
 document.dispatchEvent(new CustomEvent("s1:component-guide:ready", { detail: { components: guideComponents } }));

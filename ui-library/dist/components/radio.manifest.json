@@ -1,8 +1,8 @@
 {
   "id": "radio",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "status": "approved",
-  "canonicalFingerprint": "03e57c7e9ece53bd87409ea989e16be3bfbf1f04393c59acf2be54994022fa01",
+  "canonicalFingerprint": "65070e327eeea6b6328d04ccdf9b1e85c1ecfbbac4e27c05a8c0305b41254a57",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -89,8 +89,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -135,5 +135,5 @@
     "runtime": "none",
     "reason": "Native radio semantics provide the complete approved behavior."
   },
-  "sourceFingerprint": "1b7436f6c712f2b3fec1c597e70b1ea92908a1fdbbbb0efd3d9ad29c210c3859"
+  "sourceFingerprint": "417ff7727c21dd4668301c3bce54d746359dba1ca74193b8723d2f11c30301c3"
 }

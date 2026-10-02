@@ -60,7 +60,7 @@
 [data-s1-component="radio"] [data-s1-part="label"] {
   color: var(--color-control-label-default);
   cursor: pointer;
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--letter-spacing-tight);

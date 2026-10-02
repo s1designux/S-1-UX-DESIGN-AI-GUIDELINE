@@ -1,8 +1,8 @@
 {
   "id": "lnb",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "status": "approved",
-  "canonicalFingerprint": "fd815ced0134725e797fd35a6d1970b5e269d53e143d3bd07cb18fa46f3f0134",
+  "canonicalFingerprint": "76a99e7148f72a0adbfd7701394d19d48ba060f37a298e0ae2742d9be75841cf",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -29,9 +29,9 @@
   "notInCanon": {
     "groupedVariant": "중간 구분명(grouped) 벌은 화면이 어수선해 보류했다(river 2026-09-29) — CSS 에 group 자리 스타일만 남고 공개 축·예시에는 없다.",
     "defaultVariant": "data-variant 를 안 적으면 기본(로고 없음) 벌이다 — manifest variants 의 menu 와 같다.",
-    "widthTokens": "needs-decision — 펼침 가로 240·280 은 정본에 크기 토큰이 없어 CSS 가 값을 들고 있다(접힘 폭은 sizing/80).",
+    "widthTokens": "결정 완료(river 2026-10-02 \"지금 숫자 그대로 둘게\") — 펼침 가로 240·280 은 크기 토큰을 새로 만들지 않고 CSS 가 값을 그대로 든다(접힘 폭은 sizing/80).",
     "darkLabel": "needs-decision — 다크에서 선택 안 된 메뉴명을 아이콘과 같은 밝기(color/text/body/secondary)로 둔다. 정본 navigation/label/default 의 다크값(gray-dark/600)이 더 어두워 생기는 어긋남이며, 정본을 고칠지는 별도 결정이다.",
-    "collapseIconAsset": "needs-decision — 판 접기 아이콘(ic_패널접기)은 Figma 라이브러리 허용 키가 없어 배포본 자산으로 못 싣는다. 화면이 --s1-collapse-icon 으로 넣고, 없으면 등록 자산 menu.svg 가 대신 나온다.",
+    "collapseIconAsset": "결정 완료(river 2026-10-02) — 판 접기 아이콘 ic_패널접기를 라이트는 등록 자산 panel-fold(라인형, 허용 키 panelFold), 다크는 panel-fold-solid(채운 모양, 허용 키 panelFoldSolid)로 쓴다(river \"다크화면 접기 아이콘은 채워진모양으로 해줘\"). 다크 솔리드형의 별도 이름 needs-decision 은 해소됐다. 화면이 --s1-collapse-icon 으로 다른 그림을 넣어 갈아 끼울 수는 있다. 접힘은 정본의 180° 회전과 같은 결과인 좌우 뒤집기(scaleX(-1))로 표현한다(도형이 상하 대칭).",
     "focusVisible": "정본에 focus 변형이 없다. 웹에서도 만들지 않으며 키보드 초점은 브라우저 기본 표시에 맡긴다."
   },
   "parts": [
@@ -99,8 +99,8 @@
     "customProperties": {
       "--s1-icon": "메뉴 항목(item-icon) 아이콘 그림 — url(...) 로 받은 라인형. 아이콘 가이드 그림을 CSS mask 로 쓰므로 단색 도형이어야 색 토큰이 먹는다. 주지 않으면 등록 자산 menu.svg.",
       "--s1-icon-solid": "다크에서 쓸 솔리드형 그림(river 2026-09-29). 없으면 --s1-icon 을 그대로 쓴다.",
-      "--s1-collapse-icon": "우측 상단 접기 아이콘 그림(ic_패널접기 라인형). 주지 않으면 등록 자산 menu.svg.",
-      "--s1-collapse-icon-solid": "다크에서 쓸 접기 아이콘 솔리드형. 없으면 --s1-collapse-icon 을 그대로 쓴다.",
+      "--s1-collapse-icon": "우측 상단 접기 아이콘 그림 갈아 끼우기(라인형). 주지 않으면 라이트는 등록 자산 panel-fold.svg(ic_패널접기 라인형), 다크는 panel-fold-solid.svg.",
+      "--s1-collapse-icon-solid": "다크에서 쓸 접기 아이콘 솔리드형 갈아 끼우기. 없으면 --s1-collapse-icon, 그것도 없으면 등록 자산 panel-fold-solid.svg.",
       "--s1-brand-logo": "brand 벌 로고 그림 — url(...) 로 받은 단색 도형. 어두운 화면에서 로고를 한 가지 색(제목 글자색)으로 바꾸는 색판의 모양이다(river 2026-09-30). 주지 않으면 그림이 가진 색 그대로 둔다.",
       "--s1-brand-logo-w": "로고 자리 가로 폭 — md 150 · lg 178 기본값(정본에 크기 토큰이 없어 raw 값, needs-decision). 화면이 로고 비율에 맞춰 바꿀 수 있다."
     }
@@ -112,8 +112,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -135,9 +135,23 @@
       "id": "menu",
       "sourceKey": "5157e9edc76358e2e6bc1a5ebc1539ccf5f2e787",
       "asset": "assets/icons/menu.svg",
-      "use": "메뉴·접기 아이콘의 기본 그림(--s1-icon · --s1-collapse-icon 을 안 줬을 때)",
+      "use": "메뉴 항목 아이콘의 기본 그림(--s1-icon 을 안 줬을 때)",
       "accessibleNamePolicy": "decorative; 항목 글자·접기 단추 aria-label 이 이름이다",
       "note": "기존 등록 자산 재사용 — 재등록 아님."
+    },
+    {
+      "id": "panelFold",
+      "sourceKey": "e185bec52b05c4e25ec54a7e3bcd0077bca3b737",
+      "asset": "assets/icons/panel-fold.svg",
+      "use": "머리줄 접기 단추 아이콘의 라이트 기본 그림(라인형, 20) — 접힘 상태는 좌우를 뒤집는다",
+      "accessibleNamePolicy": "decorative; 접기 단추 aria-label 이 이름이다"
+    },
+    {
+      "id": "panelFoldSolid",
+      "sourceKey": "a7d244a402d66bb8a29c209dc8886a215c9554c5",
+      "asset": "assets/icons/panel-fold-solid.svg",
+      "use": "머리줄 접기 단추 아이콘의 다크 기본 그림(채운 모양, 20) — 접힘 상태는 좌우를 뒤집는다",
+      "accessibleNamePolicy": "decorative; 접기 단추 aria-label 이 이름이다"
     }
   ],
   "a11y": {
@@ -179,5 +193,5 @@
     ],
     "reason": "하위메뉴 여닫이(aria-expanded ↔ hidden)와 우측 상단 접기 단추(aria-pressed ↔ data-state)를 맞춘다."
   },
-  "sourceFingerprint": "b889efc9f654eec124fd3cec39ddaf8de625dd10201d74d712a8fcd12c6644c9"
+  "sourceFingerprint": "6900e615c50c7729d6d6e9584bd6e31d6adacc8569ccd299d3f110ccfdce7ed6"
 }

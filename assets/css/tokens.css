@@ -788,7 +788,7 @@
 
   /* ── line ── */
   --color-line-blue   : var(--color-blue-dark-300);
-  --color-line-default: var(--color-gray-dark-300);
+  --color-line-default: var(--color-gray-dark-400);
   --color-line-strong : var(--color-gray-dark-700);
 
   /* ── navigation ── */

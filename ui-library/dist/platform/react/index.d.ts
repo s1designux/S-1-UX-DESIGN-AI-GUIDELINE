@@ -264,6 +264,29 @@ export interface S1DatePickerProps extends S1BaseProps {
 }
 export declare function S1DatePicker(props: S1DatePickerProps): ReactElement;
 
+export interface S1GnbProps extends S1BaseProps {
+  /** 승인된 변형: center-between · start */
+  variant?: "center-between" | "start";
+  /** 승인된 크기: md · sm · xsm */
+  size?: "md" | "sm" | "xsm";
+  /** s1:gnb:open */
+  onOpen?: (event: CustomEvent) => void;
+  /** s1:gnb:close */
+  onClose?: (event: CustomEvent) => void;
+}
+export declare function S1Gnb(props: S1GnbProps): ReactElement;
+
+export interface S1GnbSubMenuItemProps extends S1BaseProps {
+
+}
+export declare function S1GnbSubMenuItem(props: S1GnbSubMenuItemProps): ReactElement;
+
+export interface S1GnbSubMenuProps extends S1BaseProps {
+  /** 목록 데이터 — 주지 않으면 예제 내용이 그려진다. */
+  columns?: readonly S1ItemValue[];
+}
+export declare function S1GnbSubMenu(props: S1GnbSubMenuProps): ReactElement;
+
 export interface S1AssistButtonProps extends S1BaseProps {
 
 }
@@ -302,6 +325,30 @@ export interface S1BottomSheetProps extends S1BaseProps {
   onClose?: (event: CustomEvent) => void;
 }
 export declare function S1BottomSheet(props: S1BottomSheetProps): ReactElement;
+
+export interface S1ListRowProps extends S1BaseProps {
+  /** 승인된 변형: nav · value · read · pick · agree · switch · thumb */
+  variant?: "nav" | "value" | "read" | "pick" | "agree" | "switch" | "thumb";
+}
+export declare function S1ListRow(props: S1ListRowProps): ReactElement;
+
+export interface S1ExpandableCardProps extends S1BaseProps {
+  /** s1:expandable-card:change */
+  onChange?: (event: CustomEvent) => void;
+}
+export declare function S1ExpandableCard(props: S1ExpandableCardProps): ReactElement;
+
+export interface S1DataTagProps extends S1BaseProps {
+  /** 승인된 변형: blue · red */
+  variant?: "blue" | "red";
+}
+export declare function S1DataTag(props: S1DataTagProps): ReactElement;
+
+export interface S1DividerProps extends S1BaseProps {
+  /** 승인된 변형: x · y */
+  variant?: "x" | "y";
+}
+export declare function S1Divider(props: S1DividerProps): ReactElement;
 
 export interface S1LnbProps extends S1BaseProps {
   /** 승인된 변형: menu · brand */

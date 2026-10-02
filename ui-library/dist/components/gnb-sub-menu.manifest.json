@@ -1,8 +1,8 @@
 {
   "id": "gnb-sub-menu",
-  "version": "0.2.6",
-  "status": "verified",
-  "canonicalFingerprint": "dd662efbdbc2266c4f9892cdf768529348d95577044eb6ff0242afe012bc020d",
+  "version": "0.2.8",
+  "status": "approved",
+  "canonicalFingerprint": "bb5c6b604896261b44a23a749c1e80477ec3fd8badd468304abedf696e8cc9ac",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -60,8 +60,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -114,5 +114,5 @@
     "runtime": "none",
     "reason": "정본에 여닫는 동작이 없다 — 배포본은 펼쳐진 패널의 모양만 낸다. 패널을 열고 닫는 동작(aria-expanded 토글·hidden 전환·Esc·포커스 복귀)은 river 결정(2026-09-09, D4·D5)에 따라 이 패널을 여는 gnb(jsRequired=true)가 소유한다 — 이 컴포넌트는 그대로 수동형이다."
   },
-  "sourceFingerprint": "90019b5c15d9d127ab520316a82d3e4b294f88c9a96025660032200cfcaa5189"
+  "sourceFingerprint": "594c1a8a129b57d4e2eac7689edae7eae0aa3846b5bde4fd3dc37a64bec59034"
 }

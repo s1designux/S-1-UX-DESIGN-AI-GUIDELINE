@@ -12,7 +12,7 @@
   cursor: pointer;
   display: inline-flex;
   flex: 0 0 auto;
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-weight: var(--font-weight-medium);
   justify-content: center;
   /* line-height: normal — 정본에 텍스트 줄간격 값이 없다. 130%(문단용 배수)를 쓰면

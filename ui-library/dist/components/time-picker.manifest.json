@@ -1,8 +1,8 @@
 {
   "id": "time-picker",
-  "version": "0.3.15",
+  "version": "0.3.17",
   "status": "approved",
-  "canonicalFingerprint": "ebf42fedcbc1703ecb827bed01f59739fcaee90ed00d501a69a45819c5f0f998",
+  "canonicalFingerprint": "7ebb028fa3968d0141666f463b779aef3baf1f698bc9ea0468e5b4c2e3528428",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -235,8 +235,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -325,5 +325,5 @@
     "controlMode": "uncontrolled",
     "progressiveEnhancementNote": "JavaScript 없이는 목록 칸이 생성되지 않아 선택할 수 없다 — 복합 Picker(정본 계약)라 native fallback이 없다. 트리거는 native button 이라 포커스·이름은 유지된다(계약 progressiveEnhancement 조항에 따른 명시적 unsupported 상태)."
   },
-  "sourceFingerprint": "6906cc63b6514f8d5f138fcfffdd9c4427ef513bd5800a58396fe8042e80963e"
+  "sourceFingerprint": "b4a42073e95fa2be87be878a1150baa31c4fdae952a6b86d095714ed86ecb287"
 }

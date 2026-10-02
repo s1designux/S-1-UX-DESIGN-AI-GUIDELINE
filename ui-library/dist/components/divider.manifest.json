@@ -1,8 +1,8 @@
 {
   "id": "divider",
-  "version": "0.1.0",
-  "status": "candidate",
-  "canonicalFingerprint": "484a1115cf8af5a076754040ea3820151737d6f70121018aa2cb9bc9911d94b0",
+  "version": "0.1.2",
+  "status": "approved",
+  "canonicalFingerprint": "2620a26494375b10e21e38e73939fa0f537faa17e461e564b61f3f0512f081d0",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -59,8 +59,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -105,5 +105,5 @@
     "runtime": "none",
     "reason": "정적 선이라 스크립트가 필요 없다."
   },
-  "sourceFingerprint": "d960861345054455d97b28edf65b8209a787f844fb17faac656b64864e05aad2"
+  "sourceFingerprint": "44ebb908f683285c3348e5ccf5f65f6ab5278c98c62614f3a2078a9b62bf46d8"
 }

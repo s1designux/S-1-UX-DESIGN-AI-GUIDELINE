@@ -3,6 +3,49 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-10-03 07:10 (KST)
+
+- 원본 커밋: `9fbe3ff` — chore(map): 시스템 맵 재생성 (worktree-gate-trim 합치기)
+- 새로 추가된 파일 16개
+  - `ui-library/dist/assets/icons/panel-fold-solid.svg`
+  - `ui-library/dist/assets/icons/panel-fold.svg`
+  - `ui-library/dist/platform/react/data-tag.jsx`
+  - `ui-library/dist/platform/react/divider.jsx`
+  - `ui-library/dist/platform/react/expandable-card.jsx`
+  - `ui-library/dist/platform/react/gnb-sub-menu-item.jsx`
+  - `ui-library/dist/platform/react/gnb-sub-menu.jsx`
+  - `ui-library/dist/platform/react/gnb.jsx`
+  - `ui-library/dist/platform/react/list-row.jsx`
+  - `ui-library/dist/platform/vue/DataTag.vue`
+  - `ui-library/dist/platform/vue/Divider.vue`
+  - `ui-library/dist/platform/vue/ExpandableCard.vue`
+  - `ui-library/dist/platform/vue/Gnb.vue`
+  - `ui-library/dist/platform/vue/GnbSubMenu.vue`
+  - `ui-library/dist/platform/vue/GnbSubMenuItem.vue`
+  - `ui-library/dist/platform/vue/ListRow.vue`
+- 내용이 바뀐 파일 89개
+  - `assets/css/style.css`
+  - `assets/css/tokens.css`
+  - `assets/css/ui-library-guide.css`
+  - `assets/js/ui-library-guide.js`
+  - `design/DESIGN.core.md`
+  - `pages/components.html`
+  - `registry/components/component-facts.json`
+  - `registry/components/list-row.json`
+  - `registry/components/lnb.json`
+  - `ui-library/dist/assets/css/tokens.css`
+  - `ui-library/dist/assets/icons/manifest.json`
+  - `ui-library/dist/components/assist-button.css`
+  - `ui-library/dist/components/assist-button.manifest.json`
+  - `ui-library/dist/components/bottom-sheet-option.css`
+  - `ui-library/dist/components/bottom-sheet-option.manifest.json`
+  - `ui-library/dist/components/bottom-sheet.css`
+  - `ui-library/dist/components/bottom-sheet.manifest.json`
+  - `ui-library/dist/components/button.css`
+  - `ui-library/dist/components/button.manifest.json`
+  - `ui-library/dist/components/checkbox.css`
+  - … 외 69개
+
 ## 2026-10-02 11:06 (KST)
 
 - 원본 커밋: `aa0f4a8` — docs(lnb): 펼침 폭 240·280 raw 유지 확정 — needs-decision 해소 (0.16.2)

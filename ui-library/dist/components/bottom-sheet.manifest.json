@@ -1,8 +1,8 @@
 {
   "id": "bottom-sheet",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "status": "approved",
-  "canonicalFingerprint": "91931a270107ec39ada864e2c9744d2c5d85c20c3e5078ea063f31fd3252a9b5",
+  "canonicalFingerprint": "14035c5c6f0403cfc0a58b3b65c8421e649bbd013a6777266844fe0bb86bc23a",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -121,8 +121,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -207,5 +207,5 @@
     "scrollLockNote": "배경 스크롤 잠금은 열린 시트 수를 세어 마지막 하나가 닫힐 때만 원래 값으로 되돌린다. 모달은 세지 않는다 — 별도 모듈이라 서로의 카운터가 보이지 않는다. 대신 잠그는 자리를 나눈다: modal·modal-content 는 body 의 인라인 overflow 를, 시트는 html(documentElement) 의 인라인 overflow 를 쓴다. 같은 자리를 쓰면 겹쳐 열었을 때 서로의 저장값을 덮어써서 모달이 열려 있는데 배경이 풀리거나 다 닫았는데 페이지가 잠긴 채 남는다(2026-09-15 독립 검증 재현). 자리를 나누면 여닫는 순서와 무관하게 '하나라도 열려 있으면 잠김'이 성립한다.",
     "prewiredOpenNote": "이미 열린 채로 들어온 마크업(검수 화면·정적 예시)도 init 시점에 Escape·초점 가둠·스크롤 잠금을 배선한다."
   },
-  "sourceFingerprint": "299489125a2fe78098c8249c8e7e024e3b1a193e16fbaf52c1eaa47a7087eb36"
+  "sourceFingerprint": "27fc2c01b125a27a187fe443e218429626ac2a4f45447edc6c6c6b8220a25e27"
 }

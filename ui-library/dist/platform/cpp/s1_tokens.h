@@ -542,7 +542,7 @@ constexpr std::uint32_t S1_COLOR_ICON_GRAY_DARK = 0xFFB8BABFu; // --color-icon-g
 constexpr std::uint32_t S1_COLOR_ICON_GRAY_LIGHT = 0xFF35363Fu; // --color-icon-gray-light = #35363F
 constexpr std::uint32_t S1_COLOR_ICON_RED = 0xFFF06070u; // --color-icon-red = #F06070
 constexpr std::uint32_t S1_COLOR_LINE_BLUE = 0xFF3070D8u; // --color-line-blue = #3070D8
-constexpr std::uint32_t S1_COLOR_LINE_DEFAULT = 0xFF2E2F38u; // --color-line-default = #2E2F38
+constexpr std::uint32_t S1_COLOR_LINE_DEFAULT = 0xFF35363Fu; // --color-line-default = #35363F
 constexpr std::uint32_t S1_COLOR_LINE_STRONG = 0xFF8A8C96u; // --color-line-strong = #8A8C96
 constexpr std::uint32_t S1_COLOR_MODAL_PANEL_BORDER = 0xFF3E4049u; // --color-modal-panel-border = #3E4049
 constexpr std::uint32_t S1_COLOR_NAVIGATION_BG = 0xFF1C1D23u; // --color-navigation-bg = #1C1D23

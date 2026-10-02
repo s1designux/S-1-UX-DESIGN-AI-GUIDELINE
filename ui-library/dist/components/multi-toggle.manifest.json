@@ -1,8 +1,8 @@
 {
   "id": "multi-toggle",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "status": "approved",
-  "canonicalFingerprint": "ced7200194ae2f94eddbbe676c6e5b2ec7480cd2cef708bffac53ef27c8e1a72",
+  "canonicalFingerprint": "ae3bdb07ec2314ed05d26683885f03a3e91736289a28bbc3f979b0ce442f267a",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -98,8 +98,8 @@
   "dependencies": {
     "font": [
       {
-        "family": "Pretendard",
-        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
       }
     ],
     "css": [
@@ -164,5 +164,5 @@
     "controlMode": "uncontrolled",
     "behavior": "좌우(위아래) 화살표로 이동, Space·Enter·클릭으로 선택. disabled 칸은 이동·포커스 대상에서 제외."
   },
-  "sourceFingerprint": "30ea9b873534cf4bbeb1900bc65230164e9840b60dff851e9fd6f337785408ce"
+  "sourceFingerprint": "1641ce55be70858e20e800d0bc11bbcc0d8de092d93f5cf71377e075dfe75f89"
 }

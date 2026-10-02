@@ -67,7 +67,7 @@
   cursor: pointer;
   display: flex;
   flex: 0 0 auto;
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-weight: var(--font-weight-regular);
   padding-block: var(--spacing-4);
   padding-inline: var(--spacing-12);

@@ -1013,3 +1013,18 @@
 .uilg [data-s1-component="lnb"] [data-s1-part="item"][data-force-state="hover"] {
   background: var(--color-navigation-bg--hover);
 }
+
+/* ── List Row 안내 화면 배치 (배치 전용 — 줄의 시각·색·높이는 dist 가 소유) ──
+   줄은 목록 폭에 맞춰 늘어나는 부품이라 실제 쓰는 목록 폭(최대 360) 상자 안에 넣어 보인다.
+   줄 사이 구분선은 부품이 긋지 않으므로 안내 화면도 긋지 않는다. */
+.uilg-list-row-action { display: flex; }
+.uilg-list-row-list,
+.uilg-list-row-cell { max-width: 360px; width: 100%; }
+
+.uilg-list-row-matrix-title {
+  color: var(--color-text-body-secondary);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-130);
+  margin: var(--spacing-24) 0 var(--spacing-8);
+}
