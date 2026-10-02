@@ -48,11 +48,21 @@ const DEV = who("개발자", "blue", "on");
 const AI = who("AI", "blue", "off");
 const DESIGN = "디자이너";
 const divider = `<hr data-s1-component="divider" data-axis="x">`;
+/* 흐름 한 칸 — 누가 · 무엇을 · 한 줄 설명. 칸 사이 화살표는 S1 아이콘(chevron)이다. */
+let flowIndex = 0;
+const flowStep = (actor, title, line, designer = false) => {
+  flowIndex += 1;
+  return `<li class="step${designer ? " designer" : ""}">
+        <span class="actor typo-body-12m">${flowIndex} · ${esc(actor)}</span>
+        <span class="title typo-title-16b">${esc(title)}</span>
+        <span class="typo-body-12r">${esc(line)}</span>
+      </li>`;
+};
 
 const body = `
 <main class="wrap">
   <header class="group">
-    <h1 class="title typo-title-32b">S1 디자인 가이드 쓰는 법</h1>
+    <h1 class="title typo-title-32b">S-1 DESIGN GUIDE MD 쓰는 법</h1>
     <p class="sub typo-body-16r">개발자용 안내 · S1 배포본 ${esc(manifest.version)} 기준</p>
     <p class="typo-body-16r">AI 코딩 도구(Claude Code · VS Code Copilot · Cursor 등)로 화면을 만들거나, 이미 만든 화면(POC)에 S1 디자인을 입힐 때 쓰는 가이드입니다. 개발자는 AI에게 말하고, 디자이너에게 확인 요청서를 보내고, 받은 결과를 AI에게 붙여 넣기만 하면 됩니다. 나머지는 AI가 가이드대로 합니다.</p>
   </header>
@@ -82,24 +92,21 @@ const body = `
 
   <section class="group-lg">
     <h2 class="title typo-title-24b">작업 흐름</h2>
-    <p class="typo-body-14r">같은 프로젝트의 두 번째 화면부터는 ③·④ 를 건너뜁니다. 새 화면을 만들 때는 ⑤~⑦ 없이 바로 만들고 ⑧ 검수로 갑니다.</p>
-    ${table(["단계", "누가", "무엇을", "남는 것"], [
-      ["①", DEV, "처음 한 번 AI 안내 깔기", "도구별 안내 파일"],
-      ["②", DEV, "AI에게 \"이 화면에 S1 입혀줘\" 또는 \"S1으로 만들어줘\"", "—"],
-      ["③", AI, "온보딩 질문 — 새로 만들기·입히기 / PC·모바일 / 화면 종류 / 기술", "—"],
-      ["④", AI, "고른 화면 종류의 크기표를 보여 주고 확인받은 뒤 답을 저장", "s1.profile.json"],
-      ["⑤", AI, "POC 부품을 하는 일로 S1 부품과 짝짓고, 화면을 찍어 디자인 확인 요청서를 만든 뒤 멈춤", "s1-mapping.json · s1-captures/ · 디자인확인요청서.html"],
-      ["⑥", `${DEV} → ${DESIGN}`, "요청서 파일을 디자이너에게 보냄. 디자이너는 항목마다 고르고 결과 복사", "결과 글(JSON)"],
-      ["⑦", DEV, "디자이너가 보낸 결과 글을 AI에게 붙여 넣음 — AI가 결과대로 부품을 바꿈", "s1-review-result.json"],
-      ["⑧", AI, "검수기를 돌려 합격할 때까지 고침. 합격해야 완료라고 말함", "판정표"]
-    ])}
+    <ol class="flow">
+      ${flowStep("개발자", "처음 한 번 준비", "가이드 받기 · AI 안내 깔기")}
+      ${flowStep("개발자", "AI에게 요청", "\"이 화면에 S1 입혀줘\"")}
+      ${flowStep("AI", "온보딩 · 짝짓기", "화면 종류를 묻고 확인 요청서를 만듦")}
+      ${flowStep("디자이너", "요청서에서 고르기", "바꾸기 · 그대로 · 새 부품", true)}
+      ${flowStep("개발자 → AI", "결과 붙여 넣기", "AI가 반영하고 검수 합격까지")}
+    </ol>
+    <p class="sub typo-body-12r">새 화면을 만들 때는 디자이너 확인 없이 AI가 바로 만들고 검수합니다. 같은 프로젝트의 두 번째 화면부터는 온보딩 질문을 건너뜁니다.</p>
   </section>
 
   ${divider}
 
   <section class="group-lg">
     <h2 class="title typo-title-24b">화면 종류 고르기</h2>
-    <p class="typo-body-14r">③ 에서 AI가 묻습니다. 고른 종류에 따라 부품 크기가 하나로 정해지고, 한 화면에서 섞지 않습니다.</p>
+    <p class="typo-body-14r">온보딩에서 AI가 묻습니다. 고른 종류에 따라 부품 크기가 하나로 정해지고, 한 화면에서 섞지 않습니다.</p>
     ${table(["매체", "화면 종류", "언제", "기본 높이"], [
       ["PC 웹", "PR용", "회사·서비스를 알리는 홍보·소개 화면", "44"],
       ["PC 웹", "사용자용", "일반 사용자가 쓰는 화면", "44"],
@@ -113,7 +120,7 @@ const body = `
 
   <section class="group-lg">
     <h2 class="title typo-title-24b">디자이너 결과의 뜻</h2>
-    <p class="typo-body-14r">⑦ 에서 AI가 이대로 처리합니다. 개발자는 결과 글을 붙여 넣기만 하면 됩니다.</p>
+    <p class="typo-body-14r">결과를 붙여 넣으면 AI가 이대로 처리합니다. 개발자는 결과 글을 붙여 넣기만 하면 됩니다.</p>
     ${table(["결과", "뜻", "AI가 하는 일"], [
       ["제안대로 바꾸기", "제안한 S1 부품으로", "그 부품으로 바꿈"],
       ["다른 후보로 바꾸기", "요청서의 다른 후보로", "고른 후보로 바꿈"],
@@ -146,6 +153,7 @@ const body = `
   </section>
 </main>`;
 
+const chevron = (await readFile(path.join(DIST, "assets", "icons", "chevron.svg"))).toString("base64");
 const pageCss = `
   /* 이 안내서의 배치 — 색·간격·글자는 S1 토큰과 글자 스타일만 쓴다. 묶음 안 8 · 한 줄 안 12 · 묶음 사이 24 */
   body { margin:0; background:var(--color-bg-level-0); color:var(--color-text-body-primary); font-family:"Pretendard", sans-serif; }
@@ -158,6 +166,13 @@ const pageCss = `
   .cmd { display:flex; gap:var(--spacing-12); align-items:center; min-width:0; }
   .cmd [data-s1-component="input"] { flex:1 1 auto; width:auto; min-width:0; }
   .scroll { overflow-x:auto; }
+  .flow { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:var(--spacing-24); }
+  .step { position:relative; min-width:0; display:flex; flex-direction:column; gap:var(--spacing-4); padding:var(--spacing-16); border:var(--border-width-default) solid var(--color-line-default); border-radius:var(--radius-8); }
+  .step.designer { border-color:var(--color-line-blue); }
+  .step .actor { color:var(--color-text-body-tertiary); }
+  .step.designer .actor { color:var(--color-text-state-accent); }
+  .step + .step::before { content:""; position:absolute; left:calc(-1 * var(--spacing-24) / 2 - var(--sizing-16) / 2); top:50%; width:var(--sizing-16); height:var(--sizing-16); margin-top:calc(var(--sizing-16) / -2); background-color:var(--color-icon-gray); -webkit-mask:url("data:image/svg+xml;base64,${chevron}") center / contain no-repeat; mask:url("data:image/svg+xml;base64,${chevron}") center / contain no-repeat; } /* 화살표는 S1 아이콘 chevron */
+  @media (max-width:760px) { .flow { grid-template-columns:minmax(0, 1fr); } .step + .step::before { display:none; } }
   .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
 `;
 /* 입력칸·표는 배포본 런타임이 필요하다 — 파일 하나로 열리도록 두 부품의 런타임만 그대로 넣는다. */
@@ -188,7 +203,7 @@ for (const icon of await readdir(path.join(DIST, "assets/icons"))) {
 }
 css = css.replace(/@import[^;]+;/g, "").replace(/<\/style/gi, "<\\/style");
 
-const title = "S1 가이드 개발자 안내";
+const title = "S-1 DESIGN GUIDE MD 쓰는 법";
 const font = `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">`;
 const full = `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8">

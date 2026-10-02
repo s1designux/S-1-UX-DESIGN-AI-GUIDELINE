@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>S1 가이드 개발자 안내</title>
+<title>S-1 DESIGN GUIDE MD 쓰는 법</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>/* >>> GEN:FOUNDATION >>> Auto-generated from vars-data.ts (npm run tokens:gen:foundation) — Variables 정본. 수동 편집 금지. */
 /* ══════════════════════════════════════════════════
@@ -6345,13 +6345,20 @@
   .cmd { display:flex; gap:var(--spacing-12); align-items:center; min-width:0; }
   .cmd [data-s1-component="input"] { flex:1 1 auto; width:auto; min-width:0; }
   .scroll { overflow-x:auto; }
+  .flow { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:var(--spacing-24); }
+  .step { position:relative; min-width:0; display:flex; flex-direction:column; gap:var(--spacing-4); padding:var(--spacing-16); border:var(--border-width-default) solid var(--color-line-default); border-radius:var(--radius-8); }
+  .step.designer { border-color:var(--color-line-blue); }
+  .step .actor { color:var(--color-text-body-tertiary); }
+  .step.designer .actor { color:var(--color-text-state-accent); }
+  .step + .step::before { content:""; position:absolute; left:calc(-1 * var(--spacing-24) / 2 - var(--sizing-16) / 2); top:50%; width:var(--sizing-16); height:var(--sizing-16); margin-top:calc(var(--sizing-16) / -2); background-color:var(--color-icon-gray); -webkit-mask:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KICA8c3ZnIGRhdGEtczEtcGFydD0iZ2x5cGgiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij4KICAgIDxwYXRoIGQ9Ik0xMC4zNzUgNy43NUwxNC42MjUgMTJMMTAuMzc1IDE2LjI1IiBzdHJva2U9ImJsYWNrIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+CiAgPC9zdmc+Cjwvc3ZnPgo=") center / contain no-repeat; mask:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KICA8c3ZnIGRhdGEtczEtcGFydD0iZ2x5cGgiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij4KICAgIDxwYXRoIGQ9Ik0xMC4zNzUgNy43NUwxNC42MjUgMTJMMTAuMzc1IDE2LjI1IiBzdHJva2U9ImJsYWNrIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+CiAgPC9zdmc+Cjwvc3ZnPgo=") center / contain no-repeat; } /* 화살표는 S1 아이콘 chevron */
+  @media (max-width:760px) { .flow { grid-template-columns:minmax(0, 1fr); } .step + .step::before { display:none; } }
   .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
 </style>
 </head>
 <body data-s1-density="wide">
 <main class="wrap">
   <header class="group">
-    <h1 class="title typo-title-32b">S1 디자인 가이드 쓰는 법</h1>
+    <h1 class="title typo-title-32b">S-1 DESIGN GUIDE MD 쓰는 법</h1>
     <p class="sub typo-body-16r">개발자용 안내 · S1 배포본 0.16.1 기준</p>
     <p class="typo-body-16r">AI 코딩 도구(Claude Code · VS Code Copilot · Cursor 등)로 화면을 만들거나, 이미 만든 화면(POC)에 S1 디자인을 입힐 때 쓰는 가이드입니다. 개발자는 AI에게 말하고, 디자이너에게 확인 요청서를 보내고, 받은 결과를 AI에게 붙여 넣기만 하면 됩니다. 나머지는 AI가 가이드대로 합니다.</p>
   </header>
@@ -6399,20 +6406,41 @@
 
   <section class="group-lg">
     <h2 class="title typo-title-24b">작업 흐름</h2>
-    <p class="typo-body-14r">같은 프로젝트의 두 번째 화면부터는 ③·④ 를 건너뜁니다. 새 화면을 만들 때는 ⑤~⑦ 없이 바로 만들고 ⑧ 검수로 갑니다.</p>
-    <div class="scroll"><div data-s1-component="table" data-size="md">
-  <table data-s1-part="table">
-    <thead><tr><th data-s1-part="header-cell" scope="col">단계</th><th data-s1-part="header-cell" scope="col">누가</th><th data-s1-part="header-cell" scope="col">무엇을</th><th data-s1-part="header-cell" scope="col">남는 것</th></tr></thead>
-    <tbody><tr data-s1-part="row"><td data-s1-part="cell">①</td><td data-s1-part="cell"><span data-s1-component="data-tag" data-shape="chips" data-solid="on" data-tone="blue">개발자</span></td><td data-s1-part="cell">처음 한 번 AI 안내 깔기</td><td data-s1-part="cell">도구별 안내 파일</td></tr><tr data-s1-part="row"><td data-s1-part="cell">②</td><td data-s1-part="cell"><span data-s1-component="data-tag" data-shape="chips" data-solid="on" data-tone="blue">개발자</span></td><td data-s1-part="cell">AI에게 "이 화면에 S1 입혀줘" 또는 "S1으로 만들어줘"</td><td data-s1-part="cell">—</td></tr><tr data-s1-part="row"><td data-s1-part="cell">③</td><td data-s1-part="cell"><span data-s1-component="data-tag" data-shape="chips" data-solid="off" data-tone="blue">AI</span></td><td data-s1-part="cell">온보딩 질문 — 새로 만들기·입히기 / PC·모바일 / 화면 종류 / 기술</td><td data-s1-part="cell">—</td></tr><tr data-s1-part="row"><td data-s1-part="cell">④</td><td data-s1-part="cell"><span data-s1-component="data-tag" data-shape="chips" data-solid="off" data-tone="blue">AI</span></td><td data-s1-part="cell">고른 화면 종류의 크기표를 보여 주고 확인받은 뒤 답을 저장</td><td data-s1-part="cell">s1.profile.json</td></tr><tr data-s1-part="row"><td data-s1-part="cell">⑤</td><td data-s1-part="cell"><span data-s1-component="data-tag" data-shape="chips" data-solid="off" data-tone="blue">AI</span></td><td data-s1-part="cell">POC 부품을 하는 일로 S1 부품과 짝짓고, 화면을 찍어 디자인 확인 요청서를 만든 뒤 멈춤</td><td data-s1-part="cell">s1-mapping.json · s1-captures/ · 디자인확인요청서.html</td></tr><tr data-s1-part="row"><td data-s1-part="cell">⑥</td><td data-s1-part="cell"><span data-s1-component="data-tag" data-shape="chips" data-solid="on" data-tone="blue">개발자</span> → 디자이너</td><td data-s1-part="cell">요청서 파일을 디자이너에게 보냄. 디자이너는 항목마다 고르고 결과 복사</td><td data-s1-part="cell">결과 글(JSON)</td></tr><tr data-s1-part="row"><td data-s1-part="cell">⑦</td><td data-s1-part="cell"><span data-s1-component="data-tag" data-shape="chips" data-solid="on" data-tone="blue">개발자</span></td><td data-s1-part="cell">디자이너가 보낸 결과 글을 AI에게 붙여 넣음 — AI가 결과대로 부품을 바꿈</td><td data-s1-part="cell">s1-review-result.json</td></tr><tr data-s1-part="row"><td data-s1-part="cell">⑧</td><td data-s1-part="cell"><span data-s1-component="data-tag" data-shape="chips" data-solid="off" data-tone="blue">AI</span></td><td data-s1-part="cell">검수기를 돌려 합격할 때까지 고침. 합격해야 완료라고 말함</td><td data-s1-part="cell">판정표</td></tr></tbody>
-  </table>
-</div></div>
+    <ol class="flow">
+      <li class="step">
+        <span class="actor typo-body-12m">1 · 개발자</span>
+        <span class="title typo-title-16b">처음 한 번 준비</span>
+        <span class="typo-body-12r">가이드 받기 · AI 안내 깔기</span>
+      </li>
+      <li class="step">
+        <span class="actor typo-body-12m">2 · 개발자</span>
+        <span class="title typo-title-16b">AI에게 요청</span>
+        <span class="typo-body-12r">&quot;이 화면에 S1 입혀줘&quot;</span>
+      </li>
+      <li class="step">
+        <span class="actor typo-body-12m">3 · AI</span>
+        <span class="title typo-title-16b">온보딩 · 짝짓기</span>
+        <span class="typo-body-12r">화면 종류를 묻고 확인 요청서를 만듦</span>
+      </li>
+      <li class="step designer">
+        <span class="actor typo-body-12m">4 · 디자이너</span>
+        <span class="title typo-title-16b">요청서에서 고르기</span>
+        <span class="typo-body-12r">바꾸기 · 그대로 · 새 부품</span>
+      </li>
+      <li class="step">
+        <span class="actor typo-body-12m">5 · 개발자 → AI</span>
+        <span class="title typo-title-16b">결과 붙여 넣기</span>
+        <span class="typo-body-12r">AI가 반영하고 검수 합격까지</span>
+      </li>
+    </ol>
+    <p class="sub typo-body-12r">새 화면을 만들 때는 디자이너 확인 없이 AI가 바로 만들고 검수합니다. 같은 프로젝트의 두 번째 화면부터는 온보딩 질문을 건너뜁니다.</p>
   </section>
 
   <hr data-s1-component="divider" data-axis="x">
 
   <section class="group-lg">
     <h2 class="title typo-title-24b">화면 종류 고르기</h2>
-    <p class="typo-body-14r">③ 에서 AI가 묻습니다. 고른 종류에 따라 부품 크기가 하나로 정해지고, 한 화면에서 섞지 않습니다.</p>
+    <p class="typo-body-14r">온보딩에서 AI가 묻습니다. 고른 종류에 따라 부품 크기가 하나로 정해지고, 한 화면에서 섞지 않습니다.</p>
     <div class="scroll"><div data-s1-component="table" data-size="md">
   <table data-s1-part="table">
     <thead><tr><th data-s1-part="header-cell" scope="col">매체</th><th data-s1-part="header-cell" scope="col">화면 종류</th><th data-s1-part="header-cell" scope="col">언제</th><th data-s1-part="header-cell" scope="col">기본 높이</th></tr></thead>
@@ -6425,7 +6453,7 @@
 
   <section class="group-lg">
     <h2 class="title typo-title-24b">디자이너 결과의 뜻</h2>
-    <p class="typo-body-14r">⑦ 에서 AI가 이대로 처리합니다. 개발자는 결과 글을 붙여 넣기만 하면 됩니다.</p>
+    <p class="typo-body-14r">결과를 붙여 넣으면 AI가 이대로 처리합니다. 개발자는 결과 글을 붙여 넣기만 하면 됩니다.</p>
     <div class="scroll"><div data-s1-component="table" data-size="md">
   <table data-s1-part="table">
     <thead><tr><th data-s1-part="header-cell" scope="col">결과</th><th data-s1-part="header-cell" scope="col">뜻</th><th data-s1-part="header-cell" scope="col">AI가 하는 일</th></tr></thead>

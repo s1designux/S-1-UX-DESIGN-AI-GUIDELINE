@@ -301,7 +301,7 @@ async function renderBoard(scope, DIST, manifest, platform) {
   h1 { font-size:var(--font-size-24); margin:0 0 var(--spacing-4); }
   .sub { color:var(--color-text-body-secondary); margin:0 0 var(--spacing-24); }
   .cols { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:var(--spacing-16); align-items:start; }
-  .col { border:1px solid var(--color-line-gray-subtle); border-radius:var(--radius-12); padding:var(--spacing-20); background:var(--color-bg-level-1); min-width:0; }
+  .col { border:1px solid var(--color-line-default); border-radius:var(--radius-12); padding:var(--spacing-20); background:var(--color-bg-level-1); min-width:0; }
   .col header h3 { margin:0; font-size:var(--font-size-18); }
   .col header p { margin:var(--spacing-4) 0 var(--spacing-8); color:var(--color-text-body-secondary); font-size:var(--font-size-12); }
   h4 { font-size:var(--font-size-12); color:var(--color-text-body-secondary); margin:var(--spacing-20) 0 var(--spacing-8); font-weight:600; }
@@ -315,7 +315,7 @@ async function renderBoard(scope, DIST, manifest, platform) {
   .swap { margin:0; padding-left:var(--spacing-20); }
   .swap s { color:var(--color-text-body-secondary); }
   table.sum { width:100%; border-collapse:collapse; margin-top:var(--spacing-8); }
-  table.sum th, table.sum td { text-align:left; padding:var(--spacing-8) var(--spacing-12); border-bottom:1px solid var(--color-line-gray-subtle); vertical-align:top; font-size:var(--font-size-14); font-variant-numeric:tabular-nums; }
+  table.sum th, table.sum td { text-align:left; padding:var(--spacing-8) var(--spacing-12); border-bottom:1px solid var(--color-line-default); vertical-align:top; font-size:var(--font-size-14); font-variant-numeric:tabular-nums; }
   table.sum thead th { font-size:var(--font-size-12); color:var(--color-text-body-secondary); font-weight:500; }
   small { color:var(--color-text-body-secondary); font-size:var(--font-size-12); }
   h2 { font-size:var(--font-size-18); margin:var(--spacing-40) 0 var(--spacing-4); }
