@@ -185,6 +185,12 @@ const componentConfig = {
     approvedScope: "Axis 2종(X 가로 · Y 세로) × Weight 2종(Default 1 · Strong 2) × Tone 2종(Default 옅은 · Strong 진한) · 상태 축 없음 · 크기 축 없음 · JavaScript 불필요",
     runtime: S1UI.divider
   },
+  lnb: {
+    title: "LNB",
+    description: "PC 화면 왼쪽에 세로로 서는 사이드바 메뉴입니다. 위쪽 메뉴 GNB 와 짝을 이루며, 우측 상단 아이콘 단추 하나로 아이콘+메뉴명 띠(80)로 접습니다.",
+    approvedScope: "Type 2종(Menu 로고 없음 · Brand 로고 얹음) × Size 2종(MD 240 · LG 280) × State 2종(Expanded · Collapsed) · 메뉴 칸 Mode 2종 × 상태 4종(Default · Hover · Selected · Disabled) · 하위 메뉴 줄 상태 3종 · PC 전용 · 하위메뉴 여닫기와 판 접기는 JavaScript",
+    runtime: S1UI.lnb
+  },
   "bottom-sheet-option": {
     title: "Bottom Sheet Option",
     description: "바텀시트 안에 놓이는 한 줄입니다. 단독으로 쓰지 않고 시트 본문에 넣어 씁니다.",
@@ -3078,7 +3084,110 @@ function dataTagStateMatrix() {
     <div class="platform-section platform-section-mobile"><div class="preview-area">${block()}</div></div>`;
 }
 
+/* ── State matrix: LNB (Figma 이름 Side Nav · Side Nav Item · Side Nav Sub Item) ──
+   정본 세트 세 개를 표 세 개로 그대로 세운다(build-components.ts buildSideNav · buildSideNavItem · buildSideNavSubItem).
+     판(Side Nav)          — Type(Menu · Brand) × Size(MD · LG) 를 행으로, State(Expanded · Collapsed) 를 열로
+     메뉴 칸(Side Nav Item) — Mode(Expanded 펼침 줄 · Collapsed 접힘 칸) 를 행으로, State 4종을 열로
+     하위 메뉴 줄(Side Nav Sub Item) — State 3종을 열로(아이콘 없음)
+   메뉴 칸·하위 줄은 판 안에서만 모양이 나는 부분이라(CSS 가 [data-s1-component="lnb"] 아래에서만 그린다)
+   칸마다 머리줄 없는 판 껍데기에 한 줄만 넣어 보인다. Hover 는 재현할 수 없어 검수 전용 data-force-state 로 표시한다.
+   펼침 폭 240·280 은 정본에 크기 토큰이 없는 값이다(결정 대기) — 배포본 CSS 가 가진 그대로 보인다.
+   ※ 하위메뉴 aria-controls/id 는 인스턴스마다 새로 만든다(함정 T5). */
+let lnbSeq = 0;
+/* 로고 자리 — 배포본 예제와 같은 빈 자리표시 그림. 실제 화면은 자기 서비스 로고를 넣는다. */
+/* 판 접기 아이콘 — 배포본은 이 그림을 자산으로 싣지 않고 쓰는 화면이 --s1-collapse-icon 으로 넣는다(manifest collapseIconAsset).
+   안내 화면도 「쓰는 화면」으로서 아이콘 가이드에 등록된 ic_패널접기 라인형·솔리드형을 넣는다.
+   상대 주소는 사용처(dist CSS) 기준으로 풀리므로 절대 주소로 만들어 인라인으로 준다. */
+const LNB_COLLAPSE_ICON_STYLE = `--s1-collapse-icon: url('${new URL("../img/candidate-icons/ic_패널접기_line.svg", import.meta.url).href}'); --s1-collapse-icon-solid: url('${new URL("../img/candidate-icons/ic_패널접기_solid.svg", import.meta.url).href}')`;
+const LNB_LOGO_PLACEHOLDER = "data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20150%2024%27%2F%3E";
+
+function lnbItemMarkup({ label, current = false, disabled = false, sub = null, open = false, force = "", isPreview = false }) {
+  const tab = isPreview ? ' tabindex="-1"' : "";
+  const icon = '<span data-s1-part="item-icon" aria-hidden="true"></span>';
+  const state = `${current ? ' aria-current="page"' : ""}${disabled ? ' aria-disabled="true"' : ""}${force ? ` data-force-state="${force}"` : ""}`;
+  if (sub) {
+    lnbSeq += 1;
+    const subId = `guide-lnb-sub-${lnbSeq}`;
+    const subs = sub.map((s) => `<li><a data-s1-part="item" href="#"${s.current ? ' aria-current="page"' : ""}${tab}>${escapeHtml(s.label)}</a></li>`).join("");
+    return `<li><button type="button" data-s1-part="item" aria-expanded="${open}" aria-controls="${subId}" title="${escapeHtml(label)}"${state}${tab}>${icon}${escapeHtml(label)}<span data-s1-part="item-toggle" aria-hidden="true"></span></button>
+        <ul data-s1-part="subitems" id="${subId}"${open ? "" : " hidden"}>${subs}</ul></li>`;
+  }
+  return `<li><a data-s1-part="item" href="#" title="${escapeHtml(label)}"${state}${tab}>${icon}${escapeHtml(label)}</a></li>`;
+}
+
+function lnbMarkup({ type = "menu", size = "md", state = "expanded", open = false, isPreview = false, label = "기본 메뉴" } = {}) {
+  const collapsed = state === "collapsed";
+  const tab = isPreview ? ' tabindex="-1"' : "";
+  const brand = type === "brand"
+    ? `<a data-s1-part="brand" href="#" aria-label="첫 화면으로"${tab}><img data-s1-part="brand-logo" src="${LNB_LOGO_PLACEHOLDER}" alt="서비스 로고"></a>`
+    : "";
+  const items = [
+    lnbItemMarkup({ label: "개요", current: true, isPreview }),
+    lnbItemMarkup({ label: "기반 토큰", isPreview }),
+    lnbItemMarkup({ label: "컴포넌트", sub: [{ label: "PC 컴포넌트" }, { label: "Mobile 컴포넌트" }], open, isPreview }),
+    lnbItemMarkup({ label: "준비 중", disabled: true, isPreview })
+  ].join("");
+  return `<nav data-s1-component="lnb" data-guide-sample="set" data-variant="${type}" data-size="${size}" data-state="${state}" aria-label="${escapeHtml(label)}" style="${LNB_COLLAPSE_ICON_STYLE}"${isPreview ? ' class="is-preview"' : ""}>
+      <div data-s1-part="head">${brand}<button type="button" data-s1-part="collapse" aria-pressed="${collapsed}" aria-label="메뉴 접기"${tab}><span data-s1-part="collapse-icon" aria-hidden="true"></span></button></div>
+      <ul data-s1-part="items">${items}</ul>
+    </nav>`;
+}
+
+function lnbStateMatrix() {
+  const panelStates = [["expanded", "State=Expanded"], ["collapsed", "State=Collapsed"]];
+  const panelRows = [["menu", "md", "Menu · MD", "로고 없음 · 240"], ["menu", "lg", "Menu · LG", "로고 없음 · 280"], ["brand", "md", "Brand · MD", "로고 얹음 · 240"], ["brand", "lg", "Brand · LG", "로고 얹음 · 280"]];
+  const itemStates = [["default", "Default"], ["hover", "Hover"], ["selected", "Selected"], ["disabled", "Disabled"]];
+  const itemModes = [["expanded", "Expanded", "펼침 줄"], ["collapsed", "Collapsed", "접힘 칸"]];
+  const subStates = itemStates.slice(0, 3);
+
+  const action = `<div class="comp-action-top">
+      <div class="matrix-col-header-action">Action</div>
+      <div class="uilg-lnb-action">
+        ${lnbMarkup({ type: "menu", size: "md", label: "기본 메뉴" })}
+        ${lnbMarkup({ type: "brand", size: "md", label: "로고 메뉴" })}
+      </div>
+      <p class="uilg-demo-note">우측 상단 아이콘을 누르면 아이콘+메뉴명 띠(80)로 접히고, 다시 누르면 펼쳐집니다. 「컴포넌트」처럼 화살표가 붙은 메뉴는 눌러서 하위 메뉴를 엽니다. 현재 위치는 aria-current 로, 준비 중 메뉴는 aria-disabled 로 알립니다. 로고 자리는 비어 있습니다 — 화면이 자기 서비스 로고를 넣습니다.</p>
+    </div>`;
+
+  const panelHeader = `<div class="matrix-col-header" style="grid-column:1"></div>` +
+    panelStates.map(([, label]) => `<div class="matrix-col-header">${label}</div>`).join("");
+  const panelBody = panelRows.map(([type, size, label, dim]) =>
+    `<div class="matrix-row-label">${label}<span>${dim}</span></div>` +
+    panelStates.map(([state]) => `<div class="comp-state-cell">${lnbMarkup({ type, size, state, isPreview: true, label: `${label} ${state}` })}</div>`).join("")
+  ).join("");
+  const panelGrid = `<div class="comp-state-matrix uilg-lnb-matrix" style="grid-template-columns: 132px repeat(${panelStates.length}, minmax(300px, 1fr));">${panelHeader}${panelBody}</div>`;
+
+  const cell = (mode, inner) => `<div data-s1-component="lnb" data-guide-sample="part" data-state="${mode}" class="is-preview uilg-lnb-cell" style="border-right:0">${inner}</div>`;
+  const itemHeader = `<div class="matrix-col-header" style="grid-column:1"></div>` +
+    itemStates.map(([, label]) => `<div class="matrix-col-header">${label}</div>`).join("");
+  const itemBody = itemModes.map(([mode, label, dim]) =>
+    `<div class="matrix-row-label">${label}<span>${dim}</span></div>` +
+    itemStates.map(([state]) => `<div class="comp-state-cell">${cell(mode, `<ul data-s1-part="items">${lnbItemMarkup({
+      label: "메뉴",
+      current: state === "selected",
+      disabled: state === "disabled",
+      force: state === "hover" ? "hover" : "",
+      isPreview: true
+    })}</ul>`)}</div>`).join("")
+  ).join("");
+  const itemGrid = `<div class="comp-state-matrix uilg-lnb-matrix" style="grid-template-columns: 132px repeat(${itemStates.length}, minmax(150px, 1fr));">${itemHeader}${itemBody}</div>`;
+
+  const subHeader = `<div class="matrix-col-header" style="grid-column:1"></div>` +
+    subStates.map(([, label]) => `<div class="matrix-col-header">${label}</div>`).join("");
+  const subBody = `<div class="matrix-row-label">Sub Item<span>하위 메뉴 줄</span></div>` +
+    subStates.map(([state]) => `<div class="comp-state-cell">${cell("expanded", `<ul data-s1-part="subitems"><li><a data-s1-part="item" href="#" tabindex="-1"${state === "selected" ? ' aria-current="page"' : ""}${state === "hover" ? ' data-force-state="hover"' : ""}>하위 메뉴</a></li></ul>`)}</div>`).join("");
+  const subGrid = `<div class="comp-state-matrix uilg-lnb-matrix" style="grid-template-columns: 132px repeat(${subStates.length}, minmax(150px, 1fr));">${subHeader}${subBody}</div>`;
+
+  const caption = (text) => `<p class="uilg-lnb-matrix-title">${text}</p>`;
+  return `<div class="platform-section"><div class="preview-area">${action}
+      ${caption("판 전체 (Side Nav)")}${panelGrid}
+      ${caption("메뉴 칸 (Side Nav Item)")}${itemGrid}
+      ${caption("하위 메뉴 줄 (Side Nav Sub Item)")}${subGrid}
+    </div></div>`;
+}
+
 function stateMatrix(id) {
+  if (id === "lnb") return lnbStateMatrix();
   if (id === "date-picker") return datePickerStateMatrix();
   if (id === "input") return inputStateMatrix();
   if (id === "button") return buttonStateMatrix();
@@ -3355,10 +3464,14 @@ async function mountGuide(id) {
       const scope = section.querySelector(`[data-guide-block="${block.key || "main"}"]`);
       if (scope) wireCodeViewer(scope, { html: block.html, css, js });
     }
-    if (id === "toggle" || id === "chip" || id === "select" || id === "dropdown" || id === "filter-chip" || id === "tab" || id === "pagination" || id === "multi-toggle" || id === "table" || id === "time-picker" || id === "date-picker" || id === "expandable-card") {
+    if (id === "toggle" || id === "chip" || id === "select" || id === "dropdown" || id === "filter-chip" || id === "tab" || id === "pagination" || id === "multi-toggle" || id === "table" || id === "time-picker" || id === "date-picker" || id === "expandable-card" || id === "lnb") {
       /* 미리보기 칸(.is-preview)은 init 하지 않는다 — 런타임이 패널을 다시 닫아
          Open/Selected 칸이 사라진다. Action 영역의 실물만 살린다. */
       section.querySelectorAll(`[data-s1-component="${id}"]:not(.is-preview)`).forEach((root) => config.runtime.init(root));
+    }
+    if (id === "lnb") {
+      /* 견본 메뉴의 href="#" 가 안내 화면을 맨 위로 튕기지 않게 한다 — 이동 자체는 쓰는 화면(라우터)의 몫이다. */
+      section.querySelectorAll('[data-s1-component="lnb"] a[href="#"]').forEach((link) => link.addEventListener("click", (event) => event.preventDefault()));
     }
     if (id === "gnb") {
       /* GNB — 2026-09-09부터 jsRequired=true(D4·D5). aria-controls 를 가진 메뉴가 없는 인스턴스는
@@ -3501,6 +3614,6 @@ async function mountGuide(id) {
   }
 }
 
-const guideComponents = ["input", "button", "assist-button", "text-button", "checkbox", "radio", "toggle", "chip", "select", "dropdown", "filter-chip", "tab", "pagination", "textarea", "multi-toggle", "modal", "modal-content", "table", "mobile-bottom-nav", "mobile-header", "gnb", "gnb-sub-menu-item", "gnb-sub-menu", "time-picker", "date-picker", "bottom-sheet", "bottom-sheet-option", "expandable-card", "divider", "data-tag"];
+const guideComponents = ["input", "button", "assist-button", "text-button", "checkbox", "radio", "toggle", "chip", "select", "dropdown", "filter-chip", "tab", "pagination", "textarea", "multi-toggle", "modal", "modal-content", "table", "mobile-bottom-nav", "mobile-header", "gnb", "gnb-sub-menu-item", "gnb-sub-menu", "time-picker", "date-picker", "bottom-sheet", "bottom-sheet-option", "expandable-card", "divider", "data-tag", "lnb"];
 await Promise.all(guideComponents.map(mountGuide));
 document.dispatchEvent(new CustomEvent("s1:component-guide:ready", { detail: { components: guideComponents } }));

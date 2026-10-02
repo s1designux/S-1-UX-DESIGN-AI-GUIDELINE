@@ -3,6 +3,40 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-10-02 11:06 (KST)
+
+- 원본 커밋: `aa0f4a8` — docs(lnb): 펼침 폭 240·280 raw 유지 확정 — needs-decision 해소 (0.16.2)
+- 새로 추가된 파일 7개
+  - `registry/components/lnb.json`
+  - `ui-library/dist/components/lnb.css`
+  - `ui-library/dist/components/lnb.js`
+  - `ui-library/dist/components/lnb.manifest.json`
+  - `ui-library/dist/examples/lnb.html`
+  - `ui-library/dist/platform/react/lnb.jsx`
+  - `ui-library/dist/platform/vue/Lnb.vue`
+- 내용이 바뀐 파일 24개
+  - `assets/css/ui-library-guide.css`
+  - `assets/js/ui-library-guide.js`
+  - `design/DESIGN.core.md`
+  - `pages/components.html`
+  - `registry/components/index.json`
+  - `ui-library/dist/manifest.json`
+  - `ui-library/dist/platform/contract.json`
+  - `ui-library/dist/platform/cpp/s1_version.h`
+  - `ui-library/dist/platform/kotlin/README.md`
+  - `ui-library/dist/platform/kotlin/S1Version.kt`
+  - `ui-library/dist/platform/manifest.json`
+  - `ui-library/dist/platform/react/README.md`
+  - `ui-library/dist/platform/react/index.d.ts`
+  - `ui-library/dist/platform/react/index.js`
+  - `ui-library/dist/platform/react/package.json`
+  - `ui-library/dist/platform/react/version.js`
+  - `ui-library/dist/platform/swift/S1Version.swift`
+  - `ui-library/dist/platform/vue/index.js`
+  - `ui-library/dist/platform/vue/package.json`
+  - `ui-library/dist/platform/vue/version.js`
+  - … 외 4개
+
 ## 2026-10-02 10:37 (KST)
 
 - 원본 커밋: `b576918` — feat(multi-toggle): 가장 작은 크기 xsm(28) 신설 — 버튼·입력칸 28 줄과 같은 기준

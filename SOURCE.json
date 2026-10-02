@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "b576918830d526ea17f43e24e8ab05f361bdaac2",
+  "commit": "aa0f4a85600185b87e83a077f754f6932a241402",
   "scope": "PC",
   "generatedAt": "2026-10-02",
-  "syncedAt": "2026-10-02 10:37 (KST)",
-  "sourceCommitDate": "2026-10-02 10:32 (KST)",
-  "sourceCommitSubject": "feat(multi-toggle): 가장 작은 크기 xsm(28) 신설 — 버튼·입력칸 28 줄과 같은 기준"
+  "syncedAt": "2026-10-02 11:06 (KST)",
+  "sourceCommitDate": "2026-10-02 11:05 (KST)",
+  "sourceCommitSubject": "docs(lnb): 펼침 폭 240·280 raw 유지 확정 — needs-decision 해소 (0.16.2)"
 }

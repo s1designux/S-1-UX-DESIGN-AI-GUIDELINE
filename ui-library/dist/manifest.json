@@ -1,9 +1,9 @@
 {
   "id": "s1-ui",
-  "version": "0.15.0",
+  "version": "0.16.1",
   "releasedAt": "2026-10-02",
   "status": "approved",
-  "canonicalFingerprint": "6fa21d2a790564e8d5e3b88823d86275936e31e474a11da486a2a0d11e65f93c",
+  "canonicalFingerprint": "e6019e4b4fea169d19ada1317f492ee4fb5874d66068f1135dbe11f95b1bb27b",
   "tokenMapFingerprint": "796fb798dd329910ba6c42a29fb4af9e0fd217446b3fa847e140bc70a0a8f4c7",
   "commonCssDependencies": [
     "assets/css/tokens.css",
@@ -1109,6 +1109,20 @@
       "examples": {
         "pc": "examples/divider.html"
       }
+    },
+    {
+      "id": "lnb",
+      "version": "0.2.0",
+      "status": "approved",
+      "jsRequired": true,
+      "canonicalFingerprint": "fd815ced0134725e797fd35a6d1970b5e269d53e143d3bd07cb18fa46f3f0134",
+      "sourceFingerprint": "b889efc9f654eec124fd3cec39ddaf8de625dd10201d74d712a8fcd12c6644c9",
+      "css": "components/lnb.css",
+      "js": "components/lnb.js",
+      "example": "examples/lnb.html",
+      "examples": {
+        "pc": "examples/lnb.html"
+      }
     }
   ],
   "bundleParity": {
@@ -1143,7 +1157,8 @@
       "list-row",
       "expandable-card",
       "data-tag",
-      "divider"
+      "divider",
+      "lnb"
     ],
     "source": "ui-library/src/components/*",
     "rule": "Full and individual outputs are generated in this build invocation from identical source strings."

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>S1 UI 컴포넌트 미리보기 — 24종</title>
+  <title>S1 UI 컴포넌트 미리보기 — 25종</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/typography.css">
@@ -47,10 +47,10 @@
 <body>
   <div class="page">
     <div class="page-head">
-      <h1>S1 UI 컴포넌트 미리보기 — 24종</h1>
+      <h1>S1 UI 컴포넌트 미리보기 — 25종</h1>
       <p>이 페이지는 배포본에 들어 있는 마크업을 그대로 얹어 그린 것입니다. 여기 보이는 모습이 실제 모습입니다.<br>
          React·Vue 는 제목의 이름을 그대로 부르면 됩니다. 크기·변형은 각 이름 옆에 적힌 값만 쓸 수 있습니다.</p>
-      <p class="fingerprint">버전 0.15.0 · 정본 지문 6fa21d2a790564e8d5e3b88823d86275936e31e474a11da486a2a0d11e65f93c</p>
+      <p class="fingerprint">버전 0.16.1 · 정본 지문 e6019e4b4fea169d19ada1317f492ee4fb5874d66068f1135dbe11f95b1bb27b</p>
     </div>
     <nav class="index">
         <a href="#input">S1Input</a>
@@ -77,6 +77,7 @@
         <a href="#modal-content">S1ModalContent</a>
         <a href="#bottom-sheet-option">S1BottomSheetOption</a>
         <a href="#bottom-sheet">S1BottomSheet</a>
+        <a href="#lnb">S1Lnb</a>
     </nav>
       <section class="component" id="input">
         <header class="component-head">
@@ -1364,6 +1365,92 @@
             <div class="usage-block usage-block-avoid">
               <div class="usage-title">이럴 땐 다른 걸</div>
               <ul><li>PC 화면 — PC 는 드롭다운·팝오버·모달을 쓴다. 정본 시트는 모바일 폭(360) 기준이다.</li><li>확인·알림처럼 짧은 결정 — Modal 을 쓴다.</li><li>비차단 알림 — 토스트·인라인 메시지.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="lnb">
+        <header class="component-head">
+          <div>
+            <h2>S1Lnb</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="lnb"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd><code>md</code> <code>lg</code></dd>
+            <dt>변형</dt><dd><code>menu</code> <code>brand</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><nav data-s1-component="lnb" data-variant="menu" data-size="md" data-state="expanded" aria-label="기본 메뉴">
+    <div data-s1-part="head">
+      <button type="button" data-s1-part="collapse" aria-pressed="false" aria-label="메뉴 접기">
+        <span data-s1-part="collapse-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+    <ul data-s1-part="items">
+      <li><a data-s1-part="item" href="#" aria-current="page" title="개요"><span data-s1-part="item-icon" aria-hidden="true"></span>개요</a></li>
+      <li><a data-s1-part="item" href="#" title="기반 토큰"><span data-s1-part="item-icon" aria-hidden="true"></span>기반 토큰</a></li>
+      <li>
+        <button type="button" data-s1-part="item" aria-expanded="false" aria-controls="lnb-example-sub-1" title="컴포넌트">
+          <span data-s1-part="item-icon" aria-hidden="true"></span>컴포넌트
+          <span data-s1-part="item-toggle" aria-hidden="true"></span>
+        </button>
+        <ul data-s1-part="subitems" id="lnb-example-sub-1" hidden>
+          <li><a data-s1-part="item" href="#">PC 컴포넌트</a></li>
+          <li><a data-s1-part="item" href="#">Mobile 컴포넌트</a></li>
+        </ul>
+      </li>
+      <li><a data-s1-part="item" href="#" aria-disabled="true" title="준비 중"><span data-s1-part="item-icon" aria-hidden="true"></span>준비 중</a></li>
+    </ul>
+  </nav>
+<nav data-s1-component="lnb" data-variant="brand" data-size="md" data-state="expanded" aria-label="로고 메뉴">
+    <div data-s1-part="head">
+      <a data-s1-part="brand" href="#" aria-label="첫 화면으로"><img data-s1-part="brand-logo" src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20150%2024%27%2F%3E" alt="서비스 로고"></a>
+      <button type="button" data-s1-part="collapse" aria-pressed="false" aria-label="메뉴 접기">
+        <span data-s1-part="collapse-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+    <ul data-s1-part="items">
+      <li><a data-s1-part="item" href="#" aria-current="page" title="개요"><span data-s1-part="item-icon" aria-hidden="true"></span>개요</a></li>
+      <li><a data-s1-part="item" href="#" title="기반 토큰"><span data-s1-part="item-icon" aria-hidden="true"></span>기반 토큰</a></li>
+    </ul>
+  </nav>
+<nav data-s1-component="lnb" data-size="lg" data-state="expanded" aria-label="넓은 메뉴 280">
+    <div data-s1-part="head">
+      <button type="button" data-s1-part="collapse" aria-pressed="false" aria-label="메뉴 접기">
+        <span data-s1-part="collapse-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+    <ul data-s1-part="items">
+      <li><a data-s1-part="item" href="#" aria-current="page" title="개요"><span data-s1-part="item-icon" aria-hidden="true"></span>개요</a></li>
+      <li><a data-s1-part="item" href="#" title="기반 토큰"><span data-s1-part="item-icon" aria-hidden="true"></span>기반 토큰</a></li>
+    </ul>
+  </nav>
+<nav data-s1-component="lnb" data-variant="brand" data-size="md" data-state="collapsed" aria-label="접힌 메뉴">
+    <div data-s1-part="head">
+      <a data-s1-part="brand" href="#" aria-label="첫 화면으로"><img data-s1-part="brand-logo" src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20150%2024%27%2F%3E" alt="서비스 로고"></a>
+      <button type="button" data-s1-part="collapse" aria-pressed="true" aria-label="메뉴 접기">
+        <span data-s1-part="collapse-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+    <ul data-s1-part="items">
+      <li><a data-s1-part="item" href="#" aria-current="page" title="개요"><span data-s1-part="item-icon" aria-hidden="true"></span>개요</a></li>
+      <li><a data-s1-part="item" href="#" title="기반 토큰"><span data-s1-part="item-icon" aria-hidden="true"></span>기반 토큰</a></li>
+    </ul>
+  </nav></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>화면 왼쪽에 세로로 서서 같은 서비스 안의 큰 영역을 오가는 메뉴가 필요할 때.</li><li>하위메뉴(2뎁스)까지 한 판에서 보여 줄 때.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>화면 위쪽 가로 메뉴가 필요할 때 — GNB 를 쓴다.</li><li>모바일 하단 이동 막대가 필요할 때 — Mobile Bottom Nav 를 쓴다.</li></ul>
             </div>
           </div>
         </div>

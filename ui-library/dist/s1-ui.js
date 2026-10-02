@@ -29,3 +29,4 @@ export * as listRow from "./components/list-row.js";
 export * as expandableCard from "./components/expandable-card.js";
 export * as dataTag from "./components/data-tag.js";
 export * as divider from "./components/divider.js";
+export * as lnb from "./components/lnb.js";

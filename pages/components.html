@@ -1826,6 +1826,7 @@
           <button class="comp-nav-btn" data-category="navigation" data-platforms="pc" onclick="showSection('gnb', this)">GNB</button>
           <button class="comp-nav-btn" data-category="navigation" data-platforms="pc" onclick="showSection('gnb-sub-menu', this)">GNB Sub Menu</button>
           <button class="comp-nav-btn" data-category="navigation" data-platforms="pc" onclick="showSection('gnb-sub-menu-item', this)">GNB Sub Menu Item</button>
+          <button class="comp-nav-btn" data-category="navigation" data-platforms="pc" onclick="showSection('lnb', this)">LNB</button>
           <button class="comp-nav-btn" data-category="navigation" data-platforms="pc" onclick="showSection('pagination', this)">Pagination</button>
           <button class="comp-nav-btn" data-category="navigation" data-platforms="mobile" onclick="showSection('mobile-bottom-nav', this)">Bottom Nav</button>
           <button class="comp-nav-btn" data-category="navigation" data-platforms="mobile" onclick="showSection('mobile-header', this)">Mobile Header</button>
@@ -2538,6 +2539,9 @@ update(); // 초기화</pre>
 
       <!-- Approved Data Tag guide: ui-library-guide.js renders from ui-library/dist -->
       <section class="comp-section" id="data-tag" data-cov-type="chips,square" data-cov-variant="line,solid" data-cov-color="blue,red"></section>
+
+      <!-- Approved LNB guide: ui-library-guide.js renders from ui-library/dist -->
+      <section class="comp-section" id="lnb" data-cov-type="menu,brand" data-cov-sizes="md,lg" data-cov-states="expanded,collapsed,default,hover,selected,disabled" data-cov-mode="expanded,collapsed"></section>
 
       <!-- >>> GEN:COMPONENT-STUBS >>> 자동 생성 (npm run stubs:gen). 수동 편집 금지. -->
       <!-- ═══ LINE TAB ═══ -->
@@ -3410,7 +3414,7 @@ update(); // 초기화</pre>
   applyPlatformMenu();
 
   (function initFromHash() {
-    var valid = ['button','checkbox','radio','toggle','multi-toggle','chip','filter-chip','input','date-picker','time-picker','textarea','select','dropdown','table','pagination','tab','gnb','gnb-sub-menu','gnb-sub-menu-item','mobile-bottom-nav','mobile-header','ci','footer','login-gnb','modal']; // 마이그레이션 완료 컴포넌트 + 회사 고유 자산 3종(상위가 없어 어디에도 안 보이던 것 — 2026-08-02 노출)
+    var valid = ['button','checkbox','radio','toggle','multi-toggle','chip','filter-chip','input','date-picker','time-picker','textarea','select','dropdown','table','pagination','tab','gnb','gnb-sub-menu','gnb-sub-menu-item','mobile-bottom-nav','mobile-header','ci','footer','login-gnb','modal','lnb']; // 마이그레이션 완료 컴포넌트 + 회사 고유 자산 3종(상위가 없어 어디에도 안 보이던 것 — 2026-08-02 노출)
     var hash  = window.location.hash.replace('#', '');
     var id    = (hash && valid.includes(hash)) ? hash : 'button'; // 기본은 Button(양 플랫폼 공통)
     var btn   = document.querySelector('.comp-nav-btn[onclick*="\'' + id + '\'"]');

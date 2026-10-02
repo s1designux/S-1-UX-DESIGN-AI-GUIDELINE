@@ -1,0 +1,71 @@
+<!-- 사이드바 메뉴(LNB) 두 벌 — 기본(로고 없음, data-variant 생략) · 로고 얹음(data-variant="brand").
+     기본 벌은 data-variant="menu" 로 적어도, 아예 생략해도 같다(아래 lg 예시가 생략형).
+     가로는 md(240)·lg(280), 접힌 상태는 data-state="collapsed"(아이콘 아래 메뉴명이 붙은 80 띠).
+     접기는 언제나 우측 상단 아이콘 단추 하나(data-s1-part="collapse")로만 한다 — 글자 단추를 두지 않는다.
+     하위메뉴를 가진 항목은 button(aria-expanded · aria-controls) + 바로 아래 ul[data-s1-part="subitems"].
+     메뉴 아이콘은 예시라 기본 그림이 나온다 — 실제 화면은 각 item-icon 의 style 에
+     --s1-icon(라인형) · --s1-icon-solid(다크용 솔리드형)으로 아이콘 그림을 준다(쓰는 법은 배포본 README).
+     로고 그림은 화면이 자기 서비스 로고 파일을 넣는다 — 여기서는 비어 있는 자리표시다.
+     선택된 메뉴는 aria-current="page", 준비 중 메뉴는 aria-disabled="true". -->
+<div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start">
+  <nav data-s1-component="lnb" data-variant="menu" data-size="md" data-state="expanded" aria-label="기본 메뉴">
+    <div data-s1-part="head">
+      <button type="button" data-s1-part="collapse" aria-pressed="false" aria-label="메뉴 접기">
+        <span data-s1-part="collapse-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+    <ul data-s1-part="items">
+      <li><a data-s1-part="item" href="#" aria-current="page" title="개요"><span data-s1-part="item-icon" aria-hidden="true"></span>개요</a></li>
+      <li><a data-s1-part="item" href="#" title="기반 토큰"><span data-s1-part="item-icon" aria-hidden="true"></span>기반 토큰</a></li>
+      <li>
+        <button type="button" data-s1-part="item" aria-expanded="false" aria-controls="lnb-example-sub-1" title="컴포넌트">
+          <span data-s1-part="item-icon" aria-hidden="true"></span>컴포넌트
+          <span data-s1-part="item-toggle" aria-hidden="true"></span>
+        </button>
+        <ul data-s1-part="subitems" id="lnb-example-sub-1" hidden>
+          <li><a data-s1-part="item" href="#">PC 컴포넌트</a></li>
+          <li><a data-s1-part="item" href="#">Mobile 컴포넌트</a></li>
+        </ul>
+      </li>
+      <li><a data-s1-part="item" href="#" aria-disabled="true" title="준비 중"><span data-s1-part="item-icon" aria-hidden="true"></span>준비 중</a></li>
+    </ul>
+  </nav>
+
+  <nav data-s1-component="lnb" data-variant="brand" data-size="md" data-state="expanded" aria-label="로고 메뉴">
+    <div data-s1-part="head">
+      <a data-s1-part="brand" href="#" aria-label="첫 화면으로"><img data-s1-part="brand-logo" src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20150%2024%27%2F%3E" alt="서비스 로고"></a>
+      <button type="button" data-s1-part="collapse" aria-pressed="false" aria-label="메뉴 접기">
+        <span data-s1-part="collapse-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+    <ul data-s1-part="items">
+      <li><a data-s1-part="item" href="#" aria-current="page" title="개요"><span data-s1-part="item-icon" aria-hidden="true"></span>개요</a></li>
+      <li><a data-s1-part="item" href="#" title="기반 토큰"><span data-s1-part="item-icon" aria-hidden="true"></span>기반 토큰</a></li>
+    </ul>
+  </nav>
+
+  <nav data-s1-component="lnb" data-size="lg" data-state="expanded" aria-label="넓은 메뉴 280">
+    <div data-s1-part="head">
+      <button type="button" data-s1-part="collapse" aria-pressed="false" aria-label="메뉴 접기">
+        <span data-s1-part="collapse-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+    <ul data-s1-part="items">
+      <li><a data-s1-part="item" href="#" aria-current="page" title="개요"><span data-s1-part="item-icon" aria-hidden="true"></span>개요</a></li>
+      <li><a data-s1-part="item" href="#" title="기반 토큰"><span data-s1-part="item-icon" aria-hidden="true"></span>기반 토큰</a></li>
+    </ul>
+  </nav>
+
+  <nav data-s1-component="lnb" data-variant="brand" data-size="md" data-state="collapsed" aria-label="접힌 메뉴">
+    <div data-s1-part="head">
+      <a data-s1-part="brand" href="#" aria-label="첫 화면으로"><img data-s1-part="brand-logo" src="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20150%2024%27%2F%3E" alt="서비스 로고"></a>
+      <button type="button" data-s1-part="collapse" aria-pressed="true" aria-label="메뉴 접기">
+        <span data-s1-part="collapse-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+    <ul data-s1-part="items">
+      <li><a data-s1-part="item" href="#" aria-current="page" title="개요"><span data-s1-part="item-icon" aria-hidden="true"></span>개요</a></li>
+      <li><a data-s1-part="item" href="#" title="기반 토큰"><span data-s1-part="item-icon" aria-hidden="true"></span>기반 토큰</a></li>
+    </ul>
+  </nav>
+</div>
