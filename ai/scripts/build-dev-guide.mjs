@@ -70,19 +70,15 @@ const body = `
   ${divider}
 
   <section class="group-lg">
-    <h2 class="title typo-title-24b">처음 한 번 — 준비</h2>
+    <h2 class="title typo-title-24b">처음 한 번 — 설치</h2>
     <div class="group">
-      <h3 class="title typo-title-16b">1. 가이드 받기</h3>
-      <p class="typo-body-14r">작업할 프로젝트 옆 폴더에 받아 둡니다.</p>
-      ${command(`git clone ${REPO}.git`, "가이드 받기 명령")}
+      <h3 class="title typo-title-16b">AI 채팅창에 링크를 붙이고 "깔아줘"</h3>
+      <p class="typo-body-14r">작업할 프로젝트를 연 AI 채팅창에 아래 글을 그대로 보내면 됩니다. AI가 가이드를 프로젝트 안에 받아 두고, 어떤 AI 도구로 다시 열어도 S1 기준을 따르게 설정한 뒤, 바로 "온보딩을 진행할까요? 디자인 가이드를 제대로 적용하려면 반드시 온보딩이 필요합니다."라고 제안합니다.</p>
+      ${command(`${REPO} 깔아줘`, "AI 채팅창에 보낼 글")}
     </div>
     <div class="group">
-      <h3 class="title typo-title-16b">2. AI에게 가이드 위치 알려 주기</h3>
-      <p class="typo-body-14r">AI에게 화면 작업을 시킬 때 가이드 위치만 함께 알려 주세요. 예: "../S-1-UX-DESIGN-AI-GUIDELINE 가이드로 이 화면에 S1 입혀줘". AI가 먼저 "온보딩을 진행할까요? 디자인 가이드를 제대로 적용하려면 반드시 온보딩이 필요합니다."라고 제안하고, 진행하면 질문 → 크기 확인 → 답 저장 → 내 프로젝트에 AI 안내 깔기까지 스스로 합니다. 그다음부터는 프로젝트를 열 때마다 자동으로 S1 기준을 따릅니다.</p>
-    </div>
-    <div class="group">
-      <h3 class="title typo-title-16b">3. 화면 캡처 도구 (이미 만든 화면에 입힐 때만)</h3>
-      <p class="typo-body-14r">디자이너가 화면을 보고 판단할 수 있게, AI가 부품마다 화면을 찍어 요청서에 넣습니다.</p>
+      <h3 class="title typo-title-16b">화면 캡처 도구 — 이미 있는 프로토타입에 입힐 때만</h3>
+      <p class="typo-body-14r">디자이너가 화면을 보고 판단할 수 있게, AI가 부품마다 화면을 찍어 요청서에 넣습니다. 필요할 때 AI가 설치를 안내합니다.</p>
       ${command("pip install playwright && python3 -m playwright install chromium", "캡처 도구 설치 명령")}
     </div>
   </section>
@@ -92,27 +88,40 @@ const body = `
   <section class="group-lg">
     <h2 class="title typo-title-24b">작업 흐름</h2>
     <ol class="flow">
-      ${flowStep("개발자", "처음 한 번 준비", "가이드 받기")}
-      ${flowStep("개발자", "AI에게 요청", "가이드 위치와 함께 \"S1 입혀줘\"")}
-      ${flowStep("AI", "온보딩 제안 · 짝짓기", "질문하고 확인 요청서를 만듦")}
+      ${flowStep("개발자", "링크 주고 깔아줘", "처음 한 번")}
+      ${flowStep("AI", "설치 · 온보딩 질문", "번호로 답하면 저장")}
+      ${flowStep("AI", "짝짓기 · 요청서", "이미 있는 프로토타입일 때")}
       ${flowStep("디자이너", "요청서에서 고르기", "바꾸기 · 그대로 · 새 부품", true)}
       ${flowStep("개발자 → AI", "결과 붙여 넣기", "AI가 반영하고 검수 합격까지")}
     </ol>
-    <p class="sub typo-body-12r">새 화면을 만들 때는 디자이너 확인 없이 AI가 바로 만들고 검수합니다. 같은 프로젝트의 두 번째 화면부터는 온보딩 질문을 건너뜁니다.</p>
+    <p class="sub typo-body-12r">새 화면과 문서는 디자이너 확인 없이 AI가 바로 만들거나 입히고 검수합니다. 같은 프로젝트의 두 번째 화면부터는 온보딩 질문을 건너뜁니다.</p>
   </section>
 
   ${divider}
 
   <section class="group-lg">
-    <h2 class="title typo-title-24b">화면 종류 고르기</h2>
-    <p class="typo-body-14r">온보딩에서 AI가 묻습니다. 고른 종류에 따라 부품 크기가 하나로 정해지고, 한 화면에서 섞지 않습니다.</p>
-    ${table(["매체", "화면 종류", "언제", "기본 높이"], [
-      ["PC 웹", "PR용", "회사·서비스를 알리는 홍보·소개 화면", "44"],
-      ["PC 웹", "사용자용", "일반 사용자가 쓰는 화면", "44"],
-      ["PC 웹", "관리자용 · 기본", "관리자가 평소에 쓰는 화면", "34"],
-      ["PC 웹", "관리자용 · 작게", "정보를 더 많이 담아야 하는 관리자 화면", "28"],
-      ["모바일", "모바일", "앱 · 모바일 웹", "48"]
+    <h2 class="title typo-title-24b">온보딩 질문</h2>
+    <p class="typo-body-14r">AI가 한 번에 묶어 묻고, 번호로 답하면 됩니다. 예: A2 B2 C1 D3. 기술(HTML·React 등)은 AI가 프로젝트를 보고 알아냅니다.</p>
+    ${table(["질문", "고르는 것", "달라지는 것"], [
+      ["A. 무엇을 만드나요?", "1) 문서 작성 · 2) 프로토타입 제작", "문서는 사용자용 화면과 같은 기준으로 씁니다"],
+      ["B. 어떻게 작업하나요?", "1) 새 화면 작성 · 2) 이미 있는 화면에 디자인 입히기", "입히기면 아래 \"이미 있는 화면에 입힐 때\"를 따릅니다"],
+      ["C. 어떤 매체인가요? (프로토타입만)", "1) PC 웹 · 2) 모바일", "모바일은 손가락 기준 높이 48 하나"],
+      ["D. 누가 쓰는 화면인가요? (프로토타입 · PC 웹만)", "1) PR용 · 2) 사용자용 · 3) 관리자용 · 기본 · 4) 관리자용 · 작게", "부품 기본 높이 44 · 44 · 34 · 28"]
     ])}
+  </section>
+
+  ${divider}
+
+  <section class="group-lg">
+    <h2 class="title typo-title-24b">이미 있는 화면에 입힐 때</h2>
+    ${table(["무엇", "AI가 하는 일"], [
+      ["문서", "구조와 내용은 그대로 두고, S1 토큰으로 색 · 글자 · 간격만 입힙니다"],
+      ["프로토타입", "화면을 고치기 전에 디자인 확인 요청서를 만들어 디자이너에게 보내고, 답을 받은 뒤 바꿉니다"]
+    ])}
+    <div class="group">
+      <h3 class="title typo-title-16b">디자인 확인 요청서가 왜 필요한가요?</h3>
+      <p class="typo-body-14r">화면 속 버튼 · 입력칸이 S1의 어떤 부품에 해당하는지는 디자인 기준을 아는 디자이너가 정해야 정확합니다. AI가 짝지은 결과를 디자이너가 한 번 확인하면, 엉뚱한 부품으로 바뀌거나 S1에 없는 부품을 지어내는 일을 막을 수 있습니다.</p>
+    </div>
   </section>
 
   ${divider}

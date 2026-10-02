@@ -79,6 +79,8 @@ const reviewResult = await loadReviewResult();
 const KEEP_ATTRIBUTE = "data-s1-keep";
 const keptDecisions = new Map((reviewResult?.decisions || []).map((d) => [d.id, d.decision]));
 const usageId = flag("profile") || profile?.profile || null;
+/* 이미 있는 문서에 입히기(kind doc · mode apply) — 부품은 갈아 끼우지 않으므로 적용률은 따지지 않고 색·글자·간격만 본다. */
+const docApply = profile?.kind === "doc" && profile?.mode === "apply";
 const usage = usageId ? scope.profiles?.[usageId] : null;
 if (usageId && !usage) {
   console.error(`없는 화면 종류입니다: ${usageId} — ${Object.keys(scope.profiles || {}).join(" · ")} 중에서 고르세요.`);
@@ -625,7 +627,7 @@ if (needsJs.length && !jsWiringSeen && ["web", "react", "vue"].includes(stack)) 
 const errors = findings.filter((f) => f.severity === "error");
 const warnings = findings.filter((f) => f.severity === "warning");
 const rate = coverage.total ? Math.round((coverage.covered / coverage.total) * 100) : null;
-const passed = errors.length === 0 && (rate === null || rate === 100);
+const passed = errors.length === 0 && (rate === null || rate === 100 || docApply);
 
 /* ── 터미널 출력 ────────────────────────────────────────────────────────── */
 const order = { error: 0, warning: 1 };
