@@ -969,3 +969,47 @@
   justify-content: space-between;
   line-height: var(--line-height-130);
 }
+
+/* ── LNB 안내 화면 배치 (배치 전용 — 부품 시각·색은 dist 가 소유) ──
+   판은 화면 왼쪽에 세로로 서는 메뉴라 실제 쓰는 모습처럼 세로 길이를 준다(높이는 쓰는 화면이 정한다). */
+.uilg-lnb-action {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-24);
+}
+
+.uilg-lnb-action [data-s1-component="lnb"] {
+  min-height: 400px;
+}
+
+/* 표 세 개(판 · 메뉴 칸 · 하위 메뉴 줄) 머리 글자 */
+.uilg-lnb-matrix-title {
+  color: var(--color-text-body-secondary);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-130);
+  margin: var(--spacing-24) 0 var(--spacing-8);
+}
+
+.uilg-lnb-matrix .comp-state-cell {
+  align-items: flex-start;
+}
+
+/* 로고 자리표시 — 비어 있는 자리임을 보이게 점선 테두리만 안내 화면이 긋는다(배포본에는 없다). */
+.uilg [data-s1-component="lnb"] [data-s1-part="brand-logo"] {
+  outline: var(--border-width-default) dashed var(--color-line-default);
+}
+
+/* 메뉴 칸·하위 줄 표본 — 판 껍데기(루트)를 빌려 쓰므로 판이 소유한 오른쪽 선은 표본 마크업이 인라인으로 끈다
+   (style="border-right:0", 부품 표본 격리 — 검사기가 인라인 선언을 본다).
+   펼침 줄은 칸 폭을 따른다(최대 MD 240 판의 폭). 접힘 칸은 배포본 폭(sizing/80) 그대로. */
+.uilg [data-s1-component="lnb"].uilg-lnb-cell:not([data-state="collapsed"]) {
+  max-width: 240px;
+  width: 100%;
+}
+
+/* 검수 전용 hover 표시 — 배포본 :hover 규칙과 같은 토큰(바탕만 바뀐다). 제품 동작 API 가 아니다. */
+.uilg [data-s1-component="lnb"] [data-s1-part="item"][data-force-state="hover"] {
+  background: var(--color-navigation-bg--hover);
+}

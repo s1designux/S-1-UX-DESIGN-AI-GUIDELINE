@@ -27,6 +27,7 @@ const ZONE_ORDER = ["form", "header", "filter", "table", "popup"];
 const TABLE_KINDS = { summary: "요약 표", list: "일반 목록", dense: "촘촘한 목록" };
 const WIDTH = { md: 520, lg: 1000, xl: 1200 };
 const GNB = { md: 56, sm: 48, xsm: 36 };
+const LNB = { md: 240, lg: 280 };
 
 function heightOf(scope, component, size, platform) {
   if (!size) return null;
@@ -104,6 +105,14 @@ export async function writeProfileDocs(scope, ROOT, DIST, manifest) {
         "### GNB (화면 맨 위 로고·메뉴 줄)",
         "",
         profile.gnb ? `- \`${profile.gnb}\` (높이 ${GNB[profile.gnb]})` : "- 아직 기준이 없습니다. 예제 크기를 그대로 씁니다.",
+        "",
+        "### LNB (화면 왼쪽 세로 메뉴 판)",
+        "",
+        profile.lnb === "none"
+          ? "- 이 화면에는 LNB 를 쓰지 않습니다."
+          : profile.lnb
+            ? `- LNB 는 화면 구조에 따라 **쓸지 말지 고르는** 부품입니다. 쓸 때는 \`${profile.lnb}\` (펼친 폭 ${LNB[profile.lnb]} · 접으면 80).`
+            : "- 아직 기준이 없습니다. 예제 크기(240)를 그대로 씁니다.",
         "",
         "## 3. 자리를 정하는 법",
         "",
@@ -258,6 +267,7 @@ async function renderBoard(scope, DIST, manifest, platform) {
   ${blocks.join("\n  ")}
   <h4>팝업 폭 (권장)</h4><p class="note">입력 팝업 ${WIDTH[profile.popupWidth.input]} · 표·목록 팝업 ${WIDTH[profile.popupWidth.list]}</p>
   <h4>GNB</h4><p class="note">${profile.gnb ? `높이 ${GNB[profile.gnb]}` : "아직 기준 없음"}</p>
+  <h4>LNB (쓸 때만)</h4><p class="note">${profile.lnb === "none" ? "쓰지 않음" : profile.lnb ? `펼친 폭 ${LNB[profile.lnb]}` : "아직 기준 없음"}</p>
 </section>`);
   }
 

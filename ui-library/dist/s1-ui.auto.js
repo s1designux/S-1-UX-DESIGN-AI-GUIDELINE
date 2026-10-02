@@ -15,6 +15,7 @@ import { init as init_gnb } from "./components/gnb.js";
 import { init as init_modalContent } from "./components/modal-content.js";
 import { init as init_bottomSheet } from "./components/bottom-sheet.js";
 import { init as init_expandableCard } from "./components/expandable-card.js";
+import { init as init_lnb } from "./components/lnb.js";
 export * as input from "./components/input.js";
 export * as button from "./components/button.js";
 export * as checkbox from "./components/checkbox.js";
@@ -46,6 +47,7 @@ export * as listRow from "./components/list-row.js";
 export * as expandableCard from "./components/expandable-card.js";
 export * as dataTag from "./components/data-tag.js";
 export * as divider from "./components/divider.js";
+export * as lnb from "./components/lnb.js";
 
 export function autoInit(scope = document) {
   const instances = [
@@ -65,7 +67,8 @@ export function autoInit(scope = document) {
     ...[...scope.querySelectorAll('[data-s1-component="gnb"]')].map((root) => init_gnb(root)),
     ...[...scope.querySelectorAll('[data-s1-component="modal-content"]')].map((root) => init_modalContent(root)),
     ...[...scope.querySelectorAll('[data-s1-component="bottom-sheet"]')].map((root) => init_bottomSheet(root)),
-    ...[...scope.querySelectorAll('[data-s1-component="expandable-card"]')].map((root) => init_expandableCard(root))
+    ...[...scope.querySelectorAll('[data-s1-component="expandable-card"]')].map((root) => init_expandableCard(root)),
+    ...[...scope.querySelectorAll('[data-s1-component="lnb"]')].map((root) => init_lnb(root))
   ];
   return Object.freeze(instances.filter(Boolean));
 }

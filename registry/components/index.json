@@ -427,6 +427,16 @@
       "status": "in-progress",
       "harnessStatus": "planned",
       "priority": 32
+    },
+    {
+      "id": "lnb",
+      "name": "LNB",
+      "label": "LNB",
+      "category": "core",
+      "path": "registry/components/lnb.json",
+      "status": "in-progress",
+      "harnessStatus": "planned",
+      "priority": 33
     }
   ]
 }

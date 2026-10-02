@@ -234,6 +234,7 @@ for (const [id, profile] of Object.entries(usageProfiles.profiles)) {
   for (const size of tableRows) {
     if (!specById.get("table")?.sizes.includes(size)) throw new Error(`usage-profiles.json: ${id}.tableRow 의 "${size}" 는 표에 없는 크기입니다.`);
   }
+  if (profile.lnb && profile.lnb !== "none" && !specById.get("lnb")?.sizes.includes(profile.lnb)) throw new Error(`usage-profiles.json: ${id}.lnb 의 "${profile.lnb}" 는 LNB 에 없는 크기입니다.`);
   if (profile.gnb && !specById.get("gnb")?.sizes.includes(profile.gnb)) throw new Error(`usage-profiles.json: ${id}.gnb 의 "${profile.gnb}" 는 GNB 에 없는 크기입니다.`);
   profiles[id] = { ...profile, componentSizes, tableRows };
 }

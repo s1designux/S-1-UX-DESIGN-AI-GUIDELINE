@@ -302,3 +302,15 @@ export interface S1BottomSheetProps extends S1BaseProps {
   onClose?: (event: CustomEvent) => void;
 }
 export declare function S1BottomSheet(props: S1BottomSheetProps): ReactElement;
+
+export interface S1LnbProps extends S1BaseProps {
+  /** 승인된 변형: menu · brand */
+  variant?: "menu" | "brand";
+  /** 승인된 크기: md · lg */
+  size?: "md" | "lg";
+  /** s1:lnb:collapse */
+  onCollapse?: (event: CustomEvent) => void;
+  /** s1:lnb:toggle */
+  onToggle?: (event: CustomEvent) => void;
+}
+export declare function S1Lnb(props: S1LnbProps): ReactElement;

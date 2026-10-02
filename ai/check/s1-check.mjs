@@ -278,6 +278,14 @@ function checkProfileSize(element, id, file) {
   if (id === "table") {
     allowed = usage.tableRows || [];
     where = "표 줄 높이";
+  } else if (id === "lnb") {
+    if (usage.lnb === "none") {
+      add("error", "S1-PROFILE-SWAP", file, element.line,
+        `${usage.label}에는 LNB 를 쓰지 않습니다.`, `${guide}`);
+      return;
+    }
+    allowed = usage.lnb ? [usage.lnb] : [];
+    where = "LNB 폭";
   } else if (id === "gnb") {
     allowed = usage.gnb ? [usage.gnb] : [];
     where = "GNB";

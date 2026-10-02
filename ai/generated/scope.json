@@ -11,9 +11,9 @@
       "registry/governance/density-policy.json",
       "ui-library/dist/components/*.css"
     ],
-    "distVersion": "0.15.0",
+    "distVersion": "0.16.1",
     "distReleasedAt": "2026-10-02",
-    "canonicalFingerprint": "6fa21d2a790564e8d5e3b88823d86275936e31e474a11da486a2a0d11e65f93c",
+    "canonicalFingerprint": "e6019e4b4fea169d19ada1317f492ee4fb5874d66068f1135dbe11f95b1bb27b",
     "builtAt": "2026-10-02"
   },
   "rules": {
@@ -448,6 +448,7 @@
         "list": "md"
       },
       "gnb": "md",
+      "lnb": "none",
       "componentSizes": {
         "form": {
           "input": "md",
@@ -524,6 +525,7 @@
         "list": "lg"
       },
       "gnb": "sm",
+      "lnb": "lg",
       "componentSizes": {
         "form": {
           "input": "md",
@@ -600,6 +602,7 @@
         "list": "lg"
       },
       "gnb": "xsm",
+      "lnb": "lg",
       "componentSizes": {
         "form": {
           "input": "xsm",
@@ -676,6 +679,7 @@
         "list": "lg"
       },
       "gnb": "xsm",
+      "lnb": "md",
       "componentSizes": {
         "form": {
           "input": "xxsm",
@@ -3062,6 +3066,78 @@
       ],
       "jsRequired": false,
       "events": []
+    },
+    {
+      "id": "lnb",
+      "status": "approved",
+      "platform": "pc-only",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "platformSupport = pc·note"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [
+        "md",
+        "lg"
+      ],
+      "variants": [
+        "menu",
+        "brand"
+      ],
+      "variantAttribute": "data-variant",
+      "sizeAttribute": "data-size",
+      "requiredAttributes": [],
+      "requiredParts": [
+        "head",
+        "collapse",
+        "collapse-icon",
+        "items",
+        "item"
+      ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "head",
+          "collapse",
+          "collapse-icon",
+          "items",
+          "item"
+        ],
+        "mobile": [
+          "head",
+          "collapse",
+          "collapse-icon",
+          "items",
+          "item"
+        ]
+      },
+      "parts": [
+        "head",
+        "brand",
+        "brand-logo",
+        "collapse",
+        "collapse-icon",
+        "group",
+        "items",
+        "item",
+        "item-icon",
+        "item-toggle",
+        "subitems"
+      ],
+      "states": [
+        "expanded",
+        "collapsed",
+        "current",
+        "hover",
+        "disabled"
+      ],
+      "jsRequired": true,
+      "events": [
+        "s1:lnb:collapse",
+        "s1:lnb:toggle"
+      ]
     }
   ]
 }

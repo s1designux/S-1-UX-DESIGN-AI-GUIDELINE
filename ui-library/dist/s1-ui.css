@@ -4913,3 +4913,381 @@
   margin-inline: var(--spacing-20);
   width: auto;
 }
+
+/* component:lnb */
+/* LNB (사이드바 메뉴 / LNB) — 승격 후보 시제품(assets/css/restyle-candidates.css §3) 승인본 그대로.
+   축
+   · data-variant = (생략) 기본 — 로고 없음 ← **기본값**(river 2026-09-29). 속성을 안 적으면 이 벌이다.
+                    brand — 로고 있음
+     두 벌만 제공한다(river 2026-09-29).
+     ⚠️ 중간 구분명(grouped) 벌은 화면이 어수선해 **보류**한다 — 스타일(group 자리)만 아래에 남기고
+        manifest 의 공개 축·예시에는 올리지 않는다.
+   · data-size    = md(240) | lg(280)   — 두 가지 다 제공한다(river 2026-09-29). 생략하면 md.
+   · data-state   = expanded | collapsed — 접으면 아이콘+메뉴명 띠(sizing/80). 생략하면 expanded.
+
+   규칙
+   · 접힘 표시는 **우측 상단 아이콘 하나로만** 한다 — 글자 단추를 두지 않는다.
+   · 로고에는 집 아이콘을 넣지 않는다. 글자(로고 그림)만 두고, 누르면 첫 화면으로 간다.
+   · 왼쪽 세로 막대는 쓰지 않는다 — 현재 위치는 글자·아이콘 색이 알린다.
+   · 메뉴 아이콘은 화면이 --s1-icon(라인형)·--s1-icon-solid(다크용 솔리드형) 로 받은 그림을 CSS mask 로 쓴다.
+     색은 그림이 아니라 토큰(icon/gray-dark)이 정한다. 주지 않으면 등록 자산 menu.svg 를 쓴다.
+   · 하위메뉴(2뎁스) 글자색은 상위 메뉴와 같은 색이다 — 연하게 낮추지 않는다(river 2026-09-29).
+
+   needs-decision 1 — 펼침 가로 240·280 은 정본에 크기 토큰이 없어 이 파일이 값을 들고 있다.
+                      접힘 폭은 정본 sizing/80 을 쓴다(아이콘+메뉴명, river 2026-09-30).
+   · 메뉴명 글자 색은 LNB 전용 navigation/label/default-side — 라이트는 본문 2단계와 같고 다크만 한 단계 위(river 2026-10-01).
+     라이트·다크 값은 그 단계가 갖고, 다크에서 아이콘과 같은 밝기가 된다 — 모드별 덮어쓰기를 두지 않는다. */
+[data-s1-component="lnb"] {
+  background: var(--color-navigation-bg);
+  border-right: var(--border-width-default) solid var(--color-line-default);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: "Pretendard", sans-serif;
+  padding: var(--spacing-12) var(--spacing-12) var(--spacing-16);
+  transition: width .18s ease;
+  width: 240px;
+}
+
+[data-s1-component="lnb"][data-size="lg"] {
+  width: 280px;
+}
+
+[data-s1-component="lnb"][data-state="collapsed"] {
+  padding-inline: var(--spacing-8);   /* 80 − 8×2 = 64 — 접힌 칸 폭 */
+  width: var(--sizing-80);            /* 원본(60)보다 넓힌다 — 메뉴명이 잘리지 않게(river 2026-09-30) */
+}
+
+/* 단추(button)로 만든 항목은 브라우저 기본 글꼴을 물고 들어온다 — 화면 글꼴(Pretendard)을 그대로 쓰게 한다.
+   이걸 안 하면 「접힘 기능이 있는 메뉴」처럼 단추로 만든 항목만 다른 글꼴로 얇게 보인다. */
+[data-s1-component="lnb"] button {
+  font-family: inherit;
+}
+
+/* 머리줄 — 왼쪽에 로고(있는 벌만), 오른쪽 끝에 접힘 아이콘 */
+[data-s1-component="lnb"] [data-s1-part="head"] {
+  align-items: center;
+  display: flex;
+  gap: var(--spacing-8);
+  min-height: var(--sizing-40);
+}
+
+/* 로고 — 화면이 자기 서비스 로고 그림을 넣는다. 집 아이콘을 덧붙이지 않는다(river 2026-09-29). 누르면 첫 화면.
+   로고는 브랜드 자산이라 라이트에서는 그림이 가진 색 그대로 둔다. 어두운 화면만 한 가지 색으로 바꾼다(아래). */
+[data-s1-component="lnb"] [data-s1-part="brand"] {
+  align-items: center;
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+  padding-left: var(--spacing-10);
+  text-decoration: none;
+}
+
+[data-s1-component="lnb"] [data-s1-part="brand-logo"] {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  width: 150px;
+}
+
+[data-s1-component="lnb"][data-size="lg"] [data-s1-part="brand-logo"] {
+  width: 178px;
+}
+
+/* 어두운 화면의 로고 — 한 가지 색(제목 글자 색)으로 바꾼다(river 2026-09-30 "로고는 한가지 색으로 표현해줘").
+   브랜드 색 그대로는 어두운 바탕에서 잘 안 보인다. 라이트에서는 그림이 가진 색 그대로 둔다.
+   화면이 brand 에 --s1-brand-logo 에 그림 주소를 주면 켜진다 — 메뉴 아이콘(--s1-icon)과 같은 방식.
+   · 로고 그림 자리에 그림 모양대로 오린 색판(::after)을 얹고, 원래 그림은 가린다.
+   · 두 규칙 모두 --s1-brand-logo 를 품고 있어서, 주지 않으면 선언 전체가 무효가 되어 원래 그림이 그대로 보인다. */
+/* 입력 자리 선언 — initial 은 "값 없음"과 같다. 화면이 brand 나 nav 에 직접 주면 그 값이 이긴다. */
+[data-s1-component="lnb"] {
+  --s1-brand-logo: initial;
+}
+
+[data-theme="dark"] [data-s1-component="lnb"] [data-s1-part="brand"] {
+  --s1-brand-logo-w: 150px;
+  position: relative;
+}
+
+[data-theme="dark"] [data-s1-component="lnb"][data-size="lg"] [data-s1-part="brand"] {
+  --s1-brand-logo-w: 178px;
+}
+
+[data-theme="dark"] [data-s1-component="lnb"] [data-s1-part="brand"] [data-s1-part="brand-logo"] {
+  -webkit-mask: var(--s1-brand-logo) 0 0 / 0 0 no-repeat;
+  mask: var(--s1-brand-logo) 0 0 / 0 0 no-repeat;
+}
+
+[data-theme="dark"] [data-s1-component="lnb"] [data-s1-part="brand"]::after {
+  background: var(--s1-brand-logo) 0 0 / 0 0 no-repeat, var(--color-text-title-primary);
+  content: "";
+  inset: 0 0 0 var(--spacing-10);
+  -webkit-mask: var(--s1-brand-logo) left center / var(--s1-brand-logo-w) auto no-repeat;
+  mask: var(--s1-brand-logo) left center / var(--s1-brand-logo-w) auto no-repeat;
+  pointer-events: none;
+  position: absolute;
+}
+
+[data-s1-component="lnb"]:not([data-variant="brand"]) [data-s1-part="brand"] {
+  display: none;
+}
+
+[data-s1-component="lnb"][data-variant="brand"] [data-s1-part="head"] {
+  border-bottom: var(--border-width-default) solid var(--color-line-default);
+  margin-bottom: var(--spacing-8);
+  min-height: var(--sizing-48);
+  padding-bottom: var(--spacing-12);
+}
+
+/* 접힘 아이콘 — 우측 상단. 글자 없이 아이콘 하나뿐이다 */
+[data-s1-component="lnb"] [data-s1-part="collapse"] {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-6);
+  cursor: pointer;
+  display: flex;
+  flex: none;
+  height: var(--sizing-32);
+  justify-content: center;
+  margin-left: auto;
+  padding: 0;
+  width: var(--sizing-32);
+}
+
+[data-s1-component="lnb"] [data-s1-part="collapse"]:hover {
+  background: var(--color-navigation-bg--hover);
+}
+
+/* 판 접기 아이콘 — 아이콘 가이드에 등록된 ic_패널접기 를 화면이 --s1-collapse-icon(라인형) ·
+   --s1-collapse-icon-solid(다크용 솔리드형) 로 넣는다(river 승인 2026-09-29).
+   이 그림은 Figma 라이브러리 허용 키가 없어 배포본에 자산으로 싣지 못한다 — 주지 않으면 등록 자산 menu.svg 를 쓴다.
+   펼친 상태는 그림 그대로(왼쪽 판 + 왼쪽 꺾쇠 = 접기), 접힌 상태는 좌우를 뒤집어 펴기로 읽힌다.
+   크기는 메뉴 아이콘과 같은 20 이어야 한다 — 같은 그림을 더 크게 그리면 선도 같이 굵어져
+   옆 아이콘들과 두께가 달라 보인다(river 2026-09-29 지적). */
+[data-s1-component="lnb"] [data-s1-part="collapse-icon"] {
+  background-color: var(--color-icon-gray-dark);
+  height: var(--sizing-20);
+  -webkit-mask: var(--s1-collapse-icon, url("./assets/icons/menu.svg")) center / contain no-repeat;
+  mask: var(--s1-collapse-icon, url("./assets/icons/menu.svg")) center / contain no-repeat;
+  transition: transform .18s ease;
+  width: var(--sizing-20);
+}
+
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="collapse-icon"] {
+  transform: scaleX(-1);
+}
+
+[data-theme="dark"] [data-s1-component="lnb"] [data-s1-part="collapse-icon"] {
+  -webkit-mask-image: var(--s1-collapse-icon-solid, var(--s1-collapse-icon, url("./assets/icons/menu.svg")));
+  mask-image: var(--s1-collapse-icon-solid, var(--s1-collapse-icon, url("./assets/icons/menu.svg")));
+}
+
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="collapse"] {
+  margin-inline: auto;
+}
+
+/* 접힘 아이콘과 첫 메뉴 사이를 벌린다(river 2026-09-30) */
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="head"] {
+  margin-bottom: var(--spacing-16);
+}
+
+/* 중간 구분명 — 보류된 grouped 벌에서만 보인다(공개 축 아님).
+   구분명은 메뉴보다 뒤로 물러나야 한다 — 본문 3단계 글자색(river 2026-09-29).
+   정본 navigation/submenu-label 은 gray/800 이라 너무 진해 쓰지 않는다. */
+[data-s1-component="lnb"] [data-s1-part="group"] {
+  color: var(--color-text-body-tertiary);
+  display: block;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+  padding: var(--spacing-16) var(--spacing-10) var(--spacing-6);
+}
+
+[data-s1-component="lnb"]:not([data-variant="grouped"]) [data-s1-part="group"] {
+  display: none;
+}
+
+[data-s1-component="lnb"] [data-s1-part="items"] {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-s1-component="lnb"] [data-s1-part="items"][hidden] {
+  display: none;
+}
+
+[data-s1-component="lnb"] [data-s1-part="item"] {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-6);
+  box-sizing: border-box;
+  color: var(--color-navigation-label-default-side);
+  cursor: default;
+  display: flex;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  gap: var(--spacing-8);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+  margin: 0;
+  min-height: var(--sizing-40);
+  padding: var(--spacing-8) var(--spacing-10);
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+}
+
+[data-s1-component="lnb"] a[data-s1-part="item"],
+[data-s1-component="lnb"] button[data-s1-part="item"] {
+  cursor: pointer;
+}
+
+/* 호버 — 글자·아이콘 색은 그대로, 바탕만 바뀐다(river 2026-09-30). 다크 바탕은 기본보다 한 단계 밝다. */
+[data-s1-component="lnb"] [data-s1-part="item"]:hover {
+  background: var(--color-navigation-bg--hover);
+}
+
+/* 선택된 항목은 배경을 깔지 않는다 — 글자·아이콘 색과 굵기로 알린다.
+   굵기는 볼드(river 2026-09-30 "일단 볼드로 적용해보자") — 어두운 화면에서 파랑이 옆 회색 글자보다
+   흐려 보이는 것을 색을 더 밝히지 않고(프라이머리 파랑 유지) 두께로 보완한다. 라이트·다크 같은 값. */
+[data-s1-component="lnb"] [data-s1-part="item"][aria-current="page"] {
+  background: transparent;
+  color: var(--color-navigation-label-selected);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-normal);   /* 정본 텍스트 스타일 title/14B 와 같게(자간 0) — Figma 부품과 일치 */
+}
+
+[data-s1-component="lnb"] [data-s1-part="item"][aria-disabled="true"] {
+  color: var(--color-text-state-disabled);
+  pointer-events: none;
+}
+
+/* 메뉴 아이콘 — 그림은 --s1-icon 으로 받고, 색은 토큰이 준다 */
+[data-s1-component="lnb"] [data-s1-part="item-icon"] {
+  background-color: var(--color-icon-gray-dark);
+  display: inline-block;
+  flex: none;
+  height: var(--sizing-20);
+  -webkit-mask-image: var(--s1-icon, url("./assets/icons/menu.svg"));
+  mask-image: var(--s1-icon, url("./assets/icons/menu.svg"));
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  width: var(--sizing-20);
+}
+
+[data-s1-component="lnb"] [data-s1-part="item"][aria-current="page"] [data-s1-part="item-icon"] {
+  background-color: var(--color-navigation-label-selected);
+}
+
+[data-s1-component="lnb"] [data-s1-part="item"][aria-disabled="true"] [data-s1-part="item-icon"] {
+  background-color: var(--color-icon-gray-light);
+}
+
+/* 여닫이 화살표 — 하위 메뉴를 가진 **메뉴 칸 자신의 오른쪽 끝**에 붙는다.
+   닫힘은 아래, 열림은 위로 뒤집는다(회전 아님) */
+[data-s1-component="lnb"] [data-s1-part="item-toggle"] {
+  background-color: var(--color-icon-gray-dark);
+  flex: none;
+  height: var(--sizing-20);
+  margin-left: auto;
+  -webkit-mask: url("./assets/icons/chevron.svg") center / contain no-repeat;
+  mask: url("./assets/icons/chevron.svg") center / contain no-repeat;
+  transform: rotate(90deg);
+  transition: transform .18s ease;
+  width: var(--sizing-20);
+}
+
+[data-s1-component="lnb"] [data-s1-part="item"][aria-expanded="true"] [data-s1-part="item-toggle"] {
+  transform: rotate(90deg) scaleX(-1);
+}
+
+/* 하위 목록(레벨 2) — 부모 메뉴 아래로 들여쓴다. 글자색은 상위 메뉴와 같다(river 2026-09-29) —
+   연하게 낮추지 않는다. 고른 상태·hover 는 부모와 같은 규칙을 그대로 쓴다. */
+[data-s1-component="lnb"] [data-s1-part="subitems"] {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 calc(var(--sizing-20) + var(--spacing-8));
+}
+
+[data-s1-component="lnb"] [data-s1-part="subitems"][hidden] {
+  display: none;
+}
+
+/* ── 접힘 상태 — 아이콘만 남기고 글자·구분명·하위목록·여닫이를 감춘다 ── */
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="group"],
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item-toggle"],
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="subitems"],
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="brand"] {
+  display: none;
+}
+
+/* 접힌 칸 — 아이콘 위, 메뉴명 아래(river 2026-09-30, Figma dev-screen-qa-test 325:3749).
+   칸 64×64 정사각형(원본 48 에서 넓힘 — river 2026-09-30 "글씨가 줄임표시 되지않도록" · "상자가 정사각형이 되도록") ·
+   모서리 radius/6 · 아이콘 24 · 글자와 간격 2 · 칸 사이 16 · 글자 보통 두께 130%.
+   글자는 말줄임하지 않는다 — 넘치는 긴 이름은 칸 안에서 두 줄로 내린다.
+   needs-decision — 원본 글자 크기는 11 인데 정본에 11 이 없어 가장 가까운 12(font-size/12)를 쓴다.
+   블록 상자로 두고 세로 가운데는 align-content 로 맞춘다. */
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="items"] {
+  gap: var(--spacing-16);   /* 원본 24 에서 줄임 — 칸이 64 로 커져 사이가 넓어 보였다(river 2026-09-30) */
+}
+
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"] {
+  align-content: center;
+  display: block;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+  height: var(--sizing-64);   /* 정사각형 64×64 — 폭과 같게(river 2026-09-30) */
+  min-height: 0;
+  padding: var(--spacing-2);
+  text-align: center;
+  white-space: normal;
+  width: var(--sizing-64);
+  word-break: keep-all;
+}
+
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item-icon"] {
+  display: block;
+  height: var(--sizing-24);
+  margin: 0 auto var(--spacing-2);
+  width: var(--sizing-24);
+}
+
+/* 접힌 칸의 선택 — 파란 바탕 + 흰 아이콘·흰 글자(원본 그대로 button primary 토큰). 라이트·다크 같은 규칙. */
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][aria-current="page"] {
+  background: var(--color-button-bg-primary--default);
+  color: var(--color-button-label-primary--default);
+  font-weight: var(--font-weight-bold);   /* 접힘 선택 메뉴명도 볼드(river 2026-09-30) */
+}
+
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][aria-current="page"] [data-s1-part="item-icon"] {
+  background-color: var(--color-button-label-primary--default);
+}
+
+/* 다크에서는 라인형 대신 **솔리드형**을 기본으로 쓴다(river 2026-09-29).
+   항목이 --s1-icon-solid 를 함께 주면 다크에서 그것으로 바뀌고, 없으면 원래 그림을 그대로 쓴다. */
+[data-theme="dark"] [data-s1-component="lnb"] [data-s1-part="item-icon"] {
+  -webkit-mask-image: var(--s1-icon-solid, var(--s1-icon, url("./assets/icons/menu.svg")));
+  mask-image: var(--s1-icon-solid, var(--s1-icon, url("./assets/icons/menu.svg")));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-s1-component="lnb"],
+  [data-s1-component="lnb"] [data-s1-part="collapse-icon"],
+  [data-s1-component="lnb"] [data-s1-part="item-toggle"] {
+    transition: none;
+  }
+}
