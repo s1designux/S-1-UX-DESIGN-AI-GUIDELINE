@@ -9,7 +9,7 @@ import { init, destroy } from "../../components/multi-toggle.js";
 export const BREAKS = ["pc"];
 export const DEFAULT_BREAK = "pc";
 export const VARIANTS = ["base"];
-export const SIZES = ["md","sm"];
+export const SIZES = ["md","sm","xsm"];
 export const PARTS = ["cell"];
 
 /* 예제에 있던 내용 — prop 을 주지 않으면 이게 그려진다. */

@@ -2634,7 +2634,7 @@
    인디케이터가 묶음 전체에서 끊기지 않고 이어진다. */
 [data-s1-component="tab"] {
   align-items: stretch;
-  background: var(--color-navigation-bg);
+  background: transparent; /* 정본 buildLineTab 은 배경 없음 — 놓인 자리 바탕이 보인다 */
   display: inline-flex;
   position: relative;
 }
@@ -2811,6 +2811,14 @@
   padding-inline: var(--spacing-8);
 }
 
+/* xsm(28) — 정본 buildMultiToggleElement sizes xsm(h28·padX8·font12·minW48). 28 줄 부품과 같은 글자 12. */
+[data-s1-component="multi-toggle"][data-size="xsm"] [data-s1-part="cell"] {
+  font-size: var(--font-size-12);
+  height: var(--sizing-28);
+  min-width: var(--sizing-48);
+  padding-inline: var(--spacing-8);
+}
+
 /* 첫/마지막 칸만 바깥 모서리를 둥글린다(정본 first·last cornerRadius). */
 [data-s1-component="multi-toggle"] [data-s1-part="cell"]:first-child {
   border-bottom-left-radius: var(--radius-control-sm);
@@ -2869,8 +2877,9 @@
 
 /* density:narrow 좁게(28px) — data-size 를 직접 주면 그쪽이 이긴다 */
 [data-s1-density="narrow"] [data-s1-component="multi-toggle"]:not([data-size]) [data-s1-part="cell"] {
-  height: var(--sizing-34);
-  min-width: var(--sizing-56);
+  font-size: var(--font-size-12);
+  height: var(--sizing-28);
+  min-width: var(--sizing-48);
   padding-inline: var(--spacing-8);
 }
 
@@ -5975,7 +5984,7 @@
 </style></head>
 <body><div class="wrap">
 <h1>모바일 크기 기준</h1>
-<p class="sub">모바일 화면 — 화면마다 쓰는 부품 크기. 배포본 0.14.13 (2026-10-01) 실제 부품으로 그렸습니다.</p>
+<p class="sub">모바일 화면 — 화면마다 쓰는 부품 크기. 배포본 0.15.0 (2026-10-02) 실제 부품으로 그렸습니다.</p>
 <div class="cols">
 <section class="col" data-s1-break="mobile">
   <header><h3>모바일 화면</h3><p>손가락 기준 48 하나 · <code>--profile mobile</code></p></header>

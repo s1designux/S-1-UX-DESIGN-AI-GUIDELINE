@@ -3,7 +3,7 @@
     "generated": true,
     "source": "plugins/figma-vars-installer/src/build-components.ts",
     "method": "mock-execution",
-    "sourceHash": "3efea8a150db",
+    "sourceHash": "43b9a91c0f5a",
     "unknownValuePolicy": [
       "unknown",
       "not-defined",
@@ -1702,7 +1702,8 @@
         ],
         "size": [
           "md",
-          "sm"
+          "sm",
+          "xsm"
         ]
       },
       "geometry": [
@@ -1843,6 +1844,75 @@
           "bottomRightRadius": "4",
           "strokeWeight": "1",
           "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "position": "first",
+            "size": "xsm"
+          },
+          "target": "root",
+          "height": 28,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingRight": "8",
+          "paddingLeft": "8",
+          "minWidth": "48",
+          "topLeftRadius": "4",
+          "topRightRadius": "0",
+          "bottomLeftRadius": "4",
+          "bottomRightRadius": "0",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "position": [
+              "middle-left",
+              "middle-right"
+            ],
+            "size": "xsm"
+          },
+          "target": "root",
+          "height": 28,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingRight": "8",
+          "paddingLeft": "8",
+          "minWidth": "48",
+          "topLeftRadius": "0",
+          "topRightRadius": "0",
+          "bottomLeftRadius": "0",
+          "bottomRightRadius": "0",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "position": "last",
+            "size": "xsm"
+          },
+          "target": "root",
+          "height": 28,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingRight": "8",
+          "paddingLeft": "8",
+          "minWidth": "48",
+          "topLeftRadius": "0",
+          "topRightRadius": "4",
+          "bottomLeftRadius": "0",
+          "bottomRightRadius": "4",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
         }
       ],
       "anatomy": [],
@@ -1868,7 +1938,8 @@
       "variantAxes": {
         "Size": [
           "md",
-          "sm"
+          "sm",
+          "xsm"
         ],
         "Selected": [
           "Left",
@@ -1964,6 +2035,53 @@
           "paddingRight": "8",
           "paddingLeft": "8",
           "minWidth": "56",
+          "topLeftRadius": "4",
+          "topRightRadius": "0",
+          "bottomLeftRadius": "4",
+          "bottomRightRadius": "0",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Size": "xsm",
+            "Selected": "Left"
+          },
+          "target": "position=first, state=selected, size=xsm",
+          "height": 28,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingRight": "8",
+          "paddingLeft": "8",
+          "minWidth": "48",
+          "topLeftRadius": "4",
+          "topRightRadius": "0",
+          "bottomLeftRadius": "4",
+          "bottomRightRadius": "0",
+          "strokeWeight": "1",
+          "strokeAlign": "INSIDE"
+        },
+        {
+          "when": {
+            "Size": "xsm",
+            "Selected": [
+              "Center",
+              "Right"
+            ]
+          },
+          "target": "position=first, state=default, size=xsm",
+          "height": 28,
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "FIXED",
+          "primaryAxisAlignItems": "CENTER",
+          "counterAxisAlignItems": "CENTER",
+          "paddingRight": "8",
+          "paddingLeft": "8",
+          "minWidth": "48",
           "topLeftRadius": "4",
           "topRightRadius": "0",
           "bottomLeftRadius": "4",

@@ -12,7 +12,7 @@
     "figmaStatus": "confirmed",
     "harnessStatus": "implemented",
     "figmaNodeId": "587:8029",
-    "description": "여러 선택지 중 하나를 고르는 분절 컨트롤(segmented control). 정본은 두 세트다 — 셀 정의 'Multi Toggle Element'(position×state×size, 32 variants)와 그 셀 인스턴스 3개를 묶은 조합형 'Multi Toggle'(Size×Selected, 6 variants).",
+    "description": "여러 선택지 중 하나를 고르는 분절 컨트롤(segmented control). 정본은 두 세트다 — 셀 정의 'Multi Toggle Element'(position×state×size, 48 variants)와 그 셀 인스턴스 3개를 묶은 조합형 'Multi Toggle'(Size×Selected, 9 variants).",
     "notes": [
       "색은 자체 토큰 없이 button/* 을 그대로 쓴다(선택=primary, 비선택=secondary, 비활성=disabled).",
       "조합형 세트는 scv 호출이 0건 — 색은 전부 자식 셀 인스턴스가 갖는다(build-components.ts:6545~6647).",
@@ -33,8 +33,8 @@
     ]
   },
   "anatomy": [
-    { "part": "셀(Multi Toggle Element)", "role": "한 칸. position(first·middle-left·middle-right·last) × state(default·hover·selected·disabled) × size(md·sm)." },
-    { "part": "라벨", "role": "셀 안 가운데 정렬 텍스트(Medium 14). 셀 폭을 채운다(layoutGrow=1)." },
+    { "part": "셀(Multi Toggle Element)", "role": "한 칸. position(first·middle-left·middle-right·last) × state(default·hover·selected·disabled) × size(md·sm·xsm)." },
+    { "part": "라벨", "role": "셀 안 가운데 정렬 텍스트(Medium 14 · xsm 은 Medium 12). 셀 폭을 채운다(layoutGrow=1)." },
     { "part": "묶음(Multi Toggle)", "role": "셀 인스턴스 3개를 간격 0 으로 가로 배열. 자체 배경 없음(투명)." }
   ],
   "doDont": {
@@ -57,15 +57,16 @@
   "states": ["default", "hover", "selected", "disabled"],
   "sizing": {
     "md": { "height": 44, "paddingInline": 12, "fontSize": 14, "minWidth": 64 },
-    "sm": { "height": 34, "paddingInline": 8, "fontSize": 14, "minWidth": 56 }
+    "sm": { "height": 34, "paddingInline": 8, "fontSize": 14, "minWidth": 56 },
+    "xsm": { "height": 28, "paddingInline": 8, "fontSize": 12, "minWidth": 48 }
   },
   "variants": {
     "element": {
-      "description": "셀 정의 세트. position × state × size = 32 variants.",
+      "description": "셀 정의 세트. position × state × size = 48 variants.",
       "axes": {
         "position": ["first", "middle-left", "middle-right", "last"],
         "state": ["default", "hover", "selected", "disabled"],
-        "size": ["md", "sm"]
+        "size": ["md", "sm", "xsm"]
       },
       "cornerRadius": {
         "first": { "topLeft": 4, "topRight": 0, "bottomLeft": 4, "bottomRight": 0 },
@@ -82,8 +83,8 @@
       }
     },
     "composed": {
-      "description": "셀 3개 묶음. Size × Selected = 6 variants. 자체 색 토큰 없음.",
-      "axes": { "Size": ["md", "sm"], "Selected": ["Left", "Center", "Right"] },
+      "description": "셀 3개 묶음. Size × Selected = 9 variants. 자체 색 토큰 없음.",
+      "axes": { "Size": ["md", "sm", "xsm"], "Selected": ["Left", "Center", "Right"] },
       "cellSpec": {
         "Left": ["first/selected", "middle-right/default", "last/default"],
         "Center": ["first/default", "middle-left/selected", "last/default"],
@@ -114,7 +115,7 @@
     "propertyMap": {
       "position": ["first", "middle-left", "middle-right", "last"],
       "state": ["default", "hover", "selected", "disabled"],
-      "size": ["md", "sm"]
+      "size": ["md", "sm", "xsm"]
     },
     "_note": "componentSetKey 는 Figma Plugin 연동 전까지 보류. nodeId 는 reports/figma-library-build/multi-toggle/node-map.json 실측. 'Multi Toggle v2'(603:20, 8 variants)는 position 축 없는 비교용 실험본이며 정본 아님."
   },

@@ -2,7 +2,7 @@
    인디케이터가 묶음 전체에서 끊기지 않고 이어진다. */
 [data-s1-component="tab"] {
   align-items: stretch;
-  background: var(--color-navigation-bg);
+  background: transparent; /* 정본 buildLineTab 은 배경 없음 — 놓인 자리 바탕이 보인다 */
   display: inline-flex;
   position: relative;
 }

@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "77d319ab0cbc38b8c730cfd6016d410b403164e4",
+  "commit": "b576918830d526ea17f43e24e8ab05f361bdaac2",
   "scope": "PC",
   "generatedAt": "2026-10-02",
-  "syncedAt": "2026-10-02 07:38 (KST)",
-  "sourceCommitDate": "2026-10-01 17:10 (KST)",
-  "sourceCommitSubject": "fix(installer): 시간 선택 펼친 모습 — 재설치 때도 시간 목록을 찾아 붙인다"
+  "syncedAt": "2026-10-02 10:37 (KST)",
+  "sourceCommitDate": "2026-10-02 10:32 (KST)",
+  "sourceCommitSubject": "feat(multi-toggle): 가장 작은 크기 xsm(28) 신설 — 버튼·입력칸 28 줄과 같은 기준"
 }

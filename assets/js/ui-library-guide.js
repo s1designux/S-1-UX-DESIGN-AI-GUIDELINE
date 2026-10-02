@@ -88,7 +88,7 @@ const componentConfig = {
   "multi-toggle": {
     title: "Multi Toggle",
     description: "붙어 있는 칸 중 하나를 골라 화면 내용을 바꿀 때 사용합니다. 한 번에 하나만 선택됩니다.",
-    approvedScope: "상태 4종 · 두 크기(MD 44 · SM 34) · 3칸 구성 · 화살표 키 이동 · PC 전용",
+    approvedScope: "상태 4종 · 세 크기(MD 44 · SM 34 · XSM 28) · 3칸 구성 · 화살표 키 이동 · PC 전용",
     runtime: S1UI.multiToggle
   }
 ,
@@ -1495,7 +1495,7 @@ function textareaStateMatrix() {
 }
 
 /* ── State matrix: Multi Toggle ──
-   정본은 md·sm 두 크기와 상태 4종만 가진다. 모바일 크기가 없어 PC 전용으로 한 벌만 둔다.
+   정본은 md·sm·xsm 세 크기와 상태 4종만 가진다. 모바일 크기가 없어 PC 전용으로 한 벌만 둔다.
    Hover 는 미리보기 칸에 마우스를 올릴 수 없어 검수 전용 data-force-state 로만 표시한다. */
 
 let multiToggleId = 0;
@@ -1513,7 +1513,7 @@ function multiToggleMarkup({ size = "md", selected = 0, disabled = false, forceS
 }
 
 function multiToggleStateMatrix() {
-  const sizes = [["md", "MD", "44px"], ["sm", "SM", "34px"]];
+  const sizes = [["md", "MD", "44px"], ["sm", "SM", "34px"], ["xsm", "XSM", "28px"]];
   const states = [
     { label: "Default", opts: { selected: -1 } },
     { label: "Hover", opts: { selected: -1, forceState: "hover" }, note: "검수 표시" },

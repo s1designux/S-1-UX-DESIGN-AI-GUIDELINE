@@ -2,7 +2,7 @@
   "_meta": {
     "note": "자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요.",
     "purpose": "개발 툴과 검사기가 함께 읽는 허용목록. 여기 없는 variant·size·속성은 승인된 적이 없는 것이다.",
-    "canonicalFingerprint": "50680881f47c128937dc2a9f69dbb7b6d1151ed2038829c8eeaa527a32bf77e2"
+    "canonicalFingerprint": "6fa21d2a790564e8d5e3b88823d86275936e31e474a11da486a2a0d11e65f93c"
   },
   "components": [
     {
@@ -486,8 +486,8 @@
       "jsRequired": true,
       "events": [],
       "lifecycle": [],
-      "canonicalFingerprint": "6bba36f979923dd80eff39fe00b51da5bdd176efbc81451c601998739c5d2ce2",
-      "sourceFingerprint": "5b1ae252cd54b60515c5437868792b6cb35d27da9d625d5d80e646e2cab524d2"
+      "canonicalFingerprint": "d9ba2df4e82931e55ae29e2fbda141f230b6669fa2bf89b0450510df5e41a705",
+      "sourceFingerprint": "15eedea7e2cee313b4df15e0a6b96db9e0e7725b0a305d1ca2209a29cb191ca9"
     },
     {
       "id": "pagination",
@@ -576,7 +576,8 @@
       ],
       "sizes": [
         "md",
-        "sm"
+        "sm",
+        "xsm"
       ],
       "breaks": null,
       "states": [
@@ -604,8 +605,8 @@
         "init is idempotent",
         "destroy removes listeners"
       ],
-      "canonicalFingerprint": "1db5c62692a7f7adbc7f7d06d062c2add0fd55e4b1a10e38eca4b56a2929577a",
-      "sourceFingerprint": "cd613c83f941cde441eab9cb4112412fecc6405f14524842342f26555ded8b3f"
+      "canonicalFingerprint": "ced7200194ae2f94eddbbe676c6e5b2ec7480cd2cef708bffac53ef27c8e1a72",
+      "sourceFingerprint": "30ea9b873534cf4bbeb1900bc65230164e9840b60dff851e9fd6f337785408ce"
     },
     {
       "id": "modal",
@@ -871,8 +872,8 @@
         "init(root)",
         "destroy(root)"
       ],
-      "canonicalFingerprint": "a68e800326dd8d208e35cdf8804ba50758f3c00ee018cadf8aa58001aef8d41d",
-      "sourceFingerprint": "f874ed61367a7a5b5447a1a897462cf9f56631dbd9e71ea830339a2bdffd3aa4"
+      "canonicalFingerprint": "ebf42fedcbc1703ecb827bed01f59739fcaee90ed00d501a69a45819c5f0f998",
+      "sourceFingerprint": "6906cc63b6514f8d5f138fcfffdd9c4427ef513bd5800a58396fe8042e80963e"
     },
     {
       "id": "date-picker",

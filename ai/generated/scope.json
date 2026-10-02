@@ -11,9 +11,9 @@
       "registry/governance/density-policy.json",
       "ui-library/dist/components/*.css"
     ],
-    "distVersion": "0.14.13",
-    "distReleasedAt": "2026-10-01",
-    "canonicalFingerprint": "50680881f47c128937dc2a9f69dbb7b6d1151ed2038829c8eeaa527a32bf77e2",
+    "distVersion": "0.15.0",
+    "distReleasedAt": "2026-10-02",
+    "canonicalFingerprint": "6fa21d2a790564e8d5e3b88823d86275936e31e474a11da486a2a0d11e65f93c",
     "builtAt": "2026-10-02"
   },
   "rules": {
@@ -219,12 +219,13 @@
         "pc": {
           "wide": "md",
           "normal": "sm",
-          "narrow": "sm"
+          "narrow": "xsm"
         },
         "mobile": null,
         "heights": {
           "md": 44,
-          "sm": 34
+          "sm": 34,
+          "xsm": 28
         },
         "mobileHeights": {}
       },
@@ -378,7 +379,8 @@
       },
       "multi-toggle": {
         "md": 44,
-        "sm": 34
+        "sm": 34,
+        "xsm": 28
       },
       "dropdown": {
         "xxsm": 28,
@@ -646,7 +648,7 @@
         "form": {
           "control": "xxsm",
           "button": "xxsm",
-          "multi": "sm"
+          "multi": "xsm"
         },
         "header": {
           "button": "xxsm",
@@ -682,7 +684,7 @@
           "time-picker": "xxsm",
           "dropdown": "xxsm",
           "button": "xxsm",
-          "multi-toggle": "sm"
+          "multi-toggle": "xsm"
         },
         "header": {
           "button": "xxsm",
@@ -1974,7 +1976,8 @@
       },
       "sizes": [
         "md",
-        "sm"
+        "sm",
+        "xsm"
       ],
       "variants": [
         "base"

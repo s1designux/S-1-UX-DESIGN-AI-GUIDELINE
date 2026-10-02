@@ -11,7 +11,7 @@ const MARKUPS = {
 const DEFAULT_BREAK = "pc";
 const BREAKS = ["pc"];
 const VARIANTS = ["base"];
-const SIZES = ["md","sm"];
+const SIZES = ["md","sm","xsm"];
 /* variant·size 속성 이름은 컴포넌트마다 다르다 — 승인된 마크업에서 읽어 온 것이다. */
 const VARIANT_ATTRIBUTE = null;
 const SIZE_ATTRIBUTE = "data-size";
@@ -22,7 +22,7 @@ const SIZE_ATTRIBUTE = "data-size";
    (2026-09-04 독립 검증에서 19종 전부 컴파일 실패로 발견) */
 const props = defineProps({
   variant: { type: String, default: undefined, validator: (value) => ["base"].includes(value) },
-  size: { type: String, default: undefined, validator: (value) => ["md","sm"].includes(value) },
+  size: { type: String, default: undefined, validator: (value) => ["md","sm","xsm"].includes(value) },
   breakName: { type: String, default: "pc", validator: (value) => ["pc"].includes(value) },
   parts: { type: Object, default: () => ({}) },
   attrs: { type: Object, default: () => ({}) }

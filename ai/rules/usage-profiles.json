@@ -190,7 +190,7 @@
         "form": {
           "control": "xxsm",
           "button": "xxsm",
-          "multi": "sm"
+          "multi": "xsm"
         },
         "header": {
           "button": "xxsm",
@@ -236,7 +236,7 @@
   },
   "decisions": {
     "pr-filter-chip": "PR용 검색·필터 줄에서 칩은 34(md) 그대로 쓴다 — 칩에 44 크기가 없다. 입력칸·버튼 44와 높이가 다른 것을 알고 둔다(river 2026-10-02).",
-    "admin-compact-multi": "관리자용 작게 폼의 멀티 토글은 28 크기를 배포본에 추가하는 중이다(river 요청, 담당 에이전트 작업 중). 추가되기 전까지 34(sm)로 둔다.",
+    "admin-compact-multi": "관리자용 작게 폼의 멀티 토글은 배포본에 새로 생긴 xsm(28)을 쓴다 — 입력칸·버튼 28과 같은 높이(river 요청 반영, 2026-10-02).",
     "admin-compact-popup": "관리자용 작게 팝업 본문 입력칸을 화면 본문과 같은 28(xxsm)로 맞춘다(river 2026-10-02).",
     "gnb": "GNB 크기 — 디자인 기준대로 PR용 md(56) · 사용자용 sm(48) · 관리자용(기본·작게) xsm(36) (river 2026-10-02)."
   }

@@ -1,8 +1,8 @@
 {
   "id": "multi-toggle",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "status": "approved",
-  "canonicalFingerprint": "1db5c62692a7f7adbc7f7d06d062c2add0fd55e4b1a10e38eca4b56a2929577a",
+  "canonicalFingerprint": "ced7200194ae2f94eddbbe676c6e5b2ec7480cd2cef708bffac53ef27c8e1a72",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -15,7 +15,8 @@
   ],
   "sizes": [
     "md",
-    "sm"
+    "sm",
+    "xsm"
   ],
   "cellCount": {
     "canonical": 3,
@@ -33,6 +34,12 @@
       "paddingInline": "--spacing-8",
       "minWidth": "--sizing-56",
       "fontSize": "--font-size-14"
+    },
+    "xsm": {
+      "height": "--sizing-28",
+      "paddingInline": "--spacing-8",
+      "minWidth": "--sizing-48",
+      "fontSize": "--font-size-12"
     },
     "cornerRadius": "--radius-control-sm (첫·마지막 칸만)",
     "border": "--border-width-1",
@@ -52,7 +59,7 @@
   },
   "notInCanon": {
     "focus": "정본에 focus 변형이 없다. 2026-09-02 river 결정으로 웹에서도 만들지 않으며, 키보드 초점은 브라우저 기본 표시에 맡긴다.",
-    "mobileSize": "정본은 md/sm 뿐이다. PC 전용 컴포넌트로 유지한다.",
+    "mobileSize": "정본은 md/sm/xsm(PC) 뿐이다. PC 전용 컴포넌트로 유지한다.",
     "ownColorToken": "묶음·셀 모두 자체 색 토큰이 없다. color/button/* 을 그대로 쓰며 --color-control-* 은 쓰지 않는다."
   },
   "parts": [
@@ -79,7 +86,7 @@
     "entry": "components/multi-toggle.css",
     "rootScope": "[data-s1-component=multi-toggle]",
     "variantAttributes": [
-      "data-size=md|sm"
+      "data-size=md|sm|xsm"
     ],
     "ariaStates": [
       "[aria-checked=true]",
@@ -157,5 +164,5 @@
     "controlMode": "uncontrolled",
     "behavior": "좌우(위아래) 화살표로 이동, Space·Enter·클릭으로 선택. disabled 칸은 이동·포커스 대상에서 제외."
   },
-  "sourceFingerprint": "cd613c83f941cde441eab9cb4112412fecc6405f14524842342f26555ded8b3f"
+  "sourceFingerprint": "30ea9b873534cf4bbeb1900bc65230164e9840b60dff851e9fd6f337785408ce"
 }

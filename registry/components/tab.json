@@ -58,13 +58,6 @@
   },
   "tokens": [
     {
-      "name": "--color-navigation-bg",
-      "resolvedLight": "#FFFFFF",
-      "figmaVariable": "color/navigation/bg",
-      "status": "stable",
-      "description": "탭 배경"
-    },
-    {
       "name": "--color-navigation-label-default",
       "resolvedLight": "#555555",
       "figmaVariable": "color/navigation/label/default",

@@ -3683,7 +3683,7 @@ _Don't_
 
 ### Multi Toggle
 
-여러 선택지 중 하나를 고르는 분절 컨트롤(segmented control). 정본은 두 세트다 — 셀 정의 'Multi Toggle Element'(position×state×size, 32 variants)와 그 셀 인스턴스 3개를 묶은 조합형 'Multi Toggle'(Size×Selected, 6 variants).
+여러 선택지 중 하나를 고르는 분절 컨트롤(segmented control). 정본은 두 세트다 — 셀 정의 'Multi Toggle Element'(position×state×size, 48 variants)와 그 셀 인스턴스 3개를 묶은 조합형 'Multi Toggle'(Size×Selected, 9 variants).
 
 **언제 쓰나**
 - 선택지가 2~4개로 적고 서로 배타적일 때(정렬 기준·기간 범위 등).
@@ -3698,8 +3698,8 @@ _Don't_
 
 | 요소 | 역할 |
 | --- | --- |
-| 셀(Multi Toggle Element) | 한 칸. position(first·middle-left·middle-right·last) × state(default·hover·selected·disabled) × size(md·sm). |
-| 라벨 | 셀 안 가운데 정렬 텍스트(Medium 14). 셀 폭을 채운다(layoutGrow=1). |
+| 셀(Multi Toggle Element) | 한 칸. position(first·middle-left·middle-right·last) × state(default·hover·selected·disabled) × size(md·sm·xsm). |
+| 라벨 | 셀 안 가운데 정렬 텍스트(Medium 14 · xsm 은 Medium 12). 셀 폭을 채운다(layoutGrow=1). |
 | 묶음(Multi Toggle) | 셀 인스턴스 3개를 간격 0 으로 가로 배열. 자체 배경 없음(투명). |
 
 | variant | default | hover | selected | disabled |
@@ -3716,6 +3716,7 @@ agent:
     Size:
       - "md"
       - "sm"
+      - "xsm"
     Selected:
       - "Left"
       - "Center"
@@ -3804,6 +3805,26 @@ agent:
         paddingRight: "8"
         paddingLeft: "8"
         minWidth: "56"
+      -
+        when:
+          Size: "xsm"
+          Selected: "Left"
+        target: "position=first, state=selected, size=xsm"
+        height: 28
+        paddingRight: "8"
+        paddingLeft: "8"
+        minWidth: "48"
+      -
+        when:
+          Size: "xsm"
+          Selected:
+            - "Center"
+            - "Right"
+        target: "position=first, state=default, size=xsm"
+        height: 28
+        paddingRight: "8"
+        paddingLeft: "8"
+        minWidth: "48"
   composition:
     mustReuse:
       - "Multi Toggle Element"
@@ -3875,6 +3896,7 @@ agent:
       size:
         - "md"
         - "sm"
+        - "xsm"
   icons:
     allowed: "figma-unconfirmed"
     slots: "unknown"
@@ -4611,9 +4633,6 @@ agent:
       - "color/navigation/label/hover"
       - "color/navigation/label/selected"
     aliasChains:
-      -
-        chain: "--color-navigation-bg → --color-base-white → #FFFFFF"
-        status: "resolved"
       -
         chain: "--color-navigation-label-default → --color-gray-600 → #555555"
         status: "resolved"
@@ -5501,4 +5520,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: 4e483b81fe42 · 손편집 금지 -->
+<!-- generated-stamp: 13dc4c7a9922 · 손편집 금지 -->

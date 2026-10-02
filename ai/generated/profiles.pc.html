@@ -2634,7 +2634,7 @@
    인디케이터가 묶음 전체에서 끊기지 않고 이어진다. */
 [data-s1-component="tab"] {
   align-items: stretch;
-  background: var(--color-navigation-bg);
+  background: transparent; /* 정본 buildLineTab 은 배경 없음 — 놓인 자리 바탕이 보인다 */
   display: inline-flex;
   position: relative;
 }
@@ -2811,6 +2811,14 @@
   padding-inline: var(--spacing-8);
 }
 
+/* xsm(28) — 정본 buildMultiToggleElement sizes xsm(h28·padX8·font12·minW48). 28 줄 부품과 같은 글자 12. */
+[data-s1-component="multi-toggle"][data-size="xsm"] [data-s1-part="cell"] {
+  font-size: var(--font-size-12);
+  height: var(--sizing-28);
+  min-width: var(--sizing-48);
+  padding-inline: var(--spacing-8);
+}
+
 /* 첫/마지막 칸만 바깥 모서리를 둥글린다(정본 first·last cornerRadius). */
 [data-s1-component="multi-toggle"] [data-s1-part="cell"]:first-child {
   border-bottom-left-radius: var(--radius-control-sm);
@@ -2869,8 +2877,9 @@
 
 /* density:narrow 좁게(28px) — data-size 를 직접 주면 그쪽이 이긴다 */
 [data-s1-density="narrow"] [data-s1-component="multi-toggle"]:not([data-size]) [data-s1-part="cell"] {
-  height: var(--sizing-34);
-  min-width: var(--sizing-56);
+  font-size: var(--font-size-12);
+  height: var(--sizing-28);
+  min-width: var(--sizing-48);
   padding-inline: var(--spacing-8);
 }
 
@@ -5975,7 +5984,7 @@
 </style></head>
 <body><div class="wrap">
 <h1>PC 화면별 크기 기준</h1>
-<p class="sub">PR용 화면 / 사용자용 화면 / 관리자용 화면 · 기본 / 관리자용 화면 · 작게 — 화면마다 쓰는 부품 크기. 배포본 0.14.13 (2026-10-01) 실제 부품으로 그렸습니다.</p>
+<p class="sub">PR용 화면 / 사용자용 화면 / 관리자용 화면 · 기본 / 관리자용 화면 · 작게 — 화면마다 쓰는 부품 크기. 배포본 0.15.0 (2026-10-02) 실제 부품으로 그렸습니다.</p>
 <div class="cols">
 <section class="col" data-s1-density="wide">
   <header><h3>PR용 화면</h3><p>회사·서비스를 알리는 홍보·소개 화면 · <code>--profile pr</code></p></header>
@@ -6350,11 +6359,11 @@
   </div>
 </div></div><figcaption>날짜 선택 <code>xxsm</code> · 28</figcaption></figure><figure class="piece"><div class="slot"><button type="button" data-s1-component="button" data-break="pc" data-variant="primary" data-size="xxsm">
   <span data-s1-part="label">저장</span>
-</button></div><figcaption>버튼 <code>xxsm</code> · 28</figcaption></figure><figure class="piece"><div class="slot"><div data-s1-component="multi-toggle" data-size="sm" role="radiogroup" aria-label="정렬 기준">
+</button></div><figcaption>버튼 <code>xxsm</code> · 28</figcaption></figure><figure class="piece"><div class="slot"><div data-s1-component="multi-toggle" data-size="xsm" role="radiogroup" aria-label="정렬 기준">
   <button type="button" data-s1-part="cell" role="radio" aria-checked="true" data-value="left">왼쪽</button>
   <button type="button" data-s1-part="cell" role="radio" aria-checked="false" data-value="center">가운데</button>
   <button type="button" data-s1-part="cell" role="radio" aria-checked="false" data-value="right">오른쪽</button>
-</div></div><figcaption>멀티 토글 <code>sm</code> · 34</figcaption></figure></div>
+</div></div><figcaption>멀티 토글 <code>xsm</code> · 28</figcaption></figure></div>
   <h4>페이지 제목 줄</h4><div class="row"><figure class="piece"><div class="slot"><button type="button" data-s1-component="button" data-break="pc" data-variant="primary" data-size="xxsm">
   <span data-s1-part="label">등록</span>
 </button></div><figcaption>버튼 <code>xxsm</code> · 28</figcaption></figure><figure class="piece"><div class="slot"><div data-s1-component="tab" data-size="xsm" data-break="pc" role="tablist" aria-label="콘텐츠 보기 선택">
@@ -6435,5 +6444,5 @@
 </section>
 </div>
 <h2>한눈에 보기</h2><p class="sub">굵은 숫자가 높이(px)입니다. — 는 그 자리에 기준이 없다는 뜻입니다.</p>
-<div class="scroll"><table class="sum"><thead><tr><th>자리</th><th>부품</th><th>PR용 화면</th><th>사용자용 화면</th><th>관리자용 화면 · 기본</th><th>관리자용 화면 · 작게</th></tr></thead><tbody><tr><th>폼·상세 본문</th><td>입력칸 · 선택 상자 · 날짜 · 시간</td><td><b>44</b> <small>md</small></td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>xsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>폼·상세 본문</th><td>버튼</td><td><b>44</b> <small>md</small></td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>xsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>폼·상세 본문</th><td>멀티 토글</td><td><b>44</b> <small>md</small></td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>sm</small></td><td><b>34</b> <small>sm</small></td></tr><tr><th>페이지 제목 줄</th><td>버튼</td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>xsm</small></td><td><b>34</b> <small>xsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>페이지 제목 줄</th><td>페이지 탭</td><td><b>44</b> <small>md</small></td><td><b>42</b> <small>sm</small></td><td><b>40</b> <small>xsm</small></td><td><b>40</b> <small>xsm</small></td></tr><tr><th>검색·필터 줄</th><td>입력칸 · 선택 상자 · 날짜 · 시간</td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>xsm</small></td><td><b>28</b> <small>xxsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>검색·필터 줄</th><td>버튼</td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>xsm</small></td><td><b>28</b> <small>xxsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>검색·필터 줄</th><td>칩 · 필터 칩</td><td><b>34</b> <small>md</small></td><td><b>34</b> <small>md</small></td><td><b>28</b> <small>sm</small></td><td><b>28</b> <small>sm</small></td></tr><tr><th>표 칸 안</th><td>버튼</td><td><b>28</b> <small>xxsm</small></td><td><b>28</b> <small>xxsm</small></td><td><b>28</b> <small>xxsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>팝업 본문</th><td>입력칸 · 선택 상자 · 날짜 · 시간</td><td><b>44</b> <small>md</small></td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>xsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>표</th><td>줄 높이</td><td><b>44</b> <small>md</small></td><td><b>44</b> <small>md</small></td><td><b>38</b> <small>sm</small></td><td><b>34</b> <small>xsm</small></td></tr></tbody></table></div>
+<div class="scroll"><table class="sum"><thead><tr><th>자리</th><th>부품</th><th>PR용 화면</th><th>사용자용 화면</th><th>관리자용 화면 · 기본</th><th>관리자용 화면 · 작게</th></tr></thead><tbody><tr><th>폼·상세 본문</th><td>입력칸 · 선택 상자 · 날짜 · 시간</td><td><b>44</b> <small>md</small></td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>xsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>폼·상세 본문</th><td>버튼</td><td><b>44</b> <small>md</small></td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>xsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>폼·상세 본문</th><td>멀티 토글</td><td><b>44</b> <small>md</small></td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>sm</small></td><td><b>28</b> <small>xsm</small></td></tr><tr><th>페이지 제목 줄</th><td>버튼</td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>xsm</small></td><td><b>34</b> <small>xsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>페이지 제목 줄</th><td>페이지 탭</td><td><b>44</b> <small>md</small></td><td><b>42</b> <small>sm</small></td><td><b>40</b> <small>xsm</small></td><td><b>40</b> <small>xsm</small></td></tr><tr><th>검색·필터 줄</th><td>입력칸 · 선택 상자 · 날짜 · 시간</td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>xsm</small></td><td><b>28</b> <small>xxsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>검색·필터 줄</th><td>버튼</td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>xsm</small></td><td><b>28</b> <small>xxsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>검색·필터 줄</th><td>칩 · 필터 칩</td><td><b>34</b> <small>md</small></td><td><b>34</b> <small>md</small></td><td><b>28</b> <small>sm</small></td><td><b>28</b> <small>sm</small></td></tr><tr><th>표 칸 안</th><td>버튼</td><td><b>28</b> <small>xxsm</small></td><td><b>28</b> <small>xxsm</small></td><td><b>28</b> <small>xxsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>팝업 본문</th><td>입력칸 · 선택 상자 · 날짜 · 시간</td><td><b>44</b> <small>md</small></td><td><b>44</b> <small>md</small></td><td><b>34</b> <small>xsm</small></td><td><b>28</b> <small>xxsm</small></td></tr><tr><th>표</th><td>줄 높이</td><td><b>44</b> <small>md</small></td><td><b>44</b> <small>md</small></td><td><b>38</b> <small>sm</small></td><td><b>34</b> <small>xsm</small></td></tr></tbody></table></div>
 </div></body></html>
