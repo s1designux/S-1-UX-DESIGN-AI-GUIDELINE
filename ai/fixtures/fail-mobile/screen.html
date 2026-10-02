@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../../../ui-library/dist/assets/css/tokens.css">
+  <link rel="stylesheet" href="../../../ui-library/dist/s1-ui.css">
+  <!-- 일부러 어긋나게 만든 표본 — 고치지 마세요.
+       모바일 화면인데 PC 크기 버튼, 밀도 단어, 모바일에서 바꿔 써야 할 멀티 토글이 섞였다. -->
+</head>
+<body data-s1-break="mobile">
+  <div data-s1-density="normal">
+    <button type="button" data-s1-component="button" data-variant="primary" data-size="md">
+      <span data-s1-part="label">다음</span>
+    </button>
+  </div>
+  <div data-s1-component="multi-toggle" data-size="md" role="radiogroup" aria-label="정렬 기준">
+    <button type="button" data-s1-part="cell" role="radio" aria-checked="true" data-value="new">최신</button>
+    <button type="button" data-s1-part="cell" role="radio" aria-checked="false" data-value="old">과거</button>
+  </div>
+  <script type="module">
+    import { autoInit } from "../../../ui-library/dist/s1-ui.auto.js";
+    autoInit();
+  </script>
+</body>
+</html>

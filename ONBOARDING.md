@@ -23,7 +23,18 @@
 2. 모바일 앱 / 모바일 웹
 
 > 한 번에 하나만 고릅니다. PC와 모바일을 같이 만들어야 하면 **둘로 나눠서 따로** 진행합니다.
-> 섞으면 PC 화면에 모바일 전용 부품이 들어가고, 검수기가 그걸 잡아냅니다.
+
+**Q2-1. (Q2에서 PC 웹을 골랐을 때만) 누가 쓰는 화면인가요?** — 부품 크기가 이걸로 정해집니다
+1. PR용 — 회사·서비스를 알리는 홍보·소개 화면
+2. 사용자용 ★ — 여유 있게. 기본 높이 44
+3. 관리자용
+
+**Q2-2. (Q2-1에서 관리자용을 골랐을 때만) 어떤 크기로 쓰나요?**
+1. 기본 ★ — 관리자가 평소에 쓰는 크기. 기본 높이 34
+2. 작게 — 정보를 더 많이 담을 때. 기본 높이 28
+
+> 모바일은 Q2-1·Q2-2를 건너뜁니다. 모바일 크기는 손가락 기준 하나뿐입니다.
+> 한 화면에서는 하나만 고릅니다. 섞으면 큰 버튼과 작은 버튼이 뒤섞이고, 검수기가 그걸 잡아냅니다.
 
 **Q3. 무엇으로 만드나요?**
 1. HTML + CSS ★
@@ -52,8 +63,20 @@
 
 | 답 | 읽을 파일 | 여기에 없는 것 |
 | --- | --- | --- |
-| PC 웹 | `ai/rules/platform.pc.md` + `ai/generated/components.pc.md` | 모바일 기준은 읽지 않습니다 |
-| 모바일 | `ai/rules/platform.mobile.md` + `ai/generated/components.mobile.md` | PC 기준은 읽지 않습니다 |
+| PC 웹 | `ai/rules/platform.pc.md` + `ai/generated/components.pc.md` + 아래 표 하나 | 모바일 기준은 읽지 않습니다 |
+| 모바일 | `ai/rules/platform.mobile.md` + `ai/generated/components.mobile.md` + `ai/generated/profile.mobile.md` | PC 기준은 읽지 않습니다 |
+
+**Q2-1·Q2-2 답에 따라 하나만 (PC 웹일 때)**
+
+| 답 | 읽을 파일 |
+| --- | --- |
+| PR용 | `ai/generated/profile.pr.md` |
+| 사용자용 | `ai/generated/profile.user.md` |
+| 관리자용 · 기본 | `ai/generated/profile.admin.md` |
+| 관리자용 · 작게 | `ai/generated/profile.admin-compact.md` |
+
+`profile.*.md` 가 **부품마다 써야 할 크기를 하나로 정해 둔 표**입니다.
+배포본 예제를 붙인 뒤 `data-size` 값을 이 표대로 바꿉니다. 예제에 적힌 크기를 그대로 두거나, 크기를 화면 느낌으로 고르지 않습니다.
 
 **Q3 답에 따라 하나만**
 
@@ -75,10 +98,11 @@
 ## 3단계 — 세팅을 파일로 남기세요
 
 Q1에서 1번(파일을 읽고 쓸 수 있는 도구)을 골랐다면, 작업할 프로젝트 맨 위에 `s1.profile.json` 을 만듭니다.
-검수기가 이 파일을 읽어 "어떤 매체 기준으로 볼지"를 정합니다.
+검수기가 이 파일을 읽어 "어떤 화면 기준으로 볼지"를 정합니다.
 
 ```json
 {
+  "profile": "user",
   "platform": "pc",
   "stack": "web",
   "service": "default",
@@ -87,12 +111,13 @@ Q1에서 1번(파일을 읽고 쓸 수 있는 도구)을 골랐다면, 작업할
 }
 ```
 
-- `platform` — `pc` 또는 `mobile`
+- `platform` — `pc` 또는 `mobile` (Q2)
+- `profile` — PC 웹이면 `pr`(PR용) · `user`(사용자용) · `admin`(관리자용 기본) · `admin-compact`(관리자용 작게). 모바일이면 `mobile`
 - `stack` — `web` · `react` · `vue` · `kotlin` · `swift` · `cpp`
 - `service` — `default`
 
 Q1에서 2번(대화형 AI)을 골랐다면 파일 대신 대화 안에서 이 값을 계속 기억하고, 답할 때마다 맨 위에 한 줄로 밝힙니다 —
-`[S1 · PC · HTML+CSS · default 기준]`
+`[S1 · PC 사용자용 · HTML+CSS · default 기준]`
 
 ---
 
@@ -101,8 +126,10 @@ Q1에서 2번(대화형 AI)을 골랐다면 파일 대신 대화 안에서 이 �
 만들었다고 말하기 전에 검수기를 돌립니다. **검수를 통과하지 못한 화면은 "다 적용했다"고 말하지 않습니다.**
 
 ```bash
-node ai/check/s1-check.mjs <만든폴더> --platform pc --report 판정표.html
+node ai/check/s1-check.mjs <만든폴더> --profile user --report 판정표.html
 ```
+
+`--profile` 에는 PC 웹이면 `pr`(PR용) · `user`(사용자용) · `admin`(관리자용 기본) · `admin-compact`(관리자용 작게), 모바일이면 `mobile` 을 넣습니다. `s1.profile.json` 이 있으면 생략해도 됩니다.
 
 - 결과가 **합격**이면 끝입니다.
 - **불합격**이면 나온 항목을 고치고 다시 돌립니다. 통과할 때까지 반복합니다.

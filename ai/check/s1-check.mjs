@@ -4,10 +4,12 @@
  * --------------------------------------------------------------------------
  *   node ai/check/s1-check.mjs <검사할폴더> --platform pc
  *   node ai/check/s1-check.mjs src --platform mobile --stack kotlin --report 판정표.html
+ *   node ai/check/s1-check.mjs src --profile admin        (화면 종류: pr · user · admin · admin-compact · mobile)
  *
  * [판정 기준을 이 파일이 만들지 않는다]
  *   승인된 부품·크기·필수 속성·필수 부품·매체 소속 ← ai/generated/scope.json (배포본에서 뽑은 것)
  *   조합 문법(간격·글자 크기)                      ← scope.json 의 scale / grouping
+ *   화면 종류(일반 사용자·관리자·모바일)별 크기     ← scope.json 의 profiles / density
  *   여기 없는 것은 검사하지 않는다.
  *
  * [기존 s1-ui-lint 와 다른 점]
@@ -59,7 +61,17 @@ async function loadProfile() {
   return null;
 }
 const profile = await loadProfile();
-const platform = flag("platform") || profile?.platform || null;
+const usageId = flag("profile") || profile?.profile || null;
+const usage = usageId ? scope.profiles?.[usageId] : null;
+if (usageId && !usage) {
+  console.error(`없는 화면 종류입니다: ${usageId} — ${Object.keys(scope.profiles || {}).join(" · ")} 중에서 고르세요.`);
+  process.exit(2);
+}
+const platform = flag("platform") || usage?.platform || profile?.platform || null;
+if (usage && platform !== usage.platform) {
+  console.error(`${usage.label}은 ${usage.platform === "pc" ? "PC" : "모바일"} 화면입니다. --platform ${platform} 과 맞지 않습니다.`);
+  process.exit(2);
+}
 const stack = flag("stack") || profile?.stack || "web";
 const service = flag("service") || profile?.service || "default";
 const reportPath = flag("report");
@@ -189,6 +201,141 @@ function walkMarkup(text) {
   return { elements, partsByComponent };
 }
 
+/* ── 화면 종류별 크기 ─────────────────────────────────────────────────── */
+/* PC: river 가 크기 판정표에서 고른 '자리 × 부품' 값(scope.profiles[].componentSizes)과 표 줄 높이.
+   모바일: 밀도 정책의 손가락 기준 크기 하나. */
+const density = scope.density || null;
+const densityAttribute = density?.attribute || "data-s1-density";
+const wrapperBreakAttribute = density?.breakAttribute || "data-s1-break";
+const ZONE_ATTRIBUTE = "data-s1-zone";
+const MARKED_ZONES = new Set(["form", "header", "filter"]);
+const OWNING_DIALOGS = new Set(["modal", "modal-content"]);
+const zoneLabel = (zone) => density?.zones?.[zone]?.label || zone;
+
+/**
+ * 이 부품이 놓인 자리. 가까운 조상부터 본다.
+ *   { owned }   — 다른 부품 안에 든 것(팝업 아래 버튼·선택 상자 안 목록). 그 부품 예제 크기를 따른다.
+ *   { zone }    — form · header · filter · table · popup
+ */
+function placeOf(element) {
+  let inFooter = false;
+  for (let a = element.parent; a; a = a.parent) {
+    const marked = a.attributes[ZONE_ATTRIBUTE];
+    if (marked && MARKED_ZONES.has(marked)) return { zone: marked };
+    if (a.ownComponent) {
+      if (a.ownComponent === "table") return { zone: "table" };
+      if (OWNING_DIALOGS.has(a.ownComponent)) return inFooter ? { owned: a.ownComponent } : { zone: "popup" };
+      return { owned: a.ownComponent };
+    }
+    if (a.part === "footer") inFooter = true;
+  }
+  return { zone: "form" };
+}
+
+function heightLabel(id, size) {
+  if (platform === "mobile") {
+    const read = density?.map[id];
+    const height = read ? (read.mobileHeights[size] ?? density.mobileHeight) : null;
+    return height ? `${size}(${height})` : size;
+  }
+  const height = density?.heights?.[id]?.[size];
+  return height ? `${size}(${height})` : size;
+}
+
+function checkProfileSize(element, id, file) {
+  if (!usage || !density) return;
+  const guide = `ai/generated/profile.${usageId}.md 의 크기표를 따르세요.`;
+  const place = placeOf(element);
+  if (place.owned) return;
+  const declared = element.attributes["data-size"];
+  if (declared && /[{}$]/.test(declared)) return; // 코드로 넣는 값은 읽을 수 없다
+
+  if (platform === "mobile") {
+    const read = density.map[id];
+    if (!read) return;
+    const swap = density.mobileSubstitutes[id];
+    if (swap) {
+      add("error", "S1-PROFILE-SWAP", file, element.line,
+        `${usage.label}에서는 ${id} 를 쓰지 않습니다.`, `${swap.use} 를 대신 씁니다 — ${swap.note}`);
+      return;
+    }
+    const expected = read.mobile;
+    if (!expected || declared === expected) return;
+    if (!declared) {
+      if (!hasMobileWrapper(element)) add("warning", "S1-PROFILE-SIZE", file, element.line,
+        `${id} 에 크기가 없습니다. ${usage.label}에서는 ${heightLabel(id, expected)} 입니다.`, `data-size="${expected}" 를 적으세요. ${guide}`);
+      return;
+    }
+    add("error", "S1-PROFILE-SIZE", file, element.line,
+      `${usage.label}에서 ${id} 크기는 ${heightLabel(id, expected)} 입니다. 지금은 ${heightLabel(id, declared)} 입니다.`,
+      `data-size="${expected}" 로 바꾸세요. ${guide}`);
+    return;
+  }
+
+  /* PC — 표 자체는 줄 높이 기준, 나머지는 자리별 기준 */
+  let allowed;
+  let where;
+  if (id === "table") {
+    allowed = usage.tableRows || [];
+    where = "표 줄 높이";
+  } else if (id === "gnb") {
+    allowed = usage.gnb ? [usage.gnb] : [];
+    where = "GNB";
+  } else {
+    const expected = usage.componentSizes?.[place.zone]?.[id];
+    allowed = expected ? [expected] : [];
+    where = zoneLabel(place.zone);
+  }
+  if (!allowed.length) return; // 그 자리에 기준이 없다 — 판정하지 않는다
+  if (!declared) {
+    add("warning", "S1-PROFILE-SIZE", file, element.line,
+      `${id} 에 크기가 없습니다. ${usage.label} ${where}에서는 ${allowed.map((v) => heightLabel(id, v)).join(" · ")} 입니다.`,
+      `data-size="${allowed[0]}" 를 적으세요. ${guide}`);
+    return;
+  }
+  if (allowed.includes(declared)) return;
+  add("error", "S1-PROFILE-SIZE", file, element.line,
+    `${usage.label} ${where}에서 ${id} 크기는 ${allowed.map((v) => heightLabel(id, v)).join(" · ")} 입니다. 지금은 ${heightLabel(id, declared)} 입니다.`,
+    `data-size="${allowed[0]}" 로 바꾸세요. ${guide}`);
+}
+
+const hasMobileWrapper = (element) => { for (let a = element.parent; a; a = a.parent) if (a.attributes[wrapperBreakAttribute] === "mobile") return true; return false; };
+
+let rootDeclared = false;
+function checkProfileWrappers(file, walked) {
+  if (!usage) return;
+  for (const element of walked.elements) {
+    const level = element.attributes[densityAttribute];
+    const wrapperBreak = element.attributes[wrapperBreakAttribute];
+    const zone = element.attributes[ZONE_ATTRIBUTE];
+    if (wrapperBreak !== undefined && wrapperBreak !== "" && !/[{}$]/.test(wrapperBreak)) {
+      if (wrapperBreak !== platform) {
+        add("error", "S1-PROFILE-WRAP", file, element.line,
+          `${wrapperBreakAttribute}="${wrapperBreak}" 입니다. 지금 화면은 ${usage.label}입니다.`,
+          platform === "mobile" ? `${wrapperBreakAttribute}="mobile" 이어야 합니다.` : `PC 화면에는 ${wrapperBreakAttribute}="mobile" 을 적지 않습니다.`);
+      } else if (platform === "mobile") rootDeclared = true;
+    }
+    if (zone !== undefined && !/[{}$]/.test(zone) && platform === "pc" && !MARKED_ZONES.has(zone)) {
+      add("error", "S1-PROFILE-WRAP", file, element.line,
+        `${ZONE_ATTRIBUTE}="${zone}" 는 없는 자리입니다.`,
+        `적을 수 있는 자리: ${[...MARKED_ZONES].join(" · ")} (표 칸 안·팝업 본문은 저절로 잡힙니다).`);
+    }
+    if (level === undefined || /[{}$]/.test(level)) continue;
+    if (platform === "mobile") {
+      add("error", "S1-PROFILE-WRAP", file, element.line,
+        `모바일 화면에 ${densityAttribute}="${level}" 이 있습니다.`, `모바일은 밀도가 없습니다 — ${wrapperBreakAttribute}="mobile" 만 적습니다.`);
+      continue;
+    }
+    if (level !== usage.density) {
+      add("error", "S1-PROFILE-WRAP", file, element.line,
+        `${usage.label}에 ${densityAttribute}="${level}" 이 있습니다.`,
+        `${densityAttribute} 는 화면 맨 바깥에 "${usage.density}" 하나만 적습니다. 안쪽 자리는 ${ZONE_ATTRIBUTE} 로 표시합니다.`);
+      continue;
+    }
+    rootDeclared = true;
+  }
+}
+
 /* ── 검사들 ─────────────────────────────────────────────────────────────── */
 const findings = [];
 const add = (severity, rule, file, line, message, hint) => findings.push({ severity, rule, file, line, message, hint });
@@ -247,6 +394,7 @@ function checkGrammar(text, file) {
 
 function checkComponents(text, file, walked) {
   const { elements, partsByComponent } = walked;
+  const labelTargets = new Set(elements.filter((e) => e.tag === "label" && e.attributes.for).map((e) => e.attributes.for));
   for (const element of elements) {
     const id = element.ownComponent;
     if (!id) continue;
@@ -275,8 +423,9 @@ function checkComponents(text, file, walked) {
         `${scope.breakAttribute}="${platform}" 이어야 합니다.`);
     }
 
-    /* 2) 크기 — 그 매체에 있는 크기만 */
+    /* 2) 크기 — 그 매체에 있는 크기만, 그리고 화면 종류의 크기표대로 */
     const sizeAttribute = spec.sizeAttribute;
+    const before = findings.length;
     if (sizeAttribute) {
       const declared = element.attributes[sizeAttribute];
       if (declared) {
@@ -291,6 +440,8 @@ function checkComponents(text, file, walked) {
         }
       }
     }
+
+    if (findings.length === before) checkProfileSize(element, id, file);
 
     /* 3) 변형 */
     if (spec.variantAttribute && spec.variants.length) {
@@ -310,7 +461,7 @@ function checkComponents(text, file, walked) {
 
     /* 5) 속 채움 — 겉만 맞고 안이 빈 것 */
     const seen = partsByComponent.get(element) || new Set();
-    const missing = spec.requiredParts.filter((part) => !seen.has(part));
+    const missing = (spec.requiredPartsByPlatform?.[platform] || spec.requiredParts).filter((part) => !seen.has(part));
     if (missing.length) {
       add("error", "S1-PART", file, element.line,
         `${id} 안에 있어야 할 부품이 없습니다: ${missing.join(", ")}`,
@@ -319,10 +470,16 @@ function checkComponents(text, file, walked) {
 
     /* 6) 이름 없는 입력칸 */
     if (["input", "textarea", "select"].includes(id)) {
-      const named = seen.has("label") || "aria-label" in element.attributes || "aria-labelledby" in element.attributes;
+      /* 부품 위에 따로 올린 <label for="…"> 가 안쪽 입력칸을 가리켜도 이름이 있는 것이다. */
+      const labelledByFor = elements.some((inner) => {
+        if (!inner.attributes.id || !labelTargets.has(inner.attributes.id)) return false;
+        for (let a = inner.parent; a; a = a.parent) if (a === element) return true;
+        return false;
+      });
+      const named = seen.has("label") || labelledByFor || "aria-label" in element.attributes || "aria-labelledby" in element.attributes;
       if (!named) {
         add("warning", "S1-LABEL", file, element.line,
-          `${id} 에 라벨이 없습니다.`, "라벨은 부품 안이 아니라 부품 위에 별도 글자로 올립니다(간격 8).");
+          `${id} 에 라벨이 없습니다.`, "라벨은 부품 위에 별도 글자로 올리고(간격 8), <label for=\"입력칸 id\"> 나 aria-labelledby 로 이어 줍니다.");
       }
     }
   }
@@ -367,8 +524,11 @@ const usedComponents = new Set();
 let jsWiringSeen = false;
 let scanned = 0;
 
+const reportFile = reportPath ? path.resolve(process.cwd(), reportPath) : null;
 for (const file of files) {
   const text = await readFile(file, "utf8");
+  /* 검수기가 지난번에 남긴 판정표는 화면이 아니다. */
+  if (file === reportFile || text.includes("<title>S1 검수 판정표</title>")) continue;
   const shown = path.relative(process.cwd(), file);
   const extension = path.extname(file);
   scanned += 1;
@@ -383,10 +543,22 @@ for (const file of files) {
     const walked = walkMarkup(text);
     for (const element of walked.elements) if (element.ownComponent) usedComponents.add(element.ownComponent);
     checkComponents(text, shown, walked);
+    checkProfileWrappers(shown, walked);
     checkReimplementation(text, shown, walked);
     coverage.file = shown;
     countCoverage(walked, coverage);
   }
+}
+
+/* 화면 종류 — 정하지 않았거나, 정했는데 화면 맨 바깥 선언이 없다. */
+if (!usage) {
+  add("warning", "S1-PROFILE", "(프로젝트 전체)", 0,
+    "어느 화면용인지(PC PR용 · 사용자용 · 관리자용 기본·작게 · 모바일) 정하지 않아 부품 크기를 판정하지 못했습니다.",
+    `--profile ${Object.keys(scope.profiles || {}).join(" | ")} 를 붙이거나 s1.profile.json 에 "profile" 을 적으세요.`);
+} else if (usedComponents.size && !rootDeclared) {
+  add("warning", "S1-PROFILE-ROOT", "(프로젝트 전체)", 0,
+    `화면 맨 바깥에 ${usage.label} 선언이 없습니다.`,
+    platform === "mobile" ? `<body ${wrapperBreakAttribute}="mobile">` : `<body ${densityAttribute}="${usage.density}">`);
 }
 
 /* 동작 배선 — 여닫기·키보드가 필요한 부품을 썼는데 런타임을 안 붙였다. */
@@ -411,7 +583,7 @@ for (const finding of findings) {
   if (finding.hint) console.log(`    → ${finding.hint}`);
 }
 console.log("");
-console.log(`매체 ${platformLabel} · 기술 ${stack} · 서비스 ${service} · 배포본 ${scope._meta.distVersion}`);
+console.log(`${usage ? `화면 ${usage.label} · ` : ""}매체 ${platformLabel} · 기술 ${stack} · 서비스 ${service} · 배포본 ${scope._meta.distVersion}`);
 console.log(`파일 ${scanned}개 검사 · 오류 ${errors.length} · 경고 ${warnings.length}`);
 if (rate !== null) console.log(`S1 적용률 ${rate}% — 화면 속 부품 ${coverage.total}개 중 ${coverage.covered}개가 배포본입니다.`);
 console.log(passed ? "판정: 합격" : "판정: 불합격");
@@ -468,7 +640,7 @@ function renderReport({ findings, errors, warnings, rate, coverage, passed, scan
 </style></head>
 <body><div class="wrap">
 <h1>S1 검수 판정표</h1>
-<p class="sub">${platformLabel} 기준 · 기술 ${escape(stack)} · 서비스 ${escape(service)} · 배포본 ${escape(scope._meta.distVersion)} (${escape(scope._meta.distReleasedAt)}) · 파일 ${scanned}개</p>
+<p class="sub">${usage ? `${escape(usage.label)} · ` : ""}${platformLabel} 기준 · 기술 ${escape(stack)} · 서비스 ${escape(service)} · 배포본 ${escape(scope._meta.distVersion)} (${escape(scope._meta.distReleasedAt)}) · 파일 ${scanned}개</p>
 <div class="verdict">
   <span class="badge ${passed ? "ok" : "no"}">${passed ? "합격" : "불합격"}</span>
   <div class="stat">

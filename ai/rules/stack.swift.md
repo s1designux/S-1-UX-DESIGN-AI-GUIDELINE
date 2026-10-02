@@ -26,7 +26,7 @@ Compose·React 처럼 완성된 부품은 아직 없습니다.
 ## 4. 검수
 
 ```bash
-node ai/check/s1-check.mjs <만든폴더> --platform mobile --stack swift --report 판정표.html
+node ai/check/s1-check.mjs <만든폴더> --profile mobile --stack swift --report 판정표.html
 ```
 
 Swift 파일에서는 색 직접 쓰기를 검사합니다. 부품 조합 검사는 마크업에서만 동작합니다.

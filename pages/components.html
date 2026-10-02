@@ -1350,7 +1350,7 @@
     .s1-tab {
       display: flex;
       align-items: flex-end;
-      background: var(--color-navigation-bg);
+      background: transparent; /* 정본 buildLineTab: 배경 없음 */
       border-bottom: 1px solid var(--color-navigation-indicator-default);
       gap: 0;
     }
@@ -1883,7 +1883,7 @@
 
       <!-- ═══ MULTI TOGGLE ═══ -->
       <!-- Approved Multi Toggle guide: ui-library-guide.js renders from ui-library/dist -->
-      <section class="comp-section" id="multi-toggle" data-cov-states="default,hover,selected,disabled" data-cov-position="first,middle-left,middle-right,last" data-cov-sizes="md,sm" data-cov-selected="left,center,right"></section>
+      <section class="comp-section" id="multi-toggle" data-cov-states="default,hover,selected,disabled" data-cov-position="first,middle-left,middle-right,last" data-cov-sizes="md,sm,xsm" data-cov-selected="left,center,right"></section>
 
 
       <!-- Approved Input guide: ui-library-guide.js renders from ui-library/dist -->
@@ -2050,7 +2050,7 @@
 <span class="c-sel">.s1-tab</span> {
   <span class="c-prop">display</span>: <span class="c-val">flex</span>;
   <span class="c-prop">align-items</span>: <span class="c-val">flex-end</span>;
-  <span class="c-prop">background</span>: <span class="c-val">var(--color-navigation-bg)</span>;
+  <span class="c-prop">background</span>: <span class="c-val">transparent</span>;
   <span class="c-prop">border-bottom</span>: <span class="c-val">1px solid var(--color-navigation-indicator-default)</span>;
 }
 <span class="c-sel">.s1-tab-item</span> {
@@ -2082,7 +2082,6 @@
                 <tr><th>Token</th><th>Value (Semantic)</th><th>Resolved</th><th>Role</th></tr>
               </thead>
               <tbody>
-                <tr><td class="token-name">--color-navigation-bg</td><td class="token-value">var(--color-base-white)</td><td class="token-resolved" data-token="--color-navigation-bg"></td><td>탭 배경</td></tr>
                 <tr><td class="token-name">--color-navigation-label-default</td><td class="token-value">var(--color-gray-600)</td><td class="token-resolved" data-token="--color-navigation-label-default"></td><td>미선택 탭 라벨 색상</td></tr>
                 <tr><td class="token-name">--color-navigation-label-selected</td><td class="token-value">var(--color-blue-400)</td><td class="token-resolved" data-token="--color-navigation-label-selected"></td><td>선택·hover 탭 라벨 색상</td></tr>
                 <tr><td class="token-name">--color-navigation-indicator-default</td><td class="token-value">var(--color-gray-200)</td><td class="token-resolved" data-token="--color-navigation-indicator-default"></td><td>미선택 탭 하단 구분선</td></tr>

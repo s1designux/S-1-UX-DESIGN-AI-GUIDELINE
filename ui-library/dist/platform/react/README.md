@@ -1,6 +1,6 @@
 # @s1/ui-react
 
-**배포본 번호 0.14.13** · 2026-10-01 판
+**배포본 번호 0.15.0** · 2026-10-02 판
 이 번호가 최신인지는 디자인가이드 내려받기 화면에서 확인하세요 — 번호가 다르면 새로 받으면 됩니다.
 코드에서 볼 때는 `import { S1_VERSION } from "@s1/ui-react"` 입니다.
 
@@ -85,7 +85,7 @@ import { S1Button, S1Input, S1Table } from "@s1/ui-react";
 | `S1Tab` | — | PC `md` `sm` `xsm` · 모바일 `sm` | `pc` `mobile` | `tabs` · `children` | 같은 화면에서 콘텐츠 영역을 전환할 때. 정본에 등록된 플랫폼과 크기 중 사용 맥락에 맞는 항목을 고른다. |
 | `S1Pagination` | — | `28` | — | `pages` | 긴 목록·표를 페이지로 나눠 이동할 때. |
 | `S1Textarea` | — | — | `pc` `mobile` | `value`·`onChange` | 여러 줄 텍스트를 입력받을 때(메모·설명 등). Input 과 시각 동일 — --input-* 토큰을 공유한다. |
-| `S1MultiToggle` | — | `md` `sm` | — | `cells` · `onChange` | 선택지가 2~4개로 적고 서로 배타적일 때(정렬 기준·기간 범위 등). 선택 결과가 즉시 화면에 반영돼야 할 때. |
+| `S1MultiToggle` | — | `md` `sm` `xsm` | — | `cells` · `onChange` | 선택지가 2~4개로 적고 서로 배타적일 때(정렬 기준·기간 범위 등). 선택 결과가 즉시 화면에 반영돼야 할 때. |
 | `S1Modal` | `single` `dual` | — | `pc` `mobile` | `onOpen` · `onClose` | 확인·알림 등 흐름을 멈추고 결정을 받을 때. Single=알림/설명체 1버튼, Dual=확인/질문체 2버튼. |
 | `S1Table` | — | PC `md` `sm` `xsm` | — | `headerCells` · `rows` · `onSelectionchange` | 행·열의 정형 데이터를 보여줄 때. 정렬·선택(체크박스)·행 hover/selected 가 필요할 때. |
 | `S1MobileBottomNav` | `home` `search` `notification` `settings` | — | — | `parts` | 모바일 화면에서 최상위 영역 간 이동을 항상 보이게 둘 때. 탭 수가 3~5개로 고정된 주요 메뉴 구조일 때. |

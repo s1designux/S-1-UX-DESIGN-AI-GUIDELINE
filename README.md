@@ -34,8 +34,9 @@ React·Vue·Swift·Kotlin·C++ 로 쓸 때는 `ui-library/dist/platform/<플랫�
 ## AI에게 줄 때는 이 한 장
 
 AI(클로드·GPT·Cursor 등)에게 작업을 시킬 때는 [`ONBOARDING.md`](ONBOARDING.md) 를 그대로 주세요.
-AI가 **어떤 도구·어떤 매체(PC/모바일)·어떤 기술**인지 객관식으로 물어본 뒤, 그 조합에 맞는 규칙만 읽고 시작합니다.
-만든 결과는 검수기가 판정합니다 — `npm run ai:check -- <폴더> --platform pc --report 판정표.html`.
+AI가 **어떤 도구·어떤 매체(PC 웹/모바일)·PC 웹이면 누가 쓰는 화면인지(PR용 / 사용자용 / 관리자용 기본·작게)·어떤 기술**인지 객관식으로 물어본 뒤, 그 조합에 맞는 규칙만 읽고 시작합니다.
+부품 크기는 화면 종류마다 하나로 정해져 있습니다 — PC는 [`ai/generated/profiles.pc.html`](ai/generated/profiles.pc.html), 모바일은 [`ai/generated/profiles.mobile.html`](ai/generated/profiles.mobile.html) 에서 실제 부품으로 볼 수 있습니다.
+만든 결과는 검수기가 판정합니다 — `npm run ai:check -- <폴더> --profile user --report 판정표.html`.
 자세한 것은 [`ai/README.md`](ai/README.md).
 
 ## 가장 먼저 읽을 파일

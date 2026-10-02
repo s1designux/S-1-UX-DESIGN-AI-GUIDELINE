@@ -189,8 +189,8 @@ export interface S1TextareaProps extends S1BaseProps {
 export declare function S1Textarea(props: S1TextareaProps): ReactElement;
 
 export interface S1MultiToggleProps extends S1BaseProps {
-  /** 승인된 크기: md · sm */
-  size?: "md" | "sm";
+  /** 승인된 크기: md · sm · xsm */
+  size?: "md" | "sm" | "xsm";
   /** 목록 데이터 — 주지 않으면 예제 내용이 그려진다. */
   cells?: readonly S1ItemValue[];
   /** s1:multi-toggle:change */
