@@ -1,0 +1,7 @@
+{
+  "mode": "apply",
+  "profile": "admin",
+  "platform": "pc",
+  "stack": "web",
+  "service": "default"
+}

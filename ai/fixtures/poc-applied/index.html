@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <!-- 표본 — ../poc-sample 에 디자인 확인 결과(s1-review-result.json)대로 S1 을 입힌 화면. -->
+  <title>출입 기록 관리</title>
+  <link rel="stylesheet" href="../../../ui-library/dist/assets/css/tokens.css">
+  <link rel="stylesheet" href="../../../ui-library/dist/s1-ui.css">
+  <style>
+    .page-head { display: flex; justify-content: space-between; align-items: center; gap: var(--spacing-12); }
+    .search-bar { display: flex; gap: var(--spacing-12); align-items: center; margin-block: var(--spacing-24); }
+  </style>
+</head>
+<body data-s1-density="normal">
+  <!-- P08 그대로 두기(디자인 결정) — 색·글자만 S1 -->
+  <nav class="breadcrumb" data-s1-keep="P08">홈 &gt; 출입 관리 &gt; 출입 기록</nav>
+  <div class="page-head" data-s1-zone="header">
+    <h1>출입 기록 관리</h1>
+    <button type="button" data-s1-component="button" data-variant="primary" data-size="xsm"><span data-s1-part="label">등록</span></button>
+  </div>
+  <div class="search-bar" data-s1-zone="filter">
+    <div data-s1-component="input" data-size="xxsm" data-break="pc" aria-label="이름·카드번호">
+      <div data-s1-part="field"><input data-s1-part="control" type="text" placeholder="이름·카드번호"></div>
+    </div>
+    <div data-s1-component="date-picker" data-size="xxsm" data-break="pc" data-mode="single" aria-label="날짜">
+      <button type="button" data-s1-part="trigger" aria-haspopup="dialog" aria-expanded="false"><span data-s1-part="value">날짜 선택</span><span data-s1-part="icon" aria-hidden="true"></span></button>
+      <div data-s1-part="panel" role="dialog" hidden><div data-s1-part="calendar"></div></div>
+    </div>
+    <div data-s1-component="select" data-size="xxsm" data-break="pc" aria-label="상태">
+      <button type="button" data-s1-part="trigger" aria-haspopup="listbox" aria-expanded="false"><span data-s1-part="value">전체 상태</span><span data-s1-part="icon" aria-hidden="true"></span></button>
+      <div data-s1-part="panel" hidden>
+        <div data-s1-component="dropdown" data-type="text" data-size="md" role="listbox" aria-label="상태">
+          <div data-s1-part="option" role="option" aria-selected="true" tabindex="0" data-value="all"><span data-s1-part="option-label">전체 상태</span></div>
+          <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="ok"><span data-s1-part="option-label">정상</span></div>
+        </div>
+      </div>
+    </div>
+    <button type="button" data-s1-component="button" data-variant="secondary" data-size="xxsm"><span data-s1-part="label">검색</span></button>
+  </div>
+  <div data-s1-component="table" data-size="sm">
+    <table data-s1-part="table">
+      <thead><tr><th data-s1-part="header-cell" scope="col">이름</th><th data-s1-part="header-cell" scope="col">출입문</th><th data-s1-part="header-cell" scope="col">상태</th><th data-s1-part="header-cell" scope="col">관리</th></tr></thead>
+      <tbody>
+        <tr data-s1-part="row"><td data-s1-part="cell">김가나</td><td data-s1-part="cell">본관 1층</td><td data-s1-part="cell"><span data-s1-component="data-tag" data-shape="chips" data-solid="on" data-tone="blue">정상</span></td><td data-s1-part="cell"><button type="button" data-s1-component="text-button" data-variant="secondary"><span data-s1-part="label">삭제</span></button></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- P09 새 부품 요청(디자인 결정) — 진행 막대는 S1 에 없어 그대로 둔다 -->
+  <div class="progress" data-s1-keep="P09"><div class="progress-bar">동기화 62%</div></div>
+  <script type="module">
+    import { autoInit } from "../../../ui-library/dist/s1-ui.auto.js";
+    autoInit();
+  </script>
+</body>
+</html>

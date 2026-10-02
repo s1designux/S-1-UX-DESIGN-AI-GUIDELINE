@@ -1,8 +1,9 @@
 {
+  "mode": "new",
   "profile": "user",
   "platform": "pc",
   "stack": "web",
   "service": "default",
-  "guidelineVersion": "0.8.1",
-  "setUpAt": "2026-09-18"
+  "guidelineVersion": "0.16.1",
+  "setUpAt": "2026-10-02"
 }

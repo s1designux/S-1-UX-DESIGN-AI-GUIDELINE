@@ -1,0 +1,264 @@
+{
+  "project": "출입관리 POC (표본)",
+  "profile": "admin",
+  "createdAt": "2026-10-02",
+  "requestedBy": "개발 AI",
+  "items": [
+    {
+      "id": "P01",
+      "screen": "출입 기록 관리",
+      "file": "index.html",
+      "line": 26,
+      "zone": "header",
+      "poc": {
+        "name": "btn btn-primary #btnNew",
+        "does": "새 출입 기록을 등록하는 화면을 연다 — 이 화면의 주 액션",
+        "looks": "파란 배경 버튼",
+        "markup": "<button class=\"btn btn-primary\" id=\"btnNew\">등록</button>"
+      },
+      "match": "exact",
+      "s1": {
+        "component": "button",
+        "variant": "primary",
+        "size": "xsm",
+        "label": "등록"
+      },
+      "why": "button — 사용자가 실행할 액션, 화면에서 가장 중요한 단일 액션은 primary",
+      "selector": "#btnNew"
+    },
+    {
+      "id": "P02",
+      "screen": "출입 기록 관리",
+      "file": "index.html",
+      "line": 29,
+      "zone": "filter",
+      "poc": {
+        "name": "input.form-control",
+        "does": "이름이나 카드번호를 입력해 목록을 거른다",
+        "markup": "<input class=\"form-control\" type=\"text\" placeholder=\"이름·카드번호\">"
+      },
+      "match": "exact",
+      "s1": {
+        "component": "input",
+        "size": "xxsm"
+      },
+      "why": "input — 한 줄 텍스트 입력(검색·필터)",
+      "selector": ".search-bar input[type=text]"
+    },
+    {
+      "id": "P03",
+      "screen": "출입 기록 관리",
+      "file": "index.html",
+      "line": 30,
+      "zone": "filter",
+      "poc": {
+        "name": "input[type=date]",
+        "does": "기간(날짜)을 고른다",
+        "markup": "<input class=\"form-control\" type=\"date\">"
+      },
+      "match": "exact",
+      "s1": {
+        "component": "date-picker",
+        "size": "xxsm"
+      },
+      "why": "input 의 '쓰지 말 때' — 날짜는 DatePicker",
+      "selector": ".search-bar input[type=date]"
+    },
+    {
+      "id": "P04",
+      "screen": "출입 기록 관리",
+      "file": "index.html",
+      "line": 31,
+      "zone": "filter",
+      "poc": {
+        "name": "select.form-select",
+        "does": "상태 하나를 목록에서 고른다(3개)",
+        "markup": "<select class=\"form-select\">…</select>"
+      },
+      "match": "exact",
+      "s1": {
+        "component": "select",
+        "size": "xxsm"
+      },
+      "alternatives": [
+        {
+          "component": "filter-chip",
+          "variant": "line",
+          "size": "sm"
+        }
+      ],
+      "why": "select — 단일 값을 목록에서 고름. 목록 조건을 바꾸는 자리라 필터 칩도 후보",
+      "selector": ".search-bar select"
+    },
+    {
+      "id": "P05",
+      "screen": "출입 기록 관리",
+      "file": "index.html",
+      "line": 32,
+      "zone": "filter",
+      "poc": {
+        "name": "btn btn-dark",
+        "does": "조건으로 목록을 다시 불러온다",
+        "looks": "검정 배경 버튼",
+        "markup": "<button class=\"btn btn-dark\" type=\"submit\">검색</button>"
+      },
+      "match": "similar",
+      "s1": {
+        "component": "button",
+        "variant": "secondary",
+        "size": "xxsm",
+        "label": "검색"
+      },
+      "alternatives": [
+        {
+          "component": "button",
+          "variant": "primary",
+          "size": "xxsm",
+          "label": "검색"
+        }
+      ],
+      "why": "button — 실행 액션. 화면 주 액션(등록)이 따로 있어 보조(secondary)로 제안",
+      "gap": "S1 버튼에 검정 배경 변형이 없음 — secondary(흰 바탕) 또는 primary(파랑) 중 하나로 바뀜",
+      "selector": ".search-bar button"
+    },
+    {
+      "id": "P06",
+      "screen": "출입 기록 관리",
+      "file": "index.html",
+      "line": 37,
+      "zone": "table",
+      "poc": {
+        "name": "badge badge-green",
+        "does": "한 줄의 상태(정상)를 보여 준다 — 누를 수 없음",
+        "looks": "초록 둥근 표시",
+        "markup": "<span class=\"badge badge-green\">정상</span>"
+      },
+      "match": "similar",
+      "s1": {
+        "component": "data-tag",
+        "variant": "blue",
+        "label": "정상"
+      },
+      "why": "data-tag — 표·목록에서 한 줄의 상태를 보이게 할 때. 승인·확인은 파랑",
+      "gap": "S1 뱃지는 파랑·빨강 두 가지뿐 — 초록은 없어 파랑으로 바뀜(디자인 기준: 뜻이 정해지지 않은 색은 늘리지 않음)",
+      "selector": ".badge-green"
+    },
+    {
+      "id": "P07",
+      "screen": "출입 기록 관리",
+      "file": "index.html",
+      "line": 37,
+      "zone": "table",
+      "poc": {
+        "name": "btn btn-danger btn-sm",
+        "does": "그 줄의 기록을 지운다",
+        "looks": "빨간 배경 작은 버튼",
+        "markup": "<button class=\"btn btn-danger btn-sm\">삭제</button>"
+      },
+      "match": "similar",
+      "s1": {
+        "component": "button",
+        "variant": "secondary",
+        "size": "xxsm",
+        "label": "삭제"
+      },
+      "alternatives": [
+        {
+          "component": "text-button",
+          "label": "삭제"
+        }
+      ],
+      "why": "button — 실행 액션. 표 칸 안 버튼 크기 28",
+      "gap": "S1 버튼에 빨간(위험) 변형이 없음 — 지우기임을 색으로 구분할 수 없게 됨",
+      "selector": ".btn-danger"
+    },
+    {
+      "id": "P08",
+      "screen": "출입 기록 관리",
+      "file": "index.html",
+      "line": 23,
+      "zone": "header",
+      "poc": {
+        "name": "nav.breadcrumb",
+        "does": "지금 화면이 어디에 있는지 경로를 보여 주고, 위 단계로 이동한다",
+        "markup": "<nav class=\"breadcrumb\">홈 &gt; 출입 관리 &gt; 출입 기록</nav>"
+      },
+      "match": "none",
+      "gap": "S1 에 경로 표시(브레드크럼) 부품이 없음",
+      "selector": "nav.breadcrumb"
+    },
+    {
+      "id": "P09",
+      "screen": "출입 기록 관리",
+      "file": "index.html",
+      "line": 41,
+      "zone": "form",
+      "poc": {
+        "name": "div.progress",
+        "does": "동기화가 얼마나 진행됐는지 막대로 보여 준다",
+        "markup": "<div class=\"progress\"><div class=\"progress-bar\" style=\"width:62%\">동기화 62%</div></div>"
+      },
+      "match": "none",
+      "gap": "S1 에 진행 막대(프로그레스) 부품이 없음",
+      "selector": ".progress"
+    },
+    {
+      "id": "P10",
+      "screen": "출입 기록 관리",
+      "file": "index.html",
+      "line": 42,
+      "zone": "form",
+      "poc": {
+        "name": "label.switch",
+        "does": "실시간 갱신을 켜고 끈다(on/off 하나)",
+        "markup": "<label class=\"switch\"><input type=\"checkbox\"> 실시간 갱신</label>"
+      },
+      "match": "exact",
+      "s1": {
+        "component": "toggle"
+      },
+      "why": "button 의 '쓰지 말 때' — on/off 상태 전환은 Toggle",
+      "selector": "label.switch"
+    },
+    {
+      "id": "P11",
+      "screen": "출입 기록 관리",
+      "file": "index.html",
+      "line": 34,
+      "zone": "table",
+      "poc": {
+        "name": "table.grid",
+        "does": "출입 기록을 줄마다 보여 준다(일반 목록)",
+        "markup": "<table class=\"grid\">…</table>"
+      },
+      "match": "exact",
+      "s1": {
+        "component": "table",
+        "size": "sm"
+      },
+      "why": "table — 표. 관리자용 기본 표 줄 높이 38",
+      "selector": "table.grid"
+    },
+    {
+      "id": "P12",
+      "screen": "출입 기록 관리",
+      "file": "index.html",
+      "line": 38,
+      "zone": "table",
+      "poc": {
+        "name": "badge badge-red",
+        "does": "한 줄의 상태(거부)를 보여 준다 — 누를 수 없음",
+        "looks": "빨간 둥근 표시",
+        "markup": "<span class=\"badge badge-red\">거부</span>"
+      },
+      "match": "exact",
+      "s1": {
+        "component": "data-tag",
+        "variant": "red",
+        "label": "거부"
+      },
+      "why": "data-tag — 주의·에러는 빨강",
+      "selector": ".badge-red"
+    }
+  ]
+}
