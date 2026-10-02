@@ -31,6 +31,10 @@ S-1 디자인 시스템을 AI 에이전트와 개발자가 시각적으로 정�
 
 React·Vue·Swift·Kotlin·C++ 로 쓸 때는 `ui-library/dist/platform/<플랫폼>/` 안의 README 를 보세요.
 
+## 개발자용 안내 한 장
+
+준비 → 작업 흐름 → 검수까지 한 장에 정리했습니다 — [`ai/generated/developer-guide.html`](ai/generated/developer-guide.html) (브라우저로 열기).
+
 ## 어떤 AI 도구로 열어도 온보딩부터
 
 Claude Code·VS Code(Copilot)·Cursor·Windsurf·Gemini·Codex 가 처음 읽는 안내 파일에 "S1 온보딩부터"가 들어 있습니다.
