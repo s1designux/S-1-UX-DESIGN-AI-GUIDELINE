@@ -19,6 +19,12 @@ const result = JSON.parse(readFileSync(path.join(ignored, "s1-review-result.json
 result.decisions.find((d) => d.id === "P08").decision = "apply";
 writeFileSync(path.join(ignored, "s1-review-result.json"), JSON.stringify(result));
 
+/* 같은 문서를 프로토타입으로 세팅하면 부품을 갈아 끼우지 않은 것이 걸려야 한다. */
+const docAsPrototype = path.join(tmp, "doc-as-prototype");
+cpSync(path.join(FIX, "doc-applied"), docAsPrototype, { recursive: true });
+const docProfile = JSON.parse(readFileSync(path.join(docAsPrototype, "s1.profile.json"), "utf8"));
+writeFileSync(path.join(docAsPrototype, "s1.profile.json"), JSON.stringify({ ...docProfile, kind: "prototype" }));
+
 /* 개발자 프로젝트에 안내 파일 깔기 — 기존 내용은 지우지 않고 S1 칸만 더한다. */
 const project = path.join(tmp, "dev-project");
 cpSync(path.join(FIX, "poc-sample"), project, { recursive: true });
@@ -46,6 +52,8 @@ const CASES = [
   ["pass (화면 종류 없음) — 온보딩 없이 만든 화면 — 판정 거부", () => check(path.join(FIX, "pass"), null), 2],
   ["poc-applied (s1.profile.json) — 디자인 확인 결과대로 입힌 POC — 합격", () => check(path.join(FIX, "poc-applied"), null), 0],
   ["poc-ignored — 디자이너가 바꾸라고 한 자리를 그대로 둔 POC — 불합격", () => check(ignored, null), 1],
+  ["doc-applied (s1.profile.json) — 문서에 토큰만 입힘, 부품은 그대로 — 합격", () => check(path.join(FIX, "doc-applied"), null), 0],
+  ["doc-as-prototype — 같은 화면을 프로토타입으로 세팅하면(부품을 안 바꿈) — 불합격", () => check(docAsPrototype, null), 1],
   ["개발자 프로젝트에 AI 안내 깔기(두 번 돌려도 한 칸, 기존 규칙 보존) — 성공", installTwice, 0],
   ["poc-sample 대응표 → 디자인 확인 요청서 만들기 — 성공", () => node([path.join(ROOT, "ai", "scripts", "review-request.mjs"), path.join(FIX, "poc-sample", "s1-mapping.json"), "--out", path.join(tmp, "요청서.html")]), 0]
 ];

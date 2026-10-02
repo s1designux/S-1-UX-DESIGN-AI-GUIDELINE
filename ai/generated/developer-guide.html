@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>모바일 크기 기준</title>
+<title>S-1 DESIGN GUIDE MD 쓰는 법</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>/* >>> GEN:FOUNDATION >>> Auto-generated from vars-data.ts (npm run tokens:gen:foundation) — Variables 정본. 수동 편집 금지. */
 /* ══════════════════════════════════════════════════
@@ -6334,99 +6334,387 @@
 }
 </style>
 <style>
-  body { margin:0; padding:32px 16px 64px; background:var(--color-bg-level-0); color:var(--color-text-body-primary); font-family:Pretendard, -apple-system, "Malgun Gothic", sans-serif; font-size:var(--font-size-14); line-height:1.6; }
-  .wrap { max-width:1480px; margin:0 auto; }
-  h1 { font-size:var(--font-size-24); margin:0 0 var(--spacing-4); }
-  .sub { color:var(--color-text-body-secondary); margin:0 0 var(--spacing-24); }
-  .cols { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:var(--spacing-16); align-items:start; }
-  .col { border:1px solid var(--color-line-default); border-radius:var(--radius-12); padding:var(--spacing-20); background:var(--color-bg-level-1); min-width:0; }
-  .col header h3 { margin:0; font-size:var(--font-size-18); }
-  .col header p { margin:var(--spacing-4) 0 var(--spacing-8); color:var(--color-text-body-secondary); font-size:var(--font-size-12); }
-  h4 { font-size:var(--font-size-12); color:var(--color-text-body-secondary); margin:var(--spacing-20) 0 var(--spacing-8); font-weight:600; }
-  .row { display:flex; flex-wrap:wrap; gap:var(--spacing-12); align-items:flex-start; }
-  .piece { margin:0; min-width:0; }
-  .slot { display:flex; align-items:center; min-height:var(--sizing-48); }
-  .slot > [data-s1-component="input"], .slot > [data-s1-component="select"], .slot > [data-s1-component="date-picker"] { width:150px; }
-  .pv-table { overflow-x:auto; }
-  .note { margin:var(--spacing-4) 0 0; font-size:var(--font-size-12); color:var(--color-text-body-secondary); }
-  figcaption { font-size:var(--font-size-12); color:var(--color-text-body-secondary); margin-top:var(--spacing-4); }
-  .swap { margin:0; padding-left:var(--spacing-20); }
-  .swap s { color:var(--color-text-body-secondary); }
-  table.sum { width:100%; border-collapse:collapse; margin-top:var(--spacing-8); }
-  table.sum th, table.sum td { text-align:left; padding:var(--spacing-8) var(--spacing-12); border-bottom:1px solid var(--color-line-default); vertical-align:top; font-size:var(--font-size-14); font-variant-numeric:tabular-nums; }
-  table.sum thead th { font-size:var(--font-size-12); color:var(--color-text-body-secondary); font-weight:500; }
-  small { color:var(--color-text-body-secondary); font-size:var(--font-size-12); }
-  h2 { font-size:var(--font-size-18); margin:var(--spacing-40) 0 var(--spacing-4); }
-  code { font-size:var(--font-size-12); }
+  /* 이 안내서의 배치 — 색·간격·글자는 S1 토큰과 글자 스타일만 쓴다. 묶음 안 8 · 한 줄 안 12 · 묶음 사이 24 */
+  body { margin:0; background:var(--color-bg-level-0); color:var(--color-text-body-primary); font-family:"Pretendard", sans-serif; }
+  .wrap { max-width:960px; margin:0 auto; padding-inline:var(--spacing-24); padding-block:var(--spacing-48) var(--spacing-96); display:flex; flex-direction:column; gap:var(--spacing-48); }
+  h1, h2, h3, p { margin:0; }
+  .title { color:var(--color-text-title-primary); }
+  .sub { color:var(--color-text-body-tertiary); }
+  .group { display:flex; flex-direction:column; gap:var(--spacing-8); min-width:0; }
+  .group-lg { display:flex; flex-direction:column; gap:var(--spacing-24); min-width:0; }
+  .cmd { display:flex; gap:var(--spacing-12); align-items:center; min-width:0; }
+  .cmd [data-s1-component="input"] { flex:1 1 auto; width:auto; min-width:0; }
   .scroll { overflow-x:auto; }
-</style></head>
-<body><div class="wrap">
-<h1>모바일 크기 기준</h1>
-<p class="sub">모바일 화면 — 화면마다 쓰는 부품 크기. 배포본 0.16.1 (2026-10-02) 실제 부품으로 그렸습니다.</p>
-<div class="cols">
-<section class="col" data-s1-break="mobile">
-  <header><h3>모바일 화면</h3><p>손가락 기준 48 하나 · <code>--profile mobile</code></p></header>
-  <div class="row"><figure class="piece"><div class="slot"><button type="button" data-s1-component="button" data-break="mobile" data-variant="primary" data-size="lg">
-  <span data-s1-part="label">저장</span>
-</button></div><figcaption>버튼 <code>lg</code> · 48</figcaption></figure><figure class="piece"><div class="slot"><div data-s1-component="input" data-size="md" data-break="mobile">
-  <div data-s1-part="field">
-    <input id="p2-profile-name" data-s1-part="control" aria-label="이름" placeholder="입력해 주세요">
-    <button type="button" data-s1-part="action" data-action="clear" aria-label="입력 내용 지우기" hidden>
-      <span data-s1-part="action-icon" aria-hidden="true"></span>
-    </button>
-  </div>
-</div></div><figcaption>입력칸 <code>md</code> · 48</figcaption></figure><figure class="piece"><div class="slot"><div data-s1-component="select" data-size="md" data-break="mobile">
-  <button type="button" data-s1-part="trigger" aria-haspopup="listbox" aria-expanded="false">
-    <span data-s1-part="value">선택</span>
-    <span data-s1-part="icon" aria-hidden="true"></span>
-  </button>
-  <div data-s1-part="panel" hidden>
-    <div data-s1-component="dropdown" data-type="text" data-size="md" role="listbox" aria-label="선택">
-      <div data-s1-part="option" role="option" aria-selected="false" tabindex="0" data-value="seoul"><span data-s1-part="option-label">서울</span></div>
-      <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="busan"><span data-s1-part="option-label">부산</span></div>
-      <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="jeju"><span data-s1-part="option-label">제주</span></div>
-    </div>
-  </div>
-</div></div><figcaption>선택 상자 <code>md</code> · 48</figcaption></figure><figure class="piece"><div class="slot"><button type="button" data-s1-component="chip" data-variant="line" data-size="sm" data-break="mobile" aria-pressed="false">
-  <span data-s1-part="label">라벨</span>
-</button></div><figcaption>칩 <code>sm</code> · 30</figcaption></figure><figure class="piece"><div class="slot"><div data-s1-component="filter-chip" data-variant="line" data-size="md" data-break="mobile" data-title="on">
-  <button type="button" data-s1-part="trigger" aria-haspopup="listbox" aria-expanded="false">
-    <span data-s1-part="title">정렬</span>
-    <span data-s1-part="value">최신순</span>
-    <span data-s1-part="icon" aria-hidden="true"></span>
-  </button>
-  <div data-s1-part="panel" hidden>
-    <div data-s1-component="dropdown" data-type="text" data-size="xsm" role="listbox" aria-label="정렬">
-      <div data-s1-part="option" role="option" aria-selected="true" tabindex="0" data-value="latest"><span data-s1-part="option-label">최신순</span></div>
-      <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="popular"><span data-s1-part="option-label">인기순</span></div>
-      <div data-s1-part="option" role="option" aria-selected="false" tabindex="-1" data-value="past"><span data-s1-part="option-label">과거순</span></div>
-    </div>
-  </div>
-</div></div><figcaption>필터 칩 <code>md</code> · 30</figcaption></figure><figure class="piece"><div class="slot"><div data-s1-component="date-picker" data-size="md" data-break="mobile" data-mode="single">
-  <button type="button" data-s1-part="trigger" aria-haspopup="dialog" aria-expanded="false">
-    <span data-s1-part="value">날짜 선택</span>
-    <span data-s1-part="icon" aria-hidden="true"></span>
-  </button>
-  <div data-s1-component="bottom-sheet" data-s1-part="sheet" data-break="mobile" data-footer="single" hidden>
-    <div data-s1-part="sheet-backdrop"></div>
-    <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="p6-date-picker-mobile-sheet-title" tabindex="-1">
-      <div data-s1-part="sheet-header">
-        <span data-s1-part="sheet-title" id="p6-date-picker-mobile-sheet-title">날짜 선택</span>
-        <button type="button" data-s1-part="sheet-close" aria-label="닫기"></button>
-      </div>
-      <div data-s1-part="calendar-wrap">
-        <div data-s1-part="calendar"></div>
-      </div>
-      <div data-s1-part="sheet-footer">
-        <button type="button" data-s1-part="apply" data-s1-component="button" data-variant="primary" data-size="lg">
-          <span data-s1-part="label">적용</span>
-        </button>
-      </div>
-    </div>
-  </div>
-</div></div><figcaption>날짜 선택 <code>md</code> · 48</figcaption></figure></div>
-  <h4>바꿔 쓰는 것</h4><ul class="swap"><li><s>드롭다운 목록</s> → 바텀시트</li><li><s>멀티 토글</s> → 라디오 또는 체크박스</li><li><s>표</s> → 목록 줄(list-row)</li></ul>
-</section>
-</div>
+  .flow { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:var(--spacing-24); }
+  .step { position:relative; min-width:0; display:flex; flex-direction:column; gap:var(--spacing-4); padding:var(--spacing-16); border:var(--border-width-default) solid var(--color-line-default); border-radius:var(--radius-8); }
+  .step.designer { border-color:var(--color-line-blue); }
+  .step .actor { color:var(--color-text-body-tertiary); }
+  .step.designer .actor { color:var(--color-text-state-accent); }
+  .step + .step::before { content:""; position:absolute; left:calc(-1 * var(--spacing-24) / 2 - var(--sizing-16) / 2); top:50%; width:var(--sizing-16); height:var(--sizing-16); margin-top:calc(var(--sizing-16) / -2); background-color:var(--color-icon-gray); -webkit-mask:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KICA8c3ZnIGRhdGEtczEtcGFydD0iZ2x5cGgiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij4KICAgIDxwYXRoIGQ9Ik0xMC4zNzUgNy43NUwxNC42MjUgMTJMMTAuMzc1IDE2LjI1IiBzdHJva2U9ImJsYWNrIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+CiAgPC9zdmc+Cjwvc3ZnPgo=") center / contain no-repeat; mask:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KICA8c3ZnIGRhdGEtczEtcGFydD0iZ2x5cGgiIHg9IjAiIHk9IjAiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij4KICAgIDxwYXRoIGQ9Ik0xMC4zNzUgNy43NUwxNC42MjUgMTJMMTAuMzc1IDE2LjI1IiBzdHJva2U9ImJsYWNrIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+CiAgPC9zdmc+Cjwvc3ZnPgo=") center / contain no-repeat; } /* 화살표는 S1 아이콘 chevron */
+  @media (max-width:760px) { .flow { grid-template-columns:minmax(0, 1fr); } .step + .step::before { display:none; } }
+  .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+</style>
+</head>
+<body data-s1-density="wide">
+<main class="wrap">
+  <header class="group">
+    <h1 class="title typo-title-32b">S-1 DESIGN GUIDE MD 쓰는 법</h1>
+    <p class="sub typo-body-16r">개발자용 안내 · S1 배포본 0.16.1 기준</p>
+    <p class="typo-body-16r">AI 코딩 도구(Claude Code · VS Code Copilot · Cursor 등)로 화면을 만들거나, 이미 만든 화면(POC)에 S1 디자인을 입힐 때 쓰는 가이드입니다. 개발자는 AI에게 말하고, 디자이너에게 확인 요청서를 보내고, 받은 결과를 AI에게 붙여 넣기만 하면 됩니다. 나머지는 AI가 가이드대로 합니다.</p>
+  </header>
 
-</div></body></html>
+  <hr data-s1-component="divider" data-axis="x">
+
+  <section class="group-lg">
+    <h2 class="title typo-title-24b">처음 한 번 — 설치</h2>
+    <div class="group">
+      <h3 class="title typo-title-16b">AI 채팅창에 링크를 붙이고 "깔아줘"</h3>
+      <p class="typo-body-14r">작업할 프로젝트를 연 AI 채팅창에 아래 글을 그대로 보내면 됩니다. AI가 가이드를 프로젝트 안에 받아 두고, 어떤 AI 도구로 다시 열어도 S1 기준을 따르게 설정한 뒤, 바로 "온보딩을 진행할까요? 디자인 가이드를 제대로 적용하려면 반드시 온보딩이 필요합니다."라고 제안합니다.</p>
+      <div class="cmd">
+  <div data-s1-component="input" data-size="md" data-break="pc" aria-labelledby="cmd-1-label">
+    <div data-s1-part="field"><input id="cmd-1" data-s1-part="control" type="text" value="https://github.com/s1designux/S-1-UX-DESIGN-AI-GUIDELINE 깔아줘" readonly></div>
+  </div>
+  <button type="button" data-s1-component="button" data-variant="secondary" data-size="md" data-copy="cmd-1"><span data-s1-part="label">복사</span></button>
+  <span class="sr" id="cmd-1-label">AI 채팅창에 보낼 글</span>
+</div>
+    </div>
+    <p class="sub typo-body-12r">이미 있는 프로토타입에 입힐 때 화면 캡처 도구가 없으면, AI가 그때 "화면 캡처 도구를 설치할까요?"라고 제안합니다.</p>
+  </section>
+
+  <hr data-s1-component="divider" data-axis="x">
+
+  <section class="group-lg">
+    <h2 class="title typo-title-24b">작업 흐름</h2>
+    <ol class="flow">
+      <li class="step">
+        <span class="actor typo-body-12m">1 · 개발자</span>
+        <span class="title typo-title-16b">링크 주고 깔아줘</span>
+        <span class="typo-body-12r">처음 한 번</span>
+      </li>
+      <li class="step">
+        <span class="actor typo-body-12m">2 · AI</span>
+        <span class="title typo-title-16b">설치 · 온보딩 질문</span>
+        <span class="typo-body-12r">번호로 답하면 저장</span>
+      </li>
+      <li class="step">
+        <span class="actor typo-body-12m">3 · AI</span>
+        <span class="title typo-title-16b">짝짓기 · 요청서</span>
+        <span class="typo-body-12r">이미 있는 프로토타입일 때</span>
+      </li>
+      <li class="step designer">
+        <span class="actor typo-body-12m">4 · 디자이너</span>
+        <span class="title typo-title-16b">요청서에서 고르기</span>
+        <span class="typo-body-12r">바꾸기 · 그대로 · 새 부품</span>
+      </li>
+      <li class="step">
+        <span class="actor typo-body-12m">5 · 개발자 → AI</span>
+        <span class="title typo-title-16b">결과 붙여 넣기</span>
+        <span class="typo-body-12r">AI가 반영하고 검수 합격까지</span>
+      </li>
+    </ol>
+    <p class="sub typo-body-12r">새 화면과 문서는 디자이너 확인 없이 AI가 바로 만들거나 입히고 검수합니다. 같은 프로젝트의 두 번째 화면부터는 온보딩 질문을 건너뜁니다.</p>
+  </section>
+
+  <hr data-s1-component="divider" data-axis="x">
+
+  <section class="group-lg">
+    <h2 class="title typo-title-24b">온보딩 질문</h2>
+    <p class="typo-body-14r">AI가 한 번에 묶어 묻고, 번호로 답하면 됩니다. 예: A2 B2 C1 D3. 기술(HTML·React 등)은 AI가 프로젝트를 보고 알아냅니다.</p>
+    <div class="scroll"><div data-s1-component="table" data-size="md">
+  <table data-s1-part="table">
+    <thead><tr><th data-s1-part="header-cell" scope="col">질문</th><th data-s1-part="header-cell" scope="col">고르는 것</th><th data-s1-part="header-cell" scope="col">달라지는 것</th></tr></thead>
+    <tbody><tr data-s1-part="row"><td data-s1-part="cell">A. 무엇을 만드나요?</td><td data-s1-part="cell">1) 문서 작성 · 2) 프로토타입 제작</td><td data-s1-part="cell">문서는 사용자용 화면과 같은 기준으로 씁니다</td></tr><tr data-s1-part="row"><td data-s1-part="cell">B. 어떻게 작업하나요?</td><td data-s1-part="cell">1) 새 화면 작성 · 2) 이미 있는 화면에 디자인 입히기</td><td data-s1-part="cell">입히기면 아래 "이미 있는 화면에 입힐 때"를 따릅니다</td></tr><tr data-s1-part="row"><td data-s1-part="cell">C. 어떤 매체인가요? (프로토타입만)</td><td data-s1-part="cell">1) PC 웹 · 2) 모바일</td><td data-s1-part="cell">모바일은 손가락 기준 높이 48 하나</td></tr><tr data-s1-part="row"><td data-s1-part="cell">D. 누가 쓰는 화면인가요? (프로토타입 · PC 웹만)</td><td data-s1-part="cell">1) PR용 · 2) 사용자용 · 3) 관리자용 · 기본 · 4) 관리자용 · 작게</td><td data-s1-part="cell">부품 기본 높이 44 · 44 · 34 · 28</td></tr></tbody>
+  </table>
+</div></div>
+  </section>
+
+  <hr data-s1-component="divider" data-axis="x">
+
+  <section class="group-lg">
+    <h2 class="title typo-title-24b">이미 있는 화면에 입힐 때</h2>
+    <div class="scroll"><div data-s1-component="table" data-size="md">
+  <table data-s1-part="table">
+    <thead><tr><th data-s1-part="header-cell" scope="col">무엇</th><th data-s1-part="header-cell" scope="col">AI가 하는 일</th></tr></thead>
+    <tbody><tr data-s1-part="row"><td data-s1-part="cell">문서</td><td data-s1-part="cell">구조와 내용은 그대로 두고, S1 토큰으로 색 · 글자 · 간격만 입힙니다</td></tr><tr data-s1-part="row"><td data-s1-part="cell">프로토타입</td><td data-s1-part="cell">화면을 고치기 전에 디자인 확인 요청서를 만들어 디자이너에게 보내고, 답을 받은 뒤 바꿉니다</td></tr></tbody>
+  </table>
+</div></div>
+    <div class="group">
+      <h3 class="title typo-title-16b">디자인 확인 요청서가 왜 필요한가요?</h3>
+      <p class="typo-body-14r">화면 속 버튼 · 입력칸이 S1의 어떤 부품에 해당하는지는 디자인 기준을 아는 디자이너가 정해야 정확합니다. AI가 짝지은 결과를 디자이너가 한 번 확인하면, 엉뚱한 부품으로 바뀌거나 S1에 없는 부품을 지어내는 일을 막을 수 있습니다.</p>
+    </div>
+  </section>
+
+  <hr data-s1-component="divider" data-axis="x">
+
+  <section class="group-lg">
+    <h2 class="title typo-title-24b">디자이너 결과의 뜻</h2>
+    <p class="typo-body-14r">결과를 붙여 넣으면 AI가 이대로 처리합니다. 개발자는 결과 글을 붙여 넣기만 하면 됩니다.</p>
+    <div class="scroll"><div data-s1-component="table" data-size="md">
+  <table data-s1-part="table">
+    <thead><tr><th data-s1-part="header-cell" scope="col">결과</th><th data-s1-part="header-cell" scope="col">뜻</th><th data-s1-part="header-cell" scope="col">AI가 하는 일</th></tr></thead>
+    <tbody><tr data-s1-part="row"><td data-s1-part="cell">제안대로 바꾸기</td><td data-s1-part="cell">제안한 S1 부품으로</td><td data-s1-part="cell">그 부품으로 바꿈</td></tr><tr data-s1-part="row"><td data-s1-part="cell">다른 후보로 바꾸기</td><td data-s1-part="cell">요청서의 다른 후보로</td><td data-s1-part="cell">고른 후보로 바꿈</td></tr><tr data-s1-part="row"><td data-s1-part="cell">그대로 두기</td><td data-s1-part="cell">바꾸지 않음</td><td data-s1-part="cell">그대로 두고 S1 색·글자만 맞춤</td></tr><tr data-s1-part="row"><td data-s1-part="cell">새 부품으로 만들기</td><td data-s1-part="cell">디자인 시스템에 새로 만들 부품</td><td data-s1-part="cell">그대로 두고 디자이너 요청 목록에 올림</td></tr></tbody>
+  </table>
+</div></div>
+  </section>
+
+  <hr data-s1-component="divider" data-axis="x">
+
+  <section class="group-lg">
+    <h2 class="title typo-title-24b">검수</h2>
+    <div class="group">
+      <p class="typo-body-14r">AI가 스스로 돌리지만, 직접 확인하려면 아래 명령을 씁니다. 화면 종류는 저장된 답(s1.profile.json)에서 읽습니다.</p>
+      <div class="cmd">
+  <div data-s1-component="input" data-size="md" data-break="pc" aria-labelledby="cmd-2-label">
+    <div data-s1-part="field"><input id="cmd-2" data-s1-part="control" type="text" value="node ../S-1-UX-DESIGN-AI-GUIDELINE/ai/check/s1-check.mjs ." readonly></div>
+  </div>
+  <button type="button" data-s1-component="button" data-variant="secondary" data-size="md" data-copy="cmd-2"><span data-s1-part="label">복사</span></button>
+  <span class="sr" id="cmd-2-label">검수 명령</span>
+</div>
+    </div>
+    <div class="scroll"><div data-s1-component="table" data-size="md">
+  <table data-s1-part="table">
+    <thead><tr><th data-s1-part="header-cell" scope="col">검수 결과</th><th data-s1-part="header-cell" scope="col">뜻</th></tr></thead>
+    <tbody><tr data-s1-part="row"><td data-s1-part="cell">합격</td><td data-s1-part="cell">S1 기준을 모두 지켰습니다.</td></tr><tr data-s1-part="row"><td data-s1-part="cell">불합격</td><td data-s1-part="cell">디자인 시스템에 없는 색·크기·간격을 쓰거나, 부품을 직접 만든 자리가 있습니다. AI가 고칩니다.</td></tr><tr data-s1-part="row"><td data-s1-part="cell">판정 안 함</td><td data-s1-part="cell">화면 종류가 정해지지 않았습니다. 온보딩부터 합니다.</td></tr></tbody>
+  </table>
+</div></div>
+  </section>
+
+  <hr data-s1-component="divider" data-axis="x">
+
+  <section class="group">
+    <h2 class="title typo-title-24b">막히면</h2>
+    <p class="typo-body-14r">AI는 가이드에 없는 값이나 부품을 지어내지 않고 멈춰서 묻습니다. 그때는 디자이너에게 물어 주세요. 디자인 시스템에 없는 부품이 필요하면 확인 요청서의 "새 부품으로 만들기"로 모입니다.</p>
+    <p class="sub typo-body-12r">가이드 저장소 https://github.com/s1designux/S-1-UX-DESIGN-AI-GUIDELINE</p>
+  </section>
+</main>
+<script>function autoInit() {
+{
+const componentId = "input";
+const jsRequired = true;
+
+const instances = new WeakMap();
+
+function refresh(root, control, clearAction, isSearch) {
+  const editable = !control.disabled && !control.readOnly;
+  /* Search 는 값이 있으면 초점 여부와 무관하게 지우기를 보인다("값 있음" 상태, river D4).
+     Base·Password 는 기존 그대로 focus-within(Focus) 일 때만 보인다. */
+  const show = isSearch
+    ? editable && control.value.length > 0
+    : editable && root.matches(":focus-within") && control.value.length > 0;
+  clearAction.hidden = !show;
+}
+
+function refreshPassword(passwordAction, control) {
+  const visible = control.type === "text";
+  passwordAction.setAttribute("aria-pressed", String(visible));
+  passwordAction.setAttribute("aria-label", visible ? "비밀번호 숨기기" : "비밀번호 보기");
+}
+
+function init(root) {
+  if (!(root instanceof Element) || root.dataset.s1Component !== componentId) return null;
+  if (instances.has(root)) return instances.get(root);
+
+  const control = root.querySelector('[data-s1-part="control"]');
+  const clearAction = root.querySelector('[data-s1-part="action"][data-action="clear"]');
+  if (!(control instanceof HTMLInputElement) || !(clearAction instanceof HTMLButtonElement)) return null;
+
+  /* Password·Search 는 Input 의 옵션이다 — 액션이 마크업에 없으면 그 경로 자체가 없다. */
+  const passwordAction = root.querySelector('[data-s1-part="action"][data-action="password"]');
+  const searchAction = root.querySelector('[data-s1-part="action"][data-action="search"]');
+  const isSearch = searchAction instanceof HTMLButtonElement;
+
+  const update = () => refresh(root, control, clearAction, isSearch);
+
+  /* 마우스·손가락으로 눌러 들어온 초점은 누른 자리에 커서를 둔다(드래그 선택도 그대로).
+     키보드(Tab)로 들어온 초점만 값 끝으로 커서를 옮긴다. (river 지시 2026-09-04)
+
+     판정은 "표식이 켜져 있나"가 아니라 "직전 포인터 조작이 방금이었나"로 한다.
+     ① 표식이 켜진 채 굳는 경로가 없다(초점을 못 받는 자리를 눌러도 시간만 지나면 사라진다).
+     ② 초점이 pointerdown 과 다른 task 에서 와도 된다 — 모바일은 손을 뗀 뒤 초점을 주는데,
+        타이머로 표식을 지우면 그 탭이 '키보드'로 오인돼 글 중간을 눌러도 커서가 끝으로 튄다.
+     ③ 화면이 숨겨져 타이머가 밀리는 환경에서도 판정이 흔들리지 않는다(같은 시계의 timeStamp 비교). */
+  const POINTER_FOCUS_WINDOW_MS = 500;
+  let lastPointerAt = -Infinity;
+  const markPointer = (event) => { lastPointerAt = event.timeStamp; };
+  const handleFocusIn = (event) => {
+    const fromPointer = event.timeStamp - lastPointerAt < POINTER_FOCUS_WINDOW_MS;
+    if (event.target === control && !fromPointer) {
+      const end = control.value.length;
+      if (end > 0) {
+        try { control.setSelectionRange(end, end); } catch (_) { /* 캐럿을 못 옮기는 type 은 건너뛴다 */ }
+      }
+    }
+    update();
+  };
+  const handleFocusOut = () => requestAnimationFrame(update);
+  const handleClear = () => {
+    control.value = "";
+    control.dispatchEvent(new Event("input", { bubbles: true }));
+    control.focus();
+    update();
+    root.dispatchEvent(new CustomEvent("s1:input:clear", { bubbles: true, detail: { value: "" } }));
+  };
+
+  /* Password — type 을 password↔text 로 바꾸고 Input 으로 초점을 되돌린다(river 결정). */
+  const handlePasswordToggle = passwordAction instanceof HTMLButtonElement
+    ? () => {
+        control.type = control.type === "password" ? "text" : "password";
+        refreshPassword(passwordAction, control);
+        control.focus();
+      }
+    : null;
+
+  /* Search — Enter 키와 돋보기 클릭 둘 다 같은 이벤트를 낸다(river D2).
+     IME 조합 중(isComposing)의 Enter 는 문자 확정용이라 제외한다. */
+  const dispatchSearch = () => {
+    root.dispatchEvent(new CustomEvent("s1:input:search", { bubbles: true, detail: { value: control.value } }));
+  };
+  const handleSearchClick = isSearch ? () => dispatchSearch() : null;
+  const handleSearchKeydown = isSearch
+    ? (event) => { if (event.key === "Enter" && !event.isComposing) dispatchSearch(); }
+    : null;
+
+  control.addEventListener("input", update);
+  root.addEventListener("pointerdown", markPointer);
+  root.addEventListener("pointerup", markPointer);
+  root.addEventListener("focusin", handleFocusIn);
+  root.addEventListener("focusout", handleFocusOut);
+  clearAction.addEventListener("click", handleClear);
+  if (handlePasswordToggle) passwordAction.addEventListener("click", handlePasswordToggle);
+  if (handleSearchClick) searchAction.addEventListener("click", handleSearchClick);
+  if (handleSearchKeydown) control.addEventListener("keydown", handleSearchKeydown);
+
+  const api = Object.freeze({
+    destroy() {
+      control.removeEventListener("input", update);
+      root.removeEventListener("pointerdown", markPointer);
+      root.removeEventListener("pointerup", markPointer);
+      root.removeEventListener("focusin", handleFocusIn);
+      root.removeEventListener("focusout", handleFocusOut);
+      clearAction.removeEventListener("click", handleClear);
+      if (handlePasswordToggle) passwordAction.removeEventListener("click", handlePasswordToggle);
+      if (handleSearchClick) searchAction.removeEventListener("click", handleSearchClick);
+      if (handleSearchKeydown) control.removeEventListener("keydown", handleSearchKeydown);
+      clearAction.hidden = true;
+      instances.delete(root);
+    },
+    update
+  });
+  instances.set(root, api);
+  if (passwordAction instanceof HTMLButtonElement) refreshPassword(passwordAction, control);
+  update();
+  return api;
+}
+
+function destroy(root) {
+  instances.get(root)?.destroy();
+}
+
+const runtime = Object.freeze({ init, destroy });
+
+for (const el of document.querySelectorAll('[data-s1-component="input"]')) init(el);
+}
+{
+const componentId = "table";
+const jsRequired = true;
+
+const instances = new WeakMap();
+
+function getParts(root) {
+  const headerCheckbox = root.querySelector('[data-s1-part="header-cell"][data-selection] input[type="checkbox"]');
+  const rows = [...root.querySelectorAll('[data-s1-part="row"]')];
+  const rowCheckboxes = rows
+    .map((row) => ({ row, control: row.querySelector('[data-s1-part="cell"][data-selection] input[type="checkbox"]') }))
+    .filter((entry) => entry.control);
+  return { headerCheckbox, rowCheckboxes };
+}
+
+function init(root) {
+  if (!(root instanceof Element) || root.dataset.s1Component !== componentId) return null;
+  if (instances.has(root)) return instances.get(root);
+
+  const { headerCheckbox, rowCheckboxes } = getParts(root);
+  if (!rowCheckboxes.length) return null;
+
+  const emit = () => {
+    const selected = rowCheckboxes.filter((entry) => entry.control.checked).map((entry) => entry.row);
+    root.dispatchEvent(new CustomEvent("s1:table:selectionchange", {
+      bubbles: true,
+      detail: { selectedCount: selected.length, totalCount: rowCheckboxes.length }
+    }));
+  };
+
+  const syncRow = (entry) => {
+    entry.row.setAttribute("data-selected", entry.control.checked ? "true" : "false");
+  };
+
+  // 정본 행동 계약(component-behavior.pc.json "Table"):
+  //  · 행 체크박스 → 그 행 선택을 토글하고 헤더 체크박스를 다시 계산한다.
+  //  · 헤더 체크박스 → 하나라도 안 켜져 있으면 전체 선택, 아니면 전체 해제.
+  // 부분선택(indeterminate) 표시는 정본 체크박스에 없어 사용하지 않는다.
+  const syncHeader = () => {
+    if (!headerCheckbox) return;
+    headerCheckbox.checked = rowCheckboxes.every((entry) => entry.control.checked);
+  };
+
+  const handleRowChange = (event) => {
+    const entry = rowCheckboxes.find((item) => item.control === event.target);
+    if (!entry) return;
+    syncRow(entry);
+    syncHeader();
+    emit();
+  };
+
+  const handleHeaderChange = () => {
+    const shouldSelectAll = rowCheckboxes.some((entry) => !entry.control.checked);
+    for (const entry of rowCheckboxes) {
+      if (entry.control.disabled) continue;
+      entry.control.checked = shouldSelectAll;
+      syncRow(entry);
+    }
+    syncHeader();
+    emit();
+  };
+
+  for (const entry of rowCheckboxes) {
+    entry.control.addEventListener("change", handleRowChange);
+    syncRow(entry);
+  }
+  if (headerCheckbox) headerCheckbox.addEventListener("change", handleHeaderChange);
+  syncHeader();
+
+  const api = Object.freeze({
+    root,
+    getSelectedRows: () => rowCheckboxes.filter((entry) => entry.control.checked).map((entry) => entry.row),
+    destroy: () => destroy(root)
+  });
+
+  instances.set(root, { api, headerCheckbox, rowCheckboxes, handleRowChange, handleHeaderChange });
+  return api;
+}
+
+function destroy(root) {
+  const instance = instances.get(root);
+  if (!instance) return;
+  for (const entry of instance.rowCheckboxes) entry.control.removeEventListener("change", instance.handleRowChange);
+  if (instance.headerCheckbox) instance.headerCheckbox.removeEventListener("change", instance.handleHeaderChange);
+  instances.delete(root);
+}
+
+const runtime = Object.freeze({ init, destroy });
+
+for (const el of document.querySelectorAll('[data-s1-component="table"]')) init(el);
+}
+}
+autoInit();</script>
+<script>
+document.addEventListener("click", async (event) => {
+  const button = event.target.closest("[data-copy]");
+  if (!button) return;
+  const field = document.getElementById(button.dataset.copy);
+  const label = button.querySelector("[data-s1-part=label]");
+  try { await navigator.clipboard.writeText(field.value); label.textContent = "복사함"; }
+  catch { field.select(); label.textContent = "선택함"; }
+  setTimeout(() => { label.textContent = "복사"; }, 1600);
+});</script>
+</body></html>

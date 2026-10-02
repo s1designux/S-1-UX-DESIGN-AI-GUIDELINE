@@ -1,8 +1,12 @@
 # S-1 UX DESIGN AI GUIDELINE
 
+> **AI 에게** — 이 가이드로 화면을 만들거나 입히기 전에, 사용자에게 먼저 제안하세요: **"온보딩을 진행할까요? 디자인 가이드를 제대로 적용하려면 반드시 온보딩이 필요합니다."** 그다음 [`ONBOARDING.md`](ONBOARDING.md) 를 따릅니다. 작업할 프로젝트에 `s1.profile.json` 이 있으면 제안 없이 바로 진행합니다. 사용자가 이 저장소 링크를 주고 "깔아줘"라고 하면 [`ONBOARDING.md`](ONBOARDING.md) 의 **설치** 절을 따르고, 같은 답 안에서 바로 온보딩을 제안합니다.
+
 S-1 디자인 시스템을 AI 에이전트와 개발자가 시각적으로 정확하고, 실제 PC 동작까지 일관되게 구현할 수 있도록 정리한 공개 가이드입니다.
 
 ## 바로 쓰기 — 직접 만들지 말고 배포본을 붙이세요
+
+> AI 로 작업한다면 이 절보다 **온보딩이 먼저**입니다 — 화면 종류에 따라 부품 크기가 정해지기 때문입니다.
 
 컴포넌트는 이미 만들어져 있습니다. `ui-library/dist` 를 프로젝트에 넣고 아래 세 줄을 읽히면 끝입니다.
 
@@ -31,6 +35,10 @@ S-1 디자인 시스템을 AI 에이전트와 개발자가 시각적으로 정�
 
 React·Vue·Swift·Kotlin·C++ 로 쓸 때는 `ui-library/dist/platform/<플랫폼>/` 안의 README 를 보세요.
 
+## 개발자용 안내 한 장
+
+준비 → 작업 흐름 → 검수까지 한 장에 정리했습니다 — [`ai/generated/developer-guide.html`](ai/generated/developer-guide.html) (브라우저로 열기).
+
 ## 어떤 AI 도구로 열어도 온보딩부터
 
 Claude Code·VS Code(Copilot)·Cursor·Windsurf·Gemini·Codex 가 처음 읽는 안내 파일에 "S1 온보딩부터"가 들어 있습니다.
@@ -47,6 +55,8 @@ AI가 **어떤 도구·어떤 매체(PC 웹/모바일)·PC 웹이면 누가 쓰�
 자세한 것은 [`ai/README.md`](ai/README.md).
 
 ## 가장 먼저 읽을 파일
+
+> AI 는 이 표보다 [`ONBOARDING.md`](ONBOARDING.md) 를 먼저 따릅니다. 아래는 사람이 기준을 찾아볼 때의 순서입니다.
 
 [`design/DESIGN.core.md`](design/DESIGN.core.md)를 최우선 구현 기준으로 사용하세요. 이 문서에는 디자인 원칙, 토큰, 컴포넌트 구조, 상태, 아이콘, PC 동작 계약이 통합되어 있습니다.
 

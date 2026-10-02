@@ -56,6 +56,7 @@ export async function writeProfileDocs(scope, ROOT, DIST, manifest) {
       `# ${profile.label} — 이 크기만 씁니다`,
       "",
       "> 자동 생성물 — 손으로 고치지 마세요. 기준을 바꾸려면 `ai/rules/usage-profiles.json` 을 고치고 `npm run ai:scope` 를 돌립니다.",
+      "> **AI 에게** — 작업할 프로젝트에 `s1.profile.json` 이 없으면 이 표를 쓰기 전에 사용자에게 먼저 제안하세요: \"온보딩을 진행할까요? 디자인 가이드를 제대로 적용하려면 반드시 온보딩이 필요합니다.\" 그다음 `ONBOARDING.md` 를 따릅니다.",
       `> 배포본 ${manifest.version} (${manifest.releasedAt} 판) 기준.${pc ? " 크기는 river 가 크기 판정표에서 고른 값입니다(2026-10-02)." : ""}`,
       "",
       otherLabels(id)
@@ -301,7 +302,7 @@ async function renderBoard(scope, DIST, manifest, platform) {
   h1 { font-size:var(--font-size-24); margin:0 0 var(--spacing-4); }
   .sub { color:var(--color-text-body-secondary); margin:0 0 var(--spacing-24); }
   .cols { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:var(--spacing-16); align-items:start; }
-  .col { border:1px solid var(--color-line-gray-subtle); border-radius:var(--radius-12); padding:var(--spacing-20); background:var(--color-bg-level-1); min-width:0; }
+  .col { border:1px solid var(--color-line-default); border-radius:var(--radius-12); padding:var(--spacing-20); background:var(--color-bg-level-1); min-width:0; }
   .col header h3 { margin:0; font-size:var(--font-size-18); }
   .col header p { margin:var(--spacing-4) 0 var(--spacing-8); color:var(--color-text-body-secondary); font-size:var(--font-size-12); }
   h4 { font-size:var(--font-size-12); color:var(--color-text-body-secondary); margin:var(--spacing-20) 0 var(--spacing-8); font-weight:600; }
@@ -315,7 +316,7 @@ async function renderBoard(scope, DIST, manifest, platform) {
   .swap { margin:0; padding-left:var(--spacing-20); }
   .swap s { color:var(--color-text-body-secondary); }
   table.sum { width:100%; border-collapse:collapse; margin-top:var(--spacing-8); }
-  table.sum th, table.sum td { text-align:left; padding:var(--spacing-8) var(--spacing-12); border-bottom:1px solid var(--color-line-gray-subtle); vertical-align:top; font-size:var(--font-size-14); font-variant-numeric:tabular-nums; }
+  table.sum th, table.sum td { text-align:left; padding:var(--spacing-8) var(--spacing-12); border-bottom:1px solid var(--color-line-default); vertical-align:top; font-size:var(--font-size-14); font-variant-numeric:tabular-nums; }
   table.sum thead th { font-size:var(--font-size-12); color:var(--color-text-body-secondary); font-weight:500; }
   small { color:var(--color-text-body-secondary); font-size:var(--font-size-12); }
   h2 { font-size:var(--font-size-18); margin:var(--spacing-40) 0 var(--spacing-4); }

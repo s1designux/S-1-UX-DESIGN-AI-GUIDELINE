@@ -1,0 +1,8 @@
+{
+  "kind": "doc",
+  "mode": "apply",
+  "profile": "user",
+  "platform": "pc",
+  "stack": "web",
+  "service": "default"
+}
