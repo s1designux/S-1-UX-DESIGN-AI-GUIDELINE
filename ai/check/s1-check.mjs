@@ -61,6 +61,23 @@ async function loadProfile() {
   return null;
 }
 const profile = await loadProfile();
+
+/* 디자인 확인 결과 — POC 에 입힐 때 디자이너가 "그대로 두기 · 새 부품 요청"으로 정한 자리는
+   data-s1-keep="<항목 id>" 로 표시되고, 검수기는 그 자리를 '직접 만든 자리'로 세지 않는다. */
+async function loadReviewResult() {
+  for (const base of [...targets, process.cwd()]) {
+    for (const dir of [base, path.dirname(base)]) {
+      try {
+        const result = JSON.parse(await readFile(path.resolve(dir, "s1-review-result.json"), "utf8"));
+        if (result?.kind === "s1-review-result") return result;
+      } catch { /* 없으면 다음 자리 */ }
+    }
+  }
+  return null;
+}
+const reviewResult = await loadReviewResult();
+const KEEP_ATTRIBUTE = "data-s1-keep";
+const keptDecisions = new Map((reviewResult?.decisions || []).map((d) => [d.id, d.decision]));
 const usageId = flag("profile") || profile?.profile || null;
 const usage = usageId ? scope.profiles?.[usageId] : null;
 if (usageId && !usage) {
@@ -81,8 +98,8 @@ if (!targets.length) {
   process.exit(2);
 }
 if (!scope.platforms.includes(platform)) {
-  console.error(`어떤 매체인지 먼저 정해야 합니다: --platform ${scope.platforms.join(" 또는 ")}`);
-  console.error("온보딩(ONBOARDING.md)을 마치면 s1.profile.json 이 생기고 이 값이 자동으로 들어갑니다.");
+  console.error("판정: 불합격 — 어떤 화면 기준으로 볼지 정해지지 않았습니다. 온보딩(ONBOARDING.md)부터 하세요.");
+  console.error(`온보딩을 마치면 s1.profile.json 이 생겨 자동으로 읽힙니다. 직접 정하려면 --profile ${Object.keys(scope.profiles || {}).join(" | ")}`);
   process.exit(2);
 }
 const otherPlatform = platform === "pc" ? "mobile" : "pc";
@@ -494,9 +511,34 @@ function checkComponents(text, file, walked) {
 }
 
 /** 직접 만든 것으로 보이는 자리 — S1 부품이 이미 있어도 검사를 끄지 않는다. */
+/** 디자이너가 그대로 두기로 한 자리인가 — 자기나 조상에 data-s1-keep 이 있으면 그 id. */
+function keptBy(element) {
+  for (let a = element; a; a = a.parent) if (a.attributes[KEEP_ATTRIBUTE]) return a.attributes[KEEP_ATTRIBUTE];
+  return null;
+}
+
+function checkKeeps(file, walked) {
+  for (const element of walked.elements) {
+    const id = element.attributes[KEEP_ATTRIBUTE];
+    if (id === undefined) continue;
+    if (!reviewResult) {
+      add("warning", "S1-KEEP", file, element.line,
+        `${KEEP_ATTRIBUTE}="${id}" 가 있는데 디자인 확인 결과(s1-review-result.json)를 찾지 못했습니다.`,
+        "디자이너가 그대로 두기로 정한 자리만 예외입니다. 결과 파일을 프로젝트 맨 위에 두세요.");
+      continue;
+    }
+    const decision = keptDecisions.get(id);
+    if (decision === "keep" || decision === "request") continue;
+    add("error", "S1-KEEP", file, element.line,
+      decision ? `${id} 는 디자인 확인에서 "${decision}" 으로 정해졌습니다 — 그대로 둘 수 없습니다.` : `${id} 는 디자인 확인 결과에 없는 예외입니다.`,
+      decision ? "결과대로 S1 부품으로 바꾸세요." : "예외는 디자이너가 '그대로 두기 · 새 부품 요청'으로 정한 자리만 됩니다. 확인 요청서로 먼저 물어보세요.");
+  }
+}
+
 function checkReimplementation(text, file, walked) {
   for (const element of walked.elements) {
     if (element.inComponent) continue;
+    if (keptBy(element)) continue;
     const className = element.attributes.class || element.attributes.classname || "";
     if (!className) continue;
     for (const spec of scope.components) {
@@ -517,6 +559,7 @@ function countCoverage(walked, counters) {
     const isCandidate = INTERACTIVE_TAGS.has(element.tag) || INTERACTIVE_ROLES.has(role) || looksLikeComponent;
     if (!isCandidate) continue;
     if (element.tag === "input" && (element.attributes.type || "").toLowerCase() === "hidden") continue;
+    if (keptBy(element)) { counters.kept += 1; continue; }
     counters.total += 1;
     if (element.inComponent) counters.covered += 1;
     else counters.strays.push({ tag: element.tag, line: element.line, file: counters.file });
@@ -527,7 +570,7 @@ function countCoverage(walked, counters) {
 const files = [];
 for (const target of targets) files.push(...await collect(path.resolve(process.cwd(), target)));
 
-const coverage = { total: 0, covered: 0, strays: [] };
+const coverage = { total: 0, covered: 0, kept: 0, strays: [] };
 const usedComponents = new Set();
 let jsWiringSeen = false;
 let scanned = 0;
@@ -553,6 +596,7 @@ for (const file of files) {
     checkComponents(text, shown, walked);
     checkProfileWrappers(shown, walked);
     checkReimplementation(text, shown, walked);
+    checkKeeps(shown, walked);
     coverage.file = shown;
     countCoverage(walked, coverage);
   }
@@ -560,7 +604,7 @@ for (const file of files) {
 
 /* 화면 종류 — 정하지 않았거나, 정했는데 화면 맨 바깥 선언이 없다. */
 if (!usage) {
-  add("warning", "S1-PROFILE", "(프로젝트 전체)", 0,
+  add("error", "S1-PROFILE", "(프로젝트 전체)", 0,
     "어느 화면용인지(PC PR용 · 사용자용 · 관리자용 기본·작게 · 모바일) 정하지 않아 부품 크기를 판정하지 못했습니다.",
     `--profile ${Object.keys(scope.profiles || {}).join(" | ")} 를 붙이거나 s1.profile.json 에 "profile" 을 적으세요.`);
 } else if (usedComponents.size && !rootDeclared) {
@@ -594,6 +638,7 @@ console.log("");
 console.log(`${usage ? `화면 ${usage.label} · ` : ""}매체 ${platformLabel} · 기술 ${stack} · 서비스 ${service} · 배포본 ${scope._meta.distVersion}`);
 console.log(`파일 ${scanned}개 검사 · 오류 ${errors.length} · 경고 ${warnings.length}`);
 if (rate !== null) console.log(`S1 적용률 ${rate}% — 화면 속 부품 ${coverage.total}개 중 ${coverage.covered}개가 배포본입니다.`);
+if (coverage.kept) console.log(`디자인 확인에서 그대로 두기로 한 자리 ${coverage.kept}개는 적용률에서 뺐습니다.`);
 console.log(passed ? "판정: 합격" : "판정: 불합격");
 
 if (reportPath) {
@@ -658,6 +703,7 @@ function renderReport({ findings, errors, warnings, rate, coverage, passed, scan
   </div>
 </div>
 ${rate === null ? "" : `<p class="sub">화면 속 부품 ${coverage.total}개 중 ${coverage.covered}개가 배포본입니다.</p><div class="bar"><i style="width:${rate}%"></i></div>`}
+${coverage.kept ? `<p class="sub">디자인 확인에서 그대로 두기로 한 자리 ${coverage.kept}개는 적용률에서 뺐습니다.</p>` : ""}
 <h2>어긋난 자리</h2>
 ${findings.length ? `<table><thead><tr><th>판정</th><th>자리</th><th>무엇이 어긋났나</th><th>규칙</th></tr></thead><tbody>${rows}</tbody></table>` : '<p class="empty">없습니다.</p>'}
 ${coverage.strays.length ? `<h2>배포본을 안 쓰고 직접 만든 자리</h2><ul>${strays}</ul>` : ""}

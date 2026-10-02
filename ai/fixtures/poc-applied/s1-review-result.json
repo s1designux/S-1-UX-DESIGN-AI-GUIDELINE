@@ -1,0 +1,69 @@
+{
+  "kind": "s1-review-result",
+  "project": "출입관리 POC (표본)",
+  "profile": "admin",
+  "mappingCreatedAt": "2026-10-02",
+  "reviewedAt": "2026-10-02",
+  "decisions": [
+    {
+      "id": "P01",
+      "decision": "apply",
+      "memo": ""
+    },
+    {
+      "id": "P02",
+      "decision": "apply",
+      "memo": ""
+    },
+    {
+      "id": "P03",
+      "decision": "apply",
+      "memo": ""
+    },
+    {
+      "id": "P04",
+      "decision": "apply",
+      "memo": ""
+    },
+    {
+      "id": "P05",
+      "decision": "apply",
+      "memo": ""
+    },
+    {
+      "id": "P06",
+      "decision": "apply",
+      "memo": ""
+    },
+    {
+      "id": "P07",
+      "decision": "alt:0",
+      "memo": "삭제는 텍스트 버튼으로"
+    },
+    {
+      "id": "P08",
+      "decision": "keep",
+      "memo": ""
+    },
+    {
+      "id": "P09",
+      "decision": "request",
+      "memo": "진행 막대 필요"
+    },
+    {
+      "id": "P10",
+      "decision": "apply",
+      "memo": ""
+    },
+    {
+      "id": "P11",
+      "decision": "apply",
+      "memo": ""
+    },
+    {
+      "id": "P12",
+      "decision": "apply",
+      "memo": ""
+    }
+  ]
+}

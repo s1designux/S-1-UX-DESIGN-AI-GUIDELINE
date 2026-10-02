@@ -347,6 +347,37 @@ for (const target of ["pc", "mobile"]) {
   await writeFile(path.join(ROOT, "ai", "generated", `components.${target}.md`), lines.join("\n"), "utf8");
 }
 
+/* 부품 고르기 안내 — 이미 있는 화면(POC)에 입힐 때 '하는 일'로 S1 부품을 짝짓는 근거.
+   글은 새로 쓰지 않는다. registry/components/<id>.json 의 언제 쓰나 / 쓰지 말 때를 그대로 옮긴다. */
+for (const target of ["pc", "mobile"]) {
+  const other = target === "pc" ? "mobile" : "pc";
+  const usable = components.filter((c) => c.platform === "both" || c.platform === `${target}-only`);
+  const lines = [
+    `# 부품 고르기 안내 — ${target === "pc" ? "PC" : "모바일"}`,
+    "",
+    "> 자동 생성물 — 손으로 고치지 마세요. 글은 `registry/components/<부품>.json` 의 usage 를 그대로 옮긴 것입니다.",
+    "",
+    "이미 있는 화면(POC)의 부품을 S1 부품과 짝지을 때 씁니다. **이름이 아니라 하는 일로** 고릅니다.",
+    "POC 의 `btn-primary`·`SearchBox`·`Popup` 같은 이름은 믿지 않습니다. 그 부품이 화면에서 무슨 일을 하는지 보고 아래 '언제 쓰나'에 맞는 것을 고릅니다.",
+    "'쓰지 말 때'에 걸리면 거기 적힌 다른 부품으로 갑니다. 어디에도 맞지 않으면 짓지 않고 **기준에 없음(none)** 으로 둡니다.",
+    ""
+  ];
+  for (const c of usable) {
+    let registry = {};
+    try { registry = await readJson(path.join(registryDir, `${c.id}.json`)); } catch { /* 없으면 이름만 */ }
+    const usage = registry.usage || {};
+    if (!usage.whenToUse?.length && !usage.whenNotToUse?.length) continue;
+    const swap = target === "mobile" ? substitutes[c.id] : null;
+    lines.push(`## \`${c.id}\`${swap ? ` — 모바일에서는 쓰지 않음 → ${swap.use}` : ""}`, "");
+    if (c.variants.length && c.variantAttribute) lines.push(`변형: ${c.variants.map((v) => `\`${v}\``).join(" · ")}`, "");
+    if (usage.whenToUse?.length) lines.push("**언제 쓰나**", ...usage.whenToUse.map((t) => `- ${t}`), "");
+    if (usage.whenNotToUse?.length) lines.push("**쓰지 말 때**", ...usage.whenNotToUse.map((t) => `- ${t}`), "");
+  }
+  const forbidden = components.filter((c) => c.platform === `${other}-only`).map((c) => `\`${c.id}\``);
+  if (forbidden.length) lines.push(`## ${target === "pc" ? "PC" : "모바일"} 화면에 놓지 않는 것`, "", forbidden.join(" · "), "");
+  await writeFile(path.join(ROOT, "ai", "generated", `matching-guide.${target}.md`), lines.join("\n"), "utf8");
+}
+
 /* 화면 종류별 크기표와 비교판 — AI 는 고른 화면 종류의 표 하나만 읽는다. */
 await writeProfileDocs(scope, ROOT, DIST, manifest);
 

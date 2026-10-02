@@ -12,6 +12,11 @@
 | `rules/platform-scope.overrides.json` | **사람이 손으로 고치는 파일.** 부품의 PC/모바일 소속 확정 |
 | `rules/usage-profiles.json` | **사람이 손으로 고치는 파일.** 화면 종류(PC PR용 · 사용자용 · 관리자용 기본·작게 · 모바일) → 밀도(넓게·보통·좁게) |
 | `generated/profile.pr.md` · `profile.user.md` · `profile.admin.md` · `profile.admin-compact.md` · `profile.mobile.md` | 화면 종류별 부품 크기표. AI 는 고른 화면 종류의 표 하나만 읽습니다 |
+| `generated/matching-guide.pc.md` · `matching-guide.mobile.md` | 이미 있는 화면(POC)의 부품을 **하는 일로** S1 부품과 짝짓는 안내 |
+| `rules/apply-poc.md` | POC 에 S1 입히기 순서 — 바꾸기 전에 디자인 확인 요청서부터 |
+| `scripts/capture-poc.py` | POC 화면에서 부품마다 빨간 테두리를 친 넓은 캡처를 찍어 대응표에 넣는다(Playwright) |
+| `scripts/review-request.mjs` | 대응표(s1-mapping.json) → 디자이너에게 보낼 디자인 확인 요청서(HTML 한 장) |
+| `scripts/install-entry.mjs` | Claude Code·VS Code·Cursor·Windsurf·Gemini·Codex 가 처음 읽는 안내 파일에 "S1 온보딩부터"를 깐다 |
 | `generated/profiles.pc.html` · `profiles.mobile.html` | 화면 종류를 실제 부품으로 나란히 그린 비교판 (PC·모바일 따로) |
 | `generated/scope.json` | 검수기가 쓰는 정답표 — 배포본에서 자동으로 뽑습니다 |
 | `generated/components.pc.md` · `components.mobile.md` | 매체별로 쓸 수 있는 부품·크기 목록 |
@@ -38,6 +43,7 @@ npm run ai:check -- <폴더> --profile user --report 판정표.html   # pr · us
 6. **색·토큰** — HEX·rgba 직접 사용, 없는 토큰 이름
 7. **조합 문법** — 임의 px 간격, 토큰에 없는 글자 크기
 8. **화면 종류별 크기** — PR용·사용자용·관리자용(기본·작게)·모바일 크기표와 다른 `data-size`, 그 화면에 없는 밀도 단어, 모바일에서 바꿔 써야 할 부품
+9. **디자인 확인 예외** — `data-s1-keep` 은 디자이너가 "그대로 두기·새 부품 요청"으로 정한 자리만 인정
 
 판정 기준은 검수기가 만들지 않습니다. 전부 `generated/scope.json` 에서 읽고, 그 값은 배포본에서 나옵니다.
 화면 종류별 크기는 `rules/usage-profiles.json`(화면 종류 → 밀도) + `registry/governance/density-policy.json`(밀도 정본, 원본 저장소에서 동기화) + 배포본 부품 CSS 의 실제 높이(밀도 → 크기 이름)로 만듭니다.

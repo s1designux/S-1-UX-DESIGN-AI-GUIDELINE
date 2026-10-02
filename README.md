@@ -31,6 +31,13 @@ S-1 디자인 시스템을 AI 에이전트와 개발자가 시각적으로 정�
 
 React·Vue·Swift·Kotlin·C++ 로 쓸 때는 `ui-library/dist/platform/<플랫폼>/` 안의 README 를 보세요.
 
+## 어떤 AI 도구로 열어도 온보딩부터
+
+Claude Code·VS Code(Copilot)·Cursor·Windsurf·Gemini·Codex 가 처음 읽는 안내 파일에 "S1 온보딩부터"가 들어 있습니다.
+개발자 프로젝트에도 깔 수 있습니다 — `node ai/scripts/install-entry.mjs <프로젝트 폴더>`.
+
+이미 만든 화면(POC)에 입힐 때는 바꾸기 전에 **디자인 확인 요청서**를 먼저 만들어 디자이너에게 보냅니다 — [`ai/rules/apply-poc.md`](ai/rules/apply-poc.md).
+
 ## AI에게 줄 때는 이 한 장
 
 AI(클로드·GPT·Cursor 등)에게 작업을 시킬 때는 [`ONBOARDING.md`](ONBOARDING.md) 를 그대로 주세요.
