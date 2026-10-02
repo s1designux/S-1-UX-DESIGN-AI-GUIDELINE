@@ -3,6 +3,74 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-10-02 07:38 (KST)
+
+- 원본 커밋: `77d319a` — fix(installer): 시간 선택 펼친 모습 — 재설치 때도 시간 목록을 찾아 붙인다
+- 내용이 바뀐 파일 60개
+  - `assets/css/tokens.css`
+  - `assets/css/typography.css`
+  - `design/DESIGN.core.md`
+  - `registry/components/component-facts.json`
+  - `ui-library/dist/assets/css/tokens.css`
+  - `ui-library/dist/assets/css/typography.css`
+  - `ui-library/dist/assets/icons/manifest.json`
+  - `ui-library/dist/components/assist-button.manifest.json`
+  - `ui-library/dist/components/bottom-sheet-option.manifest.json`
+  - `ui-library/dist/components/bottom-sheet.manifest.json`
+  - `ui-library/dist/components/button.manifest.json`
+  - `ui-library/dist/components/checkbox.manifest.json`
+  - `ui-library/dist/components/chip.manifest.json`
+  - `ui-library/dist/components/data-tag.manifest.json`
+  - `ui-library/dist/components/date-picker.manifest.json`
+  - `ui-library/dist/components/divider.manifest.json`
+  - `ui-library/dist/components/dropdown.manifest.json`
+  - `ui-library/dist/components/expandable-card.manifest.json`
+  - `ui-library/dist/components/filter-chip.manifest.json`
+  - `ui-library/dist/components/gnb-sub-menu-item.manifest.json`
+  - … 외 40개
+
+## 2026-10-01 07:12 (KST)
+
+- 원본 커밋: `777d836` — fix(guide): 모달·콘텐츠 모달·바텀시트 미리보기가 스크롤 시 고정 머리말 위로 튀어나오던 것
+- 새로 추가된 파일 15개
+  - `registry/components/data-tag.json`
+  - `registry/components/divider.json`
+  - `registry/components/expandable-card.json`
+  - `ui-library/dist/components/data-tag.css`
+  - `ui-library/dist/components/data-tag.js`
+  - `ui-library/dist/components/data-tag.manifest.json`
+  - `ui-library/dist/components/divider.css`
+  - `ui-library/dist/components/divider.js`
+  - `ui-library/dist/components/divider.manifest.json`
+  - `ui-library/dist/components/expandable-card.css`
+  - `ui-library/dist/components/expandable-card.js`
+  - `ui-library/dist/components/expandable-card.manifest.json`
+  - `ui-library/dist/examples/data-tag.html`
+  - `ui-library/dist/examples/divider.html`
+  - `ui-library/dist/examples/expandable-card.html`
+- 내용이 바뀐 파일 51개
+  - `assets/css/style.css`
+  - `assets/css/tokens.css`
+  - `assets/css/ui-library-guide.css`
+  - `assets/js/main.js`
+  - `assets/js/ui-library-guide.js`
+  - `design/DESIGN.core.md`
+  - `pages/components.html`
+  - `registry/components/component-facts.json`
+  - `registry/components/gnb-sub-menu.json`
+  - `registry/components/gnb.json`
+  - `registry/components/index.json`
+  - `ui-library/dist/assets/css/tokens.css`
+  - `ui-library/dist/components/bottom-sheet-option.css`
+  - `ui-library/dist/components/bottom-sheet-option.manifest.json`
+  - `ui-library/dist/components/button.css`
+  - `ui-library/dist/components/button.manifest.json`
+  - `ui-library/dist/components/date-picker.css`
+  - `ui-library/dist/components/date-picker.manifest.json`
+  - `ui-library/dist/components/gnb-sub-menu-item.css`
+  - `ui-library/dist/components/gnb-sub-menu-item.manifest.json`
+  - … 외 31개
+
 ## 2026-09-30 07:12 (KST)
 
 - 원본 커밋: `1a6d5fe` — feat(tokens): 폼컨트롤 다크값 4건 정본 반영 (Figma V3.0 TEST 실측)

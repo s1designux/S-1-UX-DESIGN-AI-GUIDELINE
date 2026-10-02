@@ -23,7 +23,7 @@
 /* 하단 1px 선 — GNB 바와 같은 이유로 겹쳐 그리는 선(::before)으로 둔다. border-bottom 으로 두면
    패널 높이가 1px 줄어 정본 구조(strokeBottomWeight=1, strokeAlign=INSIDE)와 어긋난다(gnb.css 선례). */
 [data-s1-component="gnb-sub-menu"]::before {
-  background: var(--color-line-gray-subtle);
+  background: var(--color-line-default);
   bottom: 0;
   content: "";
   height: var(--border-width-default);

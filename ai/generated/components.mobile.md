@@ -1,9 +1,9 @@
 # 모바일 에서 쓸 수 있는 부품
 
 > 자동 생성물 — 손으로 고치지 마세요. `node ai/scripts/build-scope.mjs` 로 다시 만듭니다.
-> 배포본 0.13.16 (2026-09-29 판) 기준.
+> 배포본 0.14.13 (2026-10-01 판) 기준.
 
-## 써도 되는 것 (21종)
+## 써도 되는 것 (24종)
 
 - `input` — 크기 md · 동작 스크립트 필요
 - `button` — 크기 lg
@@ -26,6 +26,9 @@
 - `bottom-sheet-option`
 - `bottom-sheet` · 동작 스크립트 필요
 - `list-row`
+- `expandable-card` · 동작 스크립트 필요
+- `data-tag`
+- `divider`
 
 ## 따로 쓰지 않고 바꿔 쓰는 것 (2종)
 

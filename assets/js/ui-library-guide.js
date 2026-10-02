@@ -167,6 +167,24 @@ const componentConfig = {
     approvedScope: "푸터 3종(없음 · 버튼 1개 · 버튼 2개) · 폭은 화면 폭(최대 360) · 높이는 내용만큼 · 크기 축 없음 · 모바일 전용 · Esc 닫기 · 딤 눌러 닫기 · 초점 가둠",
     runtime: S1UI.bottomSheet
   },
+  "data-tag": {
+    title: "Data Tag",
+    description: "상태를 보여주기만 하는 작은 라벨입니다. 누르지 않으며, 파랑은 승인·확인, 빨강은 주의·에러를 뜻합니다.",
+    approvedScope: "모양 2종(Chips 알약 · Square 네모) × 형태 2종(Line 테두리 · Solid 채움) × 색 2종(Blue · Red) 여덟 벌 · 상태 축 없음 · 크기 축 없음 · JavaScript 불필요",
+    runtime: S1UI.dataTag
+  },
+  "expandable-card": {
+    title: "Expandable Card",
+    description: "머리줄을 누르면 아래로 내용이 펼쳐지는 카드입니다. 머리줄(글 묶음 + 여닫이 화살표)과 펼침칸 두 자리로 짜이고, 선 없이 바탕색 차이로 나뉩니다.",
+    approvedScope: "상태 2종(Collapsed · Expanded) · 크기 축 없음(폭은 놓인 자리가 정한다) · variant 없음 · 모바일 한 유형 · 머리줄 button + aria-expanded",
+    runtime: S1UI.expandableCard
+  },
+  divider: {
+    title: "Divider",
+    description: "내용을 나누는 선입니다. 가로·세로 두 방향, 기본(1)·굵게(2) 두 두께, 옅은·진한 두 색을 따로 고르며, 길이와 자리는 놓이는 화면이 정합니다.",
+    approvedScope: "Axis 2종(X 가로 · Y 세로) × Weight 2종(Default 1 · Strong 2) × Tone 2종(Default 옅은 · Strong 진한) · 상태 축 없음 · 크기 축 없음 · JavaScript 불필요",
+    runtime: S1UI.divider
+  },
   "bottom-sheet-option": {
     title: "Bottom Sheet Option",
     description: "바텀시트 안에 놓이는 한 줄입니다. 단독으로 쓰지 않고 시트 본문에 넣어 씁니다.",
@@ -2916,6 +2934,150 @@ function datePickerStateMatrix() {
     </div>`;
 }
 
+/* ── State matrix: Expandable Card ──
+   정본 buildExpandableCard 의 변형 축은 State(Collapsed · Expanded) 하나뿐이다. 크기 축이 없고
+   (폭은 놓인 자리가 정한다) 모바일 한 유형이라, 크기 라벨·크기별 블록을 만들지 않는다
+   (표출 정책 _meta.uiLibraryGuideLayout.stateMatrix.singleValueAxis).
+   hover 는 정본 변형 축이 아니고 배포본 CSS 도 강제 훅(data-force-state)을 갖지 않는다 —
+   칸으로 세우지 않고 Action 의 실물에 마우스를 올려 확인한다(정본에 없는 상태를 만들지 않는다).
+   ※ 카드마다 aria-controls/id 를 새로 만든다 — 같은 마크업을 PC·Mobile 두 블록에 붙이면
+     id 가 문서 안에서 겹쳐 머리줄이 남의 펼침칸을 가리킨다(함정 T5). */
+let expandableCardSeq = 0;
+
+function expandableCardMarkup({ open = false, isPreview = false } = {}) {
+  expandableCardSeq += 1;
+  const panelId = `guide-expandable-card-panel-${expandableCardSeq}`;
+  const text = (part) => `<span data-s1-part="${part}">${part === "title" ? "타이틀" : "서브타이틀"}</span>`;
+  return `<div data-s1-component="expandable-card" data-guide-sample="set"${isPreview ? ' class="is-preview"' : ""}>
+      <button type="button" data-s1-part="header" aria-expanded="${open}" aria-controls="${panelId}"${isPreview ? ' tabindex="-1"' : ""}>
+        <span data-s1-part="text">${["title", "subtitle", "body", "note", "caption"].map(text).join("")}</span>
+        <span data-s1-part="toggle-icon" aria-hidden="true"></span>
+      </button>
+      <div data-s1-part="panel-wrap" id="${panelId}"${open ? ' data-open="true"' : ""}>
+        <div data-s1-part="panel">${["title", "subtitle", "body", "note", "caption"].map(text).join("")}</div>
+      </div>
+    </div>`;
+}
+
+function expandableCardStateMatrix() {
+  const states = [["collapsed", "Collapsed"], ["expanded", "Expanded"]];
+
+  const block = () => {
+    const action = `<div class="comp-action-top">
+      <div class="matrix-col-header-action">Action</div>
+      <div class="uilg-expandable-card-action">${expandableCardMarkup({})}${expandableCardMarkup({})}</div>
+      <p class="uilg-demo-note">머리줄을 누르면 펼쳐집니다. 마우스를 올리면 머리줄 바탕이 한 단계 어두워지고, 열린 뒤에는 기본색으로 돌아옵니다. 카드 여러 장의 세로 간격과 너비는 화면이 정합니다(카드 자신은 너비 100%).</p>
+    </div>`;
+    const header = `<div class="matrix-col-header" style="grid-column:1"></div>` +
+      states.map(([, label]) => `<div class="matrix-col-header">${label}</div>`).join("");
+    const row = `<div class="matrix-row-label">Expandable Card</div>` +
+      states.map(([key]) => `<div class="comp-state-cell">${expandableCardMarkup({ open: key === "expanded", isPreview: true })}</div>`).join("");
+    return `${action}<div class="comp-state-matrix" style="grid-template-columns: 132px repeat(${states.length}, minmax(240px, 1fr));">${header}${row}</div>`;
+  };
+
+  return `<div class="platform-section platform-section-pc"><div class="preview-area">${block()}</div></div>
+    <div class="platform-section platform-section-mobile"><div class="preview-area">${block()}</div></div>`;
+}
+
+/* ── State matrix: Divider ──
+   정본 buildDivider 의 변형 축은 Axis(X · Y) × Weight(Default · Strong) × Tone(Default · Strong)
+   이고 상태 축이 없다. 굵기(data-weight)와 색(data-tone)을 따로 고른다 — 정본도 여덟 벌이다(2026-09-30).
+   들여쓰기(data-inset)는 부품 축이 아니라 놓이는 자리가 정한다 — Action 의 목록에서 보인다. */
+function dividerMarkup({ axis = "x", weight = "default", tone = "default", inset = "" } = {}) {
+  const attrs = [`data-axis="${axis}"`];
+  if (weight === "strong") attrs.push('data-weight="strong"');
+  if (tone === "strong") attrs.push('data-tone="strong"');
+  if (inset) attrs.push(`data-inset="${inset}"`);
+  if (axis === "y") attrs.push('aria-orientation="vertical"');
+  return `<hr data-s1-component="divider" data-guide-sample="set" ${attrs.join(" ")}>`;
+}
+
+function dividerStateMatrix() {
+  /* 정본 buildDivider = Axis × Weight × Tone 여덟 벌(river 2026-09-30 "정본을 네벌로 맞춘다").
+     행은 방향 × 색, 열은 굵기로 세운다. */
+  const matrixRows = [
+    ["x", "default", "가로 · 옅은 선"], ["x", "strong", "가로 · 진한 선"],
+    ["y", "default", "세로 · 옅은 선"], ["y", "strong", "세로 · 진한 선"],
+  ];
+  const weights = [["default", "Weight=Default"], ["strong", "Weight=Strong"]];
+
+  const block = () => {
+    /* 목록·한 줄 묶음의 감싸개는 안내 화면이 만든다(부품은 선 하나만 그린다).
+       ul/p 안에 hr 을 넣으면 파서가 단락을 먼저 닫아 세로선이 줄에서 떨어져 나간다 — div 로 짠다. */
+    const rows = ["오늘 할 일", "어제 한 일", "지난주 요약"]
+      .map((label, index) => `<div class="uilg-divider-row">${escapeHtml(label)}</div>${index < 2 ? dividerMarkup({ axis: "x", inset: "text" }) : ""}`)
+      .join("");
+    const meta = ["2026.09.30", "작성자", "조회 12"]
+      .map((label, index) => `${index ? dividerMarkup({ axis: "y" }) : ""}<span>${escapeHtml(label)}</span>`)
+      .join("");
+    const action = `<div class="comp-action-top">
+      <div class="matrix-col-header-action">Action</div>
+      <div class="uilg-divider-action">
+        <div class="uilg-divider-list">${rows}</div>
+        <div class="uilg-divider-meta">${meta}</div>
+      </div>
+      <p class="uilg-demo-note">목록 줄 사이는 글 줄에 맞춰 좌우를 들여 쓴 가로선으로 나누고, 한 줄 안의 값과 값은 세로선으로 끊습니다. 선의 길이와 자리를 만드는 감싸개는 화면이 갖습니다.</p>
+    </div>`;
+    const header = `<div class="matrix-col-header" style="grid-column:1"></div>` +
+      weights.map(([, label]) => `<div class="matrix-col-header">${label}</div>`).join("");
+    const body = matrixRows.map(([axis, tone, rowLabel]) =>
+      `<div class="matrix-row-label">${escapeHtml(rowLabel)}</div>` +
+      weights.map(([weight]) => `<div class="comp-state-cell uilg-divider-cell">${dividerMarkup({ axis, weight, tone })}</div>`).join("")
+    ).join("");
+    return `${action}<div class="comp-state-matrix" style="grid-template-columns: 132px repeat(${weights.length}, minmax(180px, 1fr));">${header}${body}</div>`;
+  };
+
+  return `<div class="platform-section platform-section-pc"><div class="preview-area">${block()}</div></div>
+    <div class="platform-section platform-section-mobile"><div class="preview-area">${block()}</div></div>`;
+}
+
+/* ── State matrix: Data Tag ──
+   정본 buildDataTag 의 변형 축은 Type(Chips · Square) × Variant(Line · Solid) × Color(Blue · Red)
+   여덟 벌이고 상태 축이 없다(보여주기만 하는 표시라 hover·pressed 가 없다).
+   세 축을 블록으로 가르지 않고 한 표에서 본다 — 모양·형태를 행으로 겹쳐 쌓고 색을 열로 둔다
+   (표출 정책 A-5: 합칠 수 있는 유형을 선으로 가르지 않는다).
+   색은 뱃지 전용 쓰임 이름(--color-tag-*)이 라이트·다크 값을 함께 갖는다 — 안내 화면에서
+   다크 덮어쓰기를 따로 두지 않는다. */
+function dataTagMarkup({ shape = "chips", solid = "off", tone = "blue", label = "라벨" } = {}) {
+  return `<span data-s1-component="data-tag" data-guide-sample="set" data-shape="${shape}" data-solid="${solid}" data-tone="${tone}">${escapeHtml(label)}</span>`;
+}
+
+function dataTagStateMatrix() {
+  const tones = [["blue", "Color=Blue"], ["red", "Color=Red"]];
+  const rows = [
+    ["chips", "off", "Chips · Line"],
+    ["chips", "on", "Chips · Solid"],
+    ["square", "off", "Square · Line"],
+    ["square", "on", "Square · Solid"]
+  ];
+  const toneLabel = { blue: { off: "확인", on: "승인" }, red: { off: "에러", on: "주의" } };
+
+  const block = () => {
+    const sample = (shape, solid) => tones
+      .map(([tone]) => dataTagMarkup({ shape, solid, tone, label: toneLabel[tone][solid] }))
+      .join("");
+    const action = `<div class="comp-action-top">
+      <div class="matrix-col-header-action">Action</div>
+      <div class="uilg-data-tag-action">
+        <div class="uilg-data-tag-row"><span>결재 요청 · 2026.09.30</span>${dataTagMarkup({ shape: "chips", solid: "on", tone: "blue", label: "승인" })}</div>
+        <div class="uilg-data-tag-row"><span>반려 건 · 2026.09.29</span>${dataTagMarkup({ shape: "chips", solid: "on", tone: "red", label: "주의" })}</div>
+        <div class="uilg-data-tag-row"><span>검토 대기 · 2026.09.28</span>${dataTagMarkup({ shape: "square", solid: "off", tone: "blue", label: "확인" })}</div>
+      </div>
+      <p class="uilg-demo-note">표나 목록 칸에서 상태를 알리는 표시입니다. 누르지 않으며 색만으로 뜻을 전하지 않게 낱말을 함께 적습니다. 여러 개의 줄바꿈·간격은 화면이 정합니다.</p>
+    </div>`;
+    const header = `<div class="matrix-col-header" style="grid-column:1"></div>` +
+      tones.map(([, label]) => `<div class="matrix-col-header">${label}</div>`).join("");
+    const body = rows.map(([shape, solid, rowLabel]) =>
+      `<div class="matrix-row-label">${rowLabel}</div>` +
+      tones.map(([tone]) => `<div class="comp-state-cell">${dataTagMarkup({ shape, solid, tone, label: toneLabel[tone][solid] })}</div>`).join("")
+    ).join("");
+    return `${action}<div class="comp-state-matrix" style="grid-template-columns: 132px repeat(${tones.length}, minmax(140px, 1fr));">${header}${body}</div>`;
+  };
+
+  return `<div class="platform-section platform-section-pc"><div class="preview-area">${block()}</div></div>
+    <div class="platform-section platform-section-mobile"><div class="preview-area">${block()}</div></div>`;
+}
+
 function stateMatrix(id) {
   if (id === "date-picker") return datePickerStateMatrix();
   if (id === "input") return inputStateMatrix();
@@ -2942,6 +3104,9 @@ function stateMatrix(id) {
   if (id === "gnb-sub-menu-item") return gnbSubMenuItemStateMatrix();
   if (id === "gnb-sub-menu") return gnbSubMenuStateMatrix();
   if (id === "time-picker") return timePickerStateMatrix();
+  if (id === "expandable-card") return expandableCardStateMatrix();
+  if (id === "divider") return dividerStateMatrix();
+  if (id === "data-tag") return dataTagStateMatrix();
   return controlStateMatrix(id);
 }
 
@@ -3076,6 +3241,16 @@ function wireCodeViewer(section, sources) {
   });
 }
 
+/* 배포 상태 → 머리줄 뱃지 글자. 「Approved」는 river UX 승인이 끝난 것에만 붙인다 —
+   기술 검증 대기(candidate)·river 승인 대기(verified)를 승인처럼 보이게 하지 않는다.
+   목록에 없는 상태(draft 등)는 화면에 올리지 않는다(mountGuide 가 막는다).
+   상태 뜻의 정본 = registry/governance/ui-library-code-contract.json statusModel. */
+const GUIDE_STATUS_LABEL = {
+  approved: "Approved",
+  verified: "검수 준비",
+  candidate: "검증 대기"
+};
+
 /* ── Mount ── */
 
 async function mountGuide(id) {
@@ -3093,7 +3268,7 @@ async function mountGuide(id) {
       fetchText(sourceUrls.js)
     ]);
 
-    if (!["approved", "verified"].includes(manifest.status)) throw new Error(`${id} 배포 상태가 verified 또는 approved가 아닙니다.`);
+    if (!GUIDE_STATUS_LABEL[manifest.status]) throw new Error(`${id} 배포 상태(${manifest.status})는 안내 화면에 올릴 수 있는 값이 아닙니다.`);
 
     /* 요약 한 줄도 보고 있는 화면 기준이다 — 크기가 한 가지인 화면에서는 크기를 말하지 않는다
        (river 확정 2026-09-01). 갈래 선언이 없는 컴포넌트는 한 문장을 그대로 쓴다. */
@@ -3150,7 +3325,7 @@ async function mountGuide(id) {
           <p class="uilg-description">${config.description}</p>
         </div>
         <div class="uilg-badges" aria-label="배포 상태">
-          <span class="uilg-badge uilg-badge-approved">${manifest.status === "approved" ? "Approved" : "검수 준비"}</span>
+          <span class="uilg-badge${manifest.status === "approved" ? " uilg-badge-approved" : ""}">${GUIDE_STATUS_LABEL[manifest.status]}</span>
           <span class="uilg-badge">Core</span>
           <span class="uilg-badge">v${escapeHtml(manifest.version)}</span>
           <span class="uilg-badge">실제 dist 사용</span>
@@ -3180,7 +3355,7 @@ async function mountGuide(id) {
       const scope = section.querySelector(`[data-guide-block="${block.key || "main"}"]`);
       if (scope) wireCodeViewer(scope, { html: block.html, css, js });
     }
-    if (id === "toggle" || id === "chip" || id === "select" || id === "dropdown" || id === "filter-chip" || id === "tab" || id === "pagination" || id === "multi-toggle" || id === "table" || id === "time-picker" || id === "date-picker") {
+    if (id === "toggle" || id === "chip" || id === "select" || id === "dropdown" || id === "filter-chip" || id === "tab" || id === "pagination" || id === "multi-toggle" || id === "table" || id === "time-picker" || id === "date-picker" || id === "expandable-card") {
       /* 미리보기 칸(.is-preview)은 init 하지 않는다 — 런타임이 패널을 다시 닫아
          Open/Selected 칸이 사라진다. Action 영역의 실물만 살린다. */
       section.querySelectorAll(`[data-s1-component="${id}"]:not(.is-preview)`).forEach((root) => config.runtime.init(root));
@@ -3326,6 +3501,6 @@ async function mountGuide(id) {
   }
 }
 
-const guideComponents = ["input", "button", "assist-button", "text-button", "checkbox", "radio", "toggle", "chip", "select", "dropdown", "filter-chip", "tab", "pagination", "textarea", "multi-toggle", "modal", "modal-content", "table", "mobile-bottom-nav", "mobile-header", "gnb", "gnb-sub-menu-item", "gnb-sub-menu", "time-picker", "date-picker", "bottom-sheet", "bottom-sheet-option"];
+const guideComponents = ["input", "button", "assist-button", "text-button", "checkbox", "radio", "toggle", "chip", "select", "dropdown", "filter-chip", "tab", "pagination", "textarea", "multi-toggle", "modal", "modal-content", "table", "mobile-bottom-nav", "mobile-header", "gnb", "gnb-sub-menu-item", "gnb-sub-menu", "time-picker", "date-picker", "bottom-sheet", "bottom-sheet-option", "expandable-card", "divider", "data-tag"];
 await Promise.all(guideComponents.map(mountGuide));
 document.dispatchEvent(new CustomEvent("s1:component-guide:ready", { detail: { components: guideComponents } }));

@@ -1,0 +1,157 @@
+{
+  "_meta": {
+    "id": "expandable-card",
+    "name": "Expandable Card",
+    "category": "core",
+    "updatedAt": "2026-09-30",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "planned",
+    "darkModeStatus": "stable",
+    "a11yStatus": "candidate",
+    "figmaStatus": "planned",
+    "harnessStatus": "planned",
+    "description": "제목 줄을 누르면 아래로 내용이 펼쳐지는 카드. 머리줄(글 묶음 + 여닫이 화살표)과 펼침칸 두 자리로 짜인다. 머리줄은 흰 바탕, 펼침칸은 한 단계 어두운 바탕이라 선 없이 나뉜다.",
+    "a11yApproval": "미확정 — 머리줄은 button + aria-expanded/aria-controls, 펼침칸은 그 id 를 갖는다. 3-build 에서 확정한다.",
+    "codeStatusNote": "정본 buildExpandableCard 는 2026-09-29 신설(river 승인 \"오케이 4종 승인할게\", Gate 34 기록). 웹 배포본은 work-id promoted-parts-4 진행 중.",
+    "platform": "mobile"
+  },
+  "usage": {
+    "whenToUse": [
+      "한 화면에 여러 덩어리를 쌓아 두고, 필요한 것만 펴서 보게 할 때.",
+      "질문과 답처럼 제목만으로 고르고 내용은 접어 두는 목록."
+    ],
+    "whenNotToUse": [
+      "화면을 덮어야 하는 내용 — Bottom Sheet·Modal 을 쓴다.",
+      "같은 모양의 한 줄이 반복될 뿐 펼칠 내용이 없을 때 — List Row 를 쓴다."
+    ],
+    "note": "PC 유형(리스트형·컨텐츠박스형)은 아직 만들지 않았다. river 결정 2026-09-29 — 모바일 한 유형부터."
+  },
+  "anatomy": [
+    {
+      "part": "머리줄",
+      "role": "누르는 자리. 글 묶음 + 오른쪽 끝 여닫이 화살표."
+    },
+    {
+      "part": "글 묶음",
+      "role": "타이틀(16 Bold) 아래로 서브타이틀 세 줄과 캡션. 줄 간격 10. 머리줄 제목 첫 줄은 화살표 높이(24)에 맞춰 가운데 선다."
+    },
+    {
+      "part": "여닫이 화살표",
+      "role": "라이브러리 chevron 24. 닫히면 아래, 열리면 위를 본다."
+    },
+    {
+      "part": "펼침칸",
+      "role": "열렸을 때만 보이는 내용 자리. 바탕이 bg/level-2 라 머리줄과 나뉜다."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "여백은 위16 · 오른16 · 아래16 · 왼20 을 쓴다(river E안 2026-09-30 — 원본은 아래 20).",
+      "머리줄과 펼침칸은 바탕색 차이로만 나눈다.",
+      "화살표는 라이브러리 아이콘 인스턴스를 쓴다.",
+      "글자 색은 텍스트 색상 단계를 쓴다 — 제목 1단계 · 본문 2단계 · 캡션은 본문 3단계. 다크에서 따로 덮어쓰지 않는다."
+    ],
+    "dont": [
+      "머리줄과 펼침칸 사이에 선을 넣지 않는다 — 원본에 없다.",
+      "펼침칸 바탕을 머리줄과 같은 색으로 두지 않는다.",
+      "열린 뒤 머리줄을 회색으로 남겨 두지 않는다."
+    ]
+  },
+  "a11y": [
+    "머리줄은 button 이며 aria-expanded 로 열림 여부를, aria-controls 로 펼침칸을 가리킨다.",
+    "펼침칸은 닫혀 있는 동안 읽히지 않는다.",
+    "화살표는 장식이다 — 이름은 타이틀 글자가 갖는다.",
+    "한 화면에 여러 장을 놓아도 id 가 겹치지 않아야 한다."
+  ],
+  "variantAxis": {
+    "property": [
+      "State"
+    ],
+    "values": {
+      "State": [
+        "Collapsed",
+        "Expanded"
+      ]
+    },
+    "absentCombinations": [],
+    "sizeAxis": "없음 — 폭은 놓인 자리가 정한다(Figma 정본은 모바일 360 화면 기준 328)."
+  },
+  "scope": "light+dark",
+  "tokens": {
+    "bg": [
+      "color/bg/level-0",
+      "color/bg/level-2"
+    ],
+    "line": [
+      "color/line/default"
+    ],
+    "text": [
+      "color/text/title/primary",
+      "color/text/body/secondary",
+      "color/text/body/tertiary"
+    ],
+    "icon": [
+      "color/icon/gray-dark"
+    ],
+    "number": [
+      "spacing/10",
+      "spacing/16",
+      "spacing/20",
+      "radius/10",
+      "border-width/1",
+      "sizing/24"
+    ]
+  },
+  "reuses": {
+    "coreComponents": [],
+    "note": "여닫이 화살표는 아이콘 라이브러리 chevron 인스턴스다."
+  },
+  "figma": {
+    "componentSetKey": "(미발행 — 라이브러리 publish 시 기록)",
+    "fileKey": "cysG5U1udpQqVagYY1hWHW",
+    "targetFile": "SW UX GUIDE V3.0-TEST",
+    "builder": "plugins/figma-vars-installer/src/build-components.ts · buildExpandableCard",
+    "propertyMap": {
+      "state": [
+        "collapsed",
+        "expanded"
+      ]
+    },
+    "note": "2칸. Dark 는 Appearance 모드로 제공한다. 설치기 묶음은 List(river 결정 2026-09-29)."
+  },
+  "governance": {
+    "verify": "new",
+    "verifyNote": "2026-09-29 정본 신설. Figma 실물 설치·렌더 대조는 아직 하지 않았다 — 4-verification 에서 🤖 component-verifier 가 맡는다.",
+    "canonApproval": "Gate 34 승인 기록 — component:Expandable Card, by river, 2026-09-29.",
+    "origin": "SW UX GUIDE V2.4 「card」 expandable-card (540:6547 닫힘 / 540:6555 펼침) REST 실측."
+  },
+  "webDistribution": {
+    "status": "in-progress",
+    "manifest": "ui-library/src/components/expandable-card/manifest.json",
+    "runtime": null,
+    "note": "여닫는 동작은 부품이 갖고, 무엇을 넣을지는 쓰는 화면이 정한다.",
+    "workId": "promoted-parts-4"
+  },
+  "geometry": {
+    "width": "부품은 폭을 정하지 않는다(웹 100%). Figma 정본은 모바일 360 화면에서 좌우 16 을 뺀 328.",
+    "height": "고정하지 않는다 — 여백(16/16/20/20)과 글 줄 수가 높이를 정한다.",
+    "provenance": "V2.4 원본 실측 — 닫힘 274×165, 펼침 274×330(머리줄 165 + 펼침칸 165)."
+  },
+  "platformSupport": {
+    "mobile": true,
+    "pc": false,
+    "note": "PC 유형은 PC S/W UX GUIDE V1.0 accordion02 를 따로 만든다 — 이번 범위 밖."
+  },
+  "slots": [
+    {
+      "name": "펼침칸 내용",
+      "figmaProperty": "내용",
+      "webPart": "panel",
+      "appliesTo": [
+        "expanded"
+      ],
+      "description": "펼쳤을 때 보이는 자리. 기본은 글 묶음이며 다른 내용을 넣을 수 있다."
+    }
+  ]
+}

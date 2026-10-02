@@ -1,0 +1,109 @@
+{
+  "id": "divider",
+  "version": "0.1.0",
+  "status": "candidate",
+  "canonicalFingerprint": "484a1115cf8af5a076754040ea3820151737d6f70121018aa2cb9bc9911d94b0",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/divider.json"
+  ],
+  "rootSelector": "[data-s1-component=\"divider\"]",
+  "variants": [
+    "x",
+    "y"
+  ],
+  "sizes": [],
+  "states": {
+    "default": "속성 생략 — 기본선"
+  },
+  "canonicalStateMap": {},
+  "notInCanon": {
+    "note": "정본(설치기) 세트의 이름·값은 오케스트레이터 소관. 이 부품은 상태(hover·pressed 등)가 없는 정적 선이다."
+  },
+  "parts": [],
+  "htmlContract": {
+    "root": "hr[data-s1-component=divider]. 세로선(data-axis=y)에는 aria-orientation=vertical 을 함께 쓴다. 자식·부품 자리가 없다.",
+    "requiredAttributes": [
+      "data-axis"
+    ],
+    "requiredParts": [],
+    "optionalParts": [],
+    "axes": {
+      "data-axis": "x(가로, 기본 높이 = border-width-default) | y(세로, 높이 spacing/14 · 폭 border-width-default)",
+      "data-weight": "default(생략) | strong — 굵기(border-width-strong)",
+      "data-tone": "default(생략, --color-line-default) | strong(--color-line-strong) — 색",
+      "data-inset": "none(생략) | text — 글자 줄에 맞춰 좌우 20 을 들여 쓰는 목록용(가로 전용)"
+    },
+    "grouping": "자리를 만들어 주는 감싸개는 화면이 소유한다. 이 부품은 선 하나만 그린다.",
+    "relations": [
+      "세로선 높이 14 는 크기 토큰(sizing)이 아니라 간격 값(spacing/14)이다 — river 결정 2026-09-29(\"이걸 크기로 적용할건 아닌거같은데, 일단 그대로 둬\"). sizing/14 를 신설하지 않는다."
+    ],
+    "source": "components/divider/divider.example.html",
+    "distribution": "examples/divider.html"
+  },
+  "cssContract": {
+    "entry": "components/divider.css",
+    "rootScope": "[data-s1-component=divider]",
+    "nativeStates": [],
+    "documentedDataStates": [
+      "[data-axis]",
+      "[data-weight]",
+      "[data-tone]",
+      "[data-inset]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "contentSlots": {},
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "hr(암묵적 role=separator). 장식용이면 화면이 role=presentation 으로 바꿀 수 있다. 세로선은 aria-orientation=vertical."
+    },
+    "accessibleName": {
+      "status": "not-applicable",
+      "reason": "자체 글자·이름이 없는 구분 표시다."
+    },
+    "keyboard": {
+      "status": "not-applicable",
+      "reason": "초점을 받는 요소가 아니다 — 키보드 조작이 없다."
+    },
+    "focus": {
+      "status": "not-applicable",
+      "reason": "초점을 받는 요소가 아니다."
+    },
+    "ariaStateSync": {
+      "status": "not-applicable",
+      "reason": "상태를 갖지 않는다."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 오류 표시가 없다."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "움직임이 없다."
+    }
+  },
+  "jsRequired": false,
+  "javascript": {
+    "runtime": "none",
+    "reason": "정적 선이라 스크립트가 필요 없다."
+  },
+  "sourceFingerprint": "d960861345054455d97b28edf65b8209a787f844fb17faac656b64864e05aad2"
+}

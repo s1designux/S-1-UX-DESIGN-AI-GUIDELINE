@@ -1,8 +1,8 @@
 {
   "id": "mobile-bottom-nav",
-  "version": "0.3.2",
+  "version": "0.3.5",
   "status": "approved",
-  "canonicalFingerprint": "41c91564913d6c01371a087a42d32e23b680581e1db1c38201e728467ca97656",
+  "canonicalFingerprint": "66c1471b1eea9385f4035f90985e2b435c9092b4cfd25932a96ffe434de0609f",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -161,5 +161,5 @@
     "notification": "icon=notification",
     "settings": "icon=settings"
   },
-  "sourceFingerprint": "b5e3c636621828eca7f3dd3af9b77c9db5ce873b12a7ade18899d2e29c3d7629"
+  "sourceFingerprint": "7fdb7228bca2413c7a8fd073bc804f52d2d1cdb4ea15a84677dfd0716459e145"
 }

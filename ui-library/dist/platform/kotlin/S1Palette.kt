@@ -306,8 +306,8 @@ object S1Palette {
     val colorFormControlBgDisabled: S1Color = S1Color(0xFFF5F5F5, 0xFF24252C)
     /** --color-form-control-bg-hover — 라이트 #FAFAFA · 다크 #24252C */
     val colorFormControlBgHover: S1Color = S1Color(0xFFFAFAFA, 0xFF24252C)
-    /** --color-form-control-bg-selected — 라이트 #FFFFFF · 다크 #24252C */
-    val colorFormControlBgSelected: S1Color = S1Color(0xFFFFFFFF, 0xFF24252C)
+    /** --color-form-control-bg-selected — 라이트 #FFFFFF · 다크 #1C1D23 */
+    val colorFormControlBgSelected: S1Color = S1Color(0xFFFFFFFF, 0xFF1C1D23)
     /** --color-form-control-border-correct — 라이트 #1D6CEB · 다크 #4285E8 */
     val colorFormControlBorderCorrect: S1Color = S1Color(0xFF1D6CEB, 0xFF4285E8)
     /** --color-form-control-border-default — 라이트 #D9D9D9 · 다크 #3E4049 */
@@ -440,28 +440,34 @@ object S1Palette {
     val colorIconWhite: S1Color = S1Color(0xFFFFFFFF, 0xFFFFFFFF)
     /** --color-line-blue — 라이트 #1D6CEB · 다크 #3070D8 */
     val colorLineBlue: S1Color = S1Color(0xFF1D6CEB, 0xFF3070D8)
-    /** --color-line-gray-subtle — 라이트 #E9E9E9 · 다크 #2E2F38 */
-    val colorLineGraySubtle: S1Color = S1Color(0xFFE9E9E9, 0xFF2E2F38)
+    /** --color-line-default — 라이트 #E9E9E9 · 다크 #2E2F38 */
+    val colorLineDefault: S1Color = S1Color(0xFFE9E9E9, 0xFF2E2F38)
+    /** --color-line-strong — 라이트 #353535 · 다크 #8A8C96 */
+    val colorLineStrong: S1Color = S1Color(0xFF353535, 0xFF8A8C96)
     /** --color-modal-panel-border — 라이트 #D9D9D9 · 다크 #3E4049 */
     val colorModalPanelBorder: S1Color = S1Color(0xFFD9D9D9, 0xFF3E4049)
     /** --color-navigation-bg — 라이트 #FFFFFF · 다크 #1C1D23 */
     val colorNavigationBg: S1Color = S1Color(0xFFFFFFFF, 0xFF1C1D23)
-    /** --color-navigation-icon-default — 라이트 #C4C4C4 · 다크 #55575F */
-    val colorNavigationIconDefault: S1Color = S1Color(0xFFC4C4C4, 0xFF55575F)
+    /** --color-navigation-bg--hover — 라이트 #FAFAFA · 다크 #2E2F38 */
+    val colorNavigationBgHover: S1Color = S1Color(0xFFFAFAFA, 0xFF2E2F38)
+    /** --color-navigation-icon-default — 라이트 #C4C4C4 · 다크 #B8BABF */
+    val colorNavigationIconDefault: S1Color = S1Color(0xFFC4C4C4, 0xFFB8BABF)
     /** --color-navigation-indicator-default — 라이트 #D9D9D9 · 다크 #2E2F38 */
     val colorNavigationIndicatorDefault: S1Color = S1Color(0xFFD9D9D9, 0xFF2E2F38)
-    /** --color-navigation-indicator-hover — 라이트 #1D6CEB · 다크 #3070D8 */
-    val colorNavigationIndicatorHover: S1Color = S1Color(0xFF1D6CEB, 0xFF3070D8)
-    /** --color-navigation-indicator-selected — 라이트 #1D6CEB · 다크 #3070D8 */
-    val colorNavigationIndicatorSelected: S1Color = S1Color(0xFF1D6CEB, 0xFF3070D8)
-    /** --color-navigation-label-default — 라이트 #555555 · 다크 #55575F */
-    val colorNavigationLabelDefault: S1Color = S1Color(0xFF555555, 0xFF55575F)
+    /** --color-navigation-indicator-hover — 라이트 #1D6CEB · 다크 #4285E8 */
+    val colorNavigationIndicatorHover: S1Color = S1Color(0xFF1D6CEB, 0xFF4285E8)
+    /** --color-navigation-indicator-selected — 라이트 #1D6CEB · 다크 #4285E8 */
+    val colorNavigationIndicatorSelected: S1Color = S1Color(0xFF1D6CEB, 0xFF4285E8)
+    /** --color-navigation-label-default — 라이트 #555555 · 다크 #B8BABF */
+    val colorNavigationLabelDefault: S1Color = S1Color(0xFF555555, 0xFFB8BABF)
     /** --color-navigation-label-default-alt — 라이트 #434343 · 다크 #8A8C96 */
     val colorNavigationLabelDefaultAlt: S1Color = S1Color(0xFF434343, 0xFF8A8C96)
-    /** --color-navigation-label-hover — 라이트 #1D6CEB · 다크 #3070D8 */
-    val colorNavigationLabelHover: S1Color = S1Color(0xFF1D6CEB, 0xFF3070D8)
-    /** --color-navigation-label-selected — 라이트 #1D6CEB · 다크 #3070D8 */
-    val colorNavigationLabelSelected: S1Color = S1Color(0xFF1D6CEB, 0xFF3070D8)
+    /** --color-navigation-label-default-side — 라이트 #555555 · 다크 #ECEDF0 */
+    val colorNavigationLabelDefaultSide: S1Color = S1Color(0xFF555555, 0xFFECEDF0)
+    /** --color-navigation-label-hover — 라이트 #1D6CEB · 다크 #4285E8 */
+    val colorNavigationLabelHover: S1Color = S1Color(0xFF1D6CEB, 0xFF4285E8)
+    /** --color-navigation-label-selected — 라이트 #1D6CEB · 다크 #4285E8 */
+    val colorNavigationLabelSelected: S1Color = S1Color(0xFF1D6CEB, 0xFF4285E8)
     /** --color-navigation-submenu-label-default — 라이트 #353535 · 다크 #ECEDF0 */
     val colorNavigationSubmenuLabelDefault: S1Color = S1Color(0xFF353535, 0xFFECEDF0)
     /** --color-orange-100 — 라이트 #FDDBBF */
@@ -692,6 +698,20 @@ object S1Palette {
     val colorTableCellSelected: S1Color = S1Color(0xFFE2F1FF, 0xFF112B55)
     /** --color-table-header-bg — 라이트 #FAFAFA · 다크 #24252C */
     val colorTableHeaderBg: S1Color = S1Color(0xFFFAFAFA, 0xFF24252C)
+    /** --color-tag-line-border-blue — 라이트 #1D6CEB · 다크 #3070D8 */
+    val colorTagLineBorderBlue: S1Color = S1Color(0xFF1D6CEB, 0xFF3070D8)
+    /** --color-tag-line-border-red — 라이트 #FF4554 · 다크 #F06070 */
+    val colorTagLineBorderRed: S1Color = S1Color(0xFFFF4554, 0xFFF06070)
+    /** --color-tag-line-label-blue — 라이트 #1D6CEB · 다크 #3070D8 */
+    val colorTagLineLabelBlue: S1Color = S1Color(0xFF1D6CEB, 0xFF3070D8)
+    /** --color-tag-line-label-red — 라이트 #FF4554 · 다크 #F06070 */
+    val colorTagLineLabelRed: S1Color = S1Color(0xFFFF4554, 0xFFF06070)
+    /** --color-tag-solid-bg-blue — 라이트 #1D6CEB · 다크 #3070D8 */
+    val colorTagSolidBgBlue: S1Color = S1Color(0xFF1D6CEB, 0xFF3070D8)
+    /** --color-tag-solid-bg-red — 라이트 #FF4554 · 다크 #F06070 */
+    val colorTagSolidBgRed: S1Color = S1Color(0xFFFF4554, 0xFFF06070)
+    /** --color-tag-solid-label — 라이트 #FFFFFF */
+    val colorTagSolidLabel: S1Color = S1Color(0xFFFFFFFF, 0xFFFFFFFF)
     /** --color-text-body-primary — 라이트 #353535 · 다크 #ECEDF0 */
     val colorTextBodyPrimary: S1Color = S1Color(0xFF353535, 0xFFECEDF0)
     /** --color-text-body-secondary — 라이트 #555555 · 다크 #B8BABF */

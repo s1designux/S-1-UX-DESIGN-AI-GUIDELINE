@@ -1,8 +1,8 @@
 {
   "id": "bottom-sheet-option",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "status": "approved",
-  "canonicalFingerprint": "33ea5d4629ee675f7e85e2aaa2353d76a31f0fa7bdbf27297dfd7a4bbc5d3057",
+  "canonicalFingerprint": "dbd15c9dadd87792a595ef015a434077f88b220fd21f10bcf549994decbaefab",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -195,5 +195,5 @@
     "runtime": "none",
     "reason": "줄 모양만 소유한다. 고르기 동작(선택 반영·role·이벤트)은 시트를 여는 화면이 배선한다."
   },
-  "sourceFingerprint": "201ad6cc3a318b77b58345f3e4a775c051641a78b844ffa2ea6e44b29ae40787"
+  "sourceFingerprint": "464cdab2f0d4a52f044cc263959c691357ef71a4faf5e73cda33b2fc89a3c70f"
 }

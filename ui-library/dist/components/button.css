@@ -25,6 +25,12 @@
   text-align: center;
 }
 
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. 글자 요소만 내려 버튼 크기·아이콘은 그대로. */
+[data-s1-component="button"][data-size="xxsm"] [data-s1-part="label"] {
+  position: relative;
+  top: 1px;
+}
+
 [data-s1-component="button"][data-size="md"] {
   font-size: var(--font-size-14);
   height: var(--sizing-44);
@@ -63,6 +69,12 @@
   justify-content: center;
   min-width: 0;
   width: 100%;
+}
+
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. 글자 요소만 내려 버튼 크기·아이콘은 그대로. */
+[data-s1-component="button"][data-size="lg"] [data-s1-part="label"] {
+  position: relative;
+  top: 1px;
 }
 
 [data-s1-component="button"][data-variant="primary"] {
@@ -164,6 +176,12 @@
 }
 
 /* density:narrow 좁게(28px) — data-size 를 직접 주면 그쪽이 이긴다 */
+/* 한글 세로 보정 — 웹 전용(밀도 사본) */
+[data-s1-density="narrow"] [data-s1-component="button"]:not([data-size]) [data-s1-part="label"] {
+  position: relative;
+  top: 1px;
+}
+
 [data-s1-density="narrow"] [data-s1-component="button"]:not([data-size]) {
   font-size: var(--font-size-12);
   height: var(--sizing-28);
@@ -187,4 +205,10 @@
   justify-content: center;
   min-width: 0;
   width: 100%;
+}
+
+/* 한글 세로 보정 — 웹 전용(밀도 사본) */
+[data-s1-break="mobile"] [data-s1-component="button"]:not([data-size]) [data-s1-part="label"] {
+  position: relative;
+  top: 1px;
 }

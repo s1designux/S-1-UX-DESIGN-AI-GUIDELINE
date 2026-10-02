@@ -176,6 +176,7 @@ agentContractDefaults:
       - "navNotification"
       - "navSearch"
       - "navSettings"
+      - "panelFold"
       - "remove"
       - "search"
   unknownMarkers:
@@ -1213,6 +1214,134 @@ _Don't_
 - 선택 상태를 aria-pressed 또는 role 로 노출한다.
 - 닫기(X)에는 삭제·해제 aria-label 을 단다.
 
+### Data Tag
+
+> ⚠️ 배포본에 아직 없는 컴포넌트입니다(codeStatus: `planned`). 아래 토큰은 `ui-library/dist` 로 값이 풀리지 않으니 이 절을 보고 구현하지 마세요.
+
+상태를 보여주기만 하는 작은 라벨. 누르지 않는다. 둥근·각진 두 모양, 채움·선 두 형태, 파랑·빨강 두 색을 갖는다.
+
+**언제 쓰나**
+- 표나 목록에서 한 줄의 상태를 한 눈에 보이게 할 때.
+- 승인·확인(파랑), 주의·에러(빨강)처럼 뜻이 정해진 상태를 표시할 때.
+
+**쓰지 말아야 할 때**
+- 누르는 것 — Chip 이나 Button 을 쓴다.
+- 고르는 것 — Filter Chip 을 쓴다.
+- 뜻이 정해지지 않은 색을 쓰고 싶을 때 — 색을 늘리지 않는다.
+
+**구성 (Anatomy)**
+
+| 요소 | 역할 |
+| --- | --- |
+| 글자 | 12 Medium 한 줄. 위아래 6, 좌우 8 여백 안에 가운데로 앉는다. |
+
+| variant | default | hover | pressed | disabled |
+| --- | --- | --- | --- | --- |
+| default | — | — | — | — |
+
+#### Agent-readable contract
+
+```yaml
+agent:
+  component: "Data Tag"
+  variantAxes:
+    Type:
+      - "Chips"
+      - "Square"
+    Variant:
+      - "Line"
+      - "Solid"
+    Color:
+      - "Blue"
+      - "Red"
+  states:
+    builder: "not-defined"
+    metadata: "unknown"
+  behavior:
+    platform: "PC"
+    status: "not-defined"
+  geometry:
+    common:
+      target: "root"
+      layoutMode: "HORIZONTAL"
+      primaryAxisSizingMode: "AUTO"
+      counterAxisSizingMode: "AUTO"
+      primaryAxisAlignItems: "CENTER"
+      counterAxisAlignItems: "CENTER"
+      paddingTop: "6"
+      paddingRight: "8"
+      paddingBottom: "6"
+      paddingLeft: "8"
+      strokeWeight: "1"
+      strokeAlign: "INSIDE"
+    variants:
+      -
+        when:
+          Type: "Chips"
+        topLeftRadius: "radius/full"
+        topRightRadius: "radius/full"
+        bottomLeftRadius: "radius/full"
+        bottomRightRadius: "radius/full"
+      -
+        when:
+          Type: "Square"
+        topLeftRadius: "radius/4"
+        topRightRadius: "radius/4"
+        bottomLeftRadius: "radius/4"
+        bottomRightRadius: "radius/4"
+  composition:
+    mustReuse: "not-defined"
+    mustNotCreate: "not-defined"
+    declaredParts: "not-defined"
+  constraints: "unknown"
+  tokens:
+    figmaSemanticBindings:
+      - "border-width/1"
+      - "color/tag/line/border/blue"
+      - "color/tag/line/border/red"
+      - "color/tag/line/label/blue"
+      - "color/tag/line/label/red"
+      - "color/tag/solid/bg/blue"
+      - "color/tag/solid/bg/red"
+      - "color/tag/solid/label"
+      - "radius/4"
+      - "radius/full"
+      - "spacing/6"
+      - "spacing/8"
+    aliasChains: "not-defined"
+  figma:
+    status: "available"
+    identifiers:
+      componentSetKey: "(미발행 — 라이브러리 publish 시 기록)"
+      fileKey: "cysG5U1udpQqVagYY1hWHW"
+    variants:
+      type:
+        - "chips"
+        - "square"
+      variant:
+        - "line"
+        - "solid"
+      color:
+        - "blue"
+        - "red"
+  icons:
+    allowed: "figma-unconfirmed"
+    slots: "unknown"
+```
+
+_Do_
+- 뜻이 정해진 두 색만 쓴다 — 파랑은 승인·확인, 빨강은 주의·에러.
+- 표 안에서는 각진 모양을 쓴다.
+
+_Don't_
+- 뱃지를 눌러서 무엇을 하게 만들지 않는다.
+- 색을 새로 늘리지 않는다.
+- 글자를 두 줄로 흘리지 않는다.
+
+**접근성 (a11y)**
+- 누르는 것이 아니므로 단추 역할을 주지 않는다.
+- 색만으로 뜻을 전하지 않는다 — 글자가 뜻을 갖는다.
+
 ### DatePicker
 
 Date selection component. Uses Base Input as trigger field. PC popover calendar panel (figma-unconfirmed) or Mobile bottom sheet (Figma confirmed).
@@ -1496,6 +1625,122 @@ _Don't_
 - 날짜 셀은 키보드 이동이 가능해야 하고 선택 셀에 aria-selected 를 준다.
 - 비활성 날짜는 aria-disabled 로 표시한다.
 
+### Divider
+
+> ⚠️ 배포본에 아직 없는 컴포넌트입니다(codeStatus: `planned`). 아래 토큰은 `ui-library/dist` 로 값이 풀리지 않으니 이 절을 보고 구현하지 마세요.
+
+내용을 나누는 선. 가로·세로 두 방향, 기본(1)·굵게(2) 두 두께, 옅은·진한 두 색을 따로 고른다. 색은 선 토큰 두 개가 정한다.
+
+**언제 쓰나**
+- 목록 줄 사이를 나눌 때.
+- 표 위·아래처럼 영역을 크게 끊을 때(강한선).
+- 한 줄 안에서 값과 값을 끊을 때(세로선).
+
+**쓰지 말아야 할 때**
+- 바탕색이 이미 영역을 나누고 있을 때 — 선을 겹쳐 넣지 않는다.
+- 카드 테두리 대신 쓰려 할 때 — 테두리는 그 부품이 갖는다.
+
+**구성 (Anatomy)**
+
+| 요소 | 역할 |
+| --- | --- |
+| 선 | 두께 1 또는 2. 길이는 놓인 자리가 정한다(세로선만 예외로 14). |
+
+| variant | default | hover | pressed | disabled |
+| --- | --- | --- | --- | --- |
+| default | — | — | — | — |
+
+#### Agent-readable contract
+
+```yaml
+agent:
+  component: "Divider"
+  variantAxes:
+    Axis:
+      - "X"
+      - "Y"
+    Weight:
+      - "Default"
+      - "Strong"
+    Tone:
+      - "Default"
+      - "Strong"
+  states:
+    builder: "not-defined"
+    metadata: "unknown"
+  behavior:
+    platform: "PC"
+    status: "not-defined"
+  geometry:
+    common:
+      target: "root"
+    variants:
+      -
+        when:
+          Axis: "X"
+          Weight: "Default"
+        width: 240
+        height: 1
+      -
+        when:
+          Axis: "X"
+          Weight: "Strong"
+        width: 240
+        height: 2
+      -
+        when:
+          Axis: "Y"
+          Weight: "Default"
+        width: 1
+        height: 14
+      -
+        when:
+          Axis: "Y"
+          Weight: "Strong"
+        width: 2
+        height: 14
+  composition:
+    mustReuse: "not-defined"
+    mustNotCreate: "not-defined"
+    declaredParts: "not-defined"
+  constraints: "unknown"
+  tokens:
+    figmaSemanticBindings:
+      - "color/line/default"
+      - "color/line/strong"
+    aliasChains: "not-defined"
+  figma:
+    status: "available"
+    identifiers:
+      componentSetKey: "(미발행 — 라이브러리 publish 시 기록)"
+      fileKey: "cysG5U1udpQqVagYY1hWHW"
+    variants:
+      axis:
+        - "x"
+        - "y"
+      weight:
+        - "default"
+        - "strong"
+      tone:
+        - "default"
+        - "strong"
+  icons:
+    allowed: "figma-unconfirmed"
+    slots: "unknown"
+```
+
+_Do_
+- 기본은 옅은 선을 쓰고, 영역을 크게 끊을 때만 강한선을 쓴다.
+- 목록 안에서는 글 줄에 맞춰 좌우를 들여 쓴다.
+
+_Don't_
+- 선 색을 글자 토큰이나 바탕 토큰에서 빌려 쓰지 않는다.
+- 세로선을 글 줄 높이만큼 늘리지 않는다.
+
+**접근성 (a11y)**
+- 뜻 없는 장식선은 보조기기에서 읽히지 않게 둔다.
+- 영역을 실제로 가르는 자리에서는 구분 역할을 준다.
+
 ### Dropdown
 
 Select Box와 Filter Chip이 재사용하는 옵션 패널 컴포넌트. 옵션 줄은 글자만(단일 선택)과 체크박스(다중 선택) 두 유형이며, 체크박스 유형은 「전체」 줄을 기본 포함한다. 트리거 상태는 Select Box가 담당한다.
@@ -1658,6 +1903,120 @@ _Don't_
 - 단일 선택은 선택 옵션에 aria-selected, 목록은 role=listbox 패턴을 따른다.
 - 다중 선택 옵션은 role=checkbox + aria-checked 로 켜짐/꺼짐을 노출한다.
 - 「전체 선택」은 정본에 켜짐/꺼짐 2단계만 있어 aria-checked 도 true/false 만 쓴다. 부분 선택(mixed) 표시는 정본에 해당 모양이 없어 만들지 않는다(river 결정 2026-08-31).
+
+### Expandable Card
+
+> ⚠️ 배포본에 아직 없는 컴포넌트입니다(codeStatus: `planned`). 아래 토큰은 `ui-library/dist` 로 값이 풀리지 않으니 이 절을 보고 구현하지 마세요.
+
+제목 줄을 누르면 아래로 내용이 펼쳐지는 카드. 머리줄(글 묶음 + 여닫이 화살표)과 펼침칸 두 자리로 짜인다. 머리줄은 흰 바탕, 펼침칸은 한 단계 어두운 바탕이라 선 없이 나뉜다.
+
+**언제 쓰나**
+- 한 화면에 여러 덩어리를 쌓아 두고, 필요한 것만 펴서 보게 할 때.
+- 질문과 답처럼 제목만으로 고르고 내용은 접어 두는 목록.
+
+**쓰지 말아야 할 때**
+- 화면을 덮어야 하는 내용 — Bottom Sheet·Modal 을 쓴다.
+- 같은 모양의 한 줄이 반복될 뿐 펼칠 내용이 없을 때 — List Row 를 쓴다.
+
+**구성 (Anatomy)**
+
+| 요소 | 역할 |
+| --- | --- |
+| 머리줄 | 누르는 자리. 글 묶음 + 오른쪽 끝 여닫이 화살표. |
+| 글 묶음 | 타이틀(16 Bold) 아래로 서브타이틀 세 줄과 캡션. 줄 간격 10. 머리줄 제목 첫 줄은 화살표 높이(24)에 맞춰 가운데 선다. |
+| 여닫이 화살표 | 라이브러리 chevron 24. 닫히면 아래, 열리면 위를 본다. |
+| 펼침칸 | 열렸을 때만 보이는 내용 자리. 바탕이 bg/level-2 라 머리줄과 나뉜다. |
+
+| variant | default | hover | pressed | disabled |
+| --- | --- | --- | --- | --- |
+| default | — | — | — | — |
+
+#### Agent-readable contract
+
+```yaml
+agent:
+  component: "Expandable Card"
+  variantAxes:
+    State:
+      - "Collapsed"
+      - "Expanded"
+  states:
+    builder:
+      - "Collapsed"
+      - "Expanded"
+    metadata: "unknown"
+  behavior:
+    platform: "PC"
+    status: "not-defined"
+  geometry:
+    common:
+      target: "root"
+      width: 328
+      layoutMode: "VERTICAL"
+      primaryAxisSizingMode: "AUTO"
+      counterAxisSizingMode: "FIXED"
+      itemSpacing: "0"
+      topLeftRadius: "radius/10"
+      topRightRadius: "radius/10"
+      bottomLeftRadius: "radius/10"
+      bottomRightRadius: "radius/10"
+      strokeWeight: "1"
+      strokeAlign: "INSIDE"
+    variants:
+      -
+        when: "all"
+  composition:
+    mustReuse: "not-defined"
+    mustNotCreate: "not-defined"
+    declaredParts:
+      - "header"
+      - "panel"
+  constraints: "unknown"
+  tokens:
+    figmaSemanticBindings:
+      - "border-width/1"
+      - "color/bg/level-0"
+      - "color/bg/level-2"
+      - "color/line/default"
+      - "color/text/body/secondary"
+      - "color/text/body/tertiary"
+      - "color/text/title/primary"
+      - "radius/10"
+      - "sizing/24"
+      - "spacing/10"
+      - "spacing/16"
+      - "spacing/20"
+    aliasChains: "not-defined"
+  figma:
+    status: "available"
+    identifiers:
+      componentSetKey: "(미발행 — 라이브러리 publish 시 기록)"
+      fileKey: "cysG5U1udpQqVagYY1hWHW"
+    variants:
+      state:
+        - "collapsed"
+        - "expanded"
+  icons:
+    allowed: "figma-unconfirmed"
+    slots: "unknown"
+```
+
+_Do_
+- 여백은 위16 · 오른16 · 아래16 · 왼20 을 쓴다(river E안 2026-09-30 — 원본은 아래 20).
+- 머리줄과 펼침칸은 바탕색 차이로만 나눈다.
+- 화살표는 라이브러리 아이콘 인스턴스를 쓴다.
+- 글자 색은 텍스트 색상 단계를 쓴다 — 제목 1단계 · 본문 2단계 · 캡션은 본문 3단계. 다크에서 따로 덮어쓰지 않는다.
+
+_Don't_
+- 머리줄과 펼침칸 사이에 선을 넣지 않는다 — 원본에 없다.
+- 펼침칸 바탕을 머리줄과 같은 색으로 두지 않는다.
+- 열린 뒤 머리줄을 회색으로 남겨 두지 않는다.
+
+**접근성 (a11y)**
+- 머리줄은 button 이며 aria-expanded 로 열림 여부를, aria-controls 로 펼침칸을 가리킨다.
+- 펼침칸은 닫혀 있는 동안 읽히지 않는다.
+- 화살표는 장식이다 — 이름은 타이틀 글자가 갖는다.
+- 한 화면에 여러 장을 놓아도 id 가 겹치지 않아야 한다.
 
 ### Filter Chip
 
@@ -1970,8 +2329,8 @@ Global Navigation Bar. 로고 + 메뉴 슬롯(slots_menu) + 유틸리티(아이�
 
 | variant | default | hover | pressed | disabled |
 | --- | --- | --- | --- | --- |
-| menuSlot | --color-navigation-label-default-alt | --color-navigation-label-hover | — | — |
-| bar | --color-navigation-label-default-alt | --color-navigation-label-hover | — | — |
+| menuSlot | --color-line-default<br>--color-navigation-label-default-alt | --color-navigation-label-hover | — | — |
+| bar | --color-line-default<br>--color-navigation-label-default-alt | --color-navigation-label-hover | — | — |
 
 #### Agent-readable contract
 
@@ -2048,7 +2407,7 @@ agent:
   constraints: "unknown"
   tokens:
     figmaSemanticBindings:
-      - "color/line/gray/subtle"
+      - "color/line/default"
       - "color/navigation/bg"
       - "color/navigation/indicator/selected"
       - "color/navigation/label/default-alt"
@@ -2060,7 +2419,7 @@ agent:
         chain: "--color-navigation-bg → --color-base-white → #FFFFFF"
         status: "resolved"
       -
-        chain: "--color-line-gray-subtle → --color-gray-100 → #E9E9E9"
+        chain: "--color-line-default → --color-gray-100 → #E9E9E9"
         status: "resolved"
       -
         chain: "--color-navigation-label-default-alt → --color-gray-700 → #434343"
@@ -2193,7 +2552,7 @@ agent:
   constraints: "unknown"
   tokens:
     figmaSemanticBindings:
-      - "color/line/gray/subtle"
+      - "color/line/default"
       - "color/navigation/bg"
       - "color/navigation/label/default"
       - "color/navigation/label/selected"
@@ -4865,7 +5224,7 @@ agent:
       - "color/form-control/text/default"
       - "color/form-control/text/disabled"
       - "color/form-control/text/placeholder"
-      - "color/line/gray/subtle"
+      - "color/line/default"
       - "color/text/state/disabled"
     aliasChains:
       -
@@ -5142,4 +5501,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: aae46fba2c9c · 손편집 금지 -->
+<!-- generated-stamp: 4e483b81fe42 · 손편집 금지 -->

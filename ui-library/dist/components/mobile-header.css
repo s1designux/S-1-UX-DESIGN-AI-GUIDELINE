@@ -52,6 +52,12 @@
   text-align: center;
 }
 
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. */
+[data-s1-component="mobile-header"][data-variant^="standard-"] [data-s1-part="title"] {
+  position: relative;
+  top: 1px;
+}
+
 /* No Title — 텍스트 없는 빈 grow 영역(레이아웃 대칭용). heading 이 아니다(빈 heading 금지). */
 [data-s1-component="mobile-header"][data-variant="standard-no-title"] [data-s1-part="title"],
 [data-s1-component="mobile-header"][data-variant="standard-no-title-close"] [data-s1-part="title"] {

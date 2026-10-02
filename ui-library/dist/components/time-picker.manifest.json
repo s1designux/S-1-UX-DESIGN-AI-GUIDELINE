@@ -1,8 +1,8 @@
 {
   "id": "time-picker",
-  "version": "0.3.8",
+  "version": "0.3.14",
   "status": "approved",
-  "canonicalFingerprint": "c7bf302520f2315a813b9975da713adf8dc0f0a88f57d7aeeca2699c42ce356d",
+  "canonicalFingerprint": "a68e800326dd8d208e35cdf8804ba50758f3c00ee018cadf8aa58001aef8d41d",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -75,9 +75,9 @@
       "shadow": "--shadow-dropdown",
       "ownership": "테두리(inset 1px)·모서리·그림자·위여백 12 는 panel 이 소유한다. columns 는 목록 높이 192 만, footer 는 확인 줄만 갖는다 — 정본 fillPanel 과 같은 소유 구조(2026-09-03 독립 검증 F-2 로 정정).",
       "columnWidth": "정본은 24h 44 · 12h 48(패널 고정폭 기준). 웹은 패널이 트리거보다 좁아지지 않으므로 24h 열이 기본 트리거 폭 150 에서 58.5 로 넓어진다(river 지시 2026-09-03 의 결과). 12h 는 패널 194 유지라 48 그대로. 정본 stroke 가 INSIDE 라 테두리를 inset 그림자로 옮겨 폭 계산에서 제외한다.",
-      "footerDivider": "--border-width-1 solid --color-line-gray-subtle · 좌우 --spacing-8 안쪽(정본 panelW-16)",
+      "footerDivider": "--border-width-1 solid --color-line-default · 좌우 --spacing-8 안쪽(정본 panelW-16)",
       "triggerToPanelGap": "--spacing-4 (정본 Time Picker itemSpacing=4, build-components.ts:2730)",
-      "columnSeparator": "--border-width-1 solid --color-line-gray-subtle (열 사이)"
+      "columnSeparator": "--border-width-1 solid --color-line-default (열 사이)"
     },
     "cell": {
       "height": "32px (literal — TPC_H)",
@@ -87,7 +87,7 @@
     "footer": {
       "paddingInline": "--spacing-16",
       "paddingBlock": "--spacing-12",
-      "dividerTop": "--border-width-1 solid --color-line-gray-subtle"
+      "dividerTop": "--border-width-1 solid --color-line-default"
     },
     "source": "build-components.ts buildTimePicker 2357-2422 · buildTimePickerDropdown 2477-2624 · buildTimePickerCell 2437-2476",
     "minWidth": "150px (정본 trigger.resize(150) — 상태가 바뀌어도 폭이 변하지 않게 하는 값)"
@@ -325,5 +325,5 @@
     "controlMode": "uncontrolled",
     "progressiveEnhancementNote": "JavaScript 없이는 목록 칸이 생성되지 않아 선택할 수 없다 — 복합 Picker(정본 계약)라 native fallback이 없다. 트리거는 native button 이라 포커스·이름은 유지된다(계약 progressiveEnhancement 조항에 따른 명시적 unsupported 상태)."
   },
-  "sourceFingerprint": "3be8a7b0042b5f2146f78206f194d12c25f84740389de108a63fc46646384df4"
+  "sourceFingerprint": "f874ed61367a7a5b5447a1a897462cf9f56631dbd9e71ea830339a2bdffd3aa4"
 }

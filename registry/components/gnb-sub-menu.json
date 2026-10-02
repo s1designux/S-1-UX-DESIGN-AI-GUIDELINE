@@ -134,7 +134,7 @@
       "property": "bg"
     },
     {
-      "name": "color/line/gray/subtle",
+      "name": "color/line/default",
       "property": "border-bottom"
     },
     {

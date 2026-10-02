@@ -545,17 +545,20 @@
   --color-icon-white     : var(--color-base-white);
 
   /* ── line ── */
-  --color-line-blue       : var(--color-blue-400);
-  --color-line-gray-subtle: var(--color-gray-100);
+  --color-line-blue   : var(--color-blue-400);
+  --color-line-default: var(--color-gray-100);
+  --color-line-strong : var(--color-gray-800);
 
   /* ── navigation ── */
   --color-navigation-bg                   : var(--color-base-white);
+  --color-navigation-bg--hover            : var(--color-gray-0);
   --color-navigation-icon-default         : var(--color-gray-300);
   --color-navigation-indicator-default    : var(--color-gray-200);
   --color-navigation-indicator-hover      : var(--color-blue-400);
   --color-navigation-indicator-selected   : var(--color-blue-400);
   --color-navigation-label-default        : var(--color-gray-600);
   --color-navigation-label-default-alt    : var(--color-gray-700);
+  --color-navigation-label-default-side   : var(--color-gray-600);
   --color-navigation-label-hover          : var(--color-blue-400);
   --color-navigation-label-selected       : var(--color-blue-400);
   --color-navigation-submenu-label-default: var(--color-gray-800);
@@ -618,6 +621,15 @@
   --color-status-card-text-secondary--sub    : var(--color-gray-500);
   --color-status-card-text-tertiary--default : var(--color-gray-400);
   --color-status-card-text-tertiary--sub     : var(--color-gray-300);
+
+  /* ── tag ── */
+  --color-tag-solid-bg-blue   : var(--color-blue-400);
+  --color-tag-solid-bg-red    : var(--color-red-300);
+  --color-tag-solid-label     : var(--color-base-white);
+  --color-tag-line-border-blue: var(--color-blue-400);
+  --color-tag-line-border-red : var(--color-red-300);
+  --color-tag-line-label-blue : var(--color-blue-400);
+  --color-tag-line-label-red  : var(--color-red-300);
 
   /* ── text ── */
   --color-text-body-primary        : var(--color-gray-800);
@@ -747,7 +759,7 @@
   --color-form-control-bg-default      : var(--color-gray-dark-100);
   --color-form-control-bg-disabled     : var(--color-gray-dark-200);
   --color-form-control-bg-hover        : var(--color-gray-dark-200);
-  --color-form-control-bg-selected     : var(--color-gray-dark-200);
+  --color-form-control-bg-selected     : var(--color-gray-dark-100);
   --color-form-control-border-correct  : var(--color-blue-dark-350);
   --color-form-control-border-default  : var(--color-gray-dark-500);
   --color-form-control-border-disabled : var(--color-gray-dark-300);
@@ -775,19 +787,22 @@
   --color-icon-white     : var(--color-base-white);
 
   /* ── line ── */
-  --color-line-blue       : var(--color-blue-dark-300);
-  --color-line-gray-subtle: var(--color-gray-dark-300);
+  --color-line-blue   : var(--color-blue-dark-300);
+  --color-line-default: var(--color-gray-dark-300);
+  --color-line-strong : var(--color-gray-dark-700);
 
   /* ── navigation ── */
   --color-navigation-bg                   : var(--color-gray-dark-100);
-  --color-navigation-icon-default         : var(--color-gray-dark-600);
+  --color-navigation-bg--hover            : var(--color-gray-dark-300);
+  --color-navigation-icon-default         : var(--color-gray-dark-800);
   --color-navigation-indicator-default    : var(--color-gray-dark-300);
-  --color-navigation-indicator-hover      : var(--color-blue-dark-300);
-  --color-navigation-indicator-selected   : var(--color-blue-dark-300);
-  --color-navigation-label-default        : var(--color-gray-dark-600);
+  --color-navigation-indicator-hover      : var(--color-blue-dark-350);
+  --color-navigation-indicator-selected   : var(--color-blue-dark-350);
+  --color-navigation-label-default        : var(--color-gray-dark-800);
   --color-navigation-label-default-alt    : var(--color-gray-dark-700);
-  --color-navigation-label-hover          : var(--color-blue-dark-300);
-  --color-navigation-label-selected       : var(--color-blue-dark-300);
+  --color-navigation-label-default-side   : var(--color-gray-dark-900);
+  --color-navigation-label-hover          : var(--color-blue-dark-350);
+  --color-navigation-label-selected       : var(--color-blue-dark-350);
   --color-navigation-submenu-label-default: var(--color-gray-dark-900);
 
   /* ── overlay ── */
@@ -848,6 +863,15 @@
   --color-status-card-text-secondary--sub    : var(--color-gray-dark-700);
   --color-status-card-text-tertiary--default : var(--color-gray-dark-600);
   --color-status-card-text-tertiary--sub     : var(--color-gray-dark-400);
+
+  /* ── tag ── */
+  --color-tag-solid-bg-blue   : var(--color-blue-dark-300);
+  --color-tag-solid-bg-red    : var(--color-red-dark-350);
+  --color-tag-solid-label     : var(--color-base-white);
+  --color-tag-line-border-blue: var(--color-blue-dark-300);
+  --color-tag-line-border-red : var(--color-red-dark-350);
+  --color-tag-line-label-blue : var(--color-blue-dark-300);
+  --color-tag-line-label-red  : var(--color-red-dark-350);
 
   /* ── text ── */
   --color-text-body-primary        : var(--color-gray-dark-900);

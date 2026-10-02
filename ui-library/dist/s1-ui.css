@@ -453,6 +453,12 @@
   text-align: center;
 }
 
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. 글자 요소만 내려 버튼 크기·아이콘은 그대로. */
+[data-s1-component="button"][data-size="xxsm"] [data-s1-part="label"] {
+  position: relative;
+  top: 1px;
+}
+
 [data-s1-component="button"][data-size="md"] {
   font-size: var(--font-size-14);
   height: var(--sizing-44);
@@ -491,6 +497,12 @@
   justify-content: center;
   min-width: 0;
   width: 100%;
+}
+
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. 글자 요소만 내려 버튼 크기·아이콘은 그대로. */
+[data-s1-component="button"][data-size="lg"] [data-s1-part="label"] {
+  position: relative;
+  top: 1px;
 }
 
 [data-s1-component="button"][data-variant="primary"] {
@@ -592,6 +604,12 @@
 }
 
 /* density:narrow 좁게(28px) — data-size 를 직접 주면 그쪽이 이긴다 */
+/* 한글 세로 보정 — 웹 전용(밀도 사본) */
+[data-s1-density="narrow"] [data-s1-component="button"]:not([data-size]) [data-s1-part="label"] {
+  position: relative;
+  top: 1px;
+}
+
 [data-s1-density="narrow"] [data-s1-component="button"]:not([data-size]) {
   font-size: var(--font-size-12);
   height: var(--sizing-28);
@@ -615,6 +633,12 @@
   justify-content: center;
   min-width: 0;
   width: 100%;
+}
+
+/* 한글 세로 보정 — 웹 전용(밀도 사본) */
+[data-s1-break="mobile"] [data-s1-component="button"]:not([data-size]) [data-s1-part="label"] {
+  position: relative;
+  top: 1px;
 }
 
 /* component:checkbox */
@@ -2217,6 +2241,12 @@
   text-align: center;
 }
 
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. */
+[data-s1-component="mobile-header"][data-variant^="standard-"] [data-s1-part="title"] {
+  position: relative;
+  top: 1px;
+}
+
 /* No Title — 텍스트 없는 빈 grow 영역(레이아웃 대칭용). heading 이 아니다(빈 heading 금지). */
 [data-s1-component="mobile-header"][data-variant="standard-no-title"] [data-s1-part="title"],
 [data-s1-component="mobile-header"][data-variant="standard-no-title-close"] [data-s1-part="title"] {
@@ -2442,6 +2472,12 @@
   white-space: nowrap;
 }
 
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. */
+[data-s1-component="time-picker"][data-size="xxsm"] [data-s1-part="value"] {
+  position: relative;
+  top: 1px;
+}
+
 /* 아이콘 — clock. 크기: XXSM=20px, 그 외=24px (fcIconPx, build-components.ts:1506·2411). */
 [data-s1-component="time-picker"] [data-s1-part="icon"] {
   background-color: var(--color-form-control-icon-default);
@@ -2551,7 +2587,7 @@
 }
 
 [data-s1-component="time-picker"] [data-s1-part="divider"] {
-  background: var(--color-line-gray-subtle);
+  background: var(--color-line-default);
   flex: 0 0 auto;
   width: var(--border-width-1);
 }
@@ -2605,7 +2641,7 @@
    panelW-16 길이의 1px 선을 둔다(build-components.ts 2540-2547). 투명 border 로 정본의
    1px 행 높이를 유지하고, 실제 선은 그 자리에 안쪽으로만 그린다. */
 [data-s1-component="time-picker"] [data-s1-part="columns"] + [data-s1-part="footer"] {
-  background: linear-gradient(var(--color-line-gray-subtle), var(--color-line-gray-subtle)) no-repeat 50% 0 / calc(100% - var(--spacing-16)) var(--border-width-1);
+  background: linear-gradient(var(--color-line-default), var(--color-line-default)) no-repeat 50% 0 / calc(100% - var(--spacing-16)) var(--border-width-1);
   background-origin: border-box;
   border-top: var(--border-width-1) solid transparent;
 }
@@ -2815,6 +2851,12 @@
   padding-right: var(--spacing-6);
 }
 
+/* 한글 세로 보정 — 웹 전용(밀도 사본) */
+[data-s1-density="narrow"] [data-s1-component="time-picker"]:not([data-size]) [data-s1-part="value"] {
+  position: relative;
+  top: 1px;
+}
+
 [data-s1-density="narrow"] [data-s1-component="time-picker"]:not([data-size]) [data-s1-part="icon"] { width: var(--sizing-20); height: var(--sizing-20); }
 
 /* bridge:mobile 감싸기에 화면 구분을 적었으면 컴포넌트가 안 적어도 같은 규칙이 선다 */
@@ -2886,6 +2928,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. */
+[data-s1-component="date-picker"][data-size="xxsm"] [data-s1-part="value"] {
+  position: relative;
+  top: 1px;
 }
 
 [data-s1-component="date-picker"] [data-s1-part="icon"] {
@@ -3423,6 +3471,12 @@
 /* density:narrow 좁게(28px) — data-size 를 직접 주면 그쪽이 이긴다 */
 [data-s1-density="narrow"] [data-s1-component="date-picker"]:not([data-size]) [data-s1-part="trigger"] { font-size: var(--font-size-12); line-height: var(--line-height-130); letter-spacing: var(--letter-spacing-normal); height: var(--sizing-28); }
 
+/* 한글 세로 보정 — 웹 전용(밀도 사본) */
+[data-s1-density="narrow"] [data-s1-component="date-picker"]:not([data-size]) [data-s1-part="value"] {
+  position: relative;
+  top: 1px;
+}
+
 [data-s1-density="narrow"] [data-s1-component="date-picker"]:not([data-size]) [data-s1-part="icon"] { width: var(--sizing-20); height: var(--sizing-20); }
 
 [data-s1-density="narrow"] [data-s1-component="date-picker"]:not([data-size]) [data-s1-part="panel"] {
@@ -3512,7 +3566,7 @@
    border-bottom 으로 두면 메뉴가 쓸 수 있는 높이가 1px 줄어 정본 구조와 어긋나므로
    흐름에서 빠진 겹침 레이어로 그린다. 자식보다 먼저 칠해지므로 강조선이 이 선을 덮는다. */
 [data-s1-component="gnb"]::before {
-  background: var(--color-line-gray-subtle);
+  background: var(--color-line-default);
   bottom: 0;
   content: "";
   height: var(--border-width-default);
@@ -3609,6 +3663,11 @@
   font-size: var(--font-size-14);
   padding-left: var(--spacing-32);
   padding-right: var(--spacing-32);
+}
+
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. 글자가 링크 상자에 직접 들어 있어 위 여백 2px 로 가운데를 1px 내린다(상자 높이·밑줄은 그대로). */
+[data-s1-component="gnb"]:is([data-size="md"], [data-size="sm"]) [data-s1-part="menu"] {
+  padding-top: 2px;
 }
 
 /* 하단 2px 강조선 — 기본은 투명(Default), Hover·Selected 에서만 칠한다(정본 fillGnbMenu :3141-3145).
@@ -3746,6 +3805,12 @@
   letter-spacing: var(--letter-spacing-normal);
 }
 
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. */
+[data-s1-component="gnb-sub-menu-item"][data-depth="2depth"] {
+  position: relative;
+  top: 1px;
+}
+
 /* Hover 와 Selected 는 정본에서 색이 같다 — GNB 메뉴와 같은 구조다.
    원본에 hover 표본이 없어 selected 와 같은 색으로 사전 등록한 개선이다(정본 주석 3688).
    data-force-state="hover" 는 안내 화면이 마우스 없이 Hover 칸을 미리보기로 흉내내는 용도다
@@ -3786,7 +3851,7 @@
 /* 하단 1px 선 — GNB 바와 같은 이유로 겹쳐 그리는 선(::before)으로 둔다. border-bottom 으로 두면
    패널 높이가 1px 줄어 정본 구조(strokeBottomWeight=1, strokeAlign=INSIDE)와 어긋난다(gnb.css 선례). */
 [data-s1-component="gnb-sub-menu"]::before {
-  background: var(--color-line-gray-subtle);
+  background: var(--color-line-default);
   bottom: 0;
   content: "";
   height: var(--border-width-default);
@@ -4148,6 +4213,12 @@
 
 [data-s1-component="bottom-sheet-option"][data-type="text"][data-state="disabled"] > [data-s1-part="label"] {
   color: var(--color-text-state-disabled);
+}
+
+/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. */
+[data-s1-component="bottom-sheet-option"] > [data-s1-part="label"] {
+  position: relative;
+  top: 1px;
 }
 
 /* Text:Selected 우측 체크 — color/icon/blue, 24×24.
@@ -4555,4 +4626,281 @@
 /* Switch 의 toggle 코어는 trail 안에 그대로 조립한다 — 자리만 준다. */
 [data-s1-component="list-row"] [data-s1-part="trail"] > [data-s1-component="toggle"] {
   flex: none;
+}
+
+/* component:expandable-card */
+/* Expandable Card (접힘카드) — 모바일 한 유형. 승격 후보 시제품(assets/css/restyle-candidates.css §4) 승인본 그대로.
+   원본: SW UX GUIDE V2.4 「card」 expandable-card (540:6547 닫힘 / 540:6555 펼침) 실측 —
+   세로 간격 10 · radius 10(--radius-card-md) · 테두리 --color-line-default ·
+   여백은 위16·오른16·아래16·왼20 — river E안 2026-09-30(원본은 아래 20, 한 줄 제목이 위로 떠 보였다) ·
+   펼침칸 바탕 --color-bg-level-2 · 헤더와 펼침칸 사이 선 없음.
+   PC 유형은 이번 범위 밖(river 2026-09-29). 너비는 화면이 정한다(기본 100%).
+   헤더는 누른 뒤 기본색으로 돌아온다(열려 있어도 회색으로 남지 않는다). 펼침은 높이를 부드럽게 늘려 보인다. */
+[data-s1-component="expandable-card"] {
+  background: var(--color-bg-level-0);
+  border: var(--border-width-default) solid var(--color-line-default);
+  border-radius: var(--radius-card-md);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: "Pretendard", sans-serif;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* 단추(button)는 브라우저 기본 글꼴을 물고 들어온다 — 화면 글꼴(Pretendard)을 그대로 쓰게 한다.
+   이걸 안 하면 헤더만 다른 글꼴로 얇게 보인다. */
+[data-s1-component="expandable-card"] button {
+  font-family: inherit;
+}
+
+[data-s1-component="expandable-card"] [data-s1-part="header"] {
+  align-items: flex-start;
+  background: var(--color-bg-level-0);
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  gap: var(--spacing-10);
+  margin: 0;
+  padding: var(--spacing-16) var(--spacing-16) var(--spacing-16) var(--spacing-20);
+  text-align: left;
+  transition: background-color .18s ease;
+  width: 100%;
+}
+
+[data-s1-component="expandable-card"] [data-s1-part="header"]:hover {
+  background: var(--color-bg-level-1);
+}
+
+/* 누른 뒤(=열린 뒤)에는 기본색으로 — 마우스가 위에 남아 있어도 회색으로 두지 않는다 */
+[data-s1-component="expandable-card"] [data-s1-part="header"][aria-expanded="true"],
+[data-s1-component="expandable-card"] [data-s1-part="header"][aria-expanded="true"]:hover {
+  background: var(--color-bg-level-0);
+}
+
+[data-s1-component="expandable-card"] [data-s1-part="text"] {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacing-10);
+  min-width: 0;
+}
+
+/* 글자 네 단계 + 보조 — 원본 실측 16/700 · 14/700 · 14/400 · 12/400 · 캡션 12/400.
+   헤더 글 자리(text)와 펼침칸(panel) 안에서 같은 이름을 그대로 쓴다. */
+[data-s1-component="expandable-card"] [data-s1-part="title"] {
+  color: var(--color-text-title-primary);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+}
+
+[data-s1-component="expandable-card"] [data-s1-part="subtitle"] {
+  color: var(--color-text-body-secondary);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+}
+
+[data-s1-component="expandable-card"] [data-s1-part="body"] {
+  color: var(--color-text-body-secondary);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+}
+
+[data-s1-component="expandable-card"] [data-s1-part="note"] {
+  color: var(--color-text-body-secondary);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+}
+
+[data-s1-component="expandable-card"] [data-s1-part="caption"] {
+  color: var(--color-text-body-tertiary);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+}
+
+/* 글자 색은 텍스트 색상 단계 기준을 따른다(river 2026-09-30) — 제목 = 제목 1단계,
+   서브타이틀·본문·작은 글 = 본문 2단계, 캡션 = 본문 3단계. 모드별 덮어쓰기를 두지 않는다. */
+
+/* 머리줄 제목 첫 줄을 화살표(24) 높이에 맞춰 가운데 둔다 — 한 줄 제목이 위로 붙어 보이던 것(river 2026-09-30).
+   여러 줄이면 첫 줄 기준으로 늘어난다(min-height). */
+[data-s1-component="expandable-card"] [data-s1-part="header"] [data-s1-part="title"] {
+  align-items: center;
+  display: flex;
+  min-height: var(--sizing-24);
+}
+
+/* 여닫이 화살표 — 닫힘은 아래, 열림은 위로 뒤집는다(회전 아님).
+   chevron.svg 는 오른쪽(▶)을 가리키므로 90도로 눕혀 아래(▼)를 만들고, 열림은 좌우 뒤집기로 위(▲)가 된다. */
+[data-s1-component="expandable-card"] [data-s1-part="toggle-icon"] {
+  background-color: var(--color-icon-gray-dark);  /* 정본 buildExpandableCard 와 같게(원본 V2.4 와 같은 진한 회색) */
+  flex: none;
+  height: var(--sizing-24);
+  -webkit-mask: url("./assets/icons/chevron.svg") center / contain no-repeat;
+  mask: url("./assets/icons/chevron.svg") center / contain no-repeat;
+  transform: rotate(90deg);
+  transition: transform .22s ease;
+  width: var(--sizing-24);
+}
+
+[data-s1-component="expandable-card"] [data-s1-part="header"][aria-expanded="true"] [data-s1-part="toggle-icon"] {
+  transform: rotate(90deg) scaleX(-1);
+}
+
+/* 펼침 — 높이 0 → 내용 높이로 부드럽게. 닫혀 있으면 읽히지 않게 숨긴다 */
+[data-s1-component="expandable-card"] [data-s1-part="panel-wrap"] {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows .22s ease, opacity .22s ease, visibility 0s linear .22s;
+  visibility: hidden;
+}
+
+[data-s1-component="expandable-card"] [data-s1-part="panel-wrap"][data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition: grid-template-rows .22s ease, opacity .22s ease, visibility 0s;
+  visibility: visible;
+}
+
+[data-s1-component="expandable-card"] [data-s1-part="panel"] {
+  background: var(--color-bg-level-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-10);
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 var(--spacing-16) 0 var(--spacing-20);
+  transition: padding .22s ease;
+}
+
+/* 원본은 헤더와 펼침칸 사이에 선이 없다 — 바탕색 차이로만 나뉜다 */
+[data-s1-component="expandable-card"] [data-s1-part="panel-wrap"][data-open="true"] [data-s1-part="panel"] {
+  padding: var(--spacing-16) var(--spacing-16) var(--spacing-16) var(--spacing-20);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-s1-component="expandable-card"] [data-s1-part="header"],
+  [data-s1-component="expandable-card"] [data-s1-part="panel-wrap"],
+  [data-s1-component="expandable-card"] [data-s1-part="panel"],
+  [data-s1-component="expandable-card"] [data-s1-part="toggle-icon"] {
+    transition: none;
+  }
+}
+
+/* component:data-tag */
+/* Data Tag (뱃지) — 승격 후보 시제품 승인본 그대로.
+   원본: PC S/W UX GUIDE V1.0 「03.component/table04」 4-3 Data Tag (287:13552).
+   축: data-shape=chips|square · data-solid=on|off · data-tone=blue|red
+   뜻이 정해진 두 가지만 쓴다(river 2026-09-29):
+     · blue = 승인 / 확인      · red = 주의 / 에러
+   원본에 있던 청록·주황·초록은 쓰임이 정해지지 않아 넣지 않는다.
+
+   색은 뱃지 전용 쓰임 이름(tag/*)을 쓴다 — river 승인 2026-09-30 "토큰은 제안한대로 추가하자".
+   라이트·다크 값은 그 이름이 갖고 있으므로 이 파일에 다크 규칙을 따로 두지 않는다. */
+[data-s1-component="data-tag"] {
+  align-items: center;
+  background: transparent;
+  border: var(--border-width-default) solid var(--color-line-default);
+  box-sizing: border-box;
+  color: var(--color-text-body-tertiary);
+  display: inline-flex;
+  font-family: "Pretendard", sans-serif;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-medium);
+  justify-content: center;
+  /* 글자를 세로 가운데에 앉히려고 1 로 둔다 — 130% 를 쓰면 Pretendard 메트릭 때문에 살짝 위로 뜬다(river 2026-09-29). */
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: 1;
+  padding: var(--spacing-6) var(--spacing-8);
+  white-space: nowrap;
+}
+
+[data-s1-component="data-tag"][data-shape="chips"] {
+  border-radius: var(--radius-full);
+}
+
+[data-s1-component="data-tag"][data-shape="square"] {
+  border-radius: var(--radius-4);
+}
+
+/* 색 — 테두리와 글자가 같은 색(선형) */
+[data-s1-component="data-tag"][data-tone="blue"] {
+  border-color: var(--color-tag-line-border-blue);
+  color: var(--color-tag-line-label-blue);
+}
+
+[data-s1-component="data-tag"][data-tone="red"] {
+  border-color: var(--color-tag-line-border-red);
+  color: var(--color-tag-line-label-red);
+}
+
+/* 채움형 — 바탕에 색을 깔고 글자는 흰색 */
+[data-s1-component="data-tag"][data-solid="on"][data-tone="blue"] {
+  background: var(--color-tag-solid-bg-blue);
+  border-color: var(--color-tag-solid-bg-blue);
+  color: var(--color-tag-solid-label);
+}
+
+[data-s1-component="data-tag"][data-solid="on"][data-tone="red"] {
+  background: var(--color-tag-solid-bg-red);
+  border-color: var(--color-tag-solid-bg-red);
+  color: var(--color-tag-solid-label);
+}
+
+/* component:divider */
+/* Divider (구분선) — 승격 후보 시제품(assets/css/restyle-candidates.css §2) 승인본 그대로.
+   축: data-axis=x|y · data-weight=default|strong · data-tone=default|strong · data-inset=none|text
+   색은 선 토큰 두 개가 정한다 — 기본선은 --color-line-default(gray/100),
+   표 위·아래 같은 강한 선은 --color-line-strong(gray/800).
+   파란 선(--color-line-blue)은 쓰지 않는다(river 2026-09-29). */
+[data-s1-component="divider"] {
+  background: var(--color-line-default);
+  border: 0;
+  display: block;
+  flex: none;
+  margin: 0;
+}
+
+[data-s1-component="divider"][data-tone="strong"] {
+  background: var(--color-line-strong);
+}
+
+[data-s1-component="divider"][data-axis="x"] {
+  height: var(--border-width-default);
+  width: 100%;
+}
+
+[data-s1-component="divider"][data-axis="x"][data-weight="strong"] {
+  height: var(--border-width-strong);
+}
+
+/* 세로선 — 글자 줄보다 짧게 세운다(늘리지 않는다). 높이 14 (river 2026-09-29 "2픽셀 줄여봐").
+   정본 sizing 단계에 14 가 없어(…10 · 16 · 18 …) 같은 값의 spacing/14 를 쓴다.
+   river 결정 2026-09-29 — "이걸 크기로 적용할건 아닌거같은데, 일단 그대로 둬".
+   즉 sizing/14 신설은 하지 않는다. 이 선의 길이는 크기 축이 아니라 간격 값으로 본다. */
+[data-s1-component="divider"][data-axis="y"] {
+  align-self: center;
+  height: var(--spacing-14);
+  width: var(--border-width-default);
+}
+
+[data-s1-component="divider"][data-axis="y"][data-weight="strong"] {
+  width: var(--border-width-strong);
+}
+
+/* 글자 줄에 맞춰 좌우를 들여 쓰는 형태 — 목록 안 구분선에 쓴다 */
+[data-s1-component="divider"][data-inset="text"] {
+  margin-inline: var(--spacing-20);
+  width: auto;
 }

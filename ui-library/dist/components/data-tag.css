@@ -1,0 +1,58 @@
+/* Data Tag (뱃지) — 승격 후보 시제품 승인본 그대로.
+   원본: PC S/W UX GUIDE V1.0 「03.component/table04」 4-3 Data Tag (287:13552).
+   축: data-shape=chips|square · data-solid=on|off · data-tone=blue|red
+   뜻이 정해진 두 가지만 쓴다(river 2026-09-29):
+     · blue = 승인 / 확인      · red = 주의 / 에러
+   원본에 있던 청록·주황·초록은 쓰임이 정해지지 않아 넣지 않는다.
+
+   색은 뱃지 전용 쓰임 이름(tag/*)을 쓴다 — river 승인 2026-09-30 "토큰은 제안한대로 추가하자".
+   라이트·다크 값은 그 이름이 갖고 있으므로 이 파일에 다크 규칙을 따로 두지 않는다. */
+[data-s1-component="data-tag"] {
+  align-items: center;
+  background: transparent;
+  border: var(--border-width-default) solid var(--color-line-default);
+  box-sizing: border-box;
+  color: var(--color-text-body-tertiary);
+  display: inline-flex;
+  font-family: "Pretendard", sans-serif;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-medium);
+  justify-content: center;
+  /* 글자를 세로 가운데에 앉히려고 1 로 둔다 — 130% 를 쓰면 Pretendard 메트릭 때문에 살짝 위로 뜬다(river 2026-09-29). */
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: 1;
+  padding: var(--spacing-6) var(--spacing-8);
+  white-space: nowrap;
+}
+
+[data-s1-component="data-tag"][data-shape="chips"] {
+  border-radius: var(--radius-full);
+}
+
+[data-s1-component="data-tag"][data-shape="square"] {
+  border-radius: var(--radius-4);
+}
+
+/* 색 — 테두리와 글자가 같은 색(선형) */
+[data-s1-component="data-tag"][data-tone="blue"] {
+  border-color: var(--color-tag-line-border-blue);
+  color: var(--color-tag-line-label-blue);
+}
+
+[data-s1-component="data-tag"][data-tone="red"] {
+  border-color: var(--color-tag-line-border-red);
+  color: var(--color-tag-line-label-red);
+}
+
+/* 채움형 — 바탕에 색을 깔고 글자는 흰색 */
+[data-s1-component="data-tag"][data-solid="on"][data-tone="blue"] {
+  background: var(--color-tag-solid-bg-blue);
+  border-color: var(--color-tag-solid-bg-blue);
+  color: var(--color-tag-solid-label);
+}
+
+[data-s1-component="data-tag"][data-solid="on"][data-tone="red"] {
+  background: var(--color-tag-solid-bg-red);
+  border-color: var(--color-tag-solid-bg-red);
+  color: var(--color-tag-solid-label);
+}

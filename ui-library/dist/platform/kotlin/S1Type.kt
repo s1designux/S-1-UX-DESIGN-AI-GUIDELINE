@@ -28,6 +28,8 @@ object S1Type {
     val title16m: S1TypeSpec = S1TypeSpec(16f, 500, 1.3f, -0.02f)
     /** typo-title-14b — 14sp · 굵기 700 · 줄간격 1.3 · 자간 0em */
     val title14b: S1TypeSpec = S1TypeSpec(14f, 700, 1.3f, 0f)
+    /** typo-title-12b — 12sp · 굵기 700 · 줄간격 1.3 · 자간 0em */
+    val title12b: S1TypeSpec = S1TypeSpec(12f, 700, 1.3f, 0f)
     /** typo-title-14m — 14sp · 굵기 500 · 줄간격 1.3 · 자간 0em */
     val title14m: S1TypeSpec = S1TypeSpec(14f, 500, 1.3f, 0f)
     /** typo-body-18m — 18sp · 굵기 500 · 줄간격 1.3 · 자간 -0.02em */
@@ -61,6 +63,7 @@ object S1Type {
         "title-16b" to title16b,
         "title-16m" to title16m,
         "title-14b" to title14b,
+        "title-12b" to title12b,
         "title-14m" to title14m,
         "body-18m" to body18m,
         "body-16m" to body16m,

@@ -132,9 +132,9 @@
       "description": "GNB 바 배경"
     },
     {
-      "name": "--color-line-gray-subtle",
+      "name": "--color-line-default",
       "resolvedLight": "#E9E9E9",
-      "figmaVariable": "color/line/gray/subtle",
+      "figmaVariable": "color/line/default",
       "status": "stable",
       "description": "GNB 바 하단 1px 라인"
     },
