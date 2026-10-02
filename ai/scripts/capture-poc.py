@@ -3,6 +3,7 @@
 capture-poc — 대응표(s1-mapping.json)의 부품마다 POC 화면을 넓게 찍어 확인 요청서에 넣을 그림을 만든다.
 --------------------------------------------------------------------------
   python3 ai/scripts/capture-poc.py <POC폴더>/s1-mapping.json
+  python3 ai/scripts/capture-poc.py --check      캡처 도구가 준비됐는지만 본다(준비됨 0 · 없음 3)
 
   · 항목마다 그 부품을 빨간 테두리로 표시하고, 주변이 보이게 넓게 잘라 찍는다 → s1-captures/<id>.png
   · 화면마다 전체 모습에 모든 항목 번호를 붙여 찍는다 → s1-captures/screen-<n>.png
@@ -16,10 +17,24 @@ import json
 import pathlib
 import sys
 
+INSTALL = "pip install playwright && python3 -m playwright install chromium"
+
 try:
     from playwright.sync_api import sync_playwright
 except ImportError:
-    sys.exit("Playwright 가 없습니다 — pip install playwright && python3 -m playwright install chromium")
+    print(f"캡처 도구 없음 — 설치: {INSTALL}")
+    sys.exit(3)
+
+if "--check" in sys.argv:
+    # 설치만 되고 브라우저를 안 받은 경우도 있어 실제로 한 번 띄워 본다.
+    try:
+        with sync_playwright() as pw:
+            pw.chromium.launch().close()
+    except Exception:
+        print(f"캡처 도구 없음(브라우저 미설치) — 설치: python3 -m playwright install chromium")
+        sys.exit(3)
+    print("캡처 도구 준비됨")
+    sys.exit(0)
 
 if len(sys.argv) < 2:
     sys.exit("대응표 파일을 알려주세요.  예: python3 ai/scripts/capture-poc.py poc/s1-mapping.json")

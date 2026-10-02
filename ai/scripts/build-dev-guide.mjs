@@ -76,11 +76,7 @@ const body = `
       <p class="typo-body-14r">작업할 프로젝트를 연 AI 채팅창에 아래 글을 그대로 보내면 됩니다. AI가 가이드를 프로젝트 안에 받아 두고, 어떤 AI 도구로 다시 열어도 S1 기준을 따르게 설정한 뒤, 바로 "온보딩을 진행할까요? 디자인 가이드를 제대로 적용하려면 반드시 온보딩이 필요합니다."라고 제안합니다.</p>
       ${command(`${REPO} 깔아줘`, "AI 채팅창에 보낼 글")}
     </div>
-    <div class="group">
-      <h3 class="title typo-title-16b">화면 캡처 도구 — 이미 있는 프로토타입에 입힐 때만</h3>
-      <p class="typo-body-14r">디자이너가 화면을 보고 판단할 수 있게, AI가 부품마다 화면을 찍어 요청서에 넣습니다. 필요할 때 AI가 설치를 안내합니다.</p>
-      ${command("pip install playwright && python3 -m playwright install chromium", "캡처 도구 설치 명령")}
-    </div>
+    <p class="sub typo-body-12r">이미 있는 프로토타입에 입힐 때 화면 캡처 도구가 없으면, AI가 그때 "화면 캡처 도구를 설치할까요?"라고 제안합니다.</p>
   </section>
 
   ${divider}

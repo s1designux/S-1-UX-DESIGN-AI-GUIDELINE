@@ -73,6 +73,7 @@ python3 <S1 가이드 폴더>/ai/scripts/capture-poc.py <POC폴더>/s1-mapping.j
 node <S1 가이드 폴더>/ai/scripts/review-request.mjs <POC폴더>/s1-mapping.json
 ```
 
+- 찍기 전에 `python3 <S1 가이드 폴더>/ai/scripts/capture-poc.py --check` 로 도구를 확인합니다. "없음"이면 사용자에게 **"화면 캡처 도구를 설치할까요?"** 라고 제안하고(온보딩 3단계의 글), 좋다고 하면 설치한 뒤 찍습니다.
 - 첫 줄이 부품마다 빨간 테두리를 친 넓은 캡처(`s1-captures/P01.png` …)와 화면 전체 번호판을 찍고, 대응표에 그림 경로를 적어 넣습니다. Playwright 가 필요합니다(`pip install playwright && python3 -m playwright install chromium`).
 - Playwright 를 쓸 수 없으면 AI 도구의 브라우저 캡처로 찍어 `poc.image` 에 경로를 직접 적습니다. 캡처가 하나도 없으면 요청서에 "화면 캡처가 없습니다"라고 나옵니다 — **가능하면 꼭 찍습니다.**
 - 로그인이 필요한 화면은 항목에 `url` 을 적고, 로그인된 상태의 개발 서버 주소를 씁니다.
