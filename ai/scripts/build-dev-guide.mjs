@@ -77,9 +77,8 @@ const body = `
       ${command(`git clone ${REPO}.git`, "가이드 받기 명령")}
     </div>
     <div class="group">
-      <h3 class="title typo-title-16b">2. 내 프로젝트에 AI 안내 깔기</h3>
-      <p class="typo-body-14r">어떤 AI 도구로 열어도 S1 온보딩부터 하도록, 도구마다 처음 읽는 안내 파일에 S1 칸을 넣습니다. 이미 있는 안내는 지우지 않습니다. AI에게 "S1 가이드 안내를 내 프로젝트에 깔아줘"라고 말해도 됩니다.</p>
-      ${command("node ../S-1-UX-DESIGN-AI-GUIDELINE/ai/scripts/install-entry.mjs .", "안내 깔기 명령")}
+      <h3 class="title typo-title-16b">2. AI에게 가이드 위치 알려 주기</h3>
+      <p class="typo-body-14r">AI에게 화면 작업을 시킬 때 가이드 위치만 함께 알려 주세요. 예: "../S-1-UX-DESIGN-AI-GUIDELINE 가이드로 이 화면에 S1 입혀줘". AI가 먼저 "온보딩을 진행할까요? 디자인 가이드를 제대로 적용하려면 반드시 온보딩이 필요합니다."라고 제안하고, 진행하면 질문 → 크기 확인 → 답 저장 → 내 프로젝트에 AI 안내 깔기까지 스스로 합니다. 그다음부터는 프로젝트를 열 때마다 자동으로 S1 기준을 따릅니다.</p>
     </div>
     <div class="group">
       <h3 class="title typo-title-16b">3. 화면 캡처 도구 (이미 만든 화면에 입힐 때만)</h3>
@@ -93,9 +92,9 @@ const body = `
   <section class="group-lg">
     <h2 class="title typo-title-24b">작업 흐름</h2>
     <ol class="flow">
-      ${flowStep("개발자", "처음 한 번 준비", "가이드 받기 · AI 안내 깔기")}
-      ${flowStep("개발자", "AI에게 요청", "\"이 화면에 S1 입혀줘\"")}
-      ${flowStep("AI", "온보딩 · 짝짓기", "화면 종류를 묻고 확인 요청서를 만듦")}
+      ${flowStep("개발자", "처음 한 번 준비", "가이드 받기")}
+      ${flowStep("개발자", "AI에게 요청", "가이드 위치와 함께 \"S1 입혀줘\"")}
+      ${flowStep("AI", "온보딩 제안 · 짝짓기", "질문하고 확인 요청서를 만듦")}
       ${flowStep("디자이너", "요청서에서 고르기", "바꾸기 · 그대로 · 새 부품", true)}
       ${flowStep("개발자 → AI", "결과 붙여 넣기", "AI가 반영하고 검수 합격까지")}
     </ol>

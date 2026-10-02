@@ -98,7 +98,8 @@ if (!targets.length) {
   process.exit(2);
 }
 if (!scope.platforms.includes(platform)) {
-  console.error("판정: 불합격 — 어떤 화면 기준으로 볼지 정해지지 않았습니다. 온보딩(ONBOARDING.md)부터 하세요.");
+  console.error("판정 안 함 — 어떤 화면 기준으로 볼지 정해지지 않았습니다.");
+  console.error("온보딩을 진행할까요? 디자인 가이드를 제대로 적용하려면 반드시 온보딩이 필요합니다. (ONBOARDING.md)");
   console.error(`온보딩을 마치면 s1.profile.json 이 생겨 자동으로 읽힙니다. 직접 정하려면 --profile ${Object.keys(scope.profiles || {}).join(" | ")}`);
   process.exit(2);
 }

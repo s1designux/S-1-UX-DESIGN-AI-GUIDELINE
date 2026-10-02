@@ -6379,25 +6379,18 @@
 </div>
     </div>
     <div class="group">
-      <h3 class="title typo-title-16b">2. 내 프로젝트에 AI 안내 깔기</h3>
-      <p class="typo-body-14r">어떤 AI 도구로 열어도 S1 온보딩부터 하도록, 도구마다 처음 읽는 안내 파일에 S1 칸을 넣습니다. 이미 있는 안내는 지우지 않습니다. AI에게 "S1 가이드 안내를 내 프로젝트에 깔아줘"라고 말해도 됩니다.</p>
-      <div class="cmd">
-  <div data-s1-component="input" data-size="md" data-break="pc" aria-labelledby="cmd-2-label">
-    <div data-s1-part="field"><input id="cmd-2" data-s1-part="control" type="text" value="node ../S-1-UX-DESIGN-AI-GUIDELINE/ai/scripts/install-entry.mjs ." readonly></div>
-  </div>
-  <button type="button" data-s1-component="button" data-variant="secondary" data-size="md" data-copy="cmd-2"><span data-s1-part="label">복사</span></button>
-  <span class="sr" id="cmd-2-label">안내 깔기 명령</span>
-</div>
+      <h3 class="title typo-title-16b">2. AI에게 가이드 위치 알려 주기</h3>
+      <p class="typo-body-14r">AI에게 화면 작업을 시킬 때 가이드 위치만 함께 알려 주세요. 예: "../S-1-UX-DESIGN-AI-GUIDELINE 가이드로 이 화면에 S1 입혀줘". AI가 먼저 "온보딩을 진행할까요? 디자인 가이드를 제대로 적용하려면 반드시 온보딩이 필요합니다."라고 제안하고, 진행하면 질문 → 크기 확인 → 답 저장 → 내 프로젝트에 AI 안내 깔기까지 스스로 합니다. 그다음부터는 프로젝트를 열 때마다 자동으로 S1 기준을 따릅니다.</p>
     </div>
     <div class="group">
       <h3 class="title typo-title-16b">3. 화면 캡처 도구 (이미 만든 화면에 입힐 때만)</h3>
       <p class="typo-body-14r">디자이너가 화면을 보고 판단할 수 있게, AI가 부품마다 화면을 찍어 요청서에 넣습니다.</p>
       <div class="cmd">
-  <div data-s1-component="input" data-size="md" data-break="pc" aria-labelledby="cmd-3-label">
-    <div data-s1-part="field"><input id="cmd-3" data-s1-part="control" type="text" value="pip install playwright &amp;&amp; python3 -m playwright install chromium" readonly></div>
+  <div data-s1-component="input" data-size="md" data-break="pc" aria-labelledby="cmd-2-label">
+    <div data-s1-part="field"><input id="cmd-2" data-s1-part="control" type="text" value="pip install playwright &amp;&amp; python3 -m playwright install chromium" readonly></div>
   </div>
-  <button type="button" data-s1-component="button" data-variant="secondary" data-size="md" data-copy="cmd-3"><span data-s1-part="label">복사</span></button>
-  <span class="sr" id="cmd-3-label">캡처 도구 설치 명령</span>
+  <button type="button" data-s1-component="button" data-variant="secondary" data-size="md" data-copy="cmd-2"><span data-s1-part="label">복사</span></button>
+  <span class="sr" id="cmd-2-label">캡처 도구 설치 명령</span>
 </div>
     </div>
   </section>
@@ -6410,17 +6403,17 @@
       <li class="step">
         <span class="actor typo-body-12m">1 · 개발자</span>
         <span class="title typo-title-16b">처음 한 번 준비</span>
-        <span class="typo-body-12r">가이드 받기 · AI 안내 깔기</span>
+        <span class="typo-body-12r">가이드 받기</span>
       </li>
       <li class="step">
         <span class="actor typo-body-12m">2 · 개발자</span>
         <span class="title typo-title-16b">AI에게 요청</span>
-        <span class="typo-body-12r">&quot;이 화면에 S1 입혀줘&quot;</span>
+        <span class="typo-body-12r">가이드 위치와 함께 &quot;S1 입혀줘&quot;</span>
       </li>
       <li class="step">
         <span class="actor typo-body-12m">3 · AI</span>
-        <span class="title typo-title-16b">온보딩 · 짝짓기</span>
-        <span class="typo-body-12r">화면 종류를 묻고 확인 요청서를 만듦</span>
+        <span class="title typo-title-16b">온보딩 제안 · 짝짓기</span>
+        <span class="typo-body-12r">질문하고 확인 요청서를 만듦</span>
       </li>
       <li class="step designer">
         <span class="actor typo-body-12m">4 · 디자이너</span>
@@ -6469,11 +6462,11 @@
     <div class="group">
       <p class="typo-body-14r">AI가 스스로 돌리지만, 직접 확인하려면 아래 명령을 씁니다. 화면 종류는 저장된 답(s1.profile.json)에서 읽습니다.</p>
       <div class="cmd">
-  <div data-s1-component="input" data-size="md" data-break="pc" aria-labelledby="cmd-4-label">
-    <div data-s1-part="field"><input id="cmd-4" data-s1-part="control" type="text" value="node ../S-1-UX-DESIGN-AI-GUIDELINE/ai/check/s1-check.mjs ." readonly></div>
+  <div data-s1-component="input" data-size="md" data-break="pc" aria-labelledby="cmd-3-label">
+    <div data-s1-part="field"><input id="cmd-3" data-s1-part="control" type="text" value="node ../S-1-UX-DESIGN-AI-GUIDELINE/ai/check/s1-check.mjs ." readonly></div>
   </div>
-  <button type="button" data-s1-component="button" data-variant="secondary" data-size="md" data-copy="cmd-4"><span data-s1-part="label">복사</span></button>
-  <span class="sr" id="cmd-4-label">검수 명령</span>
+  <button type="button" data-s1-component="button" data-variant="secondary" data-size="md" data-copy="cmd-3"><span data-s1-part="label">복사</span></button>
+  <span class="sr" id="cmd-3-label">검수 명령</span>
 </div>
     </div>
     <div class="scroll"><div data-s1-component="table" data-size="md">

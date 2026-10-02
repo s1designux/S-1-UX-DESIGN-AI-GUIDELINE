@@ -56,6 +56,7 @@ export async function writeProfileDocs(scope, ROOT, DIST, manifest) {
       `# ${profile.label} — 이 크기만 씁니다`,
       "",
       "> 자동 생성물 — 손으로 고치지 마세요. 기준을 바꾸려면 `ai/rules/usage-profiles.json` 을 고치고 `npm run ai:scope` 를 돌립니다.",
+      "> **AI 에게** — 작업할 프로젝트에 `s1.profile.json` 이 없으면 이 표를 쓰기 전에 사용자에게 먼저 제안하세요: \"온보딩을 진행할까요? 디자인 가이드를 제대로 적용하려면 반드시 온보딩이 필요합니다.\" 그다음 `ONBOARDING.md` 를 따릅니다.",
       `> 배포본 ${manifest.version} (${manifest.releasedAt} 판) 기준.${pc ? " 크기는 river 가 크기 판정표에서 고른 값입니다(2026-10-02)." : ""}`,
       "",
       otherLabels(id)
