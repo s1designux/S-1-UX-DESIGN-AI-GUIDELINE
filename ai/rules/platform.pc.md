@@ -7,7 +7,10 @@
 
 ## 쓸 수 있는 부품과 크기
 
-`ai/generated/components.pc.md` 를 읽으세요. 거기 있는 부품·크기만 씁니다.
+`ai/generated/components.pc.md` 를 읽으세요. 거기 있는 부품만 씁니다.
+
+**크기는 화면 종류의 표 하나로 정해져 있습니다** — PR용은 `ai/generated/profile.pr.md`, 사용자용은 `ai/generated/profile.user.md`, 관리자용 기본은 `ai/generated/profile.admin.md`, 관리자용 작게는 `ai/generated/profile.admin-compact.md`.
+PC 에 크기가 세 개(44·34·28) 있다고 아무거나 고르지 않습니다. 한 화면 안에서는 표에 적힌 크기만 씁니다.
 
 `data-break` 속성이 필요한 부품에는 항상 **`data-break="pc"`** 를 적습니다.
 
@@ -21,5 +24,5 @@ PC 동작 계약은 `registry/components/component-behavior.pc.json` 입니다.
 ## 검수
 
 ```bash
-node ai/check/s1-check.mjs <만든폴더> --platform pc --report 판정표.html
+node ai/check/s1-check.mjs <만든폴더> --profile user --report 판정표.html   # 관리자용 기본은 --profile admin, 관리자용 작게는 --profile admin-compact
 ```

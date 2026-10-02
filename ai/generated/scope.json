@@ -6,12 +6,15 @@
       "ui-library/dist/platform/tokens.json",
       "ui-library/dist/tools/lint-rules.json",
       "ui-library/dist/examples/*.html",
-      "ai/rules/platform-scope.overrides.json"
+      "ai/rules/platform-scope.overrides.json",
+      "ai/rules/usage-profiles.json",
+      "registry/governance/density-policy.json",
+      "ui-library/dist/components/*.css"
     ],
     "distVersion": "0.13.16",
     "distReleasedAt": "2026-09-29",
     "canonicalFingerprint": "07ff83a14fe7f5bff0ef9948b515841d3b3ec5c1a984d3b2b3fbc0466d852f23",
-    "builtAt": "2026-09-29"
+    "builtAt": "2026-10-02"
   },
   "rules": {
     "_meta": {
@@ -96,6 +99,660 @@
     "withinGroup": 8,
     "betweenGroups": 24,
     "inline": 12
+  },
+  "density": {
+    "note": "화면 종류별 크기 기준. 화면 종류 → 밀도는 usage-profiles.json, 밀도 → 크기 이름은 배포본 CSS 높이에서 읽었다.",
+    "attribute": "data-s1-density",
+    "breakAttribute": "data-s1-break",
+    "levels": [
+      {
+        "id": "wide",
+        "ko": "넓게",
+        "pcHeight": 44
+      },
+      {
+        "id": "normal",
+        "ko": "보통",
+        "pcHeight": 34
+      },
+      {
+        "id": "narrow",
+        "ko": "좁게",
+        "pcHeight": 28
+      }
+    ],
+    "mobileHeight": 48,
+    "map": {
+      "button": {
+        "pc": {
+          "wide": "md",
+          "normal": "xsm",
+          "narrow": "xxsm"
+        },
+        "mobile": "lg",
+        "heights": {
+          "md": 44,
+          "xsm": 34,
+          "xxsm": 28
+        },
+        "mobileHeights": {
+          "lg": 48
+        }
+      },
+      "input": {
+        "pc": {
+          "narrow": "xxsm",
+          "normal": "xsm",
+          "wide": "md"
+        },
+        "mobile": "md",
+        "heights": {
+          "xxsm": 28,
+          "xsm": 34,
+          "md": 44
+        },
+        "mobileHeights": {
+          "md": 48
+        }
+      },
+      "select": {
+        "pc": {
+          "narrow": "xxsm",
+          "normal": "xsm",
+          "wide": "md"
+        },
+        "mobile": "md",
+        "heights": {
+          "xxsm": 28,
+          "xsm": 34,
+          "md": 44
+        },
+        "mobileHeights": {
+          "md": 48
+        }
+      },
+      "chip": {
+        "pc": {
+          "narrow": "sm",
+          "normal": "md",
+          "wide": "md"
+        },
+        "mobile": "sm",
+        "heights": {
+          "sm": 28,
+          "md": 34
+        },
+        "mobileHeights": {
+          "sm": 30
+        }
+      },
+      "filter-chip": {
+        "pc": {
+          "narrow": "sm",
+          "normal": "md",
+          "wide": "md"
+        },
+        "mobile": "md",
+        "heights": {
+          "sm": 28,
+          "md": 34
+        },
+        "mobileHeights": {
+          "md": 30
+        }
+      },
+      "table": {
+        "pc": {
+          "normal": "xsm",
+          "wide": "md",
+          "narrow": "xsm"
+        },
+        "mobile": null,
+        "heights": {
+          "sm": 38,
+          "xsm": 34,
+          "md": 44
+        },
+        "mobileHeights": {}
+      },
+      "multi-toggle": {
+        "pc": {
+          "wide": "md",
+          "normal": "sm",
+          "narrow": "sm"
+        },
+        "mobile": null,
+        "heights": {
+          "md": 44,
+          "sm": 34
+        },
+        "mobileHeights": {}
+      },
+      "dropdown": {
+        "pc": {
+          "narrow": "xxsm",
+          "normal": "xsm",
+          "wide": "md"
+        },
+        "mobile": null,
+        "heights": {
+          "xxsm": 28,
+          "xsm": 34,
+          "md": 44
+        },
+        "mobileHeights": {}
+      },
+      "date-picker": {
+        "pc": {
+          "narrow": "xxsm",
+          "normal": "xsm",
+          "wide": "md"
+        },
+        "mobile": "md",
+        "heights": {
+          "xxsm": 28,
+          "xsm": 34,
+          "md": 44
+        },
+        "mobileHeights": {
+          "md": 48
+        }
+      },
+      "time-picker": {
+        "pc": {
+          "narrow": "xxsm",
+          "normal": "xsm",
+          "wide": "md"
+        },
+        "mobile": "md",
+        "heights": {
+          "xxsm": 28,
+          "xsm": 34,
+          "md": 44
+        },
+        "mobileHeights": {
+          "md": 48
+        }
+      }
+    },
+    "mobileSubstitutes": {
+      "dropdown": {
+        "use": "바텀시트",
+        "note": "모바일에서 목록을 띄울 때는 드롭다운 대신 아래에서 올라오는 바텀시트를 쓴다."
+      },
+      "multi-toggle": {
+        "use": "라디오 또는 체크박스",
+        "note": "모바일에서 여러 값 중 고르는 자리는 멀티 토글 대신 라디오(하나 고르기)나 체크박스(여러 개 고르기)를 쓴다."
+      }
+    },
+    "zones": {
+      "form": {
+        "label": "폼·상세 본문",
+        "how": "따로 적지 않는다. 아래 자리가 아니면 모두 이 자리다(등록·상세 화면의 입력칸, 그 아래 저장·취소 버튼)."
+      },
+      "header": {
+        "label": "페이지 제목 줄",
+        "how": "화면 제목과 제목 옆 버튼(등록·엑셀 등), 페이지 탭을 감싸는 요소에 data-s1-zone=\"header\" 를 적는다."
+      },
+      "filter": {
+        "label": "검색·필터 줄",
+        "how": "목록 위에서 조건을 고르고 조회하는 줄 자체(조건 부품과 조회 버튼을 바로 감싸는 요소)에 data-s1-zone=\"filter\" 를 적는다. 표까지 감싸는 큰 영역에 적지 않는다."
+      },
+      "table": {
+        "label": "표 칸 안",
+        "how": "따로 적지 않는다. table 부품 안에 놓인 버튼 등은 자동으로 이 자리다."
+      },
+      "popup": {
+        "label": "팝업 본문",
+        "how": "따로 적지 않는다. modal·modal-content 안 본문은 자동으로 이 자리다. 팝업 아래 확인·취소 버튼은 팝업 규칙대로 예제 크기(28) 그대로 둔다."
+      }
+    },
+    "groups": {
+      "control": {
+        "label": "입력칸 · 선택 상자 · 날짜 · 시간",
+        "components": [
+          "input",
+          "select",
+          "date-picker",
+          "time-picker",
+          "dropdown"
+        ]
+      },
+      "button": {
+        "label": "버튼",
+        "components": [
+          "button"
+        ]
+      },
+      "chip": {
+        "label": "칩 · 필터 칩",
+        "components": [
+          "chip",
+          "filter-chip"
+        ]
+      },
+      "multi": {
+        "label": "멀티 토글",
+        "components": [
+          "multi-toggle"
+        ]
+      },
+      "tab": {
+        "label": "페이지 탭",
+        "components": [
+          "tab"
+        ]
+      }
+    },
+    "advisory": {
+      "popupWidth": "팝업 폭은 안에 담기는 내용의 종류와 양에 따라 달라진다. 위 값은 권장일 뿐 필수가 아니며 검수기가 판정하지 않는다(river 2026-10-02)."
+    },
+    "heights": {
+      "button": {
+        "md": 44,
+        "xsm": 34,
+        "xxsm": 28
+      },
+      "input": {
+        "xxsm": 28,
+        "xsm": 34,
+        "md": 44
+      },
+      "select": {
+        "xxsm": 28,
+        "xsm": 34,
+        "md": 44
+      },
+      "chip": {
+        "sm": 28,
+        "md": 34
+      },
+      "filter-chip": {
+        "sm": 28,
+        "md": 34
+      },
+      "table": {
+        "sm": 38,
+        "xsm": 34,
+        "md": 44
+      },
+      "multi-toggle": {
+        "md": 44,
+        "sm": 34
+      },
+      "dropdown": {
+        "xxsm": 28,
+        "xsm": 34,
+        "md": 44
+      },
+      "date-picker": {
+        "xxsm": 28,
+        "xsm": 34,
+        "md": 44
+      },
+      "time-picker": {
+        "xxsm": 28,
+        "xsm": 34,
+        "md": 44
+      },
+      "tab": {
+        "md": 44,
+        "sm": 42,
+        "xsm": 40
+      },
+      "gnb": {
+        "md": 56,
+        "sm": 48,
+        "xsm": 36
+      }
+    },
+    "unsettled": {}
+  },
+  "profiles": {
+    "pr": {
+      "label": "PR용 화면",
+      "hint": "회사·서비스를 알리는 홍보·소개 화면",
+      "platform": "pc",
+      "density": "wide",
+      "sizes": {
+        "form": {
+          "control": "md",
+          "button": "md",
+          "multi": "md"
+        },
+        "header": {
+          "button": "md",
+          "tab": "md"
+        },
+        "filter": {
+          "control": "md",
+          "button": "md",
+          "chip": "md"
+        },
+        "table": {
+          "button": "xxsm"
+        },
+        "popup": {
+          "control": "md"
+        }
+      },
+      "tableRow": {
+        "summary": "md",
+        "list": "md",
+        "dense": "md"
+      },
+      "popupWidth": {
+        "input": "md",
+        "list": "md"
+      },
+      "gnb": "md",
+      "componentSizes": {
+        "form": {
+          "input": "md",
+          "select": "md",
+          "date-picker": "md",
+          "time-picker": "md",
+          "dropdown": "md",
+          "button": "md",
+          "multi-toggle": "md"
+        },
+        "header": {
+          "button": "md",
+          "tab": "md"
+        },
+        "filter": {
+          "input": "md",
+          "select": "md",
+          "date-picker": "md",
+          "time-picker": "md",
+          "dropdown": "md",
+          "button": "md",
+          "chip": "md",
+          "filter-chip": "md"
+        },
+        "table": {
+          "button": "xxsm"
+        },
+        "popup": {
+          "input": "md",
+          "select": "md",
+          "date-picker": "md",
+          "time-picker": "md",
+          "dropdown": "md"
+        }
+      },
+      "tableRows": [
+        "md"
+      ]
+    },
+    "user": {
+      "label": "사용자용 화면",
+      "hint": "여유 있게 · 가독성 우선",
+      "platform": "pc",
+      "density": "wide",
+      "sizes": {
+        "form": {
+          "control": "md",
+          "button": "md",
+          "multi": "md"
+        },
+        "header": {
+          "button": "xsm",
+          "tab": "sm"
+        },
+        "filter": {
+          "control": "xsm",
+          "button": "xsm",
+          "chip": "md"
+        },
+        "table": {
+          "button": "xxsm"
+        },
+        "popup": {
+          "control": "md"
+        }
+      },
+      "tableRow": {
+        "summary": "md",
+        "list": "md",
+        "dense": "md"
+      },
+      "popupWidth": {
+        "input": "md",
+        "list": "lg"
+      },
+      "gnb": "sm",
+      "componentSizes": {
+        "form": {
+          "input": "md",
+          "select": "md",
+          "date-picker": "md",
+          "time-picker": "md",
+          "dropdown": "md",
+          "button": "md",
+          "multi-toggle": "md"
+        },
+        "header": {
+          "button": "xsm",
+          "tab": "sm"
+        },
+        "filter": {
+          "input": "xsm",
+          "select": "xsm",
+          "date-picker": "xsm",
+          "time-picker": "xsm",
+          "dropdown": "xsm",
+          "button": "xsm",
+          "chip": "md",
+          "filter-chip": "md"
+        },
+        "table": {
+          "button": "xxsm"
+        },
+        "popup": {
+          "input": "md",
+          "select": "md",
+          "date-picker": "md",
+          "time-picker": "md",
+          "dropdown": "md"
+        }
+      },
+      "tableRows": [
+        "md"
+      ]
+    },
+    "admin": {
+      "label": "관리자용 화면 · 기본",
+      "hint": "관리자가 평소에 쓰는 크기",
+      "platform": "pc",
+      "density": "normal",
+      "sizes": {
+        "form": {
+          "control": "xsm",
+          "button": "xsm",
+          "multi": "sm"
+        },
+        "header": {
+          "button": "xsm",
+          "tab": "xsm"
+        },
+        "filter": {
+          "control": "xxsm",
+          "button": "xxsm",
+          "chip": "sm"
+        },
+        "table": {
+          "button": "xxsm"
+        },
+        "popup": {
+          "control": "xsm"
+        }
+      },
+      "tableRow": {
+        "summary": "sm",
+        "list": "sm",
+        "dense": "sm"
+      },
+      "popupWidth": {
+        "input": "md",
+        "list": "lg"
+      },
+      "gnb": "xsm",
+      "componentSizes": {
+        "form": {
+          "input": "xsm",
+          "select": "xsm",
+          "date-picker": "xsm",
+          "time-picker": "xsm",
+          "dropdown": "xsm",
+          "button": "xsm",
+          "multi-toggle": "sm"
+        },
+        "header": {
+          "button": "xsm",
+          "tab": "xsm"
+        },
+        "filter": {
+          "input": "xxsm",
+          "select": "xxsm",
+          "date-picker": "xxsm",
+          "time-picker": "xxsm",
+          "dropdown": "xxsm",
+          "button": "xxsm",
+          "chip": "sm",
+          "filter-chip": "sm"
+        },
+        "table": {
+          "button": "xxsm"
+        },
+        "popup": {
+          "input": "xsm",
+          "select": "xsm",
+          "date-picker": "xsm",
+          "time-picker": "xsm",
+          "dropdown": "xsm"
+        }
+      },
+      "tableRows": [
+        "sm"
+      ]
+    },
+    "admin-compact": {
+      "label": "관리자용 화면 · 작게",
+      "hint": "정보를 더 많이 담을 때",
+      "platform": "pc",
+      "density": "narrow",
+      "sizes": {
+        "form": {
+          "control": "xxsm",
+          "button": "xxsm",
+          "multi": "sm"
+        },
+        "header": {
+          "button": "xxsm",
+          "tab": "xsm"
+        },
+        "filter": {
+          "control": "xxsm",
+          "button": "xxsm",
+          "chip": "sm"
+        },
+        "table": {
+          "button": "xxsm"
+        },
+        "popup": {
+          "control": "xxsm"
+        }
+      },
+      "tableRow": {
+        "summary": "xsm",
+        "list": "xsm",
+        "dense": "xsm"
+      },
+      "popupWidth": {
+        "input": "md",
+        "list": "lg"
+      },
+      "gnb": "xsm",
+      "componentSizes": {
+        "form": {
+          "input": "xxsm",
+          "select": "xxsm",
+          "date-picker": "xxsm",
+          "time-picker": "xxsm",
+          "dropdown": "xxsm",
+          "button": "xxsm",
+          "multi-toggle": "sm"
+        },
+        "header": {
+          "button": "xxsm",
+          "tab": "xsm"
+        },
+        "filter": {
+          "input": "xxsm",
+          "select": "xxsm",
+          "date-picker": "xxsm",
+          "time-picker": "xxsm",
+          "dropdown": "xxsm",
+          "button": "xxsm",
+          "chip": "sm",
+          "filter-chip": "sm"
+        },
+        "table": {
+          "button": "xxsm"
+        },
+        "popup": {
+          "input": "xxsm",
+          "select": "xxsm",
+          "date-picker": "xxsm",
+          "time-picker": "xxsm",
+          "dropdown": "xxsm"
+        }
+      },
+      "tableRows": [
+        "xsm"
+      ]
+    },
+    "mobile": {
+      "label": "모바일 화면",
+      "platform": "mobile",
+      "evidence": [
+        "density-policy.json mobileHeight — \"모바일은 밀도 축이 없다 — 손가락 기준 높이 하나뿐\"",
+        "density-policy.json mobileSubstitutes — 드롭다운 → 바텀시트, 멀티 토글 → 라디오·체크박스 (river 결정 2026-09-15)"
+      ],
+      "sizes": {
+        "button": {
+          "base": "lg"
+        },
+        "input": {
+          "base": "md"
+        },
+        "select": {
+          "base": "md"
+        },
+        "chip": {
+          "base": "sm"
+        },
+        "filter-chip": {
+          "base": "md"
+        },
+        "table": {
+          "base": null
+        },
+        "multi-toggle": {
+          "substitute": "라디오 또는 체크박스"
+        },
+        "dropdown": {
+          "substitute": "바텀시트"
+        },
+        "date-picker": {
+          "base": "md"
+        },
+        "time-picker": {
+          "base": "md"
+        }
+      }
+    }
   },
   "tokenNames": [
     "--border-width-1",
@@ -629,6 +1286,16 @@
         "field",
         "control"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "field",
+          "control"
+        ],
+        "mobile": [
+          "field",
+          "control"
+        ]
+      },
       "parts": [
         "label",
         "field",
@@ -695,6 +1362,14 @@
       "requiredParts": [
         "label"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "label"
+        ],
+        "mobile": [
+          "label"
+        ]
+      },
       "parts": [
         "label"
       ],
@@ -729,6 +1404,14 @@
       "requiredParts": [
         "control"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "control"
+        ],
+        "mobile": [
+          "control"
+        ]
+      },
       "parts": [
         "control",
         "label"
@@ -765,6 +1448,14 @@
       "requiredParts": [
         "control"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "control"
+        ],
+        "mobile": [
+          "control"
+        ]
+      },
       "parts": [
         "control",
         "label"
@@ -805,6 +1496,14 @@
       "requiredParts": [
         "knob"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "knob"
+        ],
+        "mobile": [
+          "knob"
+        ]
+      },
       "parts": [
         "knob"
       ],
@@ -857,6 +1556,14 @@
       "requiredParts": [
         "label"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "label"
+        ],
+        "mobile": [
+          "label"
+        ]
+      },
       "parts": [
         "label"
       ],
@@ -900,6 +1607,16 @@
         "option",
         "option-label"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "option",
+          "option-label"
+        ],
+        "mobile": [
+          "option",
+          "option-label"
+        ]
+      },
       "parts": [
         "option",
         "option-label",
@@ -958,6 +1675,20 @@
         "icon",
         "panel"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "trigger",
+          "value",
+          "icon",
+          "panel"
+        ],
+        "mobile": [
+          "trigger",
+          "value",
+          "icon",
+          "panel"
+        ]
+      },
       "parts": [
         "trigger",
         "value",
@@ -1020,6 +1751,20 @@
         "icon",
         "panel"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "trigger",
+          "value",
+          "icon",
+          "panel"
+        ],
+        "mobile": [
+          "trigger",
+          "value",
+          "icon",
+          "panel"
+        ]
+      },
       "parts": [
         "trigger",
         "title",
@@ -1081,6 +1826,14 @@
       "requiredParts": [
         "tab"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "tab"
+        ],
+        "mobile": [
+          "tab"
+        ]
+      },
       "parts": [
         "tab",
         "tabpanel (optional)"
@@ -1123,6 +1876,18 @@
         "pages",
         "page"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "arrow-group",
+          "pages",
+          "page"
+        ],
+        "mobile": [
+          "arrow-group",
+          "pages",
+          "page"
+        ]
+      },
       "parts": [
         "arrow-group",
         "pages",
@@ -1164,6 +1929,14 @@
       "requiredParts": [
         "control"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "control"
+        ],
+        "mobile": [
+          "control"
+        ]
+      },
       "parts": [
         "control"
       ],
@@ -1204,6 +1977,14 @@
       "requiredParts": [
         "cell"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "cell"
+        ],
+        "mobile": [
+          "cell"
+        ]
+      },
       "parts": [
         "cell"
       ],
@@ -1252,6 +2033,28 @@
         "message",
         "footer"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "overlay",
+          "panel",
+          "content",
+          "header",
+          "title",
+          "body",
+          "message",
+          "footer"
+        ],
+        "mobile": [
+          "overlay",
+          "panel",
+          "content",
+          "header",
+          "title",
+          "body",
+          "message",
+          "footer"
+        ]
+      },
       "parts": [
         "overlay",
         "panel",
@@ -1308,6 +2111,20 @@
         "row",
         "cell"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "table",
+          "header-cell",
+          "row",
+          "cell"
+        ],
+        "mobile": [
+          "table",
+          "header-cell",
+          "row",
+          "cell"
+        ]
+      },
       "parts": [
         "table",
         "header-cell",
@@ -1350,6 +2167,16 @@
         "icon",
         "label"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "icon",
+          "label"
+        ],
+        "mobile": [
+          "icon",
+          "label"
+        ]
+      },
       "parts": [
         "icon",
         "label"
@@ -1386,6 +2213,10 @@
       "sizeAttribute": null,
       "requiredAttributes": [],
       "requiredParts": [],
+      "requiredPartsByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
       "parts": [
         "title",
         "title-row",
@@ -1450,6 +2281,23 @@
         "footer",
         "confirm"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "trigger",
+          "value",
+          "icon",
+          "panel",
+          "column",
+          "divider",
+          "footer",
+          "confirm"
+        ],
+        "mobile": [
+          "trigger",
+          "value",
+          "icon"
+        ]
+      },
       "parts": [
         "trigger",
         "value",
@@ -1533,6 +2381,18 @@
         "value",
         "icon"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "trigger",
+          "value",
+          "icon"
+        ],
+        "mobile": [
+          "trigger",
+          "value",
+          "icon"
+        ]
+      },
       "parts": [
         "trigger",
         "value",
@@ -1604,6 +2464,10 @@
       "sizeAttribute": "data-size",
       "requiredAttributes": [],
       "requiredParts": [],
+      "requiredPartsByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
       "parts": [
         "logo",
         "leading",
@@ -1647,6 +2511,10 @@
       "sizeAttribute": null,
       "requiredAttributes": [],
       "requiredParts": [],
+      "requiredPartsByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
       "parts": [],
       "states": [
         "default",
@@ -1677,6 +2545,16 @@
         "columns",
         "column"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "columns",
+          "column"
+        ],
+        "mobile": [
+          "columns",
+          "column"
+        ]
+      },
       "parts": [
         "columns",
         "column"
@@ -1707,6 +2585,14 @@
       "requiredParts": [
         "label"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "label"
+        ],
+        "mobile": [
+          "label"
+        ]
+      },
       "parts": [
         "label"
       ],
@@ -1745,6 +2631,14 @@
       "requiredParts": [
         "label"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "label"
+        ],
+        "mobile": [
+          "label"
+        ]
+      },
       "parts": [
         "label"
       ],
@@ -1799,6 +2693,30 @@
         "content-label",
         "footer"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "overlay",
+          "panel",
+          "header",
+          "title",
+          "close",
+          "content-area",
+          "content",
+          "content-label",
+          "footer"
+        ],
+        "mobile": [
+          "overlay",
+          "panel",
+          "header",
+          "title",
+          "close",
+          "content-area",
+          "content",
+          "content-label",
+          "footer"
+        ]
+      },
       "parts": [
         "overlay",
         "panel",
@@ -1846,6 +2764,10 @@
         "data-state"
       ],
       "requiredParts": [],
+      "requiredPartsByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
       "parts": [
         "label",
         "check",
@@ -1897,6 +2819,23 @@
         "sheet-close",
         "sheet-body"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "sheet-backdrop",
+          "sheet-panel",
+          "sheet-header",
+          "sheet-title",
+          "sheet-close",
+          "sheet-body"
+        ],
+        "mobile": [
+          "sheet-backdrop",
+          "sheet-panel",
+          "sheet-header",
+          "sheet-title",
+          "sheet-close"
+        ]
+      },
       "parts": [
         "sheet-backdrop",
         "sheet-panel",
@@ -1948,6 +2887,16 @@
         "text",
         "title"
       ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "text",
+          "title"
+        ],
+        "mobile": [
+          "text",
+          "title"
+        ]
+      },
       "parts": [
         "lead",
         "thumbnail",

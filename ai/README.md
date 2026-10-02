@@ -9,7 +9,10 @@
 | `rules/platform.pc.md` · `platform.mobile.md` | 매체별 기준. 한 번에 하나만 읽습니다 |
 | `rules/stack.*.md` | 기술별(웹·React·Vue·Kotlin·Swift·C++) 쓰는 법 |
 | `rules/service.default.md` | 서비스별 조합 문법. 서비스가 늘면 파일을 추가합니다 |
-| `rules/platform-scope.overrides.json` | **사람이 손으로 고치는 유일한 파일.** 부품의 PC/모바일 소속 확정 |
+| `rules/platform-scope.overrides.json` | **사람이 손으로 고치는 파일.** 부품의 PC/모바일 소속 확정 |
+| `rules/usage-profiles.json` | **사람이 손으로 고치는 파일.** 화면 종류(PC PR용 · 사용자용 · 관리자용 기본·작게 · 모바일) → 밀도(넓게·보통·좁게) |
+| `generated/profile.pr.md` · `profile.user.md` · `profile.admin.md` · `profile.admin-compact.md` · `profile.mobile.md` | 화면 종류별 부품 크기표. AI 는 고른 화면 종류의 표 하나만 읽습니다 |
+| `generated/profiles.pc.html` · `profiles.mobile.html` | 화면 종류를 실제 부품으로 나란히 그린 비교판 (PC·모바일 따로) |
 | `generated/scope.json` | 검수기가 쓰는 정답표 — 배포본에서 자동으로 뽑습니다 |
 | `generated/components.pc.md` · `components.mobile.md` | 매체별로 쓸 수 있는 부품·크기 목록 |
 | `check/s1-check.mjs` | 검수기 |
@@ -22,7 +25,7 @@
 npm run ai:scope
 
 # 만든 화면을 검수한다
-npm run ai:check -- <폴더> --platform pc --report 판정표.html
+npm run ai:check -- <폴더> --profile user --report 판정표.html   # pr · user · admin · admin-compact · mobile
 ```
 
 ## 검수기가 보는 것
@@ -34,5 +37,7 @@ npm run ai:check -- <폴더> --platform pc --report 판정표.html
 5. **동작 배선** — 여닫기가 필요한 부품을 쓰고 런타임을 안 붙인 것
 6. **색·토큰** — HEX·rgba 직접 사용, 없는 토큰 이름
 7. **조합 문법** — 임의 px 간격, 토큰에 없는 글자 크기
+8. **화면 종류별 크기** — PR용·사용자용·관리자용(기본·작게)·모바일 크기표와 다른 `data-size`, 그 화면에 없는 밀도 단어, 모바일에서 바꿔 써야 할 부품
 
 판정 기준은 검수기가 만들지 않습니다. 전부 `generated/scope.json` 에서 읽고, 그 값은 배포본에서 나옵니다.
+화면 종류별 크기는 `rules/usage-profiles.json`(화면 종류 → 밀도) + `registry/governance/density-policy.json`(밀도 정본, 원본 저장소에서 동기화) + 배포본 부품 CSS 의 실제 높이(밀도 → 크기 이름)로 만듭니다.

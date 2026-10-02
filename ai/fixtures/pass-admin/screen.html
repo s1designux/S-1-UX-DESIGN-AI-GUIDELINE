@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../../../ui-library/dist/assets/css/tokens.css">
+  <link rel="stylesheet" href="../../../ui-library/dist/s1-ui.css">
+  <style>
+    .filter-bar { display: flex; gap: var(--spacing-12); align-items: center; }
+    .page-actions { display: flex; gap: var(--spacing-12); margin-top: var(--spacing-24); }
+  </style>
+</head>
+<body data-s1-density="normal">
+  <!-- 관리자용 기본 표본: 본문 34 · 필터 줄과 표 칸 안 28 · 표 줄 38 · 팝업 아래 버튼은 예제 그대로 -->
+  <div class="filter-bar" data-s1-zone="filter">
+    <div data-s1-component="input" data-size="xxsm" data-break="pc" aria-label="검색어">
+      <div data-s1-part="field">
+        <input data-s1-part="control" type="text">
+      </div>
+    </div>
+    <button type="button" data-s1-component="button" data-variant="secondary" data-size="xxsm">
+      <span data-s1-part="label">조회</span>
+    </button>
+  </div>
+  <div data-s1-component="table" data-size="sm">
+    <table data-s1-part="table">
+      <thead>
+        <tr>
+          <th data-s1-part="header-cell" scope="col">항목명</th>
+          <th data-s1-part="header-cell" scope="col">관리</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-s1-part="row">
+          <td data-s1-part="cell">항목 1</td>
+          <td data-s1-part="cell">
+            <button type="button" data-s1-component="button" data-variant="blue-line" data-size="xxsm">
+              <span data-s1-part="label">수정</span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="page-actions">
+    <button type="button" data-s1-component="button" data-variant="primary" data-size="xsm">
+      <span data-s1-part="label">등록</span>
+    </button>
+  </div>
+  <div data-s1-component="modal-content" data-size="md" data-footer="dual" hidden>
+    <div data-s1-part="overlay"></div>
+    <div data-s1-part="panel" role="dialog" aria-modal="true" aria-labelledby="edit-title" tabindex="-1">
+      <div data-s1-part="header">
+        <h2 data-s1-part="title" id="edit-title">항목 수정</h2>
+        <button type="button" data-s1-part="close" aria-label="닫기"></button>
+      </div>
+      <div data-s1-part="content-area">
+        <div data-s1-part="content">
+          <span data-s1-part="content-label">항목명</span>
+          <div data-s1-component="input" data-size="xsm" data-break="pc" aria-label="항목명">
+            <div data-s1-part="field">
+              <input data-s1-part="control" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-s1-part="footer">
+        <button type="button" data-s1-component="button" data-variant="secondary" data-size="xxsm"><span data-s1-part="label">취소</span></button>
+        <button type="button" data-s1-component="button" data-variant="primary" data-size="xxsm"><span data-s1-part="label">확인</span></button>
+      </div>
+    </div>
+  </div>
+  <script type="module">
+    import { autoInit } from "../../../ui-library/dist/s1-ui.auto.js";
+    autoInit();
+  </script>
+</body>
+</html>

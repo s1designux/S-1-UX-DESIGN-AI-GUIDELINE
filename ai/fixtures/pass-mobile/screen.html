@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../../ui-library/dist/assets/css/tokens.css">
+  <link rel="stylesheet" href="../../../ui-library/dist/s1-ui.css">
+  <style>
+    .form-group { display: flex; flex-direction: column; gap: var(--spacing-8); }
+  </style>
+</head>
+<body data-s1-break="mobile">
+  <!-- 모바일 표본: 손가락 기준 48 하나 -->
+  <div class="form-group">
+    <div data-s1-component="input" data-size="md" data-break="mobile" aria-label="이름">
+      <div data-s1-part="field">
+        <input data-s1-part="control" type="text">
+      </div>
+    </div>
+    <button type="button" data-s1-component="button" data-variant="primary" data-size="lg">
+      <span data-s1-part="label">다음</span>
+    </button>
+  </div>
+  <script type="module">
+    import { autoInit } from "../../../ui-library/dist/s1-ui.auto.js";
+    autoInit();
+  </script>
+</body>
+</html>

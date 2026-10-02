@@ -13,6 +13,8 @@ const FILES = [
   'design/DESIGN.core.md',
   'registry/components/component-facts.json',
   'registry/components/component-behavior.pc.json',
+  // 화면별(일반 사용자·관리자·모바일) 크기 기준의 정본 — ai/scripts/build-scope.mjs 가 읽는다.
+  'registry/governance/density-policy.json',
   'assets/css/tokens.css',
   'assets/css/component-tokens.css',
   'assets/css/typography.css',

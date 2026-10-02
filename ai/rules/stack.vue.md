@@ -13,6 +13,7 @@ import "@s1/ui/s1-ui.css";
 `ui-library/dist/platform/vue/` 안의 SFC 가 정본입니다. 같은 이름의 컴포넌트를 새로 만들지 않습니다.
 
 props 로 넘길 수 있는 값(variant·size)은 `ai/generated/scope.json` 에 있는 것만입니다.
+`size` 는 고른 화면 종류의 표(`ai/generated/profile.<pr|user|admin|admin-compact|mobile>.md`)에 적힌 값만 넣습니다. 검수기는 아직 컴포넌트 props 의 `size` 를 판정하지 못하므로, 표와 직접 대조합니다.
 
 ## 3. 하지 말 것
 

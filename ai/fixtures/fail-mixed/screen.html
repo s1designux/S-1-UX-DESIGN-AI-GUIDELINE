@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../../../ui-library/dist/assets/css/tokens.css">
+  <link rel="stylesheet" href="../../../ui-library/dist/s1-ui.css">
+  <style>
+    /* 일부러 어긋나게 만든 표본 — 고치지 마세요.
+       일반 사용자 화면인데 버튼 크기가 제각각이다(모바일 큰 버튼 · 관리자 크기 · 아주 작은 크기). */
+    .actions { display: flex; gap: var(--spacing-12); }
+  </style>
+</head>
+<body data-s1-density="wide">
+  <div class="actions">
+    <button type="button" data-s1-component="button" data-variant="primary" data-size="lg">
+      <span data-s1-part="label">저장</span>
+    </button>
+    <button type="button" data-s1-component="button" data-variant="secondary" data-size="xsm">
+      <span data-s1-part="label">임시저장</span>
+    </button>
+    <button type="button" data-s1-component="button" data-variant="secondary" data-size="xxsm">
+      <span data-s1-part="label">취소</span>
+    </button>
+  </div>
+</body>
+</html>

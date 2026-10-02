@@ -7,7 +7,9 @@ PC 전용 부품(표·페이지 넘김·상단 전역 메뉴)을 모바일 화�
 
 ## 쓸 수 있는 부품과 크기
 
-`ai/generated/components.mobile.md` 를 읽으세요. 거기 있는 부품·크기만 씁니다.
+`ai/generated/components.mobile.md` 를 읽으세요. 거기 있는 부품만 씁니다.
+
+**크기와 바꿔 쓸 부품은 `ai/generated/profile.mobile.md` 표 하나로 정해져 있습니다.** 드롭다운 대신 바텀시트, 멀티 토글 대신 라디오·체크박스를 씁니다.
 
 `data-break` 속성이 필요한 부품에는 항상 **`data-break="mobile"`** 를 적습니다.
 
@@ -23,5 +25,5 @@ PC 전용 부품(표·페이지 넘김·상단 전역 메뉴)을 모바일 화�
 ## 검수
 
 ```bash
-node ai/check/s1-check.mjs <만든폴더> --platform mobile --report 판정표.html
+node ai/check/s1-check.mjs <만든폴더> --profile mobile --report 판정표.html
 ```
