@@ -8,6 +8,8 @@
 | `fail-mixed/` | 사용자용 — 버튼 크기가 제각각 | 불합격 |
 | `fail-mobile/` | 모바일 — PC 크기·밀도 단어·멀티 토글 | 불합격 |
 | `fail/` | 사용자용 — 색·간격·부품 규칙 위반 | 불합격 |
+| `pass-rn/` | 모바일 · React Native — S1 부품·토큰 이름만 씀 | 합격 |
+| `fail-rn/` | 모바일 · React Native — 웹 배포본·웹 마크업·숫자 간격·PC 크기·breakName 빠짐 | 불합격 |
 
 `node ai/scripts/self-test.mjs` 가 전부 돌려 결과를 확인한다.
 검수기를 고친 뒤에는 이걸 먼저 돌린다.

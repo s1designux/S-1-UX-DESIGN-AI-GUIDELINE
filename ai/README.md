@@ -9,7 +9,7 @@
 | `../ONBOARDING.md` | **시작점.** AI에게 이 한 장을 주면 객관식으로 환경·매체·기술을 물어 세팅합니다 |
 | `rules/core.md` | 매체·기술과 무관한 공통 문법 |
 | `rules/platform.pc.md` · `platform.mobile.md` | 매체별 기준. 한 번에 하나만 읽습니다 |
-| `rules/stack.*.md` | 기술별(웹·React·Vue·Kotlin·Swift·C++) 쓰는 법 |
+| `rules/stack.*.md` | 기술별(웹·React·React Native·Vue·Kotlin·Swift·C++) 쓰는 법 |
 | `rules/service.default.md` | 서비스별 조합 문법. 서비스가 늘면 파일을 추가합니다 |
 | `rules/platform-scope.overrides.json` | **사람이 손으로 고치는 파일.** 부품의 PC/모바일 소속 확정 |
 | `rules/usage-profiles.json` | **사람이 손으로 고치는 파일.** 화면 종류(PC PR용 · 사용자용 · 관리자용 기본·작게 · 모바일) → 밀도(넓게·보통·좁게) |
