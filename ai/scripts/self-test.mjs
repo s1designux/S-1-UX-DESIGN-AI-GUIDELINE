@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 const FIX = path.join(ROOT, "ai", "fixtures");
 const node = (args) => spawnSync(process.execPath, args, { cwd: ROOT, encoding: "utf8" });
-const check = (dir, profile) => node([path.join(ROOT, "ai", "check", "s1-check.mjs"), dir, ...(profile ? ["--profile", profile] : [])]);
+const check = (dir, profile, stack) => node([path.join(ROOT, "ai", "check", "s1-check.mjs"), dir, ...(profile ? ["--profile", profile] : []), ...(stack ? ["--stack", stack] : [])]);
 
 /* 디자이너가 "S1 으로 바꾸라"고 한 자리를 그대로 둔 화면 — 검수기가 잡아야 한다. */
 const tmp = mkdtempSync(path.join(os.tmpdir(), "s1-selftest-"));
@@ -49,6 +49,8 @@ const CASES = [
   ["pass-admin (admin-compact) — 관리자용 기본 크기를 관리자용 작게로 검수 — 불합격", () => check(path.join(FIX, "pass-admin"), "admin-compact"), 1],
   ["pass-admin (pr) — 관리자용 크기를 PR용으로 검수 — 불합격", () => check(path.join(FIX, "pass-admin"), "pr"), 1],
   ["fail (user) — 색·간격·부품 규칙 위반 — 불합격", () => check(path.join(FIX, "fail"), "user"), 1],
+  ["pass-rn (mobile · React Native) — S1 부품·토큰 이름만 쓴 앱 화면 — 합격", () => check(path.join(FIX, "pass-rn"), "mobile", "react-native"), 0],
+  ["fail-rn (mobile · React Native) — 웹 배포본·웹 마크업·숫자 간격·breakName 빠짐 — 불합격", () => check(path.join(FIX, "fail-rn"), "mobile", "react-native"), 1],
   ["pass (화면 종류 없음) — 온보딩 없이 만든 화면 — 판정 거부", () => check(path.join(FIX, "pass"), null), 2],
   ["poc-applied (s1.profile.json) — 디자인 확인 결과대로 입힌 POC — 합격", () => check(path.join(FIX, "poc-applied"), null), 0],
   ["poc-ignored — 디자이너가 바꾸라고 한 자리를 그대로 둔 POC — 불합격", () => check(ignored, null), 1],

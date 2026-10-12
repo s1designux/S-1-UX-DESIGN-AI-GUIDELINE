@@ -1,0 +1,384 @@
+{
+  "_meta": {
+    "note": "자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요.",
+    "purpose": "RN 부품이 배포본 CSS 의 어느 선언을 RN 에 옮기지 못해 따로 처리/무시했는지 드러낸다.",
+    "rule": "reason 이 web-only·pointer-only·animation 이면 RN 에 대응물이 없는 선언이고, consumed 는 다른 값으로 이미 옮겨 쓴 선언이다. 이 외에 색·치수가 남으면 부품이 그만큼 정본과 다르다는 뜻이다(빌드가 알 수 없는 속성에서 멈춘다)."
+  },
+  "totals": {
+    "animation:transition": 164,
+    "consumed:background-origin": 2,
+    "consumed:mask-position": 864,
+    "consumed:mask-repeat": 864,
+    "consumed:mask-size": 864,
+    "consumer-provided:-webkit-mask": 4,
+    "consumer-provided:background": 2,
+    "consumer-provided:mask": 4,
+    "custom-property:--s1-bottom-sheet-gap": 8,
+    "custom-property:--s1-bottom-sheet-shadow": 8,
+    "custom-property:--s1-brand-logo": 16,
+    "custom-property:--s1-brand-logo-w": 8,
+    "duplicate:-webkit-mask": 392,
+    "duplicate:-webkit-mask-image": 953,
+    "duplicate:-webkit-mask-position": 864,
+    "duplicate:-webkit-mask-repeat": 864,
+    "duplicate:-webkit-mask-size": 864,
+    "font-provider:font-family": 5934,
+    "pointer-only:cursor": 10590,
+    "text-input-prop:caret-color": 112,
+    "web-only:appearance": 7934,
+    "web-only:list-style": 36,
+    "web-only:outline": 112,
+    "web-only:resize": 16,
+    "web-only:scroll-snap-align": 30,
+    "web-only:scroll-snap-type": 144,
+    "web-only:scrollbar-width": 144,
+    "web-only:text-box": 960,
+    "web-only:user-select": 312,
+    "web-only:vertical-align": 1316,
+    "web-only:word-break": 144
+  },
+  "components": {
+    "input": {
+      "templates": 6,
+      "styles": 112,
+      "tableEntries": 6911,
+      "ignored": {
+        "web-only:appearance": 2664,
+        "text-input-prop:caret-color": 96,
+        "font-provider:font-family": 96,
+        "web-only:outline": 96,
+        "pointer-only:cursor": 2568
+      }
+    },
+    "button": {
+      "templates": 2,
+      "styles": 30,
+      "tableEntries": 197,
+      "ignored": {
+        "web-only:appearance": 384,
+        "pointer-only:cursor": 384,
+        "font-provider:font-family": 192,
+        "web-only:user-select": 192
+      }
+    },
+    "checkbox": {
+      "templates": 1,
+      "styles": 10,
+      "tableEntries": 13,
+      "ignored": {
+        "web-only:appearance": 16,
+        "pointer-only:cursor": 20,
+        "font-provider:font-family": 2
+      }
+    },
+    "radio": {
+      "templates": 1,
+      "styles": 10,
+      "tableEntries": 13,
+      "ignored": {
+        "web-only:appearance": 16,
+        "pointer-only:cursor": 20,
+        "font-provider:font-family": 2
+      }
+    },
+    "toggle": {
+      "templates": 1,
+      "styles": 7,
+      "tableEntries": 16,
+      "ignored": {
+        "web-only:appearance": 16,
+        "pointer-only:cursor": 16
+      }
+    },
+    "chip": {
+      "templates": 2,
+      "styles": 25,
+      "tableEntries": 98,
+      "ignored": {
+        "web-only:appearance": 192,
+        "pointer-only:cursor": 192,
+        "font-provider:font-family": 96,
+        "web-only:user-select": 96
+      }
+    },
+    "dropdown": {
+      "templates": 2,
+      "styles": 40,
+      "tableEntries": 332,
+      "ignored": {
+        "pointer-only:cursor": 648,
+        "font-provider:font-family": 324
+      }
+    },
+    "select": {
+      "templates": 2,
+      "styles": 37,
+      "tableEntries": 594,
+      "ignored": {
+        "web-only:appearance": 576,
+        "pointer-only:cursor": 576,
+        "font-provider:font-family": 288
+      }
+    },
+    "filter-chip": {
+      "templates": 2,
+      "styles": 41,
+      "tableEntries": 170,
+      "ignored": {
+        "web-only:appearance": 192,
+        "pointer-only:cursor": 192,
+        "font-provider:font-family": 96
+      }
+    },
+    "tab": {
+      "templates": 2,
+      "styles": 18,
+      "tableEntries": 46,
+      "ignored": {
+        "web-only:appearance": 48,
+        "pointer-only:cursor": 48,
+        "font-provider:font-family": 24
+      }
+    },
+    "pagination": {
+      "templates": 1,
+      "styles": 14,
+      "tableEntries": 284,
+      "ignored": {
+        "font-provider:font-family": 1,
+        "web-only:appearance": 56,
+        "pointer-only:cursor": 56,
+        "duplicate:-webkit-mask": 252,
+        "duplicate:-webkit-mask-image": 72
+      }
+    },
+    "textarea": {
+      "templates": 2,
+      "styles": 7,
+      "tableEntries": 22,
+      "ignored": {
+        "web-only:appearance": 32,
+        "text-input-prop:caret-color": 16,
+        "font-provider:font-family": 16,
+        "web-only:outline": 16,
+        "web-only:resize": 16,
+        "pointer-only:cursor": 24
+      }
+    },
+    "multi-toggle": {
+      "templates": 1,
+      "styles": 61,
+      "tableEntries": 217,
+      "ignored": {
+        "web-only:appearance": 432,
+        "pointer-only:cursor": 432,
+        "font-provider:font-family": 216
+      }
+    },
+    "modal": {
+      "templates": 2,
+      "styles": 22,
+      "tableEntries": 27,
+      "ignored": {
+        "web-only:appearance": 4,
+        "pointer-only:cursor": 4
+      }
+    },
+    "table": {
+      "templates": 1,
+      "styles": 39,
+      "tableEntries": 1322,
+      "ignored": {
+        "font-provider:font-family": 1314,
+        "web-only:vertical-align": 1316
+      }
+    },
+    "mobile-bottom-nav": {
+      "templates": 1,
+      "styles": 11,
+      "tableEntries": 16,
+      "ignored": {
+        "web-only:appearance": 2,
+        "pointer-only:cursor": 2,
+        "duplicate:-webkit-mask": 12,
+        "duplicate:-webkit-mask-image": 9
+      }
+    },
+    "mobile-header": {
+      "templates": 1,
+      "styles": 11,
+      "tableEntries": 18,
+      "ignored": {
+        "web-only:appearance": 2,
+        "pointer-only:cursor": 2,
+        "duplicate:-webkit-mask": 1
+      }
+    },
+    "time-picker": {
+      "templates": 4,
+      "styles": 80,
+      "tableEntries": 1471,
+      "ignored": {
+        "web-only:appearance": 1164,
+        "pointer-only:cursor": 1304,
+        "font-provider:font-family": 653,
+        "consumed:background-origin": 2,
+        "custom-property:--s1-bottom-sheet-gap": 4,
+        "custom-property:--s1-bottom-sheet-shadow": 4,
+        "web-only:scroll-snap-type": 144,
+        "web-only:scrollbar-width": 144,
+        "web-only:scroll-snap-align": 30
+      }
+    },
+    "date-picker": {
+      "templates": 2,
+      "styles": 142,
+      "tableEntries": 1993,
+      "ignored": {
+        "web-only:appearance": 874,
+        "pointer-only:cursor": 874,
+        "font-provider:font-family": 1369,
+        "web-only:text-box": 960,
+        "custom-property:--s1-bottom-sheet-gap": 2,
+        "custom-property:--s1-bottom-sheet-shadow": 2
+      }
+    },
+    "gnb": {
+      "templates": 1,
+      "styles": 28,
+      "tableEntries": 130,
+      "ignored": {
+        "web-only:list-style": 1,
+        "web-only:appearance": 6,
+        "pointer-only:cursor": 6,
+        "duplicate:-webkit-mask": 3
+      }
+    },
+    "gnb-sub-menu-item": {
+      "templates": 2,
+      "styles": 3,
+      "tableEntries": 48,
+      "ignored": {}
+    },
+    "gnb-sub-menu": {
+      "templates": 3,
+      "styles": 12,
+      "tableEntries": 55,
+      "ignored": {
+        "web-only:list-style": 11
+      }
+    },
+    "assist-button": {
+      "templates": 1,
+      "styles": 4,
+      "tableEntries": 9,
+      "ignored": {
+        "web-only:appearance": 16,
+        "pointer-only:cursor": 16,
+        "font-provider:font-family": 8,
+        "web-only:user-select": 8
+      }
+    },
+    "text-button": {
+      "templates": 1,
+      "styles": 6,
+      "tableEntries": 17,
+      "ignored": {
+        "web-only:appearance": 32,
+        "pointer-only:cursor": 32,
+        "font-provider:font-family": 16,
+        "web-only:user-select": 16
+      }
+    },
+    "modal-content": {
+      "templates": 1,
+      "styles": 16,
+      "tableEntries": 17,
+      "ignored": {
+        "web-only:appearance": 4,
+        "pointer-only:cursor": 4
+      }
+    },
+    "bottom-sheet-option": {
+      "templates": 6,
+      "styles": 15,
+      "tableEntries": 138,
+      "ignored": {
+        "font-provider:font-family": 33
+      }
+    },
+    "bottom-sheet": {
+      "templates": 1,
+      "styles": 12,
+      "tableEntries": 17,
+      "ignored": {
+        "custom-property:--s1-bottom-sheet-gap": 2,
+        "custom-property:--s1-bottom-sheet-shadow": 2,
+        "font-provider:font-family": 1,
+        "web-only:appearance": 2,
+        "pointer-only:cursor": 2
+      }
+    },
+    "list-row": {
+      "templates": 7,
+      "styles": 23,
+      "tableEntries": 1388,
+      "ignored": {
+        "font-provider:font-family": 1050,
+        "web-only:appearance": 1204,
+        "pointer-only:cursor": 1968,
+        "duplicate:-webkit-mask": 72
+      }
+    },
+    "expandable-card": {
+      "templates": 1,
+      "styles": 16,
+      "tableEntries": 30,
+      "ignored": {
+        "font-provider:font-family": 9,
+        "pointer-only:cursor": 16,
+        "animation:transition": 36,
+        "duplicate:-webkit-mask": 4
+      }
+    },
+    "data-tag": {
+      "templates": 1,
+      "styles": 12,
+      "tableEntries": 24,
+      "ignored": {
+        "font-provider:font-family": 24
+      }
+    },
+    "divider": {
+      "templates": 1,
+      "styles": 16,
+      "tableEntries": 54,
+      "ignored": {}
+    },
+    "lnb": {
+      "templates": 2,
+      "styles": 51,
+      "tableEntries": 1612,
+      "ignored": {
+        "font-provider:font-family": 104,
+        "animation:transition": 128,
+        "custom-property:--s1-brand-logo": 16,
+        "pointer-only:cursor": 1184,
+        "duplicate:-webkit-mask": 48,
+        "duplicate:-webkit-mask-image": 872,
+        "web-only:list-style": 24,
+        "web-only:word-break": 144,
+        "duplicate:-webkit-mask-position": 864,
+        "consumed:mask-position": 864,
+        "duplicate:-webkit-mask-repeat": 864,
+        "consumed:mask-repeat": 864,
+        "duplicate:-webkit-mask-size": 864,
+        "consumed:mask-size": 864,
+        "custom-property:--s1-brand-logo-w": 8,
+        "consumer-provided:-webkit-mask": 4,
+        "consumer-provided:mask": 4,
+        "consumer-provided:background": 2
+      }
+    }
+  }
+}

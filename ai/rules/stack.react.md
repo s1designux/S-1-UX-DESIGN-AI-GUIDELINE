@@ -1,5 +1,7 @@
 # React 로 만들 때
 
+> 웹(React DOM) 전용입니다. `package.json` 에 `react-native`·`expo` 가 있으면 이 파일 대신 `stack.react-native.md` 를 따릅니다 — 여기 부품은 iOS·Android 에서 돌지 않습니다.
+
 ## 1. CSS 를 앱 진입점에서 한 번 읽힙니다
 
 ```js

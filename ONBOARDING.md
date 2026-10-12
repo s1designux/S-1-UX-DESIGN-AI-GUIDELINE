@@ -68,7 +68,7 @@
 
 - **이미 답이 분명한 것은 미리 채워 둡니다.** 예: 프로젝트에 화면 파일이 있고 "입혀줘"라고 했으면 B 옆에 "— 이미 있는 화면이 있어 2로 보여요". 사용자가 고치면 그 답을 따릅니다.
 - **문서 작성(A1)이면 C·D 를 묻지 않습니다.** 문서는 **사용자용 화면과 같은 기준**(PC 웹 · 사용자용)으로 씁니다.
-- **기술은 묻지 않고 프로젝트에서 읽습니다**(`.html` → HTML+CSS, `package.json` 에 react·vue → React·Vue, `.kt` → Kotlin, `.swift` → Swift). 알 수 없을 때만 묻습니다: HTML+CSS · React · Vue · Kotlin · Swift · C++.
+- **기술은 묻지 않고 프로젝트에서 읽습니다**(`.html` → HTML+CSS, `package.json` 에 `react-native`·`expo` → **React Native**(react 보다 먼저 봅니다), react·vue → React·Vue, `.kt` → Kotlin, `.swift` → Swift). 알 수 없을 때만 묻습니다: HTML+CSS · React · React Native · Vue · Kotlin · Swift · C++.
 - 서비스 기준은 지금 `default` 하나라 묻지 않습니다. 파일을 읽고 쓸 수 있는 도구인지도 묻지 않습니다(지금 쓰는 도구로 압니다).
 - 답을 받은 뒤 **크기표를 보여 주며 다시 확인받지 않습니다.** 바로 4단계로 저장하고 다음으로 갑니다.
 
@@ -114,7 +114,8 @@ B → `mode`: B1 = `new`, B2 = `apply`
 | 기술 | 읽을 파일 |
 | --- | --- |
 | HTML + CSS | `ai/rules/stack.web.md` |
-| React | `ai/rules/stack.react.md` |
+| React (웹) | `ai/rules/stack.react.md` |
+| React Native · Expo (`stack: "react-native"`) | `ai/rules/stack.react-native.md` |
 | Vue | `ai/rules/stack.vue.md` |
 | Kotlin | `ai/rules/stack.kotlin.md` |
 | Swift | `ai/rules/stack.swift.md` |

@@ -138,5 +138,5 @@
     ],
     "reason": "머리줄 클릭으로 aria-expanded 와 panel-wrap[data-open] 을 함께 바꾼다. 초기 표시는 마크업(aria-expanded)이 정한다."
   },
-  "sourceFingerprint": "3783d9a0c2a7d1c885d1f6d24b0e2e39837d6c55e2335f0c7ddb6b2d82cc7fb6"
+  "sourceFingerprint": "f4e6d6c75446a265e86e80a3c87eacbb5313897c1169ad833e78d8c9665ce76b"
 }

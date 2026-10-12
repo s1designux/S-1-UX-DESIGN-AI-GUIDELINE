@@ -3114,7 +3114,8 @@ function lnbItemMarkup({ label, current = false, disabled = false, sub = null, o
     return `<li><button type="button" data-s1-part="item" aria-expanded="${open}" aria-controls="${subId}" title="${escapeHtml(label)}"${state}${tab}>${icon}${escapeHtml(label)}<span data-s1-part="item-toggle" aria-hidden="true"></span></button>
         <ul data-s1-part="subitems" id="${subId}"${open ? "" : " hidden"}>${subs}</ul></li>`;
   }
-  return `<li><a data-s1-part="item" href="#" title="${escapeHtml(label)}"${state}${tab}>${icon}${escapeHtml(label)}</a></li>`;
+  const disabledTab = disabled ? ' tabindex="-1"' : tab;
+  return `<li><a data-s1-part="item" href="#" title="${escapeHtml(label)}"${state}${disabled ? disabledTab : tab}>${icon}${escapeHtml(label)}</a></li>`;
 }
 
 function lnbMarkup({ type = "menu", size = "md", state = "expanded", open = false, isPreview = false, label = "기본 메뉴" } = {}) {

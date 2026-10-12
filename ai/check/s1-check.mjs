@@ -4,6 +4,7 @@
  * --------------------------------------------------------------------------
  *   node ai/check/s1-check.mjs <검사할폴더> --platform pc
  *   node ai/check/s1-check.mjs src --platform mobile --stack kotlin --report 판정표.html
+ *   node ai/check/s1-check.mjs src --profile mobile --stack react-native   (Expo·React Native 앱)
  *   node ai/check/s1-check.mjs src --profile admin        (화면 종류: pr · user · admin · admin-compact · mobile)
  *
  * [판정 기준을 이 파일이 만들지 않는다]
@@ -366,7 +367,11 @@ function checkProfileWrappers(file, walked) {
 
 /* ── 검사들 ─────────────────────────────────────────────────────────────── */
 const findings = [];
-const add = (severity, rule, file, line, message, hint) => findings.push({ severity, rule, file, line, message, hint });
+/* RN 은 웹과 고치는 말이 다르다 — 속성 이름·토큰 부르는 법만 바꿔 준다. */
+const rnHint = (hint) => hint && hint
+  .replace(/data-size="/g, 'size="')
+  .replace(/var\((--[a-z0-9-]+)\)/g, 'COLORS["$1"][dark ? 1 : 0] (dark 는 useS1() 에서)');
+const add = (severity, rule, file, line, message, hint) => findings.push({ severity, rule, file, line, message, hint: RN ? rnHint(hint) : hint });
 
 function checkColors(text, file) {
   const masked = maskComments(text);
@@ -569,6 +574,182 @@ function countCoverage(walked, counters) {
   }
 }
 
+/* ── React Native — 부품은 <S1Button size="lg" breakName="mobile" /> 꼴이다 ──
+   웹 마크업(data-s1-component·CSS)은 iOS·Android 에서 돌지 않는다. 그래서 RN 에서는
+   부품 이름(S1*)과 그 prop 을 읽고, 스타일 객체 안의 숫자·색을 본다. */
+const RN = stack === "react-native";
+const RN_EXT = new Set([".js", ".jsx", ".ts", ".tsx"]);
+const RN_HELPERS = new Set(["S1Provider", "S1Text", "S1Gallery"]);
+const RN_RAW = new Set(["Pressable", "TouchableOpacity", "TouchableHighlight", "TouchableWithoutFeedback", "Button", "TextInput", "Switch"]);
+const RN_GENERATED = "자동 생성물 — 손으로 고치지 마세요";
+const rnNameOf = (id) => `S1${id.split("-").map((piece) => piece[0].toUpperCase() + piece.slice(1)).join("")}`;
+const rnIdByName = new Map(scope.components.map((spec) => [rnNameOf(spec.id), spec.id]));
+/* 부품마다 breakName 을 받는지 — 배포본이 정한 값을 그대로 읽는다(안 주면 "pc" 로 그려진다). */
+const rnBreaks = new Map();
+if (RN) {
+  for (const spec of scope.components) {
+    try {
+      const source = await readFile(path.join(ROOT, "ui-library/dist/platform/react-native/components", `${spec.id}.js`), "utf8");
+      const found = /export const BREAKS = (\[[^\]]*\])/.exec(source);
+      if (found) rnBreaks.set(spec.id, JSON.parse(found[1]));
+    } catch { /* RN 배포본에 없는 부품 */ }
+  }
+}
+const dynamic = (value) => value === undefined || value.startsWith("{");
+
+/** JSX 훑기 — 중괄호 안의 `=>`·`>` 에서 태그가 끊기지 않게 깊이를 센다. */
+function walkJsx(text) {
+  const masked = maskComments(text);
+  const elements = [];
+  const stack = [];
+  const opener = /<(\/?)([A-Za-z][\w.]*)/g;
+  let match;
+  while ((match = opener.exec(masked)) !== null) {
+    const [, closing, name] = match;
+    let end = opener.lastIndex;
+    let depth = 0;
+    let quote = null;
+    for (; end < masked.length; end += 1) {
+      const ch = masked[end];
+      if (quote) { if (ch === quote && masked[end - 1] !== "\\") quote = null; continue; }
+      if (depth === 0 && (ch === '"' || ch === "'")) { quote = ch; continue; }
+      if (ch === "{") depth += 1;
+      else if (ch === "}") depth -= 1;
+      else if (ch === ">" && depth === 0) break;
+    }
+    const body = masked.slice(opener.lastIndex, end);
+    opener.lastIndex = end + 1;
+    if (closing) {
+      for (let i = stack.length - 1; i >= 0; i -= 1) {
+        if (stack[i].tag === name) { stack.length = i; break; }
+      }
+      continue;
+    }
+    const attributes = {};
+    for (const m of body.matchAll(/([A-Za-z_][\w-]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|\{\s*["']([^"'{}]*)["']\s*\}|(\{))/g)) {
+      attributes[m[1]] = m[2] ?? m[3] ?? m[4] ?? "{…}";
+    }
+    const parent = stack[stack.length - 1] || null;
+    const ownComponent = rnIdByName.get(name) || null;
+    const element = {
+      tag: name,
+      attributes,
+      line: lineOf(text, match.index),
+      ownComponent,
+      inComponent: ownComponent || parent?.inComponent || null,
+      part: null,
+      parent
+    };
+    elements.push(element);
+    if (!body.trimEnd().endsWith("/")) stack.push(element);
+  }
+  return elements;
+}
+
+function checkReactNative(text, file) {
+  const masked = maskComments(text);
+
+  /* 웹 배포본을 RN 에 끌어온 것 — 웹에서만 돌고 iOS·Android 에서 깨진다. */
+  for (const m of masked.matchAll(/@s1\/ui-react(?!-native)|s1-ui(?:\.auto)?\.(?:js|css)|tokens\.css|typography\.css/g)) {
+    add("error", "S1-RN-WEB", file, lineOf(text, m.index),
+      `웹 배포본(${m[0]})을 불러왔습니다. iOS·Android 빌드에서 깨집니다.`,
+      "React Native 배포본(ui-library/dist/platform/react-native)의 S1 부품을 쓰세요.");
+  }
+
+  /* 색·간격·글자 크기를 스타일 객체에 숫자로 적은 것 */
+  for (const m of masked.matchAll(/\b(padding|margin|gap|rowGap|columnGap)(Top|Right|Bottom|Left|Horizontal|Vertical|Start|End)?\s*:\s*(-?\d+(?:\.\d+)?)(?![\w.])/g)) {
+    const amount = Math.abs(Number(m[3]));
+    if (amount === 0) continue;
+    add("error", "S1-SPACING", file, lineOf(text, m.index),
+      `간격을 숫자로 직접 적었습니다 (${m[1]}${m[2] || ""}: ${m[3]}).`,
+      spacingScale.has(amount)
+        ? `같은 값의 토큰이 있습니다 — DIMENS["--spacing-${amount}"] 로 바꾸세요.`
+        : `간격 토큰에 없는 값입니다. 한 묶음 안 ${scope.grouping.withinGroup} · 한 줄 안 ${scope.grouping.inline} · 묶음 사이 ${scope.grouping.betweenGroups} 중에서 고르세요.`);
+  }
+  for (const m of masked.matchAll(/\bfontSize\s*:\s*(\d+(?:\.\d+)?)(?![\w.])/g)) {
+    const amount = Number(m[1]);
+    add("error", "S1-FONTSIZE", file, lineOf(text, m.index),
+      `글자 크기를 숫자로 직접 적었습니다 (fontSize: ${m[1]}).`,
+      fontScale.has(amount)
+        ? `<S1Text type="…"> 의 이름 붙은 글자 스타일을 쓰세요(값만 필요하면 DIMENS["--font-size-${amount}"]).`
+        : `쓸 수 있는 글자 크기는 ${[...fontScale].join(" · ")} 뿐입니다.`);
+  }
+  /* 토큰은 RN 에서 "--color-…" 문자열 이름으로 부른다. */
+  for (const m of masked.matchAll(/["'](--(?:color|spacing|font|radius|sizing|border|shadow|line-height|letter-spacing)-[a-z0-9-]*)["']/g)) {
+    if (tokenNames.has(m[1])) continue;
+    add("error", "S1-TOKEN", file, lineOf(text, m.index),
+      `디자인시스템에 없는 토큰입니다: ${m[1]}`, "있는 이름만 쓸 수 있습니다. 필요한 값이 없으면 지어내지 말고 디자인팀에 요청하세요.");
+  }
+
+  const elements = walkJsx(text);
+  for (const element of elements) {
+    if (element.attributes[scope.componentAttribute] !== undefined) {
+      add("error", "S1-RN-WEB", file, element.line,
+        `웹 마크업(${scope.componentAttribute})을 썼습니다. iOS·Android 에서는 그려지지 않습니다.`,
+        `<${rnNameOf(element.attributes[scope.componentAttribute] || "button")} /> 처럼 React Native 부품을 쓰세요.`);
+    }
+    if (/^S1[A-Z]/.test(element.tag) && !element.ownComponent && !RN_HELPERS.has(element.tag)) {
+      add("error", "S1-COMPONENT", file, element.line,
+        `승인된 적 없는 부품 이름입니다: <${element.tag}>`, "배포본에 있는 부품만 쓸 수 있습니다.");
+      continue;
+    }
+    const id = element.ownComponent;
+    if (!id) continue;
+    usedComponents.add(id);
+    const spec = byId.get(id);
+    const name = element.tag;
+
+    if (spec.platform === `${otherPlatform}-only`) {
+      add("error", "S1-PLATFORM", file, element.line,
+        `${name} 는 ${otherPlatform === "pc" ? "PC" : "모바일"} 전용 부품입니다. 지금은 ${platformLabel} 화면을 보고 있습니다.`,
+        `근거: ${spec.platformEvidence.join(" / ") || "배포본 계약"}`);
+    }
+
+    const breaks = rnBreaks.get(id) || [];
+    const declaredBreak = element.attributes.breakName;
+    if (!dynamic(declaredBreak) && declaredBreak !== platform) {
+      add("error", "S1-BREAK", file, element.line,
+        `${name} 에 breakName="${declaredBreak}" 로 적혀 있습니다. 지금 검수 기준은 ${platformLabel} 입니다.`,
+        `breakName="${platform}" 이어야 합니다.`);
+    } else if (declaredBreak === undefined && platform !== "pc" && breaks.includes(platform) && breaks.length > 1) {
+      add("error", "S1-BREAK", file, element.line,
+        `${name} 에 breakName 이 없습니다. 안 적으면 PC 모양으로 그려집니다.`,
+        `breakName="${platform}" 를 적으세요.`);
+    }
+
+    const before = findings.length;
+    const size = element.attributes.size;
+    if (!dynamic(size)) {
+      const allowedHere = spec.sizesByPlatform[platform] || [];
+      if (spec.sizes.length && !spec.sizes.includes(size)) {
+        add("error", "S1-VARIANT", file, element.line, `${name} 에 없는 size="${size}" 입니다.`, `쓸 수 있는 값: ${spec.sizes.join(", ")}`);
+      } else if (allowedHere.length && !allowedHere.includes(size)) {
+        add("error", "S1-SIZE-PLATFORM", file, element.line,
+          `${name} 의 ${size} 크기는 ${platformLabel} 에 없습니다.`, `${platformLabel} 에서 쓸 수 있는 크기: ${allowedHere.join(", ")}`);
+      }
+    }
+    if (findings.length === before && !(size && dynamic(size))) {
+      checkProfileSize({ ...element, attributes: { ...element.attributes, "data-size": size } }, id, file);
+    }
+
+    const variant = element.attributes.variant;
+    if (!dynamic(variant) && spec.variants.length && !spec.variants.includes(variant)) {
+      add("error", "S1-VARIANT", file, element.line, `${name} 에 없는 variant="${variant}" 입니다.`, `쓸 수 있는 값: ${spec.variants.join(", ")}`);
+    }
+  }
+
+  /* 적용률 — 누르는 자리 중 몇 개가 S1 부품인가 */
+  for (const element of elements) {
+    const isS1 = element.ownComponent && !element.parent?.inComponent;
+    const isRaw = RN_RAW.has(element.tag) && !element.inComponent;
+    if (!isS1 && !isRaw) continue;
+    if (keptBy(element)) { coverage.kept += 1; continue; }
+    coverage.total += 1;
+    if (isS1) coverage.covered += 1;
+    else coverage.strays.push({ tag: element.tag, line: element.line, file });
+  }
+}
+
 /* ── 실행 ───────────────────────────────────────────────────────────────── */
 const files = [];
 for (const target of targets) files.push(...await collect(path.resolve(process.cwd(), target)));
@@ -585,7 +766,15 @@ for (const file of files) {
   if (file === reportFile || text.includes("<title>S1 검수 판정표</title>")) continue;
   const shown = path.relative(process.cwd(), file);
   const extension = path.extname(file);
+  /* 프로젝트에 넣어 둔 RN 배포본 폴더 — 값 표 자체라 검사 대상이 아니다. */
+  if (RN && text.slice(0, 200).includes(RN_GENERATED)) continue;
   scanned += 1;
+
+  if (RN) {
+    checkColors(text, shown);
+    if (RN_EXT.has(extension)) checkReactNative(text, shown);
+    continue;
+  }
 
   checkColors(text, shown);
   checkTokenNames(text, shown);
@@ -610,7 +799,7 @@ if (!usage) {
   add("error", "S1-PROFILE", "(프로젝트 전체)", 0,
     "어느 화면용인지(PC PR용 · 사용자용 · 관리자용 기본·작게 · 모바일) 정하지 않아 부품 크기를 판정하지 못했습니다.",
     `--profile ${Object.keys(scope.profiles || {}).join(" | ")} 를 붙이거나 s1.profile.json 에 "profile" 을 적으세요.`);
-} else if (usedComponents.size && !rootDeclared) {
+} else if (!RN && usedComponents.size && !rootDeclared) {
   add("warning", "S1-PROFILE-ROOT", "(프로젝트 전체)", 0,
     `화면 맨 바깥에 ${usage.label} 선언이 없습니다.`,
     platform === "mobile" ? `<body ${wrapperBreakAttribute}="mobile">` : `<body ${densityAttribute}="${usage.density}">`);

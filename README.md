@@ -33,7 +33,7 @@ S-1 디자인 시스템을 AI 에이전트와 개발자가 시각적으로 정�
 </script>
 ```
 
-React·Vue·Swift·Kotlin·C++ 로 쓸 때는 `ui-library/dist/platform/<플랫폼>/` 안의 README 를 보세요.
+React·React Native·Vue·Swift·Kotlin·C++ 로 쓸 때는 `ui-library/dist/platform/<플랫폼>/` 안의 README 를 보세요.
 
 ## 개발자용 안내 한 장
 
@@ -74,7 +74,7 @@ AI가 **어떤 도구·어떤 매체(PC 웹/모바일)·PC 웹이면 누가 쓰�
 | `ui-library/dist/s1-ui.js` · `s1-ui.auto.js` | 여닫기·키보드 동작 런타임 |
 | `ui-library/dist/assets/css/tokens.css` | 배포본이 쓰는 토큰. 이 파일 하나로 값이 다 나옵니다 |
 | `ui-library/dist/examples/*.html` | 컴포넌트별 완성 마크업 (그대로 복사) |
-| `ui-library/dist/platform/*` | React · Vue · Swift · Kotlin · C++ 판 |
+| `ui-library/dist/platform/*` | React · React Native(Expo) · Vue · Swift · Kotlin · C++ 판 |
 | `ui-library/dist/manifest.json` | 배포본 번호와 아이콘·의존성 목록 |
 | `design/DESIGN.core.md` | 시각·상태·PC 동작을 통합한 AI용 핵심 가이드 |
 | `registry/components/component-facts.json` | 크기, 간격, 구성요소 등 측정된 시각 정보 |

@@ -22,15 +22,15 @@
     "expanded": "속성 생략 또는 data-state=expanded — 가로 240(md)·280(lg)",
     "collapsed": "data-state=collapsed — 아이콘 아래 메뉴명이 붙은 띠(sizing/80). 선택 칸은 파란 바탕(button primary)+흰 아이콘·글자",
     "current": "항목 [aria-current=page] — 글자·아이콘이 navigation/label/selected 색(배경 없음)",
-    "hover": "항목 :hover — 배경 bg/level-1 + navigation/label/hover 색",
-    "disabled": "항목 [aria-disabled=true] — 눌리지 않고 disabled 색"
+    "hover": "항목 :hover — 바탕 navigation/bg--hover, 글자색은 그대로",
+    "disabled": "항목 [aria-disabled=true] — 눌리지 않고(click·Enter 취소) 탭 순서에서 빠지며 disabled 색"
   },
   "canonicalStateMap": {},
   "notInCanon": {
     "groupedVariant": "중간 구분명(grouped) 벌은 화면이 어수선해 보류했다(river 2026-09-29) — CSS 에 group 자리 스타일만 남고 공개 축·예시에는 없다.",
     "defaultVariant": "data-variant 를 안 적으면 기본(로고 없음) 벌이다 — manifest variants 의 menu 와 같다.",
     "widthTokens": "결정 완료(river 2026-10-02 \"지금 숫자 그대로 둘게\") — 펼침 가로 240·280 은 크기 토큰을 새로 만들지 않고 CSS 가 값을 그대로 든다(접힘 폭은 sizing/80).",
-    "darkLabel": "needs-decision — 다크에서 선택 안 된 메뉴명을 아이콘과 같은 밝기(color/text/body/secondary)로 둔다. 정본 navigation/label/default 의 다크값(gray-dark/600)이 더 어두워 생기는 어긋남이며, 정본을 고칠지는 별도 결정이다.",
+    "darkLabel": "해소 2026-10-01 — navigation/label/default-side(라이트 gray/600·다크 gray-dark/900), river 승인",
     "collapseIconAsset": "결정 완료(river 2026-10-02) — 판 접기 아이콘 ic_패널접기를 라이트는 등록 자산 panel-fold(라인형, 허용 키 panelFold), 다크는 panel-fold-solid(채운 모양, 허용 키 panelFoldSolid)로 쓴다(river \"다크화면 접기 아이콘은 채워진모양으로 해줘\"). 다크 솔리드형의 별도 이름 needs-decision 은 해소됐다. 화면이 --s1-collapse-icon 으로 다른 그림을 넣어 갈아 끼울 수는 있다. 접힘은 정본의 180° 회전과 같은 결과인 좌우 뒤집기(scaleX(-1))로 표현한다(도형이 상하 대칭).",
     "focusVisible": "정본에 focus 변형이 없다. 웹에서도 만들지 않으며 키보드 초점은 브라우저 기본 표시에 맡긴다."
   },
@@ -102,12 +102,12 @@
       "--s1-collapse-icon": "우측 상단 접기 아이콘 그림 갈아 끼우기(라인형). 주지 않으면 라이트는 등록 자산 panel-fold.svg(ic_패널접기 라인형), 다크는 panel-fold-solid.svg.",
       "--s1-collapse-icon-solid": "다크에서 쓸 접기 아이콘 솔리드형 갈아 끼우기. 없으면 --s1-collapse-icon, 그것도 없으면 등록 자산 panel-fold-solid.svg.",
       "--s1-brand-logo": "brand 벌 로고 그림 — url(...) 로 받은 단색 도형. 어두운 화면에서 로고를 한 가지 색(제목 글자색)으로 바꾸는 색판의 모양이다(river 2026-09-30). 주지 않으면 그림이 가진 색 그대로 둔다.",
-      "--s1-brand-logo-w": "로고 자리 가로 폭 — md 150 · lg 178 기본값(정본에 크기 토큰이 없어 raw 값, needs-decision). 화면이 로고 비율에 맞춰 바꿀 수 있다."
+      "--s1-brand-logo-w": "로고 자리 가로 폭 — md 150 · lg 178 기본값(정본에 크기 토큰이 없어 raw 값 — D-8 river 2026-10-02 raw 유지 확정). 화면이 로고 비율에 맞춰 바꿀 수 있다."
     }
   },
   "contentSlots": {
     "brand-logo": "data-variant=brand 에서만 보인다 — 화면이 자기 서비스 로고 그림(img)을 넣는다. 배포본에 로고 파일은 싣지 않는다(브랜드 자산).",
-    "item": "메뉴 이름 글자. 접힌 상태에서는 글자가 숨고 아이콘만 남으므로 title 속성으로 이름을 함께 준다."
+    "item": "메뉴 이름 글자. 접힌 상태에서는 아이콘 아래 12px 메뉴명으로 줄어 표시된다(정본 figmaBuildSpec ④). 좁은 칸에서 잘릴 수 있어 title 속성으로 이름을 함께 준다."
   },
   "dependencies": {
     "font": [
@@ -193,5 +193,5 @@
     ],
     "reason": "하위메뉴 여닫이(aria-expanded ↔ hidden)와 우측 상단 접기 단추(aria-pressed ↔ data-state)를 맞춘다."
   },
-  "sourceFingerprint": "6900e615c50c7729d6d6e9584bd6e31d6adacc8569ccd299d3f110ccfdce7ed6"
+  "sourceFingerprint": "2e26b3ed3f0b0e502e66a05118010c193f93e60ec9d6dd9de59ea507a8475311"
 }
