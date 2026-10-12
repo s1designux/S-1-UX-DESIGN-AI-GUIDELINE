@@ -3,6 +3,54 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-10-12 14:36 (KST)
+
+- 원본 커밋: `0e59741` — chore(map): 시스템 맵 재생성 (worktree-react-native 합치기)
+- 새로 추가된 파일 85개
+  - `ui-library/dist/platform/react-native-sample/App.js`
+  - `ui-library/dist/platform/react-native-sample/README.md`
+  - `ui-library/dist/platform/react-native-sample/app.json`
+  - `ui-library/dist/platform/react-native-sample/babel.config.js`
+  - `ui-library/dist/platform/react-native-sample/metro.config.js`
+  - `ui-library/dist/platform/react-native-sample/package.json`
+  - `ui-library/dist/platform/react-native/README.md`
+  - `ui-library/dist/platform/react-native/behaviors.js`
+  - `ui-library/dist/platform/react-native/components/assist-button.js`
+  - `ui-library/dist/platform/react-native/components/bottom-sheet-option.js`
+  - `ui-library/dist/platform/react-native/components/bottom-sheet.js`
+  - `ui-library/dist/platform/react-native/components/button.js`
+  - `ui-library/dist/platform/react-native/components/checkbox.js`
+  - `ui-library/dist/platform/react-native/components/chip.js`
+  - `ui-library/dist/platform/react-native/components/data-tag.js`
+  - `ui-library/dist/platform/react-native/components/date-picker.js`
+  - `ui-library/dist/platform/react-native/components/divider.js`
+  - `ui-library/dist/platform/react-native/components/dropdown.js`
+  - `ui-library/dist/platform/react-native/components/expandable-card.js`
+  - `ui-library/dist/platform/react-native/components/filter-chip.js`
+  - … 외 65개
+- 내용이 바뀐 파일 21개
+  - `assets/js/ui-library-guide.js`
+  - `ui-library/dist/components/expandable-card.js`
+  - `ui-library/dist/components/expandable-card.manifest.json`
+  - `ui-library/dist/components/lnb.js`
+  - `ui-library/dist/components/lnb.manifest.json`
+  - `ui-library/dist/examples/lnb.html`
+  - `ui-library/dist/manifest.json`
+  - `ui-library/dist/platform/contract.json`
+  - `ui-library/dist/platform/cpp/s1_version.h`
+  - `ui-library/dist/platform/kotlin/README.md`
+  - `ui-library/dist/platform/kotlin/S1Version.kt`
+  - `ui-library/dist/platform/manifest.json`
+  - `ui-library/dist/platform/react/README.md`
+  - `ui-library/dist/platform/react/lnb.jsx`
+  - `ui-library/dist/platform/react/package.json`
+  - `ui-library/dist/platform/react/version.js`
+  - `ui-library/dist/platform/swift/S1Version.swift`
+  - `ui-library/dist/platform/vue/Lnb.vue`
+  - `ui-library/dist/platform/vue/package.json`
+  - `ui-library/dist/platform/vue/version.js`
+  - … 외 1개
+
 ## 2026-10-03 07:10 (KST)
 
 - 원본 커밋: `9fbe3ff` — chore(map): 시스템 맵 재생성 (worktree-gate-trim 합치기)

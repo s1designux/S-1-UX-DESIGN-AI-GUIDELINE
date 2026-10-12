@@ -34,10 +34,10 @@ export function init(root) {
     paint(value);
     root.dispatchEvent(new CustomEvent("s1:expandable-card:change", { bubbles: true, detail: { open: value } }));
   };
-  const handleClick = () => {
+  const handleClick = (event) => {
     set(!isOpen());
-    /* 누른 뒤 헤더가 회색 hover 로 남지 않게 초점을 풀어 준다 — 마우스로 누른 경우만 해당한다. */
-    if (header.matches(":hover")) header.blur();
+    /* 누른 뒤 헤더가 회색 hover 로 남지 않게 초점을 풀어 준다 — 마우스로 누른 경우만 해당한다(키보드 click 은 detail 0 이라 초점을 지키지 않는다). */
+    if (event.detail > 0 && header.matches(":hover")) header.blur();
   };
   header.addEventListener("click", handleClick);
 

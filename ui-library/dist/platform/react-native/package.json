@@ -1,0 +1,30 @@
+{
+  "name": "@s1/ui-react-native",
+  "version": "0.19.0",
+  "description": "S1 디자인 시스템 — 승인된 배포본 CSS 를 계산해 굳힌 React Native(Expo) 컴포넌트 (iOS · Android · 웹)",
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./*": "./*"
+  },
+  "sideEffects": false,
+  "peerDependencies": {
+    "react": ">=18",
+    "react-native": ">=0.76",
+    "react-native-svg": ">=15"
+  },
+  "files": [
+    "*.js",
+    "components",
+    "specs",
+    "gallery",
+    "index.d.ts",
+    "README.md",
+    "coverage.json"
+  ]
+}

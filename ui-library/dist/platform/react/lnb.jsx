@@ -91,7 +91,7 @@ export default function S1Lnb({ variant, size, parts, onCollapse, onToggle, clas
             </ul>
           </li>
           <li>
-            <a data-s1-part="item" href="#" aria-disabled="true" title="준비 중" {...(slot(partScope, "item").attrs ?? {})}>
+            <a data-s1-part="item" href="#" aria-disabled="true" tabIndex="-1" title="준비 중" {...(slot(partScope, "item").attrs ?? {})}>
               <span data-s1-part="item-icon" aria-hidden="true" {...(slot(partScope, "itemIcon").attrs ?? {})}>
                 {slot(partScope, "itemIcon").content ?? ""}
               </span>

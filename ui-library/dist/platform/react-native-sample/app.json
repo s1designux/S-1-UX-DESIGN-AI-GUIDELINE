@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "S1 UI 예제",
+    "slug": "s1-ui-react-native-sample",
+    "version": "1.0.0",
+    "userInterfaceStyle": "automatic",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ]
+  }
+}

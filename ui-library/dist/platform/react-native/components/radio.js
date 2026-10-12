@@ -1,0 +1,75 @@
+/* 자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요. */
+/* S1Radio — 승인된 배포본 마크업을 그대로 옮긴 React Native 부품.
+   마크업을 새로 쓰지 않는다. dist/examples/radio*.html 의 승인 인스턴스에서 옮긴 것이다.
+   치수·색은 이 파일에 없다 — specs/radio.js 의 표(배포본 CSS 를 캐스케이드까지 계산한 결과)에서 온다. */
+import { useId, useState } from "react";
+import { El, N, Root, attrProps, nestedFrom, propsOf } from "../engine.js";
+import { scopeOf, slot } from "../runtime.js";
+import SPEC from "../specs/radio.js";
+
+export const BREAKS = ["pc"];
+export const DEFAULT_BREAK = "pc";
+export const VARIANTS = ["base"];
+export const SIZES = [];
+export const MODES = [];
+export const PARTS = ["control","label"];
+
+function assertAllowed(label, value, allowed) {
+  if (value === undefined || allowed.length === 0 || allowed.includes(value)) return;
+  throw new Error(`[s1-ui] radio: 승인되지 않은 ${label} "${value}". 쓸 수 있는 값: ${allowed.join(", ")}`);
+}
+
+/* 같은 화면·모드에 구조가 다른 템플릿이 여럿이면, 루트 속성이 가장 많이 맞는 것을 고른다(안 준 속성은 따지지 않는다). */
+function pickGroup(current, groups) {
+  let best = groups[0];
+  let bestScore = -1;
+  for (const group of groups) {
+    let score = 0;
+    let ok = true;
+    for (const [name, values] of Object.entries(group.values)) {
+      const value = current?.[name];
+      if (value === undefined || values.length === 0) continue;
+      if (values.includes(String(value))) score += 1; else ok = false;
+    }
+    if (ok && score > bestScore) { best = group; bestScore = score; }
+  }
+  return best.index;
+}
+
+function pickTemplate(breakName, mode, current) {
+  if (breakName === "pc") {
+    return 0;
+  }
+  return 0;
+}
+
+export default function S1Radio({ parts, checked, defaultChecked, onCheckedChange, disabled, name, partProps, style, outer, omit, lifted: initialLifted, forceState, ...rest }) {
+  const uid = useId();
+  const partScope = scopeOf(parts);
+  const tpl = pickTemplate(DEFAULT_BREAK, undefined, undefined);
+  const controller = undefined;
+  /* 체크 계열 — checked 를 주면 제어, 안 주면 안에서 상태를 들고 있는다. */
+  const [innerChecked, setInnerChecked] = useState(defaultChecked ?? false);
+  const isChecked = checked ?? innerChecked;
+  const onControlPress = () => {
+    if (disabled) return;
+    const next = !isChecked;
+    if (checked === undefined) setInnerChecked(next);
+    onCheckedChange?.(next);
+  };
+  const ctlState = { ...(disabled ? { disabled: "" } : {}), ...(isChecked ? { checked: "" } : {}) };
+  const ctl = {};
+  const lifted = initialLifted ?? { n1: { k: "n1", a: ctlState, p: { disabled: Boolean(disabled), checked: Boolean(isChecked) } } };
+
+  if (tpl === 0) {
+    return (
+      <Root t={SPEC.templates[tpl]} k="n0" a={{ "data-s1-component": "radio" }} controller={controller} partProps={partProps} style={style} outer={outer} omit={omit} lifted={lifted} forceState={forceState} {...rest}>
+        <El k="n1" a={{ "type": "radio", "id": "s1-radio-example", "data-s1-part": "control", ...ctlState, ...(slot(partScope, "control").attrs ?? {}) }} ctl={ctl} onPress={onControlPress} />
+        <El k="n2" a={{ "data-s1-part": "label", ...(slot(partScope, "label").attrs ?? {}) }} onPress={onControlPress}>
+          {slot(partScope, "label").content ?? "옵션 1"}
+        </El>
+      </Root>
+    );
+  }
+  throw new Error("[s1-ui] radio: 그릴 템플릿을 고르지 못했습니다.");
+}

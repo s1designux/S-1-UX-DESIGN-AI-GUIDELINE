@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "9fbe3ffe3f62b7fc609b5fa2fcf9a00655b38c23",
+  "commit": "0e597417b6108ca07d8f4884e38a5b7afb483fc4",
   "scope": "PC",
-  "generatedAt": "2026-10-03",
-  "syncedAt": "2026-10-03 07:10 (KST)",
-  "sourceCommitDate": "2026-10-02 22:13 (KST)",
-  "sourceCommitSubject": "chore(map): 시스템 맵 재생성 (worktree-gate-trim 합치기)"
+  "generatedAt": "2026-10-12",
+  "syncedAt": "2026-10-12 14:36 (KST)",
+  "sourceCommitDate": "2026-10-12 14:33 (KST)",
+  "sourceCommitSubject": "chore(map): 시스템 맵 재생성 (worktree-react-native 합치기)"
 }
