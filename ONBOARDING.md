@@ -48,6 +48,15 @@
 
 질문은 **한 메시지에 모아** 보여 주고 번호로 답받습니다. 아래 글을 그대로 씁니다.
 
+**질문과 함께 틀 고르기 페이지를 엽니다** — 사용자가 그림을 보며 고르면, 페이지가 주는 한 줄로 B~F 답이 한 번에 정해집니다.
+- **명령을 실행할 수 있는 AI**(Claude Code·Cursor·Codex 등)는 질문을 보내기 전에 브라우저로 직접 띄웁니다. 가이드 폴더가 `.s1-guide` 이면:
+  - macOS `open .s1-guide/ai/generated/frame-picker.html`
+  - Windows `start "" ".s1-guide\ai\generated\frame-picker.html"`
+  - Linux `xdg-open .s1-guide/ai/generated/frame-picker.html`
+- 띄웠을 때만 질문 글 맨 위에 이 한 줄을 붙입니다. **명령을 못 쓰는 채팅 AI**이거나 띄우지 못했으면 이 줄 없이 아래 번호 질문만 합니다.
+
+> 그림으로 고르실 수 있게 틀 고르기 페이지를 띄웠어요. 다 고르면 나오는 한 줄을 여기 붙여 넣어 주세요. 문서를 만들거나 그림 없이 답하려면 아래 번호로 답해도 돼요.
+
 > 몇 가지만 여쭤볼게요. 번호로 답해 주세요.
 >
 > **A. 무엇을 만드나요?**
