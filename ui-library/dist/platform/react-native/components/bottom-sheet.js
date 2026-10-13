@@ -49,7 +49,7 @@ function pickTemplate(breakName, mode, current) {
   return 0;
 }
 
-export default function S1BottomSheet({ variant, parts, onOpen, onClose, onConfirm, onCancel, partProps, style, outer, omit, lifted: initialLifted, forceState, ...rest }) {
+export default function S1BottomSheet({ variant, parts, onOpen, onClose, open = true, onConfirm, onCancel, partProps, style, outer, omit, lifted: initialLifted, forceState, ...rest }) {
   const uid = useId();
   const partScope = scopeOf(parts);
   assertAllowed("variant", variant, VARIANTS);
@@ -60,7 +60,7 @@ export default function S1BottomSheet({ variant, parts, onOpen, onClose, onConfi
 
   if (tpl === 0) {
     return (
-      <Root t={SPEC.templates[tpl]} k="n0" a={{ "data-s1-component": "bottom-sheet", "data-s1-part": "sheet", "data-break": "mobile", "data-footer": variant ?? "single", ...(slot(partScope, "sheet").attrs ?? {}) }} controller={controller} partProps={partProps} style={style} outer={outer} omit={omit} lifted={lifted} forceState={forceState} {...rest}>
+      <Root t={SPEC.templates[tpl]} k="n0" a={{ "id": "bottom-sheet-example", "data-s1-component": "bottom-sheet", "data-s1-part": "sheet", "data-break": "mobile", "data-footer": variant ?? "single", "hidden": open ? undefined : "", ...(slot(partScope, "sheet").attrs ?? {}) }} controller={controller} partProps={partProps} style={style} outer={outer} omit={omit} lifted={lifted} forceState={forceState} {...rest}>
         <El k="n1" a={{ "data-s1-part": "sheet-backdrop", ...(slot(partScope, "sheetBackdrop").attrs ?? {}) }}>
           {slot(partScope, "sheetBackdrop").content ?? ""}
         </El>
@@ -82,7 +82,7 @@ export default function S1BottomSheet({ variant, parts, onOpen, onClose, onConfi
             </El>
           </El>
           <El k="n12" a={{ "data-s1-part": "sheet-footer", ...(slot(partScope, "sheetFooter").attrs ?? {}) }}>
-            <N k="n13" as={S1Button} a={{ "type": "button", "data-s1-component": "button", "data-variant": "primary", "data-size": "lg" }} p={{ variant: "primary", size: "lg", parts: {"label":"적용"}, ...attrProps(slot(partScope, "nested:button").attrs) }} />
+            <N k="n13" as={S1Button} a={{ "type": "button", "data-s1-component": "button", "data-variant": "primary", "data-size": "lg", "data-s1-close": "apply" }} p={{ variant: "primary", size: "lg", parts: {"label":"적용"}, ...attrProps(slot(partScope, "nested:button").attrs) }} />
           </El>
         </El>
       </Root>

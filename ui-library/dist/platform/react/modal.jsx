@@ -29,8 +29,9 @@ export default function S1Modal({ variant, breakName = DEFAULT_BREAK, parts, onO
     const root = rootRef.current;
     if (!root) return undefined;
     init(root);
-    return () => destroy(root);
+    return () => { destroy(root); };
   }, [breakName]);
+
 
   useEffect(() => {
     const root = rootRef.current;
@@ -43,7 +44,7 @@ export default function S1Modal({ variant, breakName = DEFAULT_BREAK, parts, onO
 
   if (breakName === "pc") {
     return (
-      <div data-s1-component="modal" data-break="pc" data-footer={variant ?? "dual"} hidden ref={rootRef} className={className} style={style} {...rest}>
+      <div id={`${uid}-confirm-modal`} data-s1-component="modal" data-break="pc" data-footer={variant ?? "dual"} hidden ref={rootRef} className={className} style={style} {...rest}>
         <div data-s1-part="overlay" {...(slot(partScope, "overlay").attrs ?? {})}>
           {slot(partScope, "overlay").content ?? ""}
         </div>
@@ -64,12 +65,12 @@ export default function S1Modal({ variant, breakName = DEFAULT_BREAK, parts, onO
             </div>
           </div>
           <div data-s1-part="footer" {...(slot(partScope, "footer").attrs ?? {})}>
-            <button type="button" data-s1-component="button" data-variant="secondary" data-size="xxsm">
+            <button type="button" data-s1-component="button" data-variant="secondary" data-size="xxsm" data-s1-close="cancel">
               <span data-s1-part="label" {...(slot(partScope, "label").attrs ?? {})}>
                 {slot(partScope, "label").content ?? "취소"}
               </span>
             </button>
-            <button type="button" data-s1-component="button" data-variant="primary" data-size="xxsm">
+            <button type="button" data-s1-component="button" data-variant="primary" data-size="xxsm" data-s1-close="confirm">
               <span data-s1-part="label" {...(slot(partScope, "label").attrs ?? {})}>
                 {slot(partScope, "label").content ?? "확인"}
               </span>
@@ -80,7 +81,7 @@ export default function S1Modal({ variant, breakName = DEFAULT_BREAK, parts, onO
     );
   } else if (breakName === "mobile") {
     return (
-      <div data-s1-component="modal" data-break="mobile" data-footer={variant ?? "dual"} hidden ref={rootRef} className={className} style={style} {...rest}>
+      <div id={`${uid}-confirm-modal`} data-s1-component="modal" data-break="mobile" data-footer={variant ?? "dual"} hidden ref={rootRef} className={className} style={style} {...rest}>
         <div data-s1-part="overlay" {...(slot(partScope, "overlay").attrs ?? {})}>
           {slot(partScope, "overlay").content ?? ""}
         </div>
@@ -98,12 +99,12 @@ export default function S1Modal({ variant, breakName = DEFAULT_BREAK, parts, onO
             </div>
           </div>
           <div data-s1-part="footer" {...(slot(partScope, "footer").attrs ?? {})}>
-            <button type="button" data-s1-component="button" data-variant="secondary" data-size="lg">
+            <button type="button" data-s1-component="button" data-variant="secondary" data-size="lg" data-s1-close="cancel">
               <span data-s1-part="label" {...(slot(partScope, "label").attrs ?? {})}>
                 {slot(partScope, "label").content ?? "아니오"}
               </span>
             </button>
-            <button type="button" data-s1-component="button" data-variant="primary" data-size="lg">
+            <button type="button" data-s1-component="button" data-variant="primary" data-size="lg" data-s1-close="confirm">
               <span data-s1-part="label" {...(slot(partScope, "label").attrs ?? {})}>
                 {slot(partScope, "label").content ?? "네"}
               </span>

@@ -1,4 +1,6 @@
-<div data-s1-component="modal-content" data-size="md" data-footer="dual" hidden>
+<!-- 쓰는 법(옵션·값·이벤트·여닫기)은 components/modal-content.md 에 있습니다. -->
+<button type="button" data-s1-component="button" data-variant="primary" data-size="md" data-s1-open="content-modal"><span data-s1-part="label">열기</span></button>
+<div id="content-modal" data-s1-component="modal-content" data-size="md" data-footer="dual" hidden>
   <div data-s1-part="overlay"></div>
   <div data-s1-part="panel" role="dialog" aria-modal="true" aria-labelledby="content-modal-title" tabindex="-1">
     <div data-s1-part="header">
@@ -11,8 +13,8 @@
       </div>
     </div>
     <div data-s1-part="footer">
-      <button type="button" data-s1-component="button" data-variant="secondary" data-size="xxsm"><span data-s1-part="label">취소</span></button>
-      <button type="button" data-s1-component="button" data-variant="primary" data-size="xxsm"><span data-s1-part="label">확인</span></button>
+      <button type="button" data-s1-component="button" data-variant="secondary" data-size="xxsm" data-s1-close="cancel"><span data-s1-part="label">취소</span></button>
+      <button type="button" data-s1-component="button" data-variant="primary" data-size="xxsm" data-s1-close="confirm"><span data-s1-part="label">확인</span></button>
     </div>
   </div>
 </div>

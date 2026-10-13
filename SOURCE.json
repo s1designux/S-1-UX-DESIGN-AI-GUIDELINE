@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "0e597417b6108ca07d8f4884e38a5b7afb483fc4",
+  "commit": "2841cb9fa3dd7ac5c575f05b6074bd4b36175a27",
   "scope": "PC",
-  "generatedAt": "2026-10-12",
-  "syncedAt": "2026-10-12 14:36 (KST)",
-  "sourceCommitDate": "2026-10-12 14:33 (KST)",
-  "sourceCommitSubject": "chore(map): 시스템 맵 재생성 (worktree-react-native 합치기)"
+  "generatedAt": "2026-10-13",
+  "syncedAt": "2026-10-13 16:33 (KST)",
+  "sourceCommitDate": "2026-10-13 16:27 (KST)",
+  "sourceCommitSubject": "fix(ui-library): GNB 유틸 아이콘을 24 로 — 32 칸 안 24 가운데 (0.22.1)"
 }

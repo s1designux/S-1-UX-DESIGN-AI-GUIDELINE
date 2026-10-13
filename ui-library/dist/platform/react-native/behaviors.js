@@ -35,24 +35,52 @@ const textOf = (children) => {
 /* ── 1. 켜고 끄기 (chip · toggle) ──────────────────────────────────── */
 
 function useToggle(config, props) {
-  /* 웹처럼 루트에 aria-pressed="true" 같은 속성을 직접 준 경우도 처음 상태로 받는다 */
+  /* 웹처럼 루트에 aria-pressed="true" 같은 속성을 직접 준 경우도 처음 상태로 받는다.
+     값이 true/false 글자가 아닌 속성(data-state=selected)은 "켜짐 값"과 같은지로 읽는다. */
   const given = props.rest?.[config.attr];
-  const [on, setOn] = useControlled(props.value, props.defaultValue ?? (given !== undefined ? isTrue(given) : config.initial));
-  const disabled = Boolean(props.disabled);
+  const givenOn = given === undefined ? undefined : config.values ? given === config.values[0] : isTrue(given);
+  const [on, setOn] = useControlled(props.value, props.defaultValue ?? (givenOn !== undefined ? givenOn : config.initial));
+  /* 비활성은 어떤 경우에도 덮어쓰지 않는다 — disabled 속성·aria-disabled·data-state=disabled 어느 쪽이든 줄은 비활성 모양 그대로이고 눌러도 반응하지 않는다(웹과 같다). */
+  const rest = props.rest ?? {};
+  const disabled = Boolean(props.disabled) || isTrue(rest["aria-disabled"]) || rest["data-state"] === "disabled" || rest.disabled === true || rest.disabled === "";
+  const controlled = props.value !== undefined;
+  /* 손잡이는 매번 새로 오니 ref 로 들고 있는다 — useMemo 가 낡은 함수를 붙들지 않게 */
+  const latest = useRef(props);
+  latest.current = props;
+  const selectable = Boolean(config.values || config.also);
+  const shown = config.values ? (on ? config.values[0] : config.values[1]) : String(on);
   return useMemo(() => ({
+    /** 지금 켜짐 여부를 속성 값으로 — 템플릿을 고르는 부품(시트 줄)이 읽는다. 비활성이면 disabled, 이 유형이 고르지 않으면 undefined */
+    state: !config.attr ? undefined : disabled ? "disabled" : shown,
     bind(part, at, ctx) {
       if (!ctx.isRoot) return NONE;
+      /* 고르지 않는 유형(config 없음 — 시트 줄의 List·Checkbox)이거나 비활성이면 속성도 눌림도 주지 않는다. */
+      if (!config.attr || (disabled && config.attr === "data-state")) return NONE;
+      /* config.values: 켜짐·꺼짐 값이 true/false 글자가 아닌 속성(예: data-state=selected|default). config.also: 함께 맞출 속성. */
+      const also = Object.fromEntries(Object.entries(config.also ?? {}).map(([name, pair]) => [name, on ? pair[0] : pair[1]]));
       return {
-        a: { [config.attr]: String(on) },
+        a: { [config.attr]: shown, ...also },
         onPress: () => {
           if (disabled) return;
+          /* 선택형(탭·시트 줄)은 켜진 것을 다시 눌러도 꺼지지 않는다 — 웹 런타임과 같다. */
+          if (selectable && on) return;
           const next = !on;
+          const now = latest.current;
+          /* 웹의 beforechange 와 같다: onBeforechange(event) 에서 event.preventDefault() 하면 아무것도 바뀌지 않는다.
+             event = { detail: { selected, value }, preventDefault(), defaultPrevented } */
+          let prevented = false;
+          const detail = { selected: next, value: now.rest?.["data-value"] };
+          const event = { detail, preventDefault() { prevented = true; }, get defaultPrevented() { return prevented; } };
+          now.onBeforechange?.(event);
+          if (prevented) return;
           setOn(next);
-          props.onChange?.(next);
+          now.onChange?.(next);                 // onSelectedChange(selected) — 제어형이면 화면이 값을 바꿔야 모양이 바뀐다
+          /* 웹의 change 는 모양이 실제로 바뀐 뒤에 난다 — 제어형에서는 화면이 값을 바꾸기 전이라 내지 않는다(웹 껍데기와 같다). */
+          if (!controlled) now.onAfterchange?.({ detail });
         }
       };
     }
-  }), [on, disabled, config.attr]);
+  }), [on, disabled, config.attr, shown, controlled, selectable]);
 }
 
 /* ── 2. 하나 고르기 (tab · multi-toggle · dropdown · 페이지) ───────── */
@@ -365,8 +393,13 @@ function usePagination(config, props) {
       }
       const action = a["data-s1-action"];
       if (action !== undefined) {
-        const blocked = (action === "first" || action === "previous") ? page <= 1 : page >= total;
-        const target = action === "first" ? 1 : action === "previous" ? page - 1 : action === "next" ? page + 1 : total;
+        /* |<(first)=이전 묶음의 첫 쪽 · <(previous)=한 쪽 뒤 · >(next)=한 쪽 앞 · >|(last)=다음 묶음의 첫 쪽.
+           묶음은 번호 최대 6개(config.block). 첫 묶음에서 |<, 마지막 묶음에서 >| 는 막힌다(웹 pagination.js 와 같은 규칙). */
+        const block = config.block ?? 6;
+        const blockIndex = Math.floor((page - 1) / block);
+        const lastBlock = Math.max(0, Math.ceil(total / block) - 1);
+        const blocked = action === "first" ? blockIndex <= 0 : action === "previous" ? page <= 1 : action === "next" ? page >= total : blockIndex >= lastBlock;
+        const target = action === "first" ? (blockIndex - 1) * block + 1 : action === "previous" ? page - 1 : action === "next" ? page + 1 : (blockIndex + 1) * block + 1;
         return { a: { disabled: blocked ? "" : undefined }, onPress: () => { if (!blocked) go(target); } };
       }
       return NONE;

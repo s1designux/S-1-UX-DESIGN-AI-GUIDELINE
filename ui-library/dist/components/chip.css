@@ -1,6 +1,3 @@
-/* Chip — 정본 buildChip(Line·Solid × Default·Hover·Selected·Disabled, radius full, inside border 1) 기준.
-   크기는 정본 3조합만 있다: PC SM h28/12/pad16 · Mobile SM h30/14/pad12 · PC MD h34/14/pad16.
-   정본에 아이콘·닫기(X) 부품이 없어 이번 배포는 라벨 전용이다. */
 [data-s1-component="chip"] {
   align-items: center;
   appearance: none;
@@ -15,9 +12,7 @@
   font-family: "Pretendard Variable", "Pretendard", sans-serif;
   font-weight: var(--font-weight-medium);
   justify-content: center;
-  /* line-height: normal — 정본에 텍스트 줄간격 값이 없다. 130%(문단용 배수)를 쓰면
-     Pretendard 의 ascent:descent 비율이 그대로 배 배분돼 라벨이 살짝 위로 떠 보인다.
-     normal(폰트 자체 메트릭)로 두면 라벨이 실측상 상하 대칭으로 앉는다(2026-08-31 river 지적). */
+
   line-height: normal;
   margin: 0;
   padding-block: 0;
@@ -26,7 +21,7 @@
   white-space: nowrap;
 }
 
-[data-s1-component="chip"] [data-s1-part="label"] {
+[data-s1-component="chip"] [data-s1-part="label"]:where(:not([data-s1-component="chip"] [data-s1-component]:not([data-s1-component="chip"]) *:not([data-s1-component="chip"] [data-s1-component]:not([data-s1-component="chip"]) [data-s1-component="chip"] *))) {
   pointer-events: none;
 }
 
@@ -51,14 +46,12 @@
   padding-inline: var(--spacing-16);
 }
 
-/* ── Line ── */
 [data-s1-component="chip"][data-variant="line"] {
   background: var(--color-chip-line-bg-default);
   border-color: var(--color-chip-line-border-default);
   color: var(--color-chip-line-label-default);
 }
 
-/* 정본 Line Hover — 배경만 바뀌고 테두리는 기본값을 유지한다. 선택됨에는 Hover 변형이 없다. */
 @media (hover: hover) {
   [data-s1-component="chip"][data-variant="line"]:hover:not(:disabled):not([aria-pressed="true"]) {
     background: var(--color-chip-line-bg-hover);
@@ -77,14 +70,12 @@
   color: var(--color-chip-line-label-disabled);
 }
 
-/* ── Solid ── */
 [data-s1-component="chip"][data-variant="solid"] {
   background: var(--color-chip-solid-bg-default);
   border-color: var(--color-chip-solid-border-default);
   color: var(--color-chip-solid-label-default);
 }
 
-/* 정본 Solid Hover — 스트록이 채움색과 같아져 테두리가 사라져 보인다. */
 @media (hover: hover) {
   [data-s1-component="chip"][data-variant="solid"]:hover:not(:disabled):not([aria-pressed="true"]) {
     background: var(--color-chip-solid-bg-hover);
@@ -108,9 +99,6 @@
   cursor: not-allowed;
 }
 
-
-/* ── 밀도(density) — registry/governance/density-policy.json 에서 생성. 손편집 금지 ── */
-/* density:wide 넓게(44px) — data-size 를 직접 주면 그쪽이 이긴다 */
 [data-s1-density="wide"] [data-s1-component="chip"]:not([data-size]):not([data-break="mobile"]) {
   font-size: var(--font-size-14);
   height: var(--sizing-34);
@@ -125,7 +113,6 @@
   padding-inline: var(--spacing-16);
 }
 
-/* density:normal 보통(34px) — data-size 를 직접 주면 그쪽이 이긴다 */
 [data-s1-density="normal"] [data-s1-component="chip"]:not([data-size]):not([data-break="mobile"]) {
   font-size: var(--font-size-14);
   height: var(--sizing-34);
@@ -140,7 +127,6 @@
   padding-inline: var(--spacing-16);
 }
 
-/* density:narrow 좁게(28px) — data-size 를 직접 주면 그쪽이 이긴다 */
 [data-s1-density="narrow"] [data-s1-component="chip"]:not([data-size]):not([data-break="mobile"]) {
   font-size: var(--font-size-12);
   height: var(--sizing-28);
@@ -155,7 +141,6 @@
   padding-inline: var(--spacing-16);
 }
 
-/* bridge:pc 감싸기에 화면 구분을 적었으면 컴포넌트가 안 적어도 같은 규칙이 선다 */
 :is([data-s1-break="pc"], [data-s1-density="wide"], [data-s1-density="normal"], [data-s1-density="narrow"]) [data-s1-component="chip"][data-size="sm"]:not([data-break="mobile"]) {
   font-size: var(--font-size-12);
   height: var(--sizing-28);
@@ -170,7 +155,6 @@
   padding-inline: var(--spacing-16);
 }
 
-/* bridge:mobile 감싸기에 화면 구분을 적었으면 컴포넌트가 안 적어도 같은 규칙이 선다 */
 [data-s1-break="mobile"] [data-s1-component="chip"][data-size="sm"]:not([data-break="pc"]) {
   font-size: var(--font-size-14);
   height: var(--sizing-30);
@@ -178,7 +162,6 @@
   padding-inline: var(--spacing-12);
 }
 
-/* density:mobile 모바일은 밀도 축이 없다 — 손가락 기준 높이 하나 */
 [data-s1-break="mobile"] [data-s1-component="chip"]:not([data-size]):not([data-break="pc"]) {
   font-size: var(--font-size-14);
   height: var(--sizing-30);

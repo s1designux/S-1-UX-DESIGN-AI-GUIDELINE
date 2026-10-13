@@ -1,14 +1,4 @@
-<!-- 목록 형태로 묶어 실제 쓰임을 보인다(래퍼는 꾸미기 없는 div — gnb-sub-menu-item·bottom-sheet-option 선례).
-     일곱 유형(Nav·Value·Read·Pick·Agree·Switch·Thumb)을 보이고, State 변형(Pressed·Disabled)을
-     Nav 로 보인다. 모바일 전용이라 Hover 는 없다(river 2026-09-21) — 눌림 배경은 Hover 가 쓰던
-     한 단계(bg/level-1)를 그대로 쓴다. Density(촘촘) 축은 없다 — river 2026-09-21 "컴팩트 없이
-     디폴트만 있으면 돼"로 한 벌만 쓴다. 전수 21칸 그리드는 이 예시가 아니라 검수 화면이 만든다.
-
-     루트 요소는 그 줄이 하는 일에 맞춘다(registry list-row.json a11y):
-       Nav·Value(눌러서 이동/편집) = button · Read·Thumb(보여주기만) = div(누르지 않음) ·
-       Pick(고르기) = label(체크 코어를 감싸 클릭 영역을 넓힌다) · Agree = div(체크 영역 label + 약관 열기 button) · Switch = div(토글 자체가 컨트롤).
-     체크·토글 코어는 그대로 조립한다(control 만, 코어 자신의 label 은 쓰지 않고 이 컴포넌트의
-     title 이 accessible name 을 aria-labelledby 로 준다 — bottom-sheet-option 과 같은 방식). -->
+<!-- 쓰는 법(옵션·값·이벤트·여닫기)은 components/list-row.md 에 있습니다. -->
 <div>
   <button type="button" data-s1-component="list-row" data-type="nav" data-state="default">
     <div data-s1-part="text">
@@ -38,7 +28,6 @@
     </div>
   </div>
 
-  <!-- lead 는 슬롯이다 — 기본은 checkbox control 만(코어 자신의 label 은 쓰지 않는다). -->
   <label data-s1-component="list-row" data-type="pick" data-state="default">
     <span data-s1-part="lead">
       <div data-s1-component="checkbox">
@@ -51,9 +40,6 @@
     </div>
   </label>
 
-  <!-- Agree: 루트는 div. 체크 영역(label.check = 왼쪽 칸 + 글 자리)을 누르면 체크가 바뀌고,
-       오른쪽 칸의 화살표는 진짜 button(약관 열기)이라 눌러도 체크는 바뀌지 않는다.
-       버튼 click 으로 약관 화면을 여는 것은 쓰는 화면이 배선한다. label 안에 button 을 넣지 않는다. -->
   <div data-s1-component="list-row" data-type="agree" data-state="default">
     <label data-s1-part="check">
       <span data-s1-part="lead">
@@ -85,7 +71,6 @@
     </span>
   </div>
 
-  <!-- thumbnail 은 슬롯이다 — 비워 두면 정본 자리표시(40 각 회색)만 보인다. -->
   <div data-s1-component="list-row" data-type="thumb" data-state="default">
     <div data-s1-part="thumbnail" aria-hidden="true"></div>
     <div data-s1-part="text">
@@ -94,8 +79,6 @@
     </div>
   </div>
 
-  <!-- thumbnail 슬롯에 실제 그림을 채운 예시 — 외부 의존 없는 인라인 SVG. 채워지면 자리표시
-       회색은 사라지고(:empty 아님) 40 각 안에서 잘려 채워진다. -->
   <div data-s1-component="list-row" data-type="thumb" data-state="default">
     <div data-s1-part="thumbnail">
       <svg viewBox="0 0 40 40" role="img" aria-hidden="true">
@@ -110,8 +93,6 @@
     </div>
   </div>
 
-  <!-- State 변형 — Pressed 는 검수용 documented data-state(실제 포인터가 없는 화면에서도
-       확인할 수 있게), Disabled 는 button 의 native disabled. 모바일 전용이라 Hover 는 없다. -->
   <button type="button" data-s1-component="list-row" data-type="nav" data-state="pressed">
     <div data-s1-part="text">
       <span data-s1-part="title">Pressed 상태 예시</span>

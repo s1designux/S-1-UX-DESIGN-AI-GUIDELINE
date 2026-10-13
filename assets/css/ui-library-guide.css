@@ -820,12 +820,9 @@
 .uilg-gnb-assembled-item { display: flex; flex-direction: column; gap: var(--spacing-8); min-width: 640px; }
 .uilg-gnb-assembled { display: flex; flex-direction: column; }
 
-/* 패널이 펼쳐질 자리를 미리 비워 둔다(river 지시 2026-09-10) — 두 패널(서비스·통계)을 같은 칸에 겹쳐 두면
-   슬롯 높이는 둘 중 높은 쪽이 정한다. 높이를 host 가 숫자로 지어내지 않으므로 유형별 실제 높이를 그대로 쓴다.
-   닫힌 패널은 자리만 지키고 보이지 않는다 — visibility:hidden 은 [hidden] 과 똑같이 접근성 트리·초점에서도 빠진다. */
-.uilg-gnb-panel-slot { display: grid; }
-.uilg-gnb-panel-slot > [data-s1-component="gnb-sub-menu"] { grid-area: 1 / 1; }
-.uilg-gnb-panel-slot > [data-s1-component="gnb-sub-menu"][hidden] { display: flex; visibility: hidden; }
+/* 하위메뉴 패널은 본문을 밀지 않고 GNB 바 바로 아래에 겹쳐 뜬다(river 결정 2026-10-12, 배포본 gnb.js 가 위치를 채운다).
+   겹쳐 뜬 패널이 안내 칸 가장자리에서 잘리지 않도록, 이 칸만 패널이 앉을 높이를 빈 자리로 둔다(배치 전용). */
+.uilg-gnb-panel-slot { min-height: 280px; }
 
 /* 조립 액션 칸만 옅은 회색 — 패널 배경이 흰색이라 흰 카드 위에서는 경계가 안 보인다(river 지시 2026-09-10). */
 .preview-area.uilg-gnb-action-area { background: var(--color-bg-level-2); }

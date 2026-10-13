@@ -1,4 +1,3 @@
-/* Generated-token consumer. Load assets/css/tokens.css and typography.css first. */
 [data-s1-component="button"] {
   align-items: center;
   appearance: none;
@@ -20,13 +19,13 @@
   white-space: nowrap;
 }
 
-[data-s1-component="button"] [data-s1-part="label"] {
+[data-s1-component="button"] [data-s1-part="label"]:where(:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) *:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) [data-s1-component="button"] *))) {
   pointer-events: none;
   text-align: center;
 }
 
-/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. 글자 요소만 내려 버튼 크기·아이콘은 그대로. */
-[data-s1-component="button"][data-size="xxsm"] [data-s1-part="label"] {
+/* 한글 세로 보정 — 웹 전용 */
+[data-s1-component="button"][data-size="xxsm"] [data-s1-part="label"]:where(:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) *:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) [data-s1-component="button"] *))) {
   position: relative;
   top: 1px;
 }
@@ -63,7 +62,7 @@
   letter-spacing: var(--letter-spacing-tight);
 }
 
-[data-s1-component="button"][data-size="lg"] [data-s1-part="label"] {
+[data-s1-component="button"][data-size="lg"] [data-s1-part="label"]:where(:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) *:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) [data-s1-component="button"] *))) {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -71,8 +70,8 @@
   width: 100%;
 }
 
-/* 한글 세로 보정 — Figma 원본과 같은 자리로 보이게 1px 내림. 브라우저가 글자를 1px 단위로 놓으면서 12px·130%·16px 이상에서 위로 붙는다(실측 reports/text-vcenter/index.html, river A안 2026-09-30). 정본 수치는 그대로. 글자 요소만 내려 버튼 크기·아이콘은 그대로. */
-[data-s1-component="button"][data-size="lg"] [data-s1-part="label"] {
+/* 한글 세로 보정 — 웹 전용 */
+[data-s1-component="button"][data-size="lg"] [data-s1-part="label"]:where(:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) *:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) [data-s1-component="button"] *))) {
   position: relative;
   top: 1px;
 }
@@ -83,17 +82,6 @@
   color: var(--color-button-label-primary--default);
 }
 
-/* ── 상태 칠: 누름(:active)은 전 크기 · 마우스오버(:hover)는 PC 크기에만 ────────────────────
-   정본 State 축은 Default·Hover·Pressed·Disabled 이고 Hover 와 Pressed 는 같은 칠이다.
-   그런데 **모바일(LG)에는 마우스오버가 없어야 한다** — 손가락에는 hover 가 없고, PC 브라우저로
-   모바일 화면을 볼 때 큰 버튼이 통째로 칠해져 혼란을 준다. 같은 이유로 Input 의 suffix 액션에서
-   이미 모바일 hover 를 걷어냈다(river 지시 2026-09-07 · registry/components/input.json).
-   2026-09-15 river 가 바텀시트 검수에서 같은 규칙을 Button 에도 적용하라고 지시했다.
-   → :active(누름)는 LG 를 포함해 그대로 두고, :hover 만 (hover: hover) 기기 + LG 제외로 좁힌다.
-   밀도 감싸개로 만든 모바일 버튼도 같다 — 크기를 직접 안 적고 감싸는 요소에 data-s1-break="mobile"
-   만 선언해도 48 로 서므로(density.mjs), 그 안에서는 hover 를 내지 않는다. 자기가 크기를 직접
-   적었으면 그쪽이 이긴다(:is([data-size], …)). Input 의 같은 규칙과 짝을 맞춘 것이다
-   (input.css:110 · river 지시 2026-09-07 → 2026-09-15 밀도 감싸개까지 확장). */
 [data-s1-component="button"][data-variant="primary"]:active:not(:disabled) {
   background: var(--color-button-bg-primary--hover);
   border-color: var(--color-button-border-primary--hover);
@@ -155,9 +143,6 @@
   cursor: not-allowed;
 }
 
-
-/* ── 밀도(density) — registry/governance/density-policy.json 에서 생성. 손편집 금지 ── */
-/* density:wide 넓게(44px) — data-size 를 직접 주면 그쪽이 이긴다 */
 [data-s1-density="wide"] [data-s1-component="button"]:not([data-size]) {
   font-size: var(--font-size-14);
   height: var(--sizing-44);
@@ -166,7 +151,6 @@
   letter-spacing: var(--letter-spacing-tight);
 }
 
-/* density:normal 보통(34px) — data-size 를 직접 주면 그쪽이 이긴다 */
 [data-s1-density="normal"] [data-s1-component="button"]:not([data-size]) {
   font-size: var(--font-size-14);
   height: var(--sizing-34);
@@ -175,9 +159,8 @@
   letter-spacing: var(--letter-spacing-tight);
 }
 
-/* density:narrow 좁게(28px) — data-size 를 직접 주면 그쪽이 이긴다 */
-/* 한글 세로 보정 — 웹 전용(밀도 사본) */
-[data-s1-density="narrow"] [data-s1-component="button"]:not([data-size]) [data-s1-part="label"] {
+/* 한글 세로 보정 — 웹 전용 */
+[data-s1-density="narrow"] [data-s1-component="button"]:not([data-size]) [data-s1-part="label"]:where(:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) *:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) [data-s1-component="button"] *))) {
   position: relative;
   top: 1px;
 }
@@ -190,7 +173,6 @@
   letter-spacing: var(--letter-spacing-normal);
 }
 
-/* density:mobile 모바일은 밀도 축이 없다 — 손가락 기준 높이 하나 */
 [data-s1-break="mobile"] [data-s1-component="button"]:not([data-size]) {
   font-size: var(--font-size-16);
   height: var(--sizing-48);
@@ -199,7 +181,7 @@
   letter-spacing: var(--letter-spacing-tight);
 }
 
-[data-s1-break="mobile"] [data-s1-component="button"]:not([data-size]) [data-s1-part="label"] {
+[data-s1-break="mobile"] [data-s1-component="button"]:not([data-size]) [data-s1-part="label"]:where(:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) *:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) [data-s1-component="button"] *))) {
   align-items: center;
   display: flex;
   justify-content: center;
@@ -207,8 +189,8 @@
   width: 100%;
 }
 
-/* 한글 세로 보정 — 웹 전용(밀도 사본) */
-[data-s1-break="mobile"] [data-s1-component="button"]:not([data-size]) [data-s1-part="label"] {
+/* 한글 세로 보정 — 웹 전용 */
+[data-s1-break="mobile"] [data-s1-component="button"]:not([data-size]) [data-s1-part="label"]:where(:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) *:not([data-s1-component="button"] [data-s1-component]:not([data-s1-component="button"]) [data-s1-component="button"] *))) {
   position: relative;
   top: 1px;
 }

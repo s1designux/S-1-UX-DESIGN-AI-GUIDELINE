@@ -9,10 +9,12 @@ import { init as init_pagination } from "./components/pagination.js";
 import { init as init_multiToggle } from "./components/multi-toggle.js";
 import { init as init_modal } from "./components/modal.js";
 import { init as init_table } from "./components/table.js";
+import { init as init_mobileBottomNav } from "./components/mobile-bottom-nav.js";
 import { init as init_timePicker } from "./components/time-picker.js";
 import { init as init_datePicker } from "./components/date-picker.js";
 import { init as init_gnb } from "./components/gnb.js";
 import { init as init_modalContent } from "./components/modal-content.js";
+import { init as init_bottomSheetOption } from "./components/bottom-sheet-option.js";
 import { init as init_bottomSheet } from "./components/bottom-sheet.js";
 import { init as init_expandableCard } from "./components/expandable-card.js";
 import { init as init_lnb } from "./components/lnb.js";
@@ -62,10 +64,12 @@ export function autoInit(scope = document) {
     ...[...scope.querySelectorAll('[data-s1-component="multi-toggle"]')].map((root) => init_multiToggle(root)),
     ...[...scope.querySelectorAll('[data-s1-component="modal"]')].map((root) => init_modal(root)),
     ...[...scope.querySelectorAll('[data-s1-component="table"]')].map((root) => init_table(root)),
+    ...[...scope.querySelectorAll('[data-s1-component="mobile-bottom-nav"]')].map((root) => init_mobileBottomNav(root)),
     ...[...scope.querySelectorAll('[data-s1-component="time-picker"]')].map((root) => init_timePicker(root)),
     ...[...scope.querySelectorAll('[data-s1-component="date-picker"]')].map((root) => init_datePicker(root)),
     ...[...scope.querySelectorAll('[data-s1-component="gnb"]')].map((root) => init_gnb(root)),
     ...[...scope.querySelectorAll('[data-s1-component="modal-content"]')].map((root) => init_modalContent(root)),
+    ...[...scope.querySelectorAll('[data-s1-component="bottom-sheet-option"]')].map((root) => init_bottomSheetOption(root)),
     ...[...scope.querySelectorAll('[data-s1-component="bottom-sheet"]')].map((root) => init_bottomSheet(root)),
     ...[...scope.querySelectorAll('[data-s1-component="expandable-card"]')].map((root) => init_expandableCard(root)),
     ...[...scope.querySelectorAll('[data-s1-component="lnb"]')].map((root) => init_lnb(root))

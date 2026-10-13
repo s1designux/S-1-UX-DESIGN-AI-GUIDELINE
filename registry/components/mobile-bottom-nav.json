@@ -66,7 +66,8 @@
   "a11y": [
     "탭 목록은 role=tablist·각 항목 role=tab 으로 표시하고 현재 탭에 aria-selected 를 준다.",
     "아이콘만으로 의미를 전달하지 않는다 — 라벨을 항상 함께 보여준다.",
-    "터치 타깃은 60×60 으로 최소 권장치를 만족한다."
+    "터치 타깃은 60×60 으로 최소 권장치를 만족한다.",
+    "river 결정 2026-10-13 「전부 부품이 알아서」: 탭을 누르면 부품이 활성 탭을 옮긴다(2026-09-02 HD-1 '호스트가 정적으로 설정'을 뒤집음). 먼저 s1:mobile-bottom-nav:beforechange(취소 가능)를 내서 화면이 막을 수 있고(로그인 확인·저장 안 한 변경), 막지 않으면 aria-selected·aria-current=page 를 옮기고 s1:mobile-bottom-nav:change 를 낸다. 라우팅이 정하는 화면은 api.setActive() 또는 aria-selected 로 직접 정한다. ←→ 는 탭 사이 초점 이동."
   ],
   "states": [
     "unselected",

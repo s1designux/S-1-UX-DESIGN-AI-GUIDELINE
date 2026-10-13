@@ -30,13 +30,14 @@ export default function S1Pagination({ parts, pages, className, style, ...rest }
     const root = rootRef.current;
     if (!root) return undefined;
     init(root);
-    return () => destroy(root);
+    return () => { destroy(root); };
   }, []);
+
 
   return (
       <nav data-s1-component="pagination" data-total-pages="6" data-page="1" aria-label="페이지 탐색" ref={rootRef} className={className} style={style} {...rest}>
         <span data-s1-part="arrow-group" {...(slot(partScope, "arrowGroup").attrs ?? {})}>
-          <button type="button" data-s1-action="first" aria-label="첫 페이지">
+          <button type="button" data-s1-action="first" aria-label="이전 페이지 묶음">
             <span data-s1-part="icon" data-icon="edge" aria-hidden="true" {...(slot(partScope, "icon").attrs ?? {})}>
               {slot(partScope, "icon").content ?? ""}
             </span>
@@ -63,7 +64,7 @@ export default function S1Pagination({ parts, pages, className, style, ...rest }
               {slot(partScope, "icon").content ?? ""}
             </span>
           </button>
-          <button type="button" data-s1-action="last" aria-label="마지막 페이지">
+          <button type="button" data-s1-action="last" aria-label="다음 페이지 묶음">
             <span data-s1-part="icon" data-icon="edge" aria-hidden="true" {...(slot(partScope, "icon").attrs ?? {})}>
               {slot(partScope, "icon").content ?? ""}
             </span>

@@ -52,8 +52,8 @@ function firstElement(html, tag, attr) {
 }
 const gnbSource = firstElement(await example("gnb"), "nav", 'data-s1-component="gnb"');
 const lnbSource = firstElement(await example("lnb"), "nav", 'data-s1-component="lnb"');
-const headerSource = firstElement(await example("mobile-header"), "header", 'data-s1-component="mobile-header"');
-const tabbarSource = firstElement(await example("mobile-bottom-nav"), "nav", 'role="tablist"');
+const headerSource = firstElement(await example("mobile-header.mobile"), "header", 'data-s1-component="mobile-header"');
+const tabbarSource = firstElement(await example("mobile-bottom-nav.mobile"), "nav", 'role="tablist"');
 const inputSource = firstElement(await example("input"), "div", 'data-s1-component="input"');
 const buttonSource = firstElement(await example("button"), "button", 'data-s1-component="button"');
 
@@ -85,7 +85,7 @@ function sampleContent(group) {
   const filter = `<div class="pv-filter">${sized(inputSource, p.sizes.filter.control).replace(/<div data-s1-component="input"/, '<div data-s1-component="input" aria-label="검색어"').replace(/\s(id|for|aria-labelledby|aria-describedby)="[^"]*"/g, "")}${sized(buttonSource, p.sizes.filter.button).replace(/(data-s1-part="label">)[^<]*/, "$1조회")}</div>`;
   const rows = Array.from({ length: 8 }, (_, n) => `<tr data-s1-part="row"><td data-s1-part="cell">항목 ${n + 1}</td><td data-s1-part="cell">정상</td><td data-s1-part="cell">2026-10-${String(n + 1).padStart(2, "0")}</td></tr>`).join("");
   const table = `<div data-s1-component="table" data-size="${p.tableRow.list}"><table data-s1-part="table"><thead><tr><th data-s1-part="header-cell" scope="col">항목</th><th data-s1-part="header-cell" scope="col">상태</th><th data-s1-part="header-cell" scope="col">날짜</th></tr></thead><tbody>${rows}</tbody></table></div>`;
-  return `<h1 class="pv-title">화면 제목</h1>${filter}${table}`;
+  return `<section class="s1-frame__box">${filter}</section><section class="s1-frame__box"><h1 class="s1-frame__title typo-title-16b">화면 제목</h1>${table}</section>`;
 }
 
 /* ── 틀 하나의 몸통 — 시작 파일과 미리보기가 같은 마크업을 쓴다 ── */
@@ -114,8 +114,13 @@ function frameBody(group, f, content, prefix) {
 const FRAME_CSS = `.s1-frame { display: flex; flex-direction: column; min-height: 100vh; background: var(--color-bg-level-0); color: var(--color-text-body-primary); }
 .s1-frame__body { display: flex; flex: 1; min-height: 0; }
 .s1-frame__body > [data-s1-component="lnb"] { flex: none; }
-.s1-frame__main { flex: 1; min-width: 0; padding: var(--spacing-32) var(--spacing-40); }
-.s1-frame--mobile .s1-frame__main { padding: var(--spacing-16) var(--spacing-20); }
+.s1-frame__main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--spacing-16); padding: var(--spacing-32) var(--spacing-40); background: var(--color-bg-home); }
+.s1-frame__box { padding: var(--spacing-24); background: var(--color-surface-raised); border: var(--border-width-default) solid var(--color-line-default); border-radius: var(--radius-card-md); }
+[data-s1-density="normal"] .s1-frame__main, [data-s1-density="narrow"] .s1-frame__main { gap: var(--spacing-8); padding: var(--spacing-16) var(--spacing-20); }
+[data-s1-density="normal"] .s1-frame__box, [data-s1-density="narrow"] .s1-frame__box { padding: var(--spacing-16) var(--spacing-24); }
+.s1-frame__title { margin: 0 0 var(--spacing-16); color: var(--color-text-title-primary); }
+[data-s1-density="normal"] .s1-frame__title, [data-s1-density="narrow"] .s1-frame__title { margin-bottom: var(--spacing-8); }
+.s1-frame--mobile .s1-frame__main { display: block; padding: var(--spacing-16) var(--spacing-20); background: var(--color-bg-level-0); }
 .s1-tabbar { position: sticky; bottom: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--color-navigation-bg); border-top: 1px solid var(--color-line-default); }`;
 
 const bodyAttr = (group) => group.profile === "mobile" ? 'data-s1-break="mobile"' : `data-s1-density="${P[group.profile].density}"`;
@@ -139,11 +144,14 @@ const pasteLine = (group, f, login) => {
 
 /* ── 1. 시작 파일 ── */
 await mkdir(path.join(ROOT, "ai", "frames"), { recursive: true });
-const needsJs = (f) => f.frame === "gnb" || f.frame === "gnb-lnb";
+const needsJs = (f) => f.frame === "gnb" || f.frame === "gnb-lnb" || f.frame === "header-tabbar";
 for (const group of GROUPS) {
   for (const f of group.frames) {
     /* 모바일은 위 제목 줄이 화면 제목을 들고 있어 본문 제목을 따로 두지 않는다 */
-    const placeholder = `${group.profile === "mobile" ? "" : '<h1 class="s1-frame__title">화면 제목</h1>\n      '}<div class="s1-frame__slot">이 자리에 화면 내용을 넣습니다</div>`;
+    /* PC 웹은 내용 덩어리(조회 조건·목록 등)마다 흰 상자(.s1-frame__box) 하나 — 바탕은 회색 */
+    const placeholder = group.profile === "mobile"
+      ? '<div class="s1-frame__slot">이 자리에 화면 내용을 넣습니다</div>'
+      : '<section class="s1-frame__box">\n        <div class="s1-frame__slot">조회 조건 자리</div>\n      </section>\n      <section class="s1-frame__box">\n        <h1 class="s1-frame__title typo-title-16b">화면 제목</h1>\n        <div class="s1-frame__slot">이 자리에 목록·내용을 넣습니다</div>\n      </section>';
     const html = `<!doctype html>
 <!-- S1 화면 틀 · ${esc(group.label)} · ${esc(f.label)} (${esc(sizeLine(group, f))})
      자동 생성물 — ai/scripts/build-frames.mjs. 프로젝트로 복사한 뒤 ../../ui-library 경로를 가이드 폴더(.s1-guide/ui-library)로 바꿉니다.
@@ -155,11 +163,11 @@ for (const group of GROUPS) {
   <title>화면 제목</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="../../ui-library/dist/assets/css/tokens.css">
+  <link rel="stylesheet" href="../../ui-library/dist/assets/css/typography.css">
   <link rel="stylesheet" href="../../ui-library/dist/s1-ui.css">
   <style>
     body { margin: 0; font-family: Pretendard, -apple-system, "Malgun Gothic", sans-serif; }
     ${FRAME_CSS.split("\n").join("\n    ")}
-    .s1-frame__title { margin: 0 0 var(--spacing-24); font-size: var(--font-size-24); color: var(--color-text-title-primary); }
     .s1-frame__slot { padding: var(--spacing-64) var(--spacing-24); border: 1px dashed var(--color-line-default); border-radius: var(--radius-8); color: var(--color-text-body-secondary); text-align: center; }
   </style>
 </head>
@@ -265,7 +273,7 @@ const picker = `<!doctype html>
   .card--text .card-label { margin-top: 0; }
   .mini { position: relative; display: block; width: 100%; aspect-ratio: 1280 / 800; overflow: hidden; border: 1px solid var(--color-line-default); border-radius: var(--radius-6); background: var(--color-bg-level-0); }
   .mini--mobile { aspect-ratio: 390 / 760; }
-  .mini-inner .s1-frame__main { background: var(--color-bg-level-2); }
+  .mini-inner .s1-frame--mobile .s1-frame__main { background: var(--color-bg-level-2); }
   .mini-inner [data-s1-component="gnb"] { border-bottom: 1px solid var(--color-line-strong); }
   .mini-inner [data-s1-component="lnb"] { border-right: 1px solid var(--color-line-strong); }
   .mini-inner { position: absolute; top: 0; left: 0; display: block; width: 1280px; height: 800px; transform: scale(var(--k, .25)); transform-origin: 0 0; pointer-events: none; }
@@ -273,8 +281,7 @@ const picker = `<!doctype html>
   .mini-inner .s1-frame { min-height: 100%; height: 100%; }
   .mini--mobile .s1-tabbar { position: absolute; left: 0; right: 0; }
   ${FRAME_CSS.replace("min-height: 100vh; ", "")}
-  .pv-title { margin: 0 0 var(--spacing-24); font-size: var(--font-size-24); color: var(--color-text-title-primary); }
-  .pv-filter { display: flex; gap: var(--spacing-8); margin-bottom: var(--spacing-16); }
+  .pv-filter { display: flex; gap: var(--spacing-8); }
   .pv-filter [data-s1-component="input"] { width: 240px; }
   .pv-text { margin: 0 0 var(--spacing-16); font-size: var(--font-size-16); line-height: 1.7; }
   .pv-block { height: 200px; margin: var(--spacing-24) 0; border-radius: var(--radius-8); background: var(--color-bg-level-0); }

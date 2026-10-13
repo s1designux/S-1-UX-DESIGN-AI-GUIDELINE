@@ -27,8 +27,9 @@ export default function S1Toggle({ parts, className, style, ...rest }) {
     const root = rootRef.current;
     if (!root) return undefined;
     init(root);
-    return () => destroy(root);
+    return () => { destroy(root); };
   }, []);
+
 
   return (
       <button type="button" data-s1-component="toggle" role="switch" aria-checked="false" aria-label="알림 받기" ref={rootRef} className={className} style={style} {...rest}>

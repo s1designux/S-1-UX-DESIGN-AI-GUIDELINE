@@ -29,8 +29,9 @@ export default function S1ModalContent({ variant, size, parts, onOpen, onClose, 
     const root = rootRef.current;
     if (!root) return undefined;
     init(root);
-    return () => destroy(root);
+    return () => { destroy(root); };
   }, []);
+
 
   useEffect(() => {
     const root = rootRef.current;
@@ -42,7 +43,7 @@ export default function S1ModalContent({ variant, size, parts, onOpen, onClose, 
   });
 
   return (
-      <div data-s1-component="modal-content" data-size={size ?? "md"} data-footer={variant ?? "dual"} hidden ref={rootRef} className={className} style={style} {...rest}>
+      <div id={`${uid}-content-modal`} data-s1-component="modal-content" data-size={size ?? "md"} data-footer={variant ?? "dual"} hidden ref={rootRef} className={className} style={style} {...rest}>
         <div data-s1-part="overlay" {...(slot(partScope, "overlay").attrs ?? {})}>
           {slot(partScope, "overlay").content ?? ""}
         </div>
@@ -63,12 +64,12 @@ export default function S1ModalContent({ variant, size, parts, onOpen, onClose, 
             </div>
           </div>
           <div data-s1-part="footer" {...(slot(partScope, "footer").attrs ?? {})}>
-            <button type="button" data-s1-component="button" data-variant="secondary" data-size="xxsm">
+            <button type="button" data-s1-component="button" data-variant="secondary" data-size="xxsm" data-s1-close="cancel">
               <span data-s1-part="label" {...(slot(partScope, "label").attrs ?? {})}>
                 {slot(partScope, "label").content ?? "취소"}
               </span>
             </button>
-            <button type="button" data-s1-component="button" data-variant="primary" data-size="xxsm">
+            <button type="button" data-s1-component="button" data-variant="primary" data-size="xxsm" data-s1-close="confirm">
               <span data-s1-part="label" {...(slot(partScope, "label").attrs ?? {})}>
                 {slot(partScope, "label").content ?? "확인"}
               </span>

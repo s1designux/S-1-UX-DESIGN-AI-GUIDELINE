@@ -29,8 +29,9 @@ export default function S1Lnb({ variant, size, parts, onCollapse, onToggle, clas
     const root = rootRef.current;
     if (!root) return undefined;
     init(root);
-    return () => destroy(root);
+    return () => { destroy(root); };
   }, []);
+
 
   useEffect(() => {
     const root = rootRef.current;

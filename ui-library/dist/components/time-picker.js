@@ -532,8 +532,22 @@ export function init(root) {
   });
   disabledObserver.observe(trigger, { attributes: true, attributeFilter: ["disabled"] });
 
+  /* 폼 전송·값 읽기 (2026-10-12) — root 에 data-name 을 주면 숨은 <input type="hidden" name> 이 만들어지고,
+     시간이 확정될 때마다 보이는 글자(예: "오전 09:30")와 같은 값으로 채워진다. */
+  let lastChange = null;
+  const hiddenName = root.dataset.name;
+  const hidden = hiddenName ? Object.assign(document.createElement("input"), { type: "hidden", name: hiddenName }) : null;
+  if (hidden) root.appendChild(hidden);
+  const handleChangeForValue = (event) => {
+    lastChange = event.detail;
+    if (hidden) hidden.value = event.detail?.value ?? "";
+  };
+  root.addEventListener("s1:time-picker:change", handleChangeForValue);
+
   const api = Object.freeze({
     get open() { return isOpen(trigger); },
+    /* 확정된 시간 — { value, hour, minute, ampm, type }. 아직 고르지 않았으면 null. */
+    get value() { return lastChange ? { ...lastChange } : null; },
     openPanel: open,
     closePanel: close,
     destroy() {
@@ -560,6 +574,8 @@ export function init(root) {
       window.removeEventListener("resize", handleReposition);
       if (hasListPanel) unfloatPanel(panel);
       disabledObserver.disconnect();
+      root.removeEventListener("s1:time-picker:change", handleChangeForValue);
+      hidden?.remove();
       instances.delete(root);
     }
   });

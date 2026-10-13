@@ -33,8 +33,9 @@ export default function S1Tab({ size, breakName = DEFAULT_BREAK, parts, tabs, ch
     const root = rootRef.current;
     if (!root) return undefined;
     init(root);
-    return () => destroy(root);
+    return () => { destroy(root); };
   }, [breakName]);
+
 
   if (breakName === "pc") {
     return (

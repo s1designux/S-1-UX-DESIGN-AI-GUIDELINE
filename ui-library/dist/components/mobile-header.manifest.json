@@ -49,6 +49,9 @@
   ],
   "htmlContract": {
     "root": "header[data-s1-component=mobile-header][data-variant]",
+    "requiredAttributes": [
+      "data-variant"
+    ],
     "perVariantParts": {
       "home-title": [
         "title"
@@ -97,7 +100,8 @@
     ],
     "grouping": "코어는 AppBar 56px 한 줄만 소유한다. StatusBar·모바일 목업 크롬은 화면(안내 페이지)이 소유한다.",
     "source": "components/mobile-header/mobile-header.example.html",
-    "distribution": "examples/mobile-header.html"
+    "distribution": "examples/mobile-header.mobile.html",
+    "mobileOnly": true
   },
   "cssContract": {
     "entry": "components/mobile-header.css",
@@ -207,5 +211,5 @@
     "runtime": "none",
     "reason": "정적 크롬이다 — 열림/닫힘 등 로컬 상태가 없어 native 시맨틱만으로 충분하다."
   },
-  "sourceFingerprint": "1a349ee6cc283e5fc3a10d0ab4ebf269f75f97b6d18526c82f337075fe8e3755"
+  "sourceFingerprint": "8bce977181a67cd13aba0b8f77c92f82c5e69f796b8ed2ca747671f3a45021e3"
 }

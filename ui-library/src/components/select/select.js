@@ -64,6 +64,12 @@ function isOpen(trigger) {
   return trigger.getAttribute("aria-expanded") === "true";
 }
 
+/* ── 값 읽기·넣기·폼 전송 (2026-10-12) ──────────────────────────────────────────────
+   값은 옵션의 data-value 이고, 없으면 옵션 글자다. root 에 data-value 를 주면 처음부터 그 값이 골라진다.
+   root 에 data-name 을 주면 숨은 <input type="hidden" name> 이 만들어져 <form> 으로 같이 전송된다. */
+const optionLabel = (option) => option.querySelector('[data-s1-part="option-label"]')?.textContent?.trim() ?? option.textContent.trim();
+const optionValue = (option) => option.dataset.value ?? optionLabel(option);
+
 export function init(root) {
   if (!(root instanceof Element) || root.dataset.s1Component !== componentId) return null;
   if (instances.has(root)) return instances.get(root);
@@ -76,6 +82,30 @@ export function init(root) {
   panel.hidden = true;
 
   const dropdownApi = initDropdown(dropdownRoot);
+
+  const optionsOf = () => [...dropdownRoot.querySelectorAll('[data-s1-part="option"]')];
+  const placeholderText = value ? value.textContent : "";
+  const hiddenName = root.dataset.name;
+  let hidden = null;
+  if (hiddenName) {
+    hidden = document.createElement("input");
+    hidden.type = "hidden";
+    hidden.name = hiddenName;
+    root.appendChild(hidden);
+  }
+  const selectedOption = () => optionsOf().find((option) => option.getAttribute("aria-selected") === "true") ?? null;
+  const readValue = () => { const option = selectedOption(); return option ? optionValue(option) : ""; };
+  const syncHidden = () => { if (hidden) hidden.value = readValue(); };
+  const setValue = (next) => {
+    const wanted = next == null ? "" : String(next);
+    const match = wanted === "" ? null : optionsOf().find((option) => optionValue(option) === wanted || optionLabel(option) === wanted) ?? null;
+    for (const option of optionsOf()) option.setAttribute("aria-selected", String(option === match));
+    if (value) value.textContent = match ? optionLabel(match) : placeholderText;
+    if (match) trigger.dataset.filled = "true"; else delete trigger.dataset.filled;
+    syncHidden();
+    return Boolean(match) || wanted === "";
+  };
+  if (root.dataset.value) setValue(root.dataset.value); else syncHidden();
 
   // behavior 계약(component-behavior.pc.json "Select Box": on disable → close and block trigger clicks).
   // 클릭 차단은 open() 의 disabled 가드가 이미 담당한다 — 여기서는 열린 채로 비활성화될 때 자동으로 닫는다.
@@ -137,6 +167,7 @@ export function init(root) {
       value.textContent = event.detail.option?.querySelector('[data-s1-part="option-label"]')?.textContent ?? event.detail.value ?? "";
     }
     trigger.dataset.filled = "true";
+    syncHidden();
     close();
     root.dispatchEvent(new CustomEvent("s1:select:change", { bubbles: true, detail: { value: event.detail.value, option: event.detail.option } }));
   };
@@ -147,9 +178,12 @@ export function init(root) {
 
   const api = Object.freeze({
     get open() { return isOpen(trigger); },
+    get value() { return readValue(); },
+    setValue,
     openPanel: open,
     closePanel: close,
     destroy() {
+      hidden?.remove();
       trigger.removeEventListener("click", handleTriggerClick);
       root.removeEventListener("keydown", handleRootKeydown);
       root.removeEventListener("s1:dropdown:change", handleDropdownChange);

@@ -46,6 +46,19 @@ export declare const ICONS: Record<string, unknown>;
 export declare const S1_VERSION: string;
 export declare const S1_RELEASED_AT: string;
 export declare const S1_CANONICAL_FINGERPRINT: string;
+/** 칩 여러 개 중 하나만 켠다(웹의 data-s1-select="single"). 칩의 값은 data-value(없으면 value, 그것도 없으면 순서). */
+export interface S1ChipGroupProps {
+  /** 켜진 칩의 값 — 주면 제어형(값이 바뀌어야 켜진 칩이 바뀐다) */
+  value?: string | number | null;
+  /** 비제어형의 처음 값 */
+  defaultValue?: string | number | null;
+  /** 다른 칩이 켜졌을 때(켜진 칩을 다시 눌러도 꺼지지 않는다) */
+  onChange?: (value: string | number, event: { detail: { value: string | number; selected: true } }) => void;
+  /** 켜지기 전 — event.preventDefault() 하면 아무것도 바뀌지 않는다 */
+  onBeforechange?: (event: { detail: { selected: boolean; value: string | number }; preventDefault(): void; readonly defaultPrevented: boolean }) => void;
+  children?: ReactNode;
+}
+export declare function S1ChipGroup(props: S1ChipGroupProps): ReactElement;
 export declare function S1Gallery(props: { only?: readonly string[]; breakName?: "pc" | "mobile" }): ReactElement;
 
 export interface S1InputProps extends S1BaseProps {
@@ -115,6 +128,10 @@ export interface S1ChipProps extends S1BaseProps {
   size?: "sm" | "md";
   /** 화면 기준: pc · mobile (기본 pc) */
   breakName?: "pc" | "mobile";
+  /** s1:chip:beforechange */
+  onBeforechange?: (detail: any) => void;
+  /** s1:chip:change */
+  onChange?: (detail: any) => void;
   selected?: boolean;
   defaultSelected?: boolean;
   onSelectedChange?: (value: boolean) => void;
@@ -262,6 +279,13 @@ export declare function S1Table(props: S1TableProps): ReactElement;
 export interface S1MobileBottomNavProps extends S1BaseProps {
   /** 승인된 변형: home · search · notification · settings */
   variant?: "home" | "search" | "notification" | "settings";
+  /** s1:mobile-bottom-nav:beforechange */
+  onBeforechange?: (detail: any) => void;
+  /** s1:mobile-bottom-nav:change */
+  onChange?: (detail: any) => void;
+  selected?: boolean;
+  defaultSelected?: boolean;
+  onSelectedChange?: (value: boolean) => void;
 }
 export declare function S1MobileBottomNav(props: S1MobileBottomNavProps): ReactElement;
 
@@ -364,6 +388,13 @@ export declare function S1ModalContent(props: S1ModalContentProps): ReactElement
 export interface S1BottomSheetOptionProps extends S1BaseProps {
   /** 승인된 변형: text · checkbox · radio · list */
   variant?: "text" | "checkbox" | "radio" | "list";
+  /** s1:bottom-sheet-option:beforechange */
+  onBeforechange?: (detail: any) => void;
+  /** s1:bottom-sheet-option:change */
+  onChange?: (detail: any) => void;
+  selected?: boolean;
+  defaultSelected?: boolean;
+  onSelectedChange?: (value: boolean) => void;
   /** 앱이 소유하는 내용(탭 내용 등). 주면 예제 내용을 대신한다. */
   children?: ReactNode;
 }
@@ -378,6 +409,8 @@ export interface S1BottomSheetProps extends S1BaseProps {
   onClose?: (detail: any) => void;
   onConfirm?: (detail: any) => void;
   onCancel?: (detail: any) => void;
+  /** 열려 있나 — 안 주면 열림(기본 true). false 면 닫힘. */
+  open?: boolean;
 }
 export declare function S1BottomSheet(props: S1BottomSheetProps): ReactElement;
 

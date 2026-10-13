@@ -480,7 +480,33 @@ agent:
     metadata: "unknown"
   behavior:
     platform: "PC"
-    status: "not-defined"
+    source: "registry/components/component-behavior.pc.json ← pages/components.html#bottom-sheet-option"
+    status: "verified"
+    initialState: "default (data-state=default); a row marked selected stays selected"
+    events:
+      -
+        on: "click"
+        target: "text/radio option inside [data-s1-select=single]"
+        guard: "not disabled"
+        result: "emit cancelable s1:bottom-sheet-option:beforechange; if not prevented select this row, deselect the others, then emit s1:bottom-sheet-option:change {value,label}"
+      -
+        on: "click"
+        target: "option inside a group with data-s1-close-on-select"
+        result: "ask the bottom sheet to close (reason=select), also when the same row is picked again"
+      -
+        on: "keydown ArrowUp/ArrowDown/Home/End"
+        target: "text option"
+        result: "move focus between enabled rows (roving tabindex)"
+      -
+        on: "keydown Enter/Space"
+        target: "text option"
+        result: "select the focused row"
+    selection: "opt-in single select on the group (data-s1-select=single) — river 결정 2026-10-13 「전부 부품이 알아서」; list and checkbox rows are not handled; without the attribute nothing changes"
+    keyboard: "text rows: arrows/Home/End move, Enter/Space select, the selected row is the Tab stop; radio rows: native keyboard"
+    focus: "roving tabindex on text rows"
+    accessibility:
+      group: "role=listbox (radiogroup when only radio rows), named by the sheet title"
+      option: "role=option with aria-selected for text rows; native radio for radio rows"
   geometry:
     common:
       target: "root"
@@ -589,6 +615,7 @@ _Don't_
 - Text 의 선택 표시(파란 체크)는 장식이다 — 선택 상태는 aria-selected·aria-checked 로 따로 알린다.
 - 비활성 줄은 disabled 또는 aria-disabled 로 알리고 초점 순서에서 뺀다.
 - List 의 아바타 아이콘은 장식이다 — 이름은 제목 글자가 갖는다.
+- river 결정 2026-10-13 「전부 부품이 알아서」: 목록 묶음에 data-s1-select="single" 을 달면 부품이 알아서 하나를 고른다 — Text(role=option·aria-selected·파란 체크)·Radio(native)만. 방향키·Home·End 이동, Enter/Space 선택, roving tabindex(고른 줄이 Tab 정거장). s1:bottom-sheet-option:beforechange(취소 가능) → change. data-s1-close-on-select 면 고른 뒤 시트가 닫힌다. 표시가 없으면 종전처럼 모양만 소유한다.
 
 ### Button
 
@@ -1044,7 +1071,12 @@ agent:
         on: "click"
         target: "chip"
         guard: "disabled=false"
-        result: "toggle unselected ↔ selected"
+        result: "ask s1:chip:beforechange (cancelable), then toggle unselected ↔ selected and emit s1:chip:change"
+      -
+        on: "click"
+        target: "chip inside [data-s1-select=single]"
+        guard: "disabled=false"
+        result: "ask s1:chip:beforechange, turn this chip on and every other chip in the group off, emit s1:chip:change on each changed chip; clicking the on chip keeps it on (river 결정 2026-10-13 「전부 부품이 알아서」)"
       -
         on: "click"
         target: "chip"
@@ -1053,6 +1085,7 @@ agent:
     keyboard: "not-defined"
     focus: "not-defined"
     accessibility: "not-defined"
+    selection: "opt-in single select on the wrapper (data-s1-select=single) — river 결정 2026-10-13 「전부 부품이 알아서」; without the attribute chips toggle individually"
   geometry:
     common:
       target: "root"
@@ -1213,6 +1246,7 @@ _Don't_
 **접근성 (a11y)**
 - 선택 상태를 aria-pressed 또는 role 로 노출한다.
 - 닫기(X)에는 삭제·해제 aria-label 을 단다.
+- river 결정 2026-10-13 「전부 부품이 알아서」: 칩을 감싼 요소에 data-s1-select="single" 을 달면 하나만 켠다 — 켜진 칩을 다시 눌러도 꺼지지 않고, 다른 칩을 누르면 그 칩이 켜진다. 표시가 없으면 칩마다 따로 켜고 끈다(여러 개 고르는 화면은 그대로). 화면이 막으려면 s1:chip:beforechange 에서 preventDefault.
 
 ### Data Tag
 
@@ -1439,7 +1473,7 @@ agent:
       ArrowDown: "next week"
       EnterOrSpace: "select focused day"
     focus:
-      onOpen: "focus the first enabled day"
+      onOpen: "focus the selected day (range: the start day); if none, today; if today is not in the displayed month, the 1st of that month (river 2026-10-13). Same for the mobile sheet"
       onEscape: "return to input"
     accessibility:
       expanded: "synchronize aria-expanded on input and calendar action"
@@ -1624,6 +1658,7 @@ _Don't_
 **접근성 (a11y)**
 - 날짜 셀은 키보드 이동이 가능해야 하고 선택 셀에 aria-selected 를 준다.
 - 비활성 날짜는 aria-disabled 로 표시한다.
+- 열릴 때 키보드 초점 규칙(river 2026-10-13, 질문 '키보드로 달력을 열 때 초점이 어디로 갈까요? 추천은 골라 둔 날짜, 없으면 오늘' 에 '-> 추천안으로'): 골라 둔 날짜(기간이면 시작일) → 없으면 오늘 → 오늘이 보이는 달에 없으면 그 달의 1일. PC 팝오버와 모바일 시트 모두 같다.
 
 ### Divider
 
@@ -3225,14 +3260,26 @@ agent:
     status: "verified"
     initialState: "unselected (aria-selected=false) unless the host page renders it selected"
     events:
-      []
-    keyboard: "native button Enter/Space activation"
+      -
+        on: "click"
+        target: "tab"
+        guard: "tab is not the active tab and not disabled"
+        result: "emit cancelable s1:mobile-bottom-nav:beforechange; if not prevented move aria-selected and aria-current=page to this tab, then emit s1:mobile-bottom-nav:change"
+      -
+        on: "click"
+        target: "active tab"
+        result: "no event"
+      -
+        on: "keydown ArrowLeft/ArrowRight"
+        target: "tab"
+        result: "move focus to the previous/next tab (wraps); selecting stays on Enter/Space"
+    keyboard: "native button Enter/Space activation; ArrowLeft/ArrowRight move focus between tabs; Tab visits every tab"
     focus: "native button focus with a 2px visible outline"
     accessibility:
       role: "tab (root); a surrounding role=tablist container is owned by the host screen"
       name: "the visible label text"
-      selected: "aria-selected reflects the host page's current route; no local toggle logic"
-    runtimeNote: "런타임 없음(jsRequired=false). 선택 상태는 호스트 화면이 정적으로 설정한 aria-selected 를 CSS 가 그대로 반영한다(HD-1 선택지 A — 화살표 키 이동·로컬 클릭 토글은 범위 밖)."
+      selected: "the runtime moves aria-selected and aria-current=page; a routing-driven screen may still set aria-selected itself or call setActive()"
+    runtimeNote: "river 결정 2026-10-13 「전부 부품이 알아서」 — 2026-09-02 HD-1 선택지 A(런타임 없음·호스트가 정적으로 설정)를 뒤집었다. 화면이 beforechange 에서 preventDefault 로 막을 수 있다."
   geometry:
     common:
       target: "root"
@@ -3311,6 +3358,7 @@ _Don't_
 - 탭 목록은 role=tablist·각 항목 role=tab 으로 표시하고 현재 탭에 aria-selected 를 준다.
 - 아이콘만으로 의미를 전달하지 않는다 — 라벨을 항상 함께 보여준다.
 - 터치 타깃은 60×60 으로 최소 권장치를 만족한다.
+- river 결정 2026-10-13 「전부 부품이 알아서」: 탭을 누르면 부품이 활성 탭을 옮긴다(2026-09-02 HD-1 '호스트가 정적으로 설정'을 뒤집음). 먼저 s1:mobile-bottom-nav:beforechange(취소 가능)를 내서 화면이 막을 수 있고(로그인 확인·저장 안 한 변경), 막지 않으면 aria-selected·aria-current=page 를 옮기고 s1:mobile-bottom-nav:change 를 낸다. 라우팅이 정하는 화면은 api.setActive() 또는 aria-selected 로 직접 정한다. ←→ 는 탭 사이 초점 이동.
 
 ### Mobile Header
 
@@ -4102,7 +4150,7 @@ _Don't_
 
 ### Pagination
 
-페이지네이션 컨트롤. 화살표(first/prev/next/last) + 페이지 번호. 선택 페이지는 텍스트 색으로만 구분.
+페이지네이션 컨트롤. 이동 버튼 4개(|< 이전 페이지 묶음 · < 이전 페이지 · > 다음 페이지 · >| 다음 페이지 묶음) + 페이지 번호. 선택 페이지는 텍스트 색으로만 구분.
 
 **언제 쓰나**
 - 긴 목록·표를 페이지로 나눠 이동할 때.
@@ -4115,7 +4163,7 @@ _Don't_
 
 | 요소 | 역할 |
 | --- | --- |
-| 화살표 | first/prev/next/last 이동. |
+| 화살표 | 이동 버튼 4개 — |<(이전 페이지 묶음) <(이전 페이지) >(다음 페이지) >|(다음 페이지 묶음). |
 | 페이지 번호 | 현재 페이지는 텍스트 색으로만 구분. |
 
 | variant | default | hover | selected | disabled |
@@ -4157,26 +4205,27 @@ agent:
         result: "set the current page and rerender the current number block"
       -
         on: "click"
-        target: "first"
-        result: "move to page 1"
+        target: "|< (data-s1-action=first)"
+        result: "move to the first page of the previous block (river 2026-10-13: 묶음 넘김)"
       -
         on: "click"
-        target: "previous block"
-        result: "move to the first page of the previous block"
+        target: "< (data-s1-action=previous)"
+        result: "move one page back; crossing a block edge moves the number window"
       -
         on: "click"
-        target: "next block"
-        result: "move to the first page of the next block"
+        target: "> (data-s1-action=next)"
+        result: "move one page forward; crossing a block edge moves the number window"
       -
         on: "click"
-        target: "last"
-        result: "move to the final page"
+        target: ">| (data-s1-action=last)"
+        result: "move to the first page of the next block (river 2026-10-13: 묶음 넘김)"
     constraints:
       - "show at most 6 page numbers per block"
-      - "disable unavailable edge/block actions"
+      - "disable unavailable edge/block actions: |< is disabled in the first block and >| in the last block; < is disabled on page 1 and > on the last page"
       - "single-page mode disables all navigation actions"
+      - "focus stays on the current page number button when a pressed button becomes disabled or the number buttons are redrawn"
     keyboard: "native-button"
-    focus: "native-button"
+    focus: "native-button; after a move the focus stays on (or returns to) the current page number button"
     accessibility:
       pageNumber: "aria-label includes the page number and marks the current page in its accessible name"
   geometry:
@@ -4259,7 +4308,8 @@ _Don't_
 
 **접근성 (a11y)**
 - 현재 페이지에 aria-current 를 준다.
-- 화살표 버튼에 이전·다음 등 aria-label 을 단다.
+- 이동 버튼 4개에 aria-label 을 단다 — "이전 페이지 묶음" · "이전 페이지" · "다음 페이지" · "다음 페이지 묶음".
+- 묶음·쪽 이동으로 눌린 버튼이 막히거나 번호 버튼이 다시 그려져도 초점은 현재 쪽 번호 버튼에 남긴다(body 로 떨어지지 않는다).
 
 ### Radio
 
@@ -5601,4 +5651,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: 75ec343b9b40 · 손편집 금지 -->
+<!-- generated-stamp: e385d4d36627 · 손편집 금지 -->

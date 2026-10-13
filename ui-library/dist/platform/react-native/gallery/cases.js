@@ -4665,6 +4665,25 @@ export const CASES = [
   }
  },
  {
+  "id": "gnb-sub-menu/pc#default.0/-/-/data-s1-layer=overlay",
+  "component": "S1GnbSubMenu",
+  "break": "pc",
+  "title": "gnb-sub-menu · pc#default.0 · -/-/data-s1-layer=overlay",
+  "props": {
+   "breakName": "pc",
+   "data-type": "regular",
+   "data-s1-layer": "overlay"
+  },
+  "web": {
+   "example": "pc",
+   "instance": 0,
+   "attributes": {
+    "data-type": "regular",
+    "data-s1-layer": "overlay"
+   }
+  }
+ },
+ {
   "id": "gnb-sub-menu/pc#default.1/-/-/default",
   "component": "S1GnbSubMenu",
   "break": "pc",
@@ -4682,6 +4701,25 @@ export const CASES = [
   }
  },
  {
+  "id": "gnb-sub-menu/pc#default.1/-/-/data-s1-layer=overlay",
+  "component": "S1GnbSubMenu",
+  "break": "pc",
+  "title": "gnb-sub-menu · pc#default.1 · -/-/data-s1-layer=overlay",
+  "props": {
+   "breakName": "pc",
+   "data-type": "compact-1",
+   "data-s1-layer": "overlay"
+  },
+  "web": {
+   "example": "pc",
+   "instance": 1,
+   "attributes": {
+    "data-type": "compact-1",
+    "data-s1-layer": "overlay"
+   }
+  }
+ },
+ {
   "id": "gnb-sub-menu/pc#default.2/-/-/default",
   "component": "S1GnbSubMenu",
   "break": "pc",
@@ -4695,6 +4733,25 @@ export const CASES = [
    "instance": 2,
    "attributes": {
     "data-type": "compact-2"
+   }
+  }
+ },
+ {
+  "id": "gnb-sub-menu/pc#default.2/-/-/data-s1-layer=overlay",
+  "component": "S1GnbSubMenu",
+  "break": "pc",
+  "title": "gnb-sub-menu · pc#default.2 · -/-/data-s1-layer=overlay",
+  "props": {
+   "breakName": "pc",
+   "data-type": "compact-2",
+   "data-s1-layer": "overlay"
+  },
+  "web": {
+   "example": "pc",
+   "instance": 2,
+   "attributes": {
+    "data-type": "compact-2",
+    "data-s1-layer": "overlay"
    }
   }
  },
@@ -5209,7 +5266,8 @@ export const CASES = [
   },
   "props": {
    "breakName": "pc",
-   "variant": "none"
+   "variant": "none",
+   "open": true
   },
   "web": {
    "example": "pc",
@@ -5231,7 +5289,8 @@ export const CASES = [
   },
   "props": {
    "breakName": "pc",
-   "variant": "single"
+   "variant": "single",
+   "open": true
   },
   "web": {
    "example": "pc",
@@ -5253,7 +5312,8 @@ export const CASES = [
   },
   "props": {
    "breakName": "pc",
-   "variant": "dual"
+   "variant": "dual",
+   "open": true
   },
   "web": {
    "example": "pc",

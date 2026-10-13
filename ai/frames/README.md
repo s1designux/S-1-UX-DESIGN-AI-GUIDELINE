@@ -21,7 +21,7 @@
 1. `../../ui-library/` 경로를 프로젝트에서 가이드가 있는 자리로 바꿉니다(보통 `.s1-guide/ui-library/`). React·Vue 등이면 같은 구조를 그 기술의 컴포넌트로 옮깁니다.
 2. 로고(`SERVICE LOGO`)·메뉴 이름·개수만 서비스에 맞게 고칩니다. 현재 메뉴 하나에만 `aria-current="page"`.
 3. **바꾸지 않는 것** — GNB·LNB 의 `data-size`, `<body>` 의 `data-s1-density`·`data-s1-break`, 틀 배치 CSS(`.s1-frame*`), 동작 스크립트(`autoInit`).
-4. `.s1-frame__title`·`.s1-frame__slot` 자리표시를 지우고 본문을 `profile.<profile>.md` 크기표대로 채웁니다.
+4. PC 웹은 회색 바탕 위에 내용 덩어리(조회 조건·목록 등)마다 흰 상자 `<section class="s1-frame__box">` 하나씩 둡니다. 상자는 지우지 말고 `.s1-frame__title`·`.s1-frame__slot` 자리표시만 지우고 본문을 `profile.<profile>.md` 크기표대로 채웁니다.
 5. GNB 하위메뉴가 필요하면 `ui-library/dist/examples/gnb.html` 의 패널 배선(`aria-controls`)을 그대로 따릅니다.
 
 ## 3. 로그인 화면

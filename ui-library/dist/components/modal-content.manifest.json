@@ -216,7 +216,11 @@
     "controlMode": "uncontrolled",
     "scrollLockNote": "배경 스크롤 잠금은 열린 모달 수를 세어 마지막 하나가 닫힐 때만 원래 값으로 되돌린다.",
     "prewiredOpenNote": "이미 열린 채로 들어온 마크업(검수 화면·정적 예시)도 init 시점에 Escape·초점 가둠·스크롤 잠금을 배선한다.",
-    "heightBehaviorNote": "높이 grow→85vh→내부 스크롤은 순수 CSS(flex + overflow-y:auto)로 처리되며 JS 는 관여하지 않는다."
+    "heightBehaviorNote": "높이 grow→85vh→내부 스크롤은 순수 CSS(flex + overflow-y:auto)로 처리되며 JS 는 관여하지 않는다.",
+    "attributes": {
+      "data-s1-open": "다른 요소(버튼 등)에 달면 누를 때 id 가 같은 이 창이 열린다",
+      "data-s1-close": "창 안 요소에 달면 누를 때 닫힌다. 값은 닫힌 이유(cancel·confirm 등, 없으면 close)로 s1:modal-content:close 의 detail.reason 에 실린다"
+    }
   },
-  "sourceFingerprint": "7ccc8e6589d8c5317ee74720658ebad56cc3b90b8a86cb6d4e1e5cf6eeab8c5e"
+  "sourceFingerprint": "9a5d015f678d619aebbc39557b3bc8a7a6d648820f85ae8f55e8ef61afc19685"
 }

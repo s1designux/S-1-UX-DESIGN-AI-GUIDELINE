@@ -33,8 +33,9 @@ export default function S1Table({ size, parts, headerCells, rows, onSelectioncha
     const root = rootRef.current;
     if (!root) return undefined;
     init(root);
-    return () => destroy(root);
+    return () => { destroy(root); };
   }, []);
+
 
   useEffect(() => {
     const root = rootRef.current;

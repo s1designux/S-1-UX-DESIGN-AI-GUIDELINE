@@ -3,7 +3,7 @@
 **S1 디자인 시스템의 React Native(Expo) 부품입니다.** iOS · Android · 웹(react-native-web) 에서 같은 코드로 그려지고,
 **PC·Mobile 두 화면 기준을 모두 담았습니다**(`breakName="pc" | "mobile"`). 부품 32종.
 
-**배포본 번호 0.19.0** · 2026-10-12 판 — 디자인가이드 내려받기 화면의 번호와 다르면 새로 받으세요.
+**배포본 번호 0.22.1** · 2026-10-13 판 — 디자인가이드 내려받기 화면의 번호와 다르면 새로 받으세요.
 코드에서 볼 때는 `import { S1_VERSION } from "@s1/ui-react-native"` 입니다.
 
 이 패키지는 웹용 React(`@s1/ui-react`)와 다릅니다. 그쪽은 `<button>`·`<span>` 과 CSS 파일을 쓰는 **React DOM** 이라 iOS·Android 에서 돌지 않습니다.
@@ -87,7 +87,7 @@ import { S1Button, S1Input, S1Tab, S1Table, S1DatePicker } from "./src/s1-ui";
 | `S1Checkbox` | — | — | — | `parts` | 여러 항목을 독립적으로 켜고 끌 때(다중 선택). 약관 동의처럼 항목마다 따로 켜고 끌 때. |
 | `S1Radio` | — | — | — | `parts` | 여러 보기 중 하나만 고를 때(상호배타). |
 | `S1Toggle` | — | — | — | `checked` · `onCheckedChange` | 단일 설정을 즉시 켜고 끌 때(즉시 반영). |
-| `S1Chip` | `line` `solid` | PC `sm` `md` · 모바일 `sm` | `pc` `mobile` | `selected` · `onSelectedChange` | 선택 가능한 태그·필터를 나열할 때. filter 는 드롭다운으로 값을 고르고 적용 완료(complete)를 표시할 때. |
+| `S1Chip` | `line` `solid` | PC `sm` `md` · 모바일 `sm` | `pc` `mobile` | `selected` · `onBeforechange` · `onChange` · `onSelectedChange` | 선택 가능한 태그·필터를 나열할 때. filter 는 드롭다운으로 값을 고르고 적용 완료(complete)를 표시할 때. |
 | `S1Dropdown` | `text` `checkbox` | `xxsm` `xsm` `md` | — | `options` · `options` · `value` · `onChange` | 트리거를 눌러 옵션 목록에서 하나를 고를 때(글자 유형). 한 목록에서 여러 항목을 동시에 고를 때(체크박스 유형) — 필터·대상 선택 등. Select 의 기반 컴포넌트. |
 | `S1Select` | — | PC `xxsm` `xsm` `md` · 모바일 `md` | `pc` `mobile` | `open` · `value` · `options` · `onChange` · `onOpen` · `onClose` | 단일 값을 목록에서 고르는 폼 필드일 때. Dropdown 토큰(--dropdown-*)을 재사용한다. |
 | `S1FilterChip` | `line` `solid` | PC `sm` `md` · 모바일 `md` | `pc` `mobile` | `open` · `value` · `options` · `onChange` · `onOpen` · `onClose` | 목록·표의 정렬/기간/범주 같은 조건을 바꿀 때. 선택한 값을 칩 자체에 계속 보여줘야 할 때(무엇이 걸려 있는지 한눈에). |
@@ -97,7 +97,7 @@ import { S1Button, S1Input, S1Tab, S1Table, S1DatePicker } from "./src/s1-ui";
 | `S1MultiToggle` | — | `md` `sm` `xsm` | — | `cells` · `value` · `onChange` | 선택지가 2~4개로 적고 서로 배타적일 때(정렬 기준·기간 범위 등). 선택 결과가 즉시 화면에 반영돼야 할 때. |
 | `S1Modal` | `single` `dual` | — | `pc` `mobile` | `onOpen` · `onClose` · `onConfirm` · `onCancel` | 확인·알림 등 흐름을 멈추고 결정을 받을 때. Single=알림/설명체 1버튼, Dual=확인/질문체 2버튼. |
 | `S1Table` | — | PC `md` `sm` `xsm` | — | `headerCells` · `rows` · `selection` · `onSelectionChange` | 행·열의 정형 데이터를 보여줄 때. 정렬·선택(체크박스)·행 hover/selected 가 필요할 때. |
-| `S1MobileBottomNav` | `home` `search` `notification` `settings` | — | — | `parts` | 모바일 화면에서 최상위 영역 간 이동을 항상 보이게 둘 때. 탭 수가 3~5개로 고정된 주요 메뉴 구조일 때. |
+| `S1MobileBottomNav` | `home` `search` `notification` `settings` | — | — | `selected` · `onBeforechange` · `onChange` · `onSelectedChange` | 모바일 화면에서 최상위 영역 간 이동을 항상 보이게 둘 때. 탭 수가 3~5개로 고정된 주요 메뉴 구조일 때. |
 | `S1MobileHeader` | `home-title` `home-title-subtitle` `standard-title` `standard-title-close` `standard-no-title` `standard-no-title-close` | — | — | `parts` | 모바일 앱 또는 모바일 웹 화면에서 상단 전역 크롬과 화면 이동 동작을 제공할 때. 회원가입처럼 앱바 안 제목을 비우고 본문 큰 제목을 사용하는 화면에는 Standard / No Title을 쓴다. |
 | `S1TimePicker` | — | PC `xxsm` `xsm` `md` · 모바일 `md` | `pc` `mobile` | `open` · `onOpen` · `onClose` · `onChange` | 시간(시/분)을 드롭다운 목록에서 고를 때. |
 | `S1DatePicker` | `single` `range` | PC `xxsm` `xsm` `md` · 모바일 `md` | `pc` `mobile` | `open` · `value` · `disabledDates` · `placeholder` · `today` · `onOpen` · `onClose` · `onChange` | 날짜(단일/기간)를 고를 때. 트리거는 Base Input 필드. PC 는 팝오버 캘린더, Mobile 은 바텀시트로 표출. |
@@ -107,7 +107,7 @@ import { S1Button, S1Input, S1Tab, S1Table, S1DatePicker } from "./src/s1-ui";
 | `S1AssistButton` | — | — | — | `parts` | 본문 옆이나 목록 행 안처럼 좁은 자리에서, 눈에 덜 띄는 보조 동작 하나를 둘 때. 코어 Button 의 4크기(MD·XSM·XXSM·LG) 어디에도 맞지 않는, 원본에 정의된 고정 32px 자리. |
 | `S1TextButton` | `primary` `secondary` | — | — | `parts` | 링크에 가까운 가벼운 보조 동작(더보기·자세히 등)을 텍스트만으로 표시할 때. Primary 는 강조가 필요한 텍스트 액션, Secondary 는 덜 중요한 텍스트 액션. |
 | `S1ModalContent` | `single` `dual` | PC `md` `lg` `xl` | — | `onOpen` · `onClose` · `onConfirm` · `onCancel` | 입력창·표·이미지처럼 확인 계열(짧은 텍스트)보다 큰 본문이 필요할 때. Single=알림/설명체 1버튼, Dual=확인/질문체 2버튼(확인 계열과 같은 규칙). |
-| `S1BottomSheetOption` | `text` `checkbox` `radio` `list` | — | — | `parts` | 바텀시트 본문에 고를 것을 줄로 늘어놓을 때. Text = 한 값 고르기(고른 줄에 파란 체크), Checkbox = 여러 값 고르기, Radio = 한 값 고르기(동그라미 표시), List = 사람·항목처럼 아바타와 설명이 함께 있는 줄. |
+| `S1BottomSheetOption` | `text` `checkbox` `radio` `list` | — | — | `selected` · `onBeforechange` · `onChange` · `onSelectedChange` | 바텀시트 본문에 고를 것을 줄로 늘어놓을 때. Text = 한 값 고르기(고른 줄에 파란 체크), Checkbox = 여러 값 고르기, Radio = 한 값 고르기(동그라미 표시), List = 사람·항목처럼 아바타와 설명이 함께 있는 줄. |
 | `S1BottomSheet` | `none` `single` `dual` | — | — | `onOpen` · `onClose` · `onConfirm` · `onCancel` | 모바일에서 목록을 띄워 고르게 할 때 — 드롭다운 대신 쓴다(density-policy mobileSubstitutes.dropdown). 모바일에서 날짜·시간처럼 넓은 선택 UI 를 띄울 때. Footer=None 은 고르는 즉시 적용되는 목록, Single 은 '적용' 하나, Dual 은 '취소+적용'. |
 | `S1ListRow` | `nav` `value` `read` `pick` `agree` `switch` `thumb` | — | — | `checked` · `onCheckedChange` · `onOpen` | 같은 모양의 줄이 반복되는 목록을 만들 때. |
 | `S1ExpandableCard` | — | — | — | `open` · `onChange` | 한 화면에 여러 덩어리를 쌓아 두고, 필요한 것만 펴서 보게 할 때. 질문과 답처럼 제목만으로 고르고 내용은 접어 두는 목록. |
@@ -153,6 +153,7 @@ import { S1Button, S1Input, S1Tab, S1Table, S1DatePicker } from "./src/s1-ui";
 - **그림자·테두리 모양**은 RN `boxShadow`(0.76 이상)로 그립니다. 안쪽 그림자(inset)도 같은 속성입니다.
 - **한글 세로 1px 보정**은 웹 브라우저가 글자를 1px 단위로 놓는 보정이라 RN 에는 옮기지 않았습니다(정본 결정).
 - **마스크 아이콘**(CSS mask)은 같은 SVG path 에 색을 직접 칠합니다. 모양은 같습니다.
+- **고르기는 부품이 알아서(river 2026-10-13)**: 칩·하단 탭·시트 줄은 `selected`(제어형) · `defaultSelected` · `onSelectedChange(selected)` 를 받습니다. 값을 주면(제어형) 눌러도 모양이 안 바뀌고 화면이 값을 바꿀 때만 바뀝니다. `onBeforechange(event)` 에서 `event.preventDefault()` 하면 아무것도 바뀌지 않고(웹 beforechange 와 같음), `onChange(event)` 는 모양이 실제로 바뀐 뒤(비제어형)에 불립니다. 시트 줄은 켜지면 체크 조각이 붙고 꺼지면 사라집니다. **칩 하나만 켜기**는 `<S1ChipGroup value onChange>` 로 묶습니다(칩의 값은 `data-value`) — 웹의 `data-s1-select="single"` 에 해당합니다. 하단 탭·시트 줄의 하나만 켜기는 화면이 각 항목의 `selected` 를 정합니다.
 - **모달·바텀시트**는 RN `Modal` 에 그립니다(`open` 일 때만). `<S1Provider inline>` 이면 놓인 자리 안에 그립니다(미리보기용).
 - **팝업(셀렉트·날짜·시간)**은 트리거 아래에 겹쳐 그립니다. 바깥을 눌러 닫는 동작은 없고, 고르거나 트리거를 다시 눌러 닫습니다.
 - 날짜·시간 휠의 **스크롤 스냅**은 `snapToInterval` 로 옮겼습니다(칸 간격은 CSS 계산값).

@@ -60,7 +60,7 @@ export default function S1ModalContent({ variant, size, parts, onOpen, onClose, 
 
   if (tpl === 0) {
     return (
-      <Root t={SPEC.templates[tpl]} k="n0" a={{ "data-s1-component": "modal-content", "data-size": size ?? "md", "data-footer": variant ?? "dual", "hidden": open ? undefined : "" }} controller={controller} partProps={partProps} style={style} outer={outer} omit={omit} lifted={lifted} forceState={forceState} {...rest}>
+      <Root t={SPEC.templates[tpl]} k="n0" a={{ "id": "content-modal", "data-s1-component": "modal-content", "data-size": size ?? "md", "data-footer": variant ?? "dual", "hidden": open ? undefined : "" }} controller={controller} partProps={partProps} style={style} outer={outer} omit={omit} lifted={lifted} forceState={forceState} {...rest}>
         <El k="n1" a={{ "data-s1-part": "overlay", ...(slot(partScope, "overlay").attrs ?? {}) }}>
           {slot(partScope, "overlay").content ?? ""}
         </El>
@@ -81,8 +81,8 @@ export default function S1ModalContent({ variant, size, parts, onOpen, onClose, 
             </El>
           </El>
           <El k="n9" a={{ "data-s1-part": "footer", ...(slot(partScope, "footer").attrs ?? {}) }}>
-            <N k="n10" as={S1Button} a={{ "type": "button", "data-s1-component": "button", "data-variant": "secondary", "data-size": "xxsm" }} p={{ variant: "secondary", size: "xxsm", parts: {"label":"취소"}, ...attrProps(slot(partScope, "nested:button").attrs) }} />
-            <N k="n11" as={S1Button} a={{ "type": "button", "data-s1-component": "button", "data-variant": "primary", "data-size": "xxsm" }} p={{ variant: "primary", size: "xxsm", parts: {"label":"확인"}, ...attrProps(slot(partScope, "nested:button").attrs) }} />
+            <N k="n10" as={S1Button} a={{ "type": "button", "data-s1-component": "button", "data-variant": "secondary", "data-size": "xxsm", "data-s1-close": "cancel" }} p={{ variant: "secondary", size: "xxsm", parts: {"label":"취소"}, ...attrProps(slot(partScope, "nested:button").attrs) }} />
+            <N k="n11" as={S1Button} a={{ "type": "button", "data-s1-component": "button", "data-variant": "primary", "data-size": "xxsm", "data-s1-close": "confirm" }} p={{ variant: "primary", size: "xxsm", parts: {"label":"확인"}, ...attrProps(slot(partScope, "nested:button").attrs) }} />
           </El>
         </El>
       </Root>

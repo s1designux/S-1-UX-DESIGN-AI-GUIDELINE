@@ -1,8 +1,8 @@
 {
   "id": "bottom-sheet-option",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "status": "approved",
-  "canonicalFingerprint": "1c27893fba149cfeb2915b88896b154c5ba8ce303caa5c8f9b12fdd8e214c902",
+  "canonicalFingerprint": "b92a63b6b2560b6c520a2261aa3dfbe147ad7db2f5e942ffee2b900fb1ab00fe",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -170,16 +170,16 @@
       "value": "Checkbox·Radio 는 control 의 aria-labelledby 가 이 컴포넌트의 label span id 를 가리킨다(associated label — checkbox·radio manifest accessibleName 계약 충족). Text·List 는 이 컴포넌트 자체가 이름을 갖지 않는다 — 시트를 여는 화면이 role·이름을 준다."
     },
     "keyboard": {
-      "status": "not-applicable",
-      "reason": "이 컴포넌트는 줄 모양만 소유한다. Checkbox·Radio 의 키보드 동작은 그 코어 계약(Tab·Space/방향키)을 그대로 상속한다. Text·List 자체는 상호작용 요소가 아니다 — 누를 수 있게 만들면 시트를 여는 화면이 role=button/option 과 함께 처리한다."
+      "status": "required",
+      "value": "묶음에 data-s1-select=single 이 있으면: Text 는 ↑↓·Home·End 로 줄 사이를 옮기고 Enter/Space 로 고른다(roving tabindex — 고른 줄이 Tab 정거장). Radio 는 native 키보드(Tab·방향키·Space)를 그대로 쓴다. 표시가 없으면 종전처럼 줄은 상호작용 요소가 아니다."
     },
     "focus": {
       "status": "not-applicable",
       "reason": "정본에 별도 focus 표현이 없다. Checkbox·Radio 코어의 기본 포커스 표시를 그대로 쓴다."
     },
     "ariaStateSync": {
-      "status": "not-applicable",
-      "reason": "선택 상태 ARIA 동기화(aria-selected·aria-checked)는 시트를 여는 화면이 소유한다 — 이 컴포넌트는 시각 상태(data-state)만 갖는다."
+      "status": "required",
+      "value": "묶음에 data-s1-select=single 이 있으면 런타임이 묶음에 role=listbox(Radio 뿐이면 radiogroup), 줄에 role=option 과 aria-selected, 고른 줄에 data-state=selected(+파란 체크)를 맞춘다. 표시가 없으면 이 동기화는 화면 몫이다."
     },
     "errorRelation": {
       "status": "not-applicable",
@@ -190,10 +190,37 @@
       "reason": "정본이 모션을 정의하지 않는다."
     }
   },
-  "jsRequired": false,
+  "jsRequired": true,
   "javascript": {
-    "runtime": "none",
-    "reason": "줄 모양만 소유한다. 고르기 동작(선택 반영·role·이벤트)은 시트를 여는 화면이 배선한다."
+    "runtime": "components/bottom-sheet-option.js",
+    "reason": "목록 묶음에 data-s1-select=\"single\" 을 달면 부품이 알아서 하나를 고른다(river 결정 2026-10-13 「전부 부품이 알아서」). 표시가 없으면 아무것도 바뀌지 않는다.",
+    "options": {},
+    "events": [
+      "s1:bottom-sheet-option:beforechange",
+      "s1:bottom-sheet-option:change"
+    ],
+    "eventDetail": {
+      "beforechange": "{ value, label, selected: true, option } — 취소 가능(preventDefault 하면 모양이 그대로)",
+      "change": "{ value, label, selected: true, option }"
+    },
+    "methods": [
+      "setSelected(next)",
+      "setValue(value)",
+      "selected",
+      "value"
+    ],
+    "lifecycle": [
+      "init(root)",
+      "destroy(root)"
+    ],
+    "controlMode": "uncontrolled",
+    "selectable": true,
+    "attributes": {
+      "data-s1-select": "묶음(보통 시트 본문)에 single 을 달면 고르기가 켜진다. Text·Radio 유형 줄만 고른다(List 는 선택 모양이 정본에 없고 Checkbox 는 여러 개 고르는 줄이라 제외)",
+      "data-s1-close-on-select": "묶음에 달면 고른 뒤 시트가 닫힌다(같은 줄을 다시 골라도 닫힌다)",
+      "data-value": "줄의 값(detail.value). 없으면 라벨 글자"
+    },
+    "triggerValueNote": "시트를 data-s1-open 요소로 열었고 그 요소 안에 [data-s1-part=\"value\"] 가 있으면 고른 라벨이 그 글자로 들어간다(bottom-sheet.js). 스크립트로 열었다면 연 요소를 알 수 없으므로 s1:bottom-sheet-option:change 를 받아 화면이 직접 보여 준다 — 결합을 지어내지 않는다."
   },
-  "sourceFingerprint": "7b887c926fad9d1409080f044d2748ea2d9cef67552f5c7150e07526c944b36f"
+  "sourceFingerprint": "634b70e7e9c9a7ba28b00be6c92f47156f3325acf4b14dc78a4d38d345117a04"
 }

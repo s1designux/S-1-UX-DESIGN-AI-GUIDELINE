@@ -60,7 +60,8 @@
   },
   "a11y": [
     "선택 상태를 aria-pressed 또는 role 로 노출한다.",
-    "닫기(X)에는 삭제·해제 aria-label 을 단다."
+    "닫기(X)에는 삭제·해제 aria-label 을 단다.",
+    "river 결정 2026-10-13 「전부 부품이 알아서」: 칩을 감싼 요소에 data-s1-select=\"single\" 을 달면 하나만 켠다 — 켜진 칩을 다시 눌러도 꺼지지 않고, 다른 칩을 누르면 그 칩이 켜진다. 표시가 없으면 칩마다 따로 켜고 끈다(여러 개 고르는 화면은 그대로). 화면이 막으려면 s1:chip:beforechange 에서 preventDefault."
   ],
   "variants": {
     "line": {
@@ -291,10 +292,21 @@
     "with-close"
   ],
   "guide": {
-    "sampleLabels": ["라벨"],
+    "sampleLabels": [
+      "라벨"
+    ],
     "webTag": "button",
     "interactionPattern": "press-toggle",
-    "accessibility": { "role": "button", "keyboard": ["Enter", "Space"], "attributes": ["aria-pressed"] }
+    "accessibility": {
+      "role": "button",
+      "keyboard": [
+        "Enter",
+        "Space"
+      ],
+      "attributes": [
+        "aria-pressed"
+      ]
+    }
   },
   "filterSubVariants": [
     "label-only",
