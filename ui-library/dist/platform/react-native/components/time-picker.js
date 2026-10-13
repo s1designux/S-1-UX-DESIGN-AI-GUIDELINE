@@ -229,7 +229,7 @@ export default function S1TimePicker({ size, breakName = DEFAULT_BREAK, parts, o
             <N k="n10" as={S1Tab} a={{ "data-s1-part": "tabs", "data-s1-component": "tab", "data-size": "sm", "data-break": "mobile", "role": "tablist", "aria-label": "날짜·시간 선택" }} p={{ size: "sm", "aria-label": "날짜·시간 선택", tabs: [{"content":"날짜","attrs":{"aria-selected":"false","data-value":"date"}},{"content":"시간","attrs":{"aria-selected":"true","data-value":"time"}}], omit: ["tabpanel (optional)"], parts: {"tab":"시간"}, ...attrProps(slot(partScope, "nested:tab").attrs) }} />
             <El k="n11" a={{ "data-s1-part": "date-panel", "hidden": "", ...(slot(partScope, "datePanel").attrs ?? {}) }}>
               <El k="n12" a={{ "data-s1-part": "date-panel-note", ...(slot(partScope, "datePanelNote").attrs ?? {}) }}>
-                {slot(partScope, "datePanelNote").content ?? "날짜 선택 화면은 Date Picker 코어가 별도로 제공합니다(이 컴포넌트 범위 밖 — river 지시 \"date-picker 를 끌어들이지 말고 탭 전환만 구현\")."}
+                {slot(partScope, "datePanelNote").content ?? "날짜 선택 화면은 Date Picker 부품이 따로 제공합니다(이 부품은 탭 전환만 합니다)."}
               </El>
             </El>
             <El k="n13" a={{ "data-s1-part": "wheel", ...(slot(partScope, "wheel").attrs ?? {}) }}>

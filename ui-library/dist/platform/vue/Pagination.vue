@@ -2,11 +2,11 @@
 <!-- S1Pagination — 승인된 배포본을 그대로 마운트하는 Vue 껍데기.
      MARKUPS 는 dist/examples/pagination*.html 안의 승인된 인스턴스를 그대로 도려낸 것이다. -->
 <script setup>
-import { onBeforeUnmount, onMounted, ref, watch, watchEffect } from "vue";
+import { getCurrentInstance, onBeforeUnmount, onMounted, ref, watch, watchEffect } from "vue";
 import { init, destroy } from "../../components/pagination.js";
 
 const MARKUPS = {
-  "pc": "<nav data-s1-component=\"pagination\" data-total-pages=\"6\" data-page=\"1\" aria-label=\"페이지 탐색\">\n  <span data-s1-part=\"arrow-group\"><button type=\"button\" data-s1-action=\"first\" aria-label=\"첫 페이지\"><span data-s1-part=\"icon\" data-icon=\"edge\" aria-hidden=\"true\"></span></button><button type=\"button\" data-s1-action=\"previous\" aria-label=\"이전 페이지\"><span data-s1-part=\"icon\" data-icon=\"chevron\" aria-hidden=\"true\"></span></button></span>\n  <span data-s1-part=\"pages\"><button type=\"button\" data-s1-part=\"page\" data-page=\"1\" aria-current=\"page\">1</button><button type=\"button\" data-s1-part=\"page\" data-page=\"2\">2</button><button type=\"button\" data-s1-part=\"page\" data-page=\"3\">3</button><button type=\"button\" data-s1-part=\"page\" data-page=\"4\">4</button><button type=\"button\" data-s1-part=\"page\" data-page=\"5\">5</button><button type=\"button\" data-s1-part=\"page\" data-page=\"6\">6</button></span>\n  <span data-s1-part=\"arrow-group\"><button type=\"button\" data-s1-action=\"next\" aria-label=\"다음 페이지\"><span data-s1-part=\"icon\" data-icon=\"chevron\" aria-hidden=\"true\"></span></button><button type=\"button\" data-s1-action=\"last\" aria-label=\"마지막 페이지\"><span data-s1-part=\"icon\" data-icon=\"edge\" aria-hidden=\"true\"></span></button></span>\n</nav>"
+  "pc": "<nav data-s1-component=\"pagination\" data-total-pages=\"6\" data-page=\"1\" aria-label=\"페이지 탐색\">\n  <span data-s1-part=\"arrow-group\"><button type=\"button\" data-s1-action=\"first\" aria-label=\"이전 페이지 묶음\"><span data-s1-part=\"icon\" data-icon=\"edge\" aria-hidden=\"true\"></span></button><button type=\"button\" data-s1-action=\"previous\" aria-label=\"이전 페이지\"><span data-s1-part=\"icon\" data-icon=\"chevron\" aria-hidden=\"true\"></span></button></span>\n  <span data-s1-part=\"pages\"><button type=\"button\" data-s1-part=\"page\" data-page=\"1\" aria-current=\"page\">1</button><button type=\"button\" data-s1-part=\"page\" data-page=\"2\">2</button><button type=\"button\" data-s1-part=\"page\" data-page=\"3\">3</button><button type=\"button\" data-s1-part=\"page\" data-page=\"4\">4</button><button type=\"button\" data-s1-part=\"page\" data-page=\"5\">5</button><button type=\"button\" data-s1-part=\"page\" data-page=\"6\">6</button></span>\n  <span data-s1-part=\"arrow-group\"><button type=\"button\" data-s1-action=\"next\" aria-label=\"다음 페이지\"><span data-s1-part=\"icon\" data-icon=\"chevron\" aria-hidden=\"true\"></span></button><button type=\"button\" data-s1-action=\"last\" aria-label=\"다음 페이지 묶음\"><span data-s1-part=\"icon\" data-icon=\"edge\" aria-hidden=\"true\"></span></button></span>\n</nav>"
 };
 const DEFAULT_BREAK = "pc";
 const BREAKS = ["pc"];
@@ -43,9 +43,27 @@ function assertAllowed(label, value, allowed) {
   throw new Error(`[s1-ui] pagination: 승인되지 않은 ${label} "${value}". 쓸 수 있는 값: ${allowed.join(", ")}`);
 }
 
+/* 같은 페이지에 껍데기가 여럿이어도 id 가 겹치지 않게, 인스턴스마다 접두사를 붙인다(React 껍데기의 useId 와 같은 목적).
+   마크업 안의 id 와 그것을 가리키는 속성(aria-*·for·data-s1-open)을 함께 바꾼다. */
+const uid = `s1v${getCurrentInstance()?.uid ?? 0}`;
+function uniquifyIds(element) {
+  const nodes = [element, ...element.querySelectorAll("*")];
+  const ids = new Set(nodes.map((node) => node.id).filter(Boolean));
+  if (!ids.size) return;
+  const rename = (value) => (ids.has(value) ? `${uid}-${value}` : value);
+  for (const node of nodes) {
+    if (node.id) node.id = rename(node.id);
+    for (const name of ["aria-labelledby", "aria-describedby", "aria-controls", "for", "data-s1-open"]) {
+      const value = node.getAttribute(name);
+      if (value) node.setAttribute(name, value.split(/\s+/).map(rename).join(" "));
+    }
+  }
+}
+
 function mount() {
   host.value.innerHTML = MARKUPS[props.breakName] ?? MARKUPS[DEFAULT_BREAK];
   const element = host.value.firstElementChild;
+  uniquifyIds(element);
   init(element);
   for (const [eventName, emitName] of []) {
     const handler = (event) => emit(emitName, event.detail ?? event);
@@ -65,6 +83,7 @@ function unmount() {
 
 onMounted(mount);
 onBeforeUnmount(unmount);
+
 
 /* break 가 바뀌면 마크업 자체가 다른 파일이라 다시 마운트해야 한다.
    mount() 는 onMounted 로 한 번만 도니 여기서 갈아 끼운다

@@ -1,7 +1,6 @@
-<!-- 정본 기본 채움 그대로: Footer=Single, 본문에 Bottom Sheet Option Type=Text 4줄(2번째 Selected).
-     검수·예시라서 hidden 없이 열린 상태로 둔다. 루트에 data-s1-part="sheet" 를 함께 달아 date-picker·
-     time-picker 가 부르는 이름과 겹쳐도 안전함을 보인다(선택 부품 — 3-build-spec.md A-2). -->
-<div data-s1-component="bottom-sheet" data-s1-part="sheet" data-break="mobile" data-footer="single">
+<!-- 쓰는 법(옵션·값·이벤트·여닫기)은 components/bottom-sheet.md 에 있습니다. -->
+<button type="button" data-s1-component="button" data-variant="primary" data-size="lg" data-s1-open="bottom-sheet-example"><span data-s1-part="label">시트 열기</span></button>
+<div id="bottom-sheet-example" data-s1-component="bottom-sheet" data-s1-part="sheet" data-break="mobile" data-footer="single" hidden>
   <div data-s1-part="sheet-backdrop"></div>
   <div data-s1-part="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="bottom-sheet-example-title" tabindex="-1">
     <div data-s1-part="sheet-content">
@@ -26,7 +25,7 @@
       </div>
     </div>
     <div data-s1-part="sheet-footer">
-      <button type="button" data-s1-component="button" data-variant="primary" data-size="lg"><span data-s1-part="label">적용</span></button>
+      <button type="button" data-s1-component="button" data-variant="primary" data-size="lg" data-s1-close="apply"><span data-s1-part="label">적용</span></button>
     </div>
   </div>
 </div>

@@ -102,6 +102,16 @@ export interface S1ChipProps extends S1BaseProps {
   size?: "sm" | "md";
   /** 화면 기준: pc · mobile (기본 pc) */
   breakName?: "pc" | "mobile";
+  /** s1:chip:beforechange */
+  onBeforechange?: (event: CustomEvent) => void;
+  /** s1:chip:change */
+  onChange?: (event: CustomEvent) => void;
+  /** 켜져 있나(제어형) — 주면 부품은 이 값이 바뀔 때만 모양이 바뀐다. 사용자가 눌러도 onSelectedChange 로 알리기만 한다. */
+  selected?: boolean;
+  /** 처음 켜져 있나(비제어형) */
+  defaultSelected?: boolean;
+  /** 눌려서 켜지거나(true) 꺼질(false) 때 — 제어형이면 바뀌기 전에, 비제어형이면 바뀐 뒤에 불린다 */
+  onSelectedChange?: (selected: boolean) => void;
 }
 export declare function S1Chip(props: S1ChipProps): ReactElement;
 
@@ -225,6 +235,16 @@ export declare function S1Table(props: S1TableProps): ReactElement;
 export interface S1MobileBottomNavProps extends S1BaseProps {
   /** 승인된 변형: home · search · notification · settings */
   variant?: "home" | "search" | "notification" | "settings";
+  /** s1:mobile-bottom-nav:beforechange */
+  onBeforechange?: (event: CustomEvent) => void;
+  /** s1:mobile-bottom-nav:change */
+  onChange?: (event: CustomEvent) => void;
+  /** 켜져 있나(제어형) — 주면 부품은 이 값이 바뀔 때만 모양이 바뀐다. 사용자가 눌러도 onSelectedChange 로 알리기만 한다. */
+  selected?: boolean;
+  /** 처음 켜져 있나(비제어형) */
+  defaultSelected?: boolean;
+  /** 눌려서 켜지거나(true) 꺼질(false) 때 — 제어형이면 바뀌기 전에, 비제어형이면 바뀐 뒤에 불린다 */
+  onSelectedChange?: (selected: boolean) => void;
 }
 export declare function S1MobileBottomNav(props: S1MobileBottomNavProps): ReactElement;
 
@@ -313,6 +333,16 @@ export declare function S1ModalContent(props: S1ModalContentProps): ReactElement
 export interface S1BottomSheetOptionProps extends S1BaseProps {
   /** 승인된 변형: text · checkbox · radio · list */
   variant?: "text" | "checkbox" | "radio" | "list";
+  /** s1:bottom-sheet-option:beforechange */
+  onBeforechange?: (event: CustomEvent) => void;
+  /** s1:bottom-sheet-option:change */
+  onChange?: (event: CustomEvent) => void;
+  /** 켜져 있나(제어형) — 주면 부품은 이 값이 바뀔 때만 모양이 바뀐다. 사용자가 눌러도 onSelectedChange 로 알리기만 한다. */
+  selected?: boolean;
+  /** 처음 켜져 있나(비제어형) */
+  defaultSelected?: boolean;
+  /** 눌려서 켜지거나(true) 꺼질(false) 때 — 제어형이면 바뀌기 전에, 비제어형이면 바뀐 뒤에 불린다 */
+  onSelectedChange?: (selected: boolean) => void;
 }
 export declare function S1BottomSheetOption(props: S1BottomSheetOptionProps): ReactElement;
 
@@ -323,6 +353,8 @@ export interface S1BottomSheetProps extends S1BaseProps {
   onOpen?: (event: CustomEvent) => void;
   /** s1:bottom-sheet:close */
   onClose?: (event: CustomEvent) => void;
+  /** 열려 있나 — 기본 true(처음부터 보임). false 면 닫힌 채 그려진다. */
+  open?: boolean;
 }
 export declare function S1BottomSheet(props: S1BottomSheetProps): ReactElement;
 

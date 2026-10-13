@@ -1,6 +1,6 @@
 # @s1/ui-react
 
-**배포본 번호 0.19.0** · 2026-10-12 판
+**배포본 번호 0.22.1** · 2026-10-13 판
 이 번호가 최신인지는 디자인가이드 내려받기 화면에서 확인하세요 — 번호가 다르면 새로 받으면 됩니다.
 코드에서 볼 때는 `import { S1_VERSION } from "@s1/ui-react"` 입니다.
 
@@ -78,7 +78,7 @@ import { S1Button, S1Input, S1Table } from "@s1/ui-react";
 | `S1Checkbox` | — | — | — | `value`·`onChange` | 여러 항목을 독립적으로 켜고 끌 때(다중 선택). 약관 동의처럼 항목마다 따로 켜고 끌 때. |
 | `S1Radio` | — | — | — | `value`·`onChange` | 여러 보기 중 하나만 고를 때(상호배타). |
 | `S1Toggle` | — | — | — | `parts` | 단일 설정을 즉시 켜고 끌 때(즉시 반영). |
-| `S1Chip` | `line` `solid` | PC `sm` `md` · 모바일 `sm` | `pc` `mobile` | `parts` | 선택 가능한 태그·필터를 나열할 때. filter 는 드롭다운으로 값을 고르고 적용 완료(complete)를 표시할 때. |
+| `S1Chip` | `line` `solid` | PC `sm` `md` · 모바일 `sm` | `pc` `mobile` | `onBeforechange` · `onChange` | 선택 가능한 태그·필터를 나열할 때. filter 는 드롭다운으로 값을 고르고 적용 완료(complete)를 표시할 때. |
 | `S1Dropdown` | `text` `checkbox` | `xxsm` `xsm` `md` | — | `options` · `onChange` | 트리거를 눌러 옵션 목록에서 하나를 고를 때(글자 유형). 한 목록에서 여러 항목을 동시에 고를 때(체크박스 유형) — 필터·대상 선택 등. Select 의 기반 컴포넌트. |
 | `S1Select` | — | PC `xxsm` `xsm` `md` · 모바일 `md` | `pc` `mobile` | `options` · `onChange` · `onOpen` · `onClose` | 단일 값을 목록에서 고르는 폼 필드일 때. Dropdown 토큰(--dropdown-*)을 재사용한다. |
 | `S1FilterChip` | `line` `solid` | PC `sm` `md` · 모바일 `md` | `pc` `mobile` | `options` · `onChange` · `onOpen` · `onClose` | 목록·표의 정렬/기간/범주 같은 조건을 바꿀 때. 선택한 값을 칩 자체에 계속 보여줘야 할 때(무엇이 걸려 있는지 한눈에). |
@@ -88,7 +88,7 @@ import { S1Button, S1Input, S1Table } from "@s1/ui-react";
 | `S1MultiToggle` | — | `md` `sm` `xsm` | — | `cells` · `onChange` | 선택지가 2~4개로 적고 서로 배타적일 때(정렬 기준·기간 범위 등). 선택 결과가 즉시 화면에 반영돼야 할 때. |
 | `S1Modal` | `single` `dual` | — | `pc` `mobile` | `onOpen` · `onClose` | 확인·알림 등 흐름을 멈추고 결정을 받을 때. Single=알림/설명체 1버튼, Dual=확인/질문체 2버튼. |
 | `S1Table` | — | PC `md` `sm` `xsm` | — | `headerCells` · `rows` · `onSelectionchange` | 행·열의 정형 데이터를 보여줄 때. 정렬·선택(체크박스)·행 hover/selected 가 필요할 때. |
-| `S1MobileBottomNav` | `home` `search` `notification` `settings` | — | — | `parts` | 모바일 화면에서 최상위 영역 간 이동을 항상 보이게 둘 때. 탭 수가 3~5개로 고정된 주요 메뉴 구조일 때. |
+| `S1MobileBottomNav` | `home` `search` `notification` `settings` | — | — | `onBeforechange` · `onChange` | 모바일 화면에서 최상위 영역 간 이동을 항상 보이게 둘 때. 탭 수가 3~5개로 고정된 주요 메뉴 구조일 때. |
 | `S1MobileHeader` | `home-title` `home-title-subtitle` `standard-title` `standard-title-close` `standard-no-title` `standard-no-title-close` | — | — | `parts` | 모바일 앱 또는 모바일 웹 화면에서 상단 전역 크롬과 화면 이동 동작을 제공할 때. 회원가입처럼 앱바 안 제목을 비우고 본문 큰 제목을 사용하는 화면에는 Standard / No Title을 쓴다. |
 | `S1TimePicker` | — | PC `xxsm` `xsm` `md` · 모바일 `md` | `pc` `mobile` | `onOpen` · `onClose` · `onChange` | 시간(시/분)을 드롭다운 목록에서 고를 때. |
 | `S1DatePicker` | `single` `range` | PC `xxsm` `xsm` `md` · 모바일 `md` | `pc` `mobile` | `onOpen` · `onClose` · `onChange` | 날짜(단일/기간)를 고를 때. 트리거는 Base Input 필드. PC 는 팝오버 캘린더, Mobile 은 바텀시트로 표출. |
@@ -98,7 +98,7 @@ import { S1Button, S1Input, S1Table } from "@s1/ui-react";
 | `S1AssistButton` | — | — | — | `parts` | 본문 옆이나 목록 행 안처럼 좁은 자리에서, 눈에 덜 띄는 보조 동작 하나를 둘 때. 코어 Button 의 4크기(MD·XSM·XXSM·LG) 어디에도 맞지 않는, 원본에 정의된 고정 32px 자리. |
 | `S1TextButton` | `primary` `secondary` | — | — | `parts` | 링크에 가까운 가벼운 보조 동작(더보기·자세히 등)을 텍스트만으로 표시할 때. Primary 는 강조가 필요한 텍스트 액션, Secondary 는 덜 중요한 텍스트 액션. |
 | `S1ModalContent` | `single` `dual` | PC `md` `lg` `xl` | — | `onOpen` · `onClose` | 입력창·표·이미지처럼 확인 계열(짧은 텍스트)보다 큰 본문이 필요할 때. Single=알림/설명체 1버튼, Dual=확인/질문체 2버튼(확인 계열과 같은 규칙). |
-| `S1BottomSheetOption` | `text` `checkbox` `radio` `list` | — | — | `parts` | 바텀시트 본문에 고를 것을 줄로 늘어놓을 때. Text = 한 값 고르기(고른 줄에 파란 체크), Checkbox = 여러 값 고르기, Radio = 한 값 고르기(동그라미 표시), List = 사람·항목처럼 아바타와 설명이 함께 있는 줄. |
+| `S1BottomSheetOption` | `text` `checkbox` `radio` `list` | — | — | `onBeforechange` · `onChange` | 바텀시트 본문에 고를 것을 줄로 늘어놓을 때. Text = 한 값 고르기(고른 줄에 파란 체크), Checkbox = 여러 값 고르기, Radio = 한 값 고르기(동그라미 표시), List = 사람·항목처럼 아바타와 설명이 함께 있는 줄. |
 | `S1BottomSheet` | `none` `single` `dual` | — | — | `onOpen` · `onClose` | 모바일에서 목록을 띄워 고르게 할 때 — 드롭다운 대신 쓴다(density-policy mobileSubstitutes.dropdown). 모바일에서 날짜·시간처럼 넓은 선택 UI 를 띄울 때. Footer=None 은 고르는 즉시 적용되는 목록, Single 은 '적용' 하나, Dual 은 '취소+적용'. |
 | `S1ListRow` | `nav` `value` `read` `pick` `agree` `switch` `thumb` | — | — | `parts` | 같은 모양의 줄이 반복되는 목록을 만들 때. |
 | `S1ExpandableCard` | — | — | — | `onChange` | 한 화면에 여러 덩어리를 쌓아 두고, 필요한 것만 펴서 보게 할 때. 질문과 답처럼 제목만으로 고르고 내용은 접어 두는 목록. |

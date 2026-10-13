@@ -1,7 +1,3 @@
-/* Table — 정본 buildTableCell(38/44 높이, 글자 좌측 16, 하단 1px 구분선) ·
-   buildTable(외곽 상단 2px·하단 1px strong, 선택 컬럼 48px) 기준.
-   상태(Default·Hover·Selected)는 정본과 같이 '셀'이 소유하고, 행은 그 조합으로 표현한다.
-   푸터(페이지네이션·보기 셀렉트)는 이 모듈이 소유하지 않는다 — 승인된 pagination·select 배포본을 화면에서 조립한다. */
 [data-s1-component="table"] {
   border-bottom: var(--border-width-1) solid var(--color-table-border-strong);
   border-top: var(--border-width-2) solid var(--color-table-border-strong);
@@ -11,14 +7,13 @@
   width: 100%;
 }
 
-[data-s1-component="table"] [data-s1-part="table"] {
+[data-s1-component="table"] [data-s1-part="table"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))) {
   border-collapse: collapse;
   width: 100%;
 }
 
-/* 셀 공통 — 높이·글자는 size 축(md 44/14, sm 38/13)을 따른다. */
-[data-s1-component="table"] [data-s1-part="header-cell"],
-[data-s1-component="table"] [data-s1-part="cell"] {
+[data-s1-component="table"] [data-s1-part="header-cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))),
+[data-s1-component="table"] [data-s1-part="cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))) {
   border-bottom: var(--border-width-1) solid var(--color-table-border-default);
   box-sizing: border-box;
   font-family: "Pretendard Variable", "Pretendard", sans-serif;
@@ -31,42 +26,36 @@
   white-space: nowrap;
 }
 
-/* sm 은 높이만 38 로 줄인다. 글자는 md 와 같은 14 — 정본의 13 표기는 텍스트 스타일에 없어
-   줄곧 14 로 치환돼 왔고 2026-09-02 river 결정으로 정본 표기도 14 로 정정됐다. */
-[data-s1-component="table"][data-size="sm"] [data-s1-part="header-cell"],
-[data-s1-component="table"][data-size="sm"] [data-s1-part="cell"] {
+[data-s1-component="table"][data-size="sm"] [data-s1-part="header-cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))),
+[data-s1-component="table"][data-size="sm"] [data-s1-part="cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))) {
   height: var(--sizing-38);
 }
 
-/* xsm — 표 전용 기준(river 승인 2026-09-02): 높이 34 · 글자 12.
-   다른 컴포넌트의 xsm(34/14)과 달리 표는 데이터가 빽빽해 글자를 한 단계 줄인다. */
-[data-s1-component="table"][data-size="xsm"] [data-s1-part="header-cell"],
-[data-s1-component="table"][data-size="xsm"] [data-s1-part="cell"] {
+[data-s1-component="table"][data-size="xsm"] [data-s1-part="header-cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))),
+[data-s1-component="table"][data-size="xsm"] [data-s1-part="cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))) {
   font-size: var(--font-size-12);
   height: var(--sizing-34);
 }
 
-[data-s1-component="table"] [data-s1-part="header-cell"] {
+[data-s1-component="table"] [data-s1-part="header-cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))) {
   background: var(--color-table-header-bg);
   color: var(--color-text-body-secondary);
   font-weight: var(--font-weight-medium);
 }
 
-[data-s1-component="table"] [data-s1-part="cell"] {
+[data-s1-component="table"] [data-s1-part="cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))) {
   background: var(--color-table-cell-default);
   color: var(--color-text-body-primary);
   font-weight: var(--font-weight-regular);
 }
 
-/* 열 정렬 — river 결정(2026-09-02, HD-3 B)으로 공식 옵션. 기본은 정본과 같은 왼쪽 정렬. */
-[data-s1-component="table"] [data-s1-part="header-cell"][data-align="center"],
-[data-s1-component="table"] [data-s1-part="cell"][data-align="center"] {
+[data-s1-component="table"] [data-s1-part="header-cell"][data-align="center"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))),
+[data-s1-component="table"] [data-s1-part="cell"][data-align="center"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))) {
   text-align: center;
 }
 
-/* 선택 컬럼 — 정본 48px 전용 컬럼(체크박스만). 체크박스 시각은 코어 s1 checkbox 가 소유한다. */
-[data-s1-component="table"] [data-s1-part="header-cell"][data-selection],
-[data-s1-component="table"] [data-s1-part="cell"][data-selection] {
+[data-s1-component="table"] [data-s1-part="header-cell"][data-selection]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))),
+[data-s1-component="table"] [data-s1-part="cell"][data-selection]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))) {
   padding: 0 var(--spacing-8);
   text-align: center;
   width: var(--sizing-48);
@@ -77,35 +66,30 @@
   vertical-align: middle;
 }
 
-/* 상태 — 정본 Cell 변형과 1:1. Hover 는 마우스가 있는 환경에서만. */
 @media (hover: hover) {
-  [data-s1-component="table"] [data-s1-part="row"]:hover > [data-s1-part="cell"] {
+  [data-s1-component="table"] [data-s1-part="row"]:hover > [data-s1-part="cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))) {
     background: var(--color-table-cell-hover);
   }
 }
 
-[data-s1-component="table"] [data-s1-part="row"][data-state="hover"] > [data-s1-part="cell"],
-[data-s1-component="table"] [data-s1-part="cell"][data-state="hover"] {
+[data-s1-component="table"] [data-s1-part="row"][data-state="hover"] > [data-s1-part="cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))),
+[data-s1-component="table"] [data-s1-part="cell"][data-state="hover"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))) {
   background: var(--color-table-cell-hover);
 }
 
-[data-s1-component="table"] [data-s1-part="row"][data-selected="true"] > [data-s1-part="cell"],
-[data-s1-component="table"] [data-s1-part="cell"][data-state="selected"] {
+[data-s1-component="table"] [data-s1-part="row"][data-selected="true"] > [data-s1-part="cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))),
+[data-s1-component="table"] [data-s1-part="cell"][data-state="selected"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))) {
   background: var(--color-table-cell-selected);
 }
 
-
-/* ── 밀도(density) — registry/governance/density-policy.json 에서 생성. 손편집 금지 ── */
-/* density:normal 보통(34px) — data-size 를 직접 주면 그쪽이 이긴다 */
-[data-s1-density="normal"] [data-s1-component="table"]:not([data-size]) [data-s1-part="header-cell"],
-[data-s1-density="normal"] [data-s1-component="table"]:not([data-size]) [data-s1-part="cell"] {
+[data-s1-density="normal"] [data-s1-component="table"]:not([data-size]) [data-s1-part="header-cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))),
+[data-s1-density="normal"] [data-s1-component="table"]:not([data-size]) [data-s1-part="cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))) {
   font-size: var(--font-size-12);
   height: var(--sizing-34);
 }
 
-/* density:narrow 좁게(28px) — data-size 를 직접 주면 그쪽이 이긴다 */
-[data-s1-density="narrow"] [data-s1-component="table"]:not([data-size]) [data-s1-part="header-cell"],
-[data-s1-density="narrow"] [data-s1-component="table"]:not([data-size]) [data-s1-part="cell"] {
+[data-s1-density="narrow"] [data-s1-component="table"]:not([data-size]) [data-s1-part="header-cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))),
+[data-s1-density="narrow"] [data-s1-component="table"]:not([data-size]) [data-s1-part="cell"]:where(:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) *:not([data-s1-component="table"] [data-s1-component]:not([data-s1-component="table"]):not([data-s1-component="checkbox"]) [data-s1-component="table"] *))) {
   font-size: var(--font-size-12);
   height: var(--sizing-34);
 }

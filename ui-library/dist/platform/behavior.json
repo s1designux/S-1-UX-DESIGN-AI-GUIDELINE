@@ -180,7 +180,13 @@
             "on": "click",
             "target": "chip",
             "guard": "disabled=false",
-            "result": "toggle unselected ↔ selected"
+            "result": "ask s1:chip:beforechange (cancelable), then toggle unselected ↔ selected and emit s1:chip:change"
+          },
+          {
+            "on": "click",
+            "target": "chip inside [data-s1-select=single]",
+            "guard": "disabled=false",
+            "result": "ask s1:chip:beforechange, turn this chip on and every other chip in the group off, emit s1:chip:change on each changed chip; clicking the on chip keeps it on (river 결정 2026-10-13 「전부 부품이 알아서」)"
           },
           {
             "on": "click",
@@ -191,7 +197,8 @@
         ],
         "keyboard": "not-defined",
         "focus": "not-defined",
-        "accessibility": "not-defined"
+        "accessibility": "not-defined",
+        "selection": "opt-in single select on the wrapper (data-s1-select=single) — river 결정 2026-10-13 「전부 부품이 알아서」; without the attribute chips toggle individually"
       },
       "Filter Chip": {
         "source": {
@@ -491,32 +498,33 @@
           },
           {
             "on": "click",
-            "target": "first",
-            "result": "move to page 1"
+            "target": "|< (data-s1-action=first)",
+            "result": "move to the first page of the previous block (river 2026-10-13: 묶음 넘김)"
           },
           {
             "on": "click",
-            "target": "previous block",
-            "result": "move to the first page of the previous block"
+            "target": "< (data-s1-action=previous)",
+            "result": "move one page back; crossing a block edge moves the number window"
           },
           {
             "on": "click",
-            "target": "next block",
-            "result": "move to the first page of the next block"
+            "target": "> (data-s1-action=next)",
+            "result": "move one page forward; crossing a block edge moves the number window"
           },
           {
             "on": "click",
-            "target": "last",
-            "result": "move to the final page"
+            "target": ">| (data-s1-action=last)",
+            "result": "move to the first page of the next block (river 2026-10-13: 묶음 넘김)"
           }
         ],
         "constraints": [
           "show at most 6 page numbers per block",
-          "disable unavailable edge/block actions",
-          "single-page mode disables all navigation actions"
+          "disable unavailable edge/block actions: |< is disabled in the first block and >| in the last block; < is disabled on page 1 and > on the last page",
+          "single-page mode disables all navigation actions",
+          "focus stays on the current page number button when a pressed button becomes disabled or the number buttons are redrawn"
         ],
         "keyboard": "native-button",
-        "focus": "native-button",
+        "focus": "native-button; after a move the focus stays on (or returns to) the current page number button",
         "accessibility": {
           "pageNumber": "aria-label includes the page number and marks the current page in its accessible name"
         }
@@ -571,7 +579,7 @@
           "EnterOrSpace": "select focused day"
         },
         "focus": {
-          "onOpen": "focus the first enabled day",
+          "onOpen": "focus the selected day (range: the start day); if none, today; if today is not in the displayed month, the 1st of that month (river 2026-10-13). Same for the mobile sheet",
           "onEscape": "return to input"
         },
         "accessibility": {
@@ -789,21 +797,39 @@
           "sourceFile": "ui-library/src/components/mobile-bottom-nav/mobile-bottom-nav.js",
           "sourceEvidence": [
             "export const componentId = \"mobile-bottom-nav\";",
-            "export const jsRequired = false;",
-            "export const runtime = null;"
+            "export const jsRequired = true;",
+            "s1:mobile-bottom-nav:beforechange",
+            "s1:mobile-bottom-nav:change"
           ]
         },
         "status": "verified",
         "initialState": "unselected (aria-selected=false) unless the host page renders it selected",
-        "events": [],
-        "keyboard": "native button Enter/Space activation",
+        "events": [
+          {
+            "on": "click",
+            "target": "tab",
+            "guard": "tab is not the active tab and not disabled",
+            "result": "emit cancelable s1:mobile-bottom-nav:beforechange; if not prevented move aria-selected and aria-current=page to this tab, then emit s1:mobile-bottom-nav:change"
+          },
+          {
+            "on": "click",
+            "target": "active tab",
+            "result": "no event"
+          },
+          {
+            "on": "keydown ArrowLeft/ArrowRight",
+            "target": "tab",
+            "result": "move focus to the previous/next tab (wraps); selecting stays on Enter/Space"
+          }
+        ],
+        "keyboard": "native button Enter/Space activation; ArrowLeft/ArrowRight move focus between tabs; Tab visits every tab",
         "focus": "native button focus with a 2px visible outline",
         "accessibility": {
           "role": "tab (root); a surrounding role=tablist container is owned by the host screen",
           "name": "the visible label text",
-          "selected": "aria-selected reflects the host page's current route; no local toggle logic"
+          "selected": "the runtime moves aria-selected and aria-current=page; a routing-driven screen may still set aria-selected itself or call setActive()"
         },
-        "runtimeNote": "런타임 없음(jsRequired=false). 선택 상태는 호스트 화면이 정적으로 설정한 aria-selected 를 CSS 가 그대로 반영한다(HD-1 선택지 A — 화살표 키 이동·로컬 클릭 토글은 범위 밖)."
+        "runtimeNote": "river 결정 2026-10-13 「전부 부품이 알아서」 — 2026-09-02 HD-1 선택지 A(런타임 없음·호스트가 정적으로 설정)를 뒤집었다. 화면이 beforechange 에서 preventDefault 로 막을 수 있다."
       },
       "Mobile Header": {
         "source": {
@@ -825,6 +851,50 @@
           "headingRole": "variants without title text render an empty non-heading span; the page body's own h1 acts as the primary heading"
         },
         "runtimeNote": "런타임 없음(jsRequired=false). StatusBar·Platform 축은 river 결정(D5)으로 배포본에서 뺐다 — AppBar 56px·Type 7종(Home 3 · Standard 4)을 배포한다. 2026-09-15 에 Home / Title + 1 Icon 이 더해져 6종 → 7종."
+      },
+      "Bottom Sheet Option": {
+        "source": {
+          "sectionId": "bottom-sheet-option",
+          "sourceFile": "ui-library/src/components/bottom-sheet-option/bottom-sheet-option.js",
+          "sourceEvidence": [
+            "export const componentId = \"bottom-sheet-option\";",
+            "export const jsRequired = true;",
+            "s1:bottom-sheet-option:beforechange",
+            "s1:bottom-sheet-option:change"
+          ]
+        },
+        "status": "verified",
+        "initialState": "default (data-state=default); a row marked selected stays selected",
+        "events": [
+          {
+            "on": "click",
+            "target": "text/radio option inside [data-s1-select=single]",
+            "guard": "not disabled",
+            "result": "emit cancelable s1:bottom-sheet-option:beforechange; if not prevented select this row, deselect the others, then emit s1:bottom-sheet-option:change {value,label}"
+          },
+          {
+            "on": "click",
+            "target": "option inside a group with data-s1-close-on-select",
+            "result": "ask the bottom sheet to close (reason=select), also when the same row is picked again"
+          },
+          {
+            "on": "keydown ArrowUp/ArrowDown/Home/End",
+            "target": "text option",
+            "result": "move focus between enabled rows (roving tabindex)"
+          },
+          {
+            "on": "keydown Enter/Space",
+            "target": "text option",
+            "result": "select the focused row"
+          }
+        ],
+        "selection": "opt-in single select on the group (data-s1-select=single) — river 결정 2026-10-13 「전부 부품이 알아서」; list and checkbox rows are not handled; without the attribute nothing changes",
+        "keyboard": "text rows: arrows/Home/End move, Enter/Space select, the selected row is the Tab stop; radio rows: native keyboard",
+        "focus": "roving tabindex on text rows",
+        "accessibility": {
+          "group": "role=listbox (radiogroup when only radio rows), named by the sheet title",
+          "option": "role=option with aria-selected for text rows; native radio for radio rows"
+        }
       }
     }
   }

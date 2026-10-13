@@ -4,6 +4,7 @@
    치수·색은 이 파일에 없다 — specs/mobile-bottom-nav.js 의 표(배포본 CSS 를 캐스케이드까지 계산한 결과)에서 온다. */
 import { useId, useState } from "react";
 import { El, N, Root, attrProps, nestedFrom, propsOf } from "../engine.js";
+import { useBehavior } from "../behaviors.js";
 import { scopeOf, slot } from "../runtime.js";
 import SPEC from "../specs/mobile-bottom-nav.js";
 
@@ -18,6 +19,9 @@ function assertAllowed(label, value, allowed) {
   if (value === undefined || allowed.length === 0 || allowed.includes(value)) return;
   throw new Error(`[s1-ui] mobile-bottom-nav: 승인되지 않은 ${label} "${value}". 쓸 수 있는 값: ${allowed.join(", ")}`);
 }
+
+/* 동작의 처음 상태 — 승인 예제가 정한 값(고른 탭·열린 카드·체크된 줄 …). 템플릿(화면·모드·유형)마다 하나. */
+const BEHAVIOR = [{"attr":"aria-selected","initial":true,"also":{"aria-current":["page",null]}}];
 
 /* 같은 화면·모드에 구조가 다른 템플릿이 여럿이면, 루트 속성이 가장 많이 맞는 것을 고른다(안 준 속성은 따지지 않는다). */
 function pickGroup(current, groups) {
@@ -43,12 +47,13 @@ function pickTemplate(breakName, mode, current) {
   return 0;
 }
 
-export default function S1MobileBottomNav({ variant, parts, partProps, style, outer, omit, lifted: initialLifted, forceState, ...rest }) {
+export default function S1MobileBottomNav({ variant, parts, onBeforechange, onChange, selected, defaultSelected, onSelectedChange, partProps, style, outer, omit, lifted: initialLifted, forceState, ...rest }) {
   const uid = useId();
   const partScope = scopeOf(parts);
   assertAllowed("variant", variant, VARIANTS);
   const tpl = pickTemplate(DEFAULT_BREAK, undefined, undefined);
-  const controller = undefined;
+  /* 동작 — 눌렀을 때 무엇이 바뀌는지는 behaviors.js 가 정한다(승인 배포본의 동작 · platform/behavior.json). */
+  const controller = useBehavior("toggle", { ...BEHAVIOR[tpl], ...SPEC.templates[tpl].metrics }, { value: selected, defaultValue: defaultSelected, onChange: onSelectedChange, onBeforechange, onAfterchange: onChange, disabled: rest.disabled, rest });
   const lifted = initialLifted;
 
   if (tpl === 0) {

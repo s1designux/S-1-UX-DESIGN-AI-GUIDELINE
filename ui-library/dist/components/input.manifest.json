@@ -122,16 +122,16 @@
         "distribution": "examples/input.password.html"
       },
       "password-mobile": {
-        "source": "components/input/input.password-mobile.example.html",
-        "distribution": "examples/input.password-mobile.html"
+        "source": "components/input/input.password.mobile.example.html",
+        "distribution": "examples/input.password.mobile.html"
       },
       "search": {
         "source": "components/input/input.search.example.html",
         "distribution": "examples/input.search.html"
       },
       "search-mobile": {
-        "source": "components/input/input.search-mobile.example.html",
-        "distribution": "examples/input.search-mobile.html"
+        "source": "components/input/input.search.mobile.example.html",
+        "distribution": "examples/input.search.mobile.html"
       }
     }
   },
@@ -264,5 +264,5 @@
     "controlMode": "uncontrolled",
     "behavior": "Focus에서 값이 있을 때 remove action을 보이고, 실행하면 값 삭제·input event 발생·Input focus 복귀. Password 옵션(type=password + action[data-action=password])이 있으면 누를 때마다 type 을 password↔text 로 바꾸고 aria-pressed·aria-label 을 맞춘 뒤 focus 를 되돌린다. Search 옵션(root[data-mode=search] + action[data-action=search])이 있으면 클릭 또는 Enter(IME 조합 제외)에서 s1:input:search 를 발화하고, clear 표시 조건은 focus 와 무관하게 값 유무만 본다."
   },
-  "sourceFingerprint": "ce3f3232d60aa0f78edb1e37bd383dd279af495410840c2c4f03400efe4dc506"
+  "sourceFingerprint": "f059f399f5bec246aa5365bff5ba5b53ae05c06bf09480ab0786ed8925a46880"
 }

@@ -1,8 +1,8 @@
 {
   "id": "date-picker",
-  "version": "0.2.12",
+  "version": "0.4.0",
   "status": "approved",
-  "canonicalFingerprint": "934945a7ce9d7a374389cebdee02db7ed5398ae19f6abef54428bffcc65cc409",
+  "canonicalFingerprint": "58222df141bbfa0787e41becfe79afefe74d76c35352453ae88ecead4e09bf3d",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -307,7 +307,7 @@
     },
     "focus": {
       "status": "required",
-      "value": "PC 팝오버가 열리면 격자의 첫 활성 셀로 포커스 이동, 닫히면 트리거로 복귀. Mobile 시트는 열리면 시트 안으로, 닫히면 트리거로 복귀(모달과 동일 패턴, 별도 focus trap은 시트 안에서 Esc·배경·닫기로만 닫히는 단순 계약)"
+      "value": "열리면 키보드 초점이 달력의 날짜 칸으로 간다 — 골라 둔 날짜(기간이면 시작일), 없으면 오늘, 오늘이 보이는 달에 없으면 그 달의 1일(막힌 날이면 그 달의 첫 선택 가능 날짜). PC 팝오버와 모바일 시트가 같은 규칙이다(river 2026-10-13 '-> 추천안으로'). 닫히면 트리거로 복귀. 모바일 시트는 시트 안에서 Esc·배경·닫기로만 닫히는 단순 계약(모달과 같은 패턴)."
     },
     "ariaStateSync": {
       "status": "required",
@@ -339,14 +339,22 @@
     },
     "methods": [
       "openPanel()",
-      "closePanel()"
+      "closePanel()",
+      "value",
+      "setValue(value)"
     ],
     "lifecycle": [
       "init(root)",
       "destroy(root)"
     ],
     "controlMode": "uncontrolled",
-    "progressiveEnhancementNote": "JavaScript 없이는 캘린더가 렌더되지 않아 날짜를 고를 수 없다 — 복합 Picker(정본 계약)라 native fallback이 없다. 트리거는 native button 이라 포커스·이름은 유지된다."
+    "progressiveEnhancementNote": "JavaScript 없이는 캘린더가 렌더되지 않아 날짜를 고를 수 없다 — 복합 Picker(정본 계약)라 native fallback이 없다. 트리거는 native button 이라 포커스·이름은 유지된다.",
+    "attributes": {
+      "data-value": "단일 모드의 처음 날짜(YYYY-MM-DD)",
+      "data-range-start": "기간 모드의 처음 시작일(YYYY-MM-DD)",
+      "data-range-end": "기간 모드의 처음 종료일(YYYY-MM-DD)",
+      "data-name": "폼 전송용 숨은 입력의 name (단일: name · 기간: name-start, name-end)"
+    }
   },
-  "sourceFingerprint": "a7b6c0b494fe18872b8517c465234bf724f87f34ed5902c6f674cedb9affb3cd"
+  "sourceFingerprint": "c11c54a586c461bccfe16282516c052f9c4aa7c38c9b26527f3f11a8b15608d9"
 }

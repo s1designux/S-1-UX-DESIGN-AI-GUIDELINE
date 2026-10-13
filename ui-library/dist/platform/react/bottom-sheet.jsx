@@ -17,9 +17,12 @@ function assertAllowed(label, value, allowed) {
   throw new Error(`[s1-ui] bottom-sheet: 승인되지 않은 ${label} "${value}". 쓸 수 있는 값: ${allowed.join(", ")}`);
 }
 
-export default function S1BottomSheet({ variant, parts, onOpen, onClose, className, style, ...rest }) {
+export default function S1BottomSheet({ variant, parts, onOpen, onClose, open = true, className, style, ...rest }) {
   const uid = useId();
   const rootRef = useRef(null);
+  const apiRef = useRef(null);
+  const openSeen = useRef(false);
+  const initialOpen = useRef(open).current;
   const partScope = scopeOf(parts);
   assertAllowed("variant", variant, VARIANTS);
 
@@ -27,9 +30,19 @@ export default function S1BottomSheet({ variant, parts, onOpen, onClose, classNa
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return undefined;
-    init(root);
-    return () => destroy(root);
+    apiRef.current = init(root);
+    return () => { apiRef.current = null; destroy(root); };
   }, []);
+
+
+  /* open 이 바뀌면 배포본 api 로 열고 닫는다(스크롤 잠금·초점·Esc·onOpen/onClose 가 함께 따라온다).
+     첫 그리기는 건너뛴다 — 기본(보임)은 마크업 그대로다. hidden 은 처음 값만 쓰고 이후는 api 가 바꾼다. */
+  useEffect(() => {
+    if (!openSeen.current) { openSeen.current = true; return; }
+    const api = apiRef.current;
+    if (!api) return;
+    if (open) api.open(); else api.close();
+  }, [open]);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -41,7 +54,7 @@ export default function S1BottomSheet({ variant, parts, onOpen, onClose, classNa
   });
 
   return (
-      <div data-s1-component="bottom-sheet" data-s1-part="sheet" data-break="mobile" data-footer={variant ?? "single"} {...(slot(partScope, "sheet").attrs ?? {})} ref={rootRef} className={className} style={style} {...rest}>
+      <div id={`${uid}-sheet`} data-s1-component="bottom-sheet" data-s1-part="sheet" data-break="mobile" data-footer={variant ?? "single"} {...(slot(partScope, "sheet").attrs ?? {})} hidden={initialOpen ? undefined : true} ref={rootRef} className={className} style={style} {...rest}>
         <div data-s1-part="sheet-backdrop" {...(slot(partScope, "sheetBackdrop").attrs ?? {})}>
           {slot(partScope, "sheetBackdrop").content ?? ""}
         </div>
@@ -82,7 +95,7 @@ export default function S1BottomSheet({ variant, parts, onOpen, onClose, classNa
             </div>
           </div>
           <div data-s1-part="sheet-footer" {...(slot(partScope, "sheetFooter").attrs ?? {})}>
-            <button type="button" data-s1-component="button" data-variant="primary" data-size="lg">
+            <button type="button" data-s1-component="button" data-variant="primary" data-size="lg" data-s1-close="apply">
               <span data-s1-part="label" {...(slot(partScope, "label").attrs ?? {})}>
                 {slot(partScope, "label").content ?? "적용"}
               </span>

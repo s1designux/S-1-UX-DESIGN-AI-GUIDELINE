@@ -387,7 +387,29 @@ export function init(root) {
 
   const applyPlaceholder = () => { value.textContent = root.dataset.placeholder || PLACEHOLDER_DEFAULT; };
 
+  /* 폼 전송 — root 에 data-name 을 주면 숨은 입력이 만들어진다(단일: name, 기간: name-start · name-end).
+     값은 선택이 바뀔 때마다(syncValueText) 같이 맞춰진다. */
+  const formName = root.dataset.name;
+  const hiddenInputs = [];
+  const makeHidden = (name) => {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = name;
+    root.appendChild(input);
+    hiddenInputs.push(input);
+    return input;
+  };
+  const hiddenSingle = formName && mode === "single" ? makeHidden(formName) : null;
+  const hiddenStart = formName && mode === "range" ? makeHidden(`${formName}-start`) : null;
+  const hiddenEnd = formName && mode === "range" ? makeHidden(`${formName}-end`) : null;
+  const syncHidden = () => {
+    if (hiddenSingle) hiddenSingle.value = s.selected ? toISO(s.selected) : "";
+    if (hiddenStart) hiddenStart.value = s.selected?.start ? toISO(s.selected.start) : "";
+    if (hiddenEnd) hiddenEnd.value = s.selected?.end ? toISO(s.selected.end) : "";
+  };
+
   const syncValueText = () => {
+    syncHidden();
     if (mode === "single") {
       if (s.selected) value.textContent = formatDisplay(s.selected); else applyPlaceholder();
       trigger.dataset.filled = s.selected ? "true" : "false";
@@ -456,6 +478,22 @@ export function init(root) {
   // F-4: 등록과 동일 참조로 제거하기 위한 named handler.
   const handleSheetCloseClick = () => close();
 
+  /* 열릴 때 키보드 초점 — 골라 둔 날짜, 없으면 오늘(기간이면 시작일). 오늘이 보이는 달에 없으면 그 달의 1일.
+     (river 결정 2026-10-13 '-> 추천안으로': 「골라 둔 날짜, 없으면 오늘」) 막힌 날이면 그 달의 첫 선택 가능 날짜로 간다. */
+  const initialFocusDate = () => {
+    const reference = s.mode === "single" ? s.selected : s.selected?.start;
+    if (reference) return reference;
+    if (s.today.getFullYear() === s.viewYear && s.today.getMonth() === s.viewMonth) return s.today;
+    return new Date(s.viewYear, s.viewMonth, 1);
+  };
+  const focusInitialCell = () => {
+    const iso = toISO(initialFocusDate());
+    const cell = container.querySelector(`[data-s1-part="cell"][data-date="${iso}"]:not(:disabled)`)
+      ?? container.querySelector('[data-s1-part="cell"][data-other-month="false"]:not(:disabled)')
+      ?? container.querySelector('[data-s1-part="cell"]:not(:disabled)');
+    cell?.focus();
+  };
+
   const open = () => {
     if (trigger.disabled || isOpen(root, trigger)) return;
     trigger.setAttribute("aria-expanded", "true");
@@ -469,10 +507,10 @@ export function init(root) {
       document.addEventListener("pointerdown", handleOutsidePointer, true);
       window.addEventListener("scroll", handleReposition, true);
       window.addEventListener("resize", handleReposition);
-      const firstCell = container.querySelector('[data-s1-part="cell"]:not(:disabled)');
-      firstCell?.focus();
+      focusInitialCell();
     } else if (brk === "mobile" && sheet) {
       openSheet();
+      focusInitialCell();
     }
     root.dispatchEvent(new CustomEvent("s1:date-picker:open", { bubbles: true, detail: {} }));
   };
@@ -605,7 +643,12 @@ export function init(root) {
     close();
   };
 
+  // 포커스가 트리거에 있을 때도(Shift+Tab 으로 돌아온 경우 등) Esc 로 닫는다 — select·time-picker·filter-chip 과 같다.
+  const handleTriggerKeydown = (event) => {
+    if (event.key === "Escape" && isOpen(root, trigger)) { event.preventDefault(); close(); }
+  };
   trigger.addEventListener("click", handleTriggerClick);
+  trigger.addEventListener("keydown", handleTriggerKeydown);
   container.addEventListener("click", handleContainerClick);
   container.addEventListener("keydown", handleContainerKeydown);
   if (mode === "range") {
@@ -632,13 +675,30 @@ export function init(root) {
 
   const api = Object.freeze({
     get open() { return isOpen(root, trigger); },
+    /* 고른 값 읽기 — 단일: "YYYY-MM-DD" 또는 null · 기간: { start, end }. */
+    get value() {
+      if (mode === "single") return s.selected ? toISO(s.selected) : null;
+      return { start: s.selected?.start ? toISO(s.selected.start) : null, end: s.selected?.end ? toISO(s.selected.end) : null };
+    },
+    /* 값 넣기(change 이벤트는 내지 않는다 — 사용자가 고른 것이 아니라 화면이 넣은 값이다). */
+    setValue(next) {
+      if (mode === "single") s.selected = parseISO(typeof next === "string" ? next : next?.value);
+      else s.selected = { start: parseISO(next?.start), end: parseISO(next?.end) };
+      const anchorDate = (mode === "single" ? s.selected : s.selected?.start) ?? today;
+      s.viewYear = anchorDate.getFullYear();
+      s.viewMonth = anchorDate.getMonth();
+      syncValueText();
+      if (isOpen(root, trigger)) rerender();
+    },
     openPanel: open,
     closePanel: close,
     destroy() {
       // C-5: 승인된 time-picker.destroy() 와 동일 — 열린 채 destroy 되면 시트가 남고 body 스크롤 잠금이
       // 영구히 풀리지 않는다. close() 를 먼저 불러 시트/패널을 정리한다.
       close({ returnFocus: false });
+      for (const input of hiddenInputs) input.remove();
       trigger.removeEventListener("click", handleTriggerClick);
+      trigger.removeEventListener("keydown", handleTriggerKeydown);
       container.removeEventListener("click", handleContainerClick);
       container.removeEventListener("keydown", handleContainerKeydown);
       container.removeEventListener("mouseover", handleContainerMouseover);

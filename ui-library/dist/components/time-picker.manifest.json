@@ -1,8 +1,8 @@
 {
   "id": "time-picker",
-  "version": "0.3.17",
+  "version": "0.5.0",
   "status": "approved",
-  "canonicalFingerprint": "7ebb028fa3968d0141666f463b779aef3baf1f698bc9ea0468e5b4c2e3528428",
+  "canonicalFingerprint": "7b0e5cd5fa4d574ad220d1ff129fe04fcc686bddaed60850cc2987c1fb4bda82",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -316,14 +316,18 @@
     },
     "methods": [
       "openPanel()",
-      "closePanel()"
+      "closePanel()",
+      "value"
     ],
     "lifecycle": [
       "init(root)",
       "destroy(root)"
     ],
     "controlMode": "uncontrolled",
-    "progressiveEnhancementNote": "JavaScript 없이는 목록 칸이 생성되지 않아 선택할 수 없다 — 복합 Picker(정본 계약)라 native fallback이 없다. 트리거는 native button 이라 포커스·이름은 유지된다(계약 progressiveEnhancement 조항에 따른 명시적 unsupported 상태)."
+    "progressiveEnhancementNote": "JavaScript 없이는 목록 칸이 생성되지 않아 선택할 수 없다 — 복합 Picker(정본 계약)라 native fallback이 없다. 트리거는 native button 이라 포커스·이름은 유지된다(계약 progressiveEnhancement 조항에 따른 명시적 unsupported 상태).",
+    "attributes": {
+      "data-name": "폼 전송용 숨은 입력의 name (확정된 시간 글자가 실린다)"
+    }
   },
-  "sourceFingerprint": "b4a42073e95fa2be87be878a1150baa31c4fdae952a6b86d095714ed86ecb287"
+  "sourceFingerprint": "5a354ee42c51261567d9a7f5dc3e78c3bc8d5c79fdca1761a18999520dc7b032"
 }

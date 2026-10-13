@@ -2,12 +2,12 @@
 <!-- S1Modal — 승인된 배포본을 그대로 마운트하는 Vue 껍데기.
      MARKUPS 는 dist/examples/modal*.html 안의 승인된 인스턴스를 그대로 도려낸 것이다. -->
 <script setup>
-import { onBeforeUnmount, onMounted, ref, watch, watchEffect } from "vue";
+import { getCurrentInstance, onBeforeUnmount, onMounted, ref, watch, watchEffect } from "vue";
 import { init, destroy } from "../../components/modal.js";
 
 const MARKUPS = {
-  "pc": "<div data-s1-component=\"modal\" data-break=\"pc\" data-footer=\"dual\" hidden>\n  <div data-s1-part=\"overlay\"></div>\n  <div data-s1-part=\"panel\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"confirm-modal-title\" aria-describedby=\"confirm-modal-message\" tabindex=\"-1\">\n    <div data-s1-part=\"content\">\n      <div data-s1-part=\"header\">\n        <h2 data-s1-part=\"title\" id=\"confirm-modal-title\">제목 영역</h2>\n        <button type=\"button\" data-s1-part=\"close\" aria-label=\"닫기\"></button>\n      </div>\n      <div data-s1-part=\"body\">\n        <p data-s1-part=\"message\" id=\"confirm-modal-message\">변경한 내용이 저장되지 않고 사라집니다.\n정말 이 작업을 진행하시겠어요?</p>\n      </div>\n    </div>\n    <div data-s1-part=\"footer\">\n      <button type=\"button\" data-s1-component=\"button\" data-variant=\"secondary\" data-size=\"xxsm\"><span data-s1-part=\"label\">취소</span></button>\n      <button type=\"button\" data-s1-component=\"button\" data-variant=\"primary\" data-size=\"xxsm\"><span data-s1-part=\"label\">확인</span></button>\n    </div>\n  </div>\n</div>",
-  "mobile": "<div data-s1-component=\"modal\" data-break=\"mobile\" data-footer=\"dual\" hidden>\n  <div data-s1-part=\"overlay\"></div>\n  <div data-s1-part=\"panel\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"confirm-modal-title\" aria-describedby=\"confirm-modal-message\" tabindex=\"-1\">\n    <div data-s1-part=\"content\">\n      <div data-s1-part=\"header\">\n        <h2 data-s1-part=\"title\" id=\"confirm-modal-title\">자동 로그인 설정</h2>\n      </div>\n      <div data-s1-part=\"body\">\n        <p data-s1-part=\"message\" id=\"confirm-modal-message\">로그인되었어요.\n다음부터 자동으로 로그인할까요?</p>\n      </div>\n    </div>\n    <div data-s1-part=\"footer\">\n      <button type=\"button\" data-s1-component=\"button\" data-variant=\"secondary\" data-size=\"lg\"><span data-s1-part=\"label\">아니오</span></button>\n      <button type=\"button\" data-s1-component=\"button\" data-variant=\"primary\" data-size=\"lg\"><span data-s1-part=\"label\">네</span></button>\n    </div>\n  </div>\n</div>"
+  "pc": "<div id=\"confirm-modal\" data-s1-component=\"modal\" data-break=\"pc\" data-footer=\"dual\" hidden>\n  <div data-s1-part=\"overlay\"></div>\n  <div data-s1-part=\"panel\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"confirm-modal-title\" aria-describedby=\"confirm-modal-message\" tabindex=\"-1\">\n    <div data-s1-part=\"content\">\n      <div data-s1-part=\"header\">\n        <h2 data-s1-part=\"title\" id=\"confirm-modal-title\">제목 영역</h2>\n        <button type=\"button\" data-s1-part=\"close\" aria-label=\"닫기\"></button>\n      </div>\n      <div data-s1-part=\"body\">\n        <p data-s1-part=\"message\" id=\"confirm-modal-message\">변경한 내용이 저장되지 않고 사라집니다.\n정말 이 작업을 진행하시겠어요?</p>\n      </div>\n    </div>\n    <div data-s1-part=\"footer\">\n      <button type=\"button\" data-s1-component=\"button\" data-variant=\"secondary\" data-size=\"xxsm\" data-s1-close=\"cancel\"><span data-s1-part=\"label\">취소</span></button>\n      <button type=\"button\" data-s1-component=\"button\" data-variant=\"primary\" data-size=\"xxsm\" data-s1-close=\"confirm\"><span data-s1-part=\"label\">확인</span></button>\n    </div>\n  </div>\n</div>",
+  "mobile": "<div id=\"confirm-modal\" data-s1-component=\"modal\" data-break=\"mobile\" data-footer=\"dual\" hidden>\n  <div data-s1-part=\"overlay\"></div>\n  <div data-s1-part=\"panel\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"confirm-modal-title\" aria-describedby=\"confirm-modal-message\" tabindex=\"-1\">\n    <div data-s1-part=\"content\">\n      <div data-s1-part=\"header\">\n        <h2 data-s1-part=\"title\" id=\"confirm-modal-title\">자동 로그인 설정</h2>\n      </div>\n      <div data-s1-part=\"body\">\n        <p data-s1-part=\"message\" id=\"confirm-modal-message\">로그인되었어요.\n다음부터 자동으로 로그인할까요?</p>\n      </div>\n    </div>\n    <div data-s1-part=\"footer\">\n      <button type=\"button\" data-s1-component=\"button\" data-variant=\"secondary\" data-size=\"lg\" data-s1-close=\"cancel\"><span data-s1-part=\"label\">아니오</span></button>\n      <button type=\"button\" data-s1-component=\"button\" data-variant=\"primary\" data-size=\"lg\" data-s1-close=\"confirm\"><span data-s1-part=\"label\">네</span></button>\n    </div>\n  </div>\n</div>"
 };
 const DEFAULT_BREAK = "pc";
 const BREAKS = ["pc","mobile"];
@@ -44,9 +44,27 @@ function assertAllowed(label, value, allowed) {
   throw new Error(`[s1-ui] modal: 승인되지 않은 ${label} "${value}". 쓸 수 있는 값: ${allowed.join(", ")}`);
 }
 
+/* 같은 페이지에 껍데기가 여럿이어도 id 가 겹치지 않게, 인스턴스마다 접두사를 붙인다(React 껍데기의 useId 와 같은 목적).
+   마크업 안의 id 와 그것을 가리키는 속성(aria-*·for·data-s1-open)을 함께 바꾼다. */
+const uid = `s1v${getCurrentInstance()?.uid ?? 0}`;
+function uniquifyIds(element) {
+  const nodes = [element, ...element.querySelectorAll("*")];
+  const ids = new Set(nodes.map((node) => node.id).filter(Boolean));
+  if (!ids.size) return;
+  const rename = (value) => (ids.has(value) ? `${uid}-${value}` : value);
+  for (const node of nodes) {
+    if (node.id) node.id = rename(node.id);
+    for (const name of ["aria-labelledby", "aria-describedby", "aria-controls", "for", "data-s1-open"]) {
+      const value = node.getAttribute(name);
+      if (value) node.setAttribute(name, value.split(/\s+/).map(rename).join(" "));
+    }
+  }
+}
+
 function mount() {
   host.value.innerHTML = MARKUPS[props.breakName] ?? MARKUPS[DEFAULT_BREAK];
   const element = host.value.firstElementChild;
+  uniquifyIds(element);
   init(element);
   for (const [eventName, emitName] of [["s1:modal:open","open"],["s1:modal:close","close"]]) {
     const handler = (event) => emit(emitName, event.detail ?? event);
@@ -66,6 +84,7 @@ function unmount() {
 
 onMounted(mount);
 onBeforeUnmount(unmount);
+
 
 /* break 가 바뀌면 마크업 자체가 다른 파일이라 다시 마운트해야 한다.
    mount() 는 onMounted 로 한 번만 도니 여기서 갈아 끼운다

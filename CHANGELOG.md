@@ -3,6 +3,60 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-10-13 16:33 (KST)
+
+- 원본 커밋: `2841cb9` — fix(ui-library): GNB 유틸 아이콘을 24 로 — 32 칸 안 24 가운데 (0.22.1)
+- 새로 추가된 파일 40개
+  - `ui-library/dist/components/assist-button.md`
+  - `ui-library/dist/components/bottom-sheet-option.md`
+  - `ui-library/dist/components/bottom-sheet.md`
+  - `ui-library/dist/components/button.md`
+  - `ui-library/dist/components/checkbox.md`
+  - `ui-library/dist/components/chip.md`
+  - `ui-library/dist/components/data-tag.md`
+  - `ui-library/dist/components/date-picker.md`
+  - `ui-library/dist/components/divider.md`
+  - `ui-library/dist/components/dropdown.md`
+  - `ui-library/dist/components/expandable-card.md`
+  - `ui-library/dist/components/filter-chip.md`
+  - `ui-library/dist/components/gnb-sub-menu-item.md`
+  - `ui-library/dist/components/gnb-sub-menu.md`
+  - `ui-library/dist/components/gnb.md`
+  - `ui-library/dist/components/input.md`
+  - `ui-library/dist/components/list-row.md`
+  - `ui-library/dist/components/lnb.md`
+  - `ui-library/dist/components/mobile-bottom-nav.md`
+  - `ui-library/dist/components/mobile-header.md`
+  - … 외 20개
+- 내용이 바뀐 파일 208개
+  - `assets/css/ui-library-guide.css`
+  - `assets/js/ui-library-guide.js`
+  - `design/DESIGN.core.md`
+  - `registry/components/bottom-sheet-option.json`
+  - `registry/components/chip.json`
+  - `registry/components/component-behavior.pc.json`
+  - `registry/components/date-picker.json`
+  - `registry/components/mobile-bottom-nav.json`
+  - `registry/components/pagination.json`
+  - `ui-library/dist/components/assist-button.css`
+  - `ui-library/dist/components/bottom-sheet-option.css`
+  - `ui-library/dist/components/bottom-sheet-option.js`
+  - `ui-library/dist/components/bottom-sheet-option.manifest.json`
+  - `ui-library/dist/components/bottom-sheet.css`
+  - `ui-library/dist/components/bottom-sheet.js`
+  - `ui-library/dist/components/bottom-sheet.manifest.json`
+  - `ui-library/dist/components/button.css`
+  - `ui-library/dist/components/checkbox.css`
+  - `ui-library/dist/components/chip.css`
+  - `ui-library/dist/components/chip.js`
+  - … 외 188개
+- 원본에서 사라져 삭제한 파일 5개
+  - `ui-library/dist/examples/bottom-sheet.html`
+  - `ui-library/dist/examples/input.password-mobile.html`
+  - `ui-library/dist/examples/input.search-mobile.html`
+  - `ui-library/dist/examples/mobile-bottom-nav.html`
+  - `ui-library/dist/examples/mobile-header.html`
+
 ## 2026-10-12 14:36 (KST)
 
 - 원본 커밋: `0e59741` — chore(map): 시스템 맵 재생성 (worktree-react-native 합치기)

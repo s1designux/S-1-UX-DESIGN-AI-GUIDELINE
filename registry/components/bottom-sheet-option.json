@@ -64,7 +64,8 @@
     "Checkbox·Radio 는 native input 을 그대로 쓴다(코어 배포본의 계약).",
     "Text 의 선택 표시(파란 체크)는 장식이다 — 선택 상태는 aria-selected·aria-checked 로 따로 알린다.",
     "비활성 줄은 disabled 또는 aria-disabled 로 알리고 초점 순서에서 뺀다.",
-    "List 의 아바타 아이콘은 장식이다 — 이름은 제목 글자가 갖는다."
+    "List 의 아바타 아이콘은 장식이다 — 이름은 제목 글자가 갖는다.",
+    "river 결정 2026-10-13 「전부 부품이 알아서」: 목록 묶음에 data-s1-select=\"single\" 을 달면 부품이 알아서 하나를 고른다 — Text(role=option·aria-selected·파란 체크)·Radio(native)만. 방향키·Home·End 이동, Enter/Space 선택, roving tabindex(고른 줄이 Tab 정거장). s1:bottom-sheet-option:beforechange(취소 가능) → change. data-s1-close-on-select 면 고른 뒤 시트가 닫힌다. 표시가 없으면 종전처럼 모양만 소유한다."
   ],
   "variantAxis": {
     "property": [

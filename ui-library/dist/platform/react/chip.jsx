@@ -17,9 +17,11 @@ function assertAllowed(label, value, allowed) {
   throw new Error(`[s1-ui] chip: 승인되지 않은 ${label} "${value}". 쓸 수 있는 값: ${allowed.join(", ")}`);
 }
 
-export default function S1Chip({ variant, size, breakName = DEFAULT_BREAK, parts, className, style, ...rest }) {
+export default function S1Chip({ variant, size, breakName = DEFAULT_BREAK, parts, onBeforechange, onChange, selected, defaultSelected, onSelectedChange, className, style, ...rest }) {
   const uid = useId();
   const rootRef = useRef(null);
+  const apiRef = useRef(null);
+  const selectedSeen = useRef(false);
   const partScope = scopeOf(parts);
   assertAllowed("variant", variant, VARIANTS);
   assertAllowed("size", size, SIZES);
@@ -29,9 +31,40 @@ export default function S1Chip({ variant, size, breakName = DEFAULT_BREAK, parts
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return undefined;
-    init(root);
-    return () => destroy(root);
+    apiRef.current = init(root);
+    return () => { apiRef.current = null; destroy(root); };
   }, [breakName]);
+
+  /* 제어형이면 부품이 스스로 모양을 바꾸지 못하게 막고 알리기만 한다. 비제어형이면 바뀐 뒤에 알린다. */
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return undefined;
+    const controlled = selected !== undefined;
+    const before = (event) => { if (controlled) { event.preventDefault(); onSelectedChange?.(event.detail?.selected ?? true); } };
+    const after = (event) => { if (!controlled) onSelectedChange?.(event.detail?.selected ?? true); };
+    root.addEventListener("s1:chip:beforechange", before);
+    root.addEventListener("s1:chip:change", after);
+    return () => { root.removeEventListener("s1:chip:beforechange", before); root.removeEventListener("s1:chip:change", after); };
+  });
+
+  /* 값이 바뀌면 이벤트 없이 부품에 넣는다(제어형). 처음 값(defaultSelected)도 한 번 넣는다. */
+  useEffect(() => {
+    const api = apiRef.current;
+    if (!api) return;
+    if (selected !== undefined) api.setSelected(selected);
+    else if (defaultSelected !== undefined && !selectedSeen.current) api.setSelected(defaultSelected);
+    selectedSeen.current = true;
+  }, [selected, breakName]);
+
+
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return undefined;
+    const bound = [["s1:chip:beforechange", onBeforechange], ["s1:chip:change", onChange]]
+      .filter(([, handler]) => typeof handler === "function");
+    for (const [eventName, handler] of bound) root.addEventListener(eventName, handler);
+    return () => { for (const [eventName, handler] of bound) root.removeEventListener(eventName, handler); };
+  });
 
   if (breakName === "pc") {
     return (

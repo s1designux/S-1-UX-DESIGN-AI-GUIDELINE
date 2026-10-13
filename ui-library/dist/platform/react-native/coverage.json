@@ -22,7 +22,7 @@
     "duplicate:-webkit-mask-position": 864,
     "duplicate:-webkit-mask-repeat": 864,
     "duplicate:-webkit-mask-size": 864,
-    "font-provider:font-family": 5934,
+    "font-provider:font-family": 6236,
     "pointer-only:cursor": 10590,
     "text-input-prop:caret-color": 112,
     "web-only:appearance": 7934,
@@ -200,6 +200,7 @@
       "ignored": {
         "web-only:appearance": 2,
         "pointer-only:cursor": 2,
+        "font-provider:font-family": 1,
         "duplicate:-webkit-mask": 12,
         "duplicate:-webkit-mask-image": 9
       }
@@ -209,6 +210,7 @@
       "styles": 11,
       "tableEntries": 18,
       "ignored": {
+        "font-provider:font-family": 7,
         "web-only:appearance": 2,
         "pointer-only:cursor": 2,
         "duplicate:-webkit-mask": 1
@@ -216,8 +218,8 @@
     },
     "time-picker": {
       "templates": 4,
-      "styles": 80,
-      "tableEntries": 1471,
+      "styles": 81,
+      "tableEntries": 1473,
       "ignored": {
         "web-only:appearance": 1164,
         "pointer-only:cursor": 1304,
@@ -232,8 +234,8 @@
     },
     "date-picker": {
       "templates": 2,
-      "styles": 142,
-      "tableEntries": 1993,
+      "styles": 143,
+      "tableEntries": 1994,
       "ignored": {
         "web-only:appearance": 874,
         "pointer-only:cursor": 874,
@@ -248,6 +250,7 @@
       "styles": 28,
       "tableEntries": 130,
       "ignored": {
+        "font-provider:font-family": 6,
         "web-only:list-style": 1,
         "web-only:appearance": 6,
         "pointer-only:cursor": 6,
@@ -258,12 +261,14 @@
       "templates": 2,
       "styles": 3,
       "tableEntries": 48,
-      "ignored": {}
+      "ignored": {
+        "font-provider:font-family": 48
+      }
     },
     "gnb-sub-menu": {
       "templates": 3,
-      "styles": 12,
-      "tableEntries": 55,
+      "styles": 18,
+      "tableEntries": 115,
       "ignored": {
         "web-only:list-style": 11
       }
@@ -309,8 +314,8 @@
     },
     "bottom-sheet": {
       "templates": 1,
-      "styles": 12,
-      "tableEntries": 17,
+      "styles": 13,
+      "tableEntries": 18,
       "ignored": {
         "custom-property:--s1-bottom-sheet-gap": 2,
         "custom-property:--s1-bottom-sheet-shadow": 2,
@@ -324,7 +329,7 @@
       "styles": 23,
       "tableEntries": 1388,
       "ignored": {
-        "font-provider:font-family": 1050,
+        "font-provider:font-family": 1290,
         "web-only:appearance": 1204,
         "pointer-only:cursor": 1968,
         "duplicate:-webkit-mask": 72

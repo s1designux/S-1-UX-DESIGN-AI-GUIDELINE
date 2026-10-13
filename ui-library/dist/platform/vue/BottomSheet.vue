@@ -2,11 +2,11 @@
 <!-- S1BottomSheet — 승인된 배포본을 그대로 마운트하는 Vue 껍데기.
      MARKUPS 는 dist/examples/bottom-sheet*.html 안의 승인된 인스턴스를 그대로 도려낸 것이다. -->
 <script setup>
-import { onBeforeUnmount, onMounted, ref, watch, watchEffect } from "vue";
+import { getCurrentInstance, onBeforeUnmount, onMounted, ref, watch, watchEffect } from "vue";
 import { init, destroy } from "../../components/bottom-sheet.js";
 
 const MARKUPS = {
-  "pc": "<div data-s1-component=\"bottom-sheet\" data-s1-part=\"sheet\" data-break=\"mobile\" data-footer=\"single\">\n  <div data-s1-part=\"sheet-backdrop\"></div>\n  <div data-s1-part=\"sheet-panel\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"bottom-sheet-example-title\" tabindex=\"-1\">\n    <div data-s1-part=\"sheet-content\">\n      <div data-s1-part=\"sheet-header\">\n        <span data-s1-part=\"sheet-title\" id=\"bottom-sheet-example-title\">항목 선택</span>\n        <button type=\"button\" data-s1-part=\"sheet-close\" aria-label=\"닫기\"></button>\n      </div>\n      <div data-s1-part=\"sheet-body\">\n        <div data-s1-component=\"bottom-sheet-option\" data-type=\"text\" data-state=\"default\">\n          <span data-s1-part=\"label\">항목 1</span>\n        </div>\n        <div data-s1-component=\"bottom-sheet-option\" data-type=\"text\" data-state=\"selected\">\n          <span data-s1-part=\"label\">항목 2</span>\n          <span data-s1-part=\"check\" aria-hidden=\"true\"></span>\n        </div>\n        <div data-s1-component=\"bottom-sheet-option\" data-type=\"text\" data-state=\"default\">\n          <span data-s1-part=\"label\">항목 3</span>\n        </div>\n        <div data-s1-component=\"bottom-sheet-option\" data-type=\"text\" data-state=\"default\">\n          <span data-s1-part=\"label\">항목 4</span>\n        </div>\n      </div>\n    </div>\n    <div data-s1-part=\"sheet-footer\">\n      <button type=\"button\" data-s1-component=\"button\" data-variant=\"primary\" data-size=\"lg\"><span data-s1-part=\"label\">적용</span></button>\n    </div>\n  </div>\n</div>"
+  "pc": "<div id=\"bottom-sheet-example\" data-s1-component=\"bottom-sheet\" data-s1-part=\"sheet\" data-break=\"mobile\" data-footer=\"single\">\n  <div data-s1-part=\"sheet-backdrop\"></div>\n  <div data-s1-part=\"sheet-panel\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"bottom-sheet-example-title\" tabindex=\"-1\">\n    <div data-s1-part=\"sheet-content\">\n      <div data-s1-part=\"sheet-header\">\n        <span data-s1-part=\"sheet-title\" id=\"bottom-sheet-example-title\">항목 선택</span>\n        <button type=\"button\" data-s1-part=\"sheet-close\" aria-label=\"닫기\"></button>\n      </div>\n      <div data-s1-part=\"sheet-body\">\n        <div data-s1-component=\"bottom-sheet-option\" data-type=\"text\" data-state=\"default\">\n          <span data-s1-part=\"label\">항목 1</span>\n        </div>\n        <div data-s1-component=\"bottom-sheet-option\" data-type=\"text\" data-state=\"selected\">\n          <span data-s1-part=\"label\">항목 2</span>\n          <span data-s1-part=\"check\" aria-hidden=\"true\"></span>\n        </div>\n        <div data-s1-component=\"bottom-sheet-option\" data-type=\"text\" data-state=\"default\">\n          <span data-s1-part=\"label\">항목 3</span>\n        </div>\n        <div data-s1-component=\"bottom-sheet-option\" data-type=\"text\" data-state=\"default\">\n          <span data-s1-part=\"label\">항목 4</span>\n        </div>\n      </div>\n    </div>\n    <div data-s1-part=\"sheet-footer\">\n      <button type=\"button\" data-s1-component=\"button\" data-variant=\"primary\" data-size=\"lg\" data-s1-close=\"apply\"><span data-s1-part=\"label\">적용</span></button>\n    </div>\n  </div>\n</div>"
 };
 const DEFAULT_BREAK = "pc";
 const BREAKS = ["pc"];
@@ -25,7 +25,8 @@ const props = defineProps({
   size: { type: String, default: undefined, validator: (value) => true },
   breakName: { type: String, default: "pc", validator: (value) => ["pc"].includes(value) },
   parts: { type: Object, default: () => ({}) },
-  attrs: { type: Object, default: () => ({}) }
+  attrs: { type: Object, default: () => ({}) },
+  open: { type: Boolean, default: true }
 });
 const emit = defineEmits(["open","close"]);
 
@@ -43,10 +44,30 @@ function assertAllowed(label, value, allowed) {
   throw new Error(`[s1-ui] bottom-sheet: 승인되지 않은 ${label} "${value}". 쓸 수 있는 값: ${allowed.join(", ")}`);
 }
 
+/* 같은 페이지에 껍데기가 여럿이어도 id 가 겹치지 않게, 인스턴스마다 접두사를 붙인다(React 껍데기의 useId 와 같은 목적).
+   마크업 안의 id 와 그것을 가리키는 속성(aria-*·for·data-s1-open)을 함께 바꾼다. */
+const uid = `s1v${getCurrentInstance()?.uid ?? 0}`;
+function uniquifyIds(element) {
+  const nodes = [element, ...element.querySelectorAll("*")];
+  const ids = new Set(nodes.map((node) => node.id).filter(Boolean));
+  if (!ids.size) return;
+  const rename = (value) => (ids.has(value) ? `${uid}-${value}` : value);
+  for (const node of nodes) {
+    if (node.id) node.id = rename(node.id);
+    for (const name of ["aria-labelledby", "aria-describedby", "aria-controls", "for", "data-s1-open"]) {
+      const value = node.getAttribute(name);
+      if (value) node.setAttribute(name, value.split(/\s+/).map(rename).join(" "));
+    }
+  }
+}
+let api = null;
+
 function mount() {
   host.value.innerHTML = MARKUPS[props.breakName] ?? MARKUPS[DEFAULT_BREAK];
   const element = host.value.firstElementChild;
-  init(element);
+  uniquifyIds(element);
+  if (!props.open) element.hidden = true;
+  api = init(element);
   for (const [eventName, emitName] of [["s1:bottom-sheet:open","open"],["s1:bottom-sheet:close","close"]]) {
     const handler = (event) => emit(emitName, event.detail ?? event);
     element.addEventListener(eventName, handler);
@@ -60,11 +81,19 @@ function unmount() {
   if (!element) return;
   for (const [eventName, handler] of listeners.splice(0)) element.removeEventListener(eventName, handler);
   destroy(element);
+  api = null;
   root.value = null;
 }
 
 onMounted(mount);
 onBeforeUnmount(unmount);
+
+/* open 속성 — 기본 true(처음부터 보임). false 로 바꾸면 닫고, 다시 true 면 연다. */
+watch(() => props.open, (value) => {
+  if (!api) return;
+  if (value) api.open(); else api.close();
+});
+
 
 /* break 가 바뀌면 마크업 자체가 다른 파일이라 다시 마운트해야 한다.
    mount() 는 onMounted 로 한 번만 도니 여기서 갈아 끼운다

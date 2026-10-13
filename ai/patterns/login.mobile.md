@@ -19,7 +19,7 @@
 | 무엇 | 부품 · 예제 | 크기 |
 | --- | --- | --- |
 | 아이디 칸 | `input` — `examples/input.mobile.html` | `md` |
-| 비밀번호 칸 | `input` 비밀번호 — `examples/input.password-mobile.html` (보기 아이콘 켬) | `md` |
+| 비밀번호 칸 | `input` 비밀번호 — `examples/input.password.mobile.html` (보기 아이콘 켬) | `md` |
 | 로그인 버튼 | `button` primary — `examples/button.mobile.html` | `lg` |
 | 보조 링크 | `text-button` — `examples/text-button.html` | — |
 | 안내 팝업 | `modal` — `examples/modal.mobile.html` | — |

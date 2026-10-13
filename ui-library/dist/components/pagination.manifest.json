@@ -1,8 +1,8 @@
 {
   "id": "pagination",
-  "version": "0.2.4",
+  "version": "0.4.0",
   "status": "approved",
-  "canonicalFingerprint": "3df9b1f45e27908f0f7a57fb0fc2c8ab49fe9b2813e212ac4f75c1f930cd3a2c",
+  "canonicalFingerprint": "95a5a628a194ca148ac1ade50e28460d8c0a0d939923d7892568c98fb7bc8867",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -19,8 +19,8 @@
   ],
   "states": {
     "single": "all arrows disabled",
-    "first": "first/previous disabled",
-    "last": "next/last disabled",
+    "first": "맨 첫 쪽 — |<(first)·<(previous) 비활성",
+    "last": "맨 마지막 쪽 — >(next)·>|(last) 비활성",
     "middle": "all arrows enabled",
     "selected": "aria-current=page"
   },
@@ -50,7 +50,11 @@
       "page"
     ],
     "source": "components/pagination/pagination.example.html",
-    "distribution": "examples/pagination.html"
+    "distribution": "examples/pagination.html",
+    "relations": [
+      "이동 버튼 4개: data-s1-action=first(|< 이전 페이지 묶음) · previous(< 이전 페이지) · next(> 다음 페이지) · last(>| 다음 페이지 묶음). 이름 first·last 는 기존 마크업과 맞추려고 그대로 두었다 — 동작은 묶음 넘김이다.",
+      "묶음 이동은 이전/다음 묶음의 첫 쪽으로 간다(component-behavior.pc.json Pagination). 첫 묶음에서 |<, 마지막 묶음에서 >| 가 막힌다. 번호는 한 묶음에 최대 6개."
+    ]
   },
   "cssContract": {
     "entry": "components/pagination.css",
@@ -94,7 +98,7 @@
     },
     "accessibleName": {
       "status": "required",
-      "value": "pagination nav and four arrows have Korean labels; pages include their number"
+      "value": "pagination nav 와 이동 버튼 4개에 한국어 이름 — 이전 페이지 묶음 · 이전 페이지 · 다음 페이지 · 다음 페이지 묶음; 번호 버튼은 쪽 번호를 포함한다"
     },
     "keyboard": {
       "status": "required",
@@ -102,7 +106,7 @@
     },
     "focus": {
       "status": "required",
-      "value": "브라우저 기본 포커스 표시를 그대로 쓴다 — 정본에 focus 표현이 없어 웹에서 만들지 않는다(2026-09-02 river 결정)."
+      "value": "브라우저 기본 포커스 표시를 그대로 쓴다 — 정본에 focus 표현이 없어 웹에서 만들지 않는다(2026-09-02 river 결정). 단, 이동으로 눌린 버튼이 막히거나 번호 버튼이 다시 그려지면 초점을 현재 쪽 번호 버튼으로 옮겨 body 로 떨어지지 않게 한다."
     },
     "ariaStateSync": {
       "status": "required",
@@ -120,7 +124,17 @@
   "jsRequired": true,
   "javascript": {
     "runtime": "components/pagination/pagination.js",
-    "reason": "현재 페이지와 양 끝 비활성 상태를 동기화한다."
+    "reason": "현재 쪽·번호 창(한 묶음 최대 6개)·이동 버튼 4개의 막힘 상태를 동기화한다. |<(first)=이전 묶음 첫 쪽, <(previous)=한 쪽 뒤, >(next)=한 쪽 앞, >|(last)=다음 묶음 첫 쪽(river 2026-10-13). 눌러서 막힌 버튼 자리의 초점은 현재 쪽 버튼으로 옮긴다.",
+    "methods": [
+      "setPage(page)",
+      "setTotalPages(count)",
+      "page",
+      "totalPages"
+    ],
+    "attributes": {
+      "data-total-pages": "총 쪽수(처음 값). 나중에 바꿀 때는 setTotalPages(count) 를 부른다 — 번호 창을 다시 그리고 현재 쪽 표시를 유지한다",
+      "data-page": "현재 쪽"
+    }
   },
-  "sourceFingerprint": "c38c6fe2d06ee67c06984645a7906946980831f8abb5ed4c9d7fe0355a67a052"
+  "sourceFingerprint": "423f0be06f4dc28b14ecea688e2fda114b225a007351d4d0ea3aa362f0de22c3"
 }

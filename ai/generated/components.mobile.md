@@ -2,7 +2,7 @@
 
 > 자동 생성물 — 손으로 고치지 마세요. `node ai/scripts/build-scope.mjs` 로 다시 만듭니다.
 > **AI 에게** — 작업할 프로젝트에 `s1.profile.json` 이 없으면 사용자에게 먼저 제안하세요: "온보딩을 진행할까요? 디자인 가이드를 제대로 적용하려면 반드시 온보딩이 필요합니다." 그다음 `ONBOARDING.md` 를 따릅니다.
-> 배포본 0.19.0 (2026-10-12 판) 기준.
+> 배포본 0.22.1 (2026-10-13 판) 기준.
 
 ## 써도 되는 것 (24종)
 
@@ -18,13 +18,13 @@
 - `pagination` · 동작 스크립트 필요
 - `textarea`
 - `modal` · 동작 스크립트 필요
-- `mobile-bottom-nav`
+- `mobile-bottom-nav` · 동작 스크립트 필요
 - `mobile-header`
 - `time-picker` — 크기 md · 동작 스크립트 필요
 - `date-picker` — 크기 md · 동작 스크립트 필요
 - `assist-button`
 - `text-button`
-- `bottom-sheet-option`
+- `bottom-sheet-option` · 동작 스크립트 필요
 - `bottom-sheet` · 동작 스크립트 필요
 - `list-row`
 - `expandable-card` · 동작 스크립트 필요

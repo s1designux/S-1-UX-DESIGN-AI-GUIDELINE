@@ -55,6 +55,10 @@
   ],
   "htmlContract": {
     "root": "nav[data-s1-component=gnb][data-size][data-variant]",
+    "requiredAttributes": [
+      "data-size",
+      "data-variant"
+    ],
     "perVariantParts": {
       "center-between": [
         "logo",
@@ -93,7 +97,8 @@
       "계정·메뉴(햄버거) 버튼은 아이콘만 있어 aria-label 로 이름을 준다(기본값 '계정'·'전체 메뉴').",
       "util 안의 [data-s1-part=menu-toggle] 은 nav 링크 [data-s1-part=menu] 와 이름이 겹치지 않게 구분한 이름이다 — 정본 GNB Utility Icon 세트의 'menu' 축(햄버거)과 GNB Menu 세트의 메뉴 링크는 서로 다른 개념이다.",
       "[data-s1-part=menu] 에 aria-controls=\"<gnb-sub-menu 인스턴스 id>\" 를 주면 그 메뉴가 그 패널을 여는 트리거가 된다(river 결정 2026-09-09, D4·D5) — gnb.js 가 aria-expanded·hidden 을 물린다. aria-controls 가 없는 메뉴는 하위메뉴 없이 그냥 링크다 — 하위메뉴는 강제 의존이 아니다(dependencies.optionalCoreComponents).",
-      "패널은 nav 의 자식이 아니라 host 페이지 안 형제 요소로 둔다(gnb.example.html) — GNB 바 하나가 여러 메뉴의 패널을 동시에(단, 한 번에 하나만 열림) 가리킬 수 있다."
+      "패널은 nav 의 자식이 아니라 host 페이지 안 형제 요소로 둔다(gnb.example.html) — GNB 바 하나가 여러 메뉴의 패널을 동시에(단, 한 번에 하나만 열림) 가리킬 수 있다.",
+      "하위메뉴 패널은 열려도 본문을 아래로 밀지 않고 GNB 바 바로 아래에 본문 위로 겹쳐 뜬다(river 결정 2026-10-12). 왼쪽 끝·폭·세로 위치는 gnb.js 가 열 때 바의 상자에 맞춰 채우므로 position 이 잡힌 조상 상자를 따로 둘 필요는 없다. 단 gnb.js 로 이어 준(aria-controls) 패널만 겹침이 된다."
     ],
     "grouping": "코어는 GNB 바(로고+메뉴+유틸) 한 줄만 소유한다. 하위메뉴를 열고 닫는 동작(aria-expanded·hidden 토글, Esc, hover 유예, 마우스 없는 기기 폴백)은 이 컴포넌트가 갖는다(jsRequired=true, D5) — 패널 자신(gnb-sub-menu)은 여전히 여닫는 코드가 없다. 실제 라우팅·언어 전환·전체메뉴 오버레이 동작은 여전히 host 화면이 소유한다.",
     "source": "components/gnb/gnb.example.html",
@@ -229,5 +234,5 @@
     },
     "behaviorContract": "registry/components/component-behavior.pc.json 의 \"GNB\" 장부."
   },
-  "sourceFingerprint": "b034b0b56db005ff08016325b530e674a69ba2afc3669df9359058b0a3e5c4f5"
+  "sourceFingerprint": "85d2593d46fc08428c76880fc428c536f211a25bf130cfef9ccf0a550c0f0ad7"
 }

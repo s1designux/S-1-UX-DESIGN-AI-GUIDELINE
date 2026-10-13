@@ -1,8 +1,8 @@
 {
   "id": "mobile-bottom-nav",
-  "version": "0.3.6",
+  "version": "0.4.0",
   "status": "approved",
-  "canonicalFingerprint": "75282d7b2526b2960251072de14292536e4047c9ae5c560f7eefdbd93e92c6e8",
+  "canonicalFingerprint": "62707df0e7d095e3cbebb5e57131102dafe50566e3a6959b01d0bbb83a3b1408",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -49,7 +49,8 @@
     ],
     "grouping": "코어는 아이템 1칸만 소유한다. 4탭 바 조립·배경·role=tablist 컨테이너는 화면(패턴)이 소유한다.",
     "source": "components/mobile-bottom-nav/mobile-bottom-nav.example.html",
-    "distribution": "examples/mobile-bottom-nav.html"
+    "distribution": "examples/mobile-bottom-nav.mobile.html",
+    "mobileOnly": true
   },
   "cssContract": {
     "entry": "components/mobile-bottom-nav.css",
@@ -127,7 +128,7 @@
     },
     "keyboard": {
       "status": "required",
-      "value": "native button Enter·Space 활성화. 여러 탭 사이 화살표 키 이동은 이번 범위 밖(HD-1 선택지 A)."
+      "value": "Enter·Space 로 고른다(native button). ←→ 는 탭 사이로 초점만 옮긴다 — 고르기는 Enter/Space. Tab 은 네 칸 모두 거친다(roving 하지 않음)."
     },
     "focus": {
       "status": "required",
@@ -135,7 +136,7 @@
     },
     "ariaStateSync": {
       "status": "required",
-      "value": "호스트 화면이 현재 경로에 맞춰 aria-selected 를 정적으로 설정한다. CSS 가 [aria-selected=\"true\"] 로 색을 반영하며 별도 런타임은 필요 없다."
+      "value": "누르면 런타임이 aria-selected 와 aria-current=page 를 옮긴다(취소되면 그대로). 화면이 라우팅으로 직접 aria-selected 를 정해도 CSS 가 그대로 읽는다."
     },
     "errorRelation": {
       "status": "not-applicable",
@@ -150,10 +151,35 @@
       "value": "60×60 고정 크기라 최소 44px 권장치를 이미 만족한다(D4)."
     }
   },
-  "jsRequired": false,
+  "jsRequired": true,
   "javascript": {
-    "runtime": "none",
-    "reason": "선택 상태는 호스트 화면의 현재 경로가 정하는 정적 ARIA 상태다. 로컬 클릭 토글·키보드 이동을 이번 범위에 넣지 않아(HD-1 선택지 A) 네이티브 button 시맨틱만으로 충분하다."
+    "runtime": "components/mobile-bottom-nav.js",
+    "reason": "탭을 누르면 활성 탭을 부품이 알아서 옮긴다(river 결정 2026-10-13 「전부 부품이 알아서」) — 2026-09-02 HD-1(호스트가 정적으로 설정)을 뒤집었다. 옮기기 전에 취소 가능한 beforechange 를 먼저 내서 화면이 막을 수 있다.",
+    "options": {},
+    "events": [
+      "s1:mobile-bottom-nav:beforechange",
+      "s1:mobile-bottom-nav:change"
+    ],
+    "eventDetail": {
+      "beforechange": "{ value, selected: true, tab, previous } — 취소 가능(preventDefault 하면 탭이 그대로)",
+      "change": "{ value, selected: true, tab, previous }"
+    },
+    "methods": [
+      "setActive(next = true)",
+      "setSelected(next)",
+      "selected"
+    ],
+    "lifecycle": [
+      "init(root)",
+      "destroy(root)"
+    ],
+    "controlMode": "uncontrolled",
+    "selectable": true,
+    "attributes": {
+      "data-value": "탭의 값(이벤트 detail.value). 없으면 data-icon, 그것도 없으면 라벨 글자",
+      "aria-selected": "활성 탭이면 true — 화면이 라우팅으로 직접 정할 때도 그대로 읽힌다",
+      "aria-current": "활성 탭에 page 를 부품이 함께 맞춘다"
+    }
   },
   "canonicalVariantMap": {
     "home": "icon=home",
@@ -161,5 +187,5 @@
     "notification": "icon=notification",
     "settings": "icon=settings"
   },
-  "sourceFingerprint": "28ca616445c4d850554a3ed579729c7888d97b740d9a65609cbf741539b35634"
+  "sourceFingerprint": "0f4b7aa814bb13d356347a011a1b2f08624e5d63a771e8744ca634441c3ebfbc"
 }

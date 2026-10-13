@@ -1,0 +1,13 @@
+/* S1 UI — 선택: 페이지 바탕·기본 글자색·글꼴. tokens.css 다음에 읽습니다.
+   <html data-theme="dark"> 로 다크 모드를 켜면 바탕·글자색이 같이 바뀝니다. */
+html {
+  background: var(--color-bg-level-0);
+  color: var(--color-text-body-primary);
+}
+
+body {
+  background: var(--color-bg-level-0);
+  color: var(--color-text-body-primary);
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
+  margin: 0;
+}
