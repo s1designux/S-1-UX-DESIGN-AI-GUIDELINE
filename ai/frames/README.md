@@ -1,6 +1,6 @@
 # 화면 큰 틀 — 새 화면은 여기서 시작합니다
 
-> **AI 에게** — `s1.profile.json` 의 `mode` 가 `new` 이면, 화면을 짜기 전에 `frame` 에 맞는 시작 파일 **하나만** 복사해 그 안의 본문 자리(`.s1-frame__main`)부터 채웁니다.
+> **AI 에게** — 프로토타입(`kind: prototype`)이고 `mode` 가 `new` 이면, 화면을 짜기 전에 `frame` 에 맞는 시작 파일 **하나만** 복사해 그 안의 본문 자리(`.s1-frame__main`)부터 채웁니다.
 > 자동 생성물 — `ai/scripts/build-frames.mjs` 가 `scope.json` 과 배포본 예제로 만듭니다(`npm run ai:scope`). HTML 을 손으로 고치지 마세요.
 > 사람이 그림으로 고르는 페이지 — `ai/generated/frame-picker.html`.
 
@@ -8,8 +8,6 @@
 
 | 화면(`profile`) | `frame` | 시작 파일 | GNB 높이 | LNB 펼친 폭 |
 | --- | --- | --- | --- | --- |
-| 문서 (`kind: doc`) | `plain` | `doc.plain.html` | — | — |
-| 문서 (`kind: doc`) | `gnb` | `doc.gnb.html` | 48 (`sm`) | — |
 | PR용 `pr` | `gnb` | `pr.gnb.html` | 56 (`md`) | 쓰지 않음 |
 | 사용자용 `user` | `gnb` · `gnb-lnb` | `user.<frame>.html` | 48 (`sm`) | 280 (`lg`) |
 | 관리자용 기본 `admin` | `gnb` · `gnb-lnb` | `admin.<frame>.html` | 36 (`xsm`) | 280 (`lg`) |

@@ -24,8 +24,6 @@ const LNB_WIDTH = { md: 240, lg: 280 };
 /* ── 고를 수 있는 틀 — 온보딩 답(A·C·D·E)과 1:1 ── */
 const P = scope.profiles;
 const GROUPS = [
-  { key: "doc", label: "문서", hint: "보고서·안내처럼 읽는 화면 · 사용자용 화면과 같은 크기", profile: "user", kind: "doc", answer: "A1 B1",
-    frames: [{ frame: "plain", label: "본문만", e: 1 }, { frame: "gnb", label: "GNB + 본문", e: 2 }] },
   { key: "pr", label: P.pr.label, hint: "홍보·안내용 · GNB 만 씁니다(LNB 없음)", profile: "pr", kind: "prototype", answer: "A2 B1 C1 D1",
     frames: [{ frame: "gnb", label: "GNB만", e: 1 }] },
   { key: "user", label: P.user.label, hint: P.user.hint, profile: "user", kind: "prototype", answer: "A2 B1 C1 D2",
@@ -80,10 +78,6 @@ const tabbar = tabbarSource.replace("<nav ", '<nav class="s1-tabbar" ');
 /* 미리보기 안을 채우는 예시 내용 — 그 화면 종류의 크기 그대로 */
 const sized = (html, size) => html.replace(/data-size="[^"]*"/, `data-size="${size}"`);
 function sampleContent(group) {
-  if (group.kind === "doc") {
-    const para = '<p class="pv-text">이 자리에 문서 본문이 들어갑니다. 제목·문단·표를 사용자용 화면과 같은 크기로 씁니다.</p>';
-    return `<h1 class="pv-title">문서 제목</h1>${para.repeat(3)}<div class="pv-block"></div>${para.repeat(2)}`;
-  }
   if (group.profile === "mobile") {
     return `<div class="pv-block pv-short"></div><div class="pv-line"></div><div class="pv-line"></div><div class="pv-line"></div><div class="pv-line"></div>`;
   }
@@ -105,9 +99,9 @@ function frameBody(group, f, content, prefix) {
 </div>`;
   }
   const p = P[group.profile];
-  const top = f.frame === "plain" ? "" : `\n  ${gnb(p.gnb)}`;
+  const top = `\n  ${gnb(p.gnb)}`;
   const side = f.frame === "gnb-lnb" ? `\n    ${lnb(p.lnb, prefix)}` : "";
-  return `<div class="s1-frame${group.kind === "doc" ? " s1-frame--doc" : ""}">${top}
+  return `<div class="s1-frame">${top}
   <div class="s1-frame__body">${side}
     <main class="s1-frame__main">
       ${content}
@@ -121,7 +115,6 @@ const FRAME_CSS = `.s1-frame { display: flex; flex-direction: column; min-height
 .s1-frame__body { display: flex; flex: 1; min-height: 0; }
 .s1-frame__body > [data-s1-component="lnb"] { flex: none; }
 .s1-frame__main { flex: 1; min-width: 0; padding: var(--spacing-32) var(--spacing-40); }
-.s1-frame--doc .s1-frame__main { max-width: 1000px; margin: 0 auto; }
 .s1-frame--mobile .s1-frame__main { padding: var(--spacing-16) var(--spacing-20); }
 .s1-tabbar { position: sticky; bottom: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--color-navigation-bg); border-top: 1px solid var(--color-line-default); }`;
 
@@ -130,12 +123,12 @@ const sizeLine = (group, f) => {
   if (group.profile === "mobile") return f.frame === "header-tabbar" ? "뒤로 가기·제목 줄 + 아래 4칸 메뉴" : "뒤로 가기·제목 줄";
   const p = P[group.profile];
   const parts = [];
-  if (f.frame !== "plain") parts.push(`GNB 높이 ${GNB_HEIGHT[p.gnb]}`);
+  parts.push(`GNB 높이 ${GNB_HEIGHT[p.gnb]}`);
   if (f.frame === "gnb-lnb") parts.push(`LNB 폭 ${LNB_WIDTH[p.lnb]}`);
   return parts.length ? parts.join(" · ") : "메뉴 없이 본문만";
 };
 const fileName = (group, f) => `${group.key}.${f.frame}.html`;
-/* login — 문서는 묻지 않음(undefined) · 프로토타입은 true/false. 로그인 화면은 ai/patterns/login.<pc|mobile>.md 대로 만든다. */
+/* login — 프로토타입 새 화면만 true/false. 로그인 화면은 ai/patterns/login.<pc|mobile>.md 대로 만든다. */
 const loginGuide = (group) => `ai/patterns/login.${group.profile === "mobile" ? "mobile" : "pc"}.md`;
 const pasteLine = (group, f, login) => {
   const answer = `${group.answer} E${f.e}${login === undefined ? "" : ` F${login ? 1 : 2}`}`;
@@ -202,11 +195,19 @@ function card({ value, label, sub, group, f, attrs = "" }) {
     </div>`;
 }
 const KIND = [
-  { value: "doc", label: "문서", sub: "보고서·안내·설명처럼 읽는 화면" },
   { value: "pc", label: "PC 웹 화면", sub: "실제 서비스처럼 동작하는 화면" },
   { value: "mobile", label: "모바일 화면", sub: "휴대폰에서 쓰는 화면" }
 ];
+const step0 = [
+  option({ value: "new", label: "새로 만들기", sub: "빈 틀에서 화면을 새로 짭니다" }),
+  option({ value: "apply", label: "이미 있는 화면에 입히기", sub: "만들어 둔 화면(POC)에 S1을 입힙니다" })
+];
 const step1 = KIND.map(option);
+/* 입히기 — 틀·로그인은 이미 있는 화면을 따르므로 묻지 않는다. 화면 종류(크기 기준)만 정하고 디자인 확인 요청서 순서로 보낸다. */
+const applyInfo = Object.fromEntries(GROUPS.map((g) => [g.key, {
+  title: `${g.label} · 이미 있는 화면에 입히기`,
+  paste: `[S1 화면 틀] ${g.label} · 이미 있는 화면에 입히기 — 온보딩 답: ${g.answer.replace("B1", "B2")} (profile: ${g.profile}). ai/rules/apply-poc.md 순서대로 고치기 전에 디자인 확인 요청서부터 만들어 주세요.`
+}]));
 const step2 = ["pr", "user", "admin", "admin-compact"].map((key) => {
   const g = groupOf(key);
   return option({ value: key, label: g.label, sub: g.hint });
@@ -216,19 +217,19 @@ const choices = {};
 for (const group of GROUPS) {
   for (const f of group.frames) {
     const id = `${group.key}.${f.frame}`;
-    choices[id] = { title: `${group.label} · ${f.label}`, size: sizeLine(group, f), file: fileName(group, f), paste: group.kind === "doc" ? pasteLine(group, f) : null, pasteLogin: pasteLine(group, f, true), pasteNoLogin: pasteLine(group, f, false) };
+    choices[id] = { title: `${group.label} · ${f.label}`, size: sizeLine(group, f), file: fileName(group, f), pasteLogin: pasteLine(group, f, true), pasteNoLogin: pasteLine(group, f, false) };
     step3.push(card({ value: id, label: f.label, sub: sizeLine(group, f), group, f, attrs: `data-group="${esc(group.key)}"` }));
   }
 }
-const step = (n, title, hint, items) => `<section class="step" data-step="${n}"${n > 1 ? " hidden" : ""}>
+const step = (n, title, hint, items, extra = "") => `<section class="step" data-step="${n}"${n > 0 ? " hidden" : ""}>
   <div class="step-head">
-    <span class="step-no typo-title-14b">${n}</span>
+    <span class="step-no typo-title-14b">${n + 1}</span>
     <h2 class="typo-title-18b">${esc(title)}</h2>
     <span class="step-answer typo-body-16m"></span>
     <button type="button" data-s1-component="text-button" data-variant="primary" class="step-change" hidden><span data-s1-part="label">바꾸기</span></button>
   </div>
   <p class="step-hint typo-body-14r">${esc(hint)}</p>
-  <div class="cards">${items.join("\n    ")}</div>
+  <div class="cards">${items.join("\n    ")}</div>${extra}
 </section>`;
 
 const picker = `<!doctype html>
@@ -260,6 +261,7 @@ const picker = `<!doctype html>
   .card-size { color: var(--color-text-body-secondary); }
   .card--mobile { flex: 0 1 260px; }
   .card--text { flex: 0 1 220px; padding: var(--spacing-16); }
+
   .card--text .card-label { margin-top: 0; }
   .mini { position: relative; display: block; width: 100%; aspect-ratio: 1280 / 800; overflow: hidden; border: 1px solid var(--color-line-default); border-radius: var(--radius-6); background: var(--color-bg-level-0); }
   .mini--mobile { aspect-ratio: 390 / 760; }
@@ -283,13 +285,15 @@ const picker = `<!doctype html>
   .done-size { margin: var(--spacing-4) 0 0; color: var(--color-text-body-secondary); }
   .done-preview { max-width: 960px; margin-top: var(--spacing-16); }
   .done-preview .mini--mobile { max-width: 300px; }
+  #open[hidden] { display: none; }
   .done-paste { margin: var(--spacing-12) 0 var(--spacing-16); padding: var(--spacing-12) var(--spacing-16); border-radius: var(--radius-8); background: var(--color-bg-level-1); color: var(--color-text-body-primary); overflow-wrap: anywhere; }
   .done-actions { display: flex; flex-wrap: wrap; gap: var(--spacing-8); }
 </style></head>
 <body data-s1-density="wide"><div class="wrap">
 <h1 class="typo-title-24b">화면 틀 고르기</h1>
 <p class="sub typo-body-14r">몇 가지만 차례로 고르면 됩니다. 마지막에 나오는 한 줄을 AI 채팅창에 붙여 넣으면 온보딩 답과 시작 틀이 한 번에 정해집니다. 배포본 ${esc(manifest.version)} 실제 부품으로 그렸습니다.</p>
-${step(1, "무엇을 만드나요?", "가장 가까운 것을 누르세요.", step1)}
+${step(0, "어떻게 작업하나요?", "새 화면인지, 이미 만든 화면에 입히는지 고르세요.", step0)}
+${step(1, "어떤 매체인가요?", "가장 가까운 것을 누르세요.", step1)}
 ${step(2, "누가 쓰는 화면인가요?", "쓰는 사람에 따라 글자·칸 크기가 달라집니다.", step2)}
 ${step(3, "메뉴 틀은요?", "고른 화면에 맞는 틀만 보여 드려요. 그림을 보고 고르세요.", step3)}
 ${step(4, "로그인 화면도 만드나요?", "만들면 S1 로그인 화면 기준(PC·모바일 따로)대로 만듭니다.", [option({ value: "yes", label: "로그인 화면 필요", sub: "아이디·비밀번호로 들어가는 첫 화면" }), option({ value: "no", label: "필요 없음", sub: "로그인 없이 바로 쓰거나 이미 있음" })])}
@@ -306,32 +310,51 @@ ${step(4, "로그인 화면도 만드나요?", "만들면 S1 로그인 화면 �
 </div>
 <script>
   const CHOICES = ${JSON.stringify(choices)};
+  const APPLY = ${JSON.stringify(applyInfo)};
   const fit = () => document.querySelectorAll(".mini").forEach((m) => { if (m.clientWidth) m.style.setProperty("--k", m.clientWidth / m.firstElementChild.offsetWidth); });
   addEventListener("resize", fit);
   const steps = [...document.querySelectorAll(".step")];
+  const stepEl = (n) => steps.find((s) => Number(s.dataset.step) === n);
   const done = document.getElementById("done");
   const copy = document.getElementById("copy");
+  const open = document.getElementById("open");
   const answers = {};
   let frameCard = null;
   const STEP3_GROUP = () => answers[1] === "pc" ? answers[2] : answers[1];
+  /* 길: 새로 — PC 웹 0→1→2→3→4 · 모바일 0→1→3→4 / 입히기 — PC 웹 0→1→2 · 모바일 0→1 */
+  const skippedStep = (k) => (answers[1] && k === 2 && answers[1] !== "pc") || (answers[0] === "apply" && k >= 3);
+  const order = (k) => k;
 
   function show(n) {
     steps.forEach((s) => {
       const k = Number(s.dataset.step);
-      const skipped = (k === 2 && answers[1] && answers[1] !== "pc") || (k === 4 && answers[1] === "doc");
-      s.hidden = k > n || skipped;
-      if (k < n) s.dataset.done = ""; else delete s.dataset.done;
-      s.querySelector(".step-change").hidden = !(k < n);
-      if (k >= n) s.querySelector(".step-answer").textContent = "";
+      const before = order(k) < order(n);
+      s.hidden = order(k) > order(n) || skippedStep(k);
+      if (before) s.dataset.done = ""; else delete s.dataset.done;
+      s.querySelector(".step-change").hidden = !before;
+      if (!before) s.querySelector(".step-answer").textContent = "";
     });
     if (n === 3) document.querySelectorAll('[data-step="3"] .card').forEach((c) => { c.hidden = c.dataset.group !== STEP3_GROUP(); });
-    steps.find((s) => Number(s.dataset.step) === n)?.querySelectorAll(".card").forEach((c) => c.setAttribute("aria-pressed", "false"));
-    if (n <= 4) done.hidden = true;
+    stepEl(n)?.querySelectorAll(".card").forEach((c) => c.setAttribute("aria-pressed", "false"));
+    done.hidden = true;
     let no = 0;
-    steps.forEach((s) => { if (!s.hidden) s.querySelector(".step-no").textContent = ++no; });
+    [...steps].sort((a, b) => order(+a.dataset.step) - order(+b.dataset.step)).forEach((s) => { if (!s.hidden) s.querySelector(".step-no").textContent = ++no; });
     fit();
-    const current = n <= 4 ? steps[n - 1] : done;
-    current.scrollIntoView({ behavior: "smooth", block: "start" });
+    stepEl(n)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function finish(title, size, paste, preview, file) {
+    document.getElementById("pick-title").textContent = title;
+    document.getElementById("pick-size").textContent = size;
+    document.getElementById("pick-paste").textContent = paste;
+    document.getElementById("pick-preview").replaceChildren(preview);
+    open.hidden = !file;
+    if (file) open.href = "../frames/" + file;
+    copy.querySelector("[data-s1-part=label]").textContent = "AI에게 줄 말 복사";
+    show(99);
+    done.hidden = false;
+    fit();
+    done.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   function choose(card) {
@@ -340,21 +363,18 @@ ${step(4, "로그인 화면도 만드나요?", "만들면 S1 로그인 화면 �
     answers[n] = card.dataset.value;
     section.querySelectorAll(".card").forEach((c) => c.setAttribute("aria-pressed", String(c === card)));
     section.querySelector(".step-answer").textContent = card.querySelector(".card-label").textContent;
-    if (n === 1) return show(answers[1] === "pc" ? 2 : 3);
-    if (n === 2) return show(3);
-    if (n === 3) { frameCard = card; if (answers[1] !== "doc") return show(4); }
+    if (n === 0) return show(1);
+    const applying = answers[0] === "apply";
+    if (n === 1 && answers[1] === "pc") return show(2);
+    if (applying && n <= 2) {
+      const info = APPLY[answers[1] === "pc" ? answers[2] : "mobile"];
+      return finish(info.title, "틀과 로그인 화면은 이미 있는 화면을 따릅니다", info.paste, document.createElement("span"), null);
+    }
+    if (n <= 2) return show(3);
+    if (n === 3) { frameCard = card; return show(4); }
     const picked = CHOICES[answers[3]];
-    const login = answers[1] === "doc" ? null : answers[4] === "yes";
-    document.getElementById("pick-title").textContent = picked.title + (login ? " + 로그인 화면" : "");
-    document.getElementById("pick-size").textContent = picked.size;
-    document.getElementById("pick-paste").textContent = login === null ? picked.paste : login ? picked.pasteLogin : picked.pasteNoLogin;
-    document.getElementById("open").href = "../frames/" + picked.file;
-    document.getElementById("pick-preview").replaceChildren(frameCard.querySelector(".mini").cloneNode(true));
-    copy.querySelector("[data-s1-part=label]").textContent = "AI에게 줄 말 복사";
-    show(5);
-    done.hidden = false;
-    fit();
-    done.scrollIntoView({ behavior: "smooth", block: "start" });
+    const login = answers[4] === "yes";
+    finish(picked.title + (login ? " + 로그인 화면" : ""), picked.size, login ? picked.pasteLogin : picked.pasteNoLogin, frameCard.querySelector(".mini").cloneNode(true), picked.file);
   }
 
   document.querySelectorAll(".card").forEach((card) => {
@@ -362,6 +382,7 @@ ${step(4, "로그인 화면도 만드나요?", "만들면 S1 로그인 화면 �
     card.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); choose(card); } });
   });
   steps.forEach((s) => s.querySelector(".step-change").addEventListener("click", () => show(Number(s.dataset.step))));
+  fit();
   copy.addEventListener("click", async () => {
     const text = document.getElementById("pick-paste").textContent;
     try { await navigator.clipboard.writeText(text); }
