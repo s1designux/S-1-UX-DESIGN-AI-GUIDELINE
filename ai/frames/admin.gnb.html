@@ -1,0 +1,62 @@
+<!doctype html>
+<!-- S1 화면 틀 · 관리자용 화면 · 기본 · GNB만 (GNB 높이 36)
+     자동 생성물 — ai/scripts/build-frames.mjs. 프로젝트로 복사한 뒤 ../../ui-library 경로를 가이드 폴더(.s1-guide/ui-library)로 바꿉니다.
+     GNB·LNB 크기는 바꾸지 않습니다. 메뉴 이름·개수·로고만 서비스에 맞게 고칩니다. -->
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>화면 제목</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="../../ui-library/dist/assets/css/tokens.css">
+  <link rel="stylesheet" href="../../ui-library/dist/s1-ui.css">
+  <style>
+    body { margin: 0; font-family: Pretendard, -apple-system, "Malgun Gothic", sans-serif; }
+    .s1-frame { display: flex; flex-direction: column; min-height: 100vh; background: var(--color-bg-level-0); color: var(--color-text-body-primary); }
+    .s1-frame__body { display: flex; flex: 1; min-height: 0; }
+    .s1-frame__body > [data-s1-component="lnb"] { flex: none; }
+    .s1-frame__main { flex: 1; min-width: 0; padding: var(--spacing-32) var(--spacing-40); }
+    .s1-frame--doc .s1-frame__main { max-width: 1000px; margin: 0 auto; }
+    .s1-frame--mobile .s1-frame__main { padding: var(--spacing-16) var(--spacing-20); }
+    .s1-tabbar { position: sticky; bottom: 0; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--color-navigation-bg); border-top: 1px solid var(--color-line-default); }
+    .s1-frame__title { margin: 0 0 var(--spacing-24); font-size: var(--font-size-24); color: var(--color-text-title-primary); }
+    .s1-frame__slot { padding: var(--spacing-64) var(--spacing-24); border: 1px dashed var(--color-line-default); border-radius: var(--radius-8); color: var(--color-text-body-secondary); text-align: center; }
+  </style>
+</head>
+<body data-s1-density="normal">
+<div class="s1-frame">
+  <nav data-s1-component="gnb" data-size="xsm" data-variant="start" aria-label="주 메뉴">
+    <div data-s1-part="leading">
+      <a data-s1-part="logo" href="#">SERVICE LOGO</a>
+      <ul data-s1-part="menus">
+        <li><a data-s1-part="menu" href="#" aria-current="page">홈</a></li>
+        <li><a data-s1-part="menu" href="#">서비스</a></li>
+        <li><a data-s1-part="menu" href="#">고객지원</a></li>
+      </ul>
+    </div>
+    <div data-s1-part="util">
+      <button type="button" data-s1-part="lang">
+        <span data-s1-part="lang-icon" aria-hidden="true"></span>
+        <span data-s1-part="lang-label">한국어</span>
+      </button>
+      <button type="button" data-s1-part="account" aria-label="계정">
+        <span data-s1-part="account-icon" aria-hidden="true"></span>
+      </button>
+      <button type="button" data-s1-part="menu-toggle" aria-label="전체 메뉴">
+        <span data-s1-part="menu-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+  <div class="s1-frame__body">
+    <main class="s1-frame__main">
+      <h1 class="s1-frame__title">화면 제목</h1>
+      <div class="s1-frame__slot">이 자리에 화면 내용을 넣습니다</div>
+    </main>
+  </div>
+</div>
+<script type="module">
+  import { autoInit } from "../../ui-library/dist/s1-ui.auto.js";
+  autoInit();
+</script>
+</body>
+</html>

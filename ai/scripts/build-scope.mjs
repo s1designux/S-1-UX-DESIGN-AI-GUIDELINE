@@ -383,6 +383,9 @@ for (const target of ["pc", "mobile"]) {
 /* 화면 종류별 크기표와 비교판 — AI 는 고른 화면 종류의 표 하나만 읽는다. */
 await writeProfileDocs(scope, ROOT, DIST, manifest);
 
+/* 화면 큰 틀(GNB·LNB 유무) 고르기 페이지와 틀별 시작 파일 — 위 scope.json 을 읽는다. */
+await import("./build-frames.mjs");
+
 const byPlatform = components.reduce((acc, c) => { acc[c.platform] = (acc[c.platform] || 0) + 1; return acc; }, {});
 console.log(`scope.json 생성 · 부품 ${components.length}종 · 토큰 ${names.length}개`);
 console.log(`매체 소속 — ${Object.entries(byPlatform).map(([k, v]) => `${k} ${v}`).join(" · ")}`);

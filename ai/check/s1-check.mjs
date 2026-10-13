@@ -560,7 +560,10 @@ function checkReimplementation(text, file, walked) {
 
 /** 적용률 — 화면에 놓인 UI 부품 중 몇 개가 S1 배포본인가. */
 function countCoverage(walked, counters) {
+  /* 아래 메뉴(mobile-bottom-nav) 칸들을 감싸는 role=tablist 껍데기는 배포본 예제가 정한 자리다 — 직접 만든 것으로 세지 않는다. */
+  const shells = new Set(walked.elements.filter((e) => e.ownComponent === "mobile-bottom-nav").map((e) => e.parent));
   for (const element of walked.elements) {
+    if (shells.has(element) && (element.attributes.role || "").toLowerCase() === "tablist") continue;
     const role = (element.attributes.role || "").toLowerCase();
     const className = element.attributes.class || element.attributes.classname || "";
     const looksLikeComponent = scope.components.some((spec) => new RegExp(`\\b${spec.id}\\b`, "i").test(className));

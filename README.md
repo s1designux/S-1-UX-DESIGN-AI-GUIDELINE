@@ -51,6 +51,7 @@ Claude Code·VS Code(Copilot)·Cursor·Windsurf·Gemini·Codex 가 처음 읽는
 AI(클로드·GPT·Cursor 등)에게 작업을 시킬 때는 [`ONBOARDING.md`](ONBOARDING.md) 를 그대로 주세요.
 AI가 **어떤 도구·어떤 매체(PC 웹/모바일)·PC 웹이면 누가 쓰는 화면인지(PR용 / 사용자용 / 관리자용 기본·작게)·어떤 기술**인지 객관식으로 물어본 뒤, 그 조합에 맞는 규칙만 읽고 시작합니다.
 부품 크기는 화면 종류마다 하나로 정해져 있습니다 — PC는 [`ai/generated/profiles.pc.html`](ai/generated/profiles.pc.html), 모바일은 [`ai/generated/profiles.mobile.html`](ai/generated/profiles.mobile.html) 에서 실제 부품으로 볼 수 있습니다.
+화면 큰 틀(GNB·LNB 유무)은 그림으로 먼저 고를 수 있습니다 — [`ai/generated/frame-picker.html`](ai/generated/frame-picker.html) 을 브라우저로 열고 그림을 누른 뒤, 나온 한 줄을 AI 에게 붙여 넣으면 온보딩 답과 시작 틀이 한 번에 정해집니다.
 만든 결과는 검수기가 판정합니다 — `npm run ai:check -- <폴더> --profile user --report 판정표.html`.
 자세한 것은 [`ai/README.md`](ai/README.md).
 
