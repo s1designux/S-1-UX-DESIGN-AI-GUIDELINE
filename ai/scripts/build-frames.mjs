@@ -135,7 +135,14 @@ const sizeLine = (group, f) => {
   return parts.length ? parts.join(" · ") : "메뉴 없이 본문만";
 };
 const fileName = (group, f) => `${group.key}.${f.frame}.html`;
-const pasteLine = (group, f) => `[S1 화면 틀] ${group.label} · ${f.label} — 온보딩 답: ${group.answer} E${f.e} (profile: ${group.profile}, frame: ${f.frame}). ai/frames/${fileName(group, f)} 틀로 시작해 주세요.`;
+/* login — 문서는 묻지 않음(undefined) · 프로토타입은 true/false. 로그인 화면은 ai/patterns/login.<pc|mobile>.md 대로 만든다. */
+const loginGuide = (group) => `ai/patterns/login.${group.profile === "mobile" ? "mobile" : "pc"}.md`;
+const pasteLine = (group, f, login) => {
+  const answer = `${group.answer} E${f.e}${login === undefined ? "" : ` F${login ? 1 : 2}`}`;
+  const meta = `profile: ${group.profile}, frame: ${f.frame}${login === undefined ? "" : `, login: ${login}`}`;
+  const tail = login ? ` 로그인 화면은 ${loginGuide(group)} 대로 만들어 주세요.` : "";
+  return `[S1 화면 틀] ${group.label} · ${f.label}${login ? " + 로그인 화면" : ""} — 온보딩 답: ${answer} (${meta}). ai/frames/${fileName(group, f)} 틀로 시작해 주세요.${tail}`;
+};
 
 /* ── 1. 시작 파일 ── */
 await mkdir(path.join(ROOT, "ai", "frames"), { recursive: true });
@@ -209,7 +216,7 @@ const choices = {};
 for (const group of GROUPS) {
   for (const f of group.frames) {
     const id = `${group.key}.${f.frame}`;
-    choices[id] = { title: `${group.label} · ${f.label}`, size: sizeLine(group, f), file: fileName(group, f), paste: pasteLine(group, f) };
+    choices[id] = { title: `${group.label} · ${f.label}`, size: sizeLine(group, f), file: fileName(group, f), paste: group.kind === "doc" ? pasteLine(group, f) : null, pasteLogin: pasteLine(group, f, true), pasteNoLogin: pasteLine(group, f, false) };
     step3.push(card({ value: id, label: f.label, sub: sizeLine(group, f), group, f, attrs: `data-group="${esc(group.key)}"` }));
   }
 }
@@ -281,10 +288,11 @@ const picker = `<!doctype html>
 </style></head>
 <body data-s1-density="wide"><div class="wrap">
 <h1 class="typo-title-24b">화면 틀 고르기</h1>
-<p class="sub typo-body-14r">세 번만 고르면 됩니다. 마지막에 나오는 한 줄을 AI 채팅창에 붙여 넣으면 온보딩 답과 시작 틀이 한 번에 정해집니다. 배포본 ${esc(manifest.version)} 실제 부품으로 그렸습니다.</p>
+<p class="sub typo-body-14r">몇 가지만 차례로 고르면 됩니다. 마지막에 나오는 한 줄을 AI 채팅창에 붙여 넣으면 온보딩 답과 시작 틀이 한 번에 정해집니다. 배포본 ${esc(manifest.version)} 실제 부품으로 그렸습니다.</p>
 ${step(1, "무엇을 만드나요?", "가장 가까운 것을 누르세요.", step1)}
 ${step(2, "누가 쓰는 화면인가요?", "쓰는 사람에 따라 글자·칸 크기가 달라집니다.", step2)}
 ${step(3, "메뉴 틀은요?", "고른 화면에 맞는 틀만 보여 드려요. 그림을 보고 고르세요.", step3)}
+${step(4, "로그인 화면도 만드나요?", "만들면 S1 로그인 화면 기준(PC·모바일 따로)대로 만듭니다.", [option({ value: "yes", label: "로그인 화면 필요", sub: "아이디·비밀번호로 들어가는 첫 화면" }), option({ value: "no", label: "필요 없음", sub: "로그인 없이 바로 쓰거나 이미 있음" })])}
 <section class="done" id="done" hidden aria-live="polite">
   <h2 class="done-title typo-title-18b" id="pick-title"></h2>
   <p class="done-size typo-body-14r" id="pick-size"></p>
@@ -304,12 +312,13 @@ ${step(3, "메뉴 틀은요?", "고른 화면에 맞는 틀만 보여 드려요.
   const done = document.getElementById("done");
   const copy = document.getElementById("copy");
   const answers = {};
+  let frameCard = null;
   const STEP3_GROUP = () => answers[1] === "pc" ? answers[2] : answers[1];
 
   function show(n) {
     steps.forEach((s) => {
       const k = Number(s.dataset.step);
-      const skipped = k === 2 && answers[1] && answers[1] !== "pc";
+      const skipped = (k === 2 && answers[1] && answers[1] !== "pc") || (k === 4 && answers[1] === "doc");
       s.hidden = k > n || skipped;
       if (k < n) s.dataset.done = ""; else delete s.dataset.done;
       s.querySelector(".step-change").hidden = !(k < n);
@@ -317,11 +326,11 @@ ${step(3, "메뉴 틀은요?", "고른 화면에 맞는 틀만 보여 드려요.
     });
     if (n === 3) document.querySelectorAll('[data-step="3"] .card').forEach((c) => { c.hidden = c.dataset.group !== STEP3_GROUP(); });
     steps.find((s) => Number(s.dataset.step) === n)?.querySelectorAll(".card").forEach((c) => c.setAttribute("aria-pressed", "false"));
-    if (n <= 3) done.hidden = true;
+    if (n <= 4) done.hidden = true;
     let no = 0;
     steps.forEach((s) => { if (!s.hidden) s.querySelector(".step-no").textContent = ++no; });
     fit();
-    const current = n <= 3 ? steps[n - 1] : done;
+    const current = n <= 4 ? steps[n - 1] : done;
     current.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -333,14 +342,16 @@ ${step(3, "메뉴 틀은요?", "고른 화면에 맞는 틀만 보여 드려요.
     section.querySelector(".step-answer").textContent = card.querySelector(".card-label").textContent;
     if (n === 1) return show(answers[1] === "pc" ? 2 : 3);
     if (n === 2) return show(3);
+    if (n === 3) { frameCard = card; if (answers[1] !== "doc") return show(4); }
     const picked = CHOICES[answers[3]];
-    document.getElementById("pick-title").textContent = picked.title;
+    const login = answers[1] === "doc" ? null : answers[4] === "yes";
+    document.getElementById("pick-title").textContent = picked.title + (login ? " + 로그인 화면" : "");
     document.getElementById("pick-size").textContent = picked.size;
-    document.getElementById("pick-paste").textContent = picked.paste;
+    document.getElementById("pick-paste").textContent = login === null ? picked.paste : login ? picked.pasteLogin : picked.pasteNoLogin;
     document.getElementById("open").href = "../frames/" + picked.file;
-    document.getElementById("pick-preview").replaceChildren(card.querySelector(".mini").cloneNode(true));
+    document.getElementById("pick-preview").replaceChildren(frameCard.querySelector(".mini").cloneNode(true));
     copy.querySelector("[data-s1-part=label]").textContent = "AI에게 줄 말 복사";
-    show(4);
+    show(5);
     done.hidden = false;
     fit();
     done.scrollIntoView({ behavior: "smooth", block: "start" });

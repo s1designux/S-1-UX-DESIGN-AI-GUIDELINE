@@ -67,14 +67,17 @@
 > **E. (새 화면만) 화면 큰 틀은요?** — 그림으로 보고 고르려면 `<가이드 폴더>/ai/generated/frame-picker.html` 을 브라우저로 여세요. 고른 그림 아래 한 줄을 복사해 붙여 넣으면 위 질문 답까지 한 번에 됩니다.
 > PC 웹: 1) GNB만 2) GNB + LNB (PR용은 1만) · 문서: 1) 본문만 2) GNB + 본문 · 모바일: 1) 위 제목 줄만 2) 위 제목 줄 + 아래 4칸 메뉴
 >
-> 예: `A1 B2` · `A2 B2 C1 D3` · `A2 B1 C1 D3 E2`
+> **F. (프로토타입 · 새 화면만) 로그인 화면도 만드나요?**
+> 1) 필요 2) 필요 없음
+>
+> 예: `A1 B2` · `A2 B2 C1 D3` · `A2 B1 C1 D3 E2 F1`
 
 - **이미 답이 분명한 것은 미리 채워 둡니다.** 예: 프로젝트에 화면 파일이 있고 "입혀줘"라고 했으면 B 옆에 "— 이미 있는 화면이 있어 2로 보여요". 사용자가 고치면 그 답을 따릅니다.
 - **문서 작성(A1)이면 C·D 를 묻지 않습니다.** 문서는 **사용자용 화면과 같은 기준**(PC 웹 · 사용자용)으로 씁니다.
 - **기술은 묻지 않고 프로젝트에서 읽습니다**(`.html` → HTML+CSS, `package.json` 에 `react-native`·`expo` → **React Native**(react 보다 먼저 봅니다), react·vue → React·Vue, `.kt` → Kotlin, `.swift` → Swift). 알 수 없을 때만 묻습니다: HTML+CSS · React · React Native · Vue · Kotlin · Swift · C++.
 - 서비스 기준은 지금 `default` 하나라 묻지 않습니다. 파일을 읽고 쓸 수 있는 도구인지도 묻지 않습니다(지금 쓰는 도구로 압니다).
-- **`[S1 화면 틀]` 로 시작하는 한 줄**(고르기 페이지에서 복사한 것)을 받으면 거기 적힌 답·`profile`·`frame` 을 그대로 쓰고 A~E 를 다시 묻지 않습니다. 기술(`stack`)만 프로젝트에서 읽습니다.
-- **이미 있는 화면에 입히기(B2)이면 E 를 묻지 않습니다** — 틀은 이미 있는 화면을 따릅니다.
+- **`[S1 화면 틀]` 로 시작하는 한 줄**(고르기 페이지에서 복사한 것)을 받으면 거기 적힌 답·`profile`·`frame`·`login` 을 그대로 쓰고 A~F 를 다시 묻지 않습니다. 기술(`stack`)만 프로젝트에서 읽습니다.
+- **이미 있는 화면에 입히기(B2)이면 E·F 를 묻지 않습니다** — 틀은 이미 있는 화면을 따릅니다. **문서(A1)이면 F 를 묻지 않습니다.**
 - 사용자가 PR용에 LNB 를 원하면 — PR용 디자인 기준에는 LNB 가 없다고 한 줄로 알리고 GNB만으로 갑니다.
 - 답을 받은 뒤 **크기표를 보여 주며 다시 확인받지 않습니다.** 바로 4단계로 저장하고 다음으로 갑니다.
 
@@ -98,6 +101,8 @@ E → `frame` (B1 일 때만 적습니다)
 | 문서(A1) | `plain` 본문만 | `gnb` GNB + 본문 | `ai/frames/doc.<frame>.html` |
 | PC 웹 프로토타입 | `gnb` GNB만 | `gnb-lnb` GNB + LNB (PR용 제외) | `ai/frames/<profile>.<frame>.html` |
 | 모바일 | `header` 위 제목 줄만 | `header-tabbar` + 아래 4칸 메뉴 | `ai/frames/mobile.<frame>.html` |
+
+F → `login` (프로토타입 · B1 일 때만): F1 = `true`, F2 = `false`
 
 ---
 
@@ -139,6 +144,8 @@ E → `frame` (B1 일 때만 적습니다)
 
 **새 화면(B1)이면 추가로** — `ai/frames/README.md` 를 읽고, `frame` 에 맞는 시작 파일 하나를 복사해 그 안의 본문 자리부터 채웁니다. GNB·LNB 를 손으로 새로 짜지 않습니다.
 
+**`login: true` 이면 추가로** — 로그인 화면을 먼저 만듭니다. PC 는 `ai/patterns/login.pc.md`, 모바일은 `ai/patterns/login.mobile.md` 한 장만 읽고 그대로 따릅니다. 로그인 화면은 메뉴 틀(`frame`)을 쓰지 않습니다.
+
 **이미 있는 화면에 입히기(B2)이면 추가로**
 
 | 무엇 | 읽을 파일 |
@@ -160,6 +167,7 @@ E → `frame` (B1 일 때만 적습니다)
   "mode": "apply",
   "profile": "admin",
   "frame": "gnb-lnb",
+  "login": true,
   "platform": "pc",
   "stack": "web",
   "service": "default",

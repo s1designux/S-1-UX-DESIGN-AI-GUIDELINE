@@ -26,6 +26,10 @@
 4. `.s1-frame__title`·`.s1-frame__slot` 자리표시를 지우고 본문을 `profile.<profile>.md` 크기표대로 채웁니다.
 5. GNB 하위메뉴가 필요하면 `ui-library/dist/examples/gnb.html` 의 패널 배선(`aria-controls`)을 그대로 따릅니다.
 
-## 3. 검수
+## 3. 로그인 화면
+
+`s1.profile.json` 의 `login` 이 `true` 이면 로그인 화면은 이 틀을 쓰지 않고 `ai/patterns/login.<pc|mobile>.md` 대로 따로 만듭니다.
+
+## 4. 검수
 
 틀만 복사한 상태에서도 검수기를 통과합니다. 본문을 채운 뒤 다시 돌립니다 — `node <가이드 폴더>/ai/check/s1-check.mjs <폴더>`.
