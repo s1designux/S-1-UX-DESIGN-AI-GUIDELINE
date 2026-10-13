@@ -1,6 +1,8 @@
 {
   "mode": "new",
   "profile": "user",
+  "frame": "gnb-lnb",
+  "login": false,
   "platform": "pc",
   "stack": "web",
   "service": "default",

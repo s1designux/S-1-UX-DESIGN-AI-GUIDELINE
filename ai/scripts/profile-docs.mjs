@@ -184,7 +184,7 @@ const uniqueIds = (html, prefix) => html.replace(/\bid="([^"]+)"/g, `id="${prefi
 const withLabel = (html, label) => html.replace(/(<span data-s1-part="label">)[^<]*/, `$1${label}`);
 
 /** 비교판은 파일 하나로 열려야 한다 — 미리보기 창은 옆 파일(CSS·아이콘)을 못 읽는다. 배포본 CSS 를 그대로 넣는다. */
-async function inlineCss(DIST) {
+export async function inlineCss(DIST) {
   const { readdir } = await import("node:fs/promises");
   let css = (await readFile(path.join(DIST, "assets/css/tokens.css"), "utf8"))
     + "\n" + (await readFile(path.join(DIST, "assets/css/typography.css"), "utf8"))

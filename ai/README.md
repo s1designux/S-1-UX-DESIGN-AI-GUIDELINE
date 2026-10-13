@@ -20,6 +20,10 @@
 | `scripts/review-request.mjs` | 대응표(s1-mapping.json) → 디자이너에게 보낼 디자인 확인 요청서(HTML 한 장) |
 | `scripts/install-entry.mjs` | Claude Code·VS Code·Cursor·Windsurf·Gemini·Codex 가 처음 읽는 안내 파일에 "S1 온보딩부터"를 깐다 |
 | `generated/profiles.pc.html` · `profiles.mobile.html` | 화면 종류를 실제 부품으로 나란히 그린 비교판 (PC·모바일 따로) |
+| `generated/frame-picker.html` | 화면 큰 틀(문서 · PR용 · 사용자용 · 관리자용 기본·작게 · 모바일 × GNB·LNB 유무)을 그림으로 고르는 한 장. 고르면 AI 에게 줄 한 줄이 나온다 |
+| `frames/<화면>.<틀>.html` · `frames/README.md` | 틀마다 빈 뼈대 시작 파일. 새 화면은 여기서 복사해 시작한다 |
+| `patterns/login.pc.md` · `login.mobile.md` | 로그인 화면 만드는 법(PC·모바일 따로). 온보딩에서 로그인 화면이 필요하다고 답하면 읽는다 |
+| `scripts/build-frames.mjs` | 위 두 가지를 scope.json·배포본 예제로 만든다(`npm run ai:scope` 때 같이 돈다) |
 | `generated/scope.json` | 검수기가 쓰는 정답표 — 배포본에서 자동으로 뽑습니다 |
 | `generated/components.pc.md` · `components.mobile.md` | 매체별로 쓸 수 있는 부품·크기 목록 |
 | `check/s1-check.mjs` | 검수기 |
