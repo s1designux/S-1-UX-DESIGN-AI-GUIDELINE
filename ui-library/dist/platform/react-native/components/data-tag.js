@@ -9,7 +9,7 @@ import SPEC from "../specs/data-tag.js";
 
 export const BREAKS = ["pc"];
 export const DEFAULT_BREAK = "pc";
-export const VARIANTS = ["blue","red"];
+export const VARIANTS = ["blue","red","gray"];
 export const SIZES = [];
 export const MODES = [];
 export const PARTS = [];

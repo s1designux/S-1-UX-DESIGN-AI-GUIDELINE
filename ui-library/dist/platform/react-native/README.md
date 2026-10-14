@@ -3,7 +3,7 @@
 **S1 디자인 시스템의 React Native(Expo) 부품입니다.** iOS · Android · 웹(react-native-web) 에서 같은 코드로 그려지고,
 **PC·Mobile 두 화면 기준을 모두 담았습니다**(`breakName="pc" | "mobile"`). 부품 32종.
 
-**배포본 번호 0.22.1** · 2026-10-13 판 — 디자인가이드 내려받기 화면의 번호와 다르면 새로 받으세요.
+**배포본 번호 0.24.2** · 2026-10-14 판 — 디자인가이드 내려받기 화면의 번호와 다르면 새로 받으세요.
 코드에서 볼 때는 `import { S1_VERSION } from "@s1/ui-react-native"` 입니다.
 
 이 패키지는 웹용 React(`@s1/ui-react`)와 다릅니다. 그쪽은 `<button>`·`<span>` 과 CSS 파일을 쓰는 **React DOM** 이라 iOS·Android 에서 돌지 않습니다.
@@ -111,7 +111,7 @@ import { S1Button, S1Input, S1Tab, S1Table, S1DatePicker } from "./src/s1-ui";
 | `S1BottomSheet` | `none` `single` `dual` | — | — | `onOpen` · `onClose` · `onConfirm` · `onCancel` | 모바일에서 목록을 띄워 고르게 할 때 — 드롭다운 대신 쓴다(density-policy mobileSubstitutes.dropdown). 모바일에서 날짜·시간처럼 넓은 선택 UI 를 띄울 때. Footer=None 은 고르는 즉시 적용되는 목록, Single 은 '적용' 하나, Dual 은 '취소+적용'. |
 | `S1ListRow` | `nav` `value` `read` `pick` `agree` `switch` `thumb` | — | — | `checked` · `onCheckedChange` · `onOpen` | 같은 모양의 줄이 반복되는 목록을 만들 때. |
 | `S1ExpandableCard` | — | — | — | `open` · `onChange` | 한 화면에 여러 덩어리를 쌓아 두고, 필요한 것만 펴서 보게 할 때. 질문과 답처럼 제목만으로 고르고 내용은 접어 두는 목록. |
-| `S1DataTag` | `blue` `red` | — | — | `parts` | 표나 목록에서 한 줄의 상태를 한 눈에 보이게 할 때. 승인·확인(파랑), 주의·에러(빨강)처럼 뜻이 정해진 상태를 표시할 때. |
+| `S1DataTag` | `blue` `red` `gray` | — | — | `parts` | 표나 목록에서 한 줄의 상태를 한 눈에 보이게 할 때. 승인·확인(파랑), 주의·에러(빨강)처럼 뜻이 정해진 상태를 표시할 때. 그 밖의 중립 상태(대기 등)는 회색으로 표시할 때. |
 | `S1Divider` | `x` `y` | — | — | `parts` | 목록 줄 사이를 나눌 때. 표 위·아래처럼 영역을 크게 끊을 때(강한선). 한 줄 안에서 값과 값을 끊을 때(세로선). |
 | `S1Lnb` | `menu` `brand` | `md` `lg` | — | `collapsed` · `onCollapse` · `onToggle` | 화면 왼쪽에 세로로 서서 같은 서비스 안의 큰 영역을 오가는 메뉴가 필요할 때. 하위메뉴(2뎁스)까지 한 판에서 보여 줄 때. |
 
@@ -121,7 +121,7 @@ import { S1Button, S1Input, S1Tab, S1Table, S1DatePicker } from "./src/s1-ui";
 
 | 층 | 어디에 | 개수 |
 |---|---|---|
-| 색(라이트·다크 한 쌍) | `COLORS` (`tokens.js`) | 406 |
+| 색(라이트·다크 한 쌍) | `COLORS` (`tokens.js`) | 411 |
 | 길이·수치 | `DIMENS` · `NUMBERS` | 77 · 10 |
 | 이름 붙은 텍스트 스타일 | `TYPES` · `<S1Text type="body-14r">` | 21 |
 | 아이콘 | `ICONS` · `<Icon name="check" color={…} />` | 26 |

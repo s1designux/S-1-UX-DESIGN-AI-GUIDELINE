@@ -34,14 +34,25 @@
   color: var(--color-tag-line-label-red);
 }
 
+[data-s1-component="data-tag"][data-tone="gray"] {
+  border-color: var(--color-tag-line-border-gray);
+  color: var(--color-tag-line-label-gray);
+}
+
 [data-s1-component="data-tag"][data-solid="on"][data-tone="blue"] {
   background: var(--color-tag-solid-bg-blue);
   border-color: var(--color-tag-solid-bg-blue);
-  color: var(--color-tag-solid-label);
+  color: var(--color-tag-solid-label-blue);
 }
 
 [data-s1-component="data-tag"][data-solid="on"][data-tone="red"] {
   background: var(--color-tag-solid-bg-red);
   border-color: var(--color-tag-solid-bg-red);
-  color: var(--color-tag-solid-label);
+  color: var(--color-tag-solid-label-red);
+}
+
+[data-s1-component="data-tag"][data-solid="on"][data-tone="gray"] {
+  background: var(--color-tag-solid-bg-gray);
+  border-color: var(--color-tag-solid-bg-gray);
+  color: var(--color-tag-solid-label-gray);
 }

@@ -3,6 +3,36 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-10-15 06:37 (KST)
+
+- 원본 커밋: `ac75e0f` — chore(map): 시스템 맵 재생성 (worktree-installer-dark-pin 합치기)
+- 새로 추가된 파일 1개
+  - `ui-library/dist/platform/react/kit.js`
+- 내용이 바뀐 파일 145개
+  - `assets/css/tokens.css`
+  - `design/DESIGN.core.md`
+  - `pages/components.html`
+  - `registry/components/component-facts.json`
+  - `registry/components/data-tag.json`
+  - `ui-library/dist/assets/css/tokens.css`
+  - `ui-library/dist/components/assist-button.manifest.json`
+  - `ui-library/dist/components/assist-button.md`
+  - `ui-library/dist/components/bottom-sheet-option.manifest.json`
+  - `ui-library/dist/components/bottom-sheet-option.md`
+  - `ui-library/dist/components/bottom-sheet.manifest.json`
+  - `ui-library/dist/components/bottom-sheet.md`
+  - `ui-library/dist/components/button.manifest.json`
+  - `ui-library/dist/components/button.md`
+  - `ui-library/dist/components/checkbox.manifest.json`
+  - `ui-library/dist/components/checkbox.md`
+  - `ui-library/dist/components/chip.manifest.json`
+  - `ui-library/dist/components/chip.md`
+  - `ui-library/dist/components/data-tag.css`
+  - `ui-library/dist/components/data-tag.manifest.json`
+  - … 외 125개
+- 원본에서 사라져 삭제한 파일 1개
+  - `ui-library/dist/platform/react/runtime.js`
+
 ## 2026-10-13 16:33 (KST)
 
 - 원본 커밋: `2841cb9` — fix(ui-library): GNB 유틸 아이콘을 24 로 — 32 칸 안 24 가운데 (0.22.1)

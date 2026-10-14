@@ -1,8 +1,8 @@
 {
   "id": "data-tag",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "status": "approved",
-  "canonicalFingerprint": "8077597dca7b6713be2727346a533f058e8b1c8f01f00cc19a90b1a9d6e5c337",
+  "canonicalFingerprint": "97087c3be948d3c15cf72a655b08d466714542df62d09520c33841d6a9a9a364",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -12,7 +12,8 @@
   "rootSelector": "[data-s1-component=\"data-tag\"]",
   "variants": [
     "blue",
-    "red"
+    "red",
+    "gray"
   ],
   "sizes": [],
   "states": {
@@ -20,8 +21,8 @@
   },
   "canonicalStateMap": {},
   "notInCanon": {
-    "note": "청록·주황·초록 색은 쓰임이 정해지지 않아 넣지 않는다(river 2026-09-29). 파랑=승인·확인, 빨강=주의·에러 두 가지만.",
-    "strongAccentSemantic": "해소(d9e125e0) — 뱃지 전용 쓰임 이름 color/tag/*(solid bg·label, line border·label × 파랑·빨강)이 정본 vars-data.ts 에 신설돼 라이트·다크 값을 함께 가진다. CSS 는 그 이름만 쓴다."
+    "note": "청록·주황·초록 색은 쓰임이 정해지지 않아 넣지 않는다(river 2026-09-29). 파랑=승인·확인, 빨강=주의·에러, 회색=그 밖의 중립 상태(river 2026-10-13) 세 가지만.",
+    "strongAccentSemantic": "해소(d9e125e0) — 뱃지 전용 쓰임 이름 color/tag/*(solid bg·label, line border·label × 파랑·빨강·회색 — 2026-10-13 회색 추가·채움 글자 색깔별 분리)이 정본 vars-data.ts 에 신설돼 라이트·다크 값을 함께 가진다. CSS 는 그 이름만 쓴다."
   },
   "parts": [],
   "htmlContract": {
@@ -35,8 +36,8 @@
     "optionalParts": [],
     "axes": {
       "data-shape": "chips(알약, radius/full) | square(네모, radius/4)",
-      "data-solid": "on(채움 — 테두리색을 배경으로, 글자는 흰색) | off(테두리만)",
-      "data-tone": "blue(승인·확인) | red(주의·에러) — manifest variants 가 이 축이다"
+      "data-solid": "on(채움 — 바탕에 색, 글자는 파랑·빨강 흰색 · 회색 회색) | off(테두리만)",
+      "data-tone": "blue(승인·확인) | red(주의·에러) | gray(그 밖의 중립 상태) — manifest variants 가 이 축이다"
     },
     "grouping": "뱃지 여러 개의 줄바꿈·간격은 화면이 소유한다.",
     "relations": [
@@ -57,7 +58,7 @@
     "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다. 글자 크기(12 Medium)는 컴포넌트가 정한다 — 화면이 따로 주지 않는다."
   },
   "contentSlots": {
-    "label": "뱃지 안 글자(승인·확인·주의·에러 등 짧은 상태 낱말). 별도 part 없이 루트 span 의 글자로 둔다."
+    "label": "뱃지 안 글자(승인·확인·주의·에러·대기 등 짧은 상태 낱말). 별도 part 없이 루트 span 의 글자로 둔다."
   },
   "dependencies": {
     "font": [
@@ -108,5 +109,5 @@
     "runtime": "none",
     "reason": "보여주기만 하는 표시라 스크립트가 필요 없다."
   },
-  "sourceFingerprint": "b4f30132350a92c35e30c1eceb406f50259c9b1145988f51042bb33760d5c215"
+  "sourceFingerprint": "2a8bc16776f9b44b64d5ae40395aecc11e4b89d0d9a6385239f5de0be013c19a"
 }

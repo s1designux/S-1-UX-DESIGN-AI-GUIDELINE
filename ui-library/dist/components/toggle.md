@@ -36,4 +36,4 @@
 
 ---
 
-정본 지문 `ba9919ac0abe1e1abf188873f3c2dcfc1d314ad526f0233a349df21747da87b7` · 부품 버전 0.2.3
+정본 지문 `fa0eaeb4bcb0f04a2ffc67dbef4d7b293129184c3ed45dcd7bd973e64ba61098` · 부품 버전 0.2.4

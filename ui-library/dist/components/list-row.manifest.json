@@ -1,8 +1,8 @@
 {
   "id": "list-row",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "status": "approved",
-  "canonicalFingerprint": "3345a6516a406b4ae682a44f45e9864fb165001dcf273abac54e9b85e6053b99",
+  "canonicalFingerprint": "a57e54755e1f5117d3db63268e22479371192838564e2dbc4f639723913b54f8",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -199,5 +199,5 @@
     "runtime": "none",
     "reason": "줄 모양·상태만 소유한다. 실제 이동·선택 반영·이벤트는 목록을 그리는 화면이 배선한다. Switch 의 아리아 전환은 toggle 코어 자신의 런타임이 담당한다(list-row 가 별도로 담당하지 않는다). Agree 의 약관 열기 버튼 click(약관 화면 열기)도 쓰는 화면이 받는다."
   },
-  "sourceFingerprint": "fa2af90c3722fee97bd6a5cb271fa4a8e4da90c99e039dc62d299fa899f1f30b"
+  "sourceFingerprint": "5fa5e6ef99f2cf894c4bdbab63f9586e0602225f30eac7e51901e7c7f81c8e2e"
 }

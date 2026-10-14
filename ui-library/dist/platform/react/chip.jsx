@@ -1,15 +1,18 @@
+"use client";
 /* 자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요. */
 /* S1Chip — 승인된 배포본 마크업을 그대로 옮긴 React 컴포넌트.
    마크업을 새로 쓰지 않는다. dist/examples/chip*.html 의 승인 인스턴스를 JSX 로 옮긴 것이다.
    서버에서 그려도 같은 마크업이 나온다. */
-import { useEffect, useId, useRef } from "react";
-import { scopeOf, slot } from "./runtime.js";
+import { forwardRef, useId, useRef, useState } from "react";
+import { mergeParts, scopeOf, slot, useApply, useMergedRef, useRuntime } from "./kit.js";
 import { init, destroy } from "../../components/chip.js";
+
 
 export const BREAKS = ["pc","mobile"];
 export const DEFAULT_BREAK = "pc";
 export const VARIANTS = ["line","solid"];
 export const SIZES = ["sm","md"];
+/* parts 로 줄 수 있는 슬롯 이름(낙타 표기) — 타입 정의의 parts 키와 같다. */
 export const PARTS = ["label"];
 
 function assertAllowed(label, value, allowed) {
@@ -17,71 +20,51 @@ function assertAllowed(label, value, allowed) {
   throw new Error(`[s1-ui] chip: 승인되지 않은 ${label} "${value}". 쓸 수 있는 값: ${allowed.join(", ")}`);
 }
 
-export default function S1Chip({ variant, size, breakName = DEFAULT_BREAK, parts, onBeforechange, onChange, selected, defaultSelected, onSelectedChange, className, style, ...rest }) {
+const S1Chip = forwardRef(function S1Chip({ variant, size, breakName = DEFAULT_BREAK, parts, selected, defaultSelected, onSelectedChange, onBeforeChange, onBeforechange, onChange, label, children, value, name, className, style, ...rest }, forwardedRef) {
   const uid = useId();
   const rootRef = useRef(null);
-  const apiRef = useRef(null);
-  const selectedSeen = useRef(false);
-  const partScope = scopeOf(parts);
+  const rootAttr = useMergedRef(rootRef, forwardedRef);
   assertAllowed("variant", variant, VARIANTS);
   assertAllowed("size", size, SIZES);
   assertAllowed("breakName", breakName, BREAKS);
-
-  /* 배포본의 실제 동작 스크립트를 그대로 쓴다 — 브라우저에서만 돈다(서버 렌더링은 마크업까지). */
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return undefined;
-    apiRef.current = init(root);
-    return () => { apiRef.current = null; destroy(root); };
-  }, [breakName]);
-
-  /* 제어형이면 부품이 스스로 모양을 바꾸지 못하게 막고 알리기만 한다. 비제어형이면 바뀐 뒤에 알린다. */
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return undefined;
-    const controlled = selected !== undefined;
-    const before = (event) => { if (controlled) { event.preventDefault(); onSelectedChange?.(event.detail?.selected ?? true); } };
-    const after = (event) => { if (!controlled) onSelectedChange?.(event.detail?.selected ?? true); };
-    root.addEventListener("s1:chip:beforechange", before);
-    root.addEventListener("s1:chip:change", after);
-    return () => { root.removeEventListener("s1:chip:beforechange", before); root.removeEventListener("s1:chip:change", after); };
-  });
-
-  /* 값이 바뀌면 이벤트 없이 부품에 넣는다(제어형). 처음 값(defaultSelected)도 한 번 넣는다. */
-  useEffect(() => {
-    const api = apiRef.current;
-    if (!api) return;
+  const formKey = breakName;
+  /* 견본 글자는 내용 prop 을 하나도 주지 않았을 때만 그린다. */
+  const bare = children === undefined && label === undefined;
+  const initialSelected = useRef(selected ?? defaultSelected ?? false).current;
+  const [on, setOn] = useState(initialSelected);
+  const isOn = selected !== undefined ? selected : on;
+  const labelText = children !== undefined ? children : label;
+  const partScope = scopeOf(mergeParts(parts, { label: children !== undefined ? children : label }));
+  const apiRef = useRuntime(rootRef, { init, destroy }, {
+    "s1:chip:beforechange": (event) => { if (selected !== undefined) { event.preventDefault(); onSelectedChange?.(event.detail?.selected ?? true); } onBeforeChange?.(event); onBeforechange?.(event); },
+    "s1:chip:change": (event) => { setOn(Boolean(event.detail?.selected)); if (selected === undefined) onSelectedChange?.(event.detail?.selected ?? true); onChange?.(event); }
+  }, [breakName, formKey]);
+  const seen = useRef(false);
+  useApply(apiRef, (api) => {
     if (selected !== undefined) api.setSelected(selected);
-    else if (defaultSelected !== undefined && !selectedSeen.current) api.setSelected(defaultSelected);
-    selectedSeen.current = true;
-  }, [selected, breakName]);
-
-
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return undefined;
-    const bound = [["s1:chip:beforechange", onBeforechange], ["s1:chip:change", onChange]]
-      .filter(([, handler]) => typeof handler === "function");
-    for (const [eventName, handler] of bound) root.addEventListener(eventName, handler);
-    return () => { for (const [eventName, handler] of bound) root.removeEventListener(eventName, handler); };
-  });
-
-  if (breakName === "pc") {
+    else if (defaultSelected !== undefined && !seen.current) api.setSelected(defaultSelected);
+    seen.current = true;
+  }, [selected, defaultSelected, breakName]);
+  if (formKey === "pc") {
     return (
-      <button type="button" data-s1-component="chip" data-variant={variant ?? "line"} data-size={size ?? "md"} data-break="pc" aria-pressed="false" ref={rootRef} className={className} style={style} {...rest}>
+      <button data-value={value} type="button" data-s1-component="chip" data-variant={variant ?? "line"} data-size={size ?? "md"} data-break="pc" aria-pressed="false" ref={rootAttr} className={className} style={style} {...rest}>
         <span data-s1-part="label" {...(slot(partScope, "label").attrs ?? {})}>
-          {slot(partScope, "label").content ?? "라벨"}
+          {slot(partScope, "label").content ?? (bare ? "라벨" : undefined)}
         </span>
+        {name ? <input type="hidden" name={name} value={value ?? rest["data-value"] ?? (typeof labelText === "string" ? labelText : typeof slot(partScope, "label").content === "string" ? slot(partScope, "label").content : "")} disabled={!isOn} /> : null}
       </button>
     );
-  } else if (breakName === "mobile") {
+  } else if (formKey === "mobile") {
     return (
-      <button type="button" data-s1-component="chip" data-variant={variant ?? "line"} data-size={size ?? "sm"} data-break="mobile" aria-pressed="false" ref={rootRef} className={className} style={style} {...rest}>
+      <button data-value={value} type="button" data-s1-component="chip" data-variant={variant ?? "line"} data-size={size ?? "sm"} data-break="mobile" aria-pressed="false" ref={rootAttr} className={className} style={style} {...rest}>
         <span data-s1-part="label" {...(slot(partScope, "label").attrs ?? {})}>
-          {slot(partScope, "label").content ?? "라벨"}
+          {slot(partScope, "label").content ?? (bare ? "라벨" : undefined)}
         </span>
+        {name ? <input type="hidden" name={name} value={value ?? rest["data-value"] ?? (typeof labelText === "string" ? labelText : typeof slot(partScope, "label").content === "string" ? slot(partScope, "label").content : "")} disabled={!isOn} /> : null}
       </button>
     );
   }
   throw new Error(`[s1-ui] chip: 승인되지 않은 breakName "${breakName}". 쓸 수 있는 값: ${BREAKS.join(", ")}`);
-}
+});
+S1Chip.displayName = "S1Chip";
+export default S1Chip;

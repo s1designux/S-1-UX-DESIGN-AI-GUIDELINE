@@ -1,16 +1,19 @@
+"use client";
 /* 자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요. */
 /* S1Table — 승인된 배포본 마크업을 그대로 옮긴 React 컴포넌트.
    마크업을 새로 쓰지 않는다. dist/examples/table*.html 의 승인 인스턴스를 JSX 로 옮긴 것이다.
    서버에서 그려도 같은 마크업이 나온다. */
-import { useEffect, useId, useRef } from "react";
-import { attrsOf, keyOf, list, scopeOf, slot } from "./runtime.js";
+import { forwardRef, useId, useRef } from "react";
+import { attrsOf, keyOf, list, mergeParts, s1Row, scopeOf, slot, useMergedRef, useRuntime } from "./kit.js";
 import { init, destroy } from "../../components/table.js";
+
 
 export const BREAKS = ["pc"];
 export const DEFAULT_BREAK = "pc";
 export const VARIANTS = ["base"];
 export const SIZES = ["md","sm","xsm"];
-export const PARTS = ["table","header-cell","row","cell"];
+/* parts 로 줄 수 있는 슬롯 이름(낙타 표기) — 타입 정의의 parts 키와 같다. */
+export const PARTS = ["table","headerCell","control"];
 
 /* 예제에 있던 내용 — prop 을 주지 않으면 이게 그려진다. */
 const DEFAULT_HEADER_CELLS = (uid) => ["항목명", "카테고리", { "content": "수량", "attrs": { "data-align": "center" } }, { "content": "상태", "attrs": { "data-align": "center" } }];
@@ -22,32 +25,17 @@ function assertAllowed(label, value, allowed) {
   throw new Error(`[s1-ui] table: 승인되지 않은 ${label} "${value}". 쓸 수 있는 값: ${allowed.join(", ")}`);
 }
 
-export default function S1Table({ size, parts, headerCells, rows, onSelectionchange, className, style, ...rest }) {
+const S1Table = forwardRef(function S1Table({ size, parts, onSelectionChange, onSelectionchange, headerCells, rows, className, style, ...rest }, forwardedRef) {
   const uid = useId();
   const rootRef = useRef(null);
-  const partScope = scopeOf(parts);
+  const rootAttr = useMergedRef(rootRef, forwardedRef);
   assertAllowed("size", size, SIZES);
-
-  /* 배포본의 실제 동작 스크립트를 그대로 쓴다 — 브라우저에서만 돈다(서버 렌더링은 마크업까지). */
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return undefined;
-    init(root);
-    return () => { destroy(root); };
+  const partScope = scopeOf(parts);
+  const apiRef = useRuntime(rootRef, { init, destroy }, {
+    "s1:table:selectionchange": (event) => { onSelectionChange?.(event); onSelectionchange?.(event); }
   }, []);
-
-
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return undefined;
-    const bound = [["s1:table:selectionchange", onSelectionchange]]
-      .filter(([, handler]) => typeof handler === "function");
-    for (const [eventName, handler] of bound) root.addEventListener(eventName, handler);
-    return () => { for (const [eventName, handler] of bound) root.removeEventListener(eventName, handler); };
-  });
-
   return (
-      <div data-s1-component="table" data-size={size ?? "md"} ref={rootRef} className={className} style={style} {...rest}>
+      <div data-s1-component="table" data-size={size ?? "md"} ref={rootAttr} className={className} style={style} {...rest}>
         <table data-s1-part="table" {...(slot(partScope, "table").attrs ?? {})}>
           <thead>
             <tr>
@@ -68,7 +56,7 @@ export default function S1Table({ size, parts, headerCells, rows, onSelectioncha
           </thead>
           <tbody>
             {(rows ?? DEFAULT_ROWS(uid)).map((item1, index1) => {
-              const scope1 = scopeOf(item1);
+              const scope1 = scopeOf(rows ? s1Row(item1, index1) : item1);
               return (
                 <tr data-s1-part="row" {...attrsOf(scope1)} key={keyOf(item1, index1)}>
                   <td data-s1-part="cell" data-selection {...(slot(scope1, "cell").attrs ?? {})}>
@@ -91,4 +79,6 @@ export default function S1Table({ size, parts, headerCells, rows, onSelectioncha
         </table>
       </div>
   );
-}
+});
+S1Table.displayName = "S1Table";
+export default S1Table;

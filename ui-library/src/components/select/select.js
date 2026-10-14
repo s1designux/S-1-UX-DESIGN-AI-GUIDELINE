@@ -84,7 +84,8 @@ export function init(root) {
   const dropdownApi = initDropdown(dropdownRoot);
 
   const optionsOf = () => [...dropdownRoot.querySelectorAll('[data-s1-part="option"]')];
-  const placeholderText = value ? value.textContent : "";
+  /* 처음 글자가 이미 고른 값의 라벨일 수 있다(서버가 값을 알고 그렸을 때) — 비웠을 때 돌아갈 글자는 data-placeholder 로 따로 받는다. */
+  const placeholderText = root.dataset.placeholder ?? (value ? value.textContent : "");
   const hiddenName = root.dataset.name;
   let hidden = null;
   if (hiddenName) {

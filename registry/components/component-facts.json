@@ -3,7 +3,7 @@
     "generated": true,
     "source": "plugins/figma-vars-installer/src/build-components.ts",
     "method": "mock-execution",
-    "sourceHash": "ff7fbdb30bf1",
+    "sourceHash": "c460a81e047e",
     "unknownValuePolicy": [
       "unknown",
       "not-defined",
@@ -2667,7 +2667,8 @@
         ],
         "Color": [
           "Blue",
-          "Red"
+          "Red",
+          "Gray"
         ]
       },
       "geometry": [
@@ -2718,12 +2719,17 @@
       "tokenBindings": [
         "border-width/1",
         "color/tag/line/border/blue",
+        "color/tag/line/border/gray",
         "color/tag/line/border/red",
         "color/tag/line/label/blue",
+        "color/tag/line/label/gray",
         "color/tag/line/label/red",
         "color/tag/solid/bg/blue",
+        "color/tag/solid/bg/gray",
         "color/tag/solid/bg/red",
-        "color/tag/solid/label",
+        "color/tag/solid/label/blue",
+        "color/tag/solid/label/gray",
+        "color/tag/solid/label/red",
         "radius/4",
         "radius/full",
         "spacing/6",

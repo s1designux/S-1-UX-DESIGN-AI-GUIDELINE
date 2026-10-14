@@ -11,10 +11,10 @@
       "registry/governance/density-policy.json",
       "ui-library/dist/components/*.css"
     ],
-    "distVersion": "0.22.1",
-    "distReleasedAt": "2026-10-13",
-    "canonicalFingerprint": "3293d4203abdfd3eecb91c74299c2fac5f94cd3972c861270f06895a17f69c71",
-    "builtAt": "2026-10-13"
+    "distVersion": "0.24.2",
+    "distReleasedAt": "2026-10-14",
+    "canonicalFingerprint": "74173580fab2dea369607efb6164a895d246c9da4cb993284b35d04f2e9b7db8",
+    "builtAt": "2026-10-14"
   },
   "rules": {
     "_meta": {
@@ -1123,12 +1123,17 @@
     "--color-table-cell-selected",
     "--color-table-header-bg",
     "--color-tag-line-border-blue",
+    "--color-tag-line-border-gray",
     "--color-tag-line-border-red",
     "--color-tag-line-label-blue",
+    "--color-tag-line-label-gray",
     "--color-tag-line-label-red",
     "--color-tag-solid-bg-blue",
+    "--color-tag-solid-bg-gray",
     "--color-tag-solid-bg-red",
-    "--color-tag-solid-label",
+    "--color-tag-solid-label-blue",
+    "--color-tag-solid-label-gray",
+    "--color-tag-solid-label-red",
     "--color-text-body-primary",
     "--color-text-body-secondary",
     "--color-text-body-tertiary",
@@ -3032,7 +3037,8 @@
       "sizes": [],
       "variants": [
         "blue",
-        "red"
+        "red",
+        "gray"
       ],
       "variantAttribute": "data-tone",
       "sizeAttribute": null,

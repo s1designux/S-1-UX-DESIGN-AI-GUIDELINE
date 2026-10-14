@@ -1,69 +1,68 @@
+"use client";
 /* 자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요. */
 /* S1Gnb — 승인된 배포본 마크업을 그대로 옮긴 React 컴포넌트.
    마크업을 새로 쓰지 않는다. dist/examples/gnb*.html 의 승인 인스턴스를 JSX 로 옮긴 것이다.
    서버에서 그려도 같은 마크업이 나온다. */
-import { useEffect, useId, useRef } from "react";
-import { scopeOf, slot } from "./runtime.js";
+import { forwardRef, useId, useRef } from "react";
+import { mergeParts, scopeOf, slot, useMergedRef, useRuntime } from "./kit.js";
 import { init, destroy } from "../../components/gnb.js";
+import S1GnbSubMenu from "./gnb-sub-menu.jsx";
 
 export const BREAKS = ["pc"];
 export const DEFAULT_BREAK = "pc";
 export const VARIANTS = ["center-between","start"];
 export const SIZES = ["md","sm","xsm"];
-export const PARTS = ["logo","leading","menus","menu","util","lang","lang-icon","lang-label","account","account-icon","menu-toggle","menu-icon"];
+/* parts 로 줄 수 있는 슬롯 이름(낙타 표기) — 타입 정의의 parts 키와 같다. */
+export const PARTS = ["leading","logo","menus","util","lang","langIcon","langLabel","account","accountIcon","menuToggle","menuIcon","menu"];
+/* 0.22.0 에서 쓰던 슬롯 이름 — 계속 받는다(옛 이름 하나가 여러 자리를 함께 채우는 것도 그때 그대로). 새 코드는 위 이름을 쓰세요. */
+export const LEGACY_PARTS = ["menu"];
+
+const DEFAULT_GNB_MENUS = [{"label":"공지사항","current":true},{"label":"서비스","controls":"gnb-sub-menu-a-service"},{"label":"통계","controls":"gnb-sub-menu-a-stats"}];
 
 function assertAllowed(label, value, allowed) {
   if (value === undefined || allowed.length === 0 || allowed.includes(value)) return;
   throw new Error(`[s1-ui] gnb: 승인되지 않은 ${label} "${value}". 쓸 수 있는 값: ${allowed.join(", ")}`);
 }
 
-export default function S1Gnb({ variant, size, parts, onOpen, onClose, className, style, ...rest }) {
+const S1Gnb = forwardRef(function S1Gnb({ variant, size, parts, onOpen, onClose, menus, subMenuType = "regular", logo, langLabel, onOpenChange, className, style, ...rest }, forwardedRef) {
   const uid = useId();
   const rootRef = useRef(null);
-  const partScope = scopeOf(parts);
+  const rootAttr = useMergedRef(rootRef, forwardedRef);
   assertAllowed("variant", variant, VARIANTS);
   assertAllowed("size", size, SIZES);
-
-  /* 배포본의 실제 동작 스크립트를 그대로 쓴다 — 브라우저에서만 돈다(서버 렌더링은 마크업까지). */
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return undefined;
-    init(root);
-    return () => { destroy(root); };
-  }, []);
-
-
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return undefined;
-    const bound = [["s1:gnb:open", onOpen], ["s1:gnb:close", onClose]]
-      .filter(([, handler]) => typeof handler === "function");
-    for (const [eventName, handler] of bound) root.addEventListener(eventName, handler);
-    return () => { for (const [eventName, handler] of bound) root.removeEventListener(eventName, handler); };
-  });
-
+  /* 견본 글자는 내용 prop 을 하나도 주지 않았을 때만 그린다. */
+  const bare = logo === undefined && langLabel === undefined;
+  const menuSig = (menus ?? []).map((entry) => (entry && typeof entry === "object" && (entry.columns || entry.children || entry.controls) ? "1" : "0")).join("");
+  const menuList = menus ?? DEFAULT_GNB_MENUS;
+  const partScope = scopeOf(mergeParts(parts, { logo: logo, langLabel: langLabel }));
+  const apiRef = useRuntime(rootRef, { init, destroy }, {
+    "s1:gnb:open": (event) => { onOpen?.(event); onOpenChange?.(true, event.detail); },
+    "s1:gnb:close": (event) => { onClose?.(event); onOpenChange?.(false, event.detail); }
+  }, [menuSig]);
+  const renderGnbMenu = (entry, index) => {
+    const menu = typeof entry === "string" || typeof entry === "number" ? { label: String(entry) } : entry;
+    const columns = menu.columns ?? menu.children;
+    return (
+      <li key={menu.key ?? index}>
+        <a data-s1-part="menu" href={menu.href ?? "#"} aria-current={menu.current ? "page" : undefined} aria-expanded={columns || menu.controls ? "false" : undefined} aria-controls={menu.controls ?? (columns ? uid + "-sub-" + index : undefined)} {...(slot(partScope, "menu").attrs ?? {})}>{slot(partScope, "menu").content ?? menu.label}</a>
+      </li>
+    );
+  };
+  const renderGnbPanel = (entry, index) => {
+    const menu = typeof entry === "string" || typeof entry === "number" ? { label: String(entry) } : entry;
+    const columns = menu.columns ?? menu.children;
+    if (!columns) return null;
+    return <S1GnbSubMenu key={menu.key ?? index} id={uid + "-sub-" + index} type={subMenuType} columns={columns} hidden aria-label={typeof menu.label === "string" ? menu.label + " 하위 메뉴" : "하위 메뉴"} />;
+  };
   return (
-      <nav data-s1-component="gnb" data-size={size ?? "sm"} data-variant={variant ?? "start"} aria-label="주 메뉴 · 레귤러 예시" ref={rootRef} className={className} style={style} {...rest}>
+      <>
+      <nav data-s1-component="gnb" data-size={size ?? "sm"} data-variant={variant ?? "start"} aria-label="주 메뉴 · 레귤러 예시" ref={rootAttr} className={className} style={style} {...rest}>
         <div data-s1-part="leading" {...(slot(partScope, "leading").attrs ?? {})}>
           <a data-s1-part="logo" href="#" {...(slot(partScope, "logo").attrs ?? {})}>
-            {slot(partScope, "logo").content ?? "SAMPLE LOGO"}
+            {slot(partScope, "logo").content ?? (bare ? "SAMPLE LOGO" : undefined)}
           </a>
           <ul data-s1-part="menus" {...(slot(partScope, "menus").attrs ?? {})}>
-            <li>
-              <a data-s1-part="menu" href="#" aria-current="page" {...(slot(partScope, "menu").attrs ?? {})}>
-                {slot(partScope, "menu").content ?? "공지사항"}
-              </a>
-            </li>
-            <li>
-              <a data-s1-part="menu" href="#" aria-expanded="false" aria-controls="gnb-sub-menu-a-service" {...(slot(partScope, "menu").attrs ?? {})}>
-                {slot(partScope, "menu").content ?? "서비스"}
-              </a>
-            </li>
-            <li>
-              <a data-s1-part="menu" href="#" aria-expanded="false" aria-controls="gnb-sub-menu-a-stats" {...(slot(partScope, "menu").attrs ?? {})}>
-                {slot(partScope, "menu").content ?? "통계"}
-              </a>
-            </li>
+            {menuList.map(renderGnbMenu)}
           </ul>
         </div>
         <div data-s1-part="util" {...(slot(partScope, "util").attrs ?? {})}>
@@ -87,5 +86,9 @@ export default function S1Gnb({ variant, size, parts, onOpen, onClose, className
           </button>
         </div>
       </nav>
+        {menuList.map(renderGnbPanel)}
+      </>
   );
-}
+});
+S1Gnb.displayName = "S1Gnb";
+export default S1Gnb;

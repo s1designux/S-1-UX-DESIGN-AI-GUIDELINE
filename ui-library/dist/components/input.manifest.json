@@ -1,12 +1,12 @@
 {
   "id": "input",
-  "version": "0.3.8",
+  "version": "0.3.10",
   "status": "approved",
   "statusNote": "Base Input 은 2026-09-04 river 승인. 이번에 얹은 Password·Search 옵션은 2026-09-07 river 직접 검수 후 승인(결정 D1~D16). 정본 buildSearch 구조 변경은 🤖 component-verifier 가 검증하고 Gate 13 에 기록했다.",
   "modes": [
     "search"
   ],
-  "canonicalFingerprint": "74d324b9b93b6d6de0ac2434a163f74814e35170f97097eee011bd8bb1b1f5e3",
+  "canonicalFingerprint": "785ecda4f20da6a0b6cd6b4ffbfa2a2a161b237b5b87f0f588a7dde2d8507755",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -262,7 +262,7 @@
       "destroy removes listeners and hides clear action"
     ],
     "controlMode": "uncontrolled",
-    "behavior": "Focus에서 값이 있을 때 remove action을 보이고, 실행하면 값 삭제·input event 발생·Input focus 복귀. Password 옵션(type=password + action[data-action=password])이 있으면 누를 때마다 type 을 password↔text 로 바꾸고 aria-pressed·aria-label 을 맞춘 뒤 focus 를 되돌린다. Search 옵션(root[data-mode=search] + action[data-action=search])이 있으면 클릭 또는 Enter(IME 조합 제외)에서 s1:input:search 를 발화하고, clear 표시 조건은 focus 와 무관하게 값 유무만 본다."
+    "behavior": "Focus에서 값이 있을 때 remove action을 보이고, 실행하면 값 삭제·input event 발생·Input focus 복귀. Password 옵션(type=password + action[data-action=password])이 있으면 누를 때마다 type 을 password↔text 로 바꾸고 aria-pressed·aria-label 을 맞춘 뒤 focus 를 되돌린다. Search 옵션(root[data-mode=search] + action[data-action=search])이 있으면 클릭 또는 Enter(IME 조합 제외)에서 s1:input:search 를 발화하고, clear 표시 조건은 focus 와 무관하게 값 유무만 본다. 지우기는 브라우저 기본 setter 로 값을 비우고 input 이벤트를 낸다 — 프레임워크(React 제어형 입력 등)가 값 변화를 놓치지 않는다(HTML 에서 보이는 동작은 그대로다)."
   },
-  "sourceFingerprint": "f059f399f5bec246aa5365bff5ba5b53ae05c06bf09480ab0786ed8925a46880"
+  "sourceFingerprint": "b3d087d5528895e08fea7a8a4d60d146050b48090b5d31c9ccd7bfeca903bd27"
 }

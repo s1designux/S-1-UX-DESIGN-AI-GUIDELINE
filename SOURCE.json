@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "2841cb9fa3dd7ac5c575f05b6074bd4b36175a27",
+  "commit": "ac75e0f054eb65f09d139c300db13c5e8e5f2848",
   "scope": "PC",
-  "generatedAt": "2026-10-13",
-  "syncedAt": "2026-10-13 16:33 (KST)",
-  "sourceCommitDate": "2026-10-13 16:27 (KST)",
-  "sourceCommitSubject": "fix(ui-library): GNB 유틸 아이콘을 24 로 — 32 칸 안 24 가운데 (0.22.1)"
+  "generatedAt": "2026-10-15",
+  "syncedAt": "2026-10-15 06:37 (KST)",
+  "sourceCommitDate": "2026-10-14 10:28 (KST)",
+  "sourceCommitSubject": "chore(map): 시스템 맵 재생성 (worktree-installer-dark-pin 합치기)"
 }

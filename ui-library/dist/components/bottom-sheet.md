@@ -103,4 +103,4 @@ Esc 는 맨 위 겹 하나만 닫습니다 — 창 안에서 달력·시간·드
 
 ---
 
-정본 지문 `adf33ea9dca4a8fcae6ba556b6ab9643a10b083ebdb4ac961b3cd2c5c6fdce4f` · 부품 버전 0.3.0
+정본 지문 `cfcdd0a868fe7df66776acf051104737a71c3f6898d74bc97036f14dfb7baf17` · 부품 버전 0.3.1

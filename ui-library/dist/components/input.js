@@ -56,8 +56,11 @@ export function init(root) {
     update();
   };
   const handleFocusOut = () => requestAnimationFrame(update);
+  /* 값을 비울 때는 브라우저 기본 setter 로 넣는다 — 프레임워크(React 의 제어형 입력 등)가 값 추적을 가로채 둔 속성(control.value = …)으로
+     넣으면 뒤따르는 input 이벤트를 "바뀐 게 없다" 로 보고 건너뛰기 때문이다. 웹(HTML) 동작은 그대로다. */
+  const nativeValueSetter = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(control), "value")?.set;
   const handleClear = () => {
-    control.value = "";
+    if (nativeValueSetter) nativeValueSetter.call(control, ""); else control.value = "";
     control.dispatchEvent(new Event("input", { bubbles: true }));
     control.focus();
     update();

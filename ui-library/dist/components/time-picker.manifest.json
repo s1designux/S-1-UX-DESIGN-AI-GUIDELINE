@@ -1,8 +1,8 @@
 {
   "id": "time-picker",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "status": "approved",
-  "canonicalFingerprint": "7b0e5cd5fa4d574ad220d1ff129fe04fcc686bddaed60850cc2987c1fb4bda82",
+  "canonicalFingerprint": "bdf304ea39d52ed35c85eb07447f737ea68b7a591a6af4126e5f73a64542c604",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -317,7 +317,8 @@
     "methods": [
       "openPanel()",
       "closePanel()",
-      "value"
+      "value",
+      "setValue(value)"
     ],
     "lifecycle": [
       "init(root)",
@@ -326,8 +327,11 @@
     "controlMode": "uncontrolled",
     "progressiveEnhancementNote": "JavaScript 없이는 목록 칸이 생성되지 않아 선택할 수 없다 — 복합 Picker(정본 계약)라 native fallback이 없다. 트리거는 native button 이라 포커스·이름은 유지된다(계약 progressiveEnhancement 조항에 따른 명시적 unsupported 상태).",
     "attributes": {
-      "data-name": "폼 전송용 숨은 입력의 name (확정된 시간 글자가 실린다)"
-    }
+      "data-name": "폼 전송용 숨은 입력의 name (확정된 시간 글자가 실린다)",
+      "data-value": "처음 시간 — 24시간 \"HH:mm\" (예: 09:30). 12시간 표기여도 값은 24시간으로 준다",
+      "data-placeholder": "비웠을 때 돌아갈 트리거 글자(없으면 처음 글자)"
+    },
+    "valueNote": "setValue(\"HH:mm\") 는 change 이벤트를 내지 않는다(화면이 넣은 값). null · \"\" 로 비운다. 목록에 없는 분(간격 밖)이면 false 를 돌려준다."
   },
-  "sourceFingerprint": "5a354ee42c51261567d9a7f5dc3e78c3bc8d5c79fdca1761a18999520dc7b032"
+  "sourceFingerprint": "2bf8bd5dd94f6910a1ba90db303bd349cf33f1fa81ff9d2e152f9e2e3dcf5795"
 }

@@ -1,8 +1,8 @@
 {
   "id": "textarea",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "status": "approved",
-  "canonicalFingerprint": "a2de9d0962d59c774e7426fd518eb33e2f90767f4e24e62d19b4248dd560dc25",
+  "canonicalFingerprint": "3414cf4b12485787412bfbd013348f770cab7cca4b1aabee20b8bd86cc73ecde",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -141,5 +141,5 @@
     "runtime": null,
     "reason": "네이티브 textarea 상태(default·focus·filled·disabled·readonly)만으로 정본 계약이 완결된다."
   },
-  "sourceFingerprint": "8de64bfd9d5a19af1525eea1906b3ed2eead53766a07e31c7aa8e751cf485408"
+  "sourceFingerprint": "6c5fabc6e6d144dacea23cf80b89b30c418667c873d5faba834ada9bacc70a5c"
 }

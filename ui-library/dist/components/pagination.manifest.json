@@ -1,8 +1,8 @@
 {
   "id": "pagination",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "status": "approved",
-  "canonicalFingerprint": "95a5a628a194ca148ac1ade50e28460d8c0a0d939923d7892568c98fb7bc8867",
+  "canonicalFingerprint": "04aaf4daa947a835435ee2a664646d982b02d46e8d34a0b5b4563f1269f20e58",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -136,5 +136,5 @@
       "data-page": "현재 쪽"
     }
   },
-  "sourceFingerprint": "423f0be06f4dc28b14ecea688e2fda114b225a007351d4d0ea3aa362f0de22c3"
+  "sourceFingerprint": "00b08fcd9b6499d5333871708ed5d9b2eb0ac539f78802d05b401d43a67b67ba"
 }

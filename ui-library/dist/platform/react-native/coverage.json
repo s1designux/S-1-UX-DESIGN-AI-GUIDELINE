@@ -22,7 +22,7 @@
     "duplicate:-webkit-mask-position": 864,
     "duplicate:-webkit-mask-repeat": 864,
     "duplicate:-webkit-mask-size": 864,
-    "font-provider:font-family": 6236,
+    "font-provider:font-family": 6248,
     "pointer-only:cursor": 10590,
     "text-input-prop:caret-color": 112,
     "web-only:appearance": 7934,
@@ -348,10 +348,10 @@
     },
     "data-tag": {
       "templates": 1,
-      "styles": 12,
-      "tableEntries": 24,
+      "styles": 18,
+      "tableEntries": 36,
       "ignored": {
-        "font-provider:font-family": 24
+        "font-provider:font-family": 36
       }
     },
     "divider": {

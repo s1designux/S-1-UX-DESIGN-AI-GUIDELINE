@@ -1,8 +1,8 @@
 {
   "id": "radio",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "status": "approved",
-  "canonicalFingerprint": "65070e327eeea6b6328d04ccdf9b1e85c1ecfbbac4e27c05a8c0305b41254a57",
+  "canonicalFingerprint": "6562bf18311aeb0eb60f576976779a67f209ca14d4d26fb9729347e2ab9035c9",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -135,5 +135,5 @@
     "runtime": "none",
     "reason": "Native radio semantics provide the complete approved behavior."
   },
-  "sourceFingerprint": "417ff7727c21dd4668301c3bce54d746359dba1ca74193b8723d2f11c30301c3"
+  "sourceFingerprint": "1a955c086b08dac9605c52a6fc022d98fdd13607af03183b079a34b80f6b172b"
 }

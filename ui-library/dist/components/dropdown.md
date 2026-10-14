@@ -47,7 +47,7 @@
 
 ## 스크립트로 부르기
 
-`init(요소)` 가 돌려주는 객체의 `focusActive()`.
+`init(요소)` 가 돌려주는 객체의 `focusActive()` · `value` · `setValue(value)`.
 
 ## 이벤트
 
@@ -67,4 +67,4 @@
 
 ---
 
-정본 지문 `4e89e12cf0da2ea199dfbb6a62cfc9a944ab8d600b7c1df0e4fffc3d1cbb3658` · 부품 버전 0.2.4
+정본 지문 `93c277610de52701b5f6b3fc4ea925e601a86a29f7229df99fcfea4e80abb31b` · 부품 버전 0.2.5

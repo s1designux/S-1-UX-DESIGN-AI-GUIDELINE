@@ -1252,11 +1252,12 @@ _Don't_
 
 > ⚠️ 배포본에 아직 없는 컴포넌트입니다(codeStatus: `planned`). 아래 토큰은 `ui-library/dist` 로 값이 풀리지 않으니 이 절을 보고 구현하지 마세요.
 
-상태를 보여주기만 하는 작은 라벨. 누르지 않는다. 둥근·각진 두 모양, 채움·선 두 형태, 파랑·빨강 두 색을 갖는다.
+상태를 보여주기만 하는 작은 라벨. 누르지 않는다. 둥근·각진 두 모양, 채움·선 두 형태, 파랑·빨강·회색 세 색을 갖는다.
 
 **언제 쓰나**
 - 표나 목록에서 한 줄의 상태를 한 눈에 보이게 할 때.
 - 승인·확인(파랑), 주의·에러(빨강)처럼 뜻이 정해진 상태를 표시할 때.
+- 그 밖의 중립 상태(대기 등)는 회색으로 표시할 때.
 
 **쓰지 말아야 할 때**
 - 누르는 것 — Chip 이나 Button 을 쓴다.
@@ -1288,6 +1289,7 @@ agent:
     Color:
       - "Blue"
       - "Red"
+      - "Gray"
   states:
     builder: "not-defined"
     metadata: "unknown"
@@ -1332,12 +1334,17 @@ agent:
     figmaSemanticBindings:
       - "border-width/1"
       - "color/tag/line/border/blue"
+      - "color/tag/line/border/gray"
       - "color/tag/line/border/red"
       - "color/tag/line/label/blue"
+      - "color/tag/line/label/gray"
       - "color/tag/line/label/red"
       - "color/tag/solid/bg/blue"
+      - "color/tag/solid/bg/gray"
       - "color/tag/solid/bg/red"
-      - "color/tag/solid/label"
+      - "color/tag/solid/label/blue"
+      - "color/tag/solid/label/gray"
+      - "color/tag/solid/label/red"
       - "radius/4"
       - "radius/full"
       - "spacing/6"
@@ -1358,13 +1365,14 @@ agent:
       color:
         - "blue"
         - "red"
+        - "gray"
   icons:
     allowed: "figma-unconfirmed"
     slots: "unknown"
 ```
 
 _Do_
-- 뜻이 정해진 두 색만 쓴다 — 파랑은 승인·확인, 빨강은 주의·에러.
+- 정해진 세 색만 쓴다 — 파랑은 승인·확인, 빨강은 주의·에러, 회색은 그 밖의 중립 상태.
 - 표 안에서는 각진 모양을 쓴다.
 
 _Don't_
@@ -5651,4 +5659,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: e385d4d36627 · 손편집 금지 -->
+<!-- generated-stamp: 477e569e984d · 손편집 금지 -->

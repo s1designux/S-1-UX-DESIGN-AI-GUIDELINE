@@ -1,8 +1,8 @@
 {
   "id": "lnb",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "status": "approved",
-  "canonicalFingerprint": "76a99e7148f72a0adbfd7701394d19d48ba060f37a298e0ae2742d9be75841cf",
+  "canonicalFingerprint": "f88063bde5d727e9e3f6cc63872fa259b23058436bde32ac0837e3c6ee376036",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -193,5 +193,5 @@
     ],
     "reason": "하위메뉴 여닫이(aria-expanded ↔ hidden)와 우측 상단 접기 단추(aria-pressed ↔ data-state)를 맞춘다."
   },
-  "sourceFingerprint": "2e26b3ed3f0b0e502e66a05118010c193f93e60ec9d6dd9de59ea507a8475311"
+  "sourceFingerprint": "903223dcabf7dd5df5a328f42ae614c64df0c086600f2fb56ab9f76d8f85db3c"
 }

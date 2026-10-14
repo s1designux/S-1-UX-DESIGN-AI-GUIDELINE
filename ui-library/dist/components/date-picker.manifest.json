@@ -1,8 +1,8 @@
 {
   "id": "date-picker",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "status": "approved",
-  "canonicalFingerprint": "58222df141bbfa0787e41becfe79afefe74d76c35352453ae88ecead4e09bf3d",
+  "canonicalFingerprint": "0ab29faac87cf30a9075a948f7cc869ceec840a30dd0edf836e9ea2c94d8ee34",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -356,5 +356,5 @@
       "data-name": "폼 전송용 숨은 입력의 name (단일: name · 기간: name-start, name-end)"
     }
   },
-  "sourceFingerprint": "c11c54a586c461bccfe16282516c052f9c4aa7c38c9b26527f3f11a8b15608d9"
+  "sourceFingerprint": "bf7f4b276b2d72d23981e7cefab83186e3b69442fcb97f7cbd77311c29960b7c"
 }

@@ -1,8 +1,8 @@
 {
   "id": "mobile-header",
-  "version": "0.2.4",
+  "version": "0.2.6",
   "status": "approved",
-  "canonicalFingerprint": "3303abdc3a7be8f46cea85599ae878aee46096c8ffd72ddfe18199a69f7421a4",
+  "canonicalFingerprint": "b28908d8fe3feb18913b99f0d34c935eff24f66216f94bcb19761316e5f0fc33",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -211,5 +211,5 @@
     "runtime": "none",
     "reason": "정적 크롬이다 — 열림/닫힘 등 로컬 상태가 없어 native 시맨틱만으로 충분하다."
   },
-  "sourceFingerprint": "8bce977181a67cd13aba0b8f77c92f82c5e69f796b8ed2ca747671f3a45021e3"
+  "sourceFingerprint": "c1a79378de6cdd89edee2115a3cb5f7ae5aa71ed510beb7d0ede6e00b0d3fd6e"
 }

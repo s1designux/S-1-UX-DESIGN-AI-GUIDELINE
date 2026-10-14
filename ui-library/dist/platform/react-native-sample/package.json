@@ -1,6 +1,6 @@
 {
   "name": "s1-ui-react-native-sample",
-  "version": "0.22.1",
+  "version": "0.24.2",
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {

@@ -630,11 +630,16 @@
   /* ── tag ── */
   --color-tag-solid-bg-blue   : var(--color-blue-400);
   --color-tag-solid-bg-red    : var(--color-red-300);
-  --color-tag-solid-label     : var(--color-base-white);
+  --color-tag-solid-bg-gray   : var(--color-gray-100);
+  --color-tag-solid-label-blue: var(--color-base-white);
+  --color-tag-solid-label-red : var(--color-base-white);
+  --color-tag-solid-label-gray: var(--color-gray-500);
   --color-tag-line-border-blue: var(--color-blue-400);
   --color-tag-line-border-red : var(--color-red-300);
+  --color-tag-line-border-gray: var(--color-gray-200);
   --color-tag-line-label-blue : var(--color-blue-400);
   --color-tag-line-label-red  : var(--color-red-300);
+  --color-tag-line-label-gray : var(--color-gray-500);
 
   /* ── text ── */
   --color-text-body-primary        : var(--color-gray-800);
@@ -872,11 +877,16 @@
   /* ── tag ── */
   --color-tag-solid-bg-blue   : var(--color-blue-dark-300);
   --color-tag-solid-bg-red    : var(--color-red-dark-350);
-  --color-tag-solid-label     : var(--color-base-white);
+  --color-tag-solid-bg-gray   : var(--color-gray-dark-200);
+  --color-tag-solid-label-blue: var(--color-base-white);
+  --color-tag-solid-label-red : var(--color-base-white);
+  --color-tag-solid-label-gray: var(--color-gray-dark-800);
   --color-tag-line-border-blue: var(--color-blue-dark-300);
   --color-tag-line-border-red : var(--color-red-dark-350);
+  --color-tag-line-border-gray: var(--color-gray-dark-500);
   --color-tag-line-label-blue : var(--color-blue-dark-300);
   --color-tag-line-label-red  : var(--color-red-dark-350);
+  --color-tag-line-label-gray : var(--color-gray-dark-800);
 
   /* ── text ── */
   --color-text-body-primary        : var(--color-gray-dark-900);
@@ -5306,16 +5316,27 @@
   color: var(--color-tag-line-label-red);
 }
 
+[data-s1-component="data-tag"][data-tone="gray"] {
+  border-color: var(--color-tag-line-border-gray);
+  color: var(--color-tag-line-label-gray);
+}
+
 [data-s1-component="data-tag"][data-solid="on"][data-tone="blue"] {
   background: var(--color-tag-solid-bg-blue);
   border-color: var(--color-tag-solid-bg-blue);
-  color: var(--color-tag-solid-label);
+  color: var(--color-tag-solid-label-blue);
 }
 
 [data-s1-component="data-tag"][data-solid="on"][data-tone="red"] {
   background: var(--color-tag-solid-bg-red);
   border-color: var(--color-tag-solid-bg-red);
-  color: var(--color-tag-solid-label);
+  color: var(--color-tag-solid-label-red);
+}
+
+[data-s1-component="data-tag"][data-solid="on"][data-tone="gray"] {
+  background: var(--color-tag-solid-bg-gray);
+  border-color: var(--color-tag-solid-bg-gray);
+  color: var(--color-tag-solid-label-gray);
 }
 
 /* component:divider */
@@ -5696,7 +5717,7 @@
 <main class="wrap">
   <header class="group">
     <h1 class="title typo-title-32b">S-1 DESIGN GUIDE MD 쓰는 법</h1>
-    <p class="sub typo-body-16r">개발자용 안내 · S1 배포본 0.22.1 기준</p>
+    <p class="sub typo-body-16r">개발자용 안내 · S1 배포본 0.24.2 기준</p>
     <p class="typo-body-16r">AI 코딩 도구(Claude Code · VS Code Copilot · Cursor 등)로 화면을 만들거나, 이미 만든 화면(POC)에 S1 디자인을 입힐 때 쓰는 가이드입니다. 개발자는 AI에게 말하고, 디자이너에게 확인 요청서를 보내고, 받은 결과를 AI에게 붙여 넣기만 하면 됩니다. 나머지는 AI가 가이드대로 합니다.</p>
   </header>
 
@@ -5884,8 +5905,11 @@ function init(root) {
     update();
   };
   const handleFocusOut = () => requestAnimationFrame(update);
+  /* 값을 비울 때는 브라우저 기본 setter 로 넣는다 — 프레임워크(React 의 제어형 입력 등)가 값 추적을 가로채 둔 속성(control.value = …)으로
+     넣으면 뒤따르는 input 이벤트를 "바뀐 게 없다" 로 보고 건너뛰기 때문이다. 웹(HTML) 동작은 그대로다. */
+  const nativeValueSetter = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(control), "value")?.set;
   const handleClear = () => {
-    control.value = "";
+    if (nativeValueSetter) nativeValueSetter.call(control, ""); else control.value = "";
     control.dispatchEvent(new Event("input", { bubbles: true }));
     control.focus();
     update();

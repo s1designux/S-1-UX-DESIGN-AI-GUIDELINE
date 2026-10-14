@@ -630,11 +630,16 @@
   /* ── tag ── */
   --color-tag-solid-bg-blue   : var(--color-blue-400);
   --color-tag-solid-bg-red    : var(--color-red-300);
-  --color-tag-solid-label     : var(--color-base-white);
+  --color-tag-solid-bg-gray   : var(--color-gray-100);
+  --color-tag-solid-label-blue: var(--color-base-white);
+  --color-tag-solid-label-red : var(--color-base-white);
+  --color-tag-solid-label-gray: var(--color-gray-500);
   --color-tag-line-border-blue: var(--color-blue-400);
   --color-tag-line-border-red : var(--color-red-300);
+  --color-tag-line-border-gray: var(--color-gray-200);
   --color-tag-line-label-blue : var(--color-blue-400);
   --color-tag-line-label-red  : var(--color-red-300);
+  --color-tag-line-label-gray : var(--color-gray-500);
 
   /* ── text ── */
   --color-text-body-primary        : var(--color-gray-800);
@@ -872,11 +877,16 @@
   /* ── tag ── */
   --color-tag-solid-bg-blue   : var(--color-blue-dark-300);
   --color-tag-solid-bg-red    : var(--color-red-dark-350);
-  --color-tag-solid-label     : var(--color-base-white);
+  --color-tag-solid-bg-gray   : var(--color-gray-dark-200);
+  --color-tag-solid-label-blue: var(--color-base-white);
+  --color-tag-solid-label-red : var(--color-base-white);
+  --color-tag-solid-label-gray: var(--color-gray-dark-800);
   --color-tag-line-border-blue: var(--color-blue-dark-300);
   --color-tag-line-border-red : var(--color-red-dark-350);
+  --color-tag-line-border-gray: var(--color-gray-dark-500);
   --color-tag-line-label-blue : var(--color-blue-dark-300);
   --color-tag-line-label-red  : var(--color-red-dark-350);
+  --color-tag-line-label-gray : var(--color-gray-dark-800);
 
   /* ── text ── */
   --color-text-body-primary        : var(--color-gray-dark-900);
@@ -5306,16 +5316,27 @@
   color: var(--color-tag-line-label-red);
 }
 
+[data-s1-component="data-tag"][data-tone="gray"] {
+  border-color: var(--color-tag-line-border-gray);
+  color: var(--color-tag-line-label-gray);
+}
+
 [data-s1-component="data-tag"][data-solid="on"][data-tone="blue"] {
   background: var(--color-tag-solid-bg-blue);
   border-color: var(--color-tag-solid-bg-blue);
-  color: var(--color-tag-solid-label);
+  color: var(--color-tag-solid-label-blue);
 }
 
 [data-s1-component="data-tag"][data-solid="on"][data-tone="red"] {
   background: var(--color-tag-solid-bg-red);
   border-color: var(--color-tag-solid-bg-red);
-  color: var(--color-tag-solid-label);
+  color: var(--color-tag-solid-label-red);
+}
+
+[data-s1-component="data-tag"][data-solid="on"][data-tone="gray"] {
+  background: var(--color-tag-solid-bg-gray);
+  border-color: var(--color-tag-solid-bg-gray);
+  color: var(--color-tag-solid-label-gray);
 }
 
 /* component:divider */
@@ -5699,7 +5720,7 @@
 </style></head>
 <body><div class="wrap">
 <h1>PC 화면별 크기 기준</h1>
-<p class="sub">PR용 화면 / 사용자용 화면 / 관리자용 화면 · 기본 / 관리자용 화면 · 작게 — 화면마다 쓰는 부품 크기. 배포본 0.22.1 (2026-10-13) 실제 부품으로 그렸습니다.</p>
+<p class="sub">PR용 화면 / 사용자용 화면 / 관리자용 화면 · 기본 / 관리자용 화면 · 작게 — 화면마다 쓰는 부품 크기. 배포본 0.24.2 (2026-10-14) 실제 부품으로 그렸습니다.</p>
 <div class="cols">
 <section class="col" data-s1-density="wide">
   <header><h3>PR용 화면</h3><p>회사·서비스를 알리는 홍보·소개 화면 · <code>--profile pr</code></p></header>

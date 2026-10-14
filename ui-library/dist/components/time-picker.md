@@ -59,10 +59,12 @@
 | 속성 | 뜻 |
 |---|---|
 | `data-name` | 폼 전송용 숨은 입력의 name (확정된 시간 글자가 실린다) |
+| `data-value` | 처음 시간 — 24시간 "HH:mm" (예: 09:30). 12시간 표기여도 값은 24시간으로 준다 |
+| `data-placeholder` | 비웠을 때 돌아갈 트리거 글자(없으면 처음 글자) |
 
 ## 스크립트로 부르기
 
-`init(요소)` 가 돌려주는 객체의 `openPanel()` · `closePanel()` · `value`.
+`init(요소)` 가 돌려주는 객체의 `openPanel()` · `closePanel()` · `value` · `setValue(value)`.
 
 ## 이벤트
 
@@ -84,4 +86,4 @@
 
 ---
 
-정본 지문 `7b0e5cd5fa4d574ad220d1ff129fe04fcc686bddaed60850cc2987c1fb4bda82` · 부품 버전 0.5.0
+정본 지문 `bdf304ea39d52ed35c85eb07447f737ea68b7a591a6af4126e5f73a64542c604` · 부품 버전 0.5.1

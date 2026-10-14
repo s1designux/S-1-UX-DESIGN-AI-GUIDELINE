@@ -700,18 +700,28 @@ object S1Palette {
     val colorTableHeaderBg: S1Color = S1Color(0xFFFAFAFA, 0xFF24252C)
     /** --color-tag-line-border-blue — 라이트 #1D6CEB · 다크 #3070D8 */
     val colorTagLineBorderBlue: S1Color = S1Color(0xFF1D6CEB, 0xFF3070D8)
+    /** --color-tag-line-border-gray — 라이트 #D9D9D9 · 다크 #3E4049 */
+    val colorTagLineBorderGray: S1Color = S1Color(0xFFD9D9D9, 0xFF3E4049)
     /** --color-tag-line-border-red — 라이트 #FF4554 · 다크 #F06070 */
     val colorTagLineBorderRed: S1Color = S1Color(0xFFFF4554, 0xFFF06070)
     /** --color-tag-line-label-blue — 라이트 #1D6CEB · 다크 #3070D8 */
     val colorTagLineLabelBlue: S1Color = S1Color(0xFF1D6CEB, 0xFF3070D8)
+    /** --color-tag-line-label-gray — 라이트 #757575 · 다크 #B8BABF */
+    val colorTagLineLabelGray: S1Color = S1Color(0xFF757575, 0xFFB8BABF)
     /** --color-tag-line-label-red — 라이트 #FF4554 · 다크 #F06070 */
     val colorTagLineLabelRed: S1Color = S1Color(0xFFFF4554, 0xFFF06070)
     /** --color-tag-solid-bg-blue — 라이트 #1D6CEB · 다크 #3070D8 */
     val colorTagSolidBgBlue: S1Color = S1Color(0xFF1D6CEB, 0xFF3070D8)
+    /** --color-tag-solid-bg-gray — 라이트 #E9E9E9 · 다크 #24252C */
+    val colorTagSolidBgGray: S1Color = S1Color(0xFFE9E9E9, 0xFF24252C)
     /** --color-tag-solid-bg-red — 라이트 #FF4554 · 다크 #F06070 */
     val colorTagSolidBgRed: S1Color = S1Color(0xFFFF4554, 0xFFF06070)
-    /** --color-tag-solid-label — 라이트 #FFFFFF */
-    val colorTagSolidLabel: S1Color = S1Color(0xFFFFFFFF, 0xFFFFFFFF)
+    /** --color-tag-solid-label-blue — 라이트 #FFFFFF */
+    val colorTagSolidLabelBlue: S1Color = S1Color(0xFFFFFFFF, 0xFFFFFFFF)
+    /** --color-tag-solid-label-gray — 라이트 #757575 · 다크 #B8BABF */
+    val colorTagSolidLabelGray: S1Color = S1Color(0xFF757575, 0xFFB8BABF)
+    /** --color-tag-solid-label-red — 라이트 #FFFFFF */
+    val colorTagSolidLabelRed: S1Color = S1Color(0xFFFFFFFF, 0xFFFFFFFF)
     /** --color-text-body-primary — 라이트 #353535 · 다크 #ECEDF0 */
     val colorTextBodyPrimary: S1Color = S1Color(0xFF353535, 0xFFECEDF0)
     /** --color-text-body-secondary — 라이트 #555555 · 다크 #B8BABF */

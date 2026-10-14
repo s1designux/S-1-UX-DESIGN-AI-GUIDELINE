@@ -154,8 +154,28 @@ export function init(root) {
     : null;
   sizeObserver?.observe(root);
 
+  /* 값 읽기·넣기 (2026-10-13) — text 형 전용. 값은 옵션의 data-value, 없으면 옵션 글자다.
+     setValue 는 change 이벤트를 내지 않는다(사용자가 고른 것이 아니라 화면이 넣은 값). */
+  const optionValue = (option) => option.dataset.value ?? option.querySelector('[data-s1-part="option-label"]')?.textContent?.trim() ?? option.textContent.trim();
+  const readValue = () => {
+    if (checkboxType) return "";
+    const on = getOptions(root).find((option) => option.getAttribute("aria-selected") === "true");
+    return on ? optionValue(on) : "";
+  };
+  const setValue = (next) => {
+    if (checkboxType) return false;
+    const wanted = next == null ? "" : String(next);
+    const list = getOptions(root);
+    const match = wanted === "" ? null : list.find((option) => optionValue(option) === wanted) ?? null;
+    for (const option of list) option.setAttribute("aria-selected", String(option === match));
+    if (match) setActive(root, match);
+    return Boolean(match) || wanted === "";
+  };
+
   const api = Object.freeze({
     get options() { return getOptions(root); },
+    get value() { return readValue(); },
+    setValue,
     focusActive() {
       const list = getOptions(root);
       const active = list.find((option) => option.tabIndex === 0) || list[0];

@@ -93,6 +93,36 @@ export function init(root) {
 
   const dropdownApi = initDropdown(dropdownRoot);
 
+  /* 값 읽기·넣기·폼 전송 (2026-10-13) — select 와 같은 규칙이다. 값은 옵션의 data-value(없으면 옵션 글자).
+     root 에 data-value 를 주면 처음부터 그 값이 골라지고, data-name 을 주면 숨은 <input type="hidden" name> 이 폼으로 함께 전송된다.
+     setValue 는 change 이벤트를 내지 않는다(사용자가 고른 것이 아니라 화면이 넣은 값). */
+  const optionsOf = () => [...dropdownRoot.querySelectorAll('[data-s1-part="option"]')];
+  const optionLabel = (option) => option.querySelector('[data-s1-part="option-label"]')?.textContent?.trim() ?? option.textContent.trim();
+  const optionValue = (option) => option.dataset.value ?? optionLabel(option);
+  const hiddenName = root.dataset.name;
+  let hidden = null;
+  if (hiddenName) {
+    hidden = document.createElement("input");
+    hidden.type = "hidden";
+    hidden.name = hiddenName;
+    root.appendChild(hidden);
+  }
+  const selectedOption = () => optionsOf().find((option) => option.getAttribute("aria-selected") === "true") ?? null;
+  const readValue = () => { const option = selectedOption(); return option ? optionValue(option) : ""; };
+  const syncHidden = () => { if (hidden) hidden.value = readValue(); };
+  const setValue = (next) => {
+    const wanted = next == null ? "" : String(next);
+    const match = wanted === "" ? null : optionsOf().find((option) => optionValue(option) === wanted || optionLabel(option) === wanted) ?? null;
+    if (!match) { if (wanted === "") syncHidden(); return wanted === ""; }
+    dropdownApi?.setValue(optionValue(match));
+    if (value) value.textContent = optionLabel(match);
+    trigger.dataset.complete = "true";
+    syncAccessibleName(trigger, title, value);
+    syncHidden();
+    return true;
+  };
+  if (root.dataset.value) setValue(root.dataset.value); else syncHidden();
+
   // behavior 계약(component-behavior.pc.json "Filter Chip": on disable → close and block trigger clicks).
   // 클릭 차단은 open() 의 disabled 가드가 이미 담당한다 — 여기서는 열린 채로 비활성화될 때 자동으로 닫는다.
   // 인스턴스마다 자기 trigger 만 관찰하므로 누적되지 않고, destroy() 가 disconnect 한다.
@@ -155,6 +185,7 @@ export function init(root) {
     }
     trigger.dataset.complete = "true";
     syncAccessibleName(trigger, title, value);
+    syncHidden();
     close();
     root.dispatchEvent(new CustomEvent("s1:filter-chip:change", { bubbles: true, detail: { value: event.detail.value, option: event.detail.option } }));
   };
@@ -165,9 +196,12 @@ export function init(root) {
 
   const api = Object.freeze({
     get open() { return isOpen(trigger); },
+    get value() { return readValue(); },
+    setValue,
     openPanel: open,
     closePanel: close,
     destroy() {
+      hidden?.remove();
       trigger.removeEventListener("click", handleTriggerClick);
       root.removeEventListener("keydown", handleRootKeydown);
       root.removeEventListener("s1:dropdown:change", handleDropdownChange);

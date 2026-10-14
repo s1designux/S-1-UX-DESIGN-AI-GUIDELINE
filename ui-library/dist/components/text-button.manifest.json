@@ -1,8 +1,8 @@
 {
   "id": "text-button",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "status": "approved",
-  "canonicalFingerprint": "17da62a75a28ba51c74e6c3988f958f104245b178b76275b08bc896faf10a91e",
+  "canonicalFingerprint": "e3c547c1aefa2bd8f9093f208daac59c4be3e1d89df25c5ff9e9068ea1e725b2",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -117,5 +117,5 @@
     "runtime": "none",
     "reason": "Native button semantics provide the complete approved behavior; hover/pressed underline is pure CSS."
   },
-  "sourceFingerprint": "6505d9c69269e3a4fa99cb1bffe6c95b8ed3e624d8f3680efaeee36f189bbcf8"
+  "sourceFingerprint": "3b6c24e1352f3b811f29406555ea338f4be2f15583a1e9c40dd2ad9ae224993f"
 }

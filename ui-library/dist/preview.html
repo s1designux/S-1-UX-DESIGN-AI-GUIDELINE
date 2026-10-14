@@ -4276,16 +4276,27 @@
   color: var(--color-tag-line-label-red);
 }
 
+[data-s1-component="data-tag"][data-tone="gray"] {
+  border-color: var(--color-tag-line-border-gray);
+  color: var(--color-tag-line-label-gray);
+}
+
 [data-s1-component="data-tag"][data-solid="on"][data-tone="blue"] {
   background: var(--color-tag-solid-bg-blue);
   border-color: var(--color-tag-solid-bg-blue);
-  color: var(--color-tag-solid-label);
+  color: var(--color-tag-solid-label-blue);
 }
 
 [data-s1-component="data-tag"][data-solid="on"][data-tone="red"] {
   background: var(--color-tag-solid-bg-red);
   border-color: var(--color-tag-solid-bg-red);
-  color: var(--color-tag-solid-label);
+  color: var(--color-tag-solid-label-red);
+}
+
+[data-s1-component="data-tag"][data-solid="on"][data-tone="gray"] {
+  background: var(--color-tag-solid-bg-gray);
+  border-color: var(--color-tag-solid-bg-gray);
+  color: var(--color-tag-solid-label-gray);
 }
 
 /* component:divider */
@@ -4682,7 +4693,7 @@
       <h1>S1 UI 컴포넌트 미리보기 — 32종</h1>
       <p>이 페이지는 배포본에 들어 있는 마크업을 그대로 얹어 그린 것입니다. 여기 보이는 모습이 실제 모습입니다.<br>
          React·Vue 는 제목의 이름을 그대로 부르면 됩니다. 크기·변형은 각 이름 옆에 적힌 값만 쓸 수 있습니다.</p>
-      <p class="fingerprint">버전 0.22.1 · 정본 지문 3293d4203abdfd3eecb91c74299c2fac5f94cd3972c861270f06895a17f69c71</p>
+      <p class="fingerprint">버전 0.24.2 · 정본 지문 74173580fab2dea369607efb6164a895d246c9da4cb993284b35d04f2e9b7db8</p>
     </div>
     <nav class="index">
         <a href="#input">S1Input</a>
@@ -6437,7 +6448,7 @@
           </div>
           <dl class="component-axes">
             <dt>크기</dt><dd>크기 축 없음</dd>
-            <dt>변형</dt><dd><code>blue</code> <code>red</code></dd>
+            <dt>변형</dt><dd><code>blue</code> <code>red</code> <code>gray</code></dd>
           </dl>
         </header>
         <div class="component-body">
@@ -6448,16 +6459,20 @@
 <span data-s1-component="data-tag" data-shape="chips" data-solid="on" data-tone="red">주의</span>
 <span data-s1-component="data-tag" data-shape="chips" data-solid="off" data-tone="blue">확인</span>
 <span data-s1-component="data-tag" data-shape="chips" data-solid="off" data-tone="red">에러</span>
+<span data-s1-component="data-tag" data-shape="chips" data-solid="on" data-tone="gray">대기</span>
+<span data-s1-component="data-tag" data-shape="chips" data-solid="off" data-tone="gray">대기</span>
 <span data-s1-component="data-tag" data-shape="square" data-solid="on" data-tone="blue">승인</span>
 <span data-s1-component="data-tag" data-shape="square" data-solid="on" data-tone="red">주의</span>
 <span data-s1-component="data-tag" data-shape="square" data-solid="off" data-tone="blue">확인</span>
-<span data-s1-component="data-tag" data-shape="square" data-solid="off" data-tone="red">에러</span></div>
+<span data-s1-component="data-tag" data-shape="square" data-solid="off" data-tone="red">에러</span>
+<span data-s1-component="data-tag" data-shape="square" data-solid="on" data-tone="gray">대기</span>
+<span data-s1-component="data-tag" data-shape="square" data-solid="off" data-tone="gray">대기</span></div>
           </div>
           </div>
           <div class="component-usage">
             <div class="usage-block">
               <div class="usage-title">언제 쓰나</div>
-              <ul><li>표나 목록에서 한 줄의 상태를 한 눈에 보이게 할 때.</li><li>승인·확인(파랑), 주의·에러(빨강)처럼 뜻이 정해진 상태를 표시할 때.</li></ul>
+              <ul><li>표나 목록에서 한 줄의 상태를 한 눈에 보이게 할 때.</li><li>승인·확인(파랑), 주의·에러(빨강)처럼 뜻이 정해진 상태를 표시할 때.</li><li>그 밖의 중립 상태(대기 등)는 회색으로 표시할 때.</li></ul>
             </div>
             <div class="usage-block usage-block-avoid">
               <div class="usage-title">이럴 땐 다른 걸</div>
@@ -6697,8 +6712,10 @@ var S1UI = (() => {
       update();
     };
     const handleFocusOut = () => requestAnimationFrame(update);
+    const nativeValueSetter = Object.getOwnPropertyDescriptor(Object.getPrototypeOf(control), "value")?.set;
     const handleClear = () => {
-      control.value = "";
+      if (nativeValueSetter) nativeValueSetter.call(control, "");
+      else control.value = "";
       control.dispatchEvent(new Event("input", { bubbles: true }));
       control.focus();
       update();
@@ -7028,10 +7045,29 @@ var S1UI = (() => {
     syncEllipsisTitles(root);
     const sizeObserver = typeof ResizeObserver === "function" ? new ResizeObserver(() => syncEllipsisTitles(root)) : null;
     sizeObserver?.observe(root);
+    const optionValue2 = (option) => option.dataset.value ?? option.querySelector('[data-s1-part="option-label"]')?.textContent?.trim() ?? option.textContent.trim();
+    const readValue = () => {
+      if (checkboxType) return "";
+      const on = getOptions(root).find((option) => option.getAttribute("aria-selected") === "true");
+      return on ? optionValue2(on) : "";
+    };
+    const setValue = (next) => {
+      if (checkboxType) return false;
+      const wanted = next == null ? "" : String(next);
+      const list = getOptions(root);
+      const match = wanted === "" ? null : list.find((option) => optionValue2(option) === wanted) ?? null;
+      for (const option of list) option.setAttribute("aria-selected", String(option === match));
+      if (match) setActive(root, match);
+      return Boolean(match) || wanted === "";
+    };
     const api = Object.freeze({
       get options() {
         return getOptions(root);
       },
+      get value() {
+        return readValue();
+      },
+      setValue,
       focusActive() {
         const list = getOptions(root);
         const active = list.find((option) => option.tabIndex === 0) || list[0];
@@ -7121,7 +7157,7 @@ var S1UI = (() => {
     panel.hidden = true;
     const dropdownApi = init4(dropdownRoot);
     const optionsOf = () => [...dropdownRoot.querySelectorAll('[data-s1-part="option"]')];
-    const placeholderText = value ? value.textContent : "";
+    const placeholderText = root.dataset.placeholder ?? (value ? value.textContent : "");
     const hiddenName = root.dataset.name;
     let hidden = null;
     if (hiddenName) {
@@ -7307,6 +7343,41 @@ var S1UI = (() => {
     panel.hidden = true;
     syncAccessibleName(trigger, title, value);
     const dropdownApi = init4(dropdownRoot);
+    const optionsOf = () => [...dropdownRoot.querySelectorAll('[data-s1-part="option"]')];
+    const optionLabel2 = (option) => option.querySelector('[data-s1-part="option-label"]')?.textContent?.trim() ?? option.textContent.trim();
+    const optionValue2 = (option) => option.dataset.value ?? optionLabel2(option);
+    const hiddenName = root.dataset.name;
+    let hidden = null;
+    if (hiddenName) {
+      hidden = document.createElement("input");
+      hidden.type = "hidden";
+      hidden.name = hiddenName;
+      root.appendChild(hidden);
+    }
+    const selectedOption = () => optionsOf().find((option) => option.getAttribute("aria-selected") === "true") ?? null;
+    const readValue = () => {
+      const option = selectedOption();
+      return option ? optionValue2(option) : "";
+    };
+    const syncHidden = () => {
+      if (hidden) hidden.value = readValue();
+    };
+    const setValue = (next) => {
+      const wanted = next == null ? "" : String(next);
+      const match = wanted === "" ? null : optionsOf().find((option) => optionValue2(option) === wanted || optionLabel2(option) === wanted) ?? null;
+      if (!match) {
+        if (wanted === "") syncHidden();
+        return wanted === "";
+      }
+      dropdownApi?.setValue(optionValue2(match));
+      if (value) value.textContent = optionLabel2(match);
+      trigger.dataset.complete = "true";
+      syncAccessibleName(trigger, title, value);
+      syncHidden();
+      return true;
+    };
+    if (root.dataset.value) setValue(root.dataset.value);
+    else syncHidden();
     const disabledObserver = new MutationObserver(() => {
       if (trigger.disabled && isOpen2(trigger)) close({ returnFocus: false });
     });
@@ -7357,6 +7428,7 @@ var S1UI = (() => {
       }
       trigger.dataset.complete = "true";
       syncAccessibleName(trigger, title, value);
+      syncHidden();
       close();
       root.dispatchEvent(new CustomEvent("s1:filter-chip:change", { bubbles: true, detail: { value: event.detail.value, option: event.detail.option } }));
     };
@@ -7367,9 +7439,14 @@ var S1UI = (() => {
       get open() {
         return isOpen2(trigger);
       },
+      get value() {
+        return readValue();
+      },
+      setValue,
       openPanel: open,
       closePanel: close,
       destroy() {
+        hidden?.remove();
         trigger.removeEventListener("click", handleTriggerClick);
         root.removeEventListener("keydown", handleRootKeydown);
         root.removeEventListener("s1:dropdown:change", handleDropdownChange);
@@ -8320,6 +8397,7 @@ var S1UI = (() => {
     const wheelColByKind = {};
     let centerWheelDefault = null;
     let tabApi = null;
+    let handleTabChange = null;
     let sheetLastFocused = null;
     if (hasWheelSheet) {
       for (const col of wheelCols) wheelColByKind[col.dataset.column] = col;
@@ -8358,12 +8436,13 @@ var S1UI = (() => {
       if (colonCol) scrollCellToCenter(colonCol, getWheelCells(colonCol)[Math.floor(getWheelCells(colonCol).length / 2)]);
       if (tabsRoot && mobileContent === "date-time") {
         tabApi = init7(tabsRoot);
-        tabsRoot.addEventListener("s1:tab:change", (event) => {
+        handleTabChange = (event) => {
           const showDate = event.detail?.value === "date";
           if (datePanel) datePanel.hidden = !showDate;
           const wheel = root.querySelector('[data-s1-part="wheel"]');
           if (wheel) wheel.hidden = showDate;
-        });
+        };
+        tabsRoot.addEventListener("s1:tab:change", handleTabChange);
       }
     }
     const readWheelValue = () => {
@@ -8476,7 +8555,8 @@ var S1UI = (() => {
       } else if (hasWheelSheet) {
         sheetLastFocused = trigger;
         sheet.hidden = false;
-        if (centerWheelDefault && trigger.dataset.filled !== "true") centerWheelDefault();
+        if (pendingWheel) centerWheelTo(pendingWheel);
+        else if (centerWheelDefault && trigger.dataset.filled !== "true") centerWheelDefault();
         document.body.style.overflow = "hidden";
         document.addEventListener("keydown", handleSheetKeydown, true);
         const firstFocusable = sheetPanel ? sheetFocusables(sheetPanel)[0] : null;
@@ -8507,9 +8587,10 @@ var S1UI = (() => {
     trigger.addEventListener("click", handleTriggerClick);
     trigger.addEventListener("keydown", handleTriggerKeydown);
     root.addEventListener("keydown", handleRootKeydown);
+    const handleSheetCloseClick = () => close();
     if (hasWheelSheet) {
-      sheetClose?.addEventListener("click", () => close());
-      sheetBackdrop?.addEventListener("click", () => close());
+      sheetClose?.addEventListener("click", handleSheetCloseClick);
+      sheetBackdrop?.addEventListener("click", handleSheetCloseClick);
       apply?.addEventListener("click", handleApplyClick);
       for (const col of wheelCols) {
         col.addEventListener("keydown", handleWheelColKeydown);
@@ -8529,10 +8610,75 @@ var S1UI = (() => {
       if (hidden) hidden.value = event.detail?.value ?? "";
     };
     root.addEventListener("s1:time-picker:change", handleChangeForValue);
+    const placeholderText = root.dataset.placeholder ?? value.textContent;
+    let pendingWheel = null;
+    const parseClock = (next) => {
+      const match = /^(\d{1,2}):(\d{2})$/.exec(String(next ?? "").trim());
+      if (!match) return null;
+      const hour = Number(match[1]);
+      const minute = Number(match[2]);
+      return hour > 23 || minute > 59 ? null : { hour, minute };
+    };
+    const clockCells = (clock) => {
+      const ampm = type === "12h" ? clock.hour < 12 ? "\uC624\uC804" : "\uC624\uD6C4" : null;
+      const hour = type === "12h" ? String(clock.hour % 12 === 0 ? 12 : clock.hour % 12) : pad2(clock.hour);
+      return { ampm, hour, minute: pad2(clock.minute) };
+    };
+    const centerWheelTo = (cells2) => {
+      for (const kind of ["ampm", "hour", "minute"]) {
+        const col = wheelColByKind[kind];
+        if (!col || cells2[kind] == null) continue;
+        const found = getWheelCells(col).find((cell) => cell.dataset.value === cells2[kind]);
+        if (found) scrollCellToCenter(col, found);
+      }
+    };
+    const setValue = (next) => {
+      const clock = parseClock(next);
+      if (!clock) {
+        if (!(next == null || String(next).trim() === "")) return false;
+        if (hasListPanel) {
+          for (const kind of requiredKinds) for (const cell of getCells(columnByKind[kind])) cell.setAttribute("aria-selected", "false");
+          syncConfirm();
+        }
+        pendingWheel = null;
+        value.textContent = placeholderText;
+        delete trigger.dataset.filled;
+        lastChange = null;
+        if (hidden) hidden.value = "";
+        return true;
+      }
+      const cells2 = clockCells(clock);
+      if (hasListPanel) {
+        const picked = [];
+        for (const kind of requiredKinds) {
+          const column = columnByKind[kind];
+          const cell = getCells(column).find((candidate) => candidate.dataset.value === cells2[kind]);
+          if (!cell) return false;
+          picked.push([column, cell]);
+        }
+        for (const [column, cell] of picked) {
+          for (const candidate of getCells(column)) candidate.setAttribute("aria-selected", String(candidate === cell));
+          setActive2(column, cell);
+        }
+        syncConfirm();
+      }
+      if (hasWheelSheet) {
+        pendingWheel = cells2;
+        centerWheelTo(cells2);
+      }
+      const text = type === "12h" ? `${cells2.ampm} ${cells2.hour}:${cells2.minute}` : `${cells2.hour}:${cells2.minute}`;
+      value.textContent = text;
+      trigger.dataset.filled = "true";
+      lastChange = { value: text, hour: cells2.hour, minute: cells2.minute, ampm: cells2.ampm, type };
+      if (hidden) hidden.value = text;
+      return true;
+    };
+    if (root.dataset.value) setValue(root.dataset.value);
     const api = Object.freeze({
       get open() {
         return isOpen3(trigger);
       },
+      setValue,
       /* 확정된 시간 — { value, hour, minute, ampm, type }. 아직 고르지 않았으면 null. */
       get value() {
         return lastChange ? { ...lastChange } : null;
@@ -8550,6 +8696,9 @@ var S1UI = (() => {
           confirm.removeEventListener("click", handleConfirmClick);
         }
         if (hasWheelSheet) {
+          sheetClose?.removeEventListener("click", handleSheetCloseClick);
+          sheetBackdrop?.removeEventListener("click", handleSheetCloseClick);
+          if (handleTabChange) tabsRoot?.removeEventListener("s1:tab:change", handleTabChange);
           apply?.removeEventListener("click", handleApplyClick);
           for (const col of wheelCols) {
             col.removeEventListener("keydown", handleWheelColKeydown);

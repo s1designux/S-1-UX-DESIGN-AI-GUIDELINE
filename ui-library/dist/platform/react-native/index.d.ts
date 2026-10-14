@@ -433,8 +433,8 @@ export interface S1ExpandableCardProps extends S1BaseProps {
 export declare function S1ExpandableCard(props: S1ExpandableCardProps): ReactElement;
 
 export interface S1DataTagProps extends S1BaseProps {
-  /** 승인된 변형: blue · red */
-  variant?: "blue" | "red";
+  /** 승인된 변형: blue · red · gray */
+  variant?: "blue" | "red" | "gray";
   /** 앱이 소유하는 내용(탭 내용 등). 주면 예제 내용을 대신한다. */
   children?: ReactNode;
 }

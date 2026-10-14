@@ -5908,6 +5908,23 @@ export const CASES = [
   }
  },
  {
+  "id": "data-tag/pc/gray/-/default",
+  "component": "S1DataTag",
+  "break": "pc",
+  "title": "data-tag · pc · gray/-/default",
+  "props": {
+   "breakName": "pc",
+   "variant": "gray"
+  },
+  "web": {
+   "example": "pc",
+   "instance": 0,
+   "attributes": {
+    "data-tone": "gray"
+   }
+  }
+ },
+ {
   "id": "divider/pc/x/-/default",
   "component": "S1Divider",
   "break": "pc",

@@ -324,6 +324,7 @@ export function init(root) {
   const wheelColByKind = {};
   let centerWheelDefault = null;
   let tabApi = null;
+  let handleTabChange = null;
   let sheetLastFocused = null;
 
   if (hasWheelSheet) {
@@ -371,12 +372,13 @@ export function init(root) {
 
     if (tabsRoot && mobileContent === "date-time") {
       tabApi = initTab(tabsRoot);
-      tabsRoot.addEventListener("s1:tab:change", (event) => {
+      handleTabChange = (event) => {
         const showDate = event.detail?.value === "date";
         if (datePanel) datePanel.hidden = !showDate;
         const wheel = root.querySelector('[data-s1-part="wheel"]');
         if (wheel) wheel.hidden = showDate;
-      });
+      };
+      tabsRoot.addEventListener("s1:tab:change", handleTabChange);
     }
   }
 
@@ -481,7 +483,8 @@ export function init(root) {
       /* 시트가 닫혀 있는 동안에는 열 높이가 0 이라 스크롤 위치가 잡히지 않는다 — 화면에 붙은 뒤
          한 번 더 잡아야 기본값이 실제로 가운데에 온다(실측 2026-09-07). 이미 고른 값이 있으면
          그 자리를 지킨다: 트리거가 값을 들고 있을 때(data-filled)는 다시 잡지 않는다. */
-      if (centerWheelDefault && trigger.dataset.filled !== "true") centerWheelDefault();
+      if (pendingWheel) centerWheelTo(pendingWheel);
+      else if (centerWheelDefault && trigger.dataset.filled !== "true") centerWheelDefault();
       document.body.style.overflow = "hidden";
       document.addEventListener("keydown", handleSheetKeydown, true);
       const firstFocusable = sheetPanel ? sheetFocusables(sheetPanel)[0] : null;
@@ -517,9 +520,11 @@ export function init(root) {
   trigger.addEventListener("click", handleTriggerClick);
   trigger.addEventListener("keydown", handleTriggerKeydown);
   root.addEventListener("keydown", handleRootKeydown);
+  /* 닫기 단추·바탕 클릭 — destroy 가 정확히 같은 함수를 떼야 한다(React StrictMode 가 붙였다 떼고 다시 붙일 때 겹치지 않게). */
+  const handleSheetCloseClick = () => close();
   if (hasWheelSheet) {
-    sheetClose?.addEventListener("click", () => close());
-    sheetBackdrop?.addEventListener("click", () => close());
+    sheetClose?.addEventListener("click", handleSheetCloseClick);
+    sheetBackdrop?.addEventListener("click", handleSheetCloseClick);
     apply?.addEventListener("click", handleApplyClick);
     for (const col of wheelCols) {
       col.addEventListener("keydown", handleWheelColKeydown);
@@ -544,8 +549,77 @@ export function init(root) {
   };
   root.addEventListener("s1:time-picker:change", handleChangeForValue);
 
+  /* 값 넣기 (2026-10-13) — "HH:mm"(24시간) 문자열로 시간을 정한다. root 의 data-value 로 처음 값도 줄 수 있다.
+     change 이벤트는 내지 않는다(사용자가 고른 것이 아니라 화면이 넣은 값). 비우려면 null · "".
+     목록 모드는 열의 칸을, 휠 모드는 가운데 칸을 맞추고 트리거 글자·숨은 입력을 갱신한다. 목록에 없는 분(간격 밖)이면 false. */
+  const placeholderText = root.dataset.placeholder ?? value.textContent;
+  let pendingWheel = null;
+  const parseClock = (next) => {
+    const match = /^(\d{1,2}):(\d{2})$/.exec(String(next ?? "").trim());
+    if (!match) return null;
+    const hour = Number(match[1]);
+    const minute = Number(match[2]);
+    return hour > 23 || minute > 59 ? null : { hour, minute };
+  };
+  const clockCells = (clock) => {
+    const ampm = type === "12h" ? (clock.hour < 12 ? "오전" : "오후") : null;
+    const hour = type === "12h" ? String(clock.hour % 12 === 0 ? 12 : clock.hour % 12) : pad2(clock.hour);
+    return { ampm, hour, minute: pad2(clock.minute) };
+  };
+  const centerWheelTo = (cells) => {
+    for (const kind of ["ampm", "hour", "minute"]) {
+      const col = wheelColByKind[kind];
+      if (!col || cells[kind] == null) continue;
+      const found = getWheelCells(col).find((cell) => cell.dataset.value === cells[kind]);
+      if (found) scrollCellToCenter(col, found);
+    }
+  };
+  const setValue = (next) => {
+    const clock = parseClock(next);
+    if (!clock) {
+      if (!(next == null || String(next).trim() === "")) return false;
+      if (hasListPanel) {
+        for (const kind of requiredKinds) for (const cell of getCells(columnByKind[kind])) cell.setAttribute("aria-selected", "false");
+        syncConfirm();
+      }
+      pendingWheel = null;
+      value.textContent = placeholderText;
+      delete trigger.dataset.filled;
+      lastChange = null;
+      if (hidden) hidden.value = "";
+      return true;
+    }
+    const cells = clockCells(clock);
+    if (hasListPanel) {
+      const picked = [];
+      for (const kind of requiredKinds) {
+        const column = columnByKind[kind];
+        const cell = getCells(column).find((candidate) => candidate.dataset.value === cells[kind]);
+        if (!cell) return false;
+        picked.push([column, cell]);
+      }
+      for (const [column, cell] of picked) {
+        for (const candidate of getCells(column)) candidate.setAttribute("aria-selected", String(candidate === cell));
+        setActive(column, cell);
+      }
+      syncConfirm();
+    }
+    if (hasWheelSheet) {
+      pendingWheel = cells;
+      centerWheelTo(cells);
+    }
+    const text = type === "12h" ? `${cells.ampm} ${cells.hour}:${cells.minute}` : `${cells.hour}:${cells.minute}`;
+    value.textContent = text;
+    trigger.dataset.filled = "true";
+    lastChange = { value: text, hour: cells.hour, minute: cells.minute, ampm: cells.ampm, type };
+    if (hidden) hidden.value = text;
+    return true;
+  };
+  if (root.dataset.value) setValue(root.dataset.value);
+
   const api = Object.freeze({
     get open() { return isOpen(trigger); },
+    setValue,
     /* 확정된 시간 — { value, hour, minute, ampm, type }. 아직 고르지 않았으면 null. */
     get value() { return lastChange ? { ...lastChange } : null; },
     openPanel: open,
@@ -561,6 +635,9 @@ export function init(root) {
         confirm.removeEventListener("click", handleConfirmClick);
       }
       if (hasWheelSheet) {
+        sheetClose?.removeEventListener("click", handleSheetCloseClick);
+        sheetBackdrop?.removeEventListener("click", handleSheetCloseClick);
+        if (handleTabChange) tabsRoot?.removeEventListener("s1:tab:change", handleTabChange);
         apply?.removeEventListener("click", handleApplyClick);
         for (const col of wheelCols) {
           col.removeEventListener("keydown", handleWheelColKeydown);

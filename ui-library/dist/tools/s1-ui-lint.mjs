@@ -34,6 +34,9 @@ async function collectFiles(target, found = []) {
   for (const entry of await readdir(target, { withFileTypes: true })) {
     if (entry.name.startsWith(".") && entry.name !== ".") continue;
     if (entry.isDirectory() && SKIPPED_DIRECTORIES.has(entry.name)) continue;
+    /* 배포본 폴더(s1-ui) 자신은 검사하지 않는다 — 소스 폴더 안에 넣어 둔 묶음 파일(CSS 의 색 값, 생성된 부품 코드)이
+       "내가 쓴 코드의 문제" 로 수만 건 잡혀 진짜 문제가 묻히지 않게 한다. */
+    if (entry.isDirectory() && path.resolve(target, entry.name) === packageRoot) continue;
     await collectFiles(path.join(target, entry.name), found);
   }
   return found;

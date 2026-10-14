@@ -1,8 +1,8 @@
 {
   "id": "chip",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "status": "approved",
-  "canonicalFingerprint": "1f0b8c5410b47101605777c88ff1723c1ac73d7ffd0feaa2ad7a58a0f0475844",
+  "canonicalFingerprint": "fb526cdc4dd78be9d50610c4048b5b6fcda2fdc5b922aa5bdcc34cbd4c8a202e",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -198,5 +198,5 @@
       "setGroupValue(묶음, 값)"
     ]
   },
-  "sourceFingerprint": "4d75fb4ad66ec96919faa6b6acacfe94f9bb985cda22418e1847aebeebe05435"
+  "sourceFingerprint": "f612f77283183f63b3b1df17cd0ee7b18843f7520dc8be509cd00db3420e0d37"
 }
