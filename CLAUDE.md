@@ -10,3 +10,7 @@
 3. **`mode` 가 `apply`(이미 있는 화면에 입히기)면** — 문서(`kind: doc`)는 `./ai/rules/apply-doc.md` 대로 S1 토큰으로 색·글자·간격만 입힙니다. 프로토타입(`kind: prototype`)은 `./ai/rules/apply-poc.md` 순서를 따라 **고치기 전에 디자인 확인 요청서를 먼저 만들어 디자이너에게 보냅니다.**
 4. **끝나면 검수합니다** — `node ./ai/check/s1-check.mjs <폴더>`. 합격하기 전에는 "다 적용했다"고 말하지 않습니다.
 <!-- S1-DESIGN:END -->
+
+## 작업 맥락
+이 프로젝트의 결정·진행 상황·주의점은 `docs/context/`에 있다. 작업 시작 시 아래 목록을 보고 관련 파일을 읽는다. 새 결정·진행은 이 PC 메모가 아니라 `docs/context/`에 기록한다.
+@docs/context/INDEX.md
