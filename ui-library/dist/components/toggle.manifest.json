@@ -1,6 +1,6 @@
 {
   "id": "toggle",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "status": "approved",
   "canonicalFingerprint": "fa0eaeb4bcb0f04a2ffc67dbef4d7b293129184c3ed45dcd7bd973e64ba61098",
   "canonicalSources": [
@@ -128,5 +128,5 @@
     "runtime": "components/toggle.js",
     "reason": "role=switch 는 native checked 가 없어 aria-checked 상태 전환을 런타임이 담당한다."
   },
-  "sourceFingerprint": "12d582a5ef462aa2521548f0494101078cf380f94d86bbc14a9ed8ff1ecd14c0"
+  "sourceFingerprint": "d00be484e9d018098f874f4bd54344fde239cdb57d61a47b6309d15719e34fe7"
 }

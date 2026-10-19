@@ -1,6 +1,6 @@
 {
   "id": "bottom-sheet",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "status": "approved",
   "canonicalFingerprint": "cfcdd0a868fe7df66776acf051104737a71c3f6898d74bc97036f14dfb7baf17",
   "canonicalSources": [
@@ -215,5 +215,5 @@
     },
     "optionEvents": "목록 줄(bottom-sheet-option)의 s1:bottom-sheet-option:change 를 들어, 시트를 연 요소(data-s1-open) 안 [data-s1-part=\"value\"] 글자를 고른 라벨로 바꾸고, 묶음의 data-s1-close-on-select 요청이 오면 닫는다(reason=select)."
   },
-  "sourceFingerprint": "85b90383f334d6a27340b0319826c6e3cf3d5811ff1128839cf1cae3ea7e13ab"
+  "sourceFingerprint": "a59d168f45dfa3c12350e4593451143ae30c406b3f29146916fb4f7d0bf74f44"
 }

@@ -459,3 +459,22 @@ export interface S1LnbProps extends S1BaseProps {
   defaultCollapsed?: boolean;
 }
 export declare function S1Lnb(props: S1LnbProps): ReactElement;
+
+export interface S1FooterProps extends S1BaseProps {
+  /** 승인된 변형: pc · mobile */
+  variant?: "pc" | "mobile";
+}
+export declare function S1Footer(props: S1FooterProps): ReactElement;
+
+export interface S1CiProps extends S1BaseProps {
+  /** 승인된 변형: s1 · samsung */
+  variant?: "s1" | "samsung";
+  /** 앱이 소유하는 내용(탭 내용 등). 주면 예제 내용을 대신한다. */
+  children?: ReactNode;
+}
+export declare function S1Ci(props: S1CiProps): ReactElement;
+
+export interface S1LoginGnbProps extends S1BaseProps {
+
+}
+export declare function S1LoginGnb(props: S1LoginGnbProps): ReactElement;

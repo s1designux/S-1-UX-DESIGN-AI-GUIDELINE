@@ -1,6 +1,6 @@
 {
   "id": "gnb-sub-menu",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "status": "approved",
   "canonicalFingerprint": "c4d41bec72a973b79305278e5533c166b4b7ff76e4c348cbb86490fb6ae6508d",
   "canonicalSources": [
@@ -115,5 +115,5 @@
     "runtime": "none",
     "reason": "정본에 여닫는 동작이 없다 — 배포본은 펼쳐진 패널의 모양만 낸다. 패널을 열고 닫는 동작(aria-expanded 토글·hidden 전환·Esc·포커스 복귀)은 river 결정(2026-09-09, D4·D5)에 따라 이 패널을 여는 gnb(jsRequired=true)가 소유한다 — 이 컴포넌트는 그대로 수동형이다."
   },
-  "sourceFingerprint": "98b4b23339db85c46bf04d3c4c24e99a98fa4522b86e42e287b0142dabda796d"
+  "sourceFingerprint": "9d622af58295d18b002fa6859e7ca181ed65bc879b5316dadf4cb097b11ff550"
 }

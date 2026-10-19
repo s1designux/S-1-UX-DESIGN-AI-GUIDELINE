@@ -1,6 +1,6 @@
 {
   "id": "text-button",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "status": "approved",
   "canonicalFingerprint": "e3c547c1aefa2bd8f9093f208daac59c4be3e1d89df25c5ff9e9068ea1e725b2",
   "canonicalSources": [
@@ -117,5 +117,5 @@
     "runtime": "none",
     "reason": "Native button semantics provide the complete approved behavior; hover/pressed underline is pure CSS."
   },
-  "sourceFingerprint": "3b6c24e1352f3b811f29406555ea338f4be2f15583a1e9c40dd2ad9ae224993f"
+  "sourceFingerprint": "938d4028f54b5d21960c4cbd5b1e548527953c123c06c4b62d2deacdfa1dfc9b"
 }

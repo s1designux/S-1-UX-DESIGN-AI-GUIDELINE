@@ -1,6 +1,6 @@
 {
   "id": "checkbox",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "status": "approved",
   "canonicalFingerprint": "0ce32268ee96b5b8e7158e2e5bc4b494a492b3f9124adda27ac7c601434266b9",
   "canonicalSources": [
@@ -139,5 +139,5 @@
     "runtime": "none",
     "reason": "Native checkbox semantics provide the complete approved behavior."
   },
-  "sourceFingerprint": "caabcee2ecb300d759ae5e2bfb31210c87224fa8d5e6b53dcd63a97c3b94d4db"
+  "sourceFingerprint": "a2fd8006eecdba6eff1e70514fbbc7e4fdcb423ef048982d1514dbfa4aaecf52"
 }

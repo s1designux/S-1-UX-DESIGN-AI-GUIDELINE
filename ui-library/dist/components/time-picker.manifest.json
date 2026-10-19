@@ -1,6 +1,6 @@
 {
   "id": "time-picker",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "status": "approved",
   "canonicalFingerprint": "bdf304ea39d52ed35c85eb07447f737ea68b7a591a6af4126e5f73a64542c604",
   "canonicalSources": [
@@ -333,5 +333,5 @@
     },
     "valueNote": "setValue(\"HH:mm\") 는 change 이벤트를 내지 않는다(화면이 넣은 값). null · \"\" 로 비운다. 목록에 없는 분(간격 밖)이면 false 를 돌려준다."
   },
-  "sourceFingerprint": "2bf8bd5dd94f6910a1ba90db303bd349cf33f1fa81ff9d2e152f9e2e3dcf5795"
+  "sourceFingerprint": "6e6899e38f125dfc7d187bd02cfea6ac738623f5305b4b0eeefad5680314ab48"
 }

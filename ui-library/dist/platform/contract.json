@@ -2,7 +2,7 @@
   "_meta": {
     "note": "자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요.",
     "purpose": "개발 툴과 검사기가 함께 읽는 허용목록. 여기 없는 variant·size·속성은 승인된 적이 없는 것이다.",
-    "canonicalFingerprint": "74173580fab2dea369607efb6164a895d246c9da4cb993284b35d04f2e9b7db8"
+    "canonicalFingerprint": "0355d63d1dcb6b68d01c8db5adc618f811faf403b39d2a8aff8cde7f7e2beae5"
   },
   "components": [
     {
@@ -66,7 +66,7 @@
         "destroy removes listeners and hides clear action"
       ],
       "canonicalFingerprint": "785ecda4f20da6a0b6cd6b4ffbfa2a2a161b237b5b87f0f588a7dde2d8507755",
-      "sourceFingerprint": "b3d087d5528895e08fea7a8a4d60d146050b48090b5d31c9ccd7bfeca903bd27"
+      "sourceFingerprint": "6d78b7744952e9ab2b8995f30f92a2129b3012482d5852d56cf9397cbda6d562"
     },
     {
       "id": "button",
@@ -118,7 +118,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "5fcd302305bf146d4b2a634c851e7524b2203c603b3b0880c17451732e7cf231",
-      "sourceFingerprint": "8df6b80bc2a5dbe0045345e720adccead82ba4c0e423389237275fdf79bd47bd"
+      "sourceFingerprint": "82a22d9193a06d4a1526bf3a3cc2a039ad81938811194ba55c7ee315b2cc13b6"
     },
     {
       "id": "checkbox",
@@ -152,7 +152,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "0ce32268ee96b5b8e7158e2e5bc4b494a492b3f9124adda27ac7c601434266b9",
-      "sourceFingerprint": "caabcee2ecb300d759ae5e2bfb31210c87224fa8d5e6b53dcd63a97c3b94d4db"
+      "sourceFingerprint": "a2fd8006eecdba6eff1e70514fbbc7e4fdcb423ef048982d1514dbfa4aaecf52"
     },
     {
       "id": "radio",
@@ -186,7 +186,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "6562bf18311aeb0eb60f576976779a67f209ca14d4d26fb9729347e2ab9035c9",
-      "sourceFingerprint": "1a955c086b08dac9605c52a6fc022d98fdd13607af03183b079a34b80f6b172b"
+      "sourceFingerprint": "e171ea52b6f631ed485928484f038bdede7787471ee43e4124acb47ea3457546"
     },
     {
       "id": "toggle",
@@ -225,7 +225,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "fa0eaeb4bcb0f04a2ffc67dbef4d7b293129184c3ed45dcd7bd973e64ba61098",
-      "sourceFingerprint": "12d582a5ef462aa2521548f0494101078cf380f94d86bbc14a9ed8ff1ecd14c0"
+      "sourceFingerprint": "d00be484e9d018098f874f4bd54344fde239cdb57d61a47b6309d15719e34fe7"
     },
     {
       "id": "chip",
@@ -281,7 +281,7 @@
         "destroy(root)"
       ],
       "canonicalFingerprint": "fb526cdc4dd78be9d50610c4048b5b6fcda2fdc5b922aa5bdcc34cbd4c8a202e",
-      "sourceFingerprint": "f612f77283183f63b3b1df17cd0ee7b18843f7520dc8be509cd00db3420e0d37"
+      "sourceFingerprint": "0442ba9e7a4059c8f6580a94f629ca235cdf142de77e7e279f3b6197162729b2"
     },
     {
       "id": "dropdown",
@@ -330,7 +330,7 @@
         "destroy(root)"
       ],
       "canonicalFingerprint": "93c277610de52701b5f6b3fc4ea925e601a86a29f7229df99fcfea4e80abb31b",
-      "sourceFingerprint": "d757c8cddb53810a22bb9479be786f591287f6de879ca539a754b4448c6d28b4"
+      "sourceFingerprint": "31199586a582a51cc4a644fc7cba31285b9c35478b16962f7e5a62c2eaeb23b3"
     },
     {
       "id": "select",
@@ -392,7 +392,7 @@
         "destroy(root)"
       ],
       "canonicalFingerprint": "2ebe07ca09e01257f5713e3faccd28918dabf09d97d8b96aa0e01f2670bed868",
-      "sourceFingerprint": "bc8e2aee1521756e9efeeeebe3b6d58fb4fdd45e8f888e378988a497e00f528c"
+      "sourceFingerprint": "ec6f68c147240022fb1a4f21cdf2ea0754e7563165f392e078bf3c3fedb9fc5d"
     },
     {
       "id": "filter-chip",
@@ -456,7 +456,7 @@
         "destroy(root)"
       ],
       "canonicalFingerprint": "e9ee9098166ab334c5cd6e353abd207bf7cfbec36b8515bdf2cb9fbd2dfb52d8",
-      "sourceFingerprint": "3cdb176b874bcdb02194d063f5213bae6e45ce96bc4bb608046b78a9da4bd79a"
+      "sourceFingerprint": "c0d6fb9ace6c9c78bde2191ca4f43ebe287483b2491e43ddf3cbad0175e061fb"
     },
     {
       "id": "tab",
@@ -506,7 +506,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "a8d8aaa4fac1b9244261b50b512da64c42b275b395606ef644ca5852c0166a88",
-      "sourceFingerprint": "12237a7303072ad74cafa4d2e65e0486726fa8532146a78f524065f179e32a71"
+      "sourceFingerprint": "a85ed9992eaf27caeef94b57ce9080553b31ce36f8f3e74a7e17aa79a44c20cb"
     },
     {
       "id": "pagination",
@@ -550,7 +550,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "04aaf4daa947a835435ee2a664646d982b02d46e8d34a0b5b4563f1269f20e58",
-      "sourceFingerprint": "00b08fcd9b6499d5333871708ed5d9b2eb0ac539f78802d05b401d43a67b67ba"
+      "sourceFingerprint": "d7152823eaf3e34a68cd17ff5c77de2e8b1e9fb2e5c3fe99c430d5e39d45b302"
     },
     {
       "id": "textarea",
@@ -585,7 +585,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "3414cf4b12485787412bfbd013348f770cab7cca4b1aabee20b8bd86cc73ecde",
-      "sourceFingerprint": "6c5fabc6e6d144dacea23cf80b89b30c418667c873d5faba834ada9bacc70a5c"
+      "sourceFingerprint": "1bd29d3725bf0bde1f444c0da763f613f86b8b2070dea49f4559d25278f0b37f"
     },
     {
       "id": "multi-toggle",
@@ -631,7 +631,7 @@
         "destroy removes listeners"
       ],
       "canonicalFingerprint": "91c9bfe82bef3e033e7867a16d40fc85d68ae059366e8a7b69752aa246682396",
-      "sourceFingerprint": "4860c41e25e14542cf0d0c1fa455a7c936ab090409e32c26e5fb4c271fce616e"
+      "sourceFingerprint": "c37c0496eddbc54985f2d6f24c44aaf5866f4dce1005e65d91fc47e5bae08a4e"
     },
     {
       "id": "modal",
@@ -689,7 +689,7 @@
         "destroy(root)"
       ],
       "canonicalFingerprint": "2c5c4d33d097de64cb795cd5cded328d2aaab073801c334cb8dc27c2279b3d9a",
-      "sourceFingerprint": "dcea3c984b76d4f2c0b7324ab5d5642564c21c2cc031a2b1daeb02747e877fa3"
+      "sourceFingerprint": "ee7f87dab6894c9a5ff90604d580f6c26e43ef9fcfa25c8eb9c3b26ec4ba598b"
     },
     {
       "id": "table",
@@ -740,7 +740,7 @@
       ],
       "lifecycle": [],
       "canonicalFingerprint": "e9ba689fb4c2ee4662ecd43089dd2601e2d4980ccb91440975f111b74e589f65",
-      "sourceFingerprint": "abd298687bcbf96d768c3bac46a9e31fc853f43835ca5390cba421e69c4eda66"
+      "sourceFingerprint": "719a009bdb67a3f5e180b2e7acac9552cdce08c127eb0ffe59ae128d6fea4212"
     },
     {
       "id": "mobile-bottom-nav",
@@ -781,7 +781,7 @@
         "destroy(root)"
       ],
       "canonicalFingerprint": "54dd241e960ea2f1816424f0f4b538c4e873777781bde65e4314f3a1f8ac7d8f",
-      "sourceFingerprint": "f60d7e7d34f0d59df2318921f2ab72a97451bd01163a3b82b6888b43c0ad04a5"
+      "sourceFingerprint": "6da33377fdd07ca4dda118fd3355d6c5e6e209ce18e41ff81a4cee595454ce74"
     },
     {
       "id": "mobile-header",
@@ -824,7 +824,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "b28908d8fe3feb18913b99f0d34c935eff24f66216f94bcb19761316e5f0fc33",
-      "sourceFingerprint": "c1a79378de6cdd89edee2115a3cb5f7ae5aa71ed510beb7d0ede6e00b0d3fd6e"
+      "sourceFingerprint": "7e28f70ed870d289eb21ab74d65a35c981bff04b3c11c16d73f6dbb4363341e2"
     },
     {
       "id": "time-picker",
@@ -911,7 +911,7 @@
         "destroy(root)"
       ],
       "canonicalFingerprint": "bdf304ea39d52ed35c85eb07447f737ea68b7a591a6af4126e5f73a64542c604",
-      "sourceFingerprint": "2bf8bd5dd94f6910a1ba90db303bd349cf33f1fa81ff9d2e152f9e2e3dcf5795"
+      "sourceFingerprint": "6e6899e38f125dfc7d187bd02cfea6ac738623f5305b4b0eeefad5680314ab48"
     },
     {
       "id": "date-picker",
@@ -1000,7 +1000,7 @@
         "destroy(root)"
       ],
       "canonicalFingerprint": "0ab29faac87cf30a9075a948f7cc869ceec840a30dd0edf836e9ea2c94d8ee34",
-      "sourceFingerprint": "bf7f4b276b2d72d23981e7cefab83186e3b69442fcb97f7cbd77311c29960b7c"
+      "sourceFingerprint": "5fded8d33c5c2c907dc2fcc67fdbc3e25d2a99a8fce8f2dfbd4c1e3292e573f0"
     },
     {
       "id": "gnb",
@@ -1054,7 +1054,7 @@
         "destroy(root)"
       ],
       "canonicalFingerprint": "fcf948850d0042cb94225c0ba90ba464b387fc58d1664b052112154488f4e0e4",
-      "sourceFingerprint": "5de51347a91e7bb14b90c2d90dcb4d5fc96abce25c298ef72805dea88779a962"
+      "sourceFingerprint": "4fd8d11886d2a282410a84794093523191b96ca5f88ae13c3dc5008472a52eb5"
     },
     {
       "id": "gnb-sub-menu-item",
@@ -1079,7 +1079,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "be1a8fbae11ce07894ac3abeedb55cde1991435e758051c6fe950d8d4c0dd1fe",
-      "sourceFingerprint": "97fbbf3c8e53c012f88f89afa161e35c9deb90072f119414baaec669d897ac55"
+      "sourceFingerprint": "b6298fe5ba65d125396defa7817af177fe0bc85e7b217f70570f427db1a52730"
     },
     {
       "id": "gnb-sub-menu",
@@ -1106,7 +1106,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "c4d41bec72a973b79305278e5533c166b4b7ff76e4c348cbb86490fb6ae6508d",
-      "sourceFingerprint": "98b4b23339db85c46bf04d3c4c24e99a98fa4522b86e42e287b0142dabda796d"
+      "sourceFingerprint": "9d622af58295d18b002fa6859e7ca181ed65bc879b5316dadf4cb097b11ff550"
     },
     {
       "id": "assist-button",
@@ -1141,7 +1141,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "510aa34e83fc7e2bfd13ee4c74c17c227110d8884e1e49d7320df1ffc86bd4e3",
-      "sourceFingerprint": "ca160022c25b67fcbcd65df1db9e27bae60511950332421fc3269802ecd12f29"
+      "sourceFingerprint": "f7028d394e71ab410a293303bac71c8919a65a34c8cea707e183b7729837f659"
     },
     {
       "id": "text-button",
@@ -1180,7 +1180,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "e3c547c1aefa2bd8f9093f208daac59c4be3e1d89df25c5ff9e9068ea1e725b2",
-      "sourceFingerprint": "3b6c24e1352f3b811f29406555ea338f4be2f15583a1e9c40dd2ad9ae224993f"
+      "sourceFingerprint": "938d4028f54b5d21960c4cbd5b1e548527953c123c06c4b62d2deacdfa1dfc9b"
     },
     {
       "id": "modal-content",
@@ -1247,7 +1247,7 @@
         "destroy(root)"
       ],
       "canonicalFingerprint": "631b21245d4ee95332ba83134037a2da1b6337f2b1785999fb1f2968944d9db1",
-      "sourceFingerprint": "2c0e536eee162f2dc7752a49acca79707bbeb1c058226591e5c92982f714bfb8"
+      "sourceFingerprint": "956a3040ab04185c3927f64b5b483e502876e35f7935fc58a46513b8abec26f2"
     },
     {
       "id": "bottom-sheet-option",
@@ -1299,7 +1299,7 @@
         "destroy(root)"
       ],
       "canonicalFingerprint": "437fd477846e829c956c1824e3e4c4e188c1f6a932cac43f62b55a07b54f8ecf",
-      "sourceFingerprint": "1856bcfcf1afa4d44b855984e1e3070bcfe85bd28f9104a9640c3d5a366487ac"
+      "sourceFingerprint": "8d7ed3ccfa4db09bce5d6661189948888e9b008c186721ca38f11f5676b27114"
     },
     {
       "id": "bottom-sheet",
@@ -1355,7 +1355,7 @@
         "destroy(root)"
       ],
       "canonicalFingerprint": "cfcdd0a868fe7df66776acf051104737a71c3f6898d74bc97036f14dfb7baf17",
-      "sourceFingerprint": "85b90383f334d6a27340b0319826c6e3cf3d5811ff1128839cf1cae3ea7e13ab"
+      "sourceFingerprint": "a59d168f45dfa3c12350e4593451143ae30c406b3f29146916fb4f7d0bf74f44"
     },
     {
       "id": "list-row",
@@ -1404,7 +1404,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "a57e54755e1f5117d3db63268e22479371192838564e2dbc4f639723913b54f8",
-      "sourceFingerprint": "5fa5e6ef99f2cf894c4bdbab63f9586e0602225f30eac7e51901e7c7f81c8e2e"
+      "sourceFingerprint": "7a502784fed030fde7ec4ad7f227c2fe6522dcab72a90027733071212e294ad1"
     },
     {
       "id": "expandable-card",
@@ -1449,7 +1449,7 @@
       ],
       "lifecycle": [],
       "canonicalFingerprint": "0c092ba89ea81c9623d729e0ffb8e04805609137ca7f706e2af087b74060715f",
-      "sourceFingerprint": "a2f3fa0915197ee35ee954a384e781c5765482cb52f6942a2eb15a41418a5067"
+      "sourceFingerprint": "41455ed053715fb64739b68bce0b960b803d0120e2d68a90c96f9ddbcf9bca7c"
     },
     {
       "id": "data-tag",
@@ -1480,7 +1480,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "97087c3be948d3c15cf72a655b08d466714542df62d09520c33841d6a9a9a364",
-      "sourceFingerprint": "2a8bc16776f9b44b64d5ae40395aecc11e4b89d0d9a6385239f5de0be013c19a"
+      "sourceFingerprint": "f72163d1672f487914cb238939359eb743b71f419c7202386dceca7b2b4a8896"
     },
     {
       "id": "divider",
@@ -1508,7 +1508,7 @@
       "events": [],
       "lifecycle": [],
       "canonicalFingerprint": "ecc1feee9c1fe058cab17762aedaef994045b6ba4ac298f421762dc19e3c7821",
-      "sourceFingerprint": "dbaea84234fb3ad85c085fd41ba8243b443506a6576ff3561fcfebbe7c0de8cf"
+      "sourceFingerprint": "1849acab915aa6ee9499c79a40fdb4f9f76b9432f6505d47ee79ca18ccd3b9cc"
     },
     {
       "id": "lnb",
@@ -1562,7 +1562,108 @@
       ],
       "lifecycle": [],
       "canonicalFingerprint": "f88063bde5d727e9e3f6cc63872fa259b23058436bde32ac0837e3c6ee376036",
-      "sourceFingerprint": "903223dcabf7dd5df5a328f42ae614c64df0c086600f2fb56ab9f76d8f85db3c"
+      "sourceFingerprint": "2a9ea8e05f72ee6d402f9582dfc297fae0f4aef8c7727dc721fa60b3668cd5d0"
+    },
+    {
+      "id": "footer",
+      "status": "approved",
+      "rootSelector": "[data-s1-component=\"footer\"]",
+      "root": "footer[data-s1-component=footer][data-platform]. 화면 맨 아래 영역(contentinfo 랜드마크).",
+      "variants": [
+        "pc",
+        "mobile"
+      ],
+      "sizes": [],
+      "breaks": null,
+      "states": [
+        "default"
+      ],
+      "parts": [
+        "content",
+        "links",
+        "link",
+        "company",
+        "copyright",
+        "logo"
+      ],
+      "variantAttribute": "data-platform",
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "data-platform"
+      ],
+      "requiredParts": [
+        "links",
+        "link",
+        "copyright"
+      ],
+      "nameFromAttributes": [],
+      "jsRequired": false,
+      "events": [],
+      "lifecycle": [],
+      "canonicalFingerprint": "e7dd3c1ea4e7a0fecbce7d05c497a29bea7cdd51b9ad7c782aca88d656074d47",
+      "sourceFingerprint": "e7a0c932b95328b7ace8f074d619e36e971e7d929ce9a7c7b73995f7244404dd"
+    },
+    {
+      "id": "ci",
+      "status": "approved",
+      "rootSelector": "[data-s1-component=\"ci\"]",
+      "root": "span[data-s1-component=ci][data-brand][data-color][role=img][aria-label]. 에스원은 안에 인라인 svg(viewBox 0 0 42 16, aria-hidden) 한 개, 삼성은 비어 있다.",
+      "variants": [
+        "s1",
+        "samsung"
+      ],
+      "sizes": [],
+      "breaks": null,
+      "states": [
+        "default"
+      ],
+      "parts": [],
+      "variantAttribute": "data-brand",
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "data-brand",
+        "data-color"
+      ],
+      "requiredParts": [],
+      "nameFromAttributes": [],
+      "jsRequired": false,
+      "events": [],
+      "lifecycle": [],
+      "canonicalFingerprint": "bc8cc2a8a4e7773e52e28084446c4ba737abdc35f721bd32918416fce1cf8d8e",
+      "sourceFingerprint": "6dc94c0cea20b9e00da4c384fb75b29892e564eeddf1b31d1e09273b7071c27f"
+    },
+    {
+      "id": "login-gnb",
+      "status": "approved",
+      "rootSelector": "[data-s1-component=\"login-gnb\"]",
+      "root": "header[data-s1-component=login-gnb]. 화면 맨 위 바(banner 랜드마크). 변형 속성이 없다.",
+      "variants": [],
+      "sizes": [],
+      "breaks": null,
+      "states": [
+        "default"
+      ],
+      "parts": [
+        "service",
+        "lang",
+        "lang-icon",
+        "lang-label"
+      ],
+      "variantAttribute": null,
+      "sizeAttribute": null,
+      "requiredAttributes": [],
+      "requiredParts": [
+        "service",
+        "lang",
+        "lang-icon",
+        "lang-label"
+      ],
+      "nameFromAttributes": [],
+      "jsRequired": false,
+      "events": [],
+      "lifecycle": [],
+      "canonicalFingerprint": "b2c533a59551f9665727b38d0513f90cad3337345f87e710c20e43cfb80bc992",
+      "sourceFingerprint": "5534cca72fc1d120593866203eda4020fdbdd07d82c813ba5cad27e588e324c2"
     }
   ]
 }

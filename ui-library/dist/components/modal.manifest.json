@@ -1,6 +1,6 @@
 {
   "id": "modal",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "status": "approved",
   "canonicalFingerprint": "2c5c4d33d097de64cb795cd5cded328d2aaab073801c334cb8dc27c2279b3d9a",
   "canonicalSources": [
@@ -230,5 +230,5 @@
       "data-s1-close": "창 안 요소에 달면 누를 때 닫힌다. 값은 닫힌 이유(cancel·confirm 등, 없으면 close)로 s1:modal:close 의 detail.reason 에 실린다"
     }
   },
-  "sourceFingerprint": "dcea3c984b76d4f2c0b7324ab5d5642564c21c2cc031a2b1daeb02747e877fa3"
+  "sourceFingerprint": "ee7f87dab6894c9a5ff90604d580f6c26e43ef9fcfa25c8eb9c3b26ec4ba598b"
 }

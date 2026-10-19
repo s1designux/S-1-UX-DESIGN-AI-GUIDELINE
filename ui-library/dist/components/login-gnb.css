@@ -1,0 +1,67 @@
+[data-s1-component="login-gnb"] {
+  align-items: center;
+  background: var(--color-navigation-bg);
+  box-sizing: border-box;
+  display: flex;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
+  height: var(--sizing-56);
+  justify-content: space-between;
+  margin: 0;
+  padding-block: var(--spacing-12);
+  min-width: var(--breakpoint-xl);
+  padding-inline: clamp(0px, calc((100% - var(--breakpoint-xl)) / 2), 320px);
+  position: relative;
+  width: 100%;
+}
+
+[data-s1-component="login-gnb"]::after {
+  background: var(--color-line-default);
+  bottom: 0;
+  content: "";
+  height: var(--border-width-default);
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+[data-s1-component="login-gnb"] [data-s1-part="service"]:where(:not([data-s1-component="login-gnb"] [data-s1-component]:not([data-s1-component="login-gnb"]) *:not([data-s1-component="login-gnb"] [data-s1-component]:not([data-s1-component="login-gnb"]) [data-s1-component="login-gnb"] *))) {
+  color: var(--color-text-title-primary);
+  flex: none;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+  white-space: nowrap;
+}
+
+[data-s1-component="login-gnb"] [data-s1-part="lang"]:where(:not([data-s1-component="login-gnb"] [data-s1-component]:not([data-s1-component="login-gnb"]) *:not([data-s1-component="login-gnb"] [data-s1-component]:not([data-s1-component="login-gnb"]) [data-s1-component="login-gnb"] *))) {
+  align-items: center;
+  appearance: none;
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  color: var(--color-icon-gray-dark);
+  cursor: pointer;
+  display: flex;
+  flex: none;
+  font: inherit;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  gap: var(--spacing-8);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+[data-s1-component="login-gnb"] [data-s1-part="lang-icon"]:where(:not([data-s1-component="login-gnb"] [data-s1-component]:not([data-s1-component="login-gnb"]) *:not([data-s1-component="login-gnb"] [data-s1-component]:not([data-s1-component="login-gnb"]) [data-s1-component="login-gnb"] *))) {
+  background-color: var(--color-icon-gray-dark);
+  display: block;
+  flex: none;
+  height: var(--sizing-24);
+  -webkit-mask: url("../assets/icons/globe.svg") center / contain no-repeat;
+  mask: url("../assets/icons/globe.svg") center / contain no-repeat;
+  width: var(--sizing-24);
+}

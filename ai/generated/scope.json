@@ -11,10 +11,10 @@
       "registry/governance/density-policy.json",
       "ui-library/dist/components/*.css"
     ],
-    "distVersion": "0.24.2",
-    "distReleasedAt": "2026-10-14",
-    "canonicalFingerprint": "74173580fab2dea369607efb6164a895d246c9da4cb993284b35d04f2e9b7db8",
-    "builtAt": "2026-10-18"
+    "distVersion": "0.26.0",
+    "distReleasedAt": "2026-10-19",
+    "canonicalFingerprint": "0355d63d1dcb6b68d01c8db5adc618f811faf403b39d2a8aff8cde7f7e2beae5",
+    "builtAt": "2026-10-19"
   },
   "rules": {
     "_meta": {
@@ -3164,6 +3164,143 @@
         "s1:lnb:collapse",
         "s1:lnb:toggle"
       ]
+    },
+    {
+      "id": "footer",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "platformSupport = mobile·pc·note"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "pc",
+        "mobile"
+      ],
+      "variantAttribute": "data-platform",
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "data-platform"
+      ],
+      "requiredParts": [
+        "links",
+        "link",
+        "copyright"
+      ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "links",
+          "link",
+          "copyright"
+        ],
+        "mobile": [
+          "links",
+          "link",
+          "copyright"
+        ]
+      },
+      "parts": [
+        "content",
+        "links",
+        "link",
+        "company",
+        "copyright",
+        "logo"
+      ],
+      "states": [
+        "default"
+      ],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "ci",
+      "status": "approved",
+      "platform": "both",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "platformSupport = mobile·pc·note"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [
+        "s1",
+        "samsung"
+      ],
+      "variantAttribute": "data-brand",
+      "sizeAttribute": null,
+      "requiredAttributes": [
+        "data-brand",
+        "data-color"
+      ],
+      "requiredParts": [],
+      "requiredPartsByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "parts": [],
+      "states": [
+        "default"
+      ],
+      "jsRequired": false,
+      "events": []
+    },
+    {
+      "id": "login-gnb",
+      "status": "approved",
+      "platform": "pc-only",
+      "platformSource": "derived",
+      "platformEvidence": [
+        "platformSupport = pc·note"
+      ],
+      "sizesByPlatform": {
+        "pc": [],
+        "mobile": []
+      },
+      "sizes": [],
+      "variants": [],
+      "variantAttribute": null,
+      "sizeAttribute": null,
+      "requiredAttributes": [],
+      "requiredParts": [
+        "service",
+        "lang",
+        "lang-icon",
+        "lang-label"
+      ],
+      "requiredPartsByPlatform": {
+        "pc": [
+          "service",
+          "lang",
+          "lang-icon",
+          "lang-label"
+        ],
+        "mobile": [
+          "service",
+          "lang",
+          "lang-icon",
+          "lang-label"
+        ]
+      },
+      "parts": [
+        "service",
+        "lang",
+        "lang-icon",
+        "lang-label"
+      ],
+      "states": [
+        "default"
+      ],
+      "jsRequired": false,
+      "events": []
     }
   ]
 }

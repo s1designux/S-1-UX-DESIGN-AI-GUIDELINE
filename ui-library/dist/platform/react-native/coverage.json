@@ -7,6 +7,9 @@
   "totals": {
     "animation:transition": 164,
     "consumed:background-origin": 2,
+    "consumed:background-position": 10,
+    "consumed:background-repeat": 10,
+    "consumed:background-size": 10,
     "consumed:mask-position": 864,
     "consumed:mask-repeat": 864,
     "consumed:mask-size": 864,
@@ -17,16 +20,16 @@
     "custom-property:--s1-bottom-sheet-shadow": 8,
     "custom-property:--s1-brand-logo": 16,
     "custom-property:--s1-brand-logo-w": 8,
-    "duplicate:-webkit-mask": 392,
+    "duplicate:-webkit-mask": 393,
     "duplicate:-webkit-mask-image": 953,
     "duplicate:-webkit-mask-position": 864,
     "duplicate:-webkit-mask-repeat": 864,
     "duplicate:-webkit-mask-size": 864,
-    "font-provider:font-family": 6248,
-    "pointer-only:cursor": 10590,
+    "font-provider:font-family": 6253,
+    "pointer-only:cursor": 10592,
     "text-input-prop:caret-color": 112,
-    "web-only:appearance": 7934,
-    "web-only:list-style": 36,
+    "web-only:appearance": 7936,
+    "web-only:list-style": 40,
     "web-only:outline": 112,
     "web-only:resize": 16,
     "web-only:scroll-snap-align": 30,
@@ -35,7 +38,9 @@
     "web-only:text-box": 960,
     "web-only:user-select": 312,
     "web-only:vertical-align": 1316,
-    "web-only:word-break": 144
+    "web-only:word-break": 144,
+    "web-viewport-clamp-min:padding-left": 3,
+    "web-viewport-clamp-min:padding-right": 3
   },
   "components": {
     "input": {
@@ -337,7 +342,7 @@
     },
     "expandable-card": {
       "templates": 1,
-      "styles": 16,
+      "styles": 17,
       "tableEntries": 30,
       "ignored": {
         "font-provider:font-family": 9,
@@ -356,8 +361,8 @@
     },
     "divider": {
       "templates": 1,
-      "styles": 16,
-      "tableEntries": 54,
+      "styles": 8,
+      "tableEntries": 18,
       "ignored": {}
     },
     "lnb": {
@@ -383,6 +388,40 @@
         "consumer-provided:-webkit-mask": 4,
         "consumer-provided:mask": 4,
         "consumer-provided:background": 2
+      }
+    },
+    "footer": {
+      "templates": 2,
+      "styles": 17,
+      "tableEntries": 50,
+      "ignored": {
+        "font-provider:font-family": 4,
+        "web-viewport-clamp-min:padding-right": 2,
+        "web-viewport-clamp-min:padding-left": 2,
+        "web-only:list-style": 4
+      }
+    },
+    "ci": {
+      "templates": 2,
+      "styles": 8,
+      "tableEntries": 20,
+      "ignored": {
+        "consumed:background-position": 10,
+        "consumed:background-repeat": 10,
+        "consumed:background-size": 10
+      }
+    },
+    "login-gnb": {
+      "templates": 1,
+      "styles": 6,
+      "tableEntries": 6,
+      "ignored": {
+        "web-viewport-clamp-min:padding-right": 1,
+        "web-viewport-clamp-min:padding-left": 1,
+        "font-provider:font-family": 1,
+        "web-only:appearance": 2,
+        "pointer-only:cursor": 2,
+        "duplicate:-webkit-mask": 1
       }
     }
   }

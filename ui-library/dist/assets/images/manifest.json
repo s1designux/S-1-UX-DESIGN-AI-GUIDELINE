@@ -1,0 +1,41 @@
+{
+  "_note": "래스터 이미지 자산 목록 — 아이콘(마스크로 색을 입히는 벡터)이 아닌, 색까지 그대로 담긴 그림 파일. 빌드가 여기 적힌 파일만 dist/assets/images 로 복사하고 지문을 대조한다(등재 = 배포 통로). 새 그림은 정본(build-components.ts)이 그 그림을 쓸 때만 올린다.",
+  "images": [
+    {
+      "id": "samsung-white",
+      "file": "samsung-white.png",
+      "sha256": "1bc9ad20e3a01f3977f8fb16c0fd342a54b21115264d8b09b89096a2acccea78",
+      "width": 1600,
+      "height": 425,
+      "origin": "SW-UX-GUIDE V3.0 TEST(cysG5U1udpQqVagYY1hWHW) 파일 내장 이미지 — 정본 buildCI 의 imageHash White 5ef070ce43a101a072964c656c0e666fe81e4f78 를 REST /v1/files/{key}/images 로 내려받음(2026-10-02)",
+      "usedBy": [
+        "ci"
+      ],
+      "use": "CI Brand=삼성 Color=White 워드마크(134×36, scaleMode FILL)"
+    },
+    {
+      "id": "samsung-blue",
+      "file": "samsung-blue.png",
+      "sha256": "c4bd9477e460a2f924329aef53ff66e4d47b775a7d30f363dd73559586bb7a1c",
+      "width": 1600,
+      "height": 425,
+      "origin": "SW-UX-GUIDE V3.0 TEST(cysG5U1udpQqVagYY1hWHW) 파일 내장 이미지 — 정본 buildCI 의 imageHash Blue 8de26dc1976bd0a64ea5b7207b6bf6d9e0396053 를 REST /v1/files/{key}/images 로 내려받음(2026-10-02)",
+      "usedBy": [
+        "ci"
+      ],
+      "use": "CI Brand=삼성 Color=Blue 워드마크(134×36, scaleMode FILL)"
+    },
+    {
+      "id": "samsung-dark",
+      "file": "samsung-dark.png",
+      "sha256": "ade94e407d795c49b58e2711410b60c77f9c11771f9556d2c8cf455c31a3fc94",
+      "width": 1600,
+      "height": 425,
+      "origin": "SW-UX-GUIDE V3.0 TEST(cysG5U1udpQqVagYY1hWHW) 파일 내장 이미지 — 정본 buildCI 의 imageHash Dark 100a4d3fdd0a5a9304c8251792f2d96089ac458a 를 REST /v1/files/{key}/images 로 내려받음(2026-10-02)",
+      "usedBy": [
+        "ci"
+      ],
+      "use": "CI Brand=삼성 Color=Dark 워드마크(134×36, scaleMode FILL)"
+    }
+  ]
+}

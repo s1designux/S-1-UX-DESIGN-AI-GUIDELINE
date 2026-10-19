@@ -1,6 +1,6 @@
 {
   "id": "radio",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "status": "approved",
   "canonicalFingerprint": "6562bf18311aeb0eb60f576976779a67f209ca14d4d26fb9729347e2ab9035c9",
   "canonicalSources": [
@@ -135,5 +135,5 @@
     "runtime": "none",
     "reason": "Native radio semantics provide the complete approved behavior."
   },
-  "sourceFingerprint": "1a955c086b08dac9605c52a6fc022d98fdd13607af03183b079a34b80f6b172b"
+  "sourceFingerprint": "e171ea52b6f631ed485928484f038bdede7787471ee43e4124acb47ea3457546"
 }

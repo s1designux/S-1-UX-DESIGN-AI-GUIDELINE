@@ -31,4 +31,7 @@ export { default as S1ExpandableCard } from "./expandable-card.jsx";
 export { default as S1DataTag } from "./data-tag.jsx";
 export { default as S1Divider } from "./divider.jsx";
 export { default as S1Lnb } from "./lnb.jsx";
+export { default as S1Footer } from "./footer.jsx";
+export { default as S1Ci } from "./ci.jsx";
+export { default as S1LoginGnb } from "./login-gnb.jsx";
 export { S1_VERSION, S1_RELEASED_AT } from "./version.js";

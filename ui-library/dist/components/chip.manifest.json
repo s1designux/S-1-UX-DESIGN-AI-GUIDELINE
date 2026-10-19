@@ -1,6 +1,6 @@
 {
   "id": "chip",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "status": "approved",
   "canonicalFingerprint": "fb526cdc4dd78be9d50610c4048b5b6fcda2fdc5b922aa5bdcc34cbd4c8a202e",
   "canonicalSources": [
@@ -198,5 +198,5 @@
       "setGroupValue(묶음, 값)"
     ]
   },
-  "sourceFingerprint": "f612f77283183f63b3b1df17cd0ee7b18843f7520dc8be509cd00db3420e0d37"
+  "sourceFingerprint": "0442ba9e7a4059c8f6580a94f629ca235cdf142de77e7e279f3b6197162729b2"
 }

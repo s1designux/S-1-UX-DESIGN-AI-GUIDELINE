@@ -50,6 +50,9 @@ export * as expandableCard from "./components/expandable-card.js";
 export * as dataTag from "./components/data-tag.js";
 export * as divider from "./components/divider.js";
 export * as lnb from "./components/lnb.js";
+export * as footer from "./components/footer.js";
+export * as ci from "./components/ci.js";
+export * as loginGnb from "./components/login-gnb.js";
 
 export function autoInit(scope = document) {
   const instances = [

@@ -1,0 +1,49 @@
+[data-s1-component="ci"] {
+  box-sizing: border-box;
+  display: block;
+  flex: none;
+}
+
+[data-s1-component="ci"][data-brand="s1"] {
+  height: var(--sizing-30);
+  width: 78.75px;
+}
+
+[data-s1-component="ci"][data-brand="s1"] svg {
+  display: block;
+  fill: currentColor;
+  height: 100%;
+  width: 100%;
+}
+
+[data-s1-component="ci"][data-brand="s1"][data-color="white"] {
+  color: var(--color-icon-white);
+}
+
+[data-s1-component="ci"][data-brand="s1"][data-color="blue"] {
+  color: var(--color-brand-ci);
+}
+
+[data-s1-component="ci"][data-brand="s1"][data-color="dark"] {
+  color: var(--color-icon-gray);
+}
+
+[data-s1-component="ci"][data-brand="samsung"] {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 36px;
+  width: 134px;
+}
+
+[data-s1-component="ci"][data-brand="samsung"][data-color="white"] {
+  background-image: url("../assets/images/samsung-white.png");
+}
+
+[data-s1-component="ci"][data-brand="samsung"][data-color="blue"] {
+  background-image: url("../assets/images/samsung-blue.png");
+}
+
+[data-s1-component="ci"][data-brand="samsung"][data-color="dark"] {
+  background-image: url("../assets/images/samsung-dark.png");
+}

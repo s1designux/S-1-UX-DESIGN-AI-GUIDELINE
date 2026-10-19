@@ -1,0 +1,121 @@
+{
+  "_meta": {
+    "id": "login-gnb",
+    "name": "Login GNB",
+    "category": "core",
+    "updatedAt": "2026-10-02",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "planned",
+    "darkModeStatus": "stable",
+    "a11yStatus": "candidate",
+    "figmaStatus": "planned",
+    "harnessStatus": "planned",
+    "description": "로그인 화면 맨 위의 얇은 바(높이 56). 왼쪽은 서비스 이름 글자 자리, 오른쪽은 지구본 + 언어 이름. 변형이 없다.",
+    "a11yApproval": "3-build 에서 정의, river UX 검수에서 확정 — 바는 <header>(banner 랜드마크), 서비스 이름은 글자 자체가 이름, 언어 조작은 GNB 와 같은 <button> 이며 보이는 글자가 곧 이름이다(지구본은 장식).",
+    "codeStatusNote": "정본 buildLoginGNB 는 설치기에 이미 있었다(삼성 로고는 2026-06-24 제거). 웹 배포본은 work-id platform-web-3 로 신설.",
+    "platform": "pc"
+  },
+  "usage": {
+    "whenToUse": [
+      "로그인 화면 맨 위에 서비스 이름과 언어 선택을 보여줄 때."
+    ],
+    "whenNotToUse": [
+      "로그인 후 화면의 주 메뉴가 필요할 때 — 그건 GNB 의 몫이다.",
+      "삼성 로고를 이 바 안에 넣으려 할 때 — 정본에서 2026-06-24 제거됐다."
+    ],
+    "note": "GNB 의 값(지구본 32·글자색·간격)을 가져오지 않는다. 이 바는 지구본 24, 글자색 icon/gray-dark, 간격 8 이다."
+  },
+  "anatomy": [
+    {
+      "part": "서비스 이름",
+      "role": "왼쪽 글자 자리. 기본 글자 [서비스명], title/16B. 쓰는 화면이 채운다."
+    },
+    {
+      "part": "언어",
+      "role": "오른쪽. 지구본 아이콘 24 + 글자 한국어(body/14M), 간격 8."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "서비스 이름은 쓰는 화면이 실제 이름으로 채운다.",
+      "언어를 눌렀을 때 무엇을 할지는 화면이 배선한다."
+    ],
+    "dont": [
+      "GNB 의 32 지구본이나 글자색을 가져오지 않는다.",
+      "정본에서 빠진 삼성 로고를 되살리지 않는다."
+    ]
+  },
+  "a11y": [
+    "바는 <header> 요소를 쓴다(banner 랜드마크).",
+    "서비스 이름 글자가 곧 접근 가능한 이름이다.",
+    "언어 조작은 <button type=button> 이고 보이는 글자(한국어)가 곧 이름이다. 지구본은 장식이라 aria-hidden.",
+    "키보드 초점 표시는 다른 코어와 같이 브라우저 기본에 맡긴다(2026-09-02 river 결정)."
+  ],
+  "variantAxis": {
+    "property": [],
+    "values": {},
+    "absentCombinations": [],
+    "sizeAxis": "없음 — 높이 56 단일. 폭은 웹에서 바 배경 full-width·안쪽 가운데 1280 열(1280 아래로 줄지 않음)."
+  },
+  "scope": "light+dark",
+  "tokens": {
+    "bg": [
+      "color/navigation/bg"
+    ],
+    "line": [
+      "color/line/default"
+    ],
+    "text": [
+      "color/text/title/primary"
+    ],
+    "icon": [
+      "color/icon/gray-dark"
+    ],
+    "number": [
+      "border-width/1",
+      "sizing/24",
+      "sizing/56",
+      "spacing/8",
+      "spacing/12",
+      "spacing/24"
+    ]
+  },
+  "reuses": {
+    "coreComponents": [],
+    "note": "지구본은 아이콘 라이브러리 globe(ic_인터넷)이다. 다른 부품을 붙이지 않는다."
+  },
+  "figma": {
+    "componentSetKey": "(미발행 — 라이브러리 publish 시 기록)",
+    "fileKey": "cysG5U1udpQqVagYY1hWHW",
+    "targetFile": "SW UX GUIDE V3.0-TEST",
+    "builder": "plugins/figma-vars-installer/src/build-components.ts · buildLoginGNB",
+    "propertyMap": {},
+    "note": "단일 컴포넌트. Dark 는 Appearance 모드로 제공한다."
+  },
+  "governance": {
+    "verify": "new",
+    "verifyNote": "웹 배포본은 2026-10-02 신설. 4-verification 에서 🤖 component-verifier 가 맡는다.",
+    "canonApproval": "river 2026-10-02 \"응 맞아, 진행해\" — Footer · CI · LoginGNB 웹 배포(work-id platform-web-3). 정본(buildLoginGNB)은 이전부터 있었다."
+  },
+  "webDistribution": {
+    "status": "approved",
+    "manifest": "ui-library/src/components/login-gnb/manifest.json",
+    "runtime": null,
+    "note": "바 모양만 소유한다. 언어 선택 동작은 쓰는 화면이 배선한다.",
+    "workId": "platform-web-3"
+  },
+  "geometry": {
+    "size": "1920×56 (웹: 폭 100%, 높이 sizing/56)",
+    "paddingBlock": "spacing/12",
+    "paddingInline": "320 (웹: 가운데 1280 열 — 좌우 여백 (100%−1280)/2 를 320 까지로 제한, 1280 아래로는 줄지 않음 · river D-2 2026-10-12 \"가운데 1280폭을 지키고 그 이후로는 대응 안함.\")",
+    "languageGap": "spacing/8",
+    "globe": "24",
+    "provenance": "정본 buildLoginGNB(build-components.ts:6786-6833). 웹의 폭 처리는 바 배경 full-width·안쪽 가운데 1280 열(river D-2)."
+  },
+  "platformSupport": {
+    "mobile": false,
+    "pc": true,
+    "note": "PC 로그인 화면용 상단 바다."
+  }
+}

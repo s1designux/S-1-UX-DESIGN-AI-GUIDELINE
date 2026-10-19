@@ -1,6 +1,6 @@
 {
   "id": "select",
-  "version": "0.2.12",
+  "version": "0.3.0",
   "status": "approved",
   "canonicalFingerprint": "2ebe07ca09e01257f5713e3faccd28918dabf09d97d8b96aa0e01f2670bed868",
   "canonicalSources": [
@@ -224,5 +224,5 @@
       "data-placeholder": "비웠을 때 돌아갈 트리거 글자(서버가 이미 고른 값의 라벨로 그렸을 때 쓴다 — 없으면 처음 글자)"
     }
   },
-  "sourceFingerprint": "bc8e2aee1521756e9efeeeebe3b6d58fb4fdd45e8f888e378988a497e00f528c"
+  "sourceFingerprint": "ec6f68c147240022fb1a4f21cdf2ea0754e7563165f392e078bf3c3fedb9fc5d"
 }

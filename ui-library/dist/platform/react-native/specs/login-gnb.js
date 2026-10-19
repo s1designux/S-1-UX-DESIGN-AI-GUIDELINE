@@ -1,0 +1,10 @@
+/* 자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요. */
+/* login-gnb 의 상태별 최종 스타일 표 — 배포본 CSS 를 캐스케이드까지 계산해 굳힌 것이다(손으로 옮겨 적은 값 없음).
+   styles[] 는 중복을 없앤 스타일 모음이고, 각 템플릿의 tables 는 "요소 × 상태 조합 → styles 의 번호" 이다. */
+const styles = [{"display":"flex","alignItems":"center","justifyContent":"space-between","width":"100%","height":56,"minWidth":1280,"paddingTop":12,"paddingRight":0,"paddingBottom":12,"paddingLeft":0,"marginTop":0,"marginRight":0,"marginBottom":0,"marginLeft":0,"position":"relative","backgroundColor":"--color-navigation-bg"},{"flexGrow":0,"flexShrink":0,"flexBasis":"auto","color":"--color-text-title-primary","fontSize":16,"fontWeight":700,"lineHeightRatio":1.3,"letterSpacingEm":0,"nowrap":true},{"display":"flex","alignItems":"center","flexGrow":0,"flexShrink":0,"flexBasis":"auto","paddingTop":0,"paddingRight":0,"paddingBottom":0,"paddingLeft":0,"marginTop":0,"marginRight":0,"marginBottom":0,"marginLeft":0,"rowGap":8,"columnGap":8,"borderTopWidth":0,"borderRightWidth":0,"borderBottomWidth":0,"borderLeftWidth":0,"backgroundColor":"transparent","color":"--color-icon-gray-dark","fontSize":14,"fontWeight":500,"lineHeightRatio":1.3,"letterSpacingEm":-0.02,"nowrap":true},{"display":"block","flexGrow":0,"flexShrink":0,"flexBasis":"auto","width":24,"height":24,"backgroundColor":"--color-icon-gray-dark","icon":"globe"},{},{"height":1,"position":"absolute","right":0,"bottom":0,"left":0,"backgroundColor":"--color-line-default","pointerEventsNone":true,"content":true}];
+
+const templates = [
+  { id: "login-gnb", styles, ...{"name":"pc","break":"pc","mode":null,"variants":null,"rootAttributes":{"data-s1-component":"login-gnb"},"axis":{"variant":null,"size":null},"src":{"example":"pc","instance":0},"selects":{},"nodes":{"n0":{"tag":"header","ps":["after"]},"n1":{"tag":"span","part":"service"},"n2":{"tag":"button","part":"lang"},"n3":{"tag":"span","part":"lang-icon"},"n4":{"tag":"span","part":"lang-label"}},"tables":{"n0":{"s":0},"n1":{"s":1},"n2":{"s":2},"n3":{"s":3},"n4":{"s":4},"n0::after":{"s":5}}} }
+];
+
+export default { id: "login-gnb", styles, templates };

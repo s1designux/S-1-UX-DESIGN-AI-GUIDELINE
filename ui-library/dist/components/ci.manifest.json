@@ -1,0 +1,163 @@
+{
+  "id": "ci",
+  "version": "0.2.0",
+  "status": "approved",
+  "canonicalFingerprint": "bc8cc2a8a4e7773e52e28084446c4ba737abdc35f721bd32918416fce1cf8d8e",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/ci.json"
+  ],
+  "rootSelector": "[data-s1-component=\"ci\"]",
+  "variants": [
+    "s1",
+    "samsung"
+  ],
+  "canonicalVariantMap": {
+    "Brand=에스원": "s1",
+    "Brand=삼성": "samsung",
+    "Color=White": "white",
+    "Color=Blue": "blue",
+    "Color=Dark": "dark"
+  },
+  "sizes": [],
+  "geometry": {
+    "s1": {
+      "width": "78.75px",
+      "height": "--sizing-30",
+      "viewBox": "0 0 42 16",
+      "note": "정본은 S1_LOGO_SVG 의 width·height 만 42×16 → 78.75×30 으로 치환하고 viewBox 는 그대로 둔다(비율 2.625 보존, river 2026-08-21)."
+    },
+    "samsung": {
+      "width": "134px",
+      "height": "36px",
+      "image": "1600×425, scaleMode FILL (= background-size: cover)"
+    },
+    "source": "build-components.ts buildCI",
+    "provenance": "정본 buildCI(build-components.ts:6970-7031) 수치 그대로."
+  },
+  "states": {
+    "default": "속성 생략 — 정본에 다른 상태가 없다"
+  },
+  "canonicalStateMap": {},
+  "colorBinding": {
+    "s1": {
+      "white": "--color-icon-white",
+      "blue": "--color-brand-ci",
+      "dark": "--color-icon-gray"
+    },
+    "samsung": "색별 이미지(assets/images/samsung-white|blue|dark.png) — 색 토큰을 쓰지 않는다",
+    "foundationException": "Color=Blue 는 정본이 Foundation brand/ci 를 Semantic 별칭 없이 직접 묶는다(별칭 color/icon/brand-ci 는 제거됨). 「색은 Semantic 경유」의 알려진 예외이며 정본을 따른다."
+  },
+  "notInCanon": {
+    "darkVariant": "다크 전용 variant 가 없다 — White·Blue 는 모드 불변, Dark(icon/gray)만 다크에서 토큰이 바뀐다.",
+    "samsungStandalone": "정본에는 CI 세트와 별개인 C/IMG/Logo/Samsung_30 (134×30) 컴포넌트도 있으나 웹 CI 는 세트의 6칸(삼성 134×36)만 옮긴다.",
+    "focusVisible": "초점을 받는 요소가 아니라 해당 없음."
+  },
+  "parts": [],
+  "images": [
+    {
+      "id": "samsung-white",
+      "asset": "assets/images/samsung-white.png",
+      "use": "삼성 White 워드마크",
+      "figmaImageHash": "5ef070ce43a101a072964c656c0e666fe81e4f78"
+    },
+    {
+      "id": "samsung-blue",
+      "asset": "assets/images/samsung-blue.png",
+      "use": "삼성 Blue 워드마크",
+      "figmaImageHash": "8de26dc1976bd0a64ea5b7207b6bf6d9e0396053"
+    },
+    {
+      "id": "samsung-dark",
+      "asset": "assets/images/samsung-dark.png",
+      "use": "삼성 Dark 워드마크",
+      "figmaImageHash": "100a4d3fdd0a5a9304c8251792f2d96089ac458a"
+    }
+  ],
+  "htmlContract": {
+    "root": "span[data-s1-component=ci][data-brand][data-color][role=img][aria-label]. 에스원은 안에 인라인 svg(viewBox 0 0 42 16, aria-hidden) 한 개, 삼성은 비어 있다.",
+    "requiredAttributes": [
+      "data-brand",
+      "data-color"
+    ],
+    "requiredParts": [],
+    "optionalParts": [],
+    "axes": {
+      "data-brand": "s1(에스원 — 인라인 svg, 78.75×30) | samsung(삼성 — 배포본 이미지, 134×36)",
+      "data-color": "white | blue | dark — 에스원은 로고 색 토큰, 삼성은 색별 이미지"
+    },
+    "structure": {
+      "s1": "span[ci] > svg[viewBox 0 0 42 16][aria-hidden] > path (정본 S1_LOGO_SVG 한 개)",
+      "samsung": "span[ci] (자식 없음 — 이미지는 CSS 배경)"
+    },
+    "relations": [
+      "로고가 회사 이름을 알려 주는 자리에는 role=img 와 aria-label(에스원 · 삼성)을 준다. 옆 글자가 이미 이름을 말하는 장식 자리면 쓰는 화면이 role·aria-label 대신 aria-hidden=true 를 준다.",
+      "에스원 svg 의 path 는 정본 S1_LOGO_SVG 그대로이며 fill 은 currentColor 다(색은 data-color 가 정한다) — 임의로 고쳐 그리지 않는다."
+    ],
+    "source": "components/ci/ci.example.html",
+    "distribution": "examples/ci.html"
+  },
+  "cssContract": {
+    "entry": "components/ci.css",
+    "rootScope": "[data-s1-component=ci]",
+    "nativeStates": [],
+    "documentedDataStates": [
+      "[data-brand]",
+      "[data-color]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "contentSlots": {},
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "role=img. 에스원 svg 는 aria-hidden=true(이름은 바깥 span 의 aria-label 이 준다). 장식 자리는 쓰는 화면이 aria-hidden=true 로 바꾼다."
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "aria-label — 에스원 · 삼성(정본 Brand 이름). 로고가 정체를 알려 주는 자리에서 필수."
+    },
+    "keyboard": {
+      "status": "not-applicable",
+      "reason": "초점을 받는 요소가 아니다 — 키보드 조작이 없다."
+    },
+    "focus": {
+      "status": "not-applicable",
+      "reason": "초점을 받는 요소가 아니다."
+    },
+    "ariaStateSync": {
+      "status": "not-applicable",
+      "reason": "상태를 갖지 않는다."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 오류 표시가 없다."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "움직임이 없다."
+    }
+  },
+  "jsRequired": false,
+  "javascript": {
+    "runtime": "none",
+    "reason": "정적 로고라 스크립트가 필요 없다."
+  },
+  "sourceFingerprint": "6dc94c0cea20b9e00da4c384fb75b29892e564eeddf1b31d1e09273b7071c27f"
+}

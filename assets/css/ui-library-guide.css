@@ -395,6 +395,9 @@
   position: relative;
 }
 
+/* 크기마다 여는 버튼 1개씩(MD·LG·XL) — 버튼과 그 모달이 한 묶음(.uilg-modal-content-action)이라
+   배선이 묶음 안에서 짝을 찾는다(river 2026-10-12). */
+.uilg-modal-content-actions { display: flex; flex-wrap: wrap; gap: var(--spacing-8); }
 .uilg-modal-content-action { display: flex; }
 
 /* ── Modal Content 크기 비교표 축소 표시 (river 2026-09-08 지적 — 실제 폭 그대로면 한 화면에
@@ -930,6 +933,10 @@
   padding: var(--spacing-12) var(--spacing-20);
 }
 
+.uilg-divider-inset {
+  padding-inline: var(--spacing-20);
+}
+
 .uilg-divider-meta {
   align-items: center;
   color: var(--color-text-body-secondary);
@@ -1024,4 +1031,20 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-130);
   margin: var(--spacing-24) 0 var(--spacing-8);
+}
+
+/* ── Login GNB · Footer · CI 안내 화면 배치 (배치 전용 — 바·로고의 시각·색·크기는 dist 가 소유) ──
+   바(Login GNB · Footer PC)는 GNB 와 같이 full-width 반응형이다. 칸 폭 그대로 한 줄, 정본 화면 폭
+   1920 을 그대로 준 틀 한 줄을 두고, 넘치는 만큼은 그 칸 안에서만 좌우로 민다(축소 배율 없음).
+   가운데 정렬 칸은 왼쪽으로 넘친 부분을 스크롤로 못 닿으므로 바 칸만 왼쪽 정렬·블록으로 둔다.
+   CI 칸 바탕은 정본 진열면(gray/50)과 같은 토큰(bg/level-2)이다. */
+.uilg-bar-cell { display: block; min-width: 0; overflow-x: auto; width: 100%; }
+.uilg-wide-frame { width: 1920px; }
+.uilg-footer-mobile-box { max-width: 360px; width: 100%; }
+.uilg-ci-action { align-items: center; display: flex; flex-wrap: wrap; gap: var(--spacing-24); }
+.comp-state-cell.uilg-ci-stage {
+  align-items: center;
+  background: var(--color-bg-level-2);
+  border-radius: var(--radius-8);
+  min-height: 88px;
 }

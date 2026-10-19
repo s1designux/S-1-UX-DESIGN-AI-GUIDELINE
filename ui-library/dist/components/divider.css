@@ -29,7 +29,3 @@
   width: var(--border-width-strong);
 }
 
-[data-s1-component="divider"][data-inset="text"] {
-  margin-inline: var(--spacing-20);
-  width: auto;
-}

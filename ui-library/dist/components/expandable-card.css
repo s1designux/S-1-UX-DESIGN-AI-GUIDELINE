@@ -23,7 +23,8 @@
   display: flex;
   gap: var(--spacing-10);
   margin: 0;
-  padding: var(--spacing-16) var(--spacing-16) var(--spacing-16) var(--spacing-20);
+
+  padding: calc(var(--spacing-16) - var(--border-width-default)) calc(var(--spacing-16) - var(--border-width-default)) calc(var(--spacing-16) - var(--border-width-default)) calc(var(--spacing-20) - var(--border-width-default));
   text-align: left;
   transition: background-color .18s ease;
   width: 100%;
@@ -31,6 +32,10 @@
 
 [data-s1-component="expandable-card"] [data-s1-part="header"]:hover:where(:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) *:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) [data-s1-component="expandable-card"] *))) {
   background: var(--color-bg-level-1);
+}
+
+[data-s1-component="expandable-card"] [data-s1-part="header"][aria-expanded="true"]:where(:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) *:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) [data-s1-component="expandable-card"] *))) {
+  padding-bottom: var(--spacing-16);
 }
 
 [data-s1-component="expandable-card"] [data-s1-part="header"][aria-expanded="true"]:where(:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) *:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) [data-s1-component="expandable-card"] *))),
@@ -129,12 +134,12 @@
   gap: var(--spacing-10);
   min-height: 0;
   overflow: hidden;
-  padding: 0 var(--spacing-16) 0 var(--spacing-20);
+  padding: 0 calc(var(--spacing-16) - var(--border-width-default)) 0 calc(var(--spacing-20) - var(--border-width-default));
   transition: padding .22s ease;
 }
 
 [data-s1-component="expandable-card"] [data-s1-part="panel-wrap"][data-open="true"] [data-s1-part="panel"]:where(:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) *:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) [data-s1-component="expandable-card"] *))) {
-  padding: var(--spacing-16) var(--spacing-16) var(--spacing-16) var(--spacing-20);
+  padding: var(--spacing-16) calc(var(--spacing-16) - var(--border-width-default)) calc(var(--spacing-16) - var(--border-width-default)) calc(var(--spacing-20) - var(--border-width-default));
 }
 
 @media (prefers-reduced-motion: reduce) {

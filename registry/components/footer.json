@@ -1,0 +1,161 @@
+{
+  "_meta": {
+    "id": "footer",
+    "name": "Footer",
+    "category": "core",
+    "updatedAt": "2026-10-02",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "planned",
+    "darkModeStatus": "stable",
+    "a11yStatus": "candidate",
+    "figmaStatus": "planned",
+    "harnessStatus": "planned",
+    "description": "화면 맨 아래 법인 정보 영역. PC 는 가로 — 왼쪽에 링크 줄·회사 정보·카피라이트, 오른쪽에 에스원 로고. Mobile 은 세로 — 링크 줄과 가운데 정렬 카피라이트만 있다.",
+    "a11yApproval": "3-build 에서 정의, river UX 검수에서 확정 — 화면 맨 아래 영역은 <footer>(contentinfo 랜드마크), 링크 줄은 진짜 <a> 목록, 로고는 회사 이름이 글자로 이미 나와 있어 읽히지 않게 둔다(aria-hidden).",
+    "codeStatusNote": "정본 buildFooter 는 설치기에 이미 있었다(Gate 14 content-verbatim-check 가 문구를 지킨다). 웹 배포본은 work-id platform-web-3 로 신설.",
+    "platform": "both"
+  },
+  "usage": {
+    "whenToUse": [
+      "화면 맨 아래에 이용약관·개인정보 처리방침·회사 정보·카피라이트를 보여줄 때.",
+      "PC 화면에서는 회사 정보와 로고까지 함께 보여줄 때(PC), 모바일 화면에서는 링크와 카피라이트만 간단히 보여줄 때(Mobile)."
+    ],
+    "whenNotToUse": [
+      "화면 맨 위 바가 필요할 때 — 그건 GNB 나 로그인 상단바의 몫이다.",
+      "법인 문구를 화면마다 고쳐 쓰고 싶을 때 — 문구는 registry/content/footer.json 이 단일 출처이며 임의로 바꾸지 않는다."
+    ],
+    "note": "정본에 hover·pressed 가 없다. 링크 색은 바뀌지 않는다."
+  },
+  "anatomy": [
+    {
+      "part": "링크 줄",
+      "role": "이용약관 · 개인정보 처리방침 · 위치기반 서비스 이용약관 세 링크. 사이에 1px 세로 구분선."
+    },
+    {
+      "part": "회사 정보 (PC 만)",
+      "role": "상호·사업자등록번호·대표이사·주소 한 줄. 정본 글자의 연속 공백을 그대로 보존한다."
+    },
+    {
+      "part": "카피라이트",
+      "role": "© S-1 Corp. All Rights Reserved. PC 는 왼쪽 정렬, Mobile 은 링크 줄 폭에 맞춰 가운데 정렬."
+    },
+    {
+      "part": "로고 (PC 만)",
+      "role": "에스원 로고 42×16. 오른쪽 끝."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "링크는 진짜 링크(<a>)로 두고 href 는 쓰는 화면이 채운다.",
+      "법인 문구는 registry/content/footer.json 에 있는 글자 그대로 쓴다."
+    ],
+    "dont": [
+      "회사 정보의 연속 공백을 한 칸으로 접지 않는다.",
+      "정본에 없는 hover 색을 만들지 않는다.",
+      "Mobile 에 회사 정보나 로고를 넣지 않는다."
+    ]
+  },
+  "a11y": [
+    "화면 맨 아래 영역은 <footer> 요소를 쓴다(contentinfo 랜드마크).",
+    "링크는 <a> 요소이고 보이는 글자가 곧 접근 가능한 이름이다.",
+    "로고는 옆의 회사 정보 글자가 이미 이름을 말하므로 aria-hidden 으로 읽히지 않게 둔다.",
+    "키보드 초점 표시는 다른 코어와 같이 브라우저 기본에 맡긴다(2026-09-02 river 결정)."
+  ],
+  "variantAxis": {
+    "property": [
+      "Platform"
+    ],
+    "values": {
+      "Platform": [
+        "PC",
+        "Mobile"
+      ]
+    },
+    "absentCombinations": [],
+    "sizeAxis": "없음 — PC 는 1920×116 고정(웹은 바 배경 full-width·안쪽 가운데 1280 열, 768 미만은 Mobile 모양), Mobile 은 가로·세로 모두 hug."
+  },
+  "scope": "light+dark",
+  "tokens": {
+    "bg": [
+      "color/navigation/bg"
+    ],
+    "line": [
+      "color/line/default"
+    ],
+    "text": [
+      "color/text/body/tertiary"
+    ],
+    "icon": [
+      "color/icon/gray",
+      "color/icon/gray-light"
+    ],
+    "number": [
+      "border-width/1",
+      "sizing/10",
+      "sizing/16",
+      "spacing/4",
+      "spacing/8",
+      "spacing/12",
+      "spacing/16",
+      "spacing/24",
+      "spacing/28"
+    ]
+  },
+  "reuses": {
+    "coreComponents": [],
+    "note": "다른 부품을 붙이지 않는다. 로고는 정본이 CI 인스턴스가 아니라 같은 S1 로고 도형(42×16)을 직접 그린다."
+  },
+  "figma": {
+    "componentSetKey": "(미발행 — 라이브러리 publish 시 기록)",
+    "fileKey": "cysG5U1udpQqVagYY1hWHW",
+    "targetFile": "SW UX GUIDE V3.0-TEST",
+    "builder": "plugins/figma-vars-installer/src/build-components.ts · buildFooter",
+    "propertyMap": {
+      "platform": [
+        "pc",
+        "mobile"
+      ]
+    },
+    "note": "2칸(PC · Mobile). Dark 는 Appearance 모드로 제공한다."
+  },
+  "governance": {
+    "verify": "new",
+    "verifyNote": "웹 배포본은 2026-10-02 신설. 4-verification 에서 🤖 component-verifier 가 맡는다.",
+    "canonApproval": "river 2026-10-02 \"응 맞아, 진행해\" — Footer · CI · LoginGNB 웹 배포(work-id platform-web-3). 정본(buildFooter)은 이전부터 있었다.",
+    "contentSource": "registry/content/footer.json (Gate 14 content-verbatim-check)"
+  },
+  "webDistribution": {
+    "status": "approved",
+    "manifest": "ui-library/src/components/footer/manifest.json",
+    "runtime": null,
+    "note": "동작이 없는 표시 전용 부품이다. 링크 href 는 쓰는 화면이 채운다.",
+    "workId": "platform-web-3"
+  },
+  "geometry": {
+    "pc": {
+      "size": "1920×116 (웹: 폭 100%, 최소 높이 116)",
+      "paddingBlock": "spacing/28",
+      "paddingInline": "320 (웹: 가운데 1280 열 — 좌우 여백 (100%−1280)/2 를 320 까지로 제한, 1280 아래로는 줄지 않음 · river D-2 2026-10-12 \"가운데 1280폭을 지키고 그 이후로는 대응 안함.\" · 768 미만은 Mobile 모양 · river D-3 \"브레이크포인트에 따라 모바일 모양으로 바뀜\")",
+      "contentGap": "spacing/4",
+      "linkGap": "spacing/12",
+      "separator": "1×8",
+      "typography": "body/10R",
+      "logo": "42×16"
+    },
+    "mobile": {
+      "size": "hug × hug",
+      "padding": "위아래 spacing/8, 좌우 spacing/16",
+      "gap": "spacing/4",
+      "linkGap": "spacing/8",
+      "separator": "1×10",
+      "typography": "body/12R"
+    },
+    "provenance": "정본 buildFooter(build-components.ts:6429-6535). 웹의 폭 처리는 바 배경 full-width·안쪽 가운데 1280 열(river D-2)·768 미만 Mobile 자동 전환(river D-3)."
+  },
+  "platformSupport": {
+    "mobile": true,
+    "pc": true,
+    "note": "Platform 축으로 두 매체 모양이 다르다."
+  }
+}

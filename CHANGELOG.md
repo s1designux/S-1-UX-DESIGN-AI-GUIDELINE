@@ -3,6 +3,54 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-10-20 07:18 (KST)
+
+- 원본 커밋: `b6e7dee` — chore(map): 시스템 맵 재생성 (claude/priceless-varahamihira-43f6d0 합치기)
+- 새로 추가된 파일 35개
+  - `registry/components/ci.json`
+  - `registry/components/footer.json`
+  - `registry/components/login-gnb.json`
+  - `ui-library/dist/assets/images/manifest.json`
+  - `ui-library/dist/assets/images/samsung-blue.png`
+  - `ui-library/dist/assets/images/samsung-dark.png`
+  - `ui-library/dist/assets/images/samsung-white.png`
+  - `ui-library/dist/components/ci.css`
+  - `ui-library/dist/components/ci.js`
+  - `ui-library/dist/components/ci.manifest.json`
+  - `ui-library/dist/components/ci.md`
+  - `ui-library/dist/components/footer.css`
+  - `ui-library/dist/components/footer.js`
+  - `ui-library/dist/components/footer.manifest.json`
+  - `ui-library/dist/components/footer.md`
+  - `ui-library/dist/components/login-gnb.css`
+  - `ui-library/dist/components/login-gnb.js`
+  - `ui-library/dist/components/login-gnb.manifest.json`
+  - `ui-library/dist/components/login-gnb.md`
+  - `ui-library/dist/examples/ci.html`
+  - … 외 15개
+- 내용이 바뀐 파일 109개
+  - `assets/css/ui-library-guide.css`
+  - `assets/js/ui-library-guide.js`
+  - `design/DESIGN.core.md`
+  - `pages/components.html`
+  - `registry/components/component-facts.json`
+  - `registry/components/index.json`
+  - `ui-library/dist/components/assist-button.manifest.json`
+  - `ui-library/dist/components/assist-button.md`
+  - `ui-library/dist/components/bottom-sheet-option.manifest.json`
+  - `ui-library/dist/components/bottom-sheet-option.md`
+  - `ui-library/dist/components/bottom-sheet.manifest.json`
+  - `ui-library/dist/components/bottom-sheet.md`
+  - `ui-library/dist/components/button.manifest.json`
+  - `ui-library/dist/components/button.md`
+  - `ui-library/dist/components/checkbox.manifest.json`
+  - `ui-library/dist/components/checkbox.md`
+  - `ui-library/dist/components/chip.manifest.json`
+  - `ui-library/dist/components/chip.md`
+  - `ui-library/dist/components/data-tag.css`
+  - `ui-library/dist/components/data-tag.manifest.json`
+  - … 외 89개
+
 ## 2026-10-15 06:37 (KST)
 
 - 원본 커밋: `ac75e0f` — chore(map): 시스템 맵 재생성 (worktree-installer-dark-pin 합치기)

@@ -12,10 +12,11 @@
 import {
   Children, cloneElement, createContext, createElement as h, Fragment, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState
 } from "react";
-import { Modal, Platform, Pressable, ScrollView, Text, TextInput, View, useColorScheme, useWindowDimensions } from "react-native";
+import { Image, Modal, Platform, Pressable, ScrollView, Text, TextInput, View, useColorScheme, useWindowDimensions } from "react-native";
 import Svg, { Defs, LinearGradient, Path, Rect, Stop } from "react-native-svg";
 import { COLORS, SHADOWS } from "./tokens.js";
 import { ICONS } from "./icons.js";
+import { IMAGES } from "./images.js";
 
 const ABSENT = "∅";
 const OTHER = "•";
@@ -287,6 +288,11 @@ function Decoration({ style, dark, current, id }) {
       style: { position: "absolute", top: 0, left: style.line.insetX, right: style.line.insetX, height: style.line.height, backgroundColor: paint(style.line.color, dark, current) }
     }));
   }
+  if (style.image) {
+    const image = IMAGES[style.image.name];
+    if (image === undefined) throw new Error(`[s1-ui] 배포본에 없는 그림: ${style.image.name}. 쓸 수 있는 이름: ${Object.keys(IMAGES).join(", ")}`);
+    nodes.push(h(Image, { key: "picture", source: { uri: image.uri }, resizeMode: "cover", accessible: false, pointerEvents: "none", style: { position: "absolute", top: 0, left: 0, right: 0, bottom: 0, width: "100%", height: "100%" } }));
+  }
   if (style.gradient) {
     const to = style.gradient.to;
     nodes.push(h(Svg, { key: "fade", width: "100%", height: "100%", style: { position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }, pointerEvents: "none", preserveAspectRatio: "none" },
@@ -553,7 +559,7 @@ export function El({ k, a: given = EMPTY, at, ctl = EMPTY, onPress: givenPress, 
     return finish(h(TextInput, props));
   }
 
-  const kids = [(style.line || style.gradient) ? h(Decoration, { key: "decor", style, dark: theme.dark, current: currentColor, id: `${template.id}-${k}-${(at?.[0] ?? 0)}` }) : null, pseudo("before"), children === undefined ? null : wrapText(children, textStyle, textProps), pseudo("after")];
+  const kids = [(style.line || style.gradient || style.image) ? h(Decoration, { key: "decor", style, dark: theme.dark, current: currentColor, id: `${template.id}-${k}-${(at?.[0] ?? 0)}` }) : null, pseudo("before"), children === undefined ? null : wrapText(children, textStyle, textProps), pseudo("after")];
   const content = provide(kids);
 
   const pressable = onPress !== undefined || ix.length > 0 || isCheck || meta.tag === "button";

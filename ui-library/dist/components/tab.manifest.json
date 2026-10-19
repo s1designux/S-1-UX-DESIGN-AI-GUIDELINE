@@ -1,6 +1,6 @@
 {
   "id": "tab",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "status": "approved",
   "canonicalFingerprint": "a8d8aaa4fac1b9244261b50b512da64c42b275b395606ef644ca5852c0166a88",
   "canonicalSources": [
@@ -127,5 +127,5 @@
     "runtime": "components/tab/tab.js",
     "reason": "선택 상태와 화살표 키 이동을 동기화한다."
   },
-  "sourceFingerprint": "12237a7303072ad74cafa4d2e65e0486726fa8532146a78f524065f179e32a71"
+  "sourceFingerprint": "a85ed9992eaf27caeef94b57ce9080553b31ce36f8f3e74a7e17aa79a44c20cb"
 }

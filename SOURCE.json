@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "ac75e0f054eb65f09d139c300db13c5e8e5f2848",
+  "commit": "b6e7deed61094c55f1c7dd66a9bfdf60130d44cc",
   "scope": "PC",
-  "generatedAt": "2026-10-15",
-  "syncedAt": "2026-10-15 06:37 (KST)",
-  "sourceCommitDate": "2026-10-14 10:28 (KST)",
-  "sourceCommitSubject": "chore(map): 시스템 맵 재생성 (worktree-installer-dark-pin 합치기)"
+  "generatedAt": "2026-10-20",
+  "syncedAt": "2026-10-20 07:18 (KST)",
+  "sourceCommitDate": "2026-10-19 17:03 (KST)",
+  "sourceCommitSubject": "chore(map): 시스템 맵 재생성 (claude/priceless-varahamihira-43f6d0 합치기)"
 }

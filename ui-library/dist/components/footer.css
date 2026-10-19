@@ -1,0 +1,181 @@
+[data-s1-component="footer"] {
+  box-sizing: border-box;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
+  color: var(--color-text-body-tertiary);
+  display: flex;
+  margin: 0;
+  position: relative;
+  width: 100%;
+}
+
+[data-s1-component="footer"] p,
+[data-s1-component="footer"] ul {
+  margin: 0;
+  padding: 0;
+}
+
+[data-s1-component="footer"] [data-s1-part="links"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  align-items: center;
+  display: flex;
+  list-style: none;
+}
+
+[data-s1-component="footer"] [data-s1-part="links"] > li {
+  align-items: center;
+  display: flex;
+}
+
+[data-s1-component="footer"] [data-s1-part="links"] > li + li::before {
+  background: currentColor;
+  content: "";
+  flex: none;
+  width: var(--border-width-default);
+}
+
+[data-s1-component="footer"] [data-s1-part="link"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+[data-s1-component="footer"] [data-s1-part="company"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  white-space: pre-wrap;
+}
+
+[data-s1-component="footer"] [data-s1-part="logo"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  color: var(--color-icon-gray);
+  display: block;
+  flex: none;
+  height: var(--sizing-16);
+  width: 42px;
+}
+
+[data-s1-component="footer"][data-platform="pc"] {
+  align-items: center;
+  background: var(--color-navigation-bg);
+  justify-content: space-between;
+  min-height: 116px;
+  padding-block: var(--spacing-28);
+  min-width: var(--breakpoint-xl);
+  padding-inline: clamp(0px, calc((100% - var(--breakpoint-xl)) / 2), 320px);
+}
+
+[data-s1-component="footer"][data-platform="pc"]::before {
+  background: var(--color-line-default);
+  content: "";
+  height: var(--border-width-default);
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+[data-s1-component="footer"][data-platform="pc"] [data-s1-part="content"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+[data-s1-component="footer"][data-platform="pc"] [data-s1-part="links"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  gap: var(--spacing-12);
+}
+
+[data-s1-component="footer"][data-platform="pc"] [data-s1-part="links"] > li {
+  gap: var(--spacing-12);
+}
+
+[data-s1-component="footer"][data-platform="pc"] [data-s1-part="links"] > li + li::before {
+  color: var(--color-icon-gray-light);
+  height: var(--spacing-8);
+}
+
+[data-s1-component="footer"][data-platform="pc"] :is([data-s1-part="link"], [data-s1-part="company"], [data-s1-part="copyright"]):where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  font-size: var(--font-size-10);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: var(--line-height-140);
+}
+
+[data-s1-component="footer"][data-platform="mobile"] {
+
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  justify-content: flex-start;
+  width: fit-content;
+  padding: var(--spacing-8) var(--spacing-16);
+}
+
+[data-s1-component="footer"][data-platform="mobile"] [data-s1-part="links"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  gap: var(--spacing-8);
+}
+
+[data-s1-component="footer"][data-platform="mobile"] [data-s1-part="links"] > li {
+  gap: var(--spacing-8);
+}
+
+[data-s1-component="footer"][data-platform="mobile"] [data-s1-part="links"] > li + li::before {
+  color: var(--color-icon-gray-light);
+  height: var(--sizing-10);
+}
+
+[data-s1-component="footer"][data-platform="mobile"] :is([data-s1-part="link"], [data-s1-part="copyright"]):where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+}
+
+[data-s1-component="footer"][data-platform="mobile"] [data-s1-part="copyright"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  align-self: stretch;
+  text-align: center;
+}
+
+@media (max-width: 767.98px) {
+  [data-s1-component="footer"][data-platform="pc"] {
+    align-items: flex-start;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+    justify-content: flex-start;
+    min-height: 0;
+    min-width: 0;
+    width: fit-content;
+    padding: var(--spacing-8) var(--spacing-16);
+  }
+
+  [data-s1-component="footer"][data-platform="pc"]::before,
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="company"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))),
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="logo"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+    display: none;
+  }
+
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="content"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+    display: contents;
+  }
+
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="links"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))),
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="links"] > li {
+    gap: var(--spacing-8);
+  }
+
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="links"] > li + li::before {
+    color: var(--color-icon-gray-light);
+    height: var(--sizing-10);
+  }
+
+  [data-s1-component="footer"][data-platform="pc"] :is([data-s1-part="link"], [data-s1-part="copyright"]):where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+    font-size: var(--font-size-12);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: var(--letter-spacing-normal);
+    line-height: var(--line-height-130);
+  }
+
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="copyright"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+    align-self: stretch;
+    text-align: center;
+  }
+}

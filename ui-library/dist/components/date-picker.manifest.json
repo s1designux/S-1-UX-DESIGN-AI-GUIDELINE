@@ -1,6 +1,6 @@
 {
   "id": "date-picker",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "status": "approved",
   "canonicalFingerprint": "0ab29faac87cf30a9075a948f7cc869ceec840a30dd0edf836e9ea2c94d8ee34",
   "canonicalSources": [
@@ -356,5 +356,5 @@
       "data-name": "폼 전송용 숨은 입력의 name (단일: name · 기간: name-start, name-end)"
     }
   },
-  "sourceFingerprint": "bf7f4b276b2d72d23981e7cefab83186e3b69442fcb97f7cbd77311c29960b7c"
+  "sourceFingerprint": "5fded8d33c5c2c907dc2fcc67fdbc3e25d2a99a8fce8f2dfbd4c1e3292e573f0"
 }

@@ -1,6 +1,6 @@
 {
   "id": "dropdown",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "status": "approved",
   "canonicalFingerprint": "93c277610de52701b5f6b3fc4ea925e601a86a29f7229df99fcfea4e80abb31b",
   "canonicalSources": [
@@ -199,5 +199,5 @@
     "behaviorContract": "registry/components/component-behavior.pc.json 의 \"Dropdown (Checkbox)\" 장부(status=verified)를 그대로 구현한다 — 옵션 개별 토글은 형제에 영향 없음, select-all 은 전체를 자신의 반대 상태로 맞춤, 모든 옵션이 켜지면 select-all 이 스스로 켜짐, 선택은 패널을 닫지 않음.",
     "valueNote": "text 형만 값을 읽고 넣는다. 값은 옵션의 data-value, 없으면 옵션 글자. setValue 는 change 이벤트를 내지 않는다(화면이 넣은 값)."
   },
-  "sourceFingerprint": "d757c8cddb53810a22bb9479be786f591287f6de879ca539a754b4448c6d28b4"
+  "sourceFingerprint": "31199586a582a51cc4a644fc7cba31285b9c35478b16962f7e5a62c2eaeb23b3"
 }

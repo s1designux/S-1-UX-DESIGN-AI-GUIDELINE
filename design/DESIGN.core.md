@@ -1248,6 +1248,112 @@ _Don't_
 - 닫기(X)에는 삭제·해제 aria-label 을 단다.
 - river 결정 2026-10-13 「전부 부품이 알아서」: 칩을 감싼 요소에 data-s1-select="single" 을 달면 하나만 켠다 — 켜진 칩을 다시 눌러도 꺼지지 않고, 다른 칩을 누르면 그 칩이 켜진다. 표시가 없으면 칩마다 따로 켜고 끈다(여러 개 고르는 화면은 그대로). 화면이 막으려면 s1:chip:beforechange 에서 preventDefault.
 
+### CI
+
+> ⚠️ 배포본에 아직 없는 컴포넌트입니다(codeStatus: `planned`). 아래 토큰은 `ui-library/dist` 로 값이 풀리지 않으니 이 절을 보고 구현하지 마세요.
+
+브랜드 로고. 브랜드(에스원·삼성) × 색(White·Blue·Dark) 6가지. 에스원은 벡터 로고(78.75×30)이고 색은 토큰이 정한다. 삼성은 정본 이미지(134×36)이고 색별 그림이 따로 있다.
+
+**언제 쓰나**
+- 화면에 회사 로고를 보여줄 때(에스원 · 삼성).
+- 밝은 로고(White)가 필요한 어두운 바탕, 브랜드색(Blue), 회색(Dark) 중에서 바탕에 맞춰 고를 때.
+
+**쓰지 말아야 할 때**
+- 서비스 이름 글자를 보여줄 때 — 그건 서비스 이름 글자 자리의 몫이다.
+- 로고를 임의로 늘리거나 색을 바꿀 때 — 크기와 색은 이 부품의 값만 쓴다.
+
+**구성 (Anatomy)**
+
+| 요소 | 역할 |
+| --- | --- |
+| 에스원 로고 | 78.75×30 벡터. 색은 currentColor — White(icon/white) · Blue(Foundation brand/ci) · Dark(icon/gray). |
+| 삼성 로고 | 134×36 칸에 정본 이미지를 꽉 채운다(cover). 색별로 이미지가 다르다. |
+
+| variant | default | hover | pressed | disabled |
+| --- | --- | --- | --- | --- |
+| default | — | — | — | — |
+
+#### Agent-readable contract
+
+```yaml
+agent:
+  component: "CI"
+  variantAxes:
+    Brand:
+      - "에스원"
+      - "삼성"
+    Color:
+      - "White"
+      - "Blue"
+      - "Dark"
+  states:
+    builder: "not-defined"
+    metadata: "unknown"
+  behavior:
+    platform: "PC"
+    source: "registry/components/component-behavior.pc.json ← pages/components.html#ci"
+    status: "static"
+    events: "none"
+    keyboard: "not-applicable"
+    focus: "not-applicable"
+    accessibility: "provide meaningful alternative text when the logo conveys identity"
+  geometry:
+    common:
+      target: "root"
+    variants:
+      -
+        when:
+          Brand: "에스원"
+        width: 78.75
+        height: 30
+      -
+        when:
+          Brand: "삼성"
+        width: 134
+        height: 36
+  composition:
+    mustReuse: "not-defined"
+    mustNotCreate: "not-defined"
+    declaredParts:
+      - "Samsung_Orig_Wordmark_BLUE_RGB"
+      - "Samsung_Orig_Wordmark_DARK_RGB"
+      - "Samsung_Orig_Wordmark_WHITE_RGB"
+      - "logo"
+  constraints: "unknown"
+  tokens:
+    figmaSemanticBindings: "not-defined"
+    aliasChains: "not-defined"
+  figma:
+    status: "available"
+    identifiers:
+      componentSetKey: "(미발행 — 라이브러리 publish 시 기록)"
+      fileKey: "cysG5U1udpQqVagYY1hWHW"
+    variants:
+      brand:
+        - "s1"
+        - "samsung"
+      color:
+        - "white"
+        - "blue"
+        - "dark"
+  icons:
+    allowed: "figma-unconfirmed"
+    slots: "unknown"
+```
+
+_Do_
+- 바탕에 맞는 색을 고른다(어두운 바탕 → White).
+- 로고가 이름을 알려 주는 자리에는 role=img 와 aria-label 을 준다.
+
+_Don't_
+- 에스원 로고를 78.75×30 이 아닌 비율로 늘리지 않는다.
+- 삼성 로고를 다른 출처의 그림으로 바꾸지 않는다(정본 이미지만).
+
+**접근성 (a11y)**
+- 로고가 회사를 알려 주는 자리에서는 role=img 와 aria-label(에스원 또는 삼성)을 준다.
+- 옆 글자가 이미 이름을 말하는 장식 자리에서는 쓰는 화면이 aria-hidden=true 로 바꾼다.
+- 초점을 받는 요소가 아니다 — 키보드 조작이 없다.
+
 ### Data Tag
 
 > ⚠️ 배포본에 아직 없는 컴포넌트입니다(codeStatus: `planned`). 아래 토큰은 `ui-library/dist` 로 값이 풀리지 않으니 이 절을 보고 구현하지 마세요.
@@ -2350,6 +2456,124 @@ _Don't_
 - 타이틀과 값이 함께 읽히도록 접근 가능한 이름을 구성한다(예: '정렬, 최신순').
 - Esc 로 드롭다운을 닫을 수 있어야 한다.
 
+### Footer
+
+> ⚠️ 배포본에 아직 없는 컴포넌트입니다(codeStatus: `planned`). 아래 토큰은 `ui-library/dist` 로 값이 풀리지 않으니 이 절을 보고 구현하지 마세요.
+
+화면 맨 아래 법인 정보 영역. PC 는 가로 — 왼쪽에 링크 줄·회사 정보·카피라이트, 오른쪽에 에스원 로고. Mobile 은 세로 — 링크 줄과 가운데 정렬 카피라이트만 있다.
+
+**언제 쓰나**
+- 화면 맨 아래에 이용약관·개인정보 처리방침·회사 정보·카피라이트를 보여줄 때.
+- PC 화면에서는 회사 정보와 로고까지 함께 보여줄 때(PC), 모바일 화면에서는 링크와 카피라이트만 간단히 보여줄 때(Mobile).
+
+**쓰지 말아야 할 때**
+- 화면 맨 위 바가 필요할 때 — 그건 GNB 나 로그인 상단바의 몫이다.
+- 법인 문구를 화면마다 고쳐 쓰고 싶을 때 — 문구는 registry/content/footer.json 이 단일 출처이며 임의로 바꾸지 않는다.
+
+**구성 (Anatomy)**
+
+| 요소 | 역할 |
+| --- | --- |
+| 링크 줄 | 이용약관 · 개인정보 처리방침 · 위치기반 서비스 이용약관 세 링크. 사이에 1px 세로 구분선. |
+| 회사 정보 (PC 만) | 상호·사업자등록번호·대표이사·주소 한 줄. 정본 글자의 연속 공백을 그대로 보존한다. |
+| 카피라이트 | © S-1 Corp. All Rights Reserved. PC 는 왼쪽 정렬, Mobile 은 링크 줄 폭에 맞춰 가운데 정렬. |
+| 로고 (PC 만) | 에스원 로고 42×16. 오른쪽 끝. |
+
+| variant | default | hover | pressed | disabled |
+| --- | --- | --- | --- | --- |
+| default | — | — | — | — |
+
+#### Agent-readable contract
+
+```yaml
+agent:
+  component: "Footer"
+  variantAxes:
+    Platform:
+      - "PC"
+      - "Mobile"
+  states:
+    builder: "not-defined"
+    metadata: "unknown"
+  behavior:
+    platform: "PC"
+    source: "registry/components/component-behavior.pc.json ← pages/components.html#footer"
+    status: "static"
+    events: "none"
+    keyboard: "not-applicable"
+    focus: "not-applicable"
+    accessibility: "not-defined"
+  geometry:
+    common: "not-defined"
+    variants:
+      -
+        when:
+          Platform: "PC"
+        target: "root"
+        width: 1920
+        height: 116
+        layoutMode: "HORIZONTAL"
+        primaryAxisSizingMode: "FIXED"
+        counterAxisSizingMode: "FIXED"
+        primaryAxisAlignItems: "SPACE_BETWEEN"
+        counterAxisAlignItems: "CENTER"
+        paddingTop: "spacing/28"
+        paddingRight: "320"
+        paddingBottom: "spacing/28"
+        paddingLeft: "320"
+        strokeAlign: "INSIDE"
+      -
+        when:
+          Platform: "Mobile"
+        target: "sep"
+        width: 1
+        height: 10
+  composition:
+    mustReuse: "not-defined"
+    mustNotCreate: "not-defined"
+    declaredParts:
+      - "C/IMG/Logo/S1_g"
+      - "content-left"
+      - "links"
+  constraints: "unknown"
+  tokens:
+    figmaSemanticBindings:
+      - "color/icon/gray-light"
+      - "color/line/default"
+      - "color/navigation/bg"
+      - "color/text/body/tertiary"
+      - "spacing/28"
+      - "spacing/4"
+    aliasChains: "not-defined"
+  figma:
+    status: "available"
+    identifiers:
+      componentSetKey: "(미발행 — 라이브러리 publish 시 기록)"
+      fileKey: "cysG5U1udpQqVagYY1hWHW"
+    variants:
+      platform:
+        - "pc"
+        - "mobile"
+  icons:
+    allowed: "figma-unconfirmed"
+    slots: "unknown"
+```
+
+_Do_
+- 링크는 진짜 링크(<a>)로 두고 href 는 쓰는 화면이 채운다.
+- 법인 문구는 registry/content/footer.json 에 있는 글자 그대로 쓴다.
+
+_Don't_
+- 회사 정보의 연속 공백을 한 칸으로 접지 않는다.
+- 정본에 없는 hover 색을 만들지 않는다.
+- Mobile 에 회사 정보나 로고를 넣지 않는다.
+
+**접근성 (a11y)**
+- 화면 맨 아래 영역은 <footer> 요소를 쓴다(contentinfo 랜드마크).
+- 링크는 <a> 요소이고 보이는 글자가 곧 접근 가능한 이름이다.
+- 로고는 옆의 회사 정보 글자가 이미 이름을 말하므로 aria-hidden 으로 읽히지 않게 둔다.
+- 키보드 초점 표시는 다른 코어와 같이 브라우저 기본에 맡긴다(2026-09-02 river 결정).
+
 ### GNB
 
 Global Navigation Bar. 로고 + 메뉴 슬롯(slots_menu) + 유틸리티(아이콘 3종) 조립체. 메뉴 슬롯 9 variant(size md/sm/xsm × state default/hover/selected) + GNB 바 6 variant(size md/sm/xsm × align center-between/start). PC only. viewport(1280/1440/1920)는 full-width 반응형으로 통합.
@@ -3217,6 +3441,76 @@ _Don't_
 - nav 는 aria-label 로 이름을 갖는다.
 - 접기 단추는 aria-label 과 aria-pressed 를 갖는다.
 - 현재 위치는 aria-current=page 로 알린다.
+
+### Login GNB
+
+> ⚠️ 배포본에 아직 없는 컴포넌트입니다(codeStatus: `planned`). 아래 토큰은 `ui-library/dist` 로 값이 풀리지 않으니 이 절을 보고 구현하지 마세요.
+
+로그인 화면 맨 위의 얇은 바(높이 56). 왼쪽은 서비스 이름 글자 자리, 오른쪽은 지구본 + 언어 이름. 변형이 없다.
+
+**언제 쓰나**
+- 로그인 화면 맨 위에 서비스 이름과 언어 선택을 보여줄 때.
+
+**쓰지 말아야 할 때**
+- 로그인 후 화면의 주 메뉴가 필요할 때 — 그건 GNB 의 몫이다.
+- 삼성 로고를 이 바 안에 넣으려 할 때 — 정본에서 2026-06-24 제거됐다.
+
+**구성 (Anatomy)**
+
+| 요소 | 역할 |
+| --- | --- |
+| 서비스 이름 | 왼쪽 글자 자리. 기본 글자 [서비스명], title/16B. 쓰는 화면이 채운다. |
+| 언어 | 오른쪽. 지구본 아이콘 24 + 글자 한국어(body/14M), 간격 8. |
+
+| variant | default | hover | pressed | disabled |
+| --- | --- | --- | --- | --- |
+| default | — | — | — | — |
+
+#### Agent-readable contract
+
+```yaml
+agent:
+  component: "Login GNB"
+  variantAxes: "not-defined"
+  states:
+    builder: "not-defined"
+    metadata: "unknown"
+  behavior:
+    platform: "PC"
+    status: "not-defined"
+  geometry: "not-defined"
+  composition:
+    mustReuse: "not-defined"
+    mustNotCreate: "not-defined"
+    declaredParts: "not-defined"
+  constraints: "unknown"
+  tokens:
+    figmaSemanticBindings: "not-defined"
+    aliasChains: "not-defined"
+  figma:
+    status: "available"
+    identifiers:
+      componentSetKey: "(미발행 — 라이브러리 publish 시 기록)"
+      fileKey: "cysG5U1udpQqVagYY1hWHW"
+    variants: "figma-unconfirmed"
+  icons:
+    allowed: "figma-unconfirmed"
+    slots: "unknown"
+```
+
+_Do_
+- 서비스 이름은 쓰는 화면이 실제 이름으로 채운다.
+- 언어를 눌렀을 때 무엇을 할지는 화면이 배선한다.
+
+_Don't_
+- GNB 의 32 지구본이나 글자색을 가져오지 않는다.
+- 정본에서 빠진 삼성 로고를 되살리지 않는다.
+
+**접근성 (a11y)**
+- 바는 <header> 요소를 쓴다(banner 랜드마크).
+- 서비스 이름 글자가 곧 접근 가능한 이름이다.
+- 언어 조작은 <button type=button> 이고 보이는 글자(한국어)가 곧 이름이다. 지구본은 장식이라 aria-hidden.
+- 키보드 초점 표시는 다른 코어와 같이 브라우저 기본에 맡긴다(2026-09-02 river 결정).
 
 ### Mobile Bottom Nav
 
@@ -5659,4 +5953,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: 477e569e984d · 손편집 금지 -->
+<!-- generated-stamp: 00e4d8de5776 · 손편집 금지 -->

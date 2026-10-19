@@ -1,0 +1,41 @@
+"use client";
+/* 자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요. */
+/* S1Ci — 승인된 배포본 마크업을 그대로 옮긴 React 컴포넌트.
+   마크업을 새로 쓰지 않는다. dist/examples/ci*.html 의 승인 인스턴스를 JSX 로 옮긴 것이다.
+   서버에서 그려도 같은 마크업이 나온다. */
+import { forwardRef, useId } from "react";
+import { mergeParts, scopeOf, slot } from "./kit.js";
+// ci 는 JavaScript 런타임이 없다 — 브라우저 기본 동작만 쓴다.
+
+
+export const BREAKS = ["pc"];
+export const DEFAULT_BREAK = "pc";
+export const VARIANTS = ["s1","samsung"];
+export const SIZES = [];
+/* parts 로 줄 수 있는 슬롯 이름(낙타 표기) — 타입 정의의 parts 키와 같다. */
+export const PARTS = [];
+
+function assertAllowed(label, value, allowed) {
+  if (value === undefined || allowed.length === 0 || allowed.includes(value)) return;
+  throw new Error(`[s1-ui] ci: 승인되지 않은 ${label} "${value}". 쓸 수 있는 값: ${allowed.join(", ")}`);
+}
+
+const S1Ci = forwardRef(function S1Ci({ variant, parts, children, className, style, ...rest }, forwardedRef) {
+  const uid = useId();
+  const rootAttr = forwardedRef;
+  assertAllowed("variant", variant, VARIANTS);
+  const partScope = scopeOf(parts);
+  return (
+      <span data-s1-component="ci" data-brand={variant ?? "s1"} data-color="white" role="img" aria-label="에스원" ref={rootAttr} className={className} style={style} {...rest}>
+        {children === undefined ? (
+          <>
+            <svg viewBox="0 0 42 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M32.6826 14.3262H41.5254V16H30.6992V10.2461H32.6826V14.3262ZM10.1426 15.9902H8.32129V7.07812H7.39258C7.30419 11.1554 5.68825 13.0125 3.70117 13.0127C1.65723 13.0127 0 11.0554 0 6.73047C0 2.41216 1.65721 0.448242 3.70117 0.448242C5.52602 0.448409 7.03869 2.01912 7.34277 5.42676H8.32129V0.172852H10.1426V15.9902ZM12.9111 15.9902H11.084V0.173828H12.9111V15.9902ZM28.084 15.2305H15.084V13.5811H28.084V15.2305ZM41.2891 0.182617V13.0557H39.46V11.2832H36.459V9.64453H39.46V0.182617H41.2891ZM38.8672 8.87891H35.3379V12.1885H33.3799V8.87891H29.7305V7.3291H38.8672V8.87891ZM22.6143 2.46875C22.6143 4.89881 24.005 8.20501 27.7148 9.30078V11.0654C27.6961 11.063 23.8792 10.5615 21.583 6.69531C19.2775 10.5711 15.4512 11.0654 15.4512 11.0654V9.30078C19.1607 8.21325 20.5518 4.89883 20.5518 2.46875V0.551758H22.6143V2.46875ZM3.70215 2.41211C2.66837 2.41211 1.83011 3.41277 1.83008 6.7334C1.83008 10.0732 2.66835 11.0557 3.70215 11.0557C4.73624 11.0556 5.57422 10.0731 5.57422 6.7334C5.57418 3.41295 4.73622 2.41222 3.70215 2.41211ZM34.3525 0C36.6151 0 38.4492 1.17983 38.4492 3.41797C38.449 5.69092 36.615 6.83496 34.3525 6.83496C32.0903 6.83485 30.2561 5.69081 30.2559 3.41797C30.2559 1.17994 32.0901 0 34.3525 0ZM34.3486 1.57227C33.1672 1.57227 32.2091 2.36269 32.209 3.44043C32.209 4.51861 33.1671 5.30859 34.3486 5.30859C35.5303 5.3084 36.4883 4.51026 36.4883 3.44043C36.4882 2.35834 35.5302 1.57246 34.3486 1.57227Z" />
+            </svg>
+          </>
+        ) : children}
+      </span>
+  );
+});
+S1Ci.displayName = "S1Ci";
+export default S1Ci;

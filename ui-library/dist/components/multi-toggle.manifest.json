@@ -1,6 +1,6 @@
 {
   "id": "multi-toggle",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "status": "approved",
   "canonicalFingerprint": "91c9bfe82bef3e033e7867a16d40fc85d68ae059366e8a7b69752aa246682396",
   "canonicalSources": [
@@ -164,5 +164,5 @@
     "controlMode": "uncontrolled",
     "behavior": "좌우(위아래) 화살표로 이동, Space·Enter·클릭으로 선택. disabled 칸은 이동·포커스 대상에서 제외."
   },
-  "sourceFingerprint": "4860c41e25e14542cf0d0c1fa455a7c936ab090409e32c26e5fb4c271fce616e"
+  "sourceFingerprint": "c37c0496eddbc54985f2d6f24c44aaf5866f4dce1005e65d91fc47e5bae08a4e"
 }

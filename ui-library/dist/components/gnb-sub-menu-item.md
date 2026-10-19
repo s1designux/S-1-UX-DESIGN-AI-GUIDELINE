@@ -26,4 +26,4 @@
 
 ---
 
-정본 지문 `be1a8fbae11ce07894ac3abeedb55cde1991435e758051c6fe950d8d4c0dd1fe` · 부품 버전 0.2.6
+정본 지문 `be1a8fbae11ce07894ac3abeedb55cde1991435e758051c6fe950d8d4c0dd1fe` · 부품 버전 0.3.0

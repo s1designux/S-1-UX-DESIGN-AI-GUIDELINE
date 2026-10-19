@@ -1,6 +1,6 @@
 {
   "id": "gnb",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "status": "approved",
   "canonicalFingerprint": "fcf948850d0042cb94225c0ba90ba464b387fc58d1664b052112154488f4e0e4",
   "canonicalSources": [
@@ -234,5 +234,5 @@
     },
     "behaviorContract": "registry/components/component-behavior.pc.json 의 \"GNB\" 장부."
   },
-  "sourceFingerprint": "5de51347a91e7bb14b90c2d90dcb4d5fc96abce25c298ef72805dea88779a962"
+  "sourceFingerprint": "4fd8d11886d2a282410a84794093523191b96ca5f88ae13c3dc5008472a52eb5"
 }

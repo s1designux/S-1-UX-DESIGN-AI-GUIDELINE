@@ -1,6 +1,6 @@
 # S1 UI — React Native 예제 앱
 
-`../react-native` 의 부품 32종을 한 화면에 늘어놓은 Expo 앱입니다. 새 화면·새 값은 없습니다.
+`../react-native` 의 부품 35종을 한 화면에 늘어놓은 Expo 앱입니다. 새 화면·새 값은 없습니다.
 
 ```bash
 npm install

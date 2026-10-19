@@ -42,4 +42,4 @@
 
 ---
 
-정본 지문 `e3c547c1aefa2bd8f9093f208daac59c4be3e1d89df25c5ff9e9068ea1e725b2` · 부품 버전 0.2.4
+정본 지문 `e3c547c1aefa2bd8f9093f208daac59c4be3e1d89df25c5ff9e9068ea1e725b2` · 부품 버전 0.3.0

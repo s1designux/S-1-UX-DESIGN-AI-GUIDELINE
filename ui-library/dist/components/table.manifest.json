@@ -1,6 +1,6 @@
 {
   "id": "table",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "status": "approved",
   "canonicalFingerprint": "e9ba689fb4c2ee4662ecd43089dd2601e2d4980ccb91440975f111b74e589f65",
   "canonicalSources": [
@@ -172,5 +172,5 @@
     ],
     "behaviorLedger": "registry/components/component-behavior.pc.json > Table"
   },
-  "sourceFingerprint": "abd298687bcbf96d768c3bac46a9e31fc853f43835ca5390cba421e69c4eda66"
+  "sourceFingerprint": "719a009bdb67a3f5e180b2e7acac9552cdce08c127eb0ffe59ae128d6fea4212"
 }

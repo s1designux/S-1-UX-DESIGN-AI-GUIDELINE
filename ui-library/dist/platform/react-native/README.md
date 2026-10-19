@@ -1,9 +1,9 @@
 # @s1/ui-react-native
 
 **S1 디자인 시스템의 React Native(Expo) 부품입니다.** iOS · Android · 웹(react-native-web) 에서 같은 코드로 그려지고,
-**PC·Mobile 두 화면 기준을 모두 담았습니다**(`breakName="pc" | "mobile"`). 부품 32종.
+**PC·Mobile 두 화면 기준을 모두 담았습니다**(`breakName="pc" | "mobile"`). 부품 35종.
 
-**배포본 번호 0.24.2** · 2026-10-14 판 — 디자인가이드 내려받기 화면의 번호와 다르면 새로 받으세요.
+**배포본 번호 0.26.0** · 2026-10-19 판 — 디자인가이드 내려받기 화면의 번호와 다르면 새로 받으세요.
 코드에서 볼 때는 `import { S1_VERSION } from "@s1/ui-react-native"` 입니다.
 
 이 패키지는 웹용 React(`@s1/ui-react`)와 다릅니다. 그쪽은 `<button>`·`<span>` 과 CSS 파일을 쓰는 **React DOM** 이라 iOS·Android 에서 돌지 않습니다.
@@ -114,6 +114,9 @@ import { S1Button, S1Input, S1Tab, S1Table, S1DatePicker } from "./src/s1-ui";
 | `S1DataTag` | `blue` `red` `gray` | — | — | `parts` | 표나 목록에서 한 줄의 상태를 한 눈에 보이게 할 때. 승인·확인(파랑), 주의·에러(빨강)처럼 뜻이 정해진 상태를 표시할 때. 그 밖의 중립 상태(대기 등)는 회색으로 표시할 때. |
 | `S1Divider` | `x` `y` | — | — | `parts` | 목록 줄 사이를 나눌 때. 표 위·아래처럼 영역을 크게 끊을 때(강한선). 한 줄 안에서 값과 값을 끊을 때(세로선). |
 | `S1Lnb` | `menu` `brand` | `md` `lg` | — | `collapsed` · `onCollapse` · `onToggle` | 화면 왼쪽에 세로로 서서 같은 서비스 안의 큰 영역을 오가는 메뉴가 필요할 때. 하위메뉴(2뎁스)까지 한 판에서 보여 줄 때. |
+| `S1Footer` | `pc` `mobile` | — | — | `parts` | 화면 맨 아래에 이용약관·개인정보 처리방침·회사 정보·카피라이트를 보여줄 때. PC 화면에서는 회사 정보와 로고까지 함께 보여줄 때(PC), 모바일 화면에서는 링크와 카피라이트만 간단히 보여줄 때(Mobile). |
+| `S1Ci` | `s1` `samsung` | — | — | `parts` | 화면에 회사 로고를 보여줄 때(에스원 · 삼성). 밝은 로고(White)가 필요한 어두운 바탕, 브랜드색(Blue), 회색(Dark) 중에서 바탕에 맞춰 고를 때. |
+| `S1LoginGnb` | — | — | — | `parts` | 로그인 화면 맨 위에 서비스 이름과 언어 선택을 보여줄 때. |
 
 크기·변형·화면은 위에 적힌 값만 쓸 수 있습니다. 다른 값을 주면 그 자리에서 오류로 알려 줍니다.
 

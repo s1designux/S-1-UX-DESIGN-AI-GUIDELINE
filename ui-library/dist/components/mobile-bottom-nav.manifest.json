@@ -1,6 +1,6 @@
 {
   "id": "mobile-bottom-nav",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "status": "approved",
   "canonicalFingerprint": "54dd241e960ea2f1816424f0f4b538c4e873777781bde65e4314f3a1f8ac7d8f",
   "canonicalSources": [
@@ -187,5 +187,5 @@
     "notification": "icon=notification",
     "settings": "icon=settings"
   },
-  "sourceFingerprint": "f60d7e7d34f0d59df2318921f2ab72a97451bd01163a3b82b6888b43c0ad04a5"
+  "sourceFingerprint": "6da33377fdd07ca4dda118fd3355d6c5e6e209ce18e41ff81a4cee595454ce74"
 }

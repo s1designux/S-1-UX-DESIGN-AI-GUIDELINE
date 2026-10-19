@@ -1,0 +1,151 @@
+{
+  "id": "footer",
+  "version": "0.2.0",
+  "status": "approved",
+  "canonicalFingerprint": "e7dd3c1ea4e7a0fecbce7d05c497a29bea7cdd51b9ad7c782aca88d656074d47",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/footer.json"
+  ],
+  "rootSelector": "[data-s1-component=\"footer\"]",
+  "variants": [
+    "pc",
+    "mobile"
+  ],
+  "canonicalVariantMap": {
+    "Platform=PC": "pc",
+    "Platform=Mobile": "mobile"
+  },
+  "sizes": [],
+  "geometry": {
+    "pc": {
+      "minHeight": "116px",
+      "paddingBlock": "--spacing-28",
+      "paddingInline": "clamp(0px, (100% - --breakpoint-xl) / 2, 320px), min-width --breakpoint-xl",
+      "contentGap": "--spacing-4",
+      "linkGap": "--spacing-12",
+      "separator": "width --border-width-default × height --spacing-8",
+      "logo": "42px × --sizing-16",
+      "note": "정본은 폭 1920 고정·좌우 패딩 320 이다. 웹은 바 배경이 화면 폭을 채우고 안쪽 내용은 가운데 1280(canon breakpoint/xl) 열이다 — 좌우 여백은 (100% − 1280)/2 를 320 까지로 제한(1920 → 320, 1600 → 160, 1280 → 0). 1280 보다 좁아도 줄어들지 않고 가로로 넘친다(river D-2, 2026-10-12: \"가운데 1280폭을 지키고 그 이후로는 대응 안함.\"). 또 canon breakpoint/md(768) 미만에서는 PC 풋터가 자동으로 Mobile 모양(세로·패딩 8/16·본문 12R·회사 정보와 로고 없음)이 된다(river D-3, 2026-10-12: \"브레이크포인트에 따라 모바일 모양으로 바뀜\"). 명시 data-platform=mobile 은 그대로."
+    },
+    "mobile": {
+      "padding": "--spacing-8 --spacing-16",
+      "gap": "--spacing-4",
+      "linkGap": "--spacing-8",
+      "separator": "width --border-width-default × height --sizing-10"
+    },
+    "source": "build-components.ts buildFooter",
+    "provenance": "정본 buildFooter(build-components.ts:6429-6535) 수치 그대로."
+  },
+  "states": {
+    "default": "속성 생략 — 정본에 다른 상태가 없다"
+  },
+  "canonicalStateMap": {},
+  "notInCanon": {
+    "hover": "정본에 hover·pressed 가 없다. 링크 색을 바꾸지 않는다(새 색을 만들지 않는다).",
+    "focusVisible": "정본에 focus 변형이 없다. 다른 코어와 같은 이유로(2026-09-02 river 결정) 웹에서도 만들지 않으며, 키보드 초점은 브라우저 기본 표시에 맡긴다."
+  },
+  "parts": [
+    "content",
+    "links",
+    "link",
+    "company",
+    "copyright",
+    "logo"
+  ],
+  "htmlContract": {
+    "root": "footer[data-s1-component=footer][data-platform]. 화면 맨 아래 영역(contentinfo 랜드마크).",
+    "requiredAttributes": [
+      "data-platform"
+    ],
+    "requiredParts": [
+      "links",
+      "link",
+      "copyright"
+    ],
+    "optionalParts": [
+      "content",
+      "company",
+      "logo"
+    ],
+    "axes": {
+      "data-platform": "pc(가로 — 왼쪽 content[링크 줄·회사 정보·카피라이트] + 오른쪽 logo) | mobile(세로 — 링크 줄 + 가운데 카피라이트, 회사 정보·로고 없음)"
+    },
+    "structure": {
+      "pc": "footer > div[content] > (ul[links] > li > a[link] ×3, p[company], p[copyright]) + svg[logo]",
+      "mobile": "footer > ul[links] > li > a[link] ×3 + p[copyright]"
+    },
+    "relations": [
+      "링크는 진짜 <a> 다 — href 는 쓰는 화면이 채운다(예시는 #). 구분선은 CSS 가 li 사이에 그린다(마크업에 넣지 않는다).",
+      "회사 정보 p 의 연속 공백은 정본 그대로 두며 CSS white-space: pre-wrap 이 접지 않는다. 문구 세 줄(링크·회사 정보·카피라이트)은 registry/content/footer.json 이 단일 출처다."
+    ],
+    "source": "components/footer/footer.example.html",
+    "distribution": "examples/footer.html"
+  },
+  "cssContract": {
+    "entry": "components/footer.css",
+    "rootScope": "[data-s1-component=footer]",
+    "nativeStates": [],
+    "documentedDataStates": [
+      "[data-platform]"
+    ],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "contentSlots": {
+    "link": "링크 글자와 href — 글자는 registry/content/footer.json links, 임의로 바꾸지 않는다",
+    "company": "회사 정보 한 줄(PC 만) — registry/content/footer.json companyInfo 그대로",
+    "copyright": "카피라이트 — registry/content/footer.json copyright 그대로"
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "footer(암묵적 role=contentinfo). 링크 줄은 ul > li > a. 로고 svg 는 회사 정보 글자가 이미 이름을 말하므로 aria-hidden=true."
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "링크는 보이는 글자가 이름이다. 영역 자체는 landmark 이름이 없어도 된다(화면에 하나뿐인 contentinfo)."
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "링크는 Tab 으로 초점을 받고 Enter 로 이동한다(<a> 기본 동작). 이 부품이 새 키 조작을 만들지 않는다."
+    },
+    "focus": {
+      "status": "required",
+      "value": "브라우저 기본 초점 표시에 맡긴다(2026-09-02 river 결정 — 정본에 focus 변형 없음)."
+    },
+    "ariaStateSync": {
+      "status": "not-applicable",
+      "reason": "상태를 갖지 않는다."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 오류 표시가 없다."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "움직임이 없다."
+    }
+  },
+  "jsRequired": false,
+  "javascript": {
+    "runtime": "none",
+    "reason": "정적 표시 영역이라 스크립트가 필요 없다."
+  },
+  "sourceFingerprint": "e7a0c932b95328b7ace8f074d619e36e971e7d929ce9a7c7b73995f7244404dd"
+}

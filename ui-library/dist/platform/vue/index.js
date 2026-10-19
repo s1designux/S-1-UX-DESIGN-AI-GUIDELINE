@@ -31,4 +31,7 @@ export { default as S1ExpandableCard } from "./ExpandableCard.vue";
 export { default as S1DataTag } from "./DataTag.vue";
 export { default as S1Divider } from "./Divider.vue";
 export { default as S1Lnb } from "./Lnb.vue";
+export { default as S1Footer } from "./Footer.vue";
+export { default as S1Ci } from "./Ci.vue";
+export { default as S1LoginGnb } from "./LoginGnb.vue";
 export { S1_VERSION, S1_RELEASED_AT } from "./version.js";

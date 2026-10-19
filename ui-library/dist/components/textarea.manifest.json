@@ -1,6 +1,6 @@
 {
   "id": "textarea",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "status": "approved",
   "canonicalFingerprint": "3414cf4b12485787412bfbd013348f770cab7cca4b1aabee20b8bd86cc73ecde",
   "canonicalSources": [
@@ -141,5 +141,5 @@
     "runtime": null,
     "reason": "네이티브 textarea 상태(default·focus·filled·disabled·readonly)만으로 정본 계약이 완결된다."
   },
-  "sourceFingerprint": "6c5fabc6e6d144dacea23cf80b89b30c418667c873d5faba834ada9bacc70a5c"
+  "sourceFingerprint": "1bd29d3725bf0bde1f444c0da763f613f86b8b2070dea49f4559d25278f0b37f"
 }

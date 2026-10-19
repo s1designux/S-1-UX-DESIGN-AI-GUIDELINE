@@ -1,6 +1,6 @@
 {
   "id": "lnb",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "status": "approved",
   "canonicalFingerprint": "f88063bde5d727e9e3f6cc63872fa259b23058436bde32ac0837e3c6ee376036",
   "canonicalSources": [
@@ -193,5 +193,5 @@
     ],
     "reason": "하위메뉴 여닫이(aria-expanded ↔ hidden)와 우측 상단 접기 단추(aria-pressed ↔ data-state)를 맞춘다."
   },
-  "sourceFingerprint": "903223dcabf7dd5df5a328f42ae614c64df0c086600f2fb56ab9f76d8f85db3c"
+  "sourceFingerprint": "2a9ea8e05f72ee6d402f9582dfc297fae0f4aef8c7727dc721fa60b3668cd5d0"
 }

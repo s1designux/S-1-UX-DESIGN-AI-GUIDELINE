@@ -1,9 +1,9 @@
 {
   "id": "s1-ui",
-  "version": "0.24.2",
-  "releasedAt": "2026-10-14",
+  "version": "0.26.0",
+  "releasedAt": "2026-10-19",
   "status": "approved",
-  "canonicalFingerprint": "74173580fab2dea369607efb6164a895d246c9da4cb993284b35d04f2e9b7db8",
+  "canonicalFingerprint": "0355d63d1dcb6b68d01c8db5adc618f811faf403b39d2a8aff8cde7f7e2beae5",
   "tokenMapFingerprint": "796fb798dd329910ba6c42a29fb4af9e0fd217446b3fa847e140bc70a0a8f4c7",
   "commonCssDependencies": [
     "assets/css/tokens.css",
@@ -719,14 +719,52 @@
       "sourceExport": "assets/icons/ic_패널접기_solid.figma-1767-24@2x.png"
     }
   ],
+  "images": [
+    {
+      "id": "samsung-white",
+      "file": "samsung-white.png",
+      "sha256": "1bc9ad20e3a01f3977f8fb16c0fd342a54b21115264d8b09b89096a2acccea78",
+      "width": 1600,
+      "height": 425,
+      "origin": "SW-UX-GUIDE V3.0 TEST(cysG5U1udpQqVagYY1hWHW) 파일 내장 이미지 — 정본 buildCI 의 imageHash White 5ef070ce43a101a072964c656c0e666fe81e4f78 를 REST /v1/files/{key}/images 로 내려받음(2026-10-02)",
+      "usedBy": [
+        "ci"
+      ],
+      "use": "CI Brand=삼성 Color=White 워드마크(134×36, scaleMode FILL)"
+    },
+    {
+      "id": "samsung-blue",
+      "file": "samsung-blue.png",
+      "sha256": "c4bd9477e460a2f924329aef53ff66e4d47b775a7d30f363dd73559586bb7a1c",
+      "width": 1600,
+      "height": 425,
+      "origin": "SW-UX-GUIDE V3.0 TEST(cysG5U1udpQqVagYY1hWHW) 파일 내장 이미지 — 정본 buildCI 의 imageHash Blue 8de26dc1976bd0a64ea5b7207b6bf6d9e0396053 를 REST /v1/files/{key}/images 로 내려받음(2026-10-02)",
+      "usedBy": [
+        "ci"
+      ],
+      "use": "CI Brand=삼성 Color=Blue 워드마크(134×36, scaleMode FILL)"
+    },
+    {
+      "id": "samsung-dark",
+      "file": "samsung-dark.png",
+      "sha256": "ade94e407d795c49b58e2711410b60c77f9c11771f9556d2c8cf455c31a3fc94",
+      "width": 1600,
+      "height": 425,
+      "origin": "SW-UX-GUIDE V3.0 TEST(cysG5U1udpQqVagYY1hWHW) 파일 내장 이미지 — 정본 buildCI 의 imageHash Dark 100a4d3fdd0a5a9304c8251792f2d96089ac458a 를 REST /v1/files/{key}/images 로 내려받음(2026-10-02)",
+      "usedBy": [
+        "ci"
+      ],
+      "use": "CI Brand=삼성 Color=Dark 워드마크(134×36, scaleMode FILL)"
+    }
+  ],
   "components": [
     {
       "id": "input",
-      "version": "0.3.10",
+      "version": "0.4.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "785ecda4f20da6a0b6cd6b4ffbfa2a2a161b237b5b87f0f588a7dde2d8507755",
-      "sourceFingerprint": "b3d087d5528895e08fea7a8a4d60d146050b48090b5d31c9ccd7bfeca903bd27",
+      "sourceFingerprint": "6d78b7744952e9ab2b8995f30f92a2129b3012482d5852d56cf9397cbda6d562",
       "css": "components/input.css",
       "js": "components/input.js",
       "example": "examples/input.html",
@@ -752,11 +790,11 @@
     },
     {
       "id": "button",
-      "version": "0.2.4",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "5fcd302305bf146d4b2a634c851e7524b2203c603b3b0880c17451732e7cf231",
-      "sourceFingerprint": "8df6b80bc2a5dbe0045345e720adccead82ba4c0e423389237275fdf79bd47bd",
+      "sourceFingerprint": "82a22d9193a06d4a1526bf3a3cc2a039ad81938811194ba55c7ee315b2cc13b6",
       "css": "components/button.css",
       "js": "components/button.js",
       "example": "examples/button.html",
@@ -778,11 +816,11 @@
     },
     {
       "id": "checkbox",
-      "version": "0.2.5",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "0ce32268ee96b5b8e7158e2e5bc4b494a492b3f9124adda27ac7c601434266b9",
-      "sourceFingerprint": "caabcee2ecb300d759ae5e2bfb31210c87224fa8d5e6b53dcd63a97c3b94d4db",
+      "sourceFingerprint": "a2fd8006eecdba6eff1e70514fbbc7e4fdcb423ef048982d1514dbfa4aaecf52",
       "css": "components/checkbox.css",
       "js": "components/checkbox.js",
       "example": "examples/checkbox.html",
@@ -792,11 +830,11 @@
     },
     {
       "id": "radio",
-      "version": "0.2.5",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "6562bf18311aeb0eb60f576976779a67f209ca14d4d26fb9729347e2ab9035c9",
-      "sourceFingerprint": "1a955c086b08dac9605c52a6fc022d98fdd13607af03183b079a34b80f6b172b",
+      "sourceFingerprint": "e171ea52b6f631ed485928484f038bdede7787471ee43e4124acb47ea3457546",
       "css": "components/radio.css",
       "js": "components/radio.js",
       "example": "examples/radio.html",
@@ -806,11 +844,11 @@
     },
     {
       "id": "toggle",
-      "version": "0.2.4",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "fa0eaeb4bcb0f04a2ffc67dbef4d7b293129184c3ed45dcd7bd973e64ba61098",
-      "sourceFingerprint": "12d582a5ef462aa2521548f0494101078cf380f94d86bbc14a9ed8ff1ecd14c0",
+      "sourceFingerprint": "d00be484e9d018098f874f4bd54344fde239cdb57d61a47b6309d15719e34fe7",
       "css": "components/toggle.css",
       "js": "components/toggle.js",
       "example": "examples/toggle.html",
@@ -820,11 +858,11 @@
     },
     {
       "id": "chip",
-      "version": "0.3.1",
+      "version": "0.4.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "fb526cdc4dd78be9d50610c4048b5b6fcda2fdc5b922aa5bdcc34cbd4c8a202e",
-      "sourceFingerprint": "f612f77283183f63b3b1df17cd0ee7b18843f7520dc8be509cd00db3420e0d37",
+      "sourceFingerprint": "0442ba9e7a4059c8f6580a94f629ca235cdf142de77e7e279f3b6197162729b2",
       "css": "components/chip.css",
       "js": "components/chip.js",
       "example": "examples/chip.html",
@@ -845,11 +883,11 @@
     },
     {
       "id": "dropdown",
-      "version": "0.2.5",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "93c277610de52701b5f6b3fc4ea925e601a86a29f7229df99fcfea4e80abb31b",
-      "sourceFingerprint": "d757c8cddb53810a22bb9479be786f591287f6de879ca539a754b4448c6d28b4",
+      "sourceFingerprint": "31199586a582a51cc4a644fc7cba31285b9c35478b16962f7e5a62c2eaeb23b3",
       "css": "components/dropdown.css",
       "js": "components/dropdown.js",
       "example": "examples/dropdown.html",
@@ -869,11 +907,11 @@
     },
     {
       "id": "select",
-      "version": "0.2.12",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "2ebe07ca09e01257f5713e3faccd28918dabf09d97d8b96aa0e01f2670bed868",
-      "sourceFingerprint": "bc8e2aee1521756e9efeeeebe3b6d58fb4fdd45e8f888e378988a497e00f528c",
+      "sourceFingerprint": "ec6f68c147240022fb1a4f21cdf2ea0754e7563165f392e078bf3c3fedb9fc5d",
       "css": "components/select.css",
       "js": "components/select.js",
       "example": "examples/select.html",
@@ -884,11 +922,11 @@
     },
     {
       "id": "filter-chip",
-      "version": "0.2.6",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "e9ee9098166ab334c5cd6e353abd207bf7cfbec36b8515bdf2cb9fbd2dfb52d8",
-      "sourceFingerprint": "3cdb176b874bcdb02194d063f5213bae6e45ce96bc4bb608046b78a9da4bd79a",
+      "sourceFingerprint": "c0d6fb9ace6c9c78bde2191ca4f43ebe287483b2491e43ddf3cbad0175e061fb",
       "css": "components/filter-chip.css",
       "js": "components/filter-chip.js",
       "example": "examples/filter-chip.html",
@@ -909,11 +947,11 @@
     },
     {
       "id": "tab",
-      "version": "0.4.1",
+      "version": "0.5.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "a8d8aaa4fac1b9244261b50b512da64c42b275b395606ef644ca5852c0166a88",
-      "sourceFingerprint": "12237a7303072ad74cafa4d2e65e0486726fa8532146a78f524065f179e32a71",
+      "sourceFingerprint": "a85ed9992eaf27caeef94b57ce9080553b31ce36f8f3e74a7e17aa79a44c20cb",
       "css": "components/tab.css",
       "js": "components/tab.js",
       "example": "examples/tab.html",
@@ -924,11 +962,11 @@
     },
     {
       "id": "pagination",
-      "version": "0.4.1",
+      "version": "0.5.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "04aaf4daa947a835435ee2a664646d982b02d46e8d34a0b5b4563f1269f20e58",
-      "sourceFingerprint": "00b08fcd9b6499d5333871708ed5d9b2eb0ac539f78802d05b401d43a67b67ba",
+      "sourceFingerprint": "d7152823eaf3e34a68cd17ff5c77de2e8b1e9fb2e5c3fe99c430d5e39d45b302",
       "css": "components/pagination.css",
       "js": "components/pagination.js",
       "example": "examples/pagination.html",
@@ -938,11 +976,11 @@
     },
     {
       "id": "textarea",
-      "version": "0.2.6",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "3414cf4b12485787412bfbd013348f770cab7cca4b1aabee20b8bd86cc73ecde",
-      "sourceFingerprint": "6c5fabc6e6d144dacea23cf80b89b30c418667c873d5faba834ada9bacc70a5c",
+      "sourceFingerprint": "1bd29d3725bf0bde1f444c0da763f613f86b8b2070dea49f4559d25278f0b37f",
       "css": "components/textarea.css",
       "js": "components/textarea.js",
       "example": "examples/textarea.html",
@@ -953,11 +991,11 @@
     },
     {
       "id": "multi-toggle",
-      "version": "0.3.2",
+      "version": "0.4.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "91c9bfe82bef3e033e7867a16d40fc85d68ae059366e8a7b69752aa246682396",
-      "sourceFingerprint": "4860c41e25e14542cf0d0c1fa455a7c936ab090409e32c26e5fb4c271fce616e",
+      "sourceFingerprint": "c37c0496eddbc54985f2d6f24c44aaf5866f4dce1005e65d91fc47e5bae08a4e",
       "css": "components/multi-toggle.css",
       "js": "components/multi-toggle.js",
       "example": "examples/multi-toggle.html",
@@ -967,11 +1005,11 @@
     },
     {
       "id": "modal",
-      "version": "0.2.5",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "2c5c4d33d097de64cb795cd5cded328d2aaab073801c334cb8dc27c2279b3d9a",
-      "sourceFingerprint": "dcea3c984b76d4f2c0b7324ab5d5642564c21c2cc031a2b1daeb02747e877fa3",
+      "sourceFingerprint": "ee7f87dab6894c9a5ff90604d580f6c26e43ef9fcfa25c8eb9c3b26ec4ba598b",
       "css": "components/modal.css",
       "js": "components/modal.js",
       "example": "examples/modal.html",
@@ -992,11 +1030,11 @@
     },
     {
       "id": "table",
-      "version": "0.2.6",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "e9ba689fb4c2ee4662ecd43089dd2601e2d4980ccb91440975f111b74e589f65",
-      "sourceFingerprint": "abd298687bcbf96d768c3bac46a9e31fc853f43835ca5390cba421e69c4eda66",
+      "sourceFingerprint": "719a009bdb67a3f5e180b2e7acac9552cdce08c127eb0ffe59ae128d6fea4212",
       "css": "components/table.css",
       "js": "components/table.js",
       "example": "examples/table.html",
@@ -1006,11 +1044,11 @@
     },
     {
       "id": "mobile-bottom-nav",
-      "version": "0.4.2",
+      "version": "0.5.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "54dd241e960ea2f1816424f0f4b538c4e873777781bde65e4314f3a1f8ac7d8f",
-      "sourceFingerprint": "f60d7e7d34f0d59df2318921f2ab72a97451bd01163a3b82b6888b43c0ad04a5",
+      "sourceFingerprint": "6da33377fdd07ca4dda118fd3355d6c5e6e209ce18e41ff81a4cee595454ce74",
       "css": "components/mobile-bottom-nav.css",
       "js": "components/mobile-bottom-nav.js",
       "example": "examples/mobile-bottom-nav.mobile.html",
@@ -1033,11 +1071,11 @@
     },
     {
       "id": "mobile-header",
-      "version": "0.2.6",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "b28908d8fe3feb18913b99f0d34c935eff24f66216f94bcb19761316e5f0fc33",
-      "sourceFingerprint": "c1a79378de6cdd89edee2115a3cb5f7ae5aa71ed510beb7d0ede6e00b0d3fd6e",
+      "sourceFingerprint": "7e28f70ed870d289eb21ab74d65a35c981bff04b3c11c16d73f6dbb4363341e2",
       "css": "components/mobile-header.css",
       "js": "components/mobile-header.js",
       "example": "examples/mobile-header.mobile.html",
@@ -1062,11 +1100,11 @@
     },
     {
       "id": "time-picker",
-      "version": "0.5.1",
+      "version": "0.6.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "bdf304ea39d52ed35c85eb07447f737ea68b7a591a6af4126e5f73a64542c604",
-      "sourceFingerprint": "2bf8bd5dd94f6910a1ba90db303bd349cf33f1fa81ff9d2e152f9e2e3dcf5795",
+      "sourceFingerprint": "6e6899e38f125dfc7d187bd02cfea6ac738623f5305b4b0eeefad5680314ab48",
       "css": "components/time-picker.css",
       "js": "components/time-picker.js",
       "example": "examples/time-picker.html",
@@ -1088,11 +1126,11 @@
     },
     {
       "id": "date-picker",
-      "version": "0.4.1",
+      "version": "0.5.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "0ab29faac87cf30a9075a948f7cc869ceec840a30dd0edf836e9ea2c94d8ee34",
-      "sourceFingerprint": "bf7f4b276b2d72d23981e7cefab83186e3b69442fcb97f7cbd77311c29960b7c",
+      "sourceFingerprint": "5fded8d33c5c2c907dc2fcc67fdbc3e25d2a99a8fce8f2dfbd4c1e3292e573f0",
       "css": "components/date-picker.css",
       "js": "components/date-picker.js",
       "example": "examples/date-picker.html",
@@ -1113,11 +1151,11 @@
     },
     {
       "id": "gnb",
-      "version": "0.2.9",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "fcf948850d0042cb94225c0ba90ba464b387fc58d1664b052112154488f4e0e4",
-      "sourceFingerprint": "5de51347a91e7bb14b90c2d90dcb4d5fc96abce25c298ef72805dea88779a962",
+      "sourceFingerprint": "4fd8d11886d2a282410a84794093523191b96ca5f88ae13c3dc5008472a52eb5",
       "css": "components/gnb.css",
       "js": "components/gnb.js",
       "example": "examples/gnb.html",
@@ -1137,11 +1175,11 @@
     },
     {
       "id": "gnb-sub-menu-item",
-      "version": "0.2.6",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "be1a8fbae11ce07894ac3abeedb55cde1991435e758051c6fe950d8d4c0dd1fe",
-      "sourceFingerprint": "97fbbf3c8e53c012f88f89afa161e35c9deb90072f119414baaec669d897ac55",
+      "sourceFingerprint": "b6298fe5ba65d125396defa7817af177fe0bc85e7b217f70570f427db1a52730",
       "css": "components/gnb-sub-menu-item.css",
       "js": "components/gnb-sub-menu-item.js",
       "example": "examples/gnb-sub-menu-item.html",
@@ -1151,11 +1189,11 @@
     },
     {
       "id": "gnb-sub-menu",
-      "version": "0.2.9",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "c4d41bec72a973b79305278e5533c166b4b7ff76e4c348cbb86490fb6ae6508d",
-      "sourceFingerprint": "98b4b23339db85c46bf04d3c4c24e99a98fa4522b86e42e287b0142dabda796d",
+      "sourceFingerprint": "9d622af58295d18b002fa6859e7ca181ed65bc879b5316dadf4cb097b11ff550",
       "css": "components/gnb-sub-menu.css",
       "js": "components/gnb-sub-menu.js",
       "example": "examples/gnb-sub-menu.html",
@@ -1177,11 +1215,11 @@
     },
     {
       "id": "assist-button",
-      "version": "0.2.4",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "510aa34e83fc7e2bfd13ee4c74c17c227110d8884e1e49d7320df1ffc86bd4e3",
-      "sourceFingerprint": "ca160022c25b67fcbcd65df1db9e27bae60511950332421fc3269802ecd12f29",
+      "sourceFingerprint": "f7028d394e71ab410a293303bac71c8919a65a34c8cea707e183b7729837f659",
       "css": "components/assist-button.css",
       "js": "components/assist-button.js",
       "example": "examples/assist-button.html",
@@ -1191,11 +1229,11 @@
     },
     {
       "id": "text-button",
-      "version": "0.2.4",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "e3c547c1aefa2bd8f9093f208daac59c4be3e1d89df25c5ff9e9068ea1e725b2",
-      "sourceFingerprint": "3b6c24e1352f3b811f29406555ea338f4be2f15583a1e9c40dd2ad9ae224993f",
+      "sourceFingerprint": "938d4028f54b5d21960c4cbd5b1e548527953c123c06c4b62d2deacdfa1dfc9b",
       "css": "components/text-button.css",
       "js": "components/text-button.js",
       "example": "examples/text-button.html",
@@ -1215,11 +1253,11 @@
     },
     {
       "id": "modal-content",
-      "version": "0.2.5",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "631b21245d4ee95332ba83134037a2da1b6337f2b1785999fb1f2968944d9db1",
-      "sourceFingerprint": "2c0e536eee162f2dc7752a49acca79707bbeb1c058226591e5c92982f714bfb8",
+      "sourceFingerprint": "956a3040ab04185c3927f64b5b483e502876e35f7935fc58a46513b8abec26f2",
       "css": "components/modal-content.css",
       "js": "components/modal-content.js",
       "example": "examples/modal-content.html",
@@ -1239,11 +1277,11 @@
     },
     {
       "id": "bottom-sheet-option",
-      "version": "0.3.1",
+      "version": "0.4.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "437fd477846e829c956c1824e3e4c4e188c1f6a932cac43f62b55a07b54f8ecf",
-      "sourceFingerprint": "1856bcfcf1afa4d44b855984e1e3070bcfe85bd28f9104a9640c3d5a366487ac",
+      "sourceFingerprint": "8d7ed3ccfa4db09bce5d6661189948888e9b008c186721ca38f11f5676b27114",
       "css": "components/bottom-sheet-option.css",
       "js": "components/bottom-sheet-option.js",
       "example": "examples/bottom-sheet-option.html",
@@ -1265,11 +1303,11 @@
     },
     {
       "id": "bottom-sheet",
-      "version": "0.3.1",
+      "version": "0.4.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "cfcdd0a868fe7df66776acf051104737a71c3f6898d74bc97036f14dfb7baf17",
-      "sourceFingerprint": "85b90383f334d6a27340b0319826c6e3cf3d5811ff1128839cf1cae3ea7e13ab",
+      "sourceFingerprint": "a59d168f45dfa3c12350e4593451143ae30c406b3f29146916fb4f7d0bf74f44",
       "css": "components/bottom-sheet.css",
       "js": "components/bottom-sheet.js",
       "example": "examples/bottom-sheet.mobile.html",
@@ -1291,11 +1329,11 @@
     },
     {
       "id": "list-row",
-      "version": "0.4.1",
+      "version": "0.5.0",
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "a57e54755e1f5117d3db63268e22479371192838564e2dbc4f639723913b54f8",
-      "sourceFingerprint": "5fa5e6ef99f2cf894c4bdbab63f9586e0602225f30eac7e51901e7c7f81c8e2e",
+      "sourceFingerprint": "7a502784fed030fde7ec4ad7f227c2fe6522dcab72a90027733071212e294ad1",
       "css": "components/list-row.css",
       "js": "components/list-row.js",
       "example": "examples/list-row.html",
@@ -1320,11 +1358,11 @@
     },
     {
       "id": "expandable-card",
-      "version": "0.1.5",
+      "version": "0.2.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "0c092ba89ea81c9623d729e0ffb8e04805609137ca7f706e2af087b74060715f",
-      "sourceFingerprint": "a2f3fa0915197ee35ee954a384e781c5765482cb52f6942a2eb15a41418a5067",
+      "sourceFingerprint": "41455ed053715fb64739b68bce0b960b803d0120e2d68a90c96f9ddbcf9bca7c",
       "css": "components/expandable-card.css",
       "js": "components/expandable-card.js",
       "example": "examples/expandable-card.html",
@@ -1334,11 +1372,11 @@
     },
     {
       "id": "data-tag",
-      "version": "0.2.1",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "97087c3be948d3c15cf72a655b08d466714542df62d09520c33841d6a9a9a364",
-      "sourceFingerprint": "2a8bc16776f9b44b64d5ae40395aecc11e4b89d0d9a6385239f5de0be013c19a",
+      "sourceFingerprint": "f72163d1672f487914cb238939359eb743b71f419c7202386dceca7b2b4a8896",
       "css": "components/data-tag.css",
       "js": "components/data-tag.js",
       "example": "examples/data-tag.html",
@@ -1359,11 +1397,11 @@
     },
     {
       "id": "divider",
-      "version": "0.1.3",
+      "version": "0.2.0",
       "status": "approved",
       "jsRequired": false,
       "canonicalFingerprint": "ecc1feee9c1fe058cab17762aedaef994045b6ba4ac298f421762dc19e3c7821",
-      "sourceFingerprint": "dbaea84234fb3ad85c085fd41ba8243b443506a6576ff3561fcfebbe7c0de8cf",
+      "sourceFingerprint": "1849acab915aa6ee9499c79a40fdb4f9f76b9432f6505d47ee79ca18ccd3b9cc",
       "css": "components/divider.css",
       "js": "components/divider.js",
       "example": "examples/divider.html",
@@ -1383,11 +1421,11 @@
     },
     {
       "id": "lnb",
-      "version": "0.2.4",
+      "version": "0.3.0",
       "status": "approved",
       "jsRequired": true,
       "canonicalFingerprint": "f88063bde5d727e9e3f6cc63872fa259b23058436bde32ac0837e3c6ee376036",
-      "sourceFingerprint": "903223dcabf7dd5df5a328f42ae614c64df0c086600f2fb56ab9f76d8f85db3c",
+      "sourceFingerprint": "2a9ea8e05f72ee6d402f9582dfc297fae0f4aef8c7727dc721fa60b3668cd5d0",
       "css": "components/lnb.css",
       "js": "components/lnb.js",
       "example": "examples/lnb.html",
@@ -1403,6 +1441,77 @@
       ],
       "examples": {
         "pc": "examples/lnb.html"
+      }
+    },
+    {
+      "id": "footer",
+      "version": "0.2.0",
+      "status": "approved",
+      "jsRequired": false,
+      "canonicalFingerprint": "e7dd3c1ea4e7a0fecbce7d05c497a29bea7cdd51b9ad7c782aca88d656074d47",
+      "sourceFingerprint": "e7a0c932b95328b7ace8f074d619e36e971e7d929ce9a7c7b73995f7244404dd",
+      "css": "components/footer.css",
+      "js": "components/footer.js",
+      "example": "examples/footer.html",
+      "kindAttributes": [
+        {
+          "attribute": "data-platform",
+          "axis": "화면 종류",
+          "values": {
+            "pc": "가로 배치 — 왼쪽에 링크·회사 정보·카피라이트, 오른쪽에 에스원 로고. 화면 폭 768 미만에서는 저절로 모바일 모양이 된다",
+            "mobile": "세로 배치 — 링크 줄과 그 아래 가운데 카피라이트만 있고 회사 정보·로고가 없다"
+          }
+        }
+      ],
+      "examples": {
+        "pc": "examples/footer.html"
+      }
+    },
+    {
+      "id": "ci",
+      "version": "0.2.0",
+      "status": "approved",
+      "jsRequired": false,
+      "canonicalFingerprint": "bc8cc2a8a4e7773e52e28084446c4ba737abdc35f721bd32918416fce1cf8d8e",
+      "sourceFingerprint": "6dc94c0cea20b9e00da4c384fb75b29892e564eeddf1b31d1e09273b7071c27f",
+      "css": "components/ci.css",
+      "js": "components/ci.js",
+      "example": "examples/ci.html",
+      "kindAttributes": [
+        {
+          "attribute": "data-brand",
+          "axis": "회사",
+          "values": {
+            "s1": "에스원 로고(선으로 그린 그림, 78.75×30)",
+            "samsung": "삼성 로고(그림 파일, 134×36)"
+          }
+        },
+        {
+          "attribute": "data-color",
+          "axis": "로고 색",
+          "values": {
+            "white": "흰 로고 — 어두운 바탕 위",
+            "blue": "회사 파란색 로고 — 밝은 바탕 위 기본",
+            "dark": "회색 로고 — 밝은 바탕에서 차분하게"
+          }
+        }
+      ],
+      "examples": {
+        "pc": "examples/ci.html"
+      }
+    },
+    {
+      "id": "login-gnb",
+      "version": "0.2.0",
+      "status": "approved",
+      "jsRequired": false,
+      "canonicalFingerprint": "b2c533a59551f9665727b38d0513f90cad3337345f87e710c20e43cfb80bc992",
+      "sourceFingerprint": "5534cca72fc1d120593866203eda4020fdbdd07d82c813ba5cad27e588e324c2",
+      "css": "components/login-gnb.css",
+      "js": "components/login-gnb.js",
+      "example": "examples/login-gnb.html",
+      "examples": {
+        "pc": "examples/login-gnb.html"
       }
     }
   ],
@@ -1439,7 +1548,10 @@
       "expandable-card",
       "data-tag",
       "divider",
-      "lnb"
+      "lnb",
+      "footer",
+      "ci",
+      "login-gnb"
     ],
     "source": "ui-library/src/components/*",
     "rule": "Full and individual outputs are generated in this build invocation from identical source strings."

@@ -926,3 +926,40 @@ export interface S1LnbProps extends Omit<HTMLAttributes<HTMLElement>, keyof Aria
   ref?: Ref<HTMLElement>;
 }
 export declare function S1Lnb(props: S1LnbProps): ReactElement;
+
+export interface S1FooterProps extends Omit<HTMLAttributes<HTMLElement>, keyof AriaAttributes | "parts" | "className" | "style" | "children" | "ref" | "variant">, S1Aria {
+  /** 슬롯 이름별 내용·속성. 예: parts={{ content: "확인" }} */
+  parts?: S1Parts<"content" | "links" | "link" | "company" | "copyright" | "logo">;
+  /** 승인된 변형: pc · mobile */
+  variant?: "pc" | "mobile";
+  className?: string;
+  style?: CSSProperties;
+  /** 루트 요소에 닿는 ref (안쪽 배선과 합쳐진다) */
+  ref?: Ref<HTMLElement>;
+}
+export declare function S1Footer(props: S1FooterProps): ReactElement;
+
+export interface S1CiProps extends Omit<HTMLAttributes<HTMLSpanElement>, keyof AriaAttributes | "parts" | "className" | "style" | "children" | "ref" | "variant">, S1Aria {
+  /** 슬롯 이름별 내용·속성. 예: parts={{ label: "확인" }} */
+  parts?: S1Parts<never>;
+  /** 승인된 변형: s1 · samsung */
+  variant?: "s1" | "samsung";
+  /** 앱이 소유하는 내용 — 주면 예제 내용을 대신한다. */
+  children?: ReactNode;
+  className?: string;
+  style?: CSSProperties;
+  /** 루트 요소에 닿는 ref (안쪽 배선과 합쳐진다) */
+  ref?: Ref<HTMLSpanElement>;
+}
+export declare function S1Ci(props: S1CiProps): ReactElement;
+
+export interface S1LoginGnbProps extends Omit<HTMLAttributes<HTMLElement>, keyof AriaAttributes | "parts" | "className" | "style" | "children" | "ref">, S1Aria {
+  /** 슬롯 이름별 내용·속성. 예: parts={{ service: "확인" }} */
+  parts?: S1Parts<"service" | "lang" | "langIcon" | "langLabel">;
+
+  className?: string;
+  style?: CSSProperties;
+  /** 루트 요소에 닿는 ref (안쪽 배선과 합쳐진다) */
+  ref?: Ref<HTMLElement>;
+}
+export declare function S1LoginGnb(props: S1LoginGnbProps): ReactElement;

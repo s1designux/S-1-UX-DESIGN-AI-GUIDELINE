@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>S1 UI 컴포넌트 미리보기 — 32종</title>
+  <title>S1 UI 컴포넌트 미리보기 — 35종</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/typography.css">
@@ -4116,7 +4116,8 @@
   display: flex;
   gap: var(--spacing-10);
   margin: 0;
-  padding: var(--spacing-16) var(--spacing-16) var(--spacing-16) var(--spacing-20);
+
+  padding: calc(var(--spacing-16) - var(--border-width-default)) calc(var(--spacing-16) - var(--border-width-default)) calc(var(--spacing-16) - var(--border-width-default)) calc(var(--spacing-20) - var(--border-width-default));
   text-align: left;
   transition: background-color .18s ease;
   width: 100%;
@@ -4124,6 +4125,10 @@
 
 [data-s1-component="expandable-card"] [data-s1-part="header"]:hover:where(:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) *:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) [data-s1-component="expandable-card"] *))) {
   background: var(--color-bg-level-1);
+}
+
+[data-s1-component="expandable-card"] [data-s1-part="header"][aria-expanded="true"]:where(:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) *:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) [data-s1-component="expandable-card"] *))) {
+  padding-bottom: var(--spacing-16);
 }
 
 [data-s1-component="expandable-card"] [data-s1-part="header"][aria-expanded="true"]:where(:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) *:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) [data-s1-component="expandable-card"] *))),
@@ -4222,12 +4227,12 @@
   gap: var(--spacing-10);
   min-height: 0;
   overflow: hidden;
-  padding: 0 var(--spacing-16) 0 var(--spacing-20);
+  padding: 0 calc(var(--spacing-16) - var(--border-width-default)) 0 calc(var(--spacing-20) - var(--border-width-default));
   transition: padding .22s ease;
 }
 
 [data-s1-component="expandable-card"] [data-s1-part="panel-wrap"][data-open="true"] [data-s1-part="panel"]:where(:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) *:not([data-s1-component="expandable-card"] [data-s1-component]:not([data-s1-component="expandable-card"]) [data-s1-component="expandable-card"] *))) {
-  padding: var(--spacing-16) var(--spacing-16) var(--spacing-16) var(--spacing-20);
+  padding: var(--spacing-16) calc(var(--spacing-16) - var(--border-width-default)) calc(var(--spacing-16) - var(--border-width-default)) calc(var(--spacing-20) - var(--border-width-default));
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4254,7 +4259,8 @@
 
   letter-spacing: var(--letter-spacing-normal);
   line-height: 1;
-  padding: var(--spacing-6) var(--spacing-8);
+
+  padding: var(--spacing-6) calc(var(--spacing-8) - var(--border-width-default));
   white-space: nowrap;
 }
 
@@ -4331,11 +4337,6 @@
   width: var(--border-width-strong);
 }
 
-[data-s1-component="divider"][data-inset="text"] {
-  margin-inline: var(--spacing-20);
-  width: auto;
-}
-
 /* component:lnb */
 [data-s1-component="lnb"] {
   background: var(--color-navigation-bg);
@@ -4344,7 +4345,8 @@
   display: flex;
   flex-direction: column;
   font-family: "Pretendard Variable", "Pretendard", sans-serif;
-  padding: var(--spacing-12) var(--spacing-12) var(--spacing-16);
+
+  padding: var(--spacing-12) calc(var(--spacing-12) - var(--border-width-default)) var(--spacing-16) var(--spacing-12);
   transition: width .18s ease;
   width: 240px;
 }
@@ -4354,7 +4356,7 @@
 }
 
 [data-s1-component="lnb"][data-state="collapsed"] {
-  padding-inline: var(--spacing-8);
+  padding-inline: var(--spacing-8) calc(var(--spacing-8) - var(--border-width-default));
   width: var(--sizing-80);
 }
 
@@ -4651,6 +4653,309 @@
   }
 }
 
+/* component:footer */
+[data-s1-component="footer"] {
+  box-sizing: border-box;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
+  color: var(--color-text-body-tertiary);
+  display: flex;
+  margin: 0;
+  position: relative;
+  width: 100%;
+}
+
+[data-s1-component="footer"] p,
+[data-s1-component="footer"] ul {
+  margin: 0;
+  padding: 0;
+}
+
+[data-s1-component="footer"] [data-s1-part="links"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  align-items: center;
+  display: flex;
+  list-style: none;
+}
+
+[data-s1-component="footer"] [data-s1-part="links"] > li {
+  align-items: center;
+  display: flex;
+}
+
+[data-s1-component="footer"] [data-s1-part="links"] > li + li::before {
+  background: currentColor;
+  content: "";
+  flex: none;
+  width: var(--border-width-default);
+}
+
+[data-s1-component="footer"] [data-s1-part="link"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+[data-s1-component="footer"] [data-s1-part="company"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  white-space: pre-wrap;
+}
+
+[data-s1-component="footer"] [data-s1-part="logo"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  color: var(--color-icon-gray);
+  display: block;
+  flex: none;
+  height: var(--sizing-16);
+  width: 42px;
+}
+
+[data-s1-component="footer"][data-platform="pc"] {
+  align-items: center;
+  background: var(--color-navigation-bg);
+  justify-content: space-between;
+  min-height: 116px;
+  padding-block: var(--spacing-28);
+  min-width: var(--breakpoint-xl);
+  padding-inline: clamp(0px, calc((100% - var(--breakpoint-xl)) / 2), 320px);
+}
+
+[data-s1-component="footer"][data-platform="pc"]::before {
+  background: var(--color-line-default);
+  content: "";
+  height: var(--border-width-default);
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+[data-s1-component="footer"][data-platform="pc"] [data-s1-part="content"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+[data-s1-component="footer"][data-platform="pc"] [data-s1-part="links"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  gap: var(--spacing-12);
+}
+
+[data-s1-component="footer"][data-platform="pc"] [data-s1-part="links"] > li {
+  gap: var(--spacing-12);
+}
+
+[data-s1-component="footer"][data-platform="pc"] [data-s1-part="links"] > li + li::before {
+  color: var(--color-icon-gray-light);
+  height: var(--spacing-8);
+}
+
+[data-s1-component="footer"][data-platform="pc"] :is([data-s1-part="link"], [data-s1-part="company"], [data-s1-part="copyright"]):where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  font-size: var(--font-size-10);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: var(--line-height-140);
+}
+
+[data-s1-component="footer"][data-platform="mobile"] {
+
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  justify-content: flex-start;
+  width: fit-content;
+  padding: var(--spacing-8) var(--spacing-16);
+}
+
+[data-s1-component="footer"][data-platform="mobile"] [data-s1-part="links"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  gap: var(--spacing-8);
+}
+
+[data-s1-component="footer"][data-platform="mobile"] [data-s1-part="links"] > li {
+  gap: var(--spacing-8);
+}
+
+[data-s1-component="footer"][data-platform="mobile"] [data-s1-part="links"] > li + li::before {
+  color: var(--color-icon-gray-light);
+  height: var(--sizing-10);
+}
+
+[data-s1-component="footer"][data-platform="mobile"] :is([data-s1-part="link"], [data-s1-part="copyright"]):where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+}
+
+[data-s1-component="footer"][data-platform="mobile"] [data-s1-part="copyright"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+  align-self: stretch;
+  text-align: center;
+}
+
+@media (max-width: 767.98px) {
+  [data-s1-component="footer"][data-platform="pc"] {
+    align-items: flex-start;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+    justify-content: flex-start;
+    min-height: 0;
+    min-width: 0;
+    width: fit-content;
+    padding: var(--spacing-8) var(--spacing-16);
+  }
+
+  [data-s1-component="footer"][data-platform="pc"]::before,
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="company"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))),
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="logo"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+    display: none;
+  }
+
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="content"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+    display: contents;
+  }
+
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="links"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))),
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="links"] > li {
+    gap: var(--spacing-8);
+  }
+
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="links"] > li + li::before {
+    color: var(--color-icon-gray-light);
+    height: var(--sizing-10);
+  }
+
+  [data-s1-component="footer"][data-platform="pc"] :is([data-s1-part="link"], [data-s1-part="copyright"]):where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+    font-size: var(--font-size-12);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: var(--letter-spacing-normal);
+    line-height: var(--line-height-130);
+  }
+
+  [data-s1-component="footer"][data-platform="pc"] [data-s1-part="copyright"]:where(:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) *:not([data-s1-component="footer"] [data-s1-component]:not([data-s1-component="footer"]) [data-s1-component="footer"] *))) {
+    align-self: stretch;
+    text-align: center;
+  }
+}
+
+/* component:ci */
+[data-s1-component="ci"] {
+  box-sizing: border-box;
+  display: block;
+  flex: none;
+}
+
+[data-s1-component="ci"][data-brand="s1"] {
+  height: var(--sizing-30);
+  width: 78.75px;
+}
+
+[data-s1-component="ci"][data-brand="s1"] svg {
+  display: block;
+  fill: currentColor;
+  height: 100%;
+  width: 100%;
+}
+
+[data-s1-component="ci"][data-brand="s1"][data-color="white"] {
+  color: var(--color-icon-white);
+}
+
+[data-s1-component="ci"][data-brand="s1"][data-color="blue"] {
+  color: var(--color-brand-ci);
+}
+
+[data-s1-component="ci"][data-brand="s1"][data-color="dark"] {
+  color: var(--color-icon-gray);
+}
+
+[data-s1-component="ci"][data-brand="samsung"] {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 36px;
+  width: 134px;
+}
+
+[data-s1-component="ci"][data-brand="samsung"][data-color="white"] {
+  background-image: url("./assets/images/samsung-white.png");
+}
+
+[data-s1-component="ci"][data-brand="samsung"][data-color="blue"] {
+  background-image: url("./assets/images/samsung-blue.png");
+}
+
+[data-s1-component="ci"][data-brand="samsung"][data-color="dark"] {
+  background-image: url("./assets/images/samsung-dark.png");
+}
+
+/* component:login-gnb */
+[data-s1-component="login-gnb"] {
+  align-items: center;
+  background: var(--color-navigation-bg);
+  box-sizing: border-box;
+  display: flex;
+  font-family: "Pretendard Variable", "Pretendard", sans-serif;
+  height: var(--sizing-56);
+  justify-content: space-between;
+  margin: 0;
+  padding-block: var(--spacing-12);
+  min-width: var(--breakpoint-xl);
+  padding-inline: clamp(0px, calc((100% - var(--breakpoint-xl)) / 2), 320px);
+  position: relative;
+  width: 100%;
+}
+
+[data-s1-component="login-gnb"]::after {
+  background: var(--color-line-default);
+  bottom: 0;
+  content: "";
+  height: var(--border-width-default);
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+
+[data-s1-component="login-gnb"] [data-s1-part="service"]:where(:not([data-s1-component="login-gnb"] [data-s1-component]:not([data-s1-component="login-gnb"]) *:not([data-s1-component="login-gnb"] [data-s1-component]:not([data-s1-component="login-gnb"]) [data-s1-component="login-gnb"] *))) {
+  color: var(--color-text-title-primary);
+  flex: none;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-130);
+  white-space: nowrap;
+}
+
+[data-s1-component="login-gnb"] [data-s1-part="lang"]:where(:not([data-s1-component="login-gnb"] [data-s1-component]:not([data-s1-component="login-gnb"]) *:not([data-s1-component="login-gnb"] [data-s1-component]:not([data-s1-component="login-gnb"]) [data-s1-component="login-gnb"] *))) {
+  align-items: center;
+  appearance: none;
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  color: var(--color-icon-gray-dark);
+  cursor: pointer;
+  display: flex;
+  flex: none;
+  font: inherit;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  gap: var(--spacing-8);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-130);
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+[data-s1-component="login-gnb"] [data-s1-part="lang-icon"]:where(:not([data-s1-component="login-gnb"] [data-s1-component]:not([data-s1-component="login-gnb"]) *:not([data-s1-component="login-gnb"] [data-s1-component]:not([data-s1-component="login-gnb"]) [data-s1-component="login-gnb"] *))) {
+  background-color: var(--color-icon-gray-dark);
+  display: block;
+  flex: none;
+  height: var(--sizing-24);
+  -webkit-mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KICA8c3ZnIGRhdGEtczEtcGFydD0iZ2x5cGgiIHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij4KICAgIDxnIGlkPSJpY1/snbjthLDrhLcg7JuQ67O4Ij4KICAgICAgPHBhdGggaWQ9IlZlY3RvciIgZD0iTTkgMThDMTMuOTY1OSAxOCAxOCAxMy45NjU5IDE4IDlDMTggNC4wMzQxMiAxMy45NjU5IDAgOSAwQzQuMDM0MTIgMCAwIDQuMDM0MTIgMCA5QzAgMTMuOTY1OSA0LjAzNDEyIDE4IDkgMThaTTIuOTc1MjkgMy44NDM1M0MzLjU2ODI0IDQuMDk3NjUgNC4xODIzNSA0LjMyIDQuODE3NjUgNC41QzQuNDI1ODggNS44MDIzNSA0LjIwMzUzIDcuMTM2NDcgNC4xNjExOCA4LjQ3MDU5SDEuMDkwNTlDMS4yMDcwNiA2LjcxMjk0IDEuODk1MjkgNS4xMDM1MyAyLjk3NTI5IDMuODQzNTNaTTUuOTkyOTQgMS42NTE3NkM1LjY3NTI5IDIuMjU1MjkgNS40IDIuODY5NDEgNS4xNjcwNiAzLjQ5NDEyQzQuNjkwNTkgMy4zNTY0NyA0LjIyNDcxIDMuMjA4MjQgMy43OCAzLjAyODI0QzQuNDM2NDcgMi40NTY0NyA1LjE3NzY1IDEuOTkwNTkgNS45OTI5NCAxLjY1MTc2Wk04LjQ3MDU5IDEuMDkwNTlWNC4wMTI5NEM3LjcxODgyIDMuOTgxMTggNi45NTY0NyAzLjg5NjQ3IDYuMjA0NzEgMy43Mzc2NUM2LjUzMjk0IDIuODggNi45MzUyOSAyLjAzMjk0IDcuNDMyOTQgMS4yMTc2NUM3Ljc3MTc3IDEuMTU0MTIgOC4xMjExOCAxLjExMTc2IDguNDcwNTkgMS4wOTA1OVpNMTAuNTY3MSAxLjIxNzY1QzExLjA2NDcgMi4wMzI5NCAxMS40NjcxIDIuODggMTEuNzk1MyAzLjczNzY1QzExLjA0MzUgMy44ODU4OCAxMC4yOTE4IDMuOTgxMTggOS41Mjk0MSA0LjAxMjk0VjEuMDkwNTlDOS44Nzg4MiAxLjExMTc2IDEwLjIyODIgMS4xNTQxMiAxMC41NjcxIDEuMjE3NjVaTTE0LjIyIDMuMDI4MjRDMTMuNzc1MyAzLjIwODI0IDEzLjMwOTQgMy4zNjcwNiAxMi44MzI5IDMuNDk0MTJDMTIuNiAyLjg2OTQxIDEyLjMyNDcgMi4yNTUyOSAxMi4wMDcxIDEuNjUxNzZDMTIuODIyNCAxLjk5MDU5IDEzLjU2MzUgMi40NTY0NyAxNC4yMiAzLjAyODI0Wk0xNi45MDk0IDguNDcwNTlIMTMuODM4OEMxMy43OTY1IDcuMTM2NDcgMTMuNTc0MSA1LjgwMjM1IDEzLjE4MjQgNC41QzEzLjgyODIgNC4zMiAxNC40NDI0IDQuMDk3NjUgMTUuMDI0NyAzLjg0MzUzQzE2LjEwNDcgNS4xMDM1MyAxNi43OTI5IDYuNzEyOTQgMTYuOTA5NCA4LjQ3MDU5Wk0xNS4wMjQ3IDE0LjE1NjVDMTQuNDQyNCAxMy45MDI0IDEzLjgxNzYgMTMuNjggMTMuMTgyNCAxMy41QzEzLjU3NDEgMTIuMTk3NiAxMy43OTY1IDEwLjg2MzUgMTMuODM4OCA5LjUyOTQxSDE2LjkwOTRDMTYuNzkyOSAxMS4yODcxIDE2LjEwNDcgMTIuODk2NSAxNS4wMjQ3IDE0LjE1NjVaTTEyLjAwNzEgMTYuMzQ4MkMxMi4zMjQ3IDE1Ljc0NDcgMTIuNiAxNS4xMzA2IDEyLjgzMjkgMTQuNTA1OUMxMy4zMDk0IDE0LjY0MzUgMTMuNzc1MyAxNC43OTE4IDE0LjIyIDE0Ljk3MThDMTMuNTYzNSAxNS41NDM1IDEyLjgyMjQgMTYuMDA5NCAxMi4wMDcxIDE2LjM0ODJaTTkuNTI5NDEgMTYuOTA5NFYxMy45ODcxQzEwLjI4MTIgMTQuMDE4OCAxMS4wNDM1IDE0LjEwMzUgMTEuNzk1MyAxNC4yNjI0QzExLjQ2NzEgMTUuMTIgMTEuMDY0NyAxNS45NjcxIDEwLjU2NzEgMTYuNzgyNEMxMC4yMjgyIDE2Ljg0NTkgOS44Nzg4MiAxNi44ODgyIDkuNTI5NDEgMTYuOTA5NFpNNy40MzI5NCAxNi43ODI0QzYuOTM1MjkgMTUuOTY3MSA2LjUzMjk0IDE1LjEyIDYuMjA0NzEgMTQuMjYyNEM2Ljk1NjQ3IDE0LjExNDEgNy43MDgyNCAxNC4wMTg4IDguNDcwNTkgMTMuOTg3MVYxNi45MDk0QzguMTIxMTggMTYuODg4MiA3Ljc3MTc3IDE2Ljg0NTkgNy40MzI5NCAxNi43ODI0Wk0zLjc4IDE0Ljk3MThDNC4yMjQ3MSAxNC43OTE4IDQuNjkwNTkgMTQuNjMyOSA1LjE2NzA2IDE0LjUwNTlDNS40IDE1LjEzMDYgNS42NzUyOSAxNS43NDQ3IDUuOTkyOTQgMTYuMzQ4MkM1LjE3NzY1IDE2LjAwOTQgNC40MzY0NyAxNS41NDM1IDMuNzggMTQuOTcxOFpNNS44NDQ3MSA0Ljc0MzUzQzYuNzEyOTQgNC45MjM1MyA3LjU5MTc3IDUuMDQgOC40NzA1OSA1LjA3MTc2VjguNDcwNTlINS4yMkM1LjI2MjM1IDcuMjIxMTggNS40NzQxMiA1Ljk3MTc3IDUuODU1MjkgNC43NDM1M0g1Ljg0NDcxWk0xMi4xNTUzIDQuNzQzNTNDMTIuNTI1OSA1Ljk3MTc3IDEyLjczNzYgNy4yMjExOCAxMi43OTA2IDguNDcwNTlIOS41NFY1LjA3MTc2QzEwLjQxODggNS4wNCAxMS4yODcxIDQuOTM0MTIgMTIuMTY1OSA0Ljc0MzUzSDEyLjE1NTNaTTEyLjE1NTMgMTMuMjU2NUMxMS4yODcxIDEzLjA3NjUgMTAuNDA4MiAxMi45NiA5LjUyOTQxIDEyLjkzODhWOS41NEgxMi43OEMxMi43Mzc2IDEwLjc4OTQgMTIuNTI1OSAxMi4wMzg4IDEyLjE0NDcgMTMuMjY3MUwxMi4xNTUzIDEzLjI1NjVaTTguNDcwNTkgOS41Mjk0MVYxMi45MjgyQzcuNTkxNzcgMTIuOTYgNi43MjM1MyAxMy4wNjU5IDUuODQ0NzEgMTMuMjQ1OUM1LjQ3NDEyIDEyLjAxNzYgNS4yNjIzNSAxMC43NjgyIDUuMjA5NDEgOS41MTg4Mkg4LjQ2TDguNDcwNTkgOS41Mjk0MVpNNC4xNjExOCA5LjUyOTQxQzQuMjAzNTMgMTAuODYzNSA0LjQyNTg4IDEyLjE5NzYgNC44MTc2NSAxMy41QzQuMTcxNzcgMTMuNjggMy41NTc2NSAxMy45MDI0IDIuOTc1MjkgMTQuMTU2NUMxLjg5NTI5IDEyLjg5NjUgMS4yMDcwNiAxMS4yODcxIDEuMDkwNTkgOS41Mjk0MUg0LjE2MTE4WiIgZmlsbD0iYmxhY2siLz4KICAgIDwvZz4KICA8L3N2Zz4KPC9zdmc+Cg==") center / contain no-repeat;
+  mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KICA8c3ZnIGRhdGEtczEtcGFydD0iZ2x5cGgiIHg9IjMiIHk9IjMiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4IiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij4KICAgIDxnIGlkPSJpY1/snbjthLDrhLcg7JuQ67O4Ij4KICAgICAgPHBhdGggaWQ9IlZlY3RvciIgZD0iTTkgMThDMTMuOTY1OSAxOCAxOCAxMy45NjU5IDE4IDlDMTggNC4wMzQxMiAxMy45NjU5IDAgOSAwQzQuMDM0MTIgMCAwIDQuMDM0MTIgMCA5QzAgMTMuOTY1OSA0LjAzNDEyIDE4IDkgMThaTTIuOTc1MjkgMy44NDM1M0MzLjU2ODI0IDQuMDk3NjUgNC4xODIzNSA0LjMyIDQuODE3NjUgNC41QzQuNDI1ODggNS44MDIzNSA0LjIwMzUzIDcuMTM2NDcgNC4xNjExOCA4LjQ3MDU5SDEuMDkwNTlDMS4yMDcwNiA2LjcxMjk0IDEuODk1MjkgNS4xMDM1MyAyLjk3NTI5IDMuODQzNTNaTTUuOTkyOTQgMS42NTE3NkM1LjY3NTI5IDIuMjU1MjkgNS40IDIuODY5NDEgNS4xNjcwNiAzLjQ5NDEyQzQuNjkwNTkgMy4zNTY0NyA0LjIyNDcxIDMuMjA4MjQgMy43OCAzLjAyODI0QzQuNDM2NDcgMi40NTY0NyA1LjE3NzY1IDEuOTkwNTkgNS45OTI5NCAxLjY1MTc2Wk04LjQ3MDU5IDEuMDkwNTlWNC4wMTI5NEM3LjcxODgyIDMuOTgxMTggNi45NTY0NyAzLjg5NjQ3IDYuMjA0NzEgMy43Mzc2NUM2LjUzMjk0IDIuODggNi45MzUyOSAyLjAzMjk0IDcuNDMyOTQgMS4yMTc2NUM3Ljc3MTc3IDEuMTU0MTIgOC4xMjExOCAxLjExMTc2IDguNDcwNTkgMS4wOTA1OVpNMTAuNTY3MSAxLjIxNzY1QzExLjA2NDcgMi4wMzI5NCAxMS40NjcxIDIuODggMTEuNzk1MyAzLjczNzY1QzExLjA0MzUgMy44ODU4OCAxMC4yOTE4IDMuOTgxMTggOS41Mjk0MSA0LjAxMjk0VjEuMDkwNTlDOS44Nzg4MiAxLjExMTc2IDEwLjIyODIgMS4xNTQxMiAxMC41NjcxIDEuMjE3NjVaTTE0LjIyIDMuMDI4MjRDMTMuNzc1MyAzLjIwODI0IDEzLjMwOTQgMy4zNjcwNiAxMi44MzI5IDMuNDk0MTJDMTIuNiAyLjg2OTQxIDEyLjMyNDcgMi4yNTUyOSAxMi4wMDcxIDEuNjUxNzZDMTIuODIyNCAxLjk5MDU5IDEzLjU2MzUgMi40NTY0NyAxNC4yMiAzLjAyODI0Wk0xNi45MDk0IDguNDcwNTlIMTMuODM4OEMxMy43OTY1IDcuMTM2NDcgMTMuNTc0MSA1LjgwMjM1IDEzLjE4MjQgNC41QzEzLjgyODIgNC4zMiAxNC40NDI0IDQuMDk3NjUgMTUuMDI0NyAzLjg0MzUzQzE2LjEwNDcgNS4xMDM1MyAxNi43OTI5IDYuNzEyOTQgMTYuOTA5NCA4LjQ3MDU5Wk0xNS4wMjQ3IDE0LjE1NjVDMTQuNDQyNCAxMy45MDI0IDEzLjgxNzYgMTMuNjggMTMuMTgyNCAxMy41QzEzLjU3NDEgMTIuMTk3NiAxMy43OTY1IDEwLjg2MzUgMTMuODM4OCA5LjUyOTQxSDE2LjkwOTRDMTYuNzkyOSAxMS4yODcxIDE2LjEwNDcgMTIuODk2NSAxNS4wMjQ3IDE0LjE1NjVaTTEyLjAwNzEgMTYuMzQ4MkMxMi4zMjQ3IDE1Ljc0NDcgMTIuNiAxNS4xMzA2IDEyLjgzMjkgMTQuNTA1OUMxMy4zMDk0IDE0LjY0MzUgMTMuNzc1MyAxNC43OTE4IDE0LjIyIDE0Ljk3MThDMTMuNTYzNSAxNS41NDM1IDEyLjgyMjQgMTYuMDA5NCAxMi4wMDcxIDE2LjM0ODJaTTkuNTI5NDEgMTYuOTA5NFYxMy45ODcxQzEwLjI4MTIgMTQuMDE4OCAxMS4wNDM1IDE0LjEwMzUgMTEuNzk1MyAxNC4yNjI0QzExLjQ2NzEgMTUuMTIgMTEuMDY0NyAxNS45NjcxIDEwLjU2NzEgMTYuNzgyNEMxMC4yMjgyIDE2Ljg0NTkgOS44Nzg4MiAxNi44ODgyIDkuNTI5NDEgMTYuOTA5NFpNNy40MzI5NCAxNi43ODI0QzYuOTM1MjkgMTUuOTY3MSA2LjUzMjk0IDE1LjEyIDYuMjA0NzEgMTQuMjYyNEM2Ljk1NjQ3IDE0LjExNDEgNy43MDgyNCAxNC4wMTg4IDguNDcwNTkgMTMuOTg3MVYxNi45MDk0QzguMTIxMTggMTYuODg4MiA3Ljc3MTc3IDE2Ljg0NTkgNy40MzI5NCAxNi43ODI0Wk0zLjc4IDE0Ljk3MThDNC4yMjQ3MSAxNC43OTE4IDQuNjkwNTkgMTQuNjMyOSA1LjE2NzA2IDE0LjUwNTlDNS40IDE1LjEzMDYgNS42NzUyOSAxNS43NDQ3IDUuOTkyOTQgMTYuMzQ4MkM1LjE3NzY1IDE2LjAwOTQgNC40MzY0NyAxNS41NDM1IDMuNzggMTQuOTcxOFpNNS44NDQ3MSA0Ljc0MzUzQzYuNzEyOTQgNC45MjM1MyA3LjU5MTc3IDUuMDQgOC40NzA1OSA1LjA3MTc2VjguNDcwNTlINS4yMkM1LjI2MjM1IDcuMjIxMTggNS40NzQxMiA1Ljk3MTc3IDUuODU1MjkgNC43NDM1M0g1Ljg0NDcxWk0xMi4xNTUzIDQuNzQzNTNDMTIuNTI1OSA1Ljk3MTc3IDEyLjczNzYgNy4yMjExOCAxMi43OTA2IDguNDcwNTlIOS41NFY1LjA3MTc2QzEwLjQxODggNS4wNCAxMS4yODcxIDQuOTM0MTIgMTIuMTY1OSA0Ljc0MzUzSDEyLjE1NTNaTTEyLjE1NTMgMTMuMjU2NUMxMS4yODcxIDEzLjA3NjUgMTAuNDA4MiAxMi45NiA5LjUyOTQxIDEyLjkzODhWOS41NEgxMi43OEMxMi43Mzc2IDEwLjc4OTQgMTIuNTI1OSAxMi4wMzg4IDEyLjE0NDcgMTMuMjY3MUwxMi4xNTUzIDEzLjI1NjVaTTguNDcwNTkgOS41Mjk0MVYxMi45MjgyQzcuNTkxNzcgMTIuOTYgNi43MjM1MyAxMy4wNjU5IDUuODQ0NzEgMTMuMjQ1OUM1LjQ3NDEyIDEyLjAxNzYgNS4yNjIzNSAxMC43NjgyIDUuMjA5NDEgOS41MTg4Mkg4LjQ2TDguNDcwNTkgOS41Mjk0MVpNNC4xNjExOCA5LjUyOTQxQzQuMjAzNTMgMTAuODYzNSA0LjQyNTg4IDEyLjE5NzYgNC44MTc2NSAxMy41QzQuMTcxNzcgMTMuNjggMy41NTc2NSAxMy45MDI0IDIuOTc1MjkgMTQuMTU2NUMxLjg5NTI5IDEyLjg5NjUgMS4yMDcwNiAxMS4yODcxIDEuMDkwNTkgOS41Mjk0MUg0LjE2MTE4WiIgZmlsbD0iYmxhY2siLz4KICAgIDwvZz4KICA8L3N2Zz4KPC9zdmc+Cg==") center / contain no-repeat;
+  width: var(--sizing-24);
+}
+
   </style>
   <style>
     body { margin:0; background:#f6f7f9; color:#111827;
@@ -4690,10 +4995,10 @@
 <body>
   <div class="page">
     <div class="page-head">
-      <h1>S1 UI 컴포넌트 미리보기 — 32종</h1>
+      <h1>S1 UI 컴포넌트 미리보기 — 35종</h1>
       <p>이 페이지는 배포본에 들어 있는 마크업을 그대로 얹어 그린 것입니다. 여기 보이는 모습이 실제 모습입니다.<br>
          React·Vue 는 제목의 이름을 그대로 부르면 됩니다. 크기·변형은 각 이름 옆에 적힌 값만 쓸 수 있습니다.</p>
-      <p class="fingerprint">버전 0.24.2 · 정본 지문 74173580fab2dea369607efb6164a895d246c9da4cb993284b35d04f2e9b7db8</p>
+      <p class="fingerprint">버전 0.26.0 · 정본 지문 0355d63d1dcb6b68d01c8db5adc618f811faf403b39d2a8aff8cde7f7e2beae5</p>
     </div>
     <nav class="index">
         <a href="#input">S1Input</a>
@@ -4728,6 +5033,9 @@
         <a href="#data-tag">S1DataTag</a>
         <a href="#divider">S1Divider</a>
         <a href="#lnb">S1Lnb</a>
+        <a href="#footer">S1Footer</a>
+        <a href="#ci">S1Ci</a>
+        <a href="#login-gnb">S1LoginGnb</a>
     </nav>
       <section class="component" id="input">
         <header class="component-head">
@@ -6500,7 +6808,6 @@
 <hr data-s1-component="divider" data-axis="x" data-weight="strong">
 <hr data-s1-component="divider" data-axis="x" data-tone="strong">
 <hr data-s1-component="divider" data-axis="x" data-tone="strong" data-weight="strong">
-<hr data-s1-component="divider" data-axis="x" data-inset="text">
 <hr data-s1-component="divider" data-axis="y" aria-orientation="vertical"></div>
           </div>
           </div>
@@ -6602,6 +6909,126 @@
           </div>
         </div>
       </section>
+      <section class="component" id="footer">
+        <header class="component-head">
+          <div>
+            <h2>S1Footer</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="footer"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd><code>pc</code> <code>mobile</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><footer data-s1-component="footer" data-platform="pc">
+    <div data-s1-part="content">
+      <ul data-s1-part="links">
+        <li><a data-s1-part="link" href="#">이용약관</a></li>
+        <li><a data-s1-part="link" href="#">개인정보 처리방침</a></li>
+        <li><a data-s1-part="link" href="#">위치기반 서비스 이용약관</a></li>
+      </ul>
+      <p data-s1-part="company">(주)에스원   사업자등록번호 208-81-13302    대표이사 정해린    04511 서울특별시 중구 세종대로 7길 25 에스원 빌딩</p>
+      <p data-s1-part="copyright">© S-1 Corp. All Rights Reserved.</p>
+    </div>
+    <svg data-s1-part="logo" width="42" height="16" viewBox="0 0 42 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M32.6826 14.3262H41.5254V16H30.6992V10.2461H32.6826V14.3262ZM10.1426 15.9902H8.32129V7.07812H7.39258C7.30419 11.1554 5.68825 13.0125 3.70117 13.0127C1.65723 13.0127 0 11.0554 0 6.73047C0 2.41216 1.65721 0.448242 3.70117 0.448242C5.52602 0.448409 7.03869 2.01912 7.34277 5.42676H8.32129V0.172852H10.1426V15.9902ZM12.9111 15.9902H11.084V0.173828H12.9111V15.9902ZM28.084 15.2305H15.084V13.5811H28.084V15.2305ZM41.2891 0.182617V13.0557H39.46V11.2832H36.459V9.64453H39.46V0.182617H41.2891ZM38.8672 8.87891H35.3379V12.1885H33.3799V8.87891H29.7305V7.3291H38.8672V8.87891ZM22.6143 2.46875C22.6143 4.89881 24.005 8.20501 27.7148 9.30078V11.0654C27.6961 11.063 23.8792 10.5615 21.583 6.69531C19.2775 10.5711 15.4512 11.0654 15.4512 11.0654V9.30078C19.1607 8.21325 20.5518 4.89883 20.5518 2.46875V0.551758H22.6143V2.46875ZM3.70215 2.41211C2.66837 2.41211 1.83011 3.41277 1.83008 6.7334C1.83008 10.0732 2.66835 11.0557 3.70215 11.0557C4.73624 11.0556 5.57422 10.0731 5.57422 6.7334C5.57418 3.41295 4.73622 2.41222 3.70215 2.41211ZM34.3525 0C36.6151 0 38.4492 1.17983 38.4492 3.41797C38.449 5.69092 36.615 6.83496 34.3525 6.83496C32.0903 6.83485 30.2561 5.69081 30.2559 3.41797C30.2559 1.17994 32.0901 0 34.3525 0ZM34.3486 1.57227C33.1672 1.57227 32.2091 2.36269 32.209 3.44043C32.209 4.51861 33.1671 5.30859 34.3486 5.30859C35.5303 5.3084 36.4883 4.51026 36.4883 3.44043C36.4882 2.35834 35.5302 1.57246 34.3486 1.57227Z"/></svg>
+  </footer>
+<footer data-s1-component="footer" data-platform="mobile">
+    <ul data-s1-part="links">
+      <li><a data-s1-part="link" href="#">이용약관</a></li>
+      <li><a data-s1-part="link" href="#">개인정보 처리방침</a></li>
+      <li><a data-s1-part="link" href="#">위치기반 서비스 이용약관</a></li>
+    </ul>
+    <p data-s1-part="copyright">© S-1 Corp. All Rights Reserved.</p>
+  </footer></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>화면 맨 아래에 이용약관·개인정보 처리방침·회사 정보·카피라이트를 보여줄 때.</li><li>PC 화면에서는 회사 정보와 로고까지 함께 보여줄 때(PC), 모바일 화면에서는 링크와 카피라이트만 간단히 보여줄 때(Mobile).</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>화면 맨 위 바가 필요할 때 — 그건 GNB 나 로그인 상단바의 몫이다.</li><li>법인 문구를 화면마다 고쳐 쓰고 싶을 때 — 문구는 registry/content/footer.json 이 단일 출처이며 임의로 바꾸지 않는다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="ci">
+        <header class="component-head">
+          <div>
+            <h2>S1Ci</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="ci"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd><code>s1</code> <code>samsung</code></dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><span data-s1-component="ci" data-brand="s1" data-color="white" role="img" aria-label="에스원"><svg viewBox="0 0 42 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M32.6826 14.3262H41.5254V16H30.6992V10.2461H32.6826V14.3262ZM10.1426 15.9902H8.32129V7.07812H7.39258C7.30419 11.1554 5.68825 13.0125 3.70117 13.0127C1.65723 13.0127 0 11.0554 0 6.73047C0 2.41216 1.65721 0.448242 3.70117 0.448242C5.52602 0.448409 7.03869 2.01912 7.34277 5.42676H8.32129V0.172852H10.1426V15.9902ZM12.9111 15.9902H11.084V0.173828H12.9111V15.9902ZM28.084 15.2305H15.084V13.5811H28.084V15.2305ZM41.2891 0.182617V13.0557H39.46V11.2832H36.459V9.64453H39.46V0.182617H41.2891ZM38.8672 8.87891H35.3379V12.1885H33.3799V8.87891H29.7305V7.3291H38.8672V8.87891ZM22.6143 2.46875C22.6143 4.89881 24.005 8.20501 27.7148 9.30078V11.0654C27.6961 11.063 23.8792 10.5615 21.583 6.69531C19.2775 10.5711 15.4512 11.0654 15.4512 11.0654V9.30078C19.1607 8.21325 20.5518 4.89883 20.5518 2.46875V0.551758H22.6143V2.46875ZM3.70215 2.41211C2.66837 2.41211 1.83011 3.41277 1.83008 6.7334C1.83008 10.0732 2.66835 11.0557 3.70215 11.0557C4.73624 11.0556 5.57422 10.0731 5.57422 6.7334C5.57418 3.41295 4.73622 2.41222 3.70215 2.41211ZM34.3525 0C36.6151 0 38.4492 1.17983 38.4492 3.41797C38.449 5.69092 36.615 6.83496 34.3525 6.83496C32.0903 6.83485 30.2561 5.69081 30.2559 3.41797C30.2559 1.17994 32.0901 0 34.3525 0ZM34.3486 1.57227C33.1672 1.57227 32.2091 2.36269 32.209 3.44043C32.209 4.51861 33.1671 5.30859 34.3486 5.30859C35.5303 5.3084 36.4883 4.51026 36.4883 3.44043C36.4882 2.35834 35.5302 1.57246 34.3486 1.57227Z"/></svg></span>
+<span data-s1-component="ci" data-brand="s1" data-color="blue" role="img" aria-label="에스원"><svg viewBox="0 0 42 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M32.6826 14.3262H41.5254V16H30.6992V10.2461H32.6826V14.3262ZM10.1426 15.9902H8.32129V7.07812H7.39258C7.30419 11.1554 5.68825 13.0125 3.70117 13.0127C1.65723 13.0127 0 11.0554 0 6.73047C0 2.41216 1.65721 0.448242 3.70117 0.448242C5.52602 0.448409 7.03869 2.01912 7.34277 5.42676H8.32129V0.172852H10.1426V15.9902ZM12.9111 15.9902H11.084V0.173828H12.9111V15.9902ZM28.084 15.2305H15.084V13.5811H28.084V15.2305ZM41.2891 0.182617V13.0557H39.46V11.2832H36.459V9.64453H39.46V0.182617H41.2891ZM38.8672 8.87891H35.3379V12.1885H33.3799V8.87891H29.7305V7.3291H38.8672V8.87891ZM22.6143 2.46875C22.6143 4.89881 24.005 8.20501 27.7148 9.30078V11.0654C27.6961 11.063 23.8792 10.5615 21.583 6.69531C19.2775 10.5711 15.4512 11.0654 15.4512 11.0654V9.30078C19.1607 8.21325 20.5518 4.89883 20.5518 2.46875V0.551758H22.6143V2.46875ZM3.70215 2.41211C2.66837 2.41211 1.83011 3.41277 1.83008 6.7334C1.83008 10.0732 2.66835 11.0557 3.70215 11.0557C4.73624 11.0556 5.57422 10.0731 5.57422 6.7334C5.57418 3.41295 4.73622 2.41222 3.70215 2.41211ZM34.3525 0C36.6151 0 38.4492 1.17983 38.4492 3.41797C38.449 5.69092 36.615 6.83496 34.3525 6.83496C32.0903 6.83485 30.2561 5.69081 30.2559 3.41797C30.2559 1.17994 32.0901 0 34.3525 0ZM34.3486 1.57227C33.1672 1.57227 32.2091 2.36269 32.209 3.44043C32.209 4.51861 33.1671 5.30859 34.3486 5.30859C35.5303 5.3084 36.4883 4.51026 36.4883 3.44043C36.4882 2.35834 35.5302 1.57246 34.3486 1.57227Z"/></svg></span>
+<span data-s1-component="ci" data-brand="s1" data-color="dark" role="img" aria-label="에스원"><svg viewBox="0 0 42 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M32.6826 14.3262H41.5254V16H30.6992V10.2461H32.6826V14.3262ZM10.1426 15.9902H8.32129V7.07812H7.39258C7.30419 11.1554 5.68825 13.0125 3.70117 13.0127C1.65723 13.0127 0 11.0554 0 6.73047C0 2.41216 1.65721 0.448242 3.70117 0.448242C5.52602 0.448409 7.03869 2.01912 7.34277 5.42676H8.32129V0.172852H10.1426V15.9902ZM12.9111 15.9902H11.084V0.173828H12.9111V15.9902ZM28.084 15.2305H15.084V13.5811H28.084V15.2305ZM41.2891 0.182617V13.0557H39.46V11.2832H36.459V9.64453H39.46V0.182617H41.2891ZM38.8672 8.87891H35.3379V12.1885H33.3799V8.87891H29.7305V7.3291H38.8672V8.87891ZM22.6143 2.46875C22.6143 4.89881 24.005 8.20501 27.7148 9.30078V11.0654C27.6961 11.063 23.8792 10.5615 21.583 6.69531C19.2775 10.5711 15.4512 11.0654 15.4512 11.0654V9.30078C19.1607 8.21325 20.5518 4.89883 20.5518 2.46875V0.551758H22.6143V2.46875ZM3.70215 2.41211C2.66837 2.41211 1.83011 3.41277 1.83008 6.7334C1.83008 10.0732 2.66835 11.0557 3.70215 11.0557C4.73624 11.0556 5.57422 10.0731 5.57422 6.7334C5.57418 3.41295 4.73622 2.41222 3.70215 2.41211ZM34.3525 0C36.6151 0 38.4492 1.17983 38.4492 3.41797C38.449 5.69092 36.615 6.83496 34.3525 6.83496C32.0903 6.83485 30.2561 5.69081 30.2559 3.41797C30.2559 1.17994 32.0901 0 34.3525 0ZM34.3486 1.57227C33.1672 1.57227 32.2091 2.36269 32.209 3.44043C32.209 4.51861 33.1671 5.30859 34.3486 5.30859C35.5303 5.3084 36.4883 4.51026 36.4883 3.44043C36.4882 2.35834 35.5302 1.57246 34.3486 1.57227Z"/></svg></span>
+<span data-s1-component="ci" data-brand="samsung" data-color="white" role="img" aria-label="삼성"></span>
+<span data-s1-component="ci" data-brand="samsung" data-color="blue" role="img" aria-label="삼성"></span>
+<span data-s1-component="ci" data-brand="samsung" data-color="dark" role="img" aria-label="삼성"></span></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>화면에 회사 로고를 보여줄 때(에스원 · 삼성).</li><li>밝은 로고(White)가 필요한 어두운 바탕, 브랜드색(Blue), 회색(Dark) 중에서 바탕에 맞춰 고를 때.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>서비스 이름 글자를 보여줄 때 — 그건 서비스 이름 글자 자리의 몫이다.</li><li>로고를 임의로 늘리거나 색을 바꿀 때 — 크기와 색은 이 부품의 값만 쓴다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="component" id="login-gnb">
+        <header class="component-head">
+          <div>
+            <h2>S1LoginGnb</h2>
+            <p class="component-id">React·Vue 이름 · 마크업은 <code>data-s1-component="login-gnb"</code></p>
+          </div>
+          <dl class="component-axes">
+            <dt>크기</dt><dd>크기 축 없음</dd>
+            <dt>변형</dt><dd>변형 없음</dd>
+          </dl>
+        </header>
+        <div class="component-body">
+          <div class="samples">
+          <div class="sample">
+            <div class="sample-label">pc</div>
+            <div class="sample-stage" data-break="pc"><header data-s1-component="login-gnb">
+  <span data-s1-part="service">[서비스명]</span>
+  <button type="button" data-s1-part="lang">
+    <span data-s1-part="lang-icon" aria-hidden="true"></span>
+    <span data-s1-part="lang-label">한국어</span>
+  </button>
+</header></div>
+          </div>
+          </div>
+          <div class="component-usage">
+            <div class="usage-block">
+              <div class="usage-title">언제 쓰나</div>
+              <ul><li>로그인 화면 맨 위에 서비스 이름과 언어 선택을 보여줄 때.</li></ul>
+            </div>
+            <div class="usage-block usage-block-avoid">
+              <div class="usage-title">이럴 땐 다른 걸</div>
+              <ul><li>로그인 후 화면의 주 메뉴가 필요할 때 — 그건 GNB 의 몫이다.</li><li>삼성 로고를 이 바 안에 넣으려 할 때 — 정본에서 2026-06-24 제거됐다.</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
   </div>
   <script>
 var S1UI = (() => {
@@ -6633,18 +7060,21 @@ var S1UI = (() => {
     button: () => button_exports,
     checkbox: () => checkbox_exports,
     chip: () => chip_exports,
+    ci: () => ci_exports,
     dataTag: () => data_tag_exports,
     datePicker: () => date_picker_exports,
     divider: () => divider_exports,
     dropdown: () => dropdown_exports,
     expandableCard: () => expandable_card_exports,
     filterChip: () => filter_chip_exports,
+    footer: () => footer_exports,
     gnb: () => gnb_exports,
     gnbSubMenu: () => gnb_sub_menu_exports,
     gnbSubMenuItem: () => gnb_sub_menu_item_exports,
     input: () => input_exports,
     listRow: () => list_row_exports,
     lnb: () => lnb_exports,
+    loginGnb: () => login_gnb_exports,
     mobileBottomNav: () => mobile_bottom_nav_exports,
     mobileHeader: () => mobile_header_exports,
     modal: () => modal_exports,
@@ -10644,6 +11074,39 @@ var S1UI = (() => {
   var componentId32 = "divider";
   var jsRequired32 = false;
   var runtime32 = null;
+
+  // dist-virtual:components/footer.js
+  var footer_exports = {};
+  __export(footer_exports, {
+    componentId: () => componentId33,
+    jsRequired: () => jsRequired33,
+    runtime: () => runtime33
+  });
+  var componentId33 = "footer";
+  var jsRequired33 = false;
+  var runtime33 = null;
+
+  // dist-virtual:components/ci.js
+  var ci_exports = {};
+  __export(ci_exports, {
+    componentId: () => componentId34,
+    jsRequired: () => jsRequired34,
+    runtime: () => runtime34
+  });
+  var componentId34 = "ci";
+  var jsRequired34 = false;
+  var runtime34 = null;
+
+  // dist-virtual:components/login-gnb.js
+  var login_gnb_exports = {};
+  __export(login_gnb_exports, {
+    componentId: () => componentId35,
+    jsRequired: () => jsRequired35,
+    runtime: () => runtime35
+  });
+  var componentId35 = "login-gnb";
+  var jsRequired35 = false;
+  var runtime35 = null;
 
   // s1-ui.auto.js
   function autoInit(scope = document) {

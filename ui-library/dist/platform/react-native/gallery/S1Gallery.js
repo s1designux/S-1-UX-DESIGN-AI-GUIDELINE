@@ -37,8 +37,11 @@ import S1ExpandableCard from "../components/expandable-card.js";
 import S1DataTag from "../components/data-tag.js";
 import S1Divider from "../components/divider.js";
 import S1Lnb from "../components/lnb.js";
+import S1Footer from "../components/footer.js";
+import S1Ci from "../components/ci.js";
+import S1LoginGnb from "../components/login-gnb.js";
 
-const COMPONENTS = { S1Input, S1Button, S1Checkbox, S1Radio, S1Toggle, S1Chip, S1Dropdown, S1Select, S1FilterChip, S1Tab, S1Pagination, S1Textarea, S1MultiToggle, S1Modal, S1Table, S1MobileBottomNav, S1MobileHeader, S1TimePicker, S1DatePicker, S1Gnb, S1GnbSubMenuItem, S1GnbSubMenu, S1AssistButton, S1TextButton, S1ModalContent, S1BottomSheetOption, S1BottomSheet, S1ListRow, S1ExpandableCard, S1DataTag, S1Divider, S1Lnb };
+const COMPONENTS = { S1Input, S1Button, S1Checkbox, S1Radio, S1Toggle, S1Chip, S1Dropdown, S1Select, S1FilterChip, S1Tab, S1Pagination, S1Textarea, S1MultiToggle, S1Modal, S1Table, S1MobileBottomNav, S1MobileHeader, S1TimePicker, S1DatePicker, S1Gnb, S1GnbSubMenuItem, S1GnbSubMenu, S1AssistButton, S1TextButton, S1ModalContent, S1BottomSheetOption, S1BottomSheet, S1ListRow, S1ExpandableCard, S1DataTag, S1Divider, S1Lnb, S1Footer, S1Ci, S1LoginGnb };
 
 export function S1Gallery({ only, breakName, columns }) {
   const { dark } = useS1();

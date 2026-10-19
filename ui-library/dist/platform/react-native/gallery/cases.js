@@ -5977,25 +5977,6 @@ export const CASES = [
   }
  },
  {
-  "id": "divider/pc/x/-/data-inset=text",
-  "component": "S1Divider",
-  "break": "pc",
-  "title": "divider · pc · x/-/data-inset=text",
-  "props": {
-   "breakName": "pc",
-   "data-inset": "text",
-   "variant": "x"
-  },
-  "web": {
-   "example": "pc",
-   "instance": 0,
-   "attributes": {
-    "data-axis": "x",
-    "data-inset": "text"
-   }
-  }
- },
- {
   "id": "divider/pc/x/-/data-weight=strong",
   "component": "S1Divider",
   "break": "pc",
@@ -6029,25 +6010,6 @@ export const CASES = [
    "instance": 0,
    "attributes": {
     "data-axis": "y"
-   }
-  }
- },
- {
-  "id": "divider/pc/y/-/data-inset=text",
-  "component": "S1Divider",
-  "break": "pc",
-  "title": "divider · pc · y/-/data-inset=text",
-  "props": {
-   "breakName": "pc",
-   "data-inset": "text",
-   "variant": "y"
-  },
-  "web": {
-   "example": "pc",
-   "instance": 0,
-   "attributes": {
-    "data-axis": "y",
-    "data-inset": "text"
    }
   }
  },
@@ -6206,6 +6168,164 @@ export const CASES = [
     "data-variant": "brand",
     "data-size": "lg"
    }
+  }
+ },
+ {
+  "id": "footer/pc#pc.0/pc/-/default",
+  "component": "S1Footer",
+  "break": "pc",
+  "title": "footer · pc#pc.0 · pc/-/default",
+  "props": {
+   "breakName": "pc",
+   "variant": "pc"
+  },
+  "web": {
+   "example": "pc",
+   "instance": 0,
+   "attributes": {
+    "data-platform": "pc"
+   }
+  }
+ },
+ {
+  "id": "footer/pc#mobile.1/mobile/-/default",
+  "component": "S1Footer",
+  "break": "pc",
+  "title": "footer · pc#mobile.1 · mobile/-/default",
+  "props": {
+   "breakName": "pc",
+   "variant": "mobile"
+  },
+  "web": {
+   "example": "pc",
+   "instance": 1,
+   "attributes": {
+    "data-platform": "mobile"
+   }
+  }
+ },
+ {
+  "id": "ci/pc#s1.0/s1/-/default",
+  "component": "S1Ci",
+  "break": "pc",
+  "title": "ci · pc#s1.0 · s1/-/default",
+  "props": {
+   "breakName": "pc",
+   "variant": "s1"
+  },
+  "web": {
+   "example": "pc",
+   "instance": 0,
+   "attributes": {
+    "data-brand": "s1"
+   }
+  }
+ },
+ {
+  "id": "ci/pc#s1.0/s1/-/data-color=blue",
+  "component": "S1Ci",
+  "break": "pc",
+  "title": "ci · pc#s1.0 · s1/-/data-color=blue",
+  "props": {
+   "breakName": "pc",
+   "data-color": "blue",
+   "variant": "s1"
+  },
+  "web": {
+   "example": "pc",
+   "instance": 0,
+   "attributes": {
+    "data-brand": "s1",
+    "data-color": "blue"
+   }
+  }
+ },
+ {
+  "id": "ci/pc#s1.0/s1/-/data-color=dark",
+  "component": "S1Ci",
+  "break": "pc",
+  "title": "ci · pc#s1.0 · s1/-/data-color=dark",
+  "props": {
+   "breakName": "pc",
+   "data-color": "dark",
+   "variant": "s1"
+  },
+  "web": {
+   "example": "pc",
+   "instance": 0,
+   "attributes": {
+    "data-brand": "s1",
+    "data-color": "dark"
+   }
+  }
+ },
+ {
+  "id": "ci/pc#samsung.1/samsung/-/default",
+  "component": "S1Ci",
+  "break": "pc",
+  "title": "ci · pc#samsung.1 · samsung/-/default",
+  "props": {
+   "breakName": "pc",
+   "variant": "samsung"
+  },
+  "web": {
+   "example": "pc",
+   "instance": 3,
+   "attributes": {
+    "data-brand": "samsung"
+   }
+  }
+ },
+ {
+  "id": "ci/pc#samsung.1/samsung/-/data-color=blue",
+  "component": "S1Ci",
+  "break": "pc",
+  "title": "ci · pc#samsung.1 · samsung/-/data-color=blue",
+  "props": {
+   "breakName": "pc",
+   "data-color": "blue",
+   "variant": "samsung"
+  },
+  "web": {
+   "example": "pc",
+   "instance": 3,
+   "attributes": {
+    "data-brand": "samsung",
+    "data-color": "blue"
+   }
+  }
+ },
+ {
+  "id": "ci/pc#samsung.1/samsung/-/data-color=dark",
+  "component": "S1Ci",
+  "break": "pc",
+  "title": "ci · pc#samsung.1 · samsung/-/data-color=dark",
+  "props": {
+   "breakName": "pc",
+   "data-color": "dark",
+   "variant": "samsung"
+  },
+  "web": {
+   "example": "pc",
+   "instance": 3,
+   "attributes": {
+    "data-brand": "samsung",
+    "data-color": "dark"
+   }
+  }
+ },
+ {
+  "id": "login-gnb/pc/-/-/default",
+  "component": "S1LoginGnb",
+  "break": "pc",
+  "title": "login-gnb · pc · -/-/default",
+  "props": {
+   "breakName": "pc"
+  },
+  "web": {
+   "example": "pc",
+   "instance": 0,
+   "attributes": {}
   }
  }
 ];

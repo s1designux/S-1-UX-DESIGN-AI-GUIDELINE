@@ -1,0 +1,135 @@
+{
+  "id": "login-gnb",
+  "version": "0.2.0",
+  "status": "approved",
+  "canonicalFingerprint": "b2c533a59551f9665727b38d0513f90cad3337345f87e710c20e43cfb80bc992",
+  "canonicalSources": [
+    "plugins/figma-vars-installer/src/build-components.ts",
+    "plugins/figma-vars-installer/src/vars-data.ts",
+    "plugins/figma-vars-installer/src/textstyles-data.ts",
+    "registry/components/login-gnb.json"
+  ],
+  "rootSelector": "[data-s1-component=\"login-gnb\"]",
+  "variants": [],
+  "sizes": [],
+  "geometry": {
+    "root": {
+      "height": "--sizing-56",
+      "paddingBlock": "--spacing-12",
+      "paddingInline": "clamp(0px, (100% - --breakpoint-xl) / 2, 320px), min-width --breakpoint-xl",
+      "note": "정본은 폭 1920 고정·좌우 패딩 320 이다. 웹은 바 배경이 화면 폭을 채우고 안쪽 내용은 가운데 1280(canon breakpoint/xl) 열이다 — 좌우 여백은 (100% − 1280)/2 를 320 까지로 제한(1920 → 320, 1600 → 160, 1280 → 0). 1280 보다 좁아도 줄어들지 않고 가로로 넘친다(river D-2, 2026-10-12: \"가운데 1280폭을 지키고 그 이후로는 대응 안함.\")."
+    },
+    "language": {
+      "gap": "--spacing-8",
+      "globe": "--sizing-24",
+      "note": "GNB 의 값(지구본 32 · 글자색 text/body/primary · 간격 4)과 다르다 — 정본 buildLoginGNB 값."
+    },
+    "source": "build-components.ts buildLoginGNB",
+    "provenance": "정본 buildLoginGNB(build-components.ts:6786-6833) 수치 그대로."
+  },
+  "states": {
+    "default": "속성 생략 — 정본에 다른 상태가 없다"
+  },
+  "canonicalStateMap": {},
+  "notInCanon": {
+    "samsungLogo": "삼성 로고는 2026-06-24 정본에서 제거됐다(사용자 결정). 왼쪽은 서비스 이름 글자 자리 하나뿐이다.",
+    "hover": "정본에 hover·pressed 가 없다. 언어 조작의 색을 바꾸지 않는다.",
+    "english": "영어 변형이 없다 — 언어 글자는 '한국어' 고정이고 쓰는 화면이 채운다.",
+    "focusVisible": "정본에 focus 변형이 없다. 다른 코어와 같은 이유로(2026-09-02 river 결정) 웹에서도 만들지 않으며, 키보드 초점은 브라우저 기본 표시에 맡긴다."
+  },
+  "parts": [
+    "service",
+    "lang",
+    "lang-icon",
+    "lang-label"
+  ],
+  "htmlContract": {
+    "root": "header[data-s1-component=login-gnb]. 화면 맨 위 바(banner 랜드마크). 변형 속성이 없다.",
+    "requiredAttributes": [],
+    "requiredParts": [
+      "service",
+      "lang",
+      "lang-icon",
+      "lang-label"
+    ],
+    "optionalParts": [],
+    "axes": {},
+    "structure": "header > span[service] + button[lang] > (span[lang-icon] + span[lang-label])",
+    "relations": [
+      "언어 조작은 GNB 의 lang 과 같은 button type=button 이다(GNB 의미 그대로 — 새 동작을 만들지 않는다). 눌렀을 때 무엇을 할지는 쓰는 화면이 배선한다.",
+      "지구본은 아이콘 라이브러리 globe(24 frame, 글리프 18) 를 CSS 마스크로 그린다 — 색은 icon/gray-dark."
+    ],
+    "source": "components/login-gnb/login-gnb.example.html",
+    "distribution": "examples/login-gnb.html"
+  },
+  "cssContract": {
+    "entry": "components/login-gnb.css",
+    "rootScope": "[data-s1-component=login-gnb]",
+    "nativeStates": [],
+    "documentedDataStates": [],
+    "customization": "정본 Semantic token만 교체하며 공개 selector의 구조를 override하지 않는다."
+  },
+  "contentSlots": {
+    "service": "서비스 이름 글자 — 기본 [서비스명], 쓰는 화면이 실제 이름으로 채운다",
+    "lang-label": "언어 글자 — 정본 기본 한국어, 쓰는 화면이 현재 언어를 채운다"
+  },
+  "dependencies": {
+    "font": [
+      {
+        "family": "Pretendard Variable",
+        "source": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+      }
+    ],
+    "css": [
+      "assets/css/tokens.css",
+      "assets/css/typography.css"
+    ],
+    "coreComponents": []
+  },
+  "icons": [
+    {
+      "id": "globe",
+      "sourceKey": "dee16df7e4ccddbd5dd7aa1d2fbf93f841f5dee2",
+      "asset": "assets/icons/globe.svg",
+      "use": "언어 지구본(24px — 아이콘 frame 24, 글리프 18)",
+      "accessibleNamePolicy": "decorative; 옆의 보이는 언어 글자가 접근 가능한 이름이다",
+      "note": "GNB 가 이미 등록한 globe 를 재사용한다(재등록 없음). GNB 는 32 칸에 쓰고 이 바는 24 칸에 쓴다."
+    }
+  ],
+  "a11y": {
+    "nativeSemantics": {
+      "status": "required",
+      "value": "header(banner 랜드마크). 언어 조작은 button type=button. 서비스 이름은 글자 노드."
+    },
+    "accessibleName": {
+      "status": "required",
+      "value": "언어 button 은 보이는 글자(한국어)가 이름이다. 지구본은 aria-hidden 장식. 서비스 이름은 글자 자체가 이름이다."
+    },
+    "keyboard": {
+      "status": "required",
+      "value": "언어 button 은 Tab 으로 초점을 받고 Enter·Space 로 활성화된다(button 기본 동작). 이 부품이 새 키 조작을 만들지 않는다."
+    },
+    "focus": {
+      "status": "required",
+      "value": "브라우저 기본 초점 표시에 맡긴다(2026-09-02 river 결정 — 정본에 focus 변형 없음)."
+    },
+    "ariaStateSync": {
+      "status": "not-applicable",
+      "reason": "언어 button 은 펼침·선택 상태를 갖지 않는다(정본에 팝업 없음)."
+    },
+    "errorRelation": {
+      "status": "not-applicable",
+      "reason": "정본에 오류 표시가 없다."
+    },
+    "reducedMotion": {
+      "status": "not-applicable",
+      "reason": "움직임이 없다."
+    }
+  },
+  "jsRequired": false,
+  "javascript": {
+    "runtime": "none",
+    "reason": "바 모양만 소유한다. 언어 선택 동작은 쓰는 화면이 배선한다."
+  },
+  "sourceFingerprint": "5534cca72fc1d120593866203eda4020fdbdd07d82c813ba5cad27e588e324c2"
+}

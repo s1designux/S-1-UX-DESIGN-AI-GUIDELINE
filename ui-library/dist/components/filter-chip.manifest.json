@@ -1,6 +1,6 @@
 {
   "id": "filter-chip",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "status": "approved",
   "canonicalFingerprint": "e9ee9098166ab334c5cd6e353abd207bf7cfbec36b8515bdf2cb9fbd2dfb52d8",
   "canonicalSources": [
@@ -230,5 +230,5 @@
       "data-name": "폼 전송용 숨은 입력의 name (고른 옵션 값이 실린다)"
     }
   },
-  "sourceFingerprint": "3cdb176b874bcdb02194d063f5213bae6e45ce96bc4bb608046b78a9da4bd79a"
+  "sourceFingerprint": "c0d6fb9ace6c9c78bde2191ca4f43ebe287483b2491e43ddf3cbad0175e061fb"
 }

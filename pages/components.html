@@ -1830,9 +1830,9 @@
           <button class="comp-nav-btn" data-category="navigation" data-platforms="pc" onclick="showSection('pagination', this)">Pagination</button>
           <button class="comp-nav-btn" data-category="navigation" data-platforms="mobile" onclick="showSection('mobile-bottom-nav', this)">Bottom Nav</button>
           <button class="comp-nav-btn" data-category="navigation" data-platforms="mobile" onclick="showSection('mobile-header', this)">Mobile Header</button>
-          <button class="comp-nav-btn" data-category="platform" data-platforms="pc mobile" onclick="showSection('ci', this)" disabled>CI Logo</button>
-          <button class="comp-nav-btn" data-category="platform" data-platforms="pc" onclick="showSection('footer', this)" disabled>Footer</button>
-          <button class="comp-nav-btn" data-category="platform" data-platforms="pc" onclick="showSection('login-gnb', this)" disabled>Login GNB</button>
+          <button class="comp-nav-btn" data-category="platform" data-platforms="pc mobile" onclick="showSection('ci', this)">CI Logo</button>
+          <button class="comp-nav-btn" data-category="platform" data-platforms="pc mobile" onclick="showSection('footer', this)">Footer</button>
+          <button class="comp-nav-btn" data-category="platform" data-platforms="pc" onclick="showSection('login-gnb', this)">Login GNB</button>
           <button class="comp-nav-btn" data-category="overlay" data-platforms="pc mobile" onclick="showSection('modal', this)">Modal</button>
           <button class="comp-nav-btn" data-category="overlay" data-platforms="pc" onclick="showSection('modal-content', this)">Modal Content</button>
           <button class="comp-nav-btn" data-category="overlay" data-platforms="mobile" onclick="showSection('bottom-sheet', this)">Bottom Sheet</button>
@@ -2547,6 +2547,15 @@ update(); // 초기화</pre>
       <!-- Approved List Row guide: ui-library-guide.js renders from ui-library/dist -->
       <section class="comp-section" id="list-row" data-cov-type="nav,value,read,pick,agree,switch,thumb" data-cov-states="default,pressed,disabled"></section>
 
+      <!-- Approved Login GNB guide: ui-library-guide.js renders from ui-library/dist -->
+      <section class="comp-section" id="login-gnb"></section>
+
+      <!-- Approved Footer guide: ui-library-guide.js renders from ui-library/dist -->
+      <section class="comp-section" id="footer" data-cov-platform="pc,mobile"></section>
+
+      <!-- Approved CI guide: ui-library-guide.js renders from ui-library/dist -->
+      <section class="comp-section" id="ci" data-cov-brand="에스원,삼성" data-cov-color="white,blue,dark"></section>
+
       <!-- >>> GEN:COMPONENT-STUBS >>> 자동 생성 (npm run stubs:gen). 수동 편집 금지. -->
       <!-- ═══ LINE TAB ═══ -->
       <section class="comp-section" id="line-tab">
@@ -2629,32 +2638,6 @@ update(); // 초기화</pre>
         </div>
       </section>
 
-      <!-- ═══ LOGIN GNB ═══ -->
-      <section class="comp-section" id="login-gnb">
-        <div class="comp-section-header">
-          <h2 class="comp-section-title">Login GNB</h2>
-          <span class="comp-badge">Element</span>
-          <span class="comp-badge">3 tokens</span>
-        </div>
-        <div class="code-block">
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'lgnb-tokens')">Token Details</button>
-          </div>
-          <div class="code-pane active" id="lgnb-tokens">
-            <table class="token-detail-table">
-              <thead>
-                <tr><th>Token</th><th>Value (Semantic)</th><th>Resolved</th><th>Role</th></tr>
-              </thead>
-              <tbody>
-                <tr><td class="token-name">--color-navigation-bg</td><td class="token-value">var(--color-base-white)</td><td class="token-resolved" data-token="--color-navigation-bg"></td><td>background</td></tr>
-                <tr><td class="token-name">--color-text-title-primary</td><td class="token-value">var(--color-gray-900)</td><td class="token-resolved" data-token="--color-text-title-primary"></td><td>text</td></tr>
-                <tr><td class="token-name">--color-icon-gray</td><td class="token-value">var(--color-gray-dark-600)</td><td class="token-resolved" data-token="--color-icon-gray"></td><td>icon</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
       <!-- ═══ WEB TAB BAR ═══ -->
       <section class="comp-section" id="web-tab-bar">
         <div class="comp-section-header">
@@ -2682,31 +2665,6 @@ update(); // 초기화</pre>
         </div>
       </section>
 
-      <!-- ═══ CI ═══ -->
-      <section class="comp-section" id="ci">
-        <div class="comp-section-header">
-          <h2 class="comp-section-title">CI</h2>
-          <span class="comp-badge">Element</span>
-          <span class="comp-badge">2 tokens</span>
-        </div>
-        <div class="code-block">
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'ci-tokens')">Token Details</button>
-          </div>
-          <div class="code-pane active" id="ci-tokens">
-            <table class="token-detail-table">
-              <thead>
-                <tr><th>Token</th><th>Value (Semantic)</th><th>Resolved</th><th>Role</th></tr>
-              </thead>
-              <tbody>
-                <tr><td class="token-name">--color-brand-blue</td><td class="token-value">#0072CE</td><td class="token-resolved" data-token="--color-brand-blue"></td><td>brand primary</td></tr>
-                <tr><td class="token-name">--color-brand-gray</td><td class="token-value">#DFDEDE</td><td class="token-resolved" data-token="--color-brand-gray"></td><td>brand secondary</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
       <!-- ═══ MULTI TOGGLE ELEMENT ═══ -->
       <section class="comp-section" id="multi-toggle-element">
         <div class="comp-section-header">
@@ -2728,33 +2686,6 @@ update(); // 초기화</pre>
                 <tr><td class="token-name">--color-control-bg-selected</td><td class="token-value">var(--color-blue-400)</td><td class="token-resolved" data-token="--color-control-bg-selected"></td><td>background · selected</td></tr>
                 <tr><td class="token-name">--color-control-label-default</td><td class="token-value">var(--color-gray-800)</td><td class="token-resolved" data-token="--color-control-label-default"></td><td>text · default</td></tr>
                 <tr><td class="token-name">--color-button-label-primary--default</td><td class="token-value">var(--color-base-white)</td><td class="token-resolved" data-token="--color-button-label-primary--default"></td><td>text · selected</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══ FOOTER ═══ -->
-      <section class="comp-section" id="footer">
-        <div class="comp-section-header">
-          <h2 class="comp-section-title">Footer</h2>
-          <span class="comp-badge">Element</span>
-          <span class="comp-badge">4 tokens</span>
-        </div>
-        <div class="code-block">
-          <div class="code-tabs">
-            <button class="code-tab active" onclick="switchTab(this,'footer-tokens')">Token Details</button>
-          </div>
-          <div class="code-pane active" id="footer-tokens">
-            <table class="token-detail-table">
-              <thead>
-                <tr><th>Token</th><th>Value (Semantic)</th><th>Resolved</th><th>Role</th></tr>
-              </thead>
-              <tbody>
-                <tr><td class="token-name">--color-bg-default</td><td class="token-value">var(--color-gray-0)</td><td class="token-resolved" data-token="--color-bg-default"></td><td>background</td></tr>
-                <tr><td class="token-name">--color-text-body-primary</td><td class="token-value">var(--color-gray-900)</td><td class="token-resolved" data-token="--color-text-body-primary"></td><td>text primary</td></tr>
-                <tr><td class="token-name">--color-text-body-secondary</td><td class="token-value">var(--color-gray-800)</td><td class="token-resolved" data-token="--color-text-body-secondary"></td><td>text secondary</td></tr>
-                <tr><td class="token-name">--color-action-primary-default</td><td class="token-value">var(--color-blue-400)</td><td class="token-resolved" data-token="--color-action-primary-default"></td><td>link</td></tr>
               </tbody>
             </table>
           </div>

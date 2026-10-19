@@ -1,0 +1,132 @@
+{
+  "_meta": {
+    "id": "ci",
+    "name": "CI",
+    "category": "core",
+    "updatedAt": "2026-10-02",
+    "version": "0.1.0",
+    "tokenStatus": "stable",
+    "codeStatus": "planned",
+    "darkModeStatus": "stable",
+    "a11yStatus": "candidate",
+    "figmaStatus": "planned",
+    "harnessStatus": "planned",
+    "description": "브랜드 로고. 브랜드(에스원·삼성) × 색(White·Blue·Dark) 6가지. 에스원은 벡터 로고(78.75×30)이고 색은 토큰이 정한다. 삼성은 정본 이미지(134×36)이고 색별 그림이 따로 있다.",
+    "a11yApproval": "3-build 에서 정의, river UX 검수에서 확정 — 로고가 회사를 알려 주는 자리면 role=img 와 aria-label(에스원 · 삼성)을 준다. 옆 글자가 이미 이름을 말하는 장식 자리는 쓰는 화면이 aria-hidden 으로 바꾼다.",
+    "codeStatusNote": "정본 buildCI 는 설치기에 이미 있었다. 웹 배포본은 work-id platform-web-3 로 신설. 삼성 이미지는 Figma 파일 내장 이미지(imageHash 3종)를 내려받아 배포본에 담는다.",
+    "platform": "both"
+  },
+  "usage": {
+    "whenToUse": [
+      "화면에 회사 로고를 보여줄 때(에스원 · 삼성).",
+      "밝은 로고(White)가 필요한 어두운 바탕, 브랜드색(Blue), 회색(Dark) 중에서 바탕에 맞춰 고를 때."
+    ],
+    "whenNotToUse": [
+      "서비스 이름 글자를 보여줄 때 — 그건 서비스 이름 글자 자리의 몫이다.",
+      "로고를 임의로 늘리거나 색을 바꿀 때 — 크기와 색은 이 부품의 값만 쓴다."
+    ],
+    "note": "White·Blue 는 라이트·다크에서 같은 색이다(정본 모드 불변). Dark 만 다크 모드에서 바뀐다."
+  },
+  "anatomy": [
+    {
+      "part": "에스원 로고",
+      "role": "78.75×30 벡터. 색은 currentColor — White(icon/white) · Blue(Foundation brand/ci) · Dark(icon/gray)."
+    },
+    {
+      "part": "삼성 로고",
+      "role": "134×36 칸에 정본 이미지를 꽉 채운다(cover). 색별로 이미지가 다르다."
+    }
+  ],
+  "doDont": {
+    "do": [
+      "바탕에 맞는 색을 고른다(어두운 바탕 → White).",
+      "로고가 이름을 알려 주는 자리에는 role=img 와 aria-label 을 준다."
+    ],
+    "dont": [
+      "에스원 로고를 78.75×30 이 아닌 비율로 늘리지 않는다.",
+      "삼성 로고를 다른 출처의 그림으로 바꾸지 않는다(정본 이미지만)."
+    ]
+  },
+  "a11y": [
+    "로고가 회사를 알려 주는 자리에서는 role=img 와 aria-label(에스원 또는 삼성)을 준다.",
+    "옆 글자가 이미 이름을 말하는 장식 자리에서는 쓰는 화면이 aria-hidden=true 로 바꾼다.",
+    "초점을 받는 요소가 아니다 — 키보드 조작이 없다."
+  ],
+  "variantAxis": {
+    "property": [
+      "Brand",
+      "Color"
+    ],
+    "values": {
+      "Brand": [
+        "에스원",
+        "삼성"
+      ],
+      "Color": [
+        "White",
+        "Blue",
+        "Dark"
+      ]
+    },
+    "absentCombinations": [],
+    "sizeAxis": "없음 — 브랜드마다 크기가 고정이다(에스원 78.75×30 · 삼성 134×36)."
+  },
+  "scope": "light+dark",
+  "tokens": {
+    "icon": [
+      "color/icon/white",
+      "color/icon/gray"
+    ],
+    "foundation": [
+      "brand/ci"
+    ],
+    "number": [
+      "sizing/30"
+    ]
+  },
+  "reuses": {
+    "coreComponents": [],
+    "note": "다른 부품을 붙이지 않는다. 에스원 도형은 정본 S1_LOGO_SVG 한 곳, 삼성 그림은 정본 imageHash 3종이다."
+  },
+  "figma": {
+    "componentSetKey": "(미발행 — 라이브러리 publish 시 기록)",
+    "fileKey": "cysG5U1udpQqVagYY1hWHW",
+    "targetFile": "SW UX GUIDE V3.0-TEST",
+    "builder": "plugins/figma-vars-installer/src/build-components.ts · buildCI",
+    "propertyMap": {
+      "brand": [
+        "s1",
+        "samsung"
+      ],
+      "color": [
+        "white",
+        "blue",
+        "dark"
+      ]
+    },
+    "note": "6칸(2 × 3). Dark 는 Appearance 모드로 제공한다. Blue 는 Semantic 별칭 없이 Foundation brand/ci 를 직접 묶는다(정본)."
+  },
+  "governance": {
+    "verify": "new",
+    "verifyNote": "웹 배포본은 2026-10-02 신설. 4-verification 에서 🤖 component-verifier 가 맡는다.",
+    "canonApproval": "river 2026-10-02 \"응 맞아, 진행해\" — Footer · CI · LoginGNB 웹 배포(work-id platform-web-3). 정본(buildCI)은 이전부터 있었다.",
+    "foundationDirectBinding": "정본이 Color=Blue 에서 Foundation brand/ci 를 Semantic 경유 없이 직접 묶는다 — 정본을 따른 예외(CLAUDE.md 「색상은 Semantic 경유」의 알려진 예외, tokens.css 주석 'CI·로고 전용')."
+  },
+  "webDistribution": {
+    "status": "approved",
+    "manifest": "ui-library/src/components/ci/manifest.json",
+    "runtime": null,
+    "note": "동작이 없는 표시 전용 부품이다. 삼성 그림은 배포본 assets/images 에 담긴다.",
+    "workId": "platform-web-3"
+  },
+  "geometry": {
+    "s1": "78.75×30 (viewBox 42×16 고정, 비율 2.625 보존)",
+    "samsung": "134×36 (이미지 1600×425, scaleMode FILL = cover)",
+    "provenance": "정본 buildCI(build-components.ts:6970-7031)."
+  },
+  "platformSupport": {
+    "mobile": true,
+    "pc": true,
+    "note": "두 매체가 같은 부품을 쓴다."
+  }
+}

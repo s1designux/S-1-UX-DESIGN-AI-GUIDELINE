@@ -437,6 +437,36 @@
       "status": "in-progress",
       "harnessStatus": "planned",
       "priority": 33
+    },
+    {
+      "id": "footer",
+      "name": "Footer",
+      "label": "Footer",
+      "category": "core",
+      "path": "registry/components/footer.json",
+      "status": "in-progress",
+      "harnessStatus": "planned",
+      "priority": 34
+    },
+    {
+      "id": "ci",
+      "name": "CI",
+      "label": "CI",
+      "category": "core",
+      "path": "registry/components/ci.json",
+      "status": "in-progress",
+      "harnessStatus": "planned",
+      "priority": 35
+    },
+    {
+      "id": "login-gnb",
+      "name": "Login GNB",
+      "label": "Login GNB",
+      "category": "core",
+      "path": "registry/components/login-gnb.json",
+      "status": "in-progress",
+      "harnessStatus": "planned",
+      "priority": 36
     }
   ]
 }
