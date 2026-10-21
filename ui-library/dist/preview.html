@@ -4532,6 +4532,14 @@
   background: var(--color-navigation-bg--hover);
 }
 
+[data-s1-component="lnb"] [data-s1-part="item"][data-peek-focus]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
+  background: var(--color-navigation-bg--hover);
+}
+
+[data-s1-component="lnb"][data-peek-hold] [data-s1-part="item"]:hover:not([data-peek-focus]):where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
+  background: transparent;
+}
+
 [data-s1-component="lnb"] [data-s1-part="item"][aria-current="page"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
   background: transparent;
   color: var(--color-navigation-label-selected);
@@ -4630,13 +4638,15 @@
   width: var(--sizing-24);
 }
 
-[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][aria-current="page"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][aria-current="page"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))),
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][data-current-parent]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
   background: var(--color-button-bg-primary--default);
   color: var(--color-button-label-primary--default);
   font-weight: var(--font-weight-bold);
 }
 
-[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][aria-current="page"] [data-s1-part="item-icon"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][aria-current="page"] [data-s1-part="item-icon"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))),
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][data-current-parent] [data-s1-part="item-icon"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
   background-color: var(--color-button-label-primary--default);
 }
 
@@ -4645,8 +4655,26 @@
   mask-image: var(--s1-icon-solid, var(--s1-icon, url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KICA8c3ZnIGRhdGEtczEtcGFydD0iZ2x5cGgiIHg9IjMiIHk9IjUuNjUyMjUiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMi42OTU1IiB2aWV3Qm94PSIwIDAgMTggMTIuNjk1NSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgbWVldCI+CiAgICA8ZyBpZD0iaWNf66mU64m0IOybkOuzuCI+CiAgICAgIDxwYXRoIGlkPSJWZWN0b3IiIGQ9Ik0wIDEuMDU4ODJIMThWMC41Mjk0MTJWMEgwVjEuMDU4ODJaIiBmaWxsPSJibGFjayIvPgogICAgICA8cGF0aCBpZD0iVmVjdG9yXzIiIGQ9Ik0wIDYuODgyMzVIMThWNi4zNTI5NFY1LjgyMzUzSDBWNi44ODIzNVoiIGZpbGw9ImJsYWNrIi8+CiAgICAgIDxwYXRoIGlkPSJWZWN0b3JfMyIgZD0iTTAgMTIuNjk1NUgxOFYxMi4xNjYxVjExLjYzNjdIMFYxMi42OTU1WiIgZmlsbD0iYmxhY2siLz4KICAgIDwvZz4KICA8L3N2Zz4KPC9zdmc+Cg==")));
 }
 
+[data-s1-component="lnb"][data-peek] {
+  overflow: hidden;
+  transition: width .24s cubic-bezier(.35, 0, .15, 1);
+}
+
+[data-s1-component="lnb"][data-peek] [data-s1-part="item"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
+  height: var(--sizing-40);
+  transition: height .24s cubic-bezier(.35, 0, .15, 1), padding .24s cubic-bezier(.35, 0, .15, 1), font-size .24s cubic-bezier(.35, 0, .15, 1);
+  white-space: nowrap;
+}
+
+[data-s1-component="lnb"][data-peek] [data-s1-part="item-icon"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
+  transition: width .24s cubic-bezier(.35, 0, .15, 1), height .24s cubic-bezier(.35, 0, .15, 1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-s1-component="lnb"],
+  [data-s1-component="lnb"][data-peek],
+  [data-s1-component="lnb"][data-peek] [data-s1-part="item"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))),
+  [data-s1-component="lnb"][data-peek] [data-s1-part="item-icon"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))),
   [data-s1-component="lnb"] [data-s1-part="collapse-icon"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))),
   [data-s1-component="lnb"] [data-s1-part="item-toggle"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
     transition: none;
@@ -4998,7 +5026,7 @@
       <h1>S1 UI 컴포넌트 미리보기 — 35종</h1>
       <p>이 페이지는 배포본에 들어 있는 마크업을 그대로 얹어 그린 것입니다. 여기 보이는 모습이 실제 모습입니다.<br>
          React·Vue 는 제목의 이름을 그대로 부르면 됩니다. 크기·변형은 각 이름 옆에 적힌 값만 쓸 수 있습니다.</p>
-      <p class="fingerprint">버전 0.26.0 · 정본 지문 0355d63d1dcb6b68d01c8db5adc618f811faf403b39d2a8aff8cde7f7e2beae5</p>
+      <p class="fingerprint">버전 0.27.0 · 정본 지문 57ed600226cd783560beb8ed0a2b5d53ab848da5b8ecdc9d0a4e23e5132096ee</p>
     </div>
     <nav class="index">
         <a href="#input">S1Input</a>
@@ -10847,6 +10875,7 @@ var S1UI = (() => {
     const doc = root.ownerDocument || document;
     const collapseButton = root.querySelector('[data-s1-part="collapse"]');
     const isCollapsed = () => root.getAttribute("data-state") === "collapsed";
+    let peeking = false;
     const triggers = () => root.querySelectorAll('[data-s1-part="item"][aria-controls][aria-expanded]');
     const remembered = /* @__PURE__ */ new Set();
     const paintExpanded = (trigger, open) => {
@@ -10868,8 +10897,39 @@ var S1UI = (() => {
         remembered.clear();
       }
     };
+    const startPeek = (trigger, { focus = true } = {}) => {
+      peeking = true;
+      root.setAttribute("data-peek", "");
+      root.setAttribute("data-state", "expanded");
+      syncCollapsedDisclosure();
+      if (trigger.matches("[aria-controls][aria-expanded]")) setExpanded(trigger, true);
+      markPeekFocus(trigger);
+      root.setAttribute("data-peek-hold", "");
+      if (focus) trigger.focus({ preventScroll: true });
+    };
+    const markPeekFocus = (trigger) => {
+      for (const marked of root.querySelectorAll("[data-peek-focus]")) marked.removeAttribute("data-peek-focus");
+      if (trigger) trigger.setAttribute("data-peek-focus", "");
+    };
+    const releaseHold = () => {
+      if (!root.hasAttribute("data-peek-hold")) return;
+      root.removeAttribute("data-peek-hold");
+      markPeekFocus(null);
+    };
+    const endPeek = () => {
+      if (!peeking) return;
+      peeking = false;
+      releaseHold();
+      root.removeAttribute("data-peek");
+      root.setAttribute("data-state", "collapsed");
+      syncCollapsedDisclosure();
+    };
     const setCollapsed = (next) => {
       const value = Boolean(next);
+      if (peeking) {
+        endPeek();
+        if (value) return;
+      }
       if (value === isCollapsed()) return;
       root.setAttribute("data-state", value ? "collapsed" : "expanded");
       if (collapseButton) collapseButton.setAttribute("aria-pressed", String(value));
@@ -10892,12 +10952,26 @@ var S1UI = (() => {
       panel.hidden = !value;
       root.dispatchEvent(new CustomEvent("s1:lnb:toggle", { bubbles: true, detail: { trigger, expanded: value } }));
     };
+    const markCurrentParent = () => {
+      for (const t of triggers()) {
+        const panel = doc.getElementById(t.getAttribute("aria-controls"));
+        t.toggleAttribute("data-current-parent", Boolean(panel && panel.querySelector('[aria-current="page"]')));
+      }
+    };
+    const setCurrent = (item) => {
+      for (const other of root.querySelectorAll('[data-s1-part="item"][aria-current]')) {
+        if (other !== item) other.removeAttribute("aria-current");
+      }
+      item.setAttribute("aria-current", "page");
+      markCurrentParent();
+    };
     for (const trigger of root.querySelectorAll('[data-s1-part="item"][aria-controls][aria-expanded]')) {
       const panel = doc.getElementById(trigger.getAttribute("aria-controls"));
       if (panel) panel.hidden = trigger.getAttribute("aria-expanded") !== "true";
     }
     if (collapseButton) collapseButton.setAttribute("aria-pressed", String(isCollapsed()));
     syncCollapsedDisclosure();
+    markCurrentParent();
     for (const item of root.querySelectorAll('[data-s1-part="item"][aria-disabled="true"]')) item.tabIndex = -1;
     const byPointer = (event) => event.detail > 0;
     const handleClick = (event) => {
@@ -10913,16 +10987,55 @@ var S1UI = (() => {
         if (byPointer(event) && collapse.matches(":hover")) collapse.blur();
         return;
       }
+      const link = event.target.closest('a[data-s1-part="item"]');
+      if (link && root.contains(link)) {
+        setCurrent(link);
+        return;
+      }
       const trigger = event.target.closest('[data-s1-part="item"][aria-controls][aria-expanded]');
       if (trigger && root.contains(trigger)) {
+        if (isCollapsed()) {
+          startPeek(trigger);
+          return;
+        }
         setExpanded(trigger, trigger.getAttribute("aria-expanded") !== "true");
         if (byPointer(event) && trigger.matches(":hover")) trigger.blur();
       }
     };
     root.addEventListener("click", handleClick);
+    const handlePointerOver = (event) => {
+      if (event.pointerType === "touch" || !isCollapsed()) return;
+      const item = event.target.closest('[data-s1-part="item"]');
+      if (!item || !root.contains(item) || item.getAttribute("aria-disabled") === "true") return;
+      startPeek(item, { focus: false });
+    };
+    const handlePointerLeave = (event) => {
+      if (peeking && event.pointerType !== "touch") endPeek();
+    };
+    const handlePointerMove = (event) => {
+      if (event.movementX || event.movementY) releaseHold();
+    };
+    const handleFocusOut = (event) => {
+      if (peeking && !(event.relatedTarget instanceof Node && root.contains(event.relatedTarget)) && !root.matches(":hover")) endPeek();
+    };
+    const handleKeydown = (event) => {
+      if (!peeking || event.key !== "Escape") return;
+      const opened = event.target.closest?.('[data-s1-part="subitems"]');
+      const owner = opened ? root.querySelector(`[aria-controls="${opened.id}"]`) : null;
+      endPeek();
+      if (owner) owner.focus();
+    };
+    root.addEventListener("pointerleave", handlePointerLeave);
+    root.addEventListener("pointermove", handlePointerMove);
+    root.addEventListener("pointerover", handlePointerOver);
+    root.addEventListener("focusout", handleFocusOut);
+    root.addEventListener("keydown", handleKeydown);
     const api = Object.freeze({
       get collapsed() {
-        return isCollapsed();
+        return isCollapsed() || peeking;
+      },
+      get peeking() {
+        return peeking;
       },
       collapse(next = true) {
         setCollapsed(next);
@@ -10932,6 +11045,11 @@ var S1UI = (() => {
       },
       destroy() {
         root.removeEventListener("click", handleClick);
+        root.removeEventListener("pointerleave", handlePointerLeave);
+        root.removeEventListener("pointermove", handlePointerMove);
+        root.removeEventListener("pointerover", handlePointerOver);
+        root.removeEventListener("focusout", handleFocusOut);
+        root.removeEventListener("keydown", handleKeydown);
         instances20.delete(root);
       }
     });

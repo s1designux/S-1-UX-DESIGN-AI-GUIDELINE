@@ -3,7 +3,7 @@
 **S1 디자인 시스템의 React Native(Expo) 부품입니다.** iOS · Android · 웹(react-native-web) 에서 같은 코드로 그려지고,
 **PC·Mobile 두 화면 기준을 모두 담았습니다**(`breakName="pc" | "mobile"`). 부품 35종.
 
-**배포본 번호 0.26.0** · 2026-10-19 판 — 디자인가이드 내려받기 화면의 번호와 다르면 새로 받으세요.
+**배포본 번호 0.27.0** · 2026-10-21 판 — 디자인가이드 내려받기 화면의 번호와 다르면 새로 받으세요.
 코드에서 볼 때는 `import { S1_VERSION } from "@s1/ui-react-native"` 입니다.
 
 이 패키지는 웹용 React(`@s1/ui-react`)와 다릅니다. 그쪽은 `<button>`·`<span>` 과 CSS 파일을 쓰는 **React DOM** 이라 iOS·Android 에서 돌지 않습니다.

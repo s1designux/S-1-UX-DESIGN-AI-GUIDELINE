@@ -3,6 +3,32 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-10-22 06:37 (KST)
+
+- 원본 커밋: `39bf10c` — chore(map): 시스템 맵 재생성 (worktree-lnb-peek 합치기)
+- 내용이 바뀐 파일 27개
+  - `assets/js/ui-library-guide.js`
+  - `design/DESIGN.core.md`
+  - `registry/components/lnb.json`
+  - `ui-library/dist/components/lnb.css`
+  - `ui-library/dist/components/lnb.js`
+  - `ui-library/dist/components/lnb.manifest.json`
+  - `ui-library/dist/components/lnb.md`
+  - `ui-library/dist/manifest.json`
+  - `ui-library/dist/platform/contract.json`
+  - `ui-library/dist/platform/cpp/s1_version.h`
+  - `ui-library/dist/platform/kotlin/README.md`
+  - `ui-library/dist/platform/kotlin/S1Version.kt`
+  - `ui-library/dist/platform/manifest.json`
+  - `ui-library/dist/platform/react-native-sample/package.json`
+  - `ui-library/dist/platform/react-native/README.md`
+  - `ui-library/dist/platform/react-native/coverage.json`
+  - `ui-library/dist/platform/react-native/package.json`
+  - `ui-library/dist/platform/react-native/specs/lnb.js`
+  - `ui-library/dist/platform/react-native/version.js`
+  - `ui-library/dist/platform/react/README.md`
+  - … 외 7개
+
 ## 2026-10-20 07:18 (KST)
 
 - 원본 커밋: `b6e7dee` — chore(map): 시스템 맵 재생성 (claude/priceless-varahamihira-43f6d0 합치기)

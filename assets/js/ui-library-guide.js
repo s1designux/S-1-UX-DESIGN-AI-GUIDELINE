@@ -187,8 +187,8 @@ const componentConfig = {
   },
   lnb: {
     title: "LNB",
-    description: "PC 화면 왼쪽에 세로로 서는 사이드바 메뉴입니다. 위쪽 메뉴 GNB 와 짝을 이루며, 우측 상단 아이콘 단추 하나로 아이콘+메뉴명 띠(80)로 접습니다.",
-    approvedScope: "Type 2종(Menu 로고 없음 · Brand 로고 얹음) × Size 2종(MD 240 · LG 280) × State 2종(Expanded · Collapsed) · 메뉴 칸 Mode 2종 × 상태 4종(Default · Hover · Selected · Disabled) · 하위 메뉴 줄 상태 3종 · PC 전용 · 하위메뉴 여닫기와 판 접기는 JavaScript",
+    description: "PC 화면 왼쪽에 세로로 서는 사이드바 메뉴입니다. 위쪽 메뉴 GNB 와 짝을 이루며, 우측 상단 아이콘 단추 하나로 아이콘+메뉴명 띠(80)로 접습니다. 접힌 띠에서 메뉴에 마우스를 올리면 펼친 모습을 잠깐 보여 주고, 마우스가 떠나면 다시 접힙니다.",
+    approvedScope: "Type 2종(Menu 로고 없음 · Brand 로고 얹음) × Size 2종(MD 240 · LG 280) × State 2종(Expanded · Collapsed) · 메뉴 칸 Mode 2종 × 상태 4종(Default · Hover · Selected · Disabled) · 하위 메뉴 줄 상태 3종 · PC 전용 · 하위메뉴 여닫기 · 판 접기 · 접힌 띠의 잠깐 펼침 · 누른 메뉴로 선택 옮기기는 JavaScript",
     runtime: S1UI.lnb
   },
   "list-row": {
@@ -3171,8 +3171,10 @@ function lnbStateMatrix() {
       <div class="uilg-lnb-action">
         ${lnbMarkup({ type: "menu", size: "md", label: "기본 메뉴" })}
         ${lnbMarkup({ type: "brand", size: "md", label: "로고 메뉴" })}
+        ${lnbMarkup({ type: "menu", size: "md", state: "collapsed", label: "접힌 메뉴" })}
       </div>
-      <p class="uilg-demo-note">우측 상단 아이콘을 누르면 아이콘+메뉴명 띠(80)로 접히고, 다시 누르면 펼쳐집니다. 「컴포넌트」처럼 화살표가 붙은 메뉴는 눌러서 하위 메뉴를 엽니다. 현재 위치는 aria-current 로, 준비 중 메뉴는 aria-disabled 로 알립니다. 로고 자리는 비어 있습니다 — 화면이 자기 서비스 로고를 넣습니다.</p>
+      <p class="uilg-demo-note">우측 상단 아이콘을 누르면 아이콘+메뉴명 띠(80)로 접히고, 다시 누르면 펼쳐집니다. 「컴포넌트」처럼 화살표가 붙은 메뉴는 눌러서 하위 메뉴를 엽니다. 메뉴를 누르면 그 메뉴가 선택됩니다(aria-current). 준비 중 메뉴는 aria-disabled 로 알립니다. 로고 자리는 비어 있습니다 — 화면이 자기 서비스 로고를 넣습니다.</p>
+      <p class="uilg-demo-note">접힌 띠(맨 오른쪽)에서는 메뉴에 마우스를 올리는 즉시 펼친 모습을 잠깐 보여 줍니다. 하위 메뉴가 있는 메뉴면 그 하위 메뉴도 열립니다. 펼치는 순간 선택 칸의 파란 바탕은 바로 사라지고, 폭·칸 크기만 0.24초 동안 이어서 바뀝니다. 마우스가 판을 떠나거나 Esc 를 누르면 다시 접힙니다. 하위 메뉴를 고른 채 접히면 그 위 메뉴 칸이 선택 모양(파란 칸)이 됩니다.</p>
     </div>`;
 
   const panelHeader = `<div class="matrix-col-header" style="grid-column:1"></div>` +

@@ -1,9 +1,9 @@
 {
   "id": "s1-ui",
-  "version": "0.26.0",
-  "releasedAt": "2026-10-19",
+  "version": "0.27.0",
+  "releasedAt": "2026-10-21",
   "status": "approved",
-  "canonicalFingerprint": "0355d63d1dcb6b68d01c8db5adc618f811faf403b39d2a8aff8cde7f7e2beae5",
+  "canonicalFingerprint": "57ed600226cd783560beb8ed0a2b5d53ab848da5b8ecdc9d0a4e23e5132096ee",
   "tokenMapFingerprint": "796fb798dd329910ba6c42a29fb4af9e0fd217446b3fa847e140bc70a0a8f4c7",
   "commonCssDependencies": [
     "assets/css/tokens.css",
@@ -1421,11 +1421,11 @@
     },
     {
       "id": "lnb",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "status": "approved",
       "jsRequired": true,
-      "canonicalFingerprint": "f88063bde5d727e9e3f6cc63872fa259b23058436bde32ac0837e3c6ee376036",
-      "sourceFingerprint": "2a9ea8e05f72ee6d402f9582dfc297fae0f4aef8c7727dc721fa60b3668cd5d0",
+      "canonicalFingerprint": "f72eb2d842a7e8db39ded9e82011dee6a3f35a59b2f22d9cda55204c581a8561",
+      "sourceFingerprint": "b45b1c84c0f5ef1a42d2dbbf89fa756c8916b645155db875c9a2d1a18149bcb9",
       "css": "components/lnb.css",
       "js": "components/lnb.js",
       "example": "examples/lnb.html",

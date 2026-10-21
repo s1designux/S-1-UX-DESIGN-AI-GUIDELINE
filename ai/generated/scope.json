@@ -11,10 +11,10 @@
       "registry/governance/density-policy.json",
       "ui-library/dist/components/*.css"
     ],
-    "distVersion": "0.26.0",
-    "distReleasedAt": "2026-10-19",
-    "canonicalFingerprint": "0355d63d1dcb6b68d01c8db5adc618f811faf403b39d2a8aff8cde7f7e2beae5",
-    "builtAt": "2026-10-20"
+    "distVersion": "0.27.0",
+    "distReleasedAt": "2026-10-21",
+    "canonicalFingerprint": "57ed600226cd783560beb8ed0a2b5d53ab848da5b8ecdc9d0a4e23e5132096ee",
+    "builtAt": "2026-10-21"
   },
   "rules": {
     "_meta": {

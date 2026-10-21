@@ -35,7 +35,8 @@
   "doDont": {
     "do": [
       "묶음 사이 간격이 필요하면 메뉴 목록(items)을 여러 개 나란히 둔다.",
-      "접힌 상태에서는 title 속성으로 메뉴 이름을 함께 준다."
+      "접힌 상태에서는 title 속성으로 메뉴 이름을 함께 준다.",
+      "접힌 상태에서 메뉴에 마우스를 올리면 바로 판이 잠깐 펼쳐지고, 하위메뉴를 가진 메뉴면 그 하위메뉴가 열린다. 마우스가 판을 떠나면 다시 접힌다. 메뉴를 누르면 그 메뉴가 고른 상태가 되고, 하위메뉴 줄을 고르면 접힌 띠에서는 상위 메뉴가 고른 모양이 된다(river 2026-10-21) — 화면이 따로 만들지 않는다."
     ],
     "dont": [
       "하위메뉴 글자를 연하게 낮추지 않는다(river 2026-09-29).",
@@ -139,13 +140,13 @@
   "governance": {
     "verify": "new",
     "verifyNote": "정본 편입 검증 reports/figma-library-build/side-nav/4-verification.md PASS(Gate 13 기록). 웹 배포본의 독립 검수는 아직 하지 않았다.",
-    "canonApproval": "river 승인 2026-09-29 \"오케이 4종 승인할게\" · 2026-09-30 \"LNB 부품도 이어서 만들어줘\".",
+    "canonApproval": "river 승인 2026-09-29 \"오케이 4종 승인할게\" · 2026-09-30 \"LNB 부품도 이어서 만들어줘\" · 2026-10-21 접힌 띠 잠깐 펼침·선택 옮기기·상위 칸 선택 표시 \"오케이 현재 안으로 승인할게\".",
     "origin": "site-restyle 승격 후보 검수(2026-09-29). 레거시 원본 없음 — river 지시로 설계(두 벌 · 240/280 · 접힘 80)."
   },
   "webDistribution": {
     "status": "in-progress",
     "manifest": "ui-library/src/components/lnb/manifest.json",
-    "runtime": "init(root) → { collapsed, collapse(next), toggleCollapse(), destroy() }",
+    "runtime": "init(root) → { collapsed, peeking, collapse(next), toggleCollapse(), destroy() }",
     "note": "하위메뉴 여닫이와 접기 단추 상태를 부품이 갖고, 메뉴 항목과 로고 그림은 쓰는 화면이 정한다. 펼침 폭 240·280 은 raw 값 그대로 쓰기로 결정(river 2026-10-02 \"지금 숫자 그대로 둘게\"). needs-decision — 다크 메뉴명 밝기, 접기 아이콘 배포 자산.",
     "workId": "promoted-parts-4"
   },

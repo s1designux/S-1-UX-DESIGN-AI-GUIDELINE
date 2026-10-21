@@ -5572,6 +5572,14 @@
   background: var(--color-navigation-bg--hover);
 }
 
+[data-s1-component="lnb"] [data-s1-part="item"][data-peek-focus]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
+  background: var(--color-navigation-bg--hover);
+}
+
+[data-s1-component="lnb"][data-peek-hold] [data-s1-part="item"]:hover:not([data-peek-focus]):where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
+  background: transparent;
+}
+
 [data-s1-component="lnb"] [data-s1-part="item"][aria-current="page"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
   background: transparent;
   color: var(--color-navigation-label-selected);
@@ -5670,13 +5678,15 @@
   width: var(--sizing-24);
 }
 
-[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][aria-current="page"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][aria-current="page"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))),
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][data-current-parent]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
   background: var(--color-button-bg-primary--default);
   color: var(--color-button-label-primary--default);
   font-weight: var(--font-weight-bold);
 }
 
-[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][aria-current="page"] [data-s1-part="item-icon"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][aria-current="page"] [data-s1-part="item-icon"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))),
+[data-s1-component="lnb"][data-state="collapsed"] [data-s1-part="item"][data-current-parent] [data-s1-part="item-icon"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
   background-color: var(--color-button-label-primary--default);
 }
 
@@ -5685,8 +5695,26 @@
   mask-image: var(--s1-icon-solid, var(--s1-icon, url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KICA8c3ZnIGRhdGEtczEtcGFydD0iZ2x5cGgiIHg9IjMiIHk9IjUuNjUyMjUiIHdpZHRoPSIxOCIgaGVpZ2h0PSIxMi42OTU1IiB2aWV3Qm94PSIwIDAgMTggMTIuNjk1NSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgbWVldCI+CiAgICA8ZyBpZD0iaWNf66mU64m0IOybkOuzuCI+CiAgICAgIDxwYXRoIGlkPSJWZWN0b3IiIGQ9Ik0wIDEuMDU4ODJIMThWMC41Mjk0MTJWMEgwVjEuMDU4ODJaIiBmaWxsPSJibGFjayIvPgogICAgICA8cGF0aCBpZD0iVmVjdG9yXzIiIGQ9Ik0wIDYuODgyMzVIMThWNi4zNTI5NFY1LjgyMzUzSDBWNi44ODIzNVoiIGZpbGw9ImJsYWNrIi8+CiAgICAgIDxwYXRoIGlkPSJWZWN0b3JfMyIgZD0iTTAgMTIuNjk1NUgxOFYxMi4xNjYxVjExLjYzNjdIMFYxMi42OTU1WiIgZmlsbD0iYmxhY2siLz4KICAgIDwvZz4KICA8L3N2Zz4KPC9zdmc+Cg==")));
 }
 
+[data-s1-component="lnb"][data-peek] {
+  overflow: hidden;
+  transition: width .24s cubic-bezier(.35, 0, .15, 1);
+}
+
+[data-s1-component="lnb"][data-peek] [data-s1-part="item"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
+  height: var(--sizing-40);
+  transition: height .24s cubic-bezier(.35, 0, .15, 1), padding .24s cubic-bezier(.35, 0, .15, 1), font-size .24s cubic-bezier(.35, 0, .15, 1);
+  white-space: nowrap;
+}
+
+[data-s1-component="lnb"][data-peek] [data-s1-part="item-icon"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
+  transition: width .24s cubic-bezier(.35, 0, .15, 1), height .24s cubic-bezier(.35, 0, .15, 1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-s1-component="lnb"],
+  [data-s1-component="lnb"][data-peek],
+  [data-s1-component="lnb"][data-peek] [data-s1-part="item"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))),
+  [data-s1-component="lnb"][data-peek] [data-s1-part="item-icon"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))),
   [data-s1-component="lnb"] [data-s1-part="collapse-icon"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))),
   [data-s1-component="lnb"] [data-s1-part="item-toggle"]:where(:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) *:not([data-s1-component="lnb"] [data-s1-component]:not([data-s1-component="lnb"]) [data-s1-component="lnb"] *))) {
     transition: none;
@@ -6025,7 +6053,7 @@
 </style></head>
 <body><div class="wrap">
 <h1>모바일 크기 기준</h1>
-<p class="sub">모바일 화면 — 화면마다 쓰는 부품 크기. 배포본 0.26.0 (2026-10-19) 실제 부품으로 그렸습니다.</p>
+<p class="sub">모바일 화면 — 화면마다 쓰는 부품 크기. 배포본 0.27.0 (2026-10-21) 실제 부품으로 그렸습니다.</p>
 <div class="cols">
 <section class="col" data-s1-break="mobile">
   <header><h3>모바일 화면</h3><p>손가락 기준 48 하나 · <code>--profile mobile</code></p></header>

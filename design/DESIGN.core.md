@@ -3431,6 +3431,7 @@ agent:
 _Do_
 - 묶음 사이 간격이 필요하면 메뉴 목록(items)을 여러 개 나란히 둔다.
 - 접힌 상태에서는 title 속성으로 메뉴 이름을 함께 준다.
+- 접힌 상태에서 메뉴에 마우스를 올리면 바로 판이 잠깐 펼쳐지고, 하위메뉴를 가진 메뉴면 그 하위메뉴가 열린다. 마우스가 판을 떠나면 다시 접힌다. 메뉴를 누르면 그 메뉴가 고른 상태가 되고, 하위메뉴 줄을 고르면 접힌 띠에서는 상위 메뉴가 고른 모양이 된다(river 2026-10-21) — 화면이 따로 만들지 않는다.
 
 _Don't_
 - 하위메뉴 글자를 연하게 낮추지 않는다(river 2026-09-29).
@@ -5953,4 +5954,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: 00e4d8de5776 · 손편집 금지 -->
+<!-- generated-stamp: 778c9884e2bf · 손편집 금지 -->

@@ -1,8 +1,8 @@
 {
   "id": "lnb",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "status": "approved",
-  "canonicalFingerprint": "f88063bde5d727e9e3f6cc63872fa259b23058436bde32ac0837e3c6ee376036",
+  "canonicalFingerprint": "f72eb2d842a7e8db39ded9e82011dee6a3f35a59b2f22d9cda55204c581a8561",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -21,7 +21,7 @@
   "states": {
     "expanded": "속성 생략 또는 data-state=expanded — 가로 240(md)·280(lg)",
     "collapsed": "data-state=collapsed — 아이콘 아래 메뉴명이 붙은 띠(sizing/80). 선택 칸은 파란 바탕(button primary)+흰 아이콘·글자",
-    "current": "항목 [aria-current=page] — 글자·아이콘이 navigation/label/selected 색(배경 없음)",
+    "current": "항목 [aria-current=page] — 글자·아이콘이 navigation/label/selected 색(배경 없음) · 누르면 런타임이 옮긴다. 하위메뉴 줄이 골라지면 접힌 띠에서는 상위 칸(data-current-parent)이 고른 모양이 된다.",
     "hover": "항목 :hover — 바탕 navigation/bg--hover, 글자색은 그대로",
     "disabled": "항목 [aria-disabled=true] — 눌리지 않고(click·Enter 취소) 탭 순서에서 빠지며 disabled 색"
   },
@@ -165,7 +165,7 @@
     },
     "keyboard": {
       "status": "required",
-      "value": "Tab 순서 = 접기 단추 → 메뉴(위→아래). 하위메뉴는 열려 있을 때만 초점 순서에 들어온다(닫히면 hidden). 방향키 이동은 정본에 없어 만들지 않는다."
+      "value": "Tab 순서 = 접기 단추 → 메뉴(위→아래). 하위메뉴는 열려 있을 때만 초점 순서에 들어온다(닫히면 hidden). 접힌 상태에서 하위메뉴 항목을 Enter/Space 로 누르면 잠깐 펼쳐지고, Esc 나 판 밖으로 초점 이동 시 다시 접힌다. 방향키 이동은 정본에 없어 만들지 않는다."
     },
     "focus": {
       "status": "required",
@@ -173,7 +173,7 @@
     },
     "ariaStateSync": {
       "status": "required",
-      "value": "하위메뉴 항목의 aria-expanded ↔ 하위 목록 hidden, 접기 단추의 aria-pressed ↔ 루트 data-state 를 런타임이 항상 함께 맞춘다. 현재 위치는 aria-current=page 로 알린다."
+      "value": "하위메뉴 항목의 aria-expanded ↔ 하위 목록 hidden, 접기 단추의 aria-pressed ↔ 루트 data-state 를 런타임이 항상 함께 맞춘다. 잠깐 펼침(data-peek) 동안에는 사용자가 고른 접힘이 그대로라 aria-pressed 는 true 로 남는다. 현재 위치는 aria-current=page 로 알린다."
     },
     "errorRelation": {
       "status": "not-applicable",
@@ -186,12 +186,14 @@
   },
   "jsRequired": true,
   "javascript": {
-    "runtime": "init(root) → { collapsed, collapse(next), toggleCollapse(), destroy() }",
+    "runtime": "init(root) → { collapsed, peeking, collapse(next), toggleCollapse(), destroy() }",
     "events": [
       "s1:lnb:collapse",
       "s1:lnb:toggle"
     ],
-    "reason": "하위메뉴 여닫이(aria-expanded ↔ hidden)와 우측 상단 접기 단추(aria-pressed ↔ data-state)를 맞춘다."
+    "reason": "하위메뉴 여닫이(aria-expanded ↔ hidden)와 우측 상단 접기 단추(aria-pressed ↔ data-state)를 맞춘다. 접힌 상태에서 메뉴에 마우스를 올리거나 하위메뉴 칸을 누르면 잠깐 펼쳤다가 마우스가 떠나면 다시 접고(peek), 누른 이동 항목으로 aria-current 를 옮긴다.",
+    "peek": "런타임만 붙인다 — 접힌 상태에서 메뉴 칸에 마우스를 올리면 바로(고른 칸·하위메뉴 없는 칸 포함), 하위메뉴를 가진 칸은 눌러도 data-state=expanded + data-peek 로 펼침 모습을 잠깐 보여 준다. 하위메뉴를 가진 칸이면 그 하위메뉴도 연다. 마우스가 판을 떠나거나 초점이 판 밖으로 나가거나 Esc 면 다시 접힌다(river 2026-10-21). 펼치는 순간 그 칸에 호버 바탕(data-peek-focus)을 주고(누른 경우 초점도), 마우스를 실제로 움직이기 전까지 다른 칸 호버는 막는다(data-peek-hold). 펼칠 때 폭·칸 높이(64→40)·여백·아이콘(24→20)·글자 크기(12→14)가 .24s 같은 곡선(cubic-bezier(.35, 0, .15, 1) — 출발은 아주 조금 느리게, 끝은 길게)으로 함께 바뀌어 모양이 이어진다. 고른 칸의 파란 바탕은 펼치는 순간 바로 없앤다(전환 없음). 그동안 메뉴명은 한 줄로 묶여 넘치는 부분만 가려진다(글자를 투명하게 띄우지 않는다 — 빈 흰 판이 보였다). reduced-motion 이면 전환을 끈다.",
+    "select": "이동 항목(a)을 누르면 aria-current=page 를 그 항목으로 옮긴다(이벤트 없음 — 이동은 href 가 한다). 하위메뉴 줄이 골라지면 상위 칸에 data-current-parent 를 달아 접힌 띠에서 그 칸을 고른 모양으로 칠한다(river 2026-10-21)."
   },
-  "sourceFingerprint": "2a9ea8e05f72ee6d402f9582dfc297fae0f4aef8c7727dc721fa60b3668cd5d0"
+  "sourceFingerprint": "b45b1c84c0f5ef1a42d2dbbf89fa756c8916b645155db875c9a2d1a18149bcb9"
 }

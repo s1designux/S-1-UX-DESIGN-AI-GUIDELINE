@@ -58,9 +58,9 @@
 
 - **역할**: nav[aria-label] 안의 ul/li 목록. 이동 항목은 a[href], 하위메뉴를 여는 항목과 접기 단추는 button[type=button].
 - **이름**: nav 는 aria-label(예: "기본 메뉴")로 이름을 갖는다. 항목은 보이는 글자가 이름이다 — 접힌 상태에서는 title 속성이 이름을 이어 준다. 접기 단추는 aria-label.
-- **키보드**: Tab 순서 = 접기 단추 → 메뉴(위→아래). 하위메뉴는 열려 있을 때만 초점 순서에 들어온다(닫히면 hidden). 방향키 이동은 정본에 없어 만들지 않는다.
+- **키보드**: Tab 순서 = 접기 단추 → 메뉴(위→아래). 하위메뉴는 열려 있을 때만 초점 순서에 들어온다(닫히면 hidden). 접힌 상태에서 하위메뉴 항목을 Enter/Space 로 누르면 잠깐 펼쳐지고, Esc 나 판 밖으로 초점 이동 시 다시 접힌다. 방향키 이동은 정본에 없어 만들지 않는다.
 - **초점**: 브라우저 기본 포커스 표시를 그대로 쓴다 — 정본에 focus 표현이 없어 웹에서 만들지 않는다(다른 코어와 동일한 2026-09-02 river 결정).
-- **상태 표시**: 하위메뉴 항목의 aria-expanded ↔ 하위 목록 hidden, 접기 단추의 aria-pressed ↔ 루트 data-state 를 런타임이 항상 함께 맞춘다. 현재 위치는 aria-current=page 로 알린다.
+- **상태 표시**: 하위메뉴 항목의 aria-expanded ↔ 하위 목록 hidden, 접기 단추의 aria-pressed ↔ 루트 data-state 를 런타임이 항상 함께 맞춘다. 잠깐 펼침(data-peek) 동안에는 사용자가 고른 접힘이 그대로라 aria-pressed 는 true 로 남는다. 현재 위치는 aria-current=page 로 알린다.
 - **reducedMotion**: prefers-reduced-motion: reduce 이면 접힘 폭·화살표 전환 모션을 끈다.
 
 ## 바꿀 수 있는 CSS 변수
@@ -69,4 +69,4 @@
 
 ---
 
-정본 지문 `f88063bde5d727e9e3f6cc63872fa259b23058436bde32ac0837e3c6ee376036` · 부품 버전 0.3.0
+정본 지문 `f72eb2d842a7e8db39ded9e82011dee6a3f35a59b2f22d9cda55204c581a8561` · 부품 버전 0.4.0
