@@ -2,9 +2,9 @@
   "_meta": {
     "note": "자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요."
   },
-  "version": "0.27.0",
-  "releasedAt": "2026-10-21",
-  "canonicalFingerprint": "57ed600226cd783560beb8ed0a2b5d53ab848da5b8ecdc9d0a4e23e5132096ee",
+  "version": "0.28.0",
+  "releasedAt": "2026-10-30",
+  "canonicalFingerprint": "bee81fc4fe9df9329471558b08123fdca4144361bc65e0fdc9e44d2d21f3c949",
   "generatedAt": null,
   "platforms": {
     "html-css-js": {
@@ -58,10 +58,17 @@
         "textarea",
         "text-button",
         "assist-button",
-        "filter-chip"
+        "filter-chip",
+        "bottom-sheet-option",
+        "bottom-sheet",
+        "date-picker",
+        "time-picker",
+        "expandable-card",
+        "divider",
+        "data-tag"
       ],
       "textStyles": 21,
-      "icons": 16,
+      "icons": 21,
       "sample": "platform/kotlin-sample",
       "preview": "platform/kotlin/preview/S1Gallery.kt",
       "readme": "platform/kotlin/README.md",
@@ -69,7 +76,38 @@
     },
     "swift": {
       "entry": "platform/swift/S1Tokens.swift",
-      "componentSupport": "tokens-only",
+      "componentSupport": "components",
+      "ui": "SwiftUI",
+      "components": [
+        "button",
+        "input",
+        "checkbox",
+        "radio",
+        "toggle",
+        "chip",
+        "dropdown",
+        "select",
+        "tab",
+        "modal",
+        "mobile-header",
+        "mobile-bottom-nav",
+        "textarea",
+        "text-button",
+        "assist-button",
+        "filter-chip",
+        "bottom-sheet-option",
+        "bottom-sheet",
+        "date-picker",
+        "time-picker",
+        "expandable-card",
+        "divider",
+        "data-tag"
+      ],
+      "textStyles": 21,
+      "icons": 21,
+      "package": "platform/swift/Package.swift",
+      "preview": "platform/swift/preview/S1Gallery.swift",
+      "readme": "platform/swift/README.md",
       "lint": false
     },
     "cpp": {

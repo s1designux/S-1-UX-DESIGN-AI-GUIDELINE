@@ -1,8 +1,8 @@
 {
   "id": "lnb",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "status": "approved",
-  "canonicalFingerprint": "f72eb2d842a7e8db39ded9e82011dee6a3f35a59b2f22d9cda55204c581a8561",
+  "canonicalFingerprint": "905eca27c1f521e0c823831eb929f40ae977e9fd2a5726153ed596f9c90c6c8a",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -195,5 +195,5 @@
     "peek": "런타임만 붙인다 — 접힌 상태에서 메뉴 칸에 마우스를 올리면 바로(고른 칸·하위메뉴 없는 칸 포함), 하위메뉴를 가진 칸은 눌러도 data-state=expanded + data-peek 로 펼침 모습을 잠깐 보여 준다. 하위메뉴를 가진 칸이면 그 하위메뉴도 연다. 마우스가 판을 떠나거나 초점이 판 밖으로 나가거나 Esc 면 다시 접힌다(river 2026-10-21). 펼치는 순간 그 칸에 호버 바탕(data-peek-focus)을 주고(누른 경우 초점도), 마우스를 실제로 움직이기 전까지 다른 칸 호버는 막는다(data-peek-hold). 펼칠 때 폭·칸 높이(64→40)·여백·아이콘(24→20)·글자 크기(12→14)가 .24s 같은 곡선(cubic-bezier(.35, 0, .15, 1) — 출발은 아주 조금 느리게, 끝은 길게)으로 함께 바뀌어 모양이 이어진다. 고른 칸의 파란 바탕은 펼치는 순간 바로 없앤다(전환 없음). 그동안 메뉴명은 한 줄로 묶여 넘치는 부분만 가려진다(글자를 투명하게 띄우지 않는다 — 빈 흰 판이 보였다). reduced-motion 이면 전환을 끈다.",
     "select": "이동 항목(a)을 누르면 aria-current=page 를 그 항목으로 옮긴다(이벤트 없음 — 이동은 href 가 한다). 하위메뉴 줄이 골라지면 상위 칸에 data-current-parent 를 달아 접힌 띠에서 그 칸을 고른 모양으로 칠한다(river 2026-10-21)."
   },
-  "sourceFingerprint": "b45b1c84c0f5ef1a42d2dbbf89fa756c8916b645155db875c9a2d1a18149bcb9"
+  "sourceFingerprint": "d39e2203fe6a952cb44b4764a483ddabdd355b93efb3e8aeb83b8508506a4f7d"
 }

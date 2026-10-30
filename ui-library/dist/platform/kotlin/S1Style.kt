@@ -18,6 +18,7 @@ import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawscope.DrawScope
@@ -93,6 +94,10 @@ fun S1TypeSpec.textStyle(color: S1Color? = null): TextStyle = TextStyle(
 @Immutable
 data class S1Shadow(val x: Float, val y: Float, val blur: Float, val spread: Float, val color: Long)
 
+/** 세로 흐림 한 정거장 — 위치(0~1)와 색·불투명도. color 가 null 이면 투명이다. */
+@Immutable
+data class S1GradientStop(val offset: Float, val color: S1Color?, val alpha: Float)
+
 /**
  * 한 부품이 한 상태일 때의 최종 값. CSS 에 없던 항목은 null 로 남는다 —
  * null 을 임의의 기본값으로 채우지 않는다.
@@ -127,9 +132,36 @@ data class S1Box(
     val underline: Boolean = false,
     val left: Float? = null,
     val right: Float? = null,
+    val top: Float? = null,
+    val marginEnd: Float = 0f,
+    val marginBottom: Float = 0f,
+    val maxWidth: Float? = null,
+    val maxHeight: Float? = null,
+    /** 화면 높이의 몇 퍼센트까지 커질 수 있는가(CSS vh). */
+    val maxHeightVh: Float? = null,
+    /** 위쪽 두 모서리만 따로 둥글 때(시트) — null 이면 radius 를 네 모서리에 쓴다. */
+    val radiusTopStart: Float? = null,
+    val radiusTopEnd: Float? = null,
+    /** 좌우 뒤집기(-1) — 접힘 카드 화살표가 열리면 위를 가리키게 만든다. */
+    val scaleX: Float? = null,
+    /** 한 줄 안의 칸 기본 크기(CSS flex-basis) — 휠 칸 높이. */
+    val flexBasis: Float? = null,
+    val spaceBetween: Boolean = false,
+    /** 전환 시간(ms) — 정본 transition 의 첫 시간. null 이면 움직임이 없다. */
+    val durationMs: Int? = null,
+    val gradient: List<S1GradientStop>? = null,
     val shadow: List<S1Shadow>? = null
 ) {
-    val shape: Shape get() = RoundedCornerShape(radius.dp)
+    val shape: Shape get() = if (radiusTopStart != null || radiusTopEnd != null) {
+        RoundedCornerShape(
+            topStart = (radiusTopStart ?: radius).dp,
+            topEnd = (radiusTopEnd ?: radius).dp,
+            bottomEnd = radius.dp,
+            bottomStart = radius.dp
+        )
+    } else {
+        RoundedCornerShape(radius.dp)
+    }
     val gapDp: Dp get() = gap.dp
 }
 
@@ -144,7 +176,7 @@ fun Modifier.s1Box(
 ): Modifier {
     val dark = LocalS1Dark.current
     var modifier = this
-    box.shadow?.let { modifier = modifier.s1Shadow(it, box.radius) }
+    box.shadow?.let { modifier = modifier.s1Shadow(it, box.radiusTopStart ?: box.radius) }
     if (applySize) {
         box.width?.let { modifier = modifier.width(it.dp) }
         box.height?.let { modifier = modifier.height(it.dp) }
@@ -168,6 +200,24 @@ fun Modifier.s1Box(
         )
     }
     return modifier
+}
+
+/** 바깥 여백(CSS margin)을 적용한다 — 음수가 아닌 값만 이 수식어로 그린다(음수는 부품이 따로 처리한다). */
+fun Modifier.s1Margin(box: S1Box): Modifier = padding(
+    start = box.marginStart.dp,
+    end = box.marginEnd.dp,
+    top = box.marginTop.dp,
+    bottom = box.marginBottom.dp
+)
+
+/** 세로 흐림 정거장 → 브러시. 투명 정거장은 이웃 색의 투명판으로 칠한다(CSS 의 투명은 색을 품은 채 사라지기 때문이다). */
+fun List<S1GradientStop>.toVerticalBrush(dark: Boolean): Brush {
+    val base = firstNotNullOf { it.color }.resolve(dark)
+    val stops = map { stop ->
+        val color = stop.color?.resolve(dark) ?: base
+        stop.offset to color.copy(alpha = if (stop.color == null) 0f else stop.alpha)
+    }
+    return Brush.verticalGradient(colorStops = stops.toTypedArray())
 }
 
 /** 안쪽 여백만 따로 적용한다 — 누르는 영역을 여백까지 포함시키려면 클릭 뒤에 붙인다. */

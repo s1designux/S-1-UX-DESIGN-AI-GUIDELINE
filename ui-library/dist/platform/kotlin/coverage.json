@@ -2,14 +2,19 @@
   "_meta": {
     "note": "자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요.",
     "purpose": "Compose 부품이 배포본 CSS 의 어느 선언을 읽었고 어느 선언을 읽지 않았는지 드러낸다.",
-    "rule": "reason=pc-only 는 안드로이드가 쓰지 않는 PC 조합이라 안 읽은 것이고, reason=display-rule 은 값이 아니라 표시·배치 규칙이라 부품 뼈대가 직접 담당하는 것이다. 둘 중 어느 쪽도 아닌 색·치수가 남으면 부품이 그만큼 정본과 다르다는 뜻이다."
+    "rule": "reason=pc-only 는 안드로이드가 쓰지 않는 PC 조합이라 안 읽은 것이고, reason=display-rule 은 값이 아니라 표시·배치 규칙이라 부품 뼈대가 직접 담당하는 것이다(크기 속성이 없는 요소용 대체 규칙 — 모바일 부품은 항상 크기가 정해져 걸리지 않는 것 — 도 여기에 담긴다). 둘 중 어느 쪽도 아닌 색·치수가 남으면 부품이 그만큼 정본과 다르다는 뜻이다."
   },
   "icons": [
+    "account",
+    "calendar",
     "check",
+    "check24",
     "chevron",
+    "clock",
     "close",
     "eye_hide",
     "eye_show",
+    "lock",
     "mobile-header-arrow-down",
     "mobile-header-back",
     "mobile-header-close",
@@ -398,6 +403,16 @@
           "property": "width",
           "value": "100%",
           "reason": "display-rule"
+        }
+      ],
+      "ignoredProperties": [
+        {
+          "property": "user-select",
+          "samples": [
+            "button/primary|lg|default/root: none",
+            "button/primary|lg|hover/root: none",
+            "button/primary|lg|disabled/root: none"
+          ]
         }
       ]
     },
@@ -1012,6 +1027,24 @@
           "value": "0",
           "reason": "pc-only"
         }
+      ],
+      "ignoredProperties": [
+        {
+          "property": "caret-color",
+          "samples": [
+            "input/md|mobile|default/control: var(--color-form-control-text-cursor)",
+            "input/md|mobile|filled/control: var(--color-form-control-text-cursor)",
+            "input/md|mobile|focus/control: var(--color-form-control-text-cursor)"
+          ]
+        },
+        {
+          "property": "outline",
+          "samples": [
+            "input/md|mobile|default/control: 0",
+            "input/md|mobile|filled/control: 0",
+            "input/md|mobile|focus/control: 0"
+          ]
+        }
       ]
     },
     {
@@ -1025,7 +1058,8 @@
       ],
       "unreadPcOnly": 0,
       "unreadDisplayRules": 0,
-      "unreadDeclarations": []
+      "unreadDeclarations": [],
+      "ignoredProperties": []
     },
     {
       "component": "radio",
@@ -1038,7 +1072,8 @@
       ],
       "unreadPcOnly": 0,
       "unreadDisplayRules": 0,
-      "unreadDeclarations": []
+      "unreadDeclarations": [],
+      "ignoredProperties": []
     },
     {
       "component": "toggle",
@@ -1049,7 +1084,8 @@
       ],
       "unreadPcOnly": 0,
       "unreadDisplayRules": 0,
-      "unreadDeclarations": []
+      "unreadDeclarations": [],
+      "ignoredProperties": []
     },
     {
       "component": "chip",
@@ -1397,6 +1433,16 @@
           "value": "var(--spacing-12)",
           "reason": "pc-only"
         }
+      ],
+      "ignoredProperties": [
+        {
+          "property": "user-select",
+          "samples": [
+            "chip/line|sm|mobile|default/root: none",
+            "chip/line|sm|mobile|hover/root: none",
+            "chip/line|sm|mobile|selected/root: none"
+          ]
+        }
       ]
     },
     {
@@ -1489,7 +1535,8 @@
           "value": "calc(var(--sizing-28) - var(--border-width-1))",
           "reason": "display-rule"
         }
-      ]
+      ],
+      "ignoredProperties": []
     },
     {
       "component": "select",
@@ -1728,7 +1775,8 @@
           "value": "var(--spacing-12)",
           "reason": "pc-only"
         }
-      ]
+      ],
+      "ignoredProperties": []
     },
     {
       "component": "tab",
@@ -1791,7 +1839,8 @@
           "value": "none",
           "reason": "display-rule"
         }
-      ]
+      ],
+      "ignoredProperties": []
     },
     {
       "component": "modal",
@@ -1896,7 +1945,8 @@
           "value": "1 1 0",
           "reason": "display-rule"
         }
-      ]
+      ],
+      "ignoredProperties": []
     },
     {
       "component": "mobile-header",
@@ -1915,7 +1965,8 @@
           "value": "var(--spacing-8)",
           "reason": "display-rule"
         }
-      ]
+      ],
+      "ignoredProperties": []
     },
     {
       "component": "mobile-bottom-nav",
@@ -1927,7 +1978,25 @@
       ],
       "unreadPcOnly": 0,
       "unreadDisplayRules": 0,
-      "unreadDeclarations": []
+      "unreadDeclarations": [],
+      "ignoredProperties": [
+        {
+          "property": "font",
+          "samples": [
+            "mobile-bottom-nav/home|unselected/root: inherit",
+            "mobile-bottom-nav/home|selected/root: inherit",
+            "mobile-bottom-nav/search|unselected/root: inherit"
+          ]
+        },
+        {
+          "property": "-webkit-mask-image",
+          "samples": [
+            "mobile-bottom-nav/search|unselected/icon: var(--s1-mobile-nav-icon, url(\"../assets/icons/nav-search.svg\"))",
+            "mobile-bottom-nav/search|selected/icon: var(--s1-mobile-nav-icon, url(\"../assets/icons/nav-search.svg\"))",
+            "mobile-bottom-nav/notification|unselected/icon: var(--s1-mobile-nav-icon, url(\"../assets/icons/nav-notification.svg\"))"
+          ]
+        }
+      ]
     },
     {
       "component": "textarea",
@@ -1939,7 +2008,33 @@
       ],
       "unreadPcOnly": 0,
       "unreadDisplayRules": 0,
-      "unreadDeclarations": []
+      "unreadDeclarations": [],
+      "ignoredProperties": [
+        {
+          "property": "caret-color",
+          "samples": [
+            "textarea/default/control: var(--color-form-control-text-cursor)",
+            "textarea/focus/control: var(--color-form-control-text-cursor)",
+            "textarea/readOnly/control: var(--color-form-control-text-cursor)"
+          ]
+        },
+        {
+          "property": "outline",
+          "samples": [
+            "textarea/default/control: 0",
+            "textarea/focus/control: 0",
+            "textarea/readOnly/control: 0"
+          ]
+        },
+        {
+          "property": "resize",
+          "samples": [
+            "textarea/default/control: vertical",
+            "textarea/focus/control: vertical",
+            "textarea/readOnly/control: vertical"
+          ]
+        }
+      ]
     },
     {
       "component": "text-button",
@@ -1950,7 +2045,17 @@
       ],
       "unreadPcOnly": 0,
       "unreadDisplayRules": 0,
-      "unreadDeclarations": []
+      "unreadDeclarations": [],
+      "ignoredProperties": [
+        {
+          "property": "user-select",
+          "samples": [
+            "text-button/primary|default/root: none",
+            "text-button/primary|hover/root: none",
+            "text-button/primary|pressed/root: none"
+          ]
+        }
+      ]
     },
     {
       "component": "assist-button",
@@ -1961,7 +2066,17 @@
       ],
       "unreadPcOnly": 0,
       "unreadDisplayRules": 0,
-      "unreadDeclarations": []
+      "unreadDeclarations": [],
+      "ignoredProperties": [
+        {
+          "property": "user-select",
+          "samples": [
+            "assist-button/default/root: none",
+            "assist-button/hover/root: none",
+            "assist-button/pressed/root: none"
+          ]
+        }
+      ]
     },
     {
       "component": "filter-chip",
@@ -2264,7 +2379,2122 @@
           "value": "var(--spacing-6)",
           "reason": "pc-only"
         }
+      ],
+      "ignoredProperties": [
+        {
+          "property": "margin-left",
+          "samples": [
+            "filter-chip/line|md|mobile|on|default/icon: auto",
+            "filter-chip/line|md|mobile|on|hover/icon: auto",
+            "filter-chip/line|md|mobile|on|selected/icon: auto"
+          ]
+        }
       ]
+    },
+    {
+      "component": "bottom-sheet-option",
+      "combinations": 9,
+      "parts": [
+        "root",
+        "label"
+      ],
+      "unreadPcOnly": 0,
+      "unreadDisplayRules": 0,
+      "unreadDeclarations": [],
+      "ignoredProperties": []
+    },
+    {
+      "component": "bottom-sheet",
+      "combinations": 3,
+      "parts": [
+        "root",
+        "backdrop",
+        "panel",
+        "content",
+        "header",
+        "title",
+        "close",
+        "body"
+      ],
+      "unreadPcOnly": 0,
+      "unreadDisplayRules": 9,
+      "unreadDeclarations": [
+        {
+          "selector": "[data-s1-component=\"bottom-sheet\"][hidden]",
+          "media": null,
+          "property": "display",
+          "value": "none",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"bottom-sheet\"] [data-s1-part=\"sheet-close\"]::after",
+          "media": null,
+          "property": "background-color",
+          "value": "var(--color-icon-gray-dark)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"bottom-sheet\"] [data-s1-part=\"sheet-close\"]::after",
+          "media": null,
+          "property": "content",
+          "value": "\"\"",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"bottom-sheet\"] [data-s1-part=\"sheet-close\"]::after",
+          "media": null,
+          "property": "display",
+          "value": "block",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"bottom-sheet\"] [data-s1-part=\"sheet-close\"]::after",
+          "media": null,
+          "property": "height",
+          "value": "100%",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"bottom-sheet\"] [data-s1-part=\"sheet-close\"]::after",
+          "media": null,
+          "property": "mask",
+          "value": "url(\"../assets/icons/close.svg\") center / contain no-repeat",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"bottom-sheet\"] [data-s1-part=\"sheet-close\"]::after",
+          "media": null,
+          "property": "width",
+          "value": "100%",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"bottom-sheet\"] [data-s1-part=\"sheet-footer\"] > [data-s1-component=\"button\"]",
+          "media": null,
+          "property": "flex",
+          "value": "1 1 0",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"bottom-sheet\"] [data-s1-part=\"sheet-footer\"] > [data-s1-component=\"button\"]",
+          "media": null,
+          "property": "width",
+          "value": "100%",
+          "reason": "display-rule"
+        }
+      ],
+      "ignoredProperties": []
+    },
+    {
+      "component": "date-picker",
+      "combinations": 5,
+      "parts": [
+        "root",
+        "trigger",
+        "value",
+        "icon"
+      ],
+      "unreadPcOnly": 75,
+      "unreadDisplayRules": 76,
+      "unreadDeclarations": [
+        {
+          "selector": "[data-s1-component=\"date-picker\"][data-size=\"xxsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-12)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"][data-size=\"xxsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"][data-size=\"xxsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-normal)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"][data-size=\"xxsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-28)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"][data-size=\"xsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-14)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"][data-size=\"xsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"][data-size=\"xsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-tight)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"][data-size=\"xsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-34)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"][data-size=\"xxsm\"] [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "width",
+          "value": "var(--sizing-20)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"][data-size=\"xxsm\"] [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-20)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "align-items",
+          "value": "center",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "background",
+          "value": "var(--color-date-picker-panel-bg)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "border-radius",
+          "value": "var(--radius-4)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "box-shadow",
+          "value": "inset 0 0 0 var(--border-width-1) var(--color-date-picker-panel-border), var(--shadow-dropdown)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "box-sizing",
+          "value": "border-box",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "display",
+          "value": "flex",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "justify-content",
+          "value": "center",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "left",
+          "value": "0",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "margin-top",
+          "value": "var(--spacing-8)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "min-height",
+          "value": "352px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "padding",
+          "value": "var(--spacing-20) var(--spacing-24)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "position",
+          "value": "absolute",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "top",
+          "value": "100%",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "width",
+          "value": "356px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "z-index",
+          "value": "10",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"][hidden]",
+          "media": null,
+          "property": "display",
+          "value": "none",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"][data-flip=\"up\"]",
+          "media": null,
+          "property": "bottom",
+          "value": "100%",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"][data-flip=\"up\"]",
+          "media": null,
+          "property": "margin-bottom",
+          "value": "var(--spacing-8)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"][data-flip=\"up\"]",
+          "media": null,
+          "property": "margin-top",
+          "value": "0",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"][data-flip=\"up\"]",
+          "media": null,
+          "property": "top",
+          "value": "auto",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "z-index",
+          "value": "1001",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "bottom",
+          "value": "auto",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "margin-bottom",
+          "value": "0",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "margin-top",
+          "value": "0",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "position",
+          "value": "fixed",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"tile\"]",
+          "media": "supports: (text-box: trim-both cap alphabetic)",
+          "property": "align-content",
+          "value": "center",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"tile\"]",
+          "media": "supports: (text-box: trim-both cap alphabetic)",
+          "property": "display",
+          "value": "block",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"tile\"]",
+          "media": "supports: (text-box: trim-both cap alphabetic)",
+          "property": "text-align",
+          "value": "center",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"] [data-s1-part=\"tile\"]",
+          "media": "supports: (text-box: trim-both cap alphabetic)",
+          "property": "text-box",
+          "value": "trim-both cap alphabetic",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "min-height",
+          "value": "266px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "padding",
+          "value": "var(--spacing-16) 18px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "width",
+          "value": "267px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"panel\"]:is([data-view=\"year\"], [data-view=\"month\"])",
+          "media": null,
+          "property": "padding-bottom",
+          "value": "var(--spacing-20)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"calendar\"]",
+          "media": null,
+          "property": "width",
+          "value": "231px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"calendar\"][data-view=\"date\"], [data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"calendar\"][data-view=\"year\"], [data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"calendar\"][data-view=\"month\"]",
+          "media": null,
+          "property": "gap",
+          "value": "var(--spacing-12)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"header\"]",
+          "media": null,
+          "property": "width",
+          "value": "231px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"calendar\"][data-view=\"date\"] [data-s1-part=\"header\"]",
+          "media": null,
+          "property": "height",
+          "value": "24px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"year-label\"], [data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"month-label\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-18)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"weekday\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-12)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"weekday\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-normal)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"weekday\"]",
+          "media": null,
+          "property": "height",
+          "value": "33px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"weekday\"]",
+          "media": null,
+          "property": "width",
+          "value": "33px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "height",
+          "value": "33px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "width",
+          "value": "33px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"cell-inner\"]",
+          "media": null,
+          "property": "height",
+          "value": "22.5px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"cell-inner\"]",
+          "media": null,
+          "property": "width",
+          "value": "22.5px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"cell-num\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-12)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"cell-num\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-normal)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"cell\"][data-range-band]::before",
+          "media": null,
+          "property": "height",
+          "value": "22.5px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"cell\"][data-range-band]::before",
+          "media": null,
+          "property": "top",
+          "value": "5.25px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"cell\"][data-range-band=\"start\"]::before",
+          "media": null,
+          "property": "left",
+          "value": "16.5px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"cell\"][data-range-band=\"end\"]::before",
+          "media": null,
+          "property": "right",
+          "value": "16.5px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"tile-row\"]",
+          "media": null,
+          "property": "gap",
+          "value": "7px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"tile\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-12)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"tile\"]",
+          "media": null,
+          "property": "height",
+          "value": "40px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"tile\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-normal)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"date-picker\"]:is([data-size=\"xsm\"], [data-size=\"xxsm\"]) [data-s1-part=\"tile\"]",
+          "media": null,
+          "property": "width",
+          "value": "68px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-14)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-tight)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-44)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "width",
+          "value": "var(--sizing-24)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-24)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-14)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-tight)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-34)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "width",
+          "value": "var(--sizing-24)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-24)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "min-height",
+          "value": "266px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "padding",
+          "value": "var(--spacing-16) 18px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "width",
+          "value": "267px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"panel\"]:is([data-view=\"year\"], [data-view=\"month\"])",
+          "media": null,
+          "property": "padding-bottom",
+          "value": "var(--spacing-20)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"calendar\"]",
+          "media": null,
+          "property": "width",
+          "value": "231px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"calendar\"][data-view=\"date\"], [data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"calendar\"][data-view=\"year\"], [data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"calendar\"][data-view=\"month\"]",
+          "media": null,
+          "property": "gap",
+          "value": "var(--spacing-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"header\"]",
+          "media": null,
+          "property": "width",
+          "value": "231px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"calendar\"][data-view=\"date\"] [data-s1-part=\"header\"]",
+          "media": null,
+          "property": "height",
+          "value": "24px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"year-label\"], [data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"month-label\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-18)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"weekday\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"weekday\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-normal)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"weekday\"]",
+          "media": null,
+          "property": "height",
+          "value": "33px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"weekday\"]",
+          "media": null,
+          "property": "width",
+          "value": "33px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "height",
+          "value": "33px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "width",
+          "value": "33px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell-inner\"]",
+          "media": null,
+          "property": "height",
+          "value": "22.5px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell-inner\"]",
+          "media": null,
+          "property": "width",
+          "value": "22.5px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell-num\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell-num\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-normal)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell\"][data-range-band]::before",
+          "media": null,
+          "property": "height",
+          "value": "22.5px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell\"][data-range-band]::before",
+          "media": null,
+          "property": "top",
+          "value": "5.25px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell\"][data-range-band=\"start\"]::before",
+          "media": null,
+          "property": "left",
+          "value": "16.5px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell\"][data-range-band=\"end\"]::before",
+          "media": null,
+          "property": "right",
+          "value": "16.5px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"tile-row\"]",
+          "media": null,
+          "property": "gap",
+          "value": "7px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"tile\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"tile\"]",
+          "media": null,
+          "property": "height",
+          "value": "40px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"tile\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-normal)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"tile\"]",
+          "media": null,
+          "property": "width",
+          "value": "68px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-normal)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-28)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "width",
+          "value": "var(--sizing-20)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-20)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "min-height",
+          "value": "266px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "padding",
+          "value": "var(--spacing-16) 18px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "width",
+          "value": "267px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"panel\"]:is([data-view=\"year\"], [data-view=\"month\"])",
+          "media": null,
+          "property": "padding-bottom",
+          "value": "var(--spacing-20)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"calendar\"]",
+          "media": null,
+          "property": "width",
+          "value": "231px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"calendar\"][data-view=\"date\"], [data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"calendar\"][data-view=\"year\"], [data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"calendar\"][data-view=\"month\"]",
+          "media": null,
+          "property": "gap",
+          "value": "var(--spacing-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"header\"]",
+          "media": null,
+          "property": "width",
+          "value": "231px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"calendar\"][data-view=\"date\"] [data-s1-part=\"header\"]",
+          "media": null,
+          "property": "height",
+          "value": "24px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"year-label\"], [data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"month-label\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-18)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"weekday\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"weekday\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-normal)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"weekday\"]",
+          "media": null,
+          "property": "height",
+          "value": "33px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"weekday\"]",
+          "media": null,
+          "property": "width",
+          "value": "33px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "height",
+          "value": "33px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "width",
+          "value": "33px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell-inner\"]",
+          "media": null,
+          "property": "height",
+          "value": "22.5px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell-inner\"]",
+          "media": null,
+          "property": "width",
+          "value": "22.5px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell-num\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell-num\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-normal)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell\"][data-range-band]::before",
+          "media": null,
+          "property": "height",
+          "value": "22.5px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell\"][data-range-band]::before",
+          "media": null,
+          "property": "top",
+          "value": "5.25px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell\"][data-range-band=\"start\"]::before",
+          "media": null,
+          "property": "left",
+          "value": "16.5px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"cell\"][data-range-band=\"end\"]::before",
+          "media": null,
+          "property": "right",
+          "value": "16.5px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"tile-row\"]",
+          "media": null,
+          "property": "gap",
+          "value": "7px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"tile\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"tile\"]",
+          "media": null,
+          "property": "height",
+          "value": "40px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"tile\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-normal)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"tile\"]",
+          "media": null,
+          "property": "width",
+          "value": "68px",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"date-picker\"][data-size=\"md\"]:not([data-break=\"pc\"]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-48)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"date-picker\"][data-size=\"md\"]:not([data-break=\"pc\"]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-right",
+          "value": "var(--spacing-12)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-14)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-tight)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-44)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "width",
+          "value": "var(--sizing-24)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"date-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-24)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"date-picker\"]:not([data-size]):not([data-break=\"pc\"]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-48)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"date-picker\"]:not([data-size]):not([data-break=\"pc\"]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-right",
+          "value": "var(--spacing-12)",
+          "reason": "pc-only"
+        }
+      ],
+      "ignoredProperties": []
+    },
+    {
+      "component": "time-picker",
+      "combinations": 5,
+      "parts": [
+        "root",
+        "trigger",
+        "value",
+        "icon"
+      ],
+      "unreadPcOnly": 91,
+      "unreadDisplayRules": 33,
+      "unreadDeclarations": [
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xxsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-12)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xxsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xxsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-normal)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xxsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-28)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xxsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-left",
+          "value": "var(--spacing-12)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xxsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-right",
+          "value": "var(--spacing-6)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-14)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-tight)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-34)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-left",
+          "value": "var(--spacing-12)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xsm\"] [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-right",
+          "value": "var(--spacing-8)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xxsm\"] [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "width",
+          "value": "var(--sizing-20)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-size=\"xxsm\"] [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-20)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "background",
+          "value": "var(--color-dropdown-list-bg)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "border-radius",
+          "value": "var(--radius-4)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "box-shadow",
+          "value": "inset 0 0 0 var(--border-width-1) var(--color-dropdown-list-border), var(--shadow-dropdown)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "box-sizing",
+          "value": "border-box",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "left",
+          "value": "0",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "margin-top",
+          "value": "var(--spacing-4)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "min-width",
+          "value": "100%",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "overflow",
+          "value": "hidden",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "padding-top",
+          "value": "var(--spacing-12)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "position",
+          "value": "absolute",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "top",
+          "value": "100%",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "z-index",
+          "value": "10",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"][hidden]",
+          "media": null,
+          "property": "display",
+          "value": "none",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "z-index",
+          "value": "1001",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "margin-top",
+          "value": "0",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "position",
+          "value": "fixed",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"panel\"][data-s1-float=\"fixed\"]",
+          "media": null,
+          "property": "top",
+          "value": "auto",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-type=\"24h\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "width",
+          "value": "121px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"][data-type=\"12h\"] [data-s1-part=\"panel\"]",
+          "media": null,
+          "property": "width",
+          "value": "194px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"columns\"]",
+          "media": null,
+          "property": "box-sizing",
+          "value": "border-box",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"columns\"]",
+          "media": null,
+          "property": "display",
+          "value": "flex",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"columns\"]",
+          "media": null,
+          "property": "gap",
+          "value": "var(--spacing-8)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"columns\"]",
+          "media": null,
+          "property": "height",
+          "value": "192px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"columns\"]",
+          "media": null,
+          "property": "padding-inline",
+          "value": "var(--spacing-8)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"]",
+          "media": null,
+          "property": "display",
+          "value": "flex",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"]",
+          "media": null,
+          "property": "flex",
+          "value": "1 1 0",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"]",
+          "media": null,
+          "property": "flex-direction",
+          "value": "column",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"]",
+          "media": null,
+          "property": "min-width",
+          "value": "0",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"]",
+          "media": null,
+          "property": "overflow-y",
+          "value": "auto",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"divider\"]",
+          "media": null,
+          "property": "background",
+          "value": "var(--color-line-default)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"divider\"]",
+          "media": null,
+          "property": "flex",
+          "value": "0 0 auto",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"divider\"]",
+          "media": null,
+          "property": "width",
+          "value": "var(--border-width-1)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "align-items",
+          "value": "center",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "background",
+          "value": "var(--color-dropdown-option-bg-default)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "border-radius",
+          "value": "var(--radius-4)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "box-sizing",
+          "value": "border-box",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "color",
+          "value": "var(--color-dropdown-option-label-default)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "cursor",
+          "value": "pointer",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "display",
+          "value": "flex",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "flex",
+          "value": "0 0 auto",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "font-family",
+          "value": "\"Pretendard Variable\", \"Pretendard\", sans-serif",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-14)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-tight)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "font-weight",
+          "value": "var(--font-weight-regular)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "height",
+          "value": "32px",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "justify-content",
+          "value": "center",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "padding-inline",
+          "value": "var(--spacing-12)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "media": null,
+          "property": "white-space",
+          "value": "nowrap",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]:hover",
+          "media": "(hover: hover)",
+          "property": "background",
+          "value": "var(--color-dropdown-option-bg-hover)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]:hover",
+          "media": "(hover: hover)",
+          "property": "color",
+          "value": "var(--color-dropdown-option-label-hover)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"][aria-selected=\"true\"]",
+          "media": null,
+          "property": "background",
+          "value": "var(--color-dropdown-option-bg-selected)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"][aria-selected=\"true\"]",
+          "media": null,
+          "property": "color",
+          "value": "var(--color-dropdown-option-label-selected)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"footer\"]",
+          "media": null,
+          "property": "box-sizing",
+          "value": "border-box",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"footer\"]",
+          "media": null,
+          "property": "display",
+          "value": "flex",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"footer\"]",
+          "media": null,
+          "property": "justify-content",
+          "value": "flex-end",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"footer\"]",
+          "media": null,
+          "property": "padding",
+          "value": "var(--spacing-12) var(--spacing-16)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"columns\"] + [data-s1-part=\"footer\"]",
+          "media": null,
+          "property": "background",
+          "value": "linear-gradient(var(--color-line-default), var(--color-line-default)) no-repeat 50% 0 / calc(100% - var(--spacing-16)) var(--border-width-1)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"columns\"] + [data-s1-part=\"footer\"]",
+          "media": null,
+          "property": "background-origin",
+          "value": "border-box",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"columns\"] + [data-s1-part=\"footer\"]",
+          "media": null,
+          "property": "border-top",
+          "value": "var(--border-width-1) solid transparent",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"confirm\"]",
+          "media": null,
+          "property": "appearance",
+          "value": "none",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"confirm\"]",
+          "media": null,
+          "property": "background",
+          "value": "none",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"confirm\"]",
+          "media": null,
+          "property": "border",
+          "value": "none",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"confirm\"]",
+          "media": null,
+          "property": "color",
+          "value": "var(--color-text-state-accent)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"confirm\"]",
+          "media": null,
+          "property": "cursor",
+          "value": "pointer",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"confirm\"]",
+          "media": null,
+          "property": "font-family",
+          "value": "\"Pretendard Variable\", \"Pretendard\", sans-serif",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"confirm\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-14)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"confirm\"]",
+          "media": null,
+          "property": "font-weight",
+          "value": "var(--font-weight-medium)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"confirm\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-tight)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"confirm\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"confirm\"]",
+          "media": null,
+          "property": "padding",
+          "value": "0",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"confirm\"]:disabled",
+          "media": null,
+          "property": "color",
+          "value": "var(--color-text-state-disabled)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"confirm\"]:disabled",
+          "media": null,
+          "property": "cursor",
+          "value": "not-allowed",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"wheel-col\"]::-webkit-scrollbar",
+          "media": null,
+          "property": "display",
+          "value": "none",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-14)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-tight)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-44)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-left",
+          "value": "var(--spacing-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-right",
+          "value": "var(--spacing-8)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "width",
+          "value": "var(--sizing-24)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"wide\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-24)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-14)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-tight)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-34)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-left",
+          "value": "var(--spacing-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-right",
+          "value": "var(--spacing-8)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "width",
+          "value": "var(--sizing-24)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"normal\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-24)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-normal)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-28)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-left",
+          "value": "var(--spacing-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-right",
+          "value": "var(--spacing-6)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "width",
+          "value": "var(--sizing-20)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-density=\"narrow\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-20)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"time-picker\"][data-size=\"md\"]:not([data-break=\"pc\"]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-48)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"time-picker\"][data-size=\"md\"]:not([data-break=\"pc\"]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-right",
+          "value": "var(--spacing-12)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "font-size",
+          "value": "var(--font-size-14)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "line-height",
+          "value": "var(--line-height-130)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "letter-spacing",
+          "value": "var(--letter-spacing-tight)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-44)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-left",
+          "value": "var(--spacing-12)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-right",
+          "value": "var(--spacing-8)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "width",
+          "value": "var(--sizing-24)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"time-picker\"]:not([data-size]) [data-s1-part=\"icon\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-24)",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"time-picker\"]:not([data-size]):not([data-break=\"pc\"]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "height",
+          "value": "var(--sizing-48)",
+          "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-break=\"mobile\"] [data-s1-component=\"time-picker\"]:not([data-size]):not([data-break=\"pc\"]) [data-s1-part=\"trigger\"]",
+          "media": null,
+          "property": "padding-right",
+          "value": "var(--spacing-12)",
+          "reason": "pc-only"
+        }
+      ],
+      "ignoredProperties": []
+    },
+    {
+      "component": "expandable-card",
+      "combinations": 3,
+      "parts": [
+        "root",
+        "header",
+        "text",
+        "toggleIcon",
+        "panelWrap",
+        "panel",
+        "title",
+        "panelTitle",
+        "subtitle",
+        "panelSubtitle",
+        "body",
+        "panelBody",
+        "note",
+        "panelNote",
+        "caption",
+        "panelCaption"
+      ],
+      "unreadPcOnly": 0,
+      "unreadDisplayRules": 1,
+      "unreadDeclarations": [
+        {
+          "selector": "[data-s1-component=\"expandable-card\"] [data-s1-part=\"header\"], [data-s1-component=\"expandable-card\"] [data-s1-part=\"panel-wrap\"], [data-s1-component=\"expandable-card\"] [data-s1-part=\"panel\"], [data-s1-component=\"expandable-card\"] [data-s1-part=\"toggle-icon\"]",
+          "media": "(prefers-reduced-motion: reduce)",
+          "property": "transition",
+          "value": "none",
+          "reason": "display-rule"
+        }
+      ],
+      "ignoredProperties": []
+    },
+    {
+      "component": "divider",
+      "combinations": 12,
+      "parts": [
+        "root"
+      ],
+      "unreadPcOnly": 0,
+      "unreadDisplayRules": 0,
+      "unreadDeclarations": [],
+      "ignoredProperties": []
+    },
+    {
+      "component": "data-tag",
+      "combinations": 12,
+      "parts": [
+        "root"
+      ],
+      "unreadPcOnly": 0,
+      "unreadDisplayRules": 0,
+      "unreadDeclarations": [],
+      "ignoredProperties": []
     }
   ]
 }

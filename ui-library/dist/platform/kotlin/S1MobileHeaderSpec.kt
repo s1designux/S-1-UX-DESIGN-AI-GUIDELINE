@@ -20,8 +20,8 @@ object S1MobileHeaderSpec {
             "subtitle" to S1Box(foreground = S1Palette.colorTextBodyTertiary, fontSize = 14f, letterSpacing = -0.02f, lineHeight = 1.3f, fontWeight = 400),
             "notification" to S1Box(height = 32f, width = 32f),
             "notificationIcon" to S1Box(background = S1Palette.colorIconGrayDark, height = 24f, width = 24f, icon = "mobile-header-notification"),
-            "notificationDot" to S1Box(background = S1Palette.colorIconRed, left = 0f, right = 0f, icon = "mobile-header-notification-accent"),
-            "notificationHit" to S1Box(left = -6f, right = -6f)
+            "notificationDot" to S1Box(background = S1Palette.colorIconRed, left = 0f, right = 0f, top = 0f, icon = "mobile-header-notification-accent"),
+            "notificationHit" to S1Box(left = -6f, right = -6f, top = -6f)
         ),
         "standard-title" to mapOf(
             "root" to S1Box(background = S1Palette.colorBgLevel0, height = 56f, paddingStart = 16f, paddingEnd = 16f, paddingTop = 12f, paddingBottom = 12f, gap = 8f),
@@ -29,7 +29,7 @@ object S1MobileHeaderSpec {
             "backIcon" to S1Box(background = S1Palette.colorIconGrayDark, height = 24f, width = 24f, icon = "mobile-header-back"),
             "title" to S1Box(foreground = S1Palette.colorTextTitlePrimary, minWidth = 0f, fontSize = 18f, letterSpacing = -0.02f, lineHeight = 1.3f, fontWeight = 500),
             "spacer" to S1Box(height = 32f, width = 32f),
-            "backHit" to S1Box(left = -6f, right = -6f)
+            "backHit" to S1Box(left = -6f, right = -6f, top = -6f)
         ),
         "standard-title-close" to mapOf(
             "root" to S1Box(background = S1Palette.colorBgLevel0, height = 56f, paddingStart = 16f, paddingEnd = 16f, paddingTop = 12f, paddingBottom = 12f, gap = 8f),
@@ -38,8 +38,8 @@ object S1MobileHeaderSpec {
             "title" to S1Box(foreground = S1Palette.colorTextTitlePrimary, minWidth = 0f, fontSize = 18f, letterSpacing = -0.02f, lineHeight = 1.3f, fontWeight = 500),
             "close" to S1Box(height = 32f, width = 32f),
             "closeIcon" to S1Box(background = S1Palette.colorIconGrayDark, height = 24f, width = 24f, icon = "mobile-header-close"),
-            "backHit" to S1Box(left = -6f, right = -6f),
-            "closeHit" to S1Box(left = -6f, right = -6f)
+            "backHit" to S1Box(left = -6f, right = -6f, top = -6f),
+            "closeHit" to S1Box(left = -6f, right = -6f, top = -6f)
         ),
         "standard-no-title" to mapOf(
             "root" to S1Box(background = S1Palette.colorBgLevel0, height = 56f, paddingStart = 16f, paddingEnd = 16f, paddingTop = 12f, paddingBottom = 12f, gap = 8f),
@@ -47,7 +47,7 @@ object S1MobileHeaderSpec {
             "backIcon" to S1Box(background = S1Palette.colorIconGrayDark, height = 24f, width = 24f, icon = "mobile-header-back"),
             "title" to S1Box(foreground = S1Palette.colorTextTitlePrimary, height = 24f, minWidth = 0f, fontSize = 18f, letterSpacing = -0.02f, lineHeight = 1.3f, fontWeight = 500),
             "spacer" to S1Box(height = 32f, width = 32f),
-            "backHit" to S1Box(left = -6f, right = -6f)
+            "backHit" to S1Box(left = -6f, right = -6f, top = -6f)
         ),
         "standard-no-title-close" to mapOf(
             "root" to S1Box(background = S1Palette.colorBgLevel0, height = 56f, paddingStart = 16f, paddingEnd = 16f, paddingTop = 12f, paddingBottom = 12f, gap = 8f),
@@ -56,8 +56,8 @@ object S1MobileHeaderSpec {
             "title" to S1Box(foreground = S1Palette.colorTextTitlePrimary, height = 24f, minWidth = 0f, fontSize = 18f, letterSpacing = -0.02f, lineHeight = 1.3f, fontWeight = 500),
             "close" to S1Box(height = 32f, width = 32f),
             "closeIcon" to S1Box(background = S1Palette.colorIconGrayDark, height = 24f, width = 24f, icon = "mobile-header-close"),
-            "backHit" to S1Box(left = -6f, right = -6f),
-            "closeHit" to S1Box(left = -6f, right = -6f)
+            "backHit" to S1Box(left = -6f, right = -6f, top = -6f),
+            "closeHit" to S1Box(left = -6f, right = -6f, top = -6f)
         )
     )
 

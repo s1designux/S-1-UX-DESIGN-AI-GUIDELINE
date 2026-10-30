@@ -12,6 +12,54 @@ import androidx.compose.ui.graphics.vector.PathParser
 import androidx.compose.ui.unit.dp
 
 object S1Icons {
+    /** account.svg (24×24) */
+    val account: ImageVector by lazy {
+        ImageVector.Builder(
+            name = "account",
+            defaultWidth = 24f.dp,
+            defaultHeight = 24f.dp,
+            viewportWidth = 24f,
+            viewportHeight = 24f
+        )
+            .addPath(
+                pathData = PathParser().parsePathString("M 15.4207 14.2062 H 8.5793 C 7.2534 14.2062 6.0018 14.7047 5.132 15.5745 C 3.3712 17.3459 3.0106 19.8597 3 19.9552 L 4.0289 20.0931 C 4.0289 20.0931 4.3577 17.8126 5.8639 16.2958 C 6.5427 15.6169 7.5292 15.2351 8.5793 15.2351 H 15.4207 C 16.4708 15.2351 17.4573 15.6275 18.1361 16.2958 C 19.6423 17.8126 19.9711 20.0613 19.9711 20.0931 L 21 19.9552 C 20.9894 19.8491 20.6288 17.3353 18.868 15.5745 C 17.9982 14.7047 16.7466 14.2062 15.4207 14.2062 Z").toNodes(),
+                fill = SolidColor(Color.Black)
+            )
+            .addPath(
+                pathData = PathParser().parsePathString("M 7.4976 8.4149 C 7.4976 10.8969 9.5235 12.9228 12.0055 12.9228 C 14.4876 12.9228 16.5135 10.8969 16.5135 8.4149 C 16.5135 5.9328 14.4876 3.9069 12.0055 3.9069 C 9.5235 3.9069 7.4976 5.9328 7.4976 8.4149 Z M 15.4528 8.4149 C 15.4528 10.3135 13.9042 11.8621 12.0055 11.8621 C 10.1069 11.8621 8.5583 10.3135 8.5583 8.4149 C 8.5583 6.5162 10.1069 4.9676 12.0055 4.9676 C 13.9042 4.9676 15.4528 6.5162 15.4528 8.4149 Z").toNodes(),
+                fill = SolidColor(Color.Black)
+            )
+            .build()
+    }
+
+    /** calendar.svg (24×24) */
+    val calendar: ImageVector by lazy {
+        ImageVector.Builder(
+            name = "calendar",
+            defaultWidth = 24f.dp,
+            defaultHeight = 24f.dp,
+            viewportWidth = 24f,
+            viewportHeight = 24f
+        )
+            .addPath(
+                pathData = PathParser().parsePathString("M 3.871 4.6839 V 19.8581 C 3.871 20.1615 4.1094 20.4 4.4129 20.4 H 19.5871 C 19.8906 20.4 20.129 20.1615 20.129 19.8581 V 4.6839 C 20.129 4.3804 19.8906 4.1419 19.5871 4.1419 H 16.8774 V 3.6 H 15.7935 V 4.1419 H 8.2064 V 3.6 H 7.1226 V 4.1419 H 4.4129 C 4.1094 4.1419 3.871 4.3804 3.871 4.6839 Z M 8.2064 5.7677 V 5.2258 H 15.7935 V 5.7677 H 16.8774 V 5.2258 H 19.0451 V 7.3936 H 4.9548 V 5.2258 H 7.1226 V 5.7677 H 8.2064 Z M 19.0451 19.3161 H 4.9548 V 8.4774 H 19.0451 V 19.3161 Z").toNodes(),
+                fill = SolidColor(Color.Black)
+            )
+            .addPath(
+                pathData = PathParser().parsePathString("M 9.0195 12.813 H 7.3937 V 14.4388 H 9.0195 V 12.813 Z").toNodes(),
+                fill = SolidColor(Color.Black)
+            )
+            .addPath(
+                pathData = PathParser().parsePathString("M 12.813 12.813 H 11.1872 V 14.4388 H 12.813 V 12.813 Z").toNodes(),
+                fill = SolidColor(Color.Black)
+            )
+            .addPath(
+                pathData = PathParser().parsePathString("M 16.6065 12.813 H 14.9808 V 14.4388 H 16.6065 V 12.813 Z").toNodes(),
+                fill = SolidColor(Color.Black)
+            )
+            .build()
+    }
+
     /** check.svg (16×16) */
     val check: ImageVector by lazy {
         ImageVector.Builder(
@@ -31,6 +79,22 @@ object S1Icons {
             .build()
     }
 
+    /** check24.svg (24×24) */
+    val check24: ImageVector by lazy {
+        ImageVector.Builder(
+            name = "check24",
+            defaultWidth = 24f.dp,
+            defaultHeight = 24f.dp,
+            viewportWidth = 24f,
+            viewportHeight = 24f
+        )
+            .addPath(
+                pathData = PathParser().parsePathString("M 9.7081 16.6711 L 3.7216 10.6846 L 3 11.4063 L 9.3422 17.7485 C 9.4438 17.8501 9.5759 17.9009 9.6979 17.9009 C 9.8199 17.9009 9.9622 17.8501 10.0536 17.7485 L 21 6.8224 L 20.2784 6.1008 L 9.7081 16.6711 Z").toNodes(),
+                fill = SolidColor(Color.Black)
+            )
+            .build()
+    }
+
     /** chevron.svg (24×24) */
     val chevron: ImageVector by lazy {
         ImageVector.Builder(
@@ -45,6 +109,25 @@ object S1Icons {
                 stroke = SolidColor(Color.Black),
                 strokeLineWidth = 1f,
                 strokeLineCap = StrokeCap.Square,
+                strokeLineJoin = StrokeJoin.Miter
+            )
+            .build()
+    }
+
+    /** clock.svg (24×24) */
+    val clock: ImageVector by lazy {
+        ImageVector.Builder(
+            name = "clock",
+            defaultWidth = 24f.dp,
+            defaultHeight = 24f.dp,
+            viewportWidth = 24f,
+            viewportHeight = 24f
+        )
+            .addPath(
+                pathData = PathParser().parsePathString("M 12 7.25 V 12.2 L 9.5 15").toNodes(),
+                stroke = SolidColor(Color.Black),
+                strokeLineWidth = 1f,
+                strokeLineCap = StrokeCap.Round,
                 strokeLineJoin = StrokeJoin.Miter
             )
             .build()
@@ -113,6 +196,26 @@ object S1Icons {
             )
             .addPath(
                 pathData = PathParser().parsePathString("M 12.0005 15.2138 C 13.7728 15.2138 15.2096 13.777 15.2096 12.0047 C 15.2096 10.2323 13.7728 8.7956 12.0005 8.7956 C 10.2281 8.7956 8.7914 10.2323 8.7914 12.0047 C 8.7914 13.777 10.2281 15.2138 12.0005 15.2138 Z").toNodes(),
+                fill = SolidColor(Color.Black)
+            )
+            .build()
+    }
+
+    /** lock.svg (24×24) */
+    val lock: ImageVector by lazy {
+        ImageVector.Builder(
+            name = "lock",
+            defaultWidth = 24f.dp,
+            defaultHeight = 24f.dp,
+            viewportWidth = 24f,
+            viewportHeight = 24f
+        )
+            .addPath(
+                pathData = PathParser().parsePathString("M 5 11 V 20.5 C 5 20.78 5.22 21 5.5 21 H 18.5 C 18.78 21 19 20.78 19 20.5 V 11 C 19 10.72 18.78 10.5 18.5 10.5 H 17 V 8.19 C 17 5.33 14.76 3 12 3 C 9.24 3 7 5.33 7 8.19 V 10.5 H 5.5 C 5.22 10.5 5 10.72 5 11 Z M 6 11.5 H 18 V 20 H 6 V 11.5 Z M 8 8.19 C 8 5.88 9.79 4 12 4 C 14.21 4 16 5.88 16 8.19 V 10.5 H 8 V 8.19 Z").toNodes(),
+                fill = SolidColor(Color.Black)
+            )
+            .addPath(
+                pathData = PathParser().parsePathString("M 13.6504 13.4004 L 12.0004 15.0404 L 10.3504 13.4004 L 9.6504 14.1004 L 11.2904 15.7504 L 9.6504 17.4004 L 10.3504 18.1004 L 12.0004 16.4604 L 13.6504 18.1004 L 14.3504 17.4004 L 12.7104 15.7504 L 14.3504 14.1004 L 13.6504 13.4004 Z").toNodes(),
                 fill = SolidColor(Color.Black)
             )
             .build()
@@ -321,11 +424,16 @@ object S1Icons {
 
     /** 배포본이 이름으로 가리키는 아이콘을 찾는다(스타일 표의 icon 값). */
     fun byName(name: String): ImageVector = when (name) {
+        "account" -> account
+        "calendar" -> calendar
         "check" -> check
+        "check24" -> check24
         "chevron" -> chevron
+        "clock" -> clock
         "close" -> close
         "eye_hide" -> eyeHide
         "eye_show" -> eyeShow
+        "lock" -> lock
         "mobile-header-arrow-down" -> mobileHeaderArrowDown
         "mobile-header-back" -> mobileHeaderBack
         "mobile-header-close" -> mobileHeaderClose

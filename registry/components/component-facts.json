@@ -3,7 +3,7 @@
     "generated": true,
     "source": "plugins/figma-vars-installer/src/build-components.ts",
     "method": "mock-execution",
-    "sourceHash": "bf554394f884",
+    "sourceHash": "1acf6dec6b61",
     "unknownValuePolicy": [
       "unknown",
       "not-defined",

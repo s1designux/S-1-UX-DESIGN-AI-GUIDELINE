@@ -1,9 +1,9 @@
 {
   "repository": "https://github.com/s1designux/S1-UX-DESIGN-with-AI",
-  "commit": "39bf10c26cd74ce1281e0bb1167d9f720c35fb3a",
+  "commit": "8b102ddc2e89a55ba134bb53d9085cbf876b300f",
   "scope": "PC",
-  "generatedAt": "2026-10-22",
-  "syncedAt": "2026-10-22 06:37 (KST)",
-  "sourceCommitDate": "2026-10-21 13:31 (KST)",
-  "sourceCommitSubject": "chore(map): 시스템 맵 재생성 (worktree-lnb-peek 합치기)"
+  "generatedAt": "2026-10-31",
+  "syncedAt": "2026-10-31 07:15 (KST)",
+  "sourceCommitDate": "2026-10-30 14:57 (KST)",
+  "sourceCommitSubject": "chore(map): 시스템 맵 재생성 (worktree-native-platforms 합치기)"
 }

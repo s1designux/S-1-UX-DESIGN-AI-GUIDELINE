@@ -4500,7 +4500,7 @@
   cursor: default;
   display: flex;
   font-size: var(--font-size-14);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-regular);
   gap: var(--spacing-8);
   letter-spacing: var(--letter-spacing-tight);
   line-height: var(--line-height-130);

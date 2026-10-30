@@ -238,6 +238,123 @@ fun S1Gallery(modifier: Modifier = Modifier, dark: Boolean = false) {
                 }
             }
 
+            GallerySection("Divider") {
+                for (axis in S1DividerSpec.variants) {
+                    GalleryLabel(axis)
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        if (axis == "x") {
+                            Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                                S1Divider(axis = "x")
+                                S1Divider(axis = "x", weight = "strong")
+                                S1Divider(axis = "x", tone = "strong")
+                                S1Divider(axis = "x", inset = "text")
+                            }
+                        } else {
+                            BasicText(text = "왼쪽", style = TextStyle(color = S1Palette.colorTextBodyPrimary.value(), fontFamily = LocalS1FontFamily.current, fontSize = 14.sp))
+                            S1Divider(axis = "y")
+                            BasicText(text = "오른쪽", style = TextStyle(color = S1Palette.colorTextBodyPrimary.value(), fontFamily = LocalS1FontFamily.current, fontSize = 14.sp))
+                        }
+                    }
+                }
+            }
+
+            GallerySection("Data Tag") {
+                for (shape in S1DataTagSpec.shapes) {
+                    GalleryRow(shape) {
+                        for (tone in S1DataTagSpec.tones) {
+                            S1DataTag(text = "승인", tone = tone, shape = shape, solid = true)
+                            S1DataTag(text = "확인", tone = tone, shape = shape, solid = false)
+                        }
+                    }
+                }
+            }
+
+            GallerySection("Expandable Card") {
+                var closed by remember { mutableStateOf(false) }
+                S1ExpandableCard(
+                    expanded = closed,
+                    onExpandedChange = { closed = it },
+                    header = S1CardTexts(title = "타이틀", subtitle = "서브타이틀", body = "본문", note = "안내", caption = "캡션"),
+                    panel = S1CardTexts(title = "타이틀", subtitle = "서브타이틀", body = "본문", note = "안내", caption = "캡션")
+                )
+                S1ExpandableCard(
+                    expanded = true,
+                    onExpandedChange = {},
+                    header = S1CardTexts(title = "열린 카드"),
+                    panel = S1CardTexts(body = "펼침칸 본문")
+                )
+            }
+
+            GallerySection("Bottom Sheet Option") {
+                for (type in S1BottomSheetOptionSpec.variants) {
+                    GalleryLabel(type)
+                    Column {
+                        S1BottomSheetOption(label = "항목 1", type = type, subtitle = "설명")
+                        S1BottomSheetOption(label = "항목 2", type = type, selected = type != "list", subtitle = "설명")
+                        if (type == "text" || type == "list") {
+                            S1BottomSheetOption(label = "항목 3", type = type, enabled = false, subtitle = "설명")
+                        }
+                    }
+                }
+            }
+
+            GallerySection("Bottom Sheet") {
+                for (footer in S1BottomSheetSpec.footers) {
+                    GalleryLabel(footer)
+                    Box(modifier = Modifier.fillMaxWidth().height(420.dp)) {
+                        S1BottomSheetPanel(
+                            title = "항목 선택",
+                            onDismissRequest = {},
+                            primaryLabel = if (footer == "none") null else "적용",
+                            secondaryLabel = if (footer == "dual") "취소" else null
+                        ) {
+                            S1BottomSheetOption(label = "항목 1")
+                            S1BottomSheetOption(label = "항목 2", selected = true)
+                            S1BottomSheetOption(label = "항목 3")
+                        }
+                    }
+                }
+            }
+
+            GallerySection("Date Picker") {
+                var date by remember { mutableStateOf<S1Date?>(null) }
+                var start by remember { mutableStateOf<S1Date?>(null) }
+                var end by remember { mutableStateOf<S1Date?>(null) }
+                GalleryRow("trigger") {
+                    S1DatePicker(value = date, onValueChange = { date = it })
+                    S1DatePicker(value = S1Date(2026, 10, 2), onValueChange = {})
+                    S1DatePicker(value = null, onValueChange = {}, enabled = false)
+                }
+                GalleryRow("range") {
+                    S1DateRangePicker(start = start, end = end, onRangeChange = { s, e -> start = s; end = e })
+                }
+                GalleryLabel("sheet")
+                Box(modifier = Modifier.fillMaxWidth().height(760.dp)) {
+                    S1DatePickerSheet(selected = S1Date(2026, 10, 15), onSelect = {}, onDismissRequest = {})
+                }
+            }
+
+            GallerySection("Time Picker") {
+                var time by remember { mutableStateOf<S1Time?>(null) }
+                GalleryRow("trigger") {
+                    S1TimePicker(value = time, onValueChange = { time = it })
+                    S1TimePicker(value = S1Time(15, 5), onValueChange = {})
+                    S1TimePicker(value = null, onValueChange = {}, enabled = false)
+                }
+                GalleryLabel("12h")
+                Box(modifier = Modifier.fillMaxWidth().height(470.dp)) {
+                    S1TimePickerSheet(value = S1Time(15, 5), onApply = {}, onDismissRequest = {})
+                }
+                GalleryLabel("24h")
+                Box(modifier = Modifier.fillMaxWidth().height(470.dp)) {
+                    S1TimePickerSheet(value = S1Time(15, 5), onApply = {}, onDismissRequest = {}, is24Hour = true)
+                }
+            }
+
             /* 하단 내비는 칸 하나가 부품이다 — 바(배경·가로 배치)는 화면이 조립한다.
                검수 화면에서도 그 경계를 그대로 보여 준다. */
             GallerySection("Mobile Bottom Nav") {

@@ -9,11 +9,11 @@ object S1ModalSpec {
 
     val boxes: Map<String, Map<String, S1Box>> = mapOf(
         "mobile|single" to mapOf(
-            "root" to S1Box(left = 0f, right = 0f),
-            "overlay" to S1Box(background = S1Palette.colorOverlay, left = 0f, right = 0f),
+            "root" to S1Box(left = 0f, right = 0f, top = 0f),
+            "overlay" to S1Box(background = S1Palette.colorOverlay, left = 0f, right = 0f, top = 0f),
             "panel" to S1Box(background = S1Palette.colorSurfaceRaised, borderColor = S1Palette.colorModalPanelBorder, borderWidth = 1f, radius = 8f, width = 300f, paddingStart = 20f, paddingEnd = 20f, paddingTop = 20f, paddingBottom = 20f, gap = 30f, shadow = listOf(S1Shadow(0f, 4f, 6f, -2f, 0x0F000000), S1Shadow(0f, 12f, 20f, -4f, 0x1A000000))),
             "content" to S1Box(gap = 24f),
-            "header" to S1Box(gap = 8f),
+            "header" to S1Box(gap = 8f, spaceBetween = true),
             "title" to S1Box(foreground = S1Palette.colorTextTitlePrimary, fontSize = 18f, lineHeight = 1.3f, fontWeight = 700),
             "body" to S1Box(gap = 8f),
             "message" to S1Box(foreground = S1Palette.colorTextBodyPrimary, fontSize = 16f, letterSpacing = -0.02f, lineHeight = 1.3f, fontWeight = 400),
@@ -22,11 +22,11 @@ object S1ModalSpec {
             "closeIcon" to S1Box(background = S1Palette.colorIconGrayDark, icon = "close")
         ),
         "mobile|dual" to mapOf(
-            "root" to S1Box(left = 0f, right = 0f),
-            "overlay" to S1Box(background = S1Palette.colorOverlay, left = 0f, right = 0f),
+            "root" to S1Box(left = 0f, right = 0f, top = 0f),
+            "overlay" to S1Box(background = S1Palette.colorOverlay, left = 0f, right = 0f, top = 0f),
             "panel" to S1Box(background = S1Palette.colorSurfaceRaised, borderColor = S1Palette.colorModalPanelBorder, borderWidth = 1f, radius = 8f, width = 300f, paddingStart = 20f, paddingEnd = 20f, paddingTop = 20f, paddingBottom = 20f, gap = 30f, shadow = listOf(S1Shadow(0f, 4f, 6f, -2f, 0x0F000000), S1Shadow(0f, 12f, 20f, -4f, 0x1A000000))),
             "content" to S1Box(gap = 24f),
-            "header" to S1Box(gap = 8f),
+            "header" to S1Box(gap = 8f, spaceBetween = true),
             "title" to S1Box(foreground = S1Palette.colorTextTitlePrimary, fontSize = 18f, lineHeight = 1.3f, fontWeight = 700),
             "body" to S1Box(gap = 8f),
             "message" to S1Box(foreground = S1Palette.colorTextBodyPrimary, fontSize = 16f, letterSpacing = -0.02f, lineHeight = 1.3f, fontWeight = 400),

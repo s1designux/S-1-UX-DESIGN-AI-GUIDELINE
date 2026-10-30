@@ -2,7 +2,7 @@
 
 > 자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run ui:build` 를 실행하세요.
 
-**배포본 번호 0.27.0** · 2026-10-21 판
+**배포본 번호 0.28.0** · 2026-10-30 판
 이 번호가 최신인지는 디자인가이드 내려받기 화면에서 확인하세요 — 번호가 다르면 새로 받으면 됩니다.
 코드에서 볼 때는 `S1Version.VERSION` 을 읽습니다.
 
@@ -15,7 +15,7 @@
 | `S1Style.kt` | `S1Box`·`S1Theme`·수식어(그림자·여백·글자) |
 | `S1Icons.kt` | 배포본 아이콘을 옮긴 ImageVector |
 | `S1*Spec.kt` | 부품별 **승인 조합 → 최종 값** 표 (배포본 CSS 에서 계산) |
-| `S1*.kt` | Compose 부품 16종: button · input · checkbox · radio · toggle · chip · dropdown · select · tab · modal · mobile-header · mobile-bottom-nav · textarea · text-button · assist-button · filter-chip |
+| `S1*.kt` | Compose 부품 23종: button · input · checkbox · radio · toggle · chip · dropdown · select · tab · modal · mobile-header · mobile-bottom-nav · textarea · text-button · assist-button · filter-chip · bottom-sheet-option · bottom-sheet · date-picker · time-picker · expandable-card · divider · data-tag |
 | `S1Type.kt` | 이름 붙은 텍스트 스타일 — 정본 타이포와 같은 값 |
 | `preview/S1Gallery.kt` | 승인 조합을 한 화면에 늘어놓는 검수 화면 |
 | `../kotlin-sample/` | Android Studio 로 바로 열어 보는 예제 앱 |
