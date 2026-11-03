@@ -68,7 +68,7 @@ public enum S1TimePickerSpec {
             "apply": S1Box(),
             "tabs": S1Box(paddingStart: 24, paddingEnd: 24),
             "datePanel": S1Box(paddingStart: 24, paddingEnd: 24),
-            "datePanelNote": S1Box(foreground: S1Palette.colorTextBodySecondary, fontSize: 14, letterSpacing: -0.02, lineHeight: 1.3)
+            "datePanelNote": S1Box()
         ]
         return table
     }()

@@ -1,4 +1,5 @@
 import { init as initTab, destroy as destroyTab } from "./tab.js";
+import { mountCalendar } from "./date-picker.js";
 
 export const componentId = "time-picker";
 export const jsRequired = true;
@@ -324,6 +325,10 @@ export function init(root) {
   const wheelColByKind = {};
   let centerWheelDefault = null;
   let tabApi = null;
+  let calendarApi = null;
+  let pickedDate = null;
+  let appliedDate = null;
+  let lastWheelRead = null;
   let handleTabChange = null;
   let sheetLastFocused = null;
 
@@ -376,13 +381,23 @@ export function init(root) {
         const showDate = event.detail?.value === "date";
         if (datePanel) datePanel.hidden = !showDate;
         const wheel = root.querySelector('[data-s1-part="wheel"]');
+        /* 휠이 숨겨지기 전에 마지막 중앙값을 기억한다 — 숨은 휠은 높이가 0 이라 읽으면 첫 칸이 나온다. */
+        if (showDate && wheel && !wheel.hidden) lastWheelRead = readWheelValue() ?? lastWheelRead;
         if (wheel) wheel.hidden = showDate;
+        if (showDate) calendarApi?.refresh(); /* 탭 전환으로 초점을 옮기지 않는다(탭 패턴) — 달력은 Tab 으로 들어간다 */
+        else if (lastWheelRead) centerWheelTo({ ampm: lastWheelRead.ampm, hour: lastWheelRead.hour, minute: lastWheelRead.minute });
       };
+      /* 날짜 탭 — date-picker 달력 본문(년·월 줄 + 요일 + 날짜 칸)을 그대로 붙인다(river 승인 2026-11-02).
+         그리기·키보드·접근성은 date-picker 런타임(mountCalendar)이 소유하고 time-picker 는 고른 날짜만 받는다. */
+      const calendarEl = datePanel?.querySelector('[data-s1-part="calendar"]');
+      if (calendarEl) calendarApi = mountCalendar(calendarEl, { onSelect: (iso) => { pickedDate = iso; } });
       tabsRoot.addEventListener("s1:tab:change", handleTabChange);
     }
   }
 
   const readWheelValue = () => {
+    const wheelEl = root.querySelector('[data-s1-part="wheel"]');
+    if (wheelEl?.hidden && lastWheelRead) return lastWheelRead;
     const hourCell = centeredWheelCell(wheelColByKind.hour);
     const minuteCell = centeredWheelCell(wheelColByKind.minute);
     const hour = hourCell?.dataset.value;
@@ -411,15 +426,27 @@ export function init(root) {
     scrollCellToCenter(col, cell);
   };
 
+  /* 날짜+시간 시트의 트리거 글자 — "2026.11.20 15:30"(river 2026-11-02 "'오후'는 빼고 24시간으로 표시해줘").
+     휠은 정본대로 오전/오후 열을 굴리지만 보이는 글자는 24시간으로 바꾸고, 고른 날짜를 앞에 붙인다. */
+  const dateTimeText = (result, iso) => {
+    let hour = Number(result.hour);
+    if (result.ampm === "오후" && hour < 12) hour += 12;
+    else if (result.ampm === "오전" && hour === 12) hour = 0;
+    const clock = `${pad2(hour)}:${result.minute}`;
+    return iso ? `${iso.replace(/-/g, ".")} ${clock}` : clock;
+  };
+
   const handleApplyClick = () => {
-    const result = readWheelValue();
-    if (!result) return;
+    const picked = readWheelValue();
+    if (!picked) return;
+    const result = mobileContent === "date-time" ? { ...picked, text: dateTimeText(picked, pickedDate) } : picked;
     if (value) value.textContent = result.text;
     trigger.dataset.filled = "true";
+    appliedDate = pickedDate;
     close();
     root.dispatchEvent(new CustomEvent("s1:time-picker:change", {
       bubbles: true,
-      detail: { value: result.text, hour: result.hour, minute: result.minute, ampm: result.ampm, type }
+      detail: { value: result.text, hour: result.hour, minute: result.minute, ampm: result.ampm, type, ...(mobileContent === "date-time" ? { date: pickedDate } : {}) }
     }));
   };
 
@@ -485,6 +512,8 @@ export function init(root) {
          그 자리를 지킨다: 트리거가 값을 들고 있을 때(data-filled)는 다시 잡지 않는다. */
       if (pendingWheel) centerWheelTo(pendingWheel);
       else if (centerWheelDefault && trigger.dataset.filled !== "true") centerWheelDefault();
+      /* 취소(닫기·Esc)한 뒤 다시 열 때 날짜도 휠과 같이 다룬다 — 값이 아직 적용 전이면 처음으로, 적용된 값이 있으면 고른 채 둔다. */
+      if (calendarApi && trigger.dataset.filled !== "true") { pickedDate = appliedDate; calendarApi.setValue(appliedDate); }
       document.body.style.overflow = "hidden";
       document.addEventListener("keydown", handleSheetKeydown, true);
       const firstFocusable = sheetPanel ? sheetFocusables(sheetPanel)[0] : null;
@@ -538,7 +567,7 @@ export function init(root) {
   disabledObserver.observe(trigger, { attributes: true, attributeFilter: ["disabled"] });
 
   /* 폼 전송·값 읽기 (2026-10-12) — root 에 data-name 을 주면 숨은 <input type="hidden" name> 이 만들어지고,
-     시간이 확정될 때마다 보이는 글자(예: "오전 09:30")와 같은 값으로 채워진다. */
+     시간이 확정될 때마다 보이는 글자(예: "오전 09:30", 날짜+시간 시트는 "2026.11.20 14:30")와 같은 값으로 채워진다. */
   let lastChange = null;
   const hiddenName = root.dataset.name;
   const hidden = hiddenName ? Object.assign(document.createElement("input"), { type: "hidden", name: hiddenName }) : null;
@@ -608,7 +637,9 @@ export function init(root) {
       pendingWheel = cells;
       centerWheelTo(cells);
     }
-    const text = type === "12h" ? `${cells.ampm} ${cells.hour}:${cells.minute}` : `${cells.hour}:${cells.minute}`;
+    const text = mobileContent === "date-time" && hasWheelSheet
+      ? dateTimeText(cells, pickedDate)
+      : type === "12h" ? `${cells.ampm} ${cells.hour}:${cells.minute}` : `${cells.hour}:${cells.minute}`;
     value.textContent = text;
     trigger.dataset.filled = "true";
     lastChange = { value: text, hour: cells.hour, minute: cells.minute, ampm: cells.ampm, type };
@@ -622,6 +653,8 @@ export function init(root) {
     setValue,
     /* 확정된 시간 — { value, hour, minute, ampm, type }. 아직 고르지 않았으면 null. */
     get value() { return lastChange ? { ...lastChange } : null; },
+    /* 날짜 탭에서 고른 날짜 "YYYY-MM-DD" (date-time 모바일 시트만, 고르지 않았으면 null). */
+    get date() { return pickedDate; },
     openPanel: open,
     closePanel: close,
     destroy() {
@@ -643,6 +676,7 @@ export function init(root) {
           col.removeEventListener("keydown", handleWheelColKeydown);
           col.removeEventListener("click", handleWheelColClick);
         }
+        calendarApi?.destroy();
         if (tabApi) destroyTab(tabsRoot);
       }
       document.removeEventListener("pointerdown", handleOutsidePointer, true);

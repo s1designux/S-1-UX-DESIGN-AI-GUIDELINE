@@ -3567,7 +3567,7 @@
         "icon"
       ],
       "unreadPcOnly": 91,
-      "unreadDisplayRules": 33,
+      "unreadDisplayRules": 40,
       "unreadDeclarations": [
         {
           "selector": "[data-s1-component=\"time-picker\"][data-size=\"xxsm\"] [data-s1-part=\"trigger\"]",
@@ -3892,147 +3892,147 @@
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "align-items",
           "value": "center",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "background",
           "value": "var(--color-dropdown-option-bg-default)",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "border-radius",
           "value": "var(--radius-4)",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "box-sizing",
           "value": "border-box",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "color",
           "value": "var(--color-dropdown-option-label-default)",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "cursor",
           "value": "pointer",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "display",
           "value": "flex",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "flex",
           "value": "0 0 auto",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "font-family",
           "value": "\"Pretendard Variable\", \"Pretendard\", sans-serif",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "font-size",
           "value": "var(--font-size-14)",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "line-height",
           "value": "var(--line-height-130)",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "letter-spacing",
           "value": "var(--letter-spacing-tight)",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "font-weight",
           "value": "var(--font-weight-regular)",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "height",
           "value": "32px",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "justify-content",
           "value": "center",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "padding-inline",
           "value": "var(--spacing-12)",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]",
           "media": null,
           "property": "white-space",
           "value": "nowrap",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]:hover",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]:hover",
           "media": "(hover: hover)",
           "property": "background",
           "value": "var(--color-dropdown-option-bg-hover)",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"]:hover",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"]:hover",
           "media": "(hover: hover)",
           "property": "color",
           "value": "var(--color-dropdown-option-label-hover)",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"][aria-selected=\"true\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"][aria-selected=\"true\"]",
           "media": null,
           "property": "background",
           "value": "var(--color-dropdown-option-bg-selected)",
           "reason": "pc-only"
         },
         {
-          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"cell\"][aria-selected=\"true\"]",
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"column\"] [data-s1-part=\"cell\"][aria-selected=\"true\"]",
           "media": null,
           "property": "color",
           "value": "var(--color-dropdown-option-label-selected)",
@@ -4177,6 +4177,55 @@
           "property": "cursor",
           "value": "not-allowed",
           "reason": "pc-only"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"date-panel\"] [data-s1-component=\"date-picker\"]",
+          "media": null,
+          "property": "display",
+          "value": "flex",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"date-panel\"] [data-s1-component=\"date-picker\"]",
+          "media": null,
+          "property": "justify-content",
+          "value": "center",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"date-panel\"] [data-s1-component=\"date-picker\"]",
+          "media": null,
+          "property": "width",
+          "value": "100%",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"date-panel\"] [data-s1-part=\"calendar-wrap\"]",
+          "media": null,
+          "property": "display",
+          "value": "flex",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"date-panel\"] [data-s1-part=\"calendar-wrap\"]",
+          "media": null,
+          "property": "justify-content",
+          "value": "center",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"date-panel\"] [data-s1-part=\"calendar-wrap\"]",
+          "media": null,
+          "property": "width",
+          "value": "100%",
+          "reason": "display-rule"
+        },
+        {
+          "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"wheel\"][hidden]",
+          "media": null,
+          "property": "display",
+          "value": "none",
+          "reason": "display-rule"
         },
         {
           "selector": "[data-s1-component=\"time-picker\"] [data-s1-part=\"wheel-col\"]::-webkit-scrollbar",

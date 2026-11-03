@@ -8,6 +8,7 @@ import { useBehavior } from "../behaviors.js";
 import { scopeOf, slot } from "../runtime.js";
 import SPEC from "../specs/time-picker.js";
 import S1Button from "./button.js";
+import S1DatePicker from "./date-picker.js";
 import S1Tab from "./tab.js";
 
 export const BREAKS = ["pc","mobile"];
@@ -228,9 +229,7 @@ export default function S1TimePicker({ size, breakName = DEFAULT_BREAK, parts, o
             </El>
             <N k="n10" as={S1Tab} a={{ "data-s1-part": "tabs", "data-s1-component": "tab", "data-size": "sm", "data-break": "mobile", "role": "tablist", "aria-label": "날짜·시간 선택" }} p={{ size: "sm", "aria-label": "날짜·시간 선택", tabs: [{"content":"날짜","attrs":{"aria-selected":"false","data-value":"date"}},{"content":"시간","attrs":{"aria-selected":"true","data-value":"time"}}], omit: ["tabpanel (optional)"], parts: {"tab":"시간"}, ...attrProps(slot(partScope, "nested:tab").attrs) }} />
             <El k="n11" a={{ "data-s1-part": "date-panel", "hidden": "", ...(slot(partScope, "datePanel").attrs ?? {}) }}>
-              <El k="n12" a={{ "data-s1-part": "date-panel-note", ...(slot(partScope, "datePanelNote").attrs ?? {}) }}>
-                {slot(partScope, "datePanelNote").content ?? "날짜 선택 화면은 Date Picker 부품이 따로 제공합니다(이 부품은 탭 전환만 합니다)."}
-              </El>
+              <N k="n12" as={S1DatePicker} a={{ "data-s1-component": "date-picker", "data-s1-part": "date-calendar", "data-size": "md", "data-break": "mobile" }} p={{ size: "md", omit: ["trigger","value","icon","panel","header","prev","next","chevron-icon","header-label","year-label","month-label","weekdays","weekday","view","grid","week","cell","cell-inner","cell-num","tile","sheet","sheet-backdrop","sheet-panel","sheet-header","sheet-title","sheet-close","sheet-footer","apply"], ...attrProps(slot(partScope, "nested:datePicker").attrs) }} />
             </El>
             <El k="n13" a={{ "data-s1-part": "wheel", ...(slot(partScope, "wheel").attrs ?? {}) }}>
               <El k="n14" a={{ "data-s1-part": "wheel-col", "data-column": "ampm", "role": "listbox", "aria-label": "오전오후", ...(slot(partScope, "wheelCol").attrs ?? {}) }}>

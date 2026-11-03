@@ -1,8 +1,8 @@
 {
   "id": "time-picker",
-  "version": "0.6.0",
+  "version": "0.8.0",
   "status": "approved",
-  "canonicalFingerprint": "bdf304ea39d52ed35c85eb07447f737ea68b7a591a6af4126e5f73a64542c604",
+  "canonicalFingerprint": "e3c20de896ab8bc6afc3299034cb92fae379ca29f3987d5e920d49316d801583",
   "canonicalSources": [
     "plugins/figma-vars-installer/src/build-components.ts",
     "plugins/figma-vars-installer/src/vars-data.ts",
@@ -116,7 +116,7 @@
     "wheelScrollMechanism": "⚠️ 수치 출처 정정(2026-09-07): 행 높이 42 · 휠 창 높이 270 · 열 폭(오전오후 56·시 40·콜론 8·분 40) · 열 간격 36/32/32 는 **정본에서 내려온 값이다** — 행 높이·휠 높이는 Figma 원본 실측(node 2386:57682), 열 폭은 정본 build-components.ts 의 WHEEL_COL_W(river 승인 2026-09-07). 웹이 정하는 값이 아니다. 종전에 여기 적혀 있던 44/272 는 정본에 대응 수치가 없던 시절 웹이 지어낸 값이며 이제 쓰지 않는다. 스크롤 여백 114 = (창 270 − 항목 42) / 2 로 정본 수치에서 계산된다. 정본은 정적 스펙 샘플(3~4행)일 뿐 실제 **스크롤·중앙정렬 판정 메커니즘**이 없다 — 웹 전용으로 남는 것은 그 메커니즘뿐이다: CSS scroll-snap 으로 실제 휠처럼 굴리고, JS 는 스크롤 컨테이너 중앙에 가장 가까운 칸의 getBoundingClientRect() 로 그 열의 값을 판정한다. 정본이 전 셀 동일 accent 색이라(3864) 강조색 전환은 만들지 않았다 — 위계는 fade-top/fade-bottom 마스크만으로 준다(정본 그대로). 키보드·클릭 이동은 instant(즉시) 로 고정한다 — 실제 렌더 검증(2026-09-03)에서 smooth 스크롤이 동작하지 않는 렌더 환경이 확인됐고, 정본에도 모션 규정이 없어(registry a11y reducedMotion: not-applicable) 기능 신뢰성을 우선했다. 사용자가 손가락으로 직접 스크롤할 때는 브라우저 기본 관성 스크롤이 그대로 적용된다.",
     "wheelApplyAlwaysEnabled": "목록 모드의 confirm 은 필수 열을 다 골라야 풀리지만(정본 없음, 기존 결정 유지), 휠 모드의 apply 는 상시 활성이다 — 휠은 초기 렌더부터 각 열 중앙에 항상 유효한 값(첫 항목)이 있어 목록 모드의 \"미완료\" 상태 자체가 성립하지 않는다(오케스트레이터 판단). river 승인 2026-09-08(메커니즘 승인 화면 M-2, 선택 A=지금대로). river 인용: \"드롭다운방식은 선택된 시간이 없기때문에 시간을 선택한 후에 확인이 활성화 되어야함.\" — 목록 모드는 지금처럼 선택 후 활성, 휠 모드는 상시 활성으로 확정.",
     "fadeGradientImplementation": "정본은 alpha 그라데이션 마스크 RECT + 솔리드 RECT 2겹(3891-3924)이다. 웹은 같은 4-stop alpha 곡선을 color-mix(in srgb, var(--color-overlay-wheel-fade) N%, transparent) 로 직접 그려 값은 동일하되 레이어 1겹으로 구현했다 — HEX 없이 semantic 토큰만 경유한다는 원칙은 그대로 지킨다.",
-    "dateTimeDatePanel": "DateTime 변형의 \"날짜\" 탭 콘텐츠(정본 4004-4020 은 탭 조립까지만 규정, 날짜 화면 자체는 없음)는 coordinator 지시대로 date-picker 를 끌어들이지 않고 탭 전환만 구현했다 — date-panel 은 안내 문구만 있는 자리표시자다. 실제 날짜 그리드가 필요하면 date-picker 코어를 조립하는 상위 패턴이 별도로 필요하다(needs-decision 후보)."
+    "dateTimeDatePanel": "DateTime 변형의 \"날짜\" 탭은 date-picker 모바일 시트의 달력 본문(년·월 줄 + 요일 + 날짜 칸)을 그대로 보여 준다(정본 buildTimePickerMobileBottomSheet Content=DateTime/Tab=Date · river 승인 2026-11-02 \"날짜선택 바텀시트에서 <년도,월> 아래 달력부분만 그대로\"). date-panel 안에 data-s1-component=\"date-picker\"[data-s1-part=date-calendar][data-size=md][data-break=mobile] > calendar-wrap > calendar 를 두고, 달력은 date-picker 런타임의 공개 진입점 mountCalendar() 가 그린다(복제 없음 — 크기·색·키보드·접근성은 date-picker 소유). 시트 제목·닫기·적용은 time-picker 것을 쓴다. 트리거 글자는 \"2026.11.20 14:30\"처럼 고른 날짜(YYYY.MM.DD)와 24시간 시각을 함께 보인다 — 휠은 정본대로 오전/오후 열을 굴리지만 글자는 24시간으로 바꾼다(river 2026-11-02 \"'오후'는 빼고 24시간으로 표시해줘\"). 날짜를 안 골랐으면 시각만 보인다. change 의 detail.value 도 같은 글자이고 detail.date(YYYY-MM-DD)·api.date 로 날짜를 따로 받는다."
   },
   "parts": [
     "trigger",
@@ -179,7 +179,7 @@
       "wheel-col 은 role=listbox + aria-label(시/분/오전오후), colon 열은 장식(aria-hidden)이라 role 없음",
       "wheel 모드는 스크롤 중앙에 가장 가까운 wheel-cell 이 그 열의 값이다 — 위/아래 화살표 키로 한 칸씩 이동, 클릭한 칸이 중앙으로 스크롤된다",
       "apply 버튼은 목록 모드 confirm 과 달리 상시 활성 — 휠은 항상 중앙에 값이 있는 상태(초기값=각 열 첫 항목)라 완결 조건이 없다",
-      "DateTime 변형: tabs 의 s1:tab:change 이벤트로 wheel↔date-panel 을 토글한다(탭 전환만, 날짜 렌더링은 범위 밖)"
+      "DateTime 변형: tabs 의 s1:tab:change 이벤트로 wheel↔date-panel 을 토글한다. 날짜 탭이 열리면 date-picker 달력 본문(mountCalendar)이 보이고, 날짜를 고르면 적용 때 change 이벤트 detail.date 에 실린다"
     ],
     "grouping": "코어는 트리거 하나와 패널 하나만 소유한다. 폼 필드 라벨·도움말은 패턴이 담당한다.",
     "source": "components/time-picker/time-picker.example.html",
@@ -211,7 +211,7 @@
       "sheet-footer",
       "apply"
     ],
-    "sheet": "data-mobile-ui=\"wheel\" 일 때만 조립한다(build-components.ts buildTimePickerMobileBottomSheet 3862-4060). div[data-s1-part=sheet] > sheet-backdrop + div[data-s1-part=sheet-panel][role=dialog][aria-modal=true] 안에 sheet-header(제목+닫기) · [DateTime 변형만] div[data-s1-part=tabs][data-s1-component=tab][data-size=sm][data-break=mobile] (승인된 tab 코어 Line Tab Mobile/SM 인스턴스, data-value=date/time) + div[data-s1-part=date-panel](날짜 탭 자리 — 이 컴포넌트는 탭 전환만 제공하고 날짜 화면 자체는 범위 밖, river 지시) · div[data-s1-part=wheel] 안에 2~4개의 div[data-s1-part=wheel-col][data-column=ampm|hour|colon|minute] + fade-top/fade-bottom · sheet-footer > button[data-s1-part=apply][data-s1-component=button][data-variant=primary][data-size=lg](승인된 button 코어 인스턴스, 라벨 \"적용\")를 조립한다. wheel-cell 은 런타임이 채운다(colon 열 제외 전부 role=option + data-value)."
+    "sheet": "data-mobile-ui=\"wheel\" 일 때만 조립한다(build-components.ts buildTimePickerMobileBottomSheet 3862-4060). div[data-s1-part=sheet] > sheet-backdrop + div[data-s1-part=sheet-panel][role=dialog][aria-modal=true] 안에 sheet-header(제목+닫기) · [DateTime 변형만] div[data-s1-part=tabs][data-s1-component=tab][data-size=sm][data-break=mobile] (승인된 tab 코어 Line Tab Mobile/SM 인스턴스, data-value=date/time) + div[data-s1-part=date-panel](날짜 탭 — 안에 div[data-s1-component=date-picker][data-s1-part=date-calendar][data-size=md][data-break=mobile] > calendar-wrap > div[data-s1-part=calendar] 를 두면 date-picker 런타임이 년·월 줄·요일·날짜 칸을 채운다) · div[data-s1-part=wheel] 안에 2~4개의 div[data-s1-part=wheel-col][data-column=ampm|hour|colon|minute] + fade-top/fade-bottom · sheet-footer > button[data-s1-part=apply][data-s1-component=button][data-variant=primary][data-size=lg](승인된 button 코어 인스턴스, 라벨 \"적용\")를 조립한다. wheel-cell 은 런타임이 채운다(colon 열 제외 전부 role=option + data-value)."
   },
   "cssContract": {
     "entry": "components/time-picker.css",
@@ -244,14 +244,16 @@
       "assets/css/typography.css",
       "components/button.css",
       "components/tab.css",
-      "components/bottom-sheet.css"
+      "components/bottom-sheet.css",
+      "components/date-picker.css"
     ],
     "coreComponents": [
       "button",
       "tab",
-      "bottom-sheet"
+      "bottom-sheet",
+      "date-picker"
     ],
-    "coreComponentsNote": "목록 모드(패널·칸)는 기존과 동일하게 dropdown semantic token 만 재사용하고 컴포넌트 의존이 없다. 모바일 휠 바텀시트(data-mobile-ui=wheel)의 하단 \"적용\" 버튼은 승인된 button 코어(Variant=Primary, Size=LG) 인스턴스를, DateTime 변형의 날짜/시간 탭은 승인된 tab 코어(Line Tab, Size=SM, Break=Mobile) 인스턴스를 그대로 조립한다(build-components.ts buildDatePickerBottomSheet 3805-3824 패턴과 동일 · buildTimePickerMobileBottomSheet 4004-4020). 시트 껍데기(딤·패널·헤더·제목·닫기)는 2026-09-15 부터 bottom-sheet 코어 CSS 를 그대로 받는다 — time-picker.css 는 --s1-bottom-sheet-gap(32)·--s1-bottom-sheet-shadow(none) 두 손잡이만 준다. 여닫기·초점 가둠 런타임은 time-picker.js 가 계속 자체 소유한다(bottom-sheet.js 를 겹쳐 물리지 않는다). time-picker 를 개별 설치할 때 wheel 모드를 쓰려면 button·tab·bottom-sheet 의 CSS(button=false·tab=true·bottom-sheet 의 JS 는 로드하지 않는다)도 함께 로드해야 한다."
+    "coreComponentsNote": "목록 모드(패널·칸)는 기존과 동일하게 dropdown semantic token 만 재사용하고 컴포넌트 의존이 없다. 모바일 휠 바텀시트(data-mobile-ui=wheel)의 하단 \"적용\" 버튼은 승인된 button 코어(Variant=Primary, Size=LG) 인스턴스를, DateTime 변형의 날짜/시간 탭은 승인된 tab 코어(Line Tab, Size=SM, Break=Mobile) 인스턴스를 그대로 조립한다(build-components.ts buildDatePickerBottomSheet 3805-3824 패턴과 동일 · buildTimePickerMobileBottomSheet 4004-4020). 시트 껍데기(딤·패널·헤더·제목·닫기)는 2026-09-15 부터 bottom-sheet 코어 CSS 를 그대로 받는다 — time-picker.css 는 --s1-bottom-sheet-gap(32)·--s1-bottom-sheet-shadow(none) 두 손잡이만 준다. 여닫기·초점 가둠 런타임은 time-picker.js 가 계속 자체 소유한다(bottom-sheet.js 를 겹쳐 물리지 않는다). time-picker 를 개별 설치할 때 wheel 모드를 쓰려면 button·tab·bottom-sheet 의 CSS(button=false·tab=true·bottom-sheet 의 JS 는 로드하지 않는다)도 함께 로드해야 한다. 모바일 date-time 시트의 날짜 탭은 date-picker 코어의 달력 본문(CSS 전체 + 런타임 mountCalendar)을 그대로 조립한다 — time-picker.js 가 ./date-picker.js 를 import 하므로 time-picker 를 개별 설치할 때 date-picker.css 와 date-picker.js 도 함께 둬야 한다(date-picker 의 트리거·시트 마크업은 쓰지 않는다)."
   },
   "icons": [
     {
@@ -312,12 +314,13 @@
     "eventDetail": {
       "open": "{}",
       "close": "{}",
-      "change": "{ value, hour, minute, ampm, type }"
+      "change": "{ value, hour, minute, ampm, type, date? }  (date: 모바일 date-time 시트에서만 — 고른 날짜 YYYY-MM-DD 또는 null. 이때 value 는 \"2026.11.20 14:30\" 형식)"
     },
     "methods": [
       "openPanel()",
       "closePanel()",
       "value",
+      "date",
       "setValue(value)"
     ],
     "lifecycle": [
@@ -333,5 +336,5 @@
     },
     "valueNote": "setValue(\"HH:mm\") 는 change 이벤트를 내지 않는다(화면이 넣은 값). null · \"\" 로 비운다. 목록에 없는 분(간격 밖)이면 false 를 돌려준다."
   },
-  "sourceFingerprint": "6e6899e38f125dfc7d187bd02cfea6ac738623f5305b4b0eeefad5680314ab48"
+  "sourceFingerprint": "440e593dd5b19b0c74c4af2dd0b3191669afeb616236b31330d813d04092cde0"
 }

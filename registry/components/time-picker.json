@@ -58,7 +58,8 @@
     "드롭다운의 각 열은 role=listbox 와 접근 이름(시·분·오전오후)을 가지고, 각 칸은 role=option 과 aria-selected 를 가진다.",
     "키보드: 트리거에서 Enter·Space·아래화살표로 열고, Esc 로 닫으며 포커스는 트리거로 돌아온다. 위아래 화살표는 같은 열 이동, 좌우 화살표는 열 이동, Enter 는 선택, Tab 으로 확인 버튼에 도달한다.",
     "열릴 때 포커스는 현재 선택값(없으면 첫 칸)으로 이동한다.",
-    "disabled 트리거는 열리지 않는다."
+    "disabled 트리거는 열리지 않는다.",
+    "모바일 날짜·시간 시트의 날짜 탭은 Date Picker 달력 본문의 접근성을 그대로 따른다(Tab 으로 날짜 칸 하나(선택일·오늘)에 들어가고, 날짜 칸 포커스 이동 화살표·Home/End·PageUp/PageDown, Enter·Space 선택)."
   ],
   "variants": {
     "input": {

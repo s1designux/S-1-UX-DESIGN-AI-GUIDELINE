@@ -14,7 +14,7 @@
 ## 시작하기
 
 1. 마크업은 예시 파일을 복사해서 씁니다: `examples/time-picker.html` · `examples/time-picker.mobile.html`
-2. 겉모습: 전체 묶음 `s1-ui.css` 한 줄이면 됩니다. 이 부품만 쓰려면 `assets/css/tokens.css` · `assets/css/typography.css` · `components/button.css` · `components/tab.css` · `components/bottom-sheet.css` · `components/time-picker.css` 를 읽습니다.
+2. 겉모습: 전체 묶음 `s1-ui.css` 한 줄이면 됩니다. 이 부품만 쓰려면 `assets/css/tokens.css` · `assets/css/typography.css` · `components/button.css` · `components/tab.css` · `components/bottom-sheet.css` · `components/date-picker.css` · `components/time-picker.css` 를 읽습니다.
 3. 동작: `autoInit()` 이 이 부품을 찾아 붙입니다. 이 부품만 쓰려면 `import { init } from "./s1-ui/components/time-picker.js"` 후 `const api = init(요소)` 를 부릅니다.
 4. 페이지가 뜬 뒤에 넣은 마크업은 `autoInit(감쌀요소)` 를 한 번 더 부르면 붙습니다(두 번 불러도 겹치지 않습니다).
 
@@ -52,7 +52,7 @@
 - wheel-col 은 role=listbox + aria-label(시/분/오전오후), colon 열은 장식(aria-hidden)이라 role 없음
 - wheel 모드는 스크롤 중앙에 가장 가까운 wheel-cell 이 그 열의 값이다 — 위/아래 화살표 키로 한 칸씩 이동, 클릭한 칸이 중앙으로 스크롤된다
 - apply 버튼은 목록 모드 confirm 과 달리 상시 활성 — 휠은 항상 중앙에 값이 있는 상태(초기값=각 열 첫 항목)라 완결 조건이 없다
-- DateTime 변형: tabs 의 s1:tab:change 이벤트로 wheel↔date-panel 을 토글한다(탭 전환만, 날짜 렌더링은 범위 밖)
+- DateTime 변형: tabs 의 s1:tab:change 이벤트로 wheel↔date-panel 을 토글한다. 날짜 탭이 열리면 date-picker 달력 본문(mountCalendar)이 보이고, 날짜를 고르면 적용 때 change 이벤트 detail.date 에 실린다
 
 ## 값·옵션 속성
 
@@ -64,7 +64,7 @@
 
 ## 스크립트로 부르기
 
-`init(요소)` 가 돌려주는 객체의 `openPanel()` · `closePanel()` · `value` · `setValue(value)`.
+`init(요소)` 가 돌려주는 객체의 `openPanel()` · `closePanel()` · `value` · `date` · `setValue(value)`.
 
 ## 이벤트
 
@@ -74,7 +74,7 @@
 |---|---|
 | `s1:time-picker:open` | `{}` |
 | `s1:time-picker:close` | `{}` |
-| `s1:time-picker:change` | `{ value, hour, minute, ampm, type }` |
+| `s1:time-picker:change` | `{ value, hour, minute, ampm, type, date? }  (date: 모바일 date-time 시트에서만 — 고른 날짜 YYYY-MM-DD 또는 null. 이때 value 는 "2026.11.20 14:30" 형식)` |
 
 ## 접근성 — 퍼블리셔가 지킬 것
 
@@ -86,4 +86,4 @@
 
 ---
 
-정본 지문 `bdf304ea39d52ed35c85eb07447f737ea68b7a591a6af4126e5f73a64542c604` · 부품 버전 0.6.0
+정본 지문 `e3c20de896ab8bc6afc3299034cb92fae379ca29f3987d5e920d49316d801583` · 부품 버전 0.8.0

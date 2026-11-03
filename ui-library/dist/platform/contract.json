@@ -2,7 +2,7 @@
   "_meta": {
     "note": "자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요.",
     "purpose": "개발 툴과 검사기가 함께 읽는 허용목록. 여기 없는 variant·size·속성은 승인된 적이 없는 것이다.",
-    "canonicalFingerprint": "bee81fc4fe9df9329471558b08123fdca4144361bc65e0fdc9e44d2d21f3c949"
+    "canonicalFingerprint": "05a3acfd2ce0ddb8ff82c6c4a9741b490306b0bce14fb2364df5801b1d3d13d5"
   },
   "components": [
     {
@@ -910,8 +910,8 @@
         "init(root)",
         "destroy(root)"
       ],
-      "canonicalFingerprint": "bdf304ea39d52ed35c85eb07447f737ea68b7a591a6af4126e5f73a64542c604",
-      "sourceFingerprint": "6e6899e38f125dfc7d187bd02cfea6ac738623f5305b4b0eeefad5680314ab48"
+      "canonicalFingerprint": "e3c20de896ab8bc6afc3299034cb92fae379ca29f3987d5e920d49316d801583",
+      "sourceFingerprint": "440e593dd5b19b0c74c4af2dd0b3191669afeb616236b31330d813d04092cde0"
     },
     {
       "id": "date-picker",
@@ -1000,7 +1000,7 @@
         "destroy(root)"
       ],
       "canonicalFingerprint": "0ab29faac87cf30a9075a948f7cc869ceec840a30dd0edf836e9ea2c94d8ee34",
-      "sourceFingerprint": "5fded8d33c5c2c907dc2fcc67fdbc3e25d2a99a8fce8f2dfbd4c1e3292e573f0"
+      "sourceFingerprint": "72e37a79722902ac3c54f8f7179aaa30aa0871e7a0499b3e35505c71d7ae4127"
     },
     {
       "id": "gnb",

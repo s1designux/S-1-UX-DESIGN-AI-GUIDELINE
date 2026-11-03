@@ -65,7 +65,7 @@ object S1TimePickerSpec {
             "apply" to S1Box(),
             "tabs" to S1Box(paddingStart = 24f, paddingEnd = 24f),
             "datePanel" to S1Box(paddingStart = 24f, paddingEnd = 24f),
-            "datePanelNote" to S1Box(foreground = S1Palette.colorTextBodySecondary, fontSize = 14f, letterSpacing = -0.02f, lineHeight = 1.3f)
+            "datePanelNote" to S1Box()
         )
     )
 

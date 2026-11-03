@@ -5732,6 +5732,7 @@ _Don't_
 - 키보드: 트리거에서 Enter·Space·아래화살표로 열고, Esc 로 닫으며 포커스는 트리거로 돌아온다. 위아래 화살표는 같은 열 이동, 좌우 화살표는 열 이동, Enter 는 선택, Tab 으로 확인 버튼에 도달한다.
 - 열릴 때 포커스는 현재 선택값(없으면 첫 칸)으로 이동한다.
 - disabled 트리거는 열리지 않는다.
+- 모바일 날짜·시간 시트의 날짜 탭은 Date Picker 달력 본문의 접근성을 그대로 따른다(Tab 으로 날짜 칸 하나(선택일·오늘)에 들어가고, 날짜 칸 포커스 이동 화살표·Home/End·PageUp/PageDown, Enter·Space 선택).
 
 ### Toggle
 
@@ -5954,4 +5955,4 @@ DESIGN_SYSTEM_GAP:
 - 적용 해석 순서(뒤가 앞을 덮음): core → service(extends core) → role → platform → theme. 기본값: service=core · role=user · platform=web · theme=light.
 - 서비스 분기(예: vms 영상관제)는 core 를 상속하고 차이분만 덮는다.
 
-<!-- generated-stamp: 778c9884e2bf · 손편집 금지 -->
+<!-- generated-stamp: 36ca6a6470d2 · 손편집 금지 -->

@@ -45,7 +45,11 @@
         <button type="button" data-s1-part="tab" role="tab" aria-selected="true" data-value="time">시간</button>
       </div>
       <div data-s1-part="date-panel" hidden>
-        <p data-s1-part="date-panel-note">날짜 선택 화면은 Date Picker 부품이 따로 제공합니다(이 부품은 탭 전환만 합니다).</p>
+        <div data-s1-component="date-picker" data-s1-part="date-calendar" data-size="md" data-break="mobile">
+          <div data-s1-part="calendar-wrap">
+            <div data-s1-part="calendar"></div>
+          </div>
+        </div>
       </div>
       <div data-s1-part="wheel">
         <div data-s1-part="wheel-col" data-column="ampm" role="listbox" aria-label="오전오후"></div>

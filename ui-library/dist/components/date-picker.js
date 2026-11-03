@@ -347,6 +347,136 @@ function renderCalendar(container, s, ctx) {
   }
 }
 
+/* ── 달력 본문만 붙이기 (time-picker 날짜 탭 등 다른 부품이 date-picker 달력을 그대로 쓰는 공개 진입점, 2026-11-02) ──
+   트리거·시트·적용 없이 「년·월 줄 + 요일 + 날짜 칸」만 그린다. 겉모습은 date-picker.css 가 그대로 입히므로
+   container 는 data-s1-component="date-picker" 요소 안에 있어야 한다. 단일 선택만 지원한다.
+   options: { value: "YYYY-MM-DD"|null, disabledDates: string[], onSelect(iso) }
+   반환: { value, setValue(iso|null), refresh(), focusInitial(), destroy() } */
+export function mountCalendar(container, options = {}) {
+  if (!(container instanceof Element)) return null;
+  const today = startOfDay(new Date());
+  const initial = parseISO(options.value);
+  const anchor = initial || today;
+  const s = {
+    mode: "single",
+    view: "date",
+    viewYear: anchor.getFullYear(),
+    viewMonth: anchor.getMonth(),
+    selected: initial,
+    hoverISO: null,
+    disabledSet: new Set(options.disabledDates || []),
+    today
+  };
+  const ctx = {};
+  /* roving tabindex — 날짜 칸 하나(방금 옮긴 칸 → 선택일 → 오늘 → 그 달 첫 선택 가능 날짜)만 tabIndex 0 으로 두어
+     Tab 한 번으로 달력에 들어오게 한다. 다른 부품(time-picker 날짜 탭)이 쓰는 이 진입점에만 적용하며,
+     date-picker 자체 렌더 경로는 열 때 focusInitialCell 로 초점을 주므로 건드리지 않는다. */
+  let rovingISO = null;
+  const applyRoving = () => {
+    const cells = [...container.querySelectorAll('[data-s1-part="cell"]')];
+    if (!cells.length) return;
+    const ok = (iso) => cells.find((c) => c.dataset.date === iso && !c.disabled);
+    const target = (rovingISO && ok(rovingISO))
+      || (s.selected && ok(toISO(s.selected)))
+      || ok(toISO(today))
+      || cells.find((c) => c.dataset.otherMonth === "false" && !c.disabled)
+      || cells.find((c) => !c.disabled);
+    if (target) target.tabIndex = 0;
+  };
+  const rerender = () => { renderCalendar(container, s, ctx); applyRoving(); };
+  const goToMonth = (year, month) => { s.viewYear = year; s.viewMonth = month; rerender(); };
+  const selectDate = (date) => {
+    const iso = toISO(date);
+    if (s.disabledSet.has(iso)) return;
+    s.selected = date;
+    rovingISO = iso;
+    rerender();
+    options.onSelect?.(iso);
+  };
+  const handleClick = (event) => {
+    const prevBtn = event.target.closest('[data-s1-part="prev"]');
+    const nextBtn = event.target.closest('[data-s1-part="next"]');
+    const yearLabel = event.target.closest('[data-s1-part="year-label"]');
+    const monthLabel = event.target.closest('[data-s1-part="month-label"]');
+    const cell = event.target.closest('[data-s1-part="cell"]');
+    const tile = event.target.closest('[data-s1-part="tile"]');
+    if (prevBtn || nextBtn) {
+      const delta = prevBtn ? -1 : 1;
+      if (s.view === "date") { const m = addMonths(s.viewYear, s.viewMonth, delta); goToMonth(m.year, m.month); }
+      else if (s.view === "month") { s.viewYear += delta; rerender(); }
+      else { s.viewYear += delta * 12; rerender(); }
+      return;
+    }
+    if (yearLabel) { s.view = "year"; rerender(); return; }
+    if (monthLabel) { s.view = "month"; rerender(); return; }
+    if (tile) {
+      const val = Number(tile.dataset.value);
+      if (s.view === "year") { s.viewYear = val; s.view = "month"; rerender(); }
+      else { s.viewMonth = val; s.view = "date"; rerender(); }
+      return;
+    }
+    if (cell && !cell.disabled) {
+      const date = parseISO(cell.dataset.date);
+      if (!date) return;
+      if (cell.dataset.otherMonth === "true") goToMonth(date.getFullYear(), date.getMonth());
+      selectDate(date);
+    }
+  };
+  const handleKeydown = (event) => {
+    const cell = event.target.closest('[data-s1-part="cell"]');
+    const tile = event.target.closest('[data-s1-part="tile"]');
+    if (cell) {
+      const date = parseISO(cell.dataset.date);
+      if (!date) return;
+      const move = (deltaDays) => {
+        const next = new Date(date); next.setDate(next.getDate() + deltaDays);
+        rovingISO = toISO(next);
+        if (next.getMonth() !== s.viewMonth || next.getFullYear() !== s.viewYear) goToMonth(next.getFullYear(), next.getMonth());
+        else rerender();
+        requestAnimationFrame(() => container.querySelector(`[data-s1-part="cell"][data-date="${toISO(next)}"]`)?.focus());
+      };
+      if (event.key === "ArrowRight") { event.preventDefault(); move(1); }
+      else if (event.key === "ArrowLeft") { event.preventDefault(); move(-1); }
+      else if (event.key === "ArrowDown") { event.preventDefault(); move(7); }
+      else if (event.key === "ArrowUp") { event.preventDefault(); move(-7); }
+      else if (event.key === "Home") { event.preventDefault(); move(-date.getDay()); }
+      else if (event.key === "End") { event.preventDefault(); move(6 - date.getDay()); }
+      else if (event.key === "PageUp") { event.preventDefault(); const m = addMonths(s.viewYear, s.viewMonth, -1); goToMonth(m.year, m.month); }
+      else if (event.key === "PageDown") { event.preventDefault(); const m = addMonths(s.viewYear, s.viewMonth, 1); goToMonth(m.year, m.month); }
+      else if (event.key === "Enter" || event.key === " ") { event.preventDefault(); selectDate(date); }
+      return;
+    }
+    if (tile && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); tile.click(); }
+  };
+  container.addEventListener("click", handleClick);
+  container.addEventListener("keydown", handleKeydown);
+  rerender();
+  return Object.freeze({
+    get value() { return s.selected ? toISO(s.selected) : null; },
+    setValue(next) {
+      s.selected = parseISO(next);
+      const a = s.selected ?? today;
+      s.viewYear = a.getFullYear(); s.viewMonth = a.getMonth(); s.view = "date";
+      rerender();
+    },
+    /* 다시 보여 줄 때 — 골라 둔 날짜(없으면 오늘)가 있는 달의 날짜 보기로 되돌린다. */
+    refresh() {
+      const a = s.selected ?? today;
+      s.viewYear = a.getFullYear(); s.viewMonth = a.getMonth(); s.view = "date";
+      rerender();
+    },
+    focusInitial() {
+      const iso = toISO(s.selected ?? today);
+      (container.querySelector(`[data-s1-part="cell"][data-date="${iso}"]:not(:disabled)`)
+        ?? container.querySelector('[data-s1-part="cell"][data-other-month="false"]:not(:disabled)'))?.focus();
+    },
+    destroy() {
+      container.removeEventListener("click", handleClick);
+      container.removeEventListener("keydown", handleKeydown);
+    }
+  });
+}
+
 export function init(root) {
   if (!(root instanceof Element) || root.dataset.s1Component !== componentId) return null;
   if (instances.has(root)) return instances.get(root);

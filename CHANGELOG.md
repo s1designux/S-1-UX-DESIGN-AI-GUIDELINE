@@ -3,6 +3,32 @@
 > 이 저장소는 원본 디자인 시스템에서 매일 자동으로 내려받아 갱신된다.
 > 검사를 통과한 변경만 아래에 쌓이며, 시각은 한국 시간(KST)이다.
 
+## 2026-11-03 09:56 (KST)
+
+- 원본 커밋: `3d30343` — chore(map): 시스템 맵 재생성 (worktree-tp-date-tab 합치기)
+- 내용이 바뀐 파일 38개
+  - `assets/js/ui-library-guide.js`
+  - `design/DESIGN.core.md`
+  - `pages/components.html`
+  - `registry/components/component-facts.json`
+  - `registry/components/time-picker.json`
+  - `ui-library/dist/components/date-picker.js`
+  - `ui-library/dist/components/date-picker.manifest.json`
+  - `ui-library/dist/components/time-picker.css`
+  - `ui-library/dist/components/time-picker.js`
+  - `ui-library/dist/components/time-picker.manifest.json`
+  - `ui-library/dist/components/time-picker.md`
+  - `ui-library/dist/examples/time-picker.mobile.html`
+  - `ui-library/dist/manifest.json`
+  - `ui-library/dist/platform/contract.json`
+  - `ui-library/dist/platform/cpp/s1_version.h`
+  - `ui-library/dist/platform/kotlin/README.md`
+  - `ui-library/dist/platform/kotlin/S1TimePickerSpec.kt`
+  - `ui-library/dist/platform/kotlin/S1Version.kt`
+  - `ui-library/dist/platform/kotlin/coverage.json`
+  - `ui-library/dist/platform/manifest.json`
+  - … 외 18개
+
 ## 2026-10-31 07:15 (KST)
 
 - 원본 커밋: `8b102dd` — chore(map): 시스템 맵 재생성 (worktree-native-platforms 합치기)

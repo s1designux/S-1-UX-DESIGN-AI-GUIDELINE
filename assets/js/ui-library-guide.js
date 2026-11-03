@@ -2507,7 +2507,11 @@ function timePickerWheelMarkup({ content = "time-only" } = {}) {
         <button type="button" data-s1-part="tab" role="tab" aria-selected="true" data-value="time">시간</button>
       </div>
       <div data-s1-part="date-panel" hidden>
-        <p data-s1-part="date-panel-note">날짜 선택 화면은 Date Picker 코어가 별도로 제공합니다(이 컴포넌트 범위 밖).</p>
+        <div data-s1-component="date-picker" data-s1-part="date-calendar" data-size="md" data-break="mobile">
+          <div data-s1-part="calendar-wrap">
+            <div data-s1-part="calendar"></div>
+          </div>
+        </div>
       </div>` : "";
   const wheelCols = content === "date-time"
     ? `<div data-s1-part="wheel-col" data-column="ampm" role="listbox" aria-label="오전오후"></div>
@@ -2636,7 +2640,7 @@ function timePickerStateMatrix() {
       <div class="matrix-col-header-action">Action</div>
       <div class="uilg-phone-row">
         ${wheelPhone("시간만(TimeOnly)", "시·분을 스크롤 또는 화살표 키로 고르고 <strong>적용</strong>을 누릅니다.", "time-only")}
-        ${wheelPhone("시작 일시(DateTime)", "날짜·시간 탭(승인된 Line Tab 재사용)으로 전환됩니다. 날짜 화면 자체는 이 컴포넌트 범위 밖입니다.", "date-time")}
+        ${wheelPhone("시작 일시(DateTime)", "날짜·시간 탭(승인된 Line Tab 재사용)으로 전환됩니다. 날짜 탭에서는 Date Picker 모바일 시트의 달력 본문(년·월 줄·요일·날짜 칸)이 그대로 보입니다. 적용하면 입력칸에 <strong>2026.11.20 14:30</strong>처럼 날짜와 24시간 시각이 함께 보입니다.", "date-time")}
       </div>
       <p class="uilg-demo-note">트리거를 누르면 휴대폰 화면 안에서 바텀시트가 올라옵니다. Esc 또는 닫기로 닫습니다.</p>
     </div>

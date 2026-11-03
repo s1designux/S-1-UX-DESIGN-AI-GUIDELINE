@@ -2,9 +2,9 @@
   "_meta": {
     "note": "자동 생성물 — 손으로 고치지 마세요. 정본을 고치고 `npm run tokens:reconcile` 또는 `npm run ui:build` 를 실행하세요."
   },
-  "version": "0.28.0",
-  "releasedAt": "2026-10-30",
-  "canonicalFingerprint": "bee81fc4fe9df9329471558b08123fdca4144361bc65e0fdc9e44d2d21f3c949",
+  "version": "0.30.0",
+  "releasedAt": "2026-11-02",
+  "canonicalFingerprint": "05a3acfd2ce0ddb8ff82c6c4a9741b490306b0bce14fb2364df5801b1d3d13d5",
   "generatedAt": null,
   "platforms": {
     "html-css-js": {
